@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跳转中...</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+    <script>
+    (function(w, d){
+        let app = function(){
+            let _ = this;
+            this.ls = w.localStorage;
+            this.init = function(){
+                let t = _.getQueryParams(window.location.search).t;
+                let url = _.getQueryParams(window.location.search).r_url;
+                url = url.replace("---http---", "http://");
+                url = url.replace("---slash---", "/");
+                url = url.replace("---hashslash---", "#/");
+                _.ls.setItem('t', t);
+                window.location = url;
+            };
+            this.getQueryParams = function (qs) {
+                qs = qs.split('+').join(' ');
+                var params = {},
+                    tokens,
+                    re = /[?&]?([^=]+)=([^&]*)/g;
+
+                while (tokens = re.exec(qs)) {
+                    params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+                }
+                return params;
+            }
+        }
+        app = new app();
+        app.init();
+    })(window, document)
+    </script>
+</body>
+</html>

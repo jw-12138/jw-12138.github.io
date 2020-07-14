@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>一个球的博客</title>
+<link rel="icon" href="/favicon.png" /><link rel="alternate" type="text/html" href="https://jw12138.com/"/>
+<link href="https://jw12138.com/atom.xml" rel="self" type="application/atom+xml"/>
+<link href="https://jw12138.com/"/>
+<updated>2020-07-14T19:17:30.000Z</updated>
+<id>https://jw12138.com/</id>
+<author>
+<name>Jacky Wang</name>
+</author>
+
+<entry>
+<title>Github Pages常见问题一览</title>
+<link href="https://jw12138.com/post/202007/a01.html"/>
+<id>https://jw12138.com/post/202007/a01.html</id>
+<published>2020-07-07T00:00:00.000Z</published>
+<updated>2020-07-07T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下。</p>
+<h3># 已经提交changes，但是没有立刻开始构建</h3>
+<p>根据Github的官方文档，第一次构建pages大概需要<strong>10分钟</strong>，但是很多时候我们并不是第一次构建了，而且即使过了十分钟后，pages也还是没有开始构建，就很令人着急。后来在一个issue(惭愧，找不到页面了)下面找到了问题的答案：</p>
+<p>随便选择一个Github pages主题，即使你不使用JekyII。</p>
+<p><img src="image-20200707100136926.png" alt="image-20200707100136926"></p>
+<p>选择完成后会在你的根目录创建一个<code>_config.yml</code>文件，这样以后每次提交都会立马开始自动构建了。不过理论上来说没有这个config文件也是可以构建的，只是不知道是github把构建优先级降低了还是概率性的忽略了。</p>
+<h3># 配置好了自定义域名，但是username.github.io没有跳转到我设置的域名</h3>
+<p>这是因为你的repo名称没有设置为<code>username.github.io</code>，是的，就是这么简单。而且不正确的repo名称还会影响你的其他pages：</p>
+<blockquote>
+<p>假设你创建另一个repo – <code>your_new_repo</code>，并给它开启了pages，理论上来说可以直接访问<code>username.github.io/your_new_repo</code>，但是如果你没有正确配置你的一级repo名称，这个url将会是404。解决方法也有，就是配置另一个域名。。。</p>
+</blockquote>
+<p>当然，只要你爱折腾，不改也无妨。</p>]]></content>
+<summary>
+使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下...</summary>  
+</entry>
+
+<entry>
+<title>LNMP如何配置Gitlab的反向代理和HTTPS</title>
+<link href="https://jw12138.com/post/202005/a01.html"/>
+<id>https://jw12138.com/post/202005/a01.html</id>
+<published>2020-05-09T00:00:00.000Z</published>
+<updated>2020-05-09T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>使用Gitlab CE版已经有一年多了，期间一直在使用<code>http://ip:port</code>的方式来进行访问。很明显，缺点有二：</p>
+<ul>
+<li>没有使用https，安全性堪忧。</li>
+<li>没有使用域名，看起来并不专业…（</li>
+</ul>
+<p>初期使用的时候并不是没有考虑过这两个问题，但是网上的教程大多都是直接nginx配置反向代理，且没有https，（且大部分都长得一样，(╬▔皿▔)凸），所以按照他们的教程来，没有一次是成功的… 后来也就放弃了配置域名和https…</p>
+<p>直到今天，决定再闯一次虎山，终于掌握了要点…啊~</p>
+<br>
+
+<h3># 修改Gitlab配置文件</h3>
+<p>假设你已经拥有一台服务器，一个域名，且已经解析到你使用的服务器上，你的服务器已经装好gitlab，而且可以正常使用ip地址进行访问。</p>
+<pre><code class="shell hljs"><span class="hljs-meta">#</span><span class="bash"> 使用vim编辑gitlab配置文件</span>
+vim /etc/gitlab/gitlab.rb</code></pre>
+<p>如果你还不会使用vim可以看看我写的另一篇博客《<a href="https://jw12138.com/post/201911/a01.html" rel="noopener" target="_blank">来自一个不喜欢用Vim的弱鸡程序员的Vim教程</a>》。</p>
+<br>
+
+<pre><code class="shell hljs"><span class="hljs-meta">#</span><span class="bash"> 修改gitlab外部访问链接，也就是你想配置的域名</span>
+<span class="hljs-meta">#</span><span class="bash"> 这里假设你的外部域名为</span>
+external_url 'https://git.aaa.com'</code></pre>
+<br>
+
+<p>这里是修改gitlab监听的外部nginx端口，端口号随意，只要别占用一些重要端口就可以。</p>
+<pre><code class="shell hljs"><span class="hljs-meta">#</span><span class="bash"> 使用`/`命令搜索 `nginx[<span class="hljs-string">'listen_port'</span>]`</span>
+nginx['listen_port'] = 8118</code></pre>
+<p>然后<code>:wq</code>保存并退出</p>
+<br>
+
+<p>重新配置gitlab，然后重启gitlab服务</p>
+<pre><code class="shell hljs">gitlab-ctl reconfigure
+gitlab-ctl restart</code></pre>
+<br>
+
+<h3># 使用lnmp配置https</h3>
+<p>我这里lnmp版本为1.5。</p>
+<p>至于怎么用lnmp配置https，网上教程已经满天飞了，我就不多废话了…</p>
+<p>不过还是提两句：</p>
+<ul>
+<li>最好的教程：官网 –&gt; <a href="https://lnmp.org/install.html" rel="noopener" target="_blank">https://lnmp.org/install.html</a></li>
+<li>如果ssl配置的时候验证不成功，首先确认一下你的服务器80端口是否可以访问</li>
+</ul>
+<br>
+
+<h3># 编辑lnmp中的Nginx Vhost配置文件以进行反向代理</h3>
+<pre><code class="shell hljs"><span class="hljs-meta">#</span><span class="bash"> 进入到这个文件夹，你应该就能看到所有的lnmp域名配置文件</span>
+cd /usr/local/nginx/conf/vhost</code></pre>
+<pre><code class="shell hljs"><span class="hljs-meta">#</span><span class="bash"> 修改你的git域名配置</span>
+vim git.aaa.com.conf</code></pre>
+<br>
+
+<p>你看到的格式应该如下：</p>
+<pre><code class="nginx hljs"><span class="hljs-section">server</span>
+    {
+        <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
+        <span class="hljs-comment"># listen [::]:80;</span>
+        <span class="hljs-comment"># ...</span>
+
+        <span class="hljs-comment"># 可以在监听80端口这里添加一句，这样http就会自动跳转到https</span>
+        <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://<span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;
+
+        <span class="hljs-attribute">location</span> /
+        {
+            <span class="hljs-comment"># ...</span>
+        }
+    }</code></pre>
+<br>
+
+<pre><code class="nginx hljs"><span class="hljs-comment"># 在文件头部添加本地git服务信息</span>
+<span class="hljs-attribute">upstream</span> git {
+    <span class="hljs-attribute">server</span> localhost:<span class="hljs-number">8118</span>;
+}
+
+<span class="hljs-section">server</span>
+    {
+        <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
+... ... ... ... </code></pre>
+<br>
+
+<p>好了，80端口的部分不用管，我们主要看443部分，也就是https部分</p>
+<p>server里上面部分不用动，下面的location先全部删除</p>
+<pre><code class="nginx hljs"><span class="hljs-section">server</span>
+    {
+        <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl http2;
+        <span class="hljs-attribute">server_name</span> git.jacky97.top ;
+        <span class="hljs-attribute">ssl_certificate</span> ;
+        <span class="hljs-attribute">ssl_certificate_key</span> ;
+        <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;
+        <span class="hljs-attribute">ssl_protocols</span> ;
+        <span class="hljs-attribute">ssl_prefer_server_ciphers</span> ;
+        <span class="hljs-attribute">ssl_ciphers</span> ;
+        <span class="hljs-attribute">ssl_session_cache</span> ;
+        <span class="hljs-attribute">ssl_dhparam</span> ;
+        <span class="hljs-attribute">include</span> rewrite/other.conf;
+        <span class="hljs-attribute">include</span> enable-php.conf;
+
+        <span class="hljs-comment"># ====== 重点 ======</span>
+        <span class="hljs-comment"># 这里就照抄网上的教程了</span>
+        <span class="hljs-attribute">location</span> / {
+            <span class="hljs-attribute">client_max_body_size</span> <span class="hljs-number">512m</span>;
+            <span class="hljs-attribute">proxy_redirect</span> <span class="hljs-literal">off</span>;
+            <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$host</span>;
+            <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+            <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+
+            <span class="hljs-comment"># 不一样的是这里设置一下缓存，不然会出现400错误</span>
+            <span class="hljs-attribute">proxy_buffer_size</span> <span class="hljs-number">64k</span>;
+            <span class="hljs-attribute">proxy_buffers</span> <span class="hljs-number">32</span> <span class="hljs-number">32k</span>;
+            <span class="hljs-attribute">proxy_busy_buffers_size</span> <span class="hljs-number">128k</span>;
+
+            <span class="hljs-comment"># 这里设置成你服务器gitlab的访问路径和刚刚设置的端口</span>
+            <span class="hljs-attribute">proxy_pass</span> http://localhost:8118;
+            <span class="hljs-attribute">index</span> index.html index.htm;
+        }
+    }</code></pre>
+<br>
+
+<h3># 如果出现http 502错误怎么办</h3>
+<pre><code class="shell hljs"><span class="hljs-meta">#</span><span class="bash"> 进入/var/<span class="hljs-built_in">log</span>文件夹</span>
+cd /var/log
+<span class="hljs-meta">#</span><span class="bash"> 将gitlab文件夹的权限设置为775</span>
+chmod -R 775 gitlab</code></pre>
+<br>
+
+<h3># Web IDE打不开怎么办</h3>
+<p>一般是出现<code>Mixed Context</code>错误 —— https站引用了http资源。解决方法也很简单：</p>
+<p>确认一下你的gitlab配置文件中外部链接是<code>HTTPS</code>开头，且gitlab自带的监听https是关闭状态。</p>
+<pre><code class="shell hljs">external_url 'https://git.aaa.com'
+
+nginx['listen_https'] = false</code></pre>
+<p>完成后，重新配置、重启gitlab和lnmp，再设置一遍log文件的权限</p>
+<pre><code class="shell hljs">gitlab-ctl reconfigure
+gitlab-ctl restart
+lnmp restart
+chmod -R 775 /var/log/gitlab</code></pre>
+<br>
+
+<p>现在你就可以用<code>https://git.aaa.com</code>来访问你的gitlab了！如果有任何问题，欢迎在下面的评论区域告诉我！</p>
+]]></content>
+<summary>
+使用Gitlab CE版已经有一年多了，期间一直在使用`http://ip:port`的方式来进行访问。很明显，缺点有二...</summary>  
+</entry>
+
+<entry>
+<title>在本地/服务器部署less.js</title>
+<link href="https://jw12138.com/post/202003/a01.html"/>
+<id>https://jw12138.com/post/202003/a01.html</id>
+<published>2020-03-04T00:00:00.000Z</published>
+<updated>2020-03-04T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p><a href="http://lesscss.org/">Less</a>这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题：</p>
+<p><strong>不兼容IE浏览器</strong>。</p>
+<p>是的，IE 11都报错，更别提低版本的了。好在less有命令行版本，它能够让你使用less.js将less文件转换为css文件。这样在项目中，你引用的其实还是原始的css文件，这样就不存在兼容问题了。</p>
+<h4># less命令行的安装和使用</h4>
+<p>如果你的电脑上装了npm，那么事情将会变得简单得多：</p>
+<pre><code class="shell hljs">npm install less -g</code></pre>
+<p>只需要一个命令就可以安装，less命令行的运行依赖nodejs环境，如果你还没有安装nodejs，可以在它的<a href="https://nodejs.org/zh-cn/">官网</a>下载安装。</p>
+<p>less的安装完成了，使用的话也很简单：</p>
+<pre><code class="shell hljs">lessc main.less main.css</code></pre>
+<p>以上命令将会把<code>main.less</code>直接转换成<code>main.css</code>。</p>
+<h4># less到css的自动转换</h4>
+<p>转换是完成了，可是又出现一个问题，我们知道，css这种东西是需要不断的调试的。现有的机制下，每保存一下less，就要去CMD里面转换一下，这样无疑降低了我们的工作效率，要是能在保存的时候自动转换css就好了。</p>
+<p>万能的<a href="https://github.com/">G站</a>啊，我搜了一下，还真有：</p>
+<p><a href="https://github.com/jonycheung/deadsimple-less-watch-compiler">deadsimple-less-watch-compiler</a></p>
+<p>还是npm：</p>
+<pre><code class="shell hljs">npm install -g less-watch-compiler</code></pre>
+<p>或者yarn：</p>
+<pre><code class="bash hljs">yarn global add less-watch-compiler</code></pre>
+<p>假设你的文件系统如下：</p>
+<pre><code class="text"> root 
+ └──less
+ │    └── main.less
+ │    └── skin.less
+ └──css
+      └── main.css</code></pre>
+<p>那么具体的使用方法如下：</p>
+<pre><code class="shell hljs">less-watch-compiler less css</code></pre>
+<p>这样保存less文件后这个插件就会自动构建css，速度也是非常的快，可以同时检测多个less文件，如果只需要监测一个less文件的话，在上面的命令行后面加上该less文件的文件名就可以了：</p>
+<pre><code class="shell hljs">less-watch-compiler less css main.less</code></pre>
+<p>搞定！</p>
+]]></content>
+<summary>
+Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题...</summary>  
+</entry>
+
+<entry>
+<title>Ableton Live 10中的坑</title>
+<link href="https://jw12138.com/post/201912/a01.html"/>
+<id>https://jw12138.com/post/201912/a01.html</id>
+<published>2019-12-18T00:00:00.000Z</published>
+<updated>2019-12-18T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下。</p>
+<h4>在缩放的情况下性能有所损失</h4>
+<p>这个情况是我在无意间发现的，因为自己是13英寸的笔记本电脑，所以一直以来Ableton Live都用了130%的缩放，后来有一天重设回100%后操作了一下，发现FPS明显上去了，测试后发现：Ableton Live在缩放数值不是100%或200%的情况下，CPU使用率上升了25%，FPS也会掉到30赫兹左右。我能理解缩放的情况下需要重新计算布局什么的，但是25%实在是有点太多了。</p>
+<p><img src="image-20191218110259754.png" alt=""></p>
+<h4>轨道中的Panning</h4>
+<p>这个问题一直以来都没有注意过，直到最近看了一个油管视频，里面有提到：</p>
+<p><img src="image-20191218110444995.png" alt="image-20191218110444995"></p>
+<p>图中Ableton Live所标示的Track Pan的旋钮，它的作用其实并不是真正的调节左右音频信号的方向，而只是一个平衡旋钮而已，也就是说，他只能调节左右声道的音量。看了视频的我甚至还不相信，自己又做了一遍测试。</p>
+<p>先把声音信号全部放到左边，再去往右调Track panning，如果声音彻底没有了，那就说明左边的信号并没有到右边去。</p>
+<p><video controls="" src="record.mp4" poster="record_poster.jpg"></video></p>
+<p>今天才知道，被骗了这么久…心痛啊</p>
+<p>那话说回来，有没有解决方案呢？肯定是有的！可以像我一样使用panning的插件，上面视频中出现的是SoundSpot的<a href="https://www.soundspot.audio/downloads/propane-mid-side-panning-audio-plugin/">Propane</a>，目前只卖2.95英镑，估计后面会回到19英镑的价格。</p>
+<p>除了插件的方法其实Ableton Live自身也可以做到，而且也很简单：</p>
+<p><video controls="" src="record_2.mp4" poster="record_2_poster.jpg"></video></p>
+<p>只需要在Track Pan的旋钮上右击鼠标，选中<code>Select Split Stereo Pan Mode</code>，这样左边的信号就可以被转换到右边去了。</p>
+<hr>
+
+<p>好了，暂时就是这两个有一点点困扰我的问题，溜了！</p>
+<p>😁</p>
+]]></content>
+<summary>
+去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下...</summary>  
+</entry>
+
+<entry>
+<title>如何加快VS Code的启动以及运行速度</title>
+<link href="https://jw12138.com/post/201911/a02.html"/>
+<id>https://jw12138.com/post/201911/a02.html</id>
+<published>2019-11-14T00:00:00.000Z</published>
+<updated>2019-11-15T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<blockquote>
+<p> <strong>Visual Studio Code</strong>（简称<strong>VS Code</strong>）是一个由微软开发，同时支持Windows 、 Linux和macOS等操作系統且开放源代码的程式碼编辑器[4]，它支持測試，并内置了Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和代码重构等，该编辑器支持用户個性化配置，例如改变主题颜色、键盘快捷方式等各种属性和参数，同时还在编辑器中内置了扩展程序管理的功能。  </p>
+</blockquote>
+<p>2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，<strong>但是</strong>，缺点也很明显：</p>
+<p><strong>基于Electron</strong></p>
+<p>为什么说基于Electron是他的缺点呢，对于一些电脑比较好的程序员来讲，可能感受不到，但是如果你的电脑是低压CPU，机械硬盘，内存也不大，你就能感觉到了——很卡，特别卡，尤其使用了一段时间之后，打开速度几乎和IDE无异。但是有时候你可能只是想用来编辑一个小文件，或者突然有了灵感，想记录下来，那么VS Code那接近半分钟的启动速度明显不是你想要的。今天就来教大家怎么加快VS Code的启动和优化它的运行速度。</p>
+<p>首先进入VS Code，按下<code>ctrl/cmd</code> +<code>,</code>进入设置，然后点击设置界面右上角的小图标，打开<code>settings.json</code>；</p>
+<p><img src="image-20191114135952765.png" alt="image-20191114135952765"></p>
+<ol>
+<li><p>关闭小地图或者关闭小地图的渲染真实字符</p>
+<pre><code class="json hljs">// 不渲染真实字符
+<span class="hljs-string">"editor.minimap.renderCharacters"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs">// 关闭小地图
+<span class="hljs-string">"editor.minimap.enabled"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭动画</p>
+<pre><code class="json hljs">// 关闭平滑滚动
+<span class="hljs-string">"editor.smoothScrolling"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs">// 关闭光标平滑滚动
+<span class="hljs-string">"editor.cursorSmoothCaretAnimation"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>缩进提示</p>
+<p><strong>如果您是初级程序员，建议保留。</strong></p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.renderIndentGuides"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭自动高亮</p>
+<pre><code class="json hljs">// 单击在某一字符串上的自动匹配高亮
+<span class="hljs-string">"editor.occurrencesHighlight"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs">// 选中在某一字符串上的自动匹配高亮
+<span class="hljs-string">"editor.selectionHighlight"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>鼠标hover时的弹窗</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.hover.enabled"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs"><span class="hljs-string">"editor.hover.sticky"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭代码大纲（面包屑</p>
+<pre><code class="json hljs"><span class="hljs-string">"breadcrumbs.enabled"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭颜色预览</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.colorDecorators"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+</ol>
+<p>以上7步如果全部做完，你的VS Code相对以前会快很多，如果想要更快，你还可以再添加以下配置：</p>
+<ol start="8">
+<li><p>括号配对高亮</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.matchBrackets"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>当前行高亮</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.renderLineHighlight"</span>: <span class="hljs-string">"none"</span></code></pre>
+</li>
+<li><p>关闭链接的渲染</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.links"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+</ol>
+<p>好了，以上就是我用VS Code一年多总结出来的经验，希望这篇文章有帮到你们！</p>
+<p>Happy coding!</p>
+<p>✌</p>
+]]></content>
+<summary>
+2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，但是...</summary>  
+</entry>
+
+<entry>
+<title>来自一个不喜欢用Vim的弱鸡程序员的Vim教程</title>
+<link href="https://jw12138.com/post/201911/a01.html"/>
+<id>https://jw12138.com/post/201911/a01.html</id>
+<published>2019-11-11T00:00:00.000Z</published>
+<updated>2019-11-11T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>在网上看过一个笑话：</p>
+<blockquote>
+<p> 问：如何生成一个随机字符串？</p>
+<p> 答：让新手退出vim</p>
+</blockquote>
+<p>用过Vim的人肯定一眼就能Get到笑点，因为Vim的反人类设计，你需要在键盘上打出<code>:q</code>才能退出。但是作为一个老牌的文本编辑器，其地位在很多程序员心中的地位是不可撼动的，很多Linux 发行版也都是自带Vim，用来临时修改一下服务器上的文件非常方便。</p>
+<p>因为第一次也遇到了进入Vim退不出去的尴尬情景，我决定去谷歌一下Vim怎么用，看到某大牛写的Vim教程我是懵逼的，因为真的太多东西要学了，一张网页，上万px的高度，几乎键盘上每一个按键都有它的作用，大小写不一样，作用也不一样，还有组合键和命令。即使到现在，我也只记得大约5%的快捷键和命令。但是我觉得如果你只是用来编辑一些简单的文件，比如HTML里面改个标签，CSS里面改个高度这种小活，5%可以说是非常够了。</p>
+<p>在终端打出<code>vim</code>然后回车，来看一下他的界面吧：</p>
+<p><img src="vim.png" alt="image-20191111174728567"></p>
+<blockquote>
+<p>问：作为一个程序员，你最喜欢的代码编辑器是什么？</p>
+<p>答：乌干达</p>
+</blockquote>
+<p>界面很简洁，但是其反人类的设计，会让你有点不相信打<code>:help</code>能出帮助文档。</p>
+<p>Vim有五种模式：</p>
+<ul>
+<li>正常模式</li>
+<li>插入模式</li>
+<li>命令模式</li>
+<li>视图模式</li>
+<li>Ex模式 (<del>前女友模式</del>)</li>
+</ul>
+<p>作为初学者，你可能并不明白为什么Vim要设计“模式”这种东西，时间一长你就会发现：你还是不懂；but whatever</p>
+<p><strong>正常模式</strong></p>
+<p>刚进入vim的界面就是正常模式。从技术上来讲，所有的按键在这个模式下都是快捷键。(雾</p>
+<p><strong>插入模式</strong></p>
+<p>在插入模式下，Vim的表现和Windows的记事本一样，yeah that’s how you can type…so</p>
+<p><strong>命令模式</strong></p>
+<p>在正常模式按下<code>:</code>就可以进入命令模式。</p>
+<p>按下<code>Enter</code>执行命令，执行完命令后，Vim会默认回到正常模式，如果没有也同样可以按下<code>esc</code>。</p>
+<p><strong>视图模式</strong></p>
+<p>在这个模式下，移动光标会选中文字，很像鼠标操作。</p>
+<p><strong>Ex模式</strong></p>
+<p>Wikipedia:</p>
+<blockquote>
+<p> 这和命令行模式比较相似，在使用”:visual”命令离开Ex模式前，可以一次执行多条命令。  </p>
+</blockquote>
+<p>反正我是没看懂…</p>
+<hr>
+
+<blockquote>
+<p>Yeah all the crap you just said, I still don’t know how to type in this fucking thing!</p>
+</blockquote>
+<p>不说废话了，其实想要快乐的和Vim玩耍，只需要记住以下几条：</p>
+<ul>
+<li><p>命令<code>vim test.html</code>打开该文件进行编辑，如果没有该文件，在保存后，Vim会新建该文件。</p>
+</li>
+<li><p>如果你想打字的话，在正常模式按下<code>i</code>键就可以进入♂插入模式<code>Insert Mode</code> ，在插入模式下才能打字</p>
+</li>
+<li><p>如果你想保存文件就按下<code>:w</code>，强制保存是<code>:w!</code>，保存并退出 <code>:wq</code>，强制保存退出<code>:wq!</code>，强制退出<code>:q!</code></p>
+</li>
+<li><p>撤销修改是在正常模式按下<code>u</code></p>
+</li>
+<li><p>重做是在正常模式按下<code>ctrl</code>+<code>r</code></p>
+</li>
+<li><p>跳到具体的某一行可以在正常模式下按下<code>:</code>进入命令模式，后面跟上你想要定位到的行号 <code>:12138</code></p>
+</li>
+<li><p>查找是在正常模式下按下<code>/</code>，后面跟上你想要查找的字符<code>/myFunktion</code>，按下<code>Enter</code>会进入第一个查找结果，按下<code>n</code>显示下一条搜索结果，按下<code>N</code>显示上一条搜索结果。</p>
+</li>
+<li><p>全局替换是<code>:%s/youSearchText/yourReplacement</code>，如果想在每次替换时需要确认可以在命令后面加上<code>/c</code>，于是就变成了<code>:%s/youSearchText/yourReplacement/c</code></p>
+</li>
+</ul>
+<p>以上。</p>
+<p>说是教程，其实更像是一个导览？如果你对Vim真的特别感兴趣，可以去看看这些比较详尽的文档：</p>
+<ul>
+<li>简明 Vim 练级攻略 <a href="https://coolshell.cn/articles/5426.html">https://coolshell.cn/articles/5426.html</a></li>
+<li>Vim 从入门到精通 <a href="https://github.com/wsdjeg/vim-galore-zh_cn">https://github.com/wsdjeg/vim-galore-zh_cn</a></li>
+</ul>
+<p>✌</p>
+]]></content>
+<summary>
+在网上看过一个笑话：问：如何生成一个随机字符串？答：让新手退出vim...</summary>  
+</entry>
+
+<entry>
+<title>使用JavaScript达成 background-size: cover 的效果</title>
+<link href="https://jw12138.com/post/201910/a03.html"/>
+<id>https://jw12138.com/post/201910/a03.html</id>
+<published>2019-10-28T00:00:00.000Z</published>
+<updated>2019-10-28T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>最近有一个项目，领导要求：要让一个<strong>视频</strong>在<strong>一屏显示</strong>的情况下<strong>不能改变宽高比</strong> and <strong>适配各种分辨率</strong> and <strong>兼容到IE 7</strong>。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。</p>
+<p>不过不是我做（欸嘿），别人也没做出来，我也没站出来（面子最重要），于是领导不得不放低要求，当然这都是后话了。</p>
+<p> <img src="zhazha.jpg" alt=""></p>
+<p>后来想，如果我来做的话，我会怎么做？对于领导的要求，我脑子里第一个闪过的就是<code>background-size: cover</code>这个玩意儿，但是第一，这个是CSS 3的属性，IE 8就歇菜了，更别说IE 7了，第二，这个属性只对图片有用……</p>
+<p>那能不能用js来模拟呢？</p>
+<p>说干就干，当下就开始研究<code>cover</code>属性是怎么工作的，最后结论是：</p>
+<p><code>cover</code>在正常情况下，只是单纯的将图片宽度放到与容器一样宽，在缩放过程中，<strong>当图片高度小于容器高度时</strong>，<strong>会根据原始图片的宽高比(ratio)来放大图片宽度</strong>，使原始图片始终撑满容器。</p>
+<p>听起来有点绕，直接上代码：</p>
+<pre><code class="javascript hljs">;(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">w</span>) </span>{
+    <span class="hljs-keyword">var</span> kkkover = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        _ = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">this</span>.init = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
+            w.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                _.resized(obj);
+            }
+            obj.img.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                obj.ratio = obj.img.clientHeight / obj.img.clientWidth;
+                _.calcStyle(obj);
+            }
+            obj.ratio = obj.img.clientHeight / obj.img.clientWidth;
+            _.calcStyle(obj);
+        }
+        <span class="hljs-keyword">this</span>.calcStyle = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
+            obj.wrapCell.style.position = <span class="hljs-string">'relative'</span>;
+            obj.img.style.position = <span class="hljs-string">'absolute'</span>;
+            obj.img.style.top = <span class="hljs-string">'50%'</span>;
+            obj.img.style.zIndex = <span class="hljs-string">'0'</span>;
+            obj.img.style.left = <span class="hljs-string">'50%'</span>;
+            obj.img.style.width = <span class="hljs-string">'100%'</span>;
+            obj.img.style.marginLeft = -(obj.img.clientWidth / <span class="hljs-number">2</span>) + <span class="hljs-string">'px'</span>;
+            obj.img.style.marginTop = -(obj.img.clientHeight / <span class="hljs-number">2</span>) + <span class="hljs-string">'px'</span>;
+            <span class="hljs-keyword">if</span>(obj.img.clientHeight &lt;= obj.wrapCell.clientHeight){
+                obj.img.style.maxWidth = <span class="hljs-string">'none'</span>;
+                obj.img.style.height = obj.wrapCell.clientHeight;
+                obj.img.style.width = obj.wrapCell.clientHeight / obj.ratio + <span class="hljs-string">'px'</span>;
+                obj.img.style.marginTop = -(obj.img.clientHeight / <span class="hljs-number">2</span>) + <span class="hljs-string">'px'</span>
+                obj.img.style.marginLeft = -(obj.img.clientWidth / <span class="hljs-number">2</span>) + <span class="hljs-string">'px'</span>;
+            }
+            <span class="hljs-keyword">if</span>(obj.wrapCell.clientWidth &gt; obj.img.clientWidth){
+                obj.img.style.width = <span class="hljs-string">'100%'</span>;
+                obj.img.style.height = <span class="hljs-string">'auto'</span>;
+                obj.img.style.marginLeft = -(obj.img.clientWidth / <span class="hljs-number">2</span>) + <span class="hljs-string">'px'</span>;
+                obj.img.style.marginTop = -(obj.img.clientHeight / <span class="hljs-number">2</span>) + <span class="hljs-string">'px'</span>;
+            }
+        }
+        <span class="hljs-keyword">this</span>.resized = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
+            _.calcStyle(obj);
+        }
+    }
+    <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> kkkover();
+    <span class="hljs-keyword">var</span> wp = w.prototype || w.__proto__ || w;
+    wp.kkkover = app.init;
+}(<span class="hljs-built_in">window</span>));</code></pre>
+<p>使用的话大概就是这样：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"test"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/img"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"test_img"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre><code class="javascript hljs">kkkover({
+    <span class="hljs-attr">wrapCell</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'test'</span>), <span class="hljs-comment">// 传入容器</span>
+    img: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'test_img'</span>) <span class="hljs-comment">// 传入容器中的图片</span>
+});</code></pre>
+<p>可以在这里看一下<a href="https://jw12138.com/post/201910/a03_demo/">演示</a>。代码已经测试，可以兼容到IE 7。</p>
+<p>对于视频也是一样的用法，<code>img</code>传视频元素就可以了。</p>
+<p>✌</p>
+]]></content>
+<summary>
+最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼...</summary>  
+</entry>
+
+<entry>
+<title>职业生涯分享</title>
+<link href="https://jw12138.com/post/201910/a02.html"/>
+<id>https://jw12138.com/post/201910/a02.html</id>
+<published>2019-10-25T00:00:00.000Z</published>
+<updated>2019-10-25T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯。</p>
+<h4>2014年6月，一切的开始</h4>
+<p>17岁，大部分同龄人还在读高二的年纪，我却已经走上了实习岗位（并不自豪），第一份工作是上汽旗下的A车站当技术员。说白了就是修车，不过说是修车，其实呢，是拿着￥1390/月的工资，洗了八个月的车。辞职那天，有点小雨，在去地铁站的路上一直在想，这就是以后我的工作吗？这样的工作我真的能坚守并热爱下去吗？</p>
+<p>在家闲了两个星期后，我妈决定让我先随便找一份工作。于是在申通找了个仓库管理的工作，每天的工作大概就是搬东西，清点货品，爬货架，和同事唠嗑。总之，忙起来非人类，闲起来特无聊。大概做了一个月后，收到奶奶病重的消息，于是又辞职了，拿着两千多块钱回老家了。</p>
+<p>奶奶在2015年5月去世，办完丧事后回到上海，偶然间看到<em>华育国际</em> *的PHP培训广告。于是说服父母，打算转行做程序员。</p>
+<h4>2015年6月，开始学习PHP</h4>
+<p>在讲师放了一堆PPT和视频之后，我就觉得，“哇，这简直就是我梦寐以求的工作！”</p>
+<p>然后，现实他就给了我一耳光。我发现我的耐心很差，后面学到Javascript的时候就有点心不在焉了。后面三个月的重点PHP课程是真的一点都没听进去，钱倒是浪费了一大半。后来找工作的时候没有办法，只能硬着头皮去面试前端。</p>
+<h4>2016年3月，第一份工作</h4>
+<p>不知道经过多少次碰一鼻子灰后，终于有一家公司录用（收留）了我。这家公司主要就是帮别人建网站的，所以工作很纯粹，就是切图，设计师给我PSD，我出HTML，没有五险一金，过年过节也没有福利，但是有些地方却让我慢慢的驱散了之前找不到工作时的不安和来自父母的压力。不管技术经理还是设计师，对我这个新人都非常有耐心，遇到问题也不会对我大喊大叫，而是很温柔的教我应该怎么处理才是正确的。这样的氛围，让我感觉整个世界都亮了起来，让我更加坚定了自己要当一个程序员的想法。就是这一年，让我明白培训机构教的东西，真的只是皮毛而已。也是这一年，让我的切图技能达到了饱和状态。后来离职，老板没有意外，他也知道在他那里再待下去，也没有什么提升空间了。</p>
+<h4>2017年6月，第二份工作</h4>
+<p>这是一家媒体公司，主要做音频优化和影音设备的，我也不明白他们为什么会需要前端，也不明白为什么会选到我，刚开始我的工作就是切切图，美化一下表单。</p>
+<p>再后来，公司终于决定搞个大项目——在线音频优化平台。</p>
+<p>项目研发的五个月里，我从一个不太会Javascript的小白，变成了一个可以独挡一面的中级前端工程师，从一个完全没接触过Linux的菜鸟，拥有了一个运维实习生的水平，也对各种工具有了很深的了解，而最主要的一件事，就是让我的PHP技能入门了。这着实让我很开心，在2018年，我拥有了自己的第一个域名，拥有了硕大互联网中的一个旮旯。</p>
+<p>项目开发几近尾声，却被突然叫停，后来我上班的内容就是每天打游戏，刷油管。</p>
+<p>我变成了一个名副其实的摸鱼族。</p>
+<p><strong>居安思危，居安思危啊各位</strong>！</p>
+<p>就这样浪费了小半年时间后，公司发生变故，据上级领导讲，是融资出现问题，这时我的工资已经推迟三个月没有发，社保和公积金也停止了缴纳，无奈之下，选择离职。</p>
+<h4>2019年2月，现在的工作</h4>
+<p>很巧，现在公司，和以前修车的地方，只有100米的距离，由于急着要续社保和公积金，在这里工作也只是缓兵之计。后来，事实证明我错了，自认为已经能写好Javascript的我，在这里才知道原来JS还有一种叫封装的写法，这不禁让我感到无比惭愧。而现在我只想躲在这个小角落，潜心修行。</p>
+<hr>
+
+<p>如果我的职业生涯重新开始，我会不会选择同样的道路？</p>
+<p>我想我会的，因为这世上没有后悔药，也没有时光机。无论我怎么后悔，怎么不甘，我都要接受现实。只是现在我可以把我踩过的泥坑和跌过的跟头，分享给你们作为参考，不要再犯我犯过的错误。</p>
+<ol>
+<li><strong>注册一个GitHub账号吧</strong>。你在那里真可以学到很多，但是不要盲目追求小绿点，那种行为不会让你有任何进步，反而会让别人在看你Commits的时候嗤之以鼻。</li>
+<li>有条件的话，尽量<strong>使用Google作为你的首要搜索引擎</strong>，同时<strong>学好英语</strong>。使用英语在搜索引擎上查找答案会让你获得更精确更权威的答案，但是不管是什么问题，你都一定要有自己的理解和看法。</li>
+<li><strong>不要纠结写代码应该选哪个编辑器</strong>。我刚学编曲的时候也问过这种问题，哪个软件最好，哪个软件最牛逼，结论是，不管编程软件也好，编曲软件也好，<strong>适合你的，你用着舒服的，才是最好的</strong>！</li>
+<li><strong>建一个自己的博客</strong>。不管你是在博客论坛上注册账号，还是自己搭建博客，或者其他方式，只要能够记录自己学习过程遇到的问题以及发表一些有趣的文章就可以，不要害怕出错或者别人对你的勘误，相反，这些才是你进步的动力。</li>
+<li><strong>不要浪费太多时间在重复工作上</strong>。如果一项工作让你觉得乏味，让你觉得有那么一丝流水线的意思，一定要去和领导说，让他给你分配一些有挑战性的工作，这样你才会进步，如果领导不愿意，那你就离职，不要犹豫，原地踏步对你没有一点好处。</li>
+<li><strong>不要盲目跟风</strong>。面对很多同类型库、同类型技术或者同类型产品的时候，不要跟着大众选择走，可以先全部体验一遍，然后选一个你觉得最有兴趣的，去钻研，去学习，当你能完全理解那个东西的时候，再去看看同类型的其他东西，你会觉得他们都非常简单。</li>
+<li><strong>多获取资讯</strong>。留心网络上一些比较火的新技术或者新的东西，比如最近的AI, VR, AR，不一定要去研究，但是不能落后，信息时代的任何工作都随时面临过时过气。</li>
+<li><strong>注意自己的形象</strong>。你是程序员不错，但是不代表作为程序员的你可以邋遢，可以不顾自己的形象以及自己使用的物品。我见过很多程序员的电脑键盘，里面有面包屑，头发，指甲，键盘上全是油，对于这样的人我是不愿意靠近的，更何况要找男/女朋友呢？</li>
+<li><strong>注意自己的健康状态</strong>。很多时候我们都能听到谁谁谁又猝死了，在某某公司当程序员这样的话，并不是危言耸听，久坐，长时间不喝水，长时间盯着电脑确实会严重影响你的健康。所以设个小闹钟，每隔一段时间起来走走，喝喝水，看看窗外。偶尔的加班是可以的，但是如果天天加班，我劝你还是离职比较好，拿的工资够用就好，人没了就真的什么都没了。</li>
+<li><strong>少摸鱼</strong>。不摸鱼是不可能的，这辈子都不可能的，我理解，因为我现在就在摸鱼（上班时间写博客），但是尽量少摸鱼吧，多看点有用的东西，搞笑视频，小说这种，坐车的时候看看就可以了。上班还是做点有意义的事情吧。</li>
+</ol>
+<p>本来这篇文章的标题叫《写给前端新人》的，但是我不想当一个人生导师一样的人物，我也不够格。以上，有对自己的批判，也有对所有新人的期望吧。</p>
+<p>谢谢阅读！</p>
+<hr>
+
+<p><em>注</em>：</p>
+<ul>
+<li><strong><em>华育国际</em></strong>：<em>可以看一下知乎这个提问：<a href="https://www.zhihu.com/question/31654838">华育国际的培训怎么样？</a>。我想在这里“大放厥词”一下，目前任何培训机构教给你的课程，你完全可以自学，甚至可以学得更好。网上有一大堆免费的资源，如果你能把这些资源全部理解并熟记，足以让你成为这个领域中专家级别的人。只是你愿不愿意钻研，愿意花多少时间的问题。</em></li>
+</ul>
+]]></content>
+<summary>
+一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯...</summary>  
+</entry>
+
+<entry>
+<title>GitHub OAuth App怎么跳转到用户授权之前的页面？</title>
+<link href="https://jw12138.com/post/201910/a01.html"/>
+<id>https://jw12138.com/post/201910/a01.html</id>
+<published>2019-10-22T00:00:00.000Z</published>
+<updated>2019-12-10T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等…</p>
+<p>但是他们好像都忽略了一个问题：</p>
+<p>—— <strong>在获取Token或者用户信息之后，客户端要怎么跳转回用户授权之前的页面？</strong></p>
+<p>先声明一下，这篇文章不会教你怎么注册或使用GitHub OAuth App，如果你还不熟悉它，可以先阅读一下<a href="https://developer.github.com/apps/building-oauth-apps/">官方文档</a>，如果你不太喜欢英语，可以看看阮一峰的<a href="http://www.ruanyifeng.com/blog/2019/04/github-oauth.html">GitHub OAuth 第三方登录示例教程</a>或者其他大佬/论坛的教程。</p>
+<p>好了，先看一下GitHub OAuth的流程：</p>
+<ol>
+<li>浏览器带 <code>client_id</code> 和 <code>redirect_uri</code> 跳转到GitHub</li>
+<li>用户授权</li>
+<li>如果用户同意授权，GitHub会返回一个<code>code</code>参数，形式为 <code>https://redirect_uri?code=xxxxxxxxxxxxx</code></li>
+<li>客户端带<code>code</code> <code>client_id</code> 和 <code>client_secret</code>发送POST请求到GitHub获取 <code>token</code></li>
+<li>客户端使用 <code>token</code> 获取用户信息</li>
+</ol>
+<p>如果用URL的跳转来表现的话大概就是这样：</p>
+<pre><code class="text">blog.com/post/01.html
+    ----&gt;
+https://github.com/login/oauth/authorize?client_id=xxx&amp;redirect_uri=xxx
+    ----&gt;
+api.blog.com/?code=xxx        # api.blog.com就是你填在GitHub OAuth App的Callback URL
+    ----&gt; POST
+https://github.com/login/oauth/access_token
+    ----&gt;
+???</code></pre>
+<p>对！问题来了！</p>
+<p>怎么跳转？跳哪里？</p>
+<p>作为开发者，我肯定是想跳回<code>blog.com/post/01.html</code>实现无缝体验对吧…</p>
+<p>然而就这个问题，不管是CSDN，还是Stack Overflow，甚至官方文档，</p>
+<p><strong>全都没有！</strong></p>
+<p>终于，在死了不知道多少脑细胞后，我想出了如下实现过程：</p>
+<ol>
+<li><p>假设用户在<code>blog.com/post/01.html</code>这张页面上点击了GitHub登录按钮，这个登录按钮不要直接跳转到GitHub授权页面，先跳转到你自己设置的GitHub OAuth App的Callback URL，这里假设是<code>api.blog.com</code>，把当前页面的URL传给<code>api.blog.com</code>，例如：<code>api.blog.com?url=blog.com/post/01.html</code></p>
+</li>
+<li><p>这样在跳转到<code>api.blog.com</code>的时候，你就知道了点击登录的是哪张页面了，这时候可以把传过来URL记录到<code>localStorage</code>或者Cookie，甚至是后端的Session，反正不管怎么样，找个地方记录一下就可以了，因为这时候我们还要跳转到<code>github.com</code>，不记录的话就丢失了数据</p>
+</li>
+<li><p>用户在<code>github.com</code>完成授权后，还是会跳转到<code>api.blog.com</code>，因为跳转前记录了授权前传来的页面URL，在你获取到Token之后，你可以把URL再读取出来：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// localStorage 这么用</span>
+<span class="hljs-built_in">window</span>.localStorage.getItem(<span class="hljs-string">'URL'</span>);
+
+<span class="hljs-comment">// Cookie 这么用</span>
+<span class="hljs-comment">// 这个function w3c抄来的</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookie</span>(<span class="hljs-params">cname</span>) </span>{
+    <span class="hljs-keyword">var</span> name = cname + <span class="hljs-string">"="</span>;
+    <span class="hljs-keyword">var</span> ca = <span class="hljs-built_in">document</span>.cookie.split(<span class="hljs-string">';'</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; ca.length; i++) {
+        <span class="hljs-keyword">var</span> c = ca[i];
+        <span class="hljs-keyword">while</span> (c.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">' '</span>) {
+            c = c.substring(<span class="hljs-number">1</span>);
+        }
+        <span class="hljs-keyword">if</span> (c.indexOf(name) == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> c.substring(name.length, c.length);
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+}
+getCookie(<span class="hljs-string">'URL'</span>);</code></pre>
+</li>
+</ol>
+<p>获取用户信息的请求可以在<code>api.blog.com</code>做，也可以像我一样带着<code>token</code>回到<code>blog.com/post/01.html</code>去做。</p>
+<p>因为自己的博客<del>URL特殊，又是Hash又是URL Param</del>(原本是单页App，现在已调整为纯静态，但是不影响思路)，而且也不想用户在回到页面的时候，URL后面跟着一个长长的<code>token</code>，我还新加了一个跳转页面 <code>blog.com/r.html</code>，这个页面负责接收<code>token</code>和跳转的页面，将<code>token</code>写入浏览器存储（上面说的<code>localStorage</code>或者Cookie）之后再进行跳转，在<code>blog.com/post/01.html</code>完成用户信息的调用后删除记录在浏览器存储里面的<code>token</code>。</p>
+<p><img src="nice.gif" alt=""></p>
+<p>虽然流程跑通了，但是我还是很好奇为什么GitHub官方文档里完全找不到这一部分的说明，在搜索引擎上也找不到相关文章…</p>
+<p>随便吧，现在看起来，只能这样解决…</p>
+]]></content>
+<summary>
+最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等… 但是他们好像都忽略了一个问题...</summary>  
+</entry>
+
+<entry>
+<title>开发一个web音乐播放器到底有多难？</title>
+<link href="https://jw12138.com/post/201908/a01.html"/>
+<id>https://jw12138.com/post/201908/a01.html</id>
+<published>2019-08-22T00:00:00.000Z</published>
+<updated>2019-08-22T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>前段时间比较闲，顺便就开发了自己的音乐主页👉<a href="https://music.jw12138.com">https://music.jw12138.com</a>，开发过程中遇到不少问题，一度以为解决不了，但是最后看来，其实实现都非常简单。</p>
+<p>首先看看html吧</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 或者 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">audio</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/mpeg"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span></code></pre>
+<p>这时候打开页面你会发现…什么都没有。</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span> <span class="hljs-attr">controls</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span></code></pre>
+<p>加上<code>controls</code>这个属性，浏览器才会显示原生的音频组件。至于浏览器兼容性我就不讲了，还是老样子扔个MDN链接在这里😁：<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility</a></p>
+<p>所以，搞定了？</p>
+<p>不！像我这种有强迫症的人，怎么可能让每个浏览器的显示都不一致！</p>
+<p>要做的第一件事情就是，隐藏<code>audio</code>的原生控制组件：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 去掉 controls --&gt;</span></code></pre>
+<p>(👆三遍了🤣</p>
+<p>然后用CSS将<code>audio</code> 移出文档流：</p>
+<pre><code class="css hljs"><span class="hljs-selector-tag">audio</span>{<span class="hljs-attribute">position</span>:fixed;<span class="hljs-attribute">top</span>:<span class="hljs-number">0</span>;<span class="hljs-attribute">left</span>:-<span class="hljs-number">12138px</span>;}</code></pre>
+<p>为什么要这么做？</p>
+<p>—— 为了避免一些非主流的浏览器会让<code>audio</code>在没有<code>controls</code>属性的情况下出现在不应该出现的地方。(好累</p>
+<p>接下来看JS的部分</p>
+<pre><code class="javascript hljs"><span class="hljs-keyword">let</span> audio = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'audio'</span>)
+
+<span class="hljs-comment">// 或者用jQuery</span>
+<span class="hljs-keyword">let</span> audio = $(<span class="hljs-string">'audio'</span>)
+
+<span class="hljs-built_in">console</span>.log(audio)</code></pre>
+<p>原生JavaScript在log下只能看到标签，而jQuery则会把所有和这个元素有关的东西都列出来，不论是有用的还是没有用的。但是知道有那么多属性/事件可以用是件好事，在这里说几样比较重要的。</p>
+<blockquote>
+<p>接下来js区域中的<code>audio</code>都是以原生js获取的对象，如果你使用jQuery，audio赋值应该为</p>
+<pre><code class="javascript hljs"><span class="hljs-keyword">let</span> audio = $($(<span class="hljs-string">'audio'</span>)[<span class="hljs-number">0</span>])</code></pre>
+</blockquote>
+<h4># audio.play()</h4>
+<p>可以调用此方法来播放音频。因为市面上大多数浏览器不允许直接用js触发音乐播放，必须要由用户来触发该事件(‘click’, ‘scroll’, ‘focus’, etc.)，所以我们可以加一个播放按钮来触发事件：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"play"</span>&gt;</span>play<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 获取play button</span>
+<span class="hljs-keyword">let</span> playBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.play'</span>);
+
+<span class="hljs-comment">// 给play button添加点击事件</span>
+playBtn.addEventListener(<span class="hljs-string">'click'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// play button 点击后播放音频</span>
+    audio.play()
+})</code></pre>
+<h4># audio.pause() &amp; audio.paused</h4>
+<p>调用<code>audio.pause()</code>来暂停音频。</p>
+<p>调用<code>audio.paused</code>来获取音频暂停状态，<code>true</code>为暂停状态，<code>false</code>则为播放状态。</p>
+<p>比如我现在需要再点击一次play button来暂停音频，我们可以这样做：</p>
+<pre><code class="javascript hljs">playBtn.addEventListener(<span class="hljs-string">'click'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 点击后判断音频是否为暂停状态</span>
+    <span class="hljs-keyword">if</span>(audio.paused){
+
+        <span class="hljs-comment">// 如果audio.paused为true</span>
+        <span class="hljs-comment">// 则音频为暂停状态</span>
+        <span class="hljs-comment">// 这时候我们就要播放音频</span>
+        <span class="hljs-comment">// 同时修改button的文字为pause</span>
+        audio.play()
+        playBtn.innerHTML = <span class="hljs-string">'pause'</span>
+    }<span class="hljs-keyword">else</span>{
+
+        <span class="hljs-comment">// 如果audio.paused为false</span>
+        <span class="hljs-comment">// 则音频为播放状态</span>
+        <span class="hljs-comment">// 这时候我们就要暂停音频</span>
+        <span class="hljs-comment">// 同时修改button的文字为play</span>
+        audio.pause()
+        playBtn.innerHTML = <span class="hljs-string">'play'</span>
+    }
+})</code></pre>
+<h4># audio.currentTime</h4>
+<p>调用此属性获取音频当前已播放时间。</p>
+<p>修改此属性可以达到切换音频当前播放位置的功能：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 快进十秒</span>
+fastForward = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    audio.currentTime = audio.currentTime + <span class="hljs-number">10</span>
+}
+fastForward()</code></pre>
+<h4># audio.duration</h4>
+<p>调用此属性获取音频的长度，单位为秒。</p>
+<p><strong>已知问题</strong>：</p>
+<ol>
+<li>在<code>Firefox</code>上会出现读不到duration的情况，可能和修改<code>audio.src</code>有关，我在自己项目中的做法是使用了<code>ffmpeg</code>读取出duration，直接当作变量使用，没有使用浏览器给的这个属性。</li>
+</ol>
+<h4># audio.ontimeupdate</h4>
+<p>此方法在音频播放期间会循环调用，经测试，调用间隔大约为200ms一次。</p>
+<p>此方法可以用在更新音频进度条上。有了上面的<code>audio.currentTime</code>和<code>audio.duration</code>，我们可以算出当前音频播放进度的百分比：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 将百分比定为全局变量</span>
+<span class="hljs-keyword">let</span> audioProgressPercent = <span class="hljs-number">0</span>;
+audio.ontimeupdate = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 在audio时间更新的时候计算当前进度百分比</span>
+    audioProgressPercent = audio.currentTime / audio.duration
+    <span class="hljs-built_in">console</span>.log(audioProgressPercent)
+}</code></pre>
+<p>这个时候如果你打开页面开始播放音频，就会看到控制台一直在更新进度百分比了，至于这个数值怎么用，不用我教大家了吧。😁</p>
+<h4># audio.buffered</h4>
+<p>调用此属性可以获取当前音频的缓冲进度和区间：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 每200ms获取一次缓冲区间</span>
+<span class="hljs-keyword">let</span> bufferedTimeInterval = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 缓冲可以有多个区间</span>
+    <span class="hljs-comment">// 所以我们尽量都获取到</span>
+    <span class="hljs-keyword">let</span> bufferedLength = audio.buffered.length
+
+    <span class="hljs-comment">// 以bufferedLength做循环</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; bufferedLength; i++) {
+        <span class="hljs-keyword">let</span> bufferedStart = audio.buffered.start(i)
+        <span class="hljs-keyword">let</span> bufferedEnd = audio.buffered.end(i)
+        <span class="hljs-built_in">console</span>.log(bufferedStart, bufferedEnd)
+    }
+},<span class="hljs-number">200</span>)</code></pre>
+<p>控制台输出：</p>
+<pre><code class="text">&gt; 0 17.64
+  56.45 78.90</code></pre>
+<p>输出的含义为：</p>
+<p>这一次读取<code>audio.buffered</code>得到了两个区间，所以循环了两次。</p>
+<p>第一次获得的区间是<code>[0,17.64]</code>，代表第0秒到第17.64秒之间的音频已经缓冲好了，可以直接播放。</p>
+<p>第二次获得的区间是<code>[56.45,78.90]</code>，代表这两个数字之间的音频已经缓冲好了，可以直接播放。</p>
+<h4># audio.onwaiting &amp; audio.onplay</h4>
+<p><code>audio.onwaiting</code>会在音频开始缓冲的时候被激活；</p>
+<p><code>audio.onplay</code>会在音频开始播放的时候被激活；</p>
+<p>这时候我们可以做一个loading的动画，告诉用户音频正在加载了：</p>
+<pre><code class="javascript hljs">audio.onwaiting = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'audio is loading'</span>)
+    <span class="hljs-comment">// 在这里激活loading动画</span>
+}
+audio.onplay = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'audio is playing'</span>)
+    <span class="hljs-comment">// 在这里关闭loading动画</span>
+}</code></pre>
+<h4># audio.ended &amp; audio.src</h4>
+<p><code>audio.ended</code>顾名思义，会在音频结束后被激活；</p>
+<p><code>audio.src</code>是音频文件的位置，可修改；</p>
+<p>当你有一个播放列表，且想在音频结束后播放下一首歌，你就可以：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 定义播放列表</span>
+<span class="hljs-keyword">let</span> playList = [
+    <span class="hljs-string">'path/to/song1'</span>,
+    <span class="hljs-string">'path/to/song2'</span>,
+    <span class="hljs-string">'path/to/song3'</span>
+]
+
+<span class="hljs-comment">// 定义当前播放歌曲的ID</span>
+<span class="hljs-keyword">let</span> currentSongID = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">// 音频结束后自动播放下一首</span>
+audio.onended = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 更新当前播放歌曲的ID</span>
+    currentSongID = currentSongID + <span class="hljs-number">1</span>
+
+    <span class="hljs-comment">// 如果当前播放歌曲为播放列表中最后一首</span>
+    <span class="hljs-comment">// 就从第一首开始放</span>
+    <span class="hljs-keyword">if</span>(currentSongID &gt;= playList.length){
+        currentSongID = <span class="hljs-number">0</span>
+    }
+
+    <span class="hljs-comment">// 改变audio的src属性</span>
+    audio.src = playList[currentSongID]
+    audio.play()
+}</code></pre>
+<p>哦还有！</p>
+<h4># audio.volume</h4>
+<p>调用获取音频的音量，可修改；</p>
+<p>可以做点fade in / fade out的效果，使用jQuery可以很简单的做出来，原文中也有原生js的实现方法(太长没看</p>
+<blockquote>
+<pre><code class="javascript hljs">$audio.animate({<span class="hljs-attr">volume</span>: newVolume}, <span class="hljs-number">1000</span>)</code></pre>
+</blockquote>
+<p>原文链接：<a href="https://stackoverflow.com/questions/7451508/html5-audio-playback-with-fade-in-and-fade-out">https://stackoverflow.com/questions/7451508/html5-audio-playback-with-fade-in-and-fade-out</a></p>
+<p>好了，以上就是我开发音乐主页之后想和大家分享的。</p>
+<p>至于题中的问题，我的答案是：真的很简单。</p>
+<p>只是js有一些性能上的限制，不能什么功能都往网页上搬…</p>
+<p>在我的音乐主页中有一个砍掉的功能</p>
+<p>—— 节拍器</p>
+<p>为啥砍掉了呢…</p>
+<p>因为js的处理效率真的不高(或者只是我太辣鸡)，中低端手机做出来的节拍器根本不准，至于实现原理，很简单：</p>
+<p>歌曲的bpm(beat per minute)是已知的：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 假设现在我有一首歌bpm为120</span>
+<span class="hljs-keyword">let</span> bpm = <span class="hljs-number">120</span>
+
+<span class="hljs-comment">// 每40毫秒更新一次，目的是让bpm更新不低于24fps</span>
+<span class="hljs-comment">// 然而中低端手机的效果却不尽人意</span>
+<span class="hljs-comment">// pc端倒是没啥问题</span>
+<span class="hljs-keyword">let</span> bpmTimeInterval = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-comment">// 计算每秒有多少beats</span>
+    <span class="hljs-keyword">let</span> interval = bpm / <span class="hljs-number">60</span>
+
+    <span class="hljs-comment">// _b会在时间线呈现出一个锯齿状的图形</span>
+    <span class="hljs-comment">// 最高那个点，也就是齿尖，就是一个beat</span>
+    <span class="hljs-keyword">let</span> _b = audio.currentTime % interval
+    <span class="hljs-comment">// ...</span>
+},<span class="hljs-number">40</span>)</code></pre>
+<p>希望有一天js能有开发Digital Audio Workstation的能力！</p>
+<p>✌</p>
+]]></content>
+<summary>
+前段时间比较闲，顺便就开发了自己的音乐主页👉https://music.jw12138.com，开发过程中遇到不少问题，一度以为解决不了，但是最后看来...</summary>  
+</entry>
+
+<entry>
+<title>Package Control镜像Channel使用说明</title>
+<link href="https://jw12138.com/post/201906/a01.html"/>
+<id>https://jw12138.com/post/201906/a01.html</id>
+<published>2019-06-21T00:00:00.000Z</published>
+<updated>2019-06-21T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<h3>1. 安装Package Control</h3>
+<p>Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再加上Package Control，无疑给了Sublime Text更大的进步空间和市场。但是，不知道什么原因，国内已经无法访问<a href="https://packagecontrol.io">packagecontrol.io</a>。作为一个Sublime Text的脑残粉自然是看不下去了，特此做了一个教程和镜像channel，方便各位和我一样喜欢Sublime text的程序<del>猿</del>。</p>
+<h4>离线安装</h4>
+<p>首先下载Package Control的安装包，鉴于Github现在还能访问，我就直接给Github的下载链接了。</p>
+<p><a href="https://github.com/wbond/package_control/releases/tag/3.3.0">3.3.0正式版</a> 👈推荐下载正式版</p>
+<p><a href="https://github.com/wbond/package_control/releases/tag/3.3.0">3.3.1 beta2 测试版</a></p>
+<p>或者直接从<a href="https://github.com/wbond/package_control/releases/">Package Control的Release页</a>下载。</p>
+<p>下载好后解压，将文件夹<code>package_control-x.x.x</code>更名为<code>Package Control</code>。注意大小写！</p>
+<p>打开Sublime Text，点击菜单中的<code>Preferences</code>，找到<code>Browse Packages</code>，这时候Sublime Text会打开一个文件夹，把刚刚改好名字的<code>Package Control</code>文件夹直接复制到这个打开的文件夹中。重启Sublime Text，再次进入菜单中的<code>Preferences</code>，如果能看到<code>Package Settings</code>和<code>Package Control</code>两个选项的话，就说明安装成功了。如果没有看到，可以去本项目的主页<a href="https://github.com/Jacky-88/mirror-channel-of-packagecontrol/issues">新开一个Issue</a>，我看到后会回复的！</p>
+<h3>2.添加新的Channel</h3>
+<p>当Package Control安装完成后，打开Sublime Text，按下<code>Ctrl/Command</code>+<code>Shift</code>+<code>P</code> 调出命令板，输入<code>Package Control:Add Channel</code>（Sublime Text命令板支持模糊查询，你可以只打<code>add</code>，应该就能看到结果了），选中此选项，在打开的文本框中输入<code>https://packagecontrol.jw12138.com/pc.json</code>（每天更新一次列表），再按下<code>Enter</code>，此时配置已完成。</p>
+<p>为了加快Channel读取速度，建议删除原来的Channel，还是按下<code>Ctrl/Command</code>+<code>Shift</code>+<code>P</code> 调出命令板，这时候输入<code>Package Control:Remove Channel</code>，确认后选中<code>https://packagecontrol.io/channel_v3.json</code>，按下<code>Enter</code>删除。</p>
+<p>大功告成！</p>
+]]></content>
+<summary>
+Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再加上Package Control，无疑给了Sublime Text更大的进步空间和市场。但是...</summary>  
+</entry>
+
+<entry>
+<title>CSS中的calc()</title>
+<link href="https://jw12138.com/post/201812/a01.html"/>
+<id>https://jw12138.com/post/201812/a01.html</id>
+<published>2018-12-04T00:00:00.000Z</published>
+<updated>2019-03-15T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<style>
+    .demo_wrap1 {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .demo_wrap1 input {
+        width: 480px;
+        height: 40px;
+    }
+
+    .demo_wrap1 button {
+        width: 120px;
+        border: none;
+        height: 40px;
+    }
+
+    .demo_wrap2 {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .demo_wrap2 input {
+        width: calc(100% - 120px);
+        height: 40px;
+    }
+
+    .demo_wrap2 button {
+        width: 120px;
+        border: none;
+        height: 40px;
+    }
+
+    .dark .demo_wrap1 button {
+        color: #fff;
+        background-color: #333;
+    }
+
+    .dark .demo_wrap2 button {
+        color: #fff;
+        background-color: #333;
+    }
+</style>
+<p>记得刚毕业的时候找工作面试前端，面试官问了我这样一个问题：</p>
+<p><code>我现在需要一个搜索框，左边放input，右边放搜索按钮，搜索框固定120px，请你写一下布局。</code></p>
+<p>当时我的内心：”太简单了！“。</p>
+<p>于是我劈里啪啦敲了一堆：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo_wrap"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre><code class="css hljs"><span class="hljs-selector-class">.demo_wrap</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">600px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> auto;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">input</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">480px</span>;<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">button</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">120px</span>;<span class="hljs-attribute">border</span>:none;<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}</code></pre>
+<p>一个简单的搜索框就出来了，像这样：</p>
+<div class="demo">
+    <div class="demo_wrap1">
+        <input type="text"><button>search</button>
+    </div>
+</div>
+
+<p>然而面试官就是面试官，他又加了一个要求，<code>我需要适配多种设备的分辨率</code>。</p>
+<p>“切，看我CSS媒体查询一梭子！”</p>
+<pre><code class="css hljs">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1440px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1366px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1080px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">960px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">720px</span>){}
+<span class="hljs-comment">/*...*/</span></code></pre>
+<p>面试官看了后还是摇头：<code>“我要input随窗口大小变化而变化，而且button长度不变。”</code></p>
+<p>然后，</p>
+<p>我就，</p>
+<p>呆了，</p>
+<p>这他妈，</p>
+<p>怎么搞？？？</p>
+<p>你个犊子是来搞我的吗？？？</p>
+<p>嗯，理所当然的，这家公司没有面试上，（谁要去你家啊那么远）。</p>
+<p>（废话了一堆你到底要说什么啊？）</p>
+<pre><code class="css hljs"><span class="hljs-selector-tag">calc</span>(100% <span class="hljs-selector-tag">-</span> 120<span class="hljs-selector-tag">px</span>)</code></pre>
+<p>我要说的就是这个了。（催你🐎呢）</p>
+<p>改成这样之后，我的搜索框就变成了这样：</p>
+<div class="demo">
+    <div class="demo_wrap2">
+        <input type="text"><button>search</button>
+    </div>
+</div>
+
+<p>完整代码：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo_wrap"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre><code class="css hljs"><span class="hljs-selector-class">.demo_wrap</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> auto;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">input</span>{<span class="hljs-attribute">width</span>:<span class="hljs-built_in">calc</span>(100% - 120px);<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">button</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">120px</span>;<span class="hljs-attribute">border</span>:none;<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}</code></pre>
+<p>可以试试改变浏览器的大小来验证是否真的达到了那位面试官的要求。</p>
+<p><code>calc()</code>会让你的css也拥有计算能力，支持<code>+ 、- 、*、/</code>四种运算符（小学啦）。这个属性的应用很简单，不过有几点要注意一下：</p>
+<ol>
+<li>运算符左右一定要有空格，如果你写成<code>100%-5px</code>是不会工作的。</li>
+<li><code>calc</code>不要拼错（废话</li>
+<li>不要滥用<code>calc()</code>，能定实际数值就定实际数值，css的运算速度肯定是没有js快的。</li>
+</ol>
+<p>好了，今日份的blahblah结束！</p>
+<p>有问题可以在下面评论或者发邮件给我，我都看得到，现在刚开始人少，只要是前端上的，我能解决的问题，一定会回复的！</p>
+]]></content>
+<summary>
+记得刚毕业的时候找工作面试前端，面试官问了我这样一个问题：我现在需要一个搜索框，左边放input，右边放搜索按钮，搜索框固定120px，请你写一下布局。当时我的内心：”太简单了！“。于是我劈里啪啦敲了一堆...</summary>  
+</entry>
+
+<entry>
+<title>Hello World!</title>
+<link href="https://jw12138.com/post/201811/a01.html"/>
+<id>https://jw12138.com/post/201811/a01.html</id>
+<published>2018-11-08T00:00:00.000Z</published>
+<updated>2018-11-08T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>憋了这么久的博客总算是弄好了。</p>
+<p>之前想到了一大堆点子，实现上虽然也不算很困难，但是总觉得还是简单一点好（说白了还是懒）。</p>
+<p>Anyway,  以后一定会多多更新（假话），发一些有用的东西。</p>
+<p>博客第一天上线也没有准备什么东西，溜了！😂</p>
+]]></content>
+<summary>
+憋了这么久的博客总算是弄好了...</summary>  
+</entry>
+
+<entry>
+<title>关于我</title>
+<link href="https://jw12138.com/about.html"/>
+<id>https://jw12138.com/about.html</id>
+<published>2018-11-08T00:00:00.000Z</published>
+<updated>2019-11-15T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p>前端开发: <a href="https://jw12138.com">jw12138.com</a></p>
+<p>音乐制作人: <a href="https://music.jw12138.com" target="_blank" rel="noopener">music.jw12138.com</a></p>
+<p>Github: <a href="https://github.com/jw-12138" target="_blank" rel="noopener">jw-12138</a></p>
+<p>邮箱: <a href='mailto:admin@jw12138.com'>admin@jw12138.com</a></p>
+
+<h4># 技能值</h4>
+<table class="about_table">
+    <tr>
+        <td>Google</td>
+        <td>⭐⭐⭐⭐⭐+</td>
+    </tr>
+    <tr>
+        <td>HTML</td>
+        <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>CSS</td>
+        <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>JavaScript</td>
+        <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>JQuery</td>
+        <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>PHP</td>
+        <td>⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>NodeJs</td>
+        <td>⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>MySQL</td>
+        <td>⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>Linux Command Line</td>
+        <td>⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td>Nginx</td>
+        <td>⭐⭐</td>
+    </tr>
+</table>]]></content>
+</entry>
+
+<entry>
+<title>隐私声明</title>
+<link href="https://jw12138.com/privacy.html"/>
+<id>https://jw12138.com/privacy.html</id>
+<published>2019-09-05T00:00:00.000Z</published>
+<updated>2019-12-03T00:00:00.000Z</updated>
+<content type="html"><![CDATA[<p><a href="https://jw12138.com">一个球</a>（以下简称“本网站”）采用了 <a href="https://developer.github.com/v3/">GitHub API</a> 登录的方式，来对本网站的博客或单页进行评论。本隐私声明阐述了本网站如何获取信息，能获取的个人信息，处理个人信息的方式和目的，以及个人信息的存储和调用。</p>
+<h4># 如何获取信息</h4>
+<p>本站使用 <a href="https://api.jacky97.top">https://api.jacky97.top</a> 来作为唯一的 API 调用域名，在点击登录后会跳转到 <a href="https://api.jacky97.top/github/">https://api.jacky97.top/github/</a> 获取GitHub Token，之后再将 Token 传回本网站。</p>
+<h4># 能获取的个人信息</h4>
+<p>以下是调用 GitHub API 得到的信息，信息主体为站长本人。</p>
+<pre><code class="json hljs">{
+    <span class="hljs-attr">"login"</span>: <span class="hljs-string">"jw-12138"</span>,
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">29943110</span>,
+    <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"MDQ6VXNlcjI5OTQzMTEw"</span>,
+    <span class="hljs-attr">"avatar_url"</span>: <span class="hljs-string">"https://avatars2.githubusercontent.com/u/29943110?v=4"</span>,
+    <span class="hljs-attr">"gravatar_id"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138"</span>,
+    <span class="hljs-attr">"html_url"</span>: <span class="hljs-string">"https://github.com/jw-12138"</span>,
+    <span class="hljs-attr">"followers_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/followers"</span>,
+    <span class="hljs-attr">"following_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/following{/other_user}"</span>,
+    <span class="hljs-attr">"gists_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/gists{/gist_id}"</span>,
+    <span class="hljs-attr">"starred_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/starred{/owner}{/repo}"</span>,
+    <span class="hljs-attr">"subscriptions_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/subscriptions"</span>,
+    <span class="hljs-attr">"organizations_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/orgs"</span>,
+    <span class="hljs-attr">"repos_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/repos"</span>,
+    <span class="hljs-attr">"events_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/events{/privacy}"</span>,
+    <span class="hljs-attr">"received_events_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/received_events"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"User"</span>,
+    <span class="hljs-attr">"site_admin"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jacky Wang"</span>,
+    <span class="hljs-attr">"company"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"blog"</span>: <span class="hljs-string">"https://jw12138.com"</span>,
+    <span class="hljs-attr">"location"</span>: <span class="hljs-string">"Shanghai"</span>,
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"admin@jw12138.com"</span>,
+    <span class="hljs-attr">"hireable"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"bio"</span>: <span class="hljs-string">"Front-end Developer / Music Producer"</span>,
+    <span class="hljs-attr">"public_repos"</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">"public_gists"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"followers"</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">"following"</span>: <span class="hljs-number">20</span>,
+    <span class="hljs-attr">"created_at"</span>: <span class="hljs-string">"2017-07-06T07:57:21Z"</span>,
+    <span class="hljs-attr">"updated_at"</span>: <span class="hljs-string">"2019-09-12T12:01:08Z"</span>
+}</code></pre>
+<p>key值对应的意义：</p>
+<ul>
+<li>login - 用户登录名</li>
+<li>id -  用户唯一ID</li>
+<li>node_id - 只在 GraphQL API 中有效</li>
+<li>avatar_url - 头像地址</li>
+<li>gravatar_id - <a href="https://cn.gravatar.com/">Gravatar</a>地址</li>
+<li>url - GitHub API url</li>
+<li>html_url - GitHub 用户主页</li>
+<li>followers_url - 获取 GitHub 用户粉丝的API</li>
+<li>following_url - 获取 GitHub 用户关注的API</li>
+<li>gists_url - 获取 GitHub 用户 Gist 的 API</li>
+<li>starred_url - 获取 GitHub Star 的API</li>
+<li>subscriptions_url - 获取 GitHub 用户订阅的 API</li>
+<li>organizations_url - 获取 GitHub 用户所在组织的 API</li>
+<li>repos_url - 获取 GitHub 用户所有代码仓库的 API (私密仓库不可见)</li>
+<li>events_url - 获取 GitHub 用户私密事件的API (不可见)</li>
+<li>received_events_url - 获取 GitHub 用户公开事件的 API (Create repo, PR, New issue, etc.)</li>
+<li>type - 账户类型(用户或者组织)</li>
+<li>site_admin - <strong>unknown</strong></li>
+<li>name - GitHub 用户昵称</li>
+<li>company - GitHub 用户所在公司</li>
+<li>blog - GitHub 用户博客</li>
+<li>location - GitHub 用户所在地区</li>
+<li>email - GitHub 用户邮箱</li>
+<li>hireable - GitHub 用户是否可以被雇用</li>
+<li>bio - GitHub 用户 bio</li>
+<li>public_repos - GitHub 用户公开代码仓库数量</li>
+<li>public_gists - GitHub 用户公开代码段数量</li>
+<li>followers - GitHub 用户粉丝数</li>
+<li>following - GitHub 用户关注数</li>
+<li>created_at - GitHub 用户的注册时间</li>
+<li>updated_at - GitHub 用户的最后更新时间</li>
+</ul>
+<h4># 处理个人信息的方式和目的</h4>
+<p>上面介绍了我能获取的个人信息，看起来实在是有点让人害怕，但是别担心，请您先看下去。</p>
+<p>基于已获取的个人信息，我只会选取以下几条进行存储：</p>
+<ol>
+<li><p><strong>id -  用户唯一ID</strong></p>
+<p>即使您的GitHub登录名，邮箱或登录名改变了，您的 Github 唯一ID也不会改变，所以这条数据会用来做重复用户的判断。</p>
+</li>
+<li><p><strong>login - 用户登录名</strong></p>
+<p>这条数据用来在本网站的评论系统中显示你的用户登录名。</p>
+</li>
+<li><p><strong>html_url - GitHub 用户主页</strong></p>
+<p>这条数据会以链接的形式依附在您的用户登录名上，点击后会在新标签页打开您的 GitHub 主页。</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"在新页标签查看jacky-88的GitHub首页"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"username"</span>&gt;</span>
+        @<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>jacky-88<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+</li>
+<li><p><strong>email - GitHub 用户邮箱</strong></p>
+<p>这条数据会用来通知您在本网站中收到的评论。</p>
+<p>您可以在 <code>GitHub -&gt; Settings -&gt; Security -&gt; Email</code> 中隐藏您的邮箱：</p>
+<p><img src="img/privacy/1.png" alt="GitHub设置隐藏邮箱"></p>
+</li>
+</ol>
+<h4># 个人信息的存储和调用</h4>
+<p>新用户在登陆时会依据GitHub返回数据中的<code>id</code>来生成一个只针对本网站有效的唯一用户ID ，此 ID 会以 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">localStorage</a> 的形式存储在浏览器中，用来判断该用户是否登陆过，与此同时，新用户登陆成功后，我会创建一条带有登陆时间的数据，用来判断登陆是否过期，如果您的登录信息超过两个星期，则需要重新登录，日期数据也是以 localStorage 形式进行存储。</p>
+<p>另外，即使一些用户的邮箱没有开启隐藏，用户的邮箱也一律只作新回复提醒使用，不会在本网站对外显示。如果调用本网站的 API，您只能获得已认证用户的 <code>GitHub用户登录名</code> 和 <code>GitHub用户主页</code> 。</p>
+<p>如果以上隐私声明让您感到不舒服，还请您暂时不要使用评论功能🤣。如果您有更好的处理方式或者点子，请您<a href="mailto:admin@jw12138.com">联系我</a>！</p>
+<p>感谢您的支持！~</p>
+]]></content>
+</entry>
+
+</feed>

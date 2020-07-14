@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code|Google+Sans&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="https://api.jacky97.top/file/?name=blog/favicon.png" type="image/x-icon">
+    <style>
+        body, html{height: 100%;min-width: 640px;}
+        *{box-sizing: border-box !important;}
+        .md_wrap{max-width: 100%;margin:0 auto;display: flex;justify-content: center;align-items: center;height: 100%;}
+        .md_edit{width:45%;height: 100%;overflow-y: auto;border-left:1px solid #ddd;border-right:1px solid #ddd;overflow: hidden;padding:10px;}
+        textarea{width:100%;border:none;resize: none;height: 100%;font-family: 'Fira Code', 'Microsoft Yahei';font-size:14px;}
+        .md_preview{width:55%;height: 100%;overflow-y: auto;padding:10px;border-right:1px solid #ddd;position: relative;}
+        .md_preview textarea{display: none;}
+        .toggle_html{position: fixed;top:20px;right:20px;height: 40px;border:1px solid #ddd;background: #fff;border-radius: 5px;line-height: 40px;font-size:14px;opacity: .5;z-index: 9999999;cursor: pointer;padding:0 20px;}
+        .toggle_html:hover{opacity: 1;}
+        .download{position: fixed;bottom:20px;right:20px;height: 40px;border:1px solid #ddd;background: #fff;border-radius: 5px;line-height: 40px;font-size:14px;opacity: .5;z-index: 9999999;cursor: pointer;padding:0 20px;color: #333;}
+        .download:hover{opacity: 1;}
+        .article_out{max-width: 800px;margin:0 auto;}
+    </style>
+</head>
+
+<body>
+    <div class="md_wrap">
+        <div class="md_edit">
+            <a class="download" download="">Save as HTML</a>
+            <textarea autofocus="autofocus" placeholder="A simple markdown to html editor" spellcheck="false"></textarea>
+        </div>
+        <div class="md_preview">
+            <button class="toggle_html">See HTML</button>
+            <textarea readonly="readonly"></textarea>
+            <div class="article_out">
+            </div>
+        </div>
+    </div>
+    <script src="js/highlight.min.js"></script>
+    <script src="js/marked.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/xss.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        console.log(`credits: \n %c Highlighting %c ====> %c https://highlightjs.org/ \n %c Remove XSS attacks %c ====> %c https://github.com/leizongmin/js-xss \n %c Markdown to HTML %c ====> %c https://github.com/markedjs/marked \n %c jQuery %c ====> %c https://jquery.com/ `, `color:black`, `color: red`, `color: blue`, `color:black`, `color: red`, `color: blue`, `color:black`, `color: red`, `color: blue`, `color:black`, `color: red`, `color: blue`);
+        let mk = marked;
+        mk.setOptions({
+            "baseUrl": null,
+            "breaks": false,
+            "gfm": true,
+            "headerIds": false,
+            "headerPrefix": "",
+            "highlight": null,
+            "langPrefix": "",
+            "mangle": true,
+            "pedantic": false,
+            "sanitize": false,
+            "sanitizer": null,
+            "silent": false,
+            "smartLists": true,
+            "smartypants": true,
+            "xhtml": false
+        });
+        let xss = filterXSS;
+        let downloadMD = function(content){
+            let fileName = prompt("Please enter the file name", "a01.html");
+            if(!fileName){
+                return false;
+            }
+            let aLink = $('.download')[0];
+            let blob = new Blob([content]);
+            aLink.download = fileName;
+            aLink.href = URL.createObjectURL(blob);
+        }
+        let render = function() {
+            let md = $('.md_edit textarea').val();
+            let html = mk(md);
+            $('.md_preview .article_out').html(html);
+            $('.md_preview .article_out').find('a').attr({
+                'rel': 'noopener',
+                'target': '_blank'
+            });
+            $('.md_preview textarea').val(html);
+            $(`pre code`).each(function() {
+                hljs.highlightBlock($(this)[0])
+            });
+
+            $('.md_preview textarea').val($('.md_preview .article_out').html());
+        }
+        $('.md_edit textarea').on('change keyup paste', render);
+        render();
+        $('.download').on('click', function(e){
+            let html = $('.md_preview textarea').val();
+            downloadMD(html);
+        });
+        $('.toggle_html').on('click', function() {
+            let $this = $(this);
+            if ($this.hasClass('showing_html')) {
+                $this.removeClass('showing_html').html('See HTML');
+                $('.md_preview textarea').hide();
+                $('.md_preview .article_out').show();
+            } else {
+                $this.addClass('showing_html').html('Preview');
+                $('.md_preview textarea').show();
+                $('.md_preview .article_out').hide();
+            }
+        });
+    })
+    </script>
+</body>
+
+</html>
