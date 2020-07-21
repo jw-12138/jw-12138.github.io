@@ -406,9 +406,9 @@ blockquote {margin: 0;margin-bottom: 10px;padding: 0 10px;border-left: 4px solid
 .dark .hljs-built_in,.dark .hljs-class .dark .hljs-title {color: #e6c07b}
 .dark .hljs-attr,.dark .hljs-variable,.dark .hljs-template-variable,.dark .hljs-type,.dark .hljs-selector-class,.dark .hljs-selector-attr,.dark .hljs-selector-pseudo,.dark .hljs-number {color: #d19a66}
 .dark .hljs-symbol,.dark .hljs-bullet,.dark .hljs-link,.dark .hljs-meta,.dark .hljs-selector-id,.dark .hljs-title {color: #61aeee}
-.article_out ul {padding-left: 30px;list-style: disc;}
+.article_out ul {padding-left: 35px;list-style: disc;}
 .article_out ul li {list-style: inherit;}
-.article_out ol {padding-left: 30px;list-style: decimal !important;}
+.article_out ol {padding-left: 35px;list-style: decimal !important;}
 .article_out ol li {list-style: inherit !important;}
 .article_out {word-break: break-word;}
 .article_out pre {margin-bottom: 10px;}
