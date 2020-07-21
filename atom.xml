@@ -4,7 +4,7 @@
 <link rel="icon" href="/favicon.png" /><link rel="alternate" type="text/html" href="https://jw12138.com/"/>
 <link href="https://jw12138.com/atom.xml" rel="self" type="application/atom+xml"/>
 <link href="https://jw12138.com/"/>
-<updated>2020-07-20T18:32:17.000Z</updated>
+<updated>2020-07-21T19:26:01.000Z</updated>
 <id>https://jw12138.com/</id>
 <author>
 <name>Jacky Wong</name>
@@ -1153,6 +1153,10 @@ Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再�
 <p>音乐制作人: <a href="https://music.jw12138.com" target="_blank" rel="noopener">music.jw12138.com</a></p>
 <p>Github: <a href="https://github.com/jw-12138" target="_blank" rel="noopener">jw-12138</a></p>
 <p>邮箱: <a href='mailto:admin@jw12138.com'>admin@jw12138.com</a></p>
+<div class="article-audio">
+    <div class="track" data-name="running to you.mp3" data-src="running to you.mp3"></div>
+    <div class="track" data-name="running to you.mp3" data-src="running to you.mp3" muted></div>
+</div>
 
 <h4># 技能值</h4>
 <table class="about_table">
