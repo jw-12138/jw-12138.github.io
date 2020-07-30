@@ -1,6 +1,6 @@
 pages:
   stage: deploy
   script:
-    - python3 /e/wwwroot/jacky97.top/pull.py "jw-12138.github.io" "github"
+    - python3 /e/wwwroot/jacky97.top/pull.py "jw-12138.github.io" "jw-12138.github.io"
   only:
     - master
