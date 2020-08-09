@@ -8,7 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="shortcut icon" href="../../favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+    <script>
+    let dark = window.localStorage.getItem('dark');
+    if (dark == 1) {
+        document.querySelector('html').classList.add('dark');
+    }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
 <meta name="keywords" content="jw12138,一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,fl,studio,水果,编曲,音乐制作,制作人,摄影,Gitlab,Nginx,HTTPS,LNMP"
     id="keywords" />
 <meta name="description" content="Front-end Developer / Music Producer" />
@@ -25,13 +31,7 @@
     <input type="hidden" class="currentPageID" value="20200509">
     <input type="hidden" class="currentPageDate" value="2020-05-09">
     <input type="hidden" class="currentPageLastMod" value="">
-    <script>
-    let dark = window.localStorage.getItem('dark');
-    if (dark == 1) {
-        document.querySelector('body').classList.add('dark');
-    }
-</script>
-<div class="banner">
+    <div class="banner">
     <div class="banner_wrap">
         <div class="head">
             <a href="/" class="logo" title="一个球">

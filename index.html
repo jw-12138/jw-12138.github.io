@@ -8,6 +8,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <link rel="stylesheet" href="css/index.css">
 <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+<script>
+    let dark = window.localStorage.getItem('dark');
+    if (dark == 1) {
+        document.querySelector('html').classList.add('dark');
+    }
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
 <meta name="keywords" content="jw12138,一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,fl,studio,水果,编曲,音乐制作,制作人,摄影"
     id="keywords" />
@@ -21,12 +27,6 @@
   gtag('config', 'UA-123373343-1');
 </script></head>
 <body>
-<script>
-    let dark = window.localStorage.getItem('dark');
-    if (dark == 1) {
-        document.querySelector('body').classList.add('dark');
-    }
-</script>
 <div class="banner">
     <div class="banner_wrap">
         <div class="head">

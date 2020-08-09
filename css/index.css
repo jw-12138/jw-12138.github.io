@@ -2130,7 +2130,7 @@ body.t {
   animation: fadeIn 1s ease;
   animation-fill-mode: forwards;
 }
-body.dark h1 {
+html.dark h1 {
   color: #fff;
 }
 .banner_wrap {
