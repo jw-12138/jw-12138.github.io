@@ -119,7 +119,6 @@
 body {
   margin: 0;
   padding: 0;
-  padding-bottom: 180px;
   font-size: 1em;
   min-height: 100%;
   font-family: 'Fira Mono', 'Noto Serif SC', 'Microsoft Yahei';
@@ -378,7 +377,6 @@ div::-webkit-scrollbar {
   padding: 20px 30px 50px;
   position: relative;
   min-width: 319px;
-  background-color: #fff;
   transition: background-color 0.3s ease;
   z-index: 5;
   border-bottom: 1px solid #eee;
@@ -654,13 +652,9 @@ body.nav_view .special_enevts {
 }
 .footer {
   font-size: 12px;
-  line-height: 30px;
+  line-height: 180px;
   text-align: center;
   width: 100%;
-  position: fixed;
-  bottom: 70px;
-  z-index: 1;
-  left: 0;
 }
 .footer svg {
   fill: #333;
@@ -2539,10 +2533,6 @@ body.dark h1 {
 }
 .dark .search-body .tit {
   color: #ddd;
-}
-.dark .wrap {
-  border-color: #333;
-  background-color: #121212;
 }
 .dark .head .logo svg {
   fill: #fff !important;
