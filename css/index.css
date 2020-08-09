@@ -121,7 +121,7 @@ body {
   padding: 0;
   font-size: 1em;
   min-height: 100%;
-  font-family: 'Fira Mono', 'Noto Serif SC', 'Microsoft Yahei';
+  font-family: 'Fira Mono', 'Microsoft Yahei UI', 'Microsoft Yahei';
 }
 h1 {
   margin: 0;
@@ -133,7 +133,7 @@ h1 {
   margin-top: 10px;
   font-size: 42px;
   line-height: 56px;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 h1 code {
   font-size: 24px !important;
@@ -148,7 +148,7 @@ h2 {
   margin-top: 10px;
   font-size: 28px;
   line-height: 52px;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 h3 {
   margin: 0;
@@ -160,7 +160,7 @@ h3 {
   margin-top: 10px;
   font-size: 26px;
   line-height: 48px;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 h4 {
   margin: 0;
@@ -172,7 +172,7 @@ h4 {
   margin-top: 10px;
   font-size: 24px;
   line-height: 44px;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 h5 {
   margin: 0;
@@ -184,7 +184,7 @@ h5 {
   margin-top: 10px;
   font-size: 22px;
   line-height: 40px;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 h6 {
   margin: 0;
@@ -196,7 +196,7 @@ h6 {
   margin-top: 10px;
   font-size: 20px;
   line-height: 36px;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 hr {
   margin: 0;
@@ -261,20 +261,20 @@ legend {
 button {
   margin: 0;
   padding: 0;
-  font-family: 'Fira Mono', "Noto Serif SC";
+  font-family: 'Fira Mono', "Microsoft Yahei UI";
   font-size: 100%;
 }
 input {
   margin: 0;
   padding: 0;
-  font-family: 'Fira Mono', "Noto Serif SC";
+  font-family: 'Fira Mono', "Microsoft Yahei UI";
   font-size: 100%;
   outline: 0;
 }
 textarea {
   margin: 0;
   padding: 0;
-  font-family: 'Fira Mono', "Noto Serif SC";
+  font-family: 'Fira Mono', "Microsoft Yahei UI";
   font-size: 100%;
 }
 th {
@@ -286,7 +286,7 @@ td {
   padding: 0;
 }
 select {
-  font-family: 'Fira Mono', "Noto Serif SC";
+  font-family: 'Fira Mono', "Microsoft Yahei UI";
   font-size: 100%;
 }
 a {
@@ -632,7 +632,7 @@ body.nav_view .special_enevts {
   left: 0;
   top: 18px;
   font-style: italic;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 .article li .date .y {
   font-weight: bold;
@@ -807,7 +807,7 @@ body.submiting .howisit .wait {
   margin-bottom: 10px;
 }
 .article_out code {
-  font-family: 'Fira Mono', 'Noto Serif SC';
+  font-family: 'Fira Mono', 'Microsoft Yahei UI';
   color: #c74545;
   border-radius: 3px;
   padding: 3px 5px;
@@ -826,7 +826,7 @@ body.submiting .howisit .wait {
   display: block;
   overflow-x: auto;
   color: #383a42;
-  font-family: 'Fira Mono', 'Noto Serif SC';
+  font-family: 'Fira Mono', 'Microsoft Yahei UI';
   font-size: 14px;
   margin: 0 0 5px;
   padding: 10px;
@@ -1428,7 +1428,7 @@ blockquote .comment_content {
   resize: none;
   font-size: 14px;
   background: transparent;
-  font-family: 'Fira Mono', 'Noto Serif SC';
+  font-family: 'Fira Mono', 'Microsoft Yahei UI';
 }
 .comment_text .claim {
   display: block;
@@ -1882,7 +1882,7 @@ code.hljs {
   overflow-x: auto;
   color: #383a42;
   background: #fafafa;
-  font-family: 'Fira Mono', 'Noto Serif SC';
+  font-family: 'Fira Mono', 'Microsoft Yahei UI';
   font-size: 14px;
   background: transparent;
 }
@@ -2145,7 +2145,7 @@ body.dark h1 {
   line-height: 48px !important;
   padding: 0 20px !important;
   margin: 0 auto !important;
-  font-family: "Noto Serif SC";
+  font-family: "Microsoft Yahei UI";
 }
 .post_title span {
   font-size: 14px;

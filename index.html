@@ -2,264 +2,222 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <title>一个球的博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=5" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
-    <meta name="keywords" content="jw12138,一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,fl,studio,水果,编曲,音乐制作,制作人,摄影" id="keywords" />
-    <meta name="description" content="Front-end Developer / Music Producer" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123373343-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<meta charset="UTF-8">
+<title>一个球的博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=5" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<link rel="stylesheet" href="css/index.css">
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&display=swap" rel="stylesheet">
+<meta name="keywords" content="jw12138,一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,fl,studio,水果,编曲,音乐制作,制作人,摄影"
+    id="keywords" />
+<meta name="description" content="Front-end Developer / Music Producer" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123373343-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-123373343-1');
-    </script>
-</head>
-
+  gtag('config', 'UA-123373343-1');
+</script></head>
 <body>
-    <script>
-        let dark = window.localStorage.getItem('dark');
-        if (dark == 1) {
-            document.querySelector('body').classList.add('dark');
-        }
-    </script>
-    <div class="banner">
-        <div class="banner_wrap">
-            <div class="head">
-                <a href="/" class="logo" title="一个球">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2308.000000 2436.000000" preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,2436.000000) scale(0.100000,-0.100000)">
-                            <path d="M2760 24242 c0 -40 39 -621 125 -1887 201 -2928 383 -4854 636 -6704 436 -3194 1097 -5987 2063 -8714 194 -546 552 -1487 566 -1487 8 0 265 323 486 610 1116 1447 2096 3027 3106 5008 94 183 169 335 167 336 -2 2 -56 28 -120 58 -146 69 -369 197 -524 301 -1347 899 -2563 2675 -3830 5592 -453 1043 -851 2060 -1592 4065 -504 1366 -610 1649 -750 2020 -204 538 -315 824 -324 835 -5 5 -9 -9 -9 -33z"></path>
-                            <path d="M14756 23788 c-9 -29 -47 -168 -86 -308 -484 -1741 -1122 -3735 -1730 -5410 -1009 -2778 -2148 -5349 -3375 -7620 -2082 -3853 -4406 -6853 -6794 -8769 -567 -456 -1168 -865 -1752 -1191 -187 -104 -608 -315 -779 -389 -124 -54 -153 -78 -79 -66 989 160 2108 415 4259 970 2117 546 3281 806 4521 1009 2056 337 3992 417 5939 245 1255 -110 2496 -320 3805 -644 592 -147 1034 -270 1715 -480 1424 -439 1838 -499 2207 -320 118 57 149 85 228 204 111 167 167 313 201 523 22 139 31 783 15 1096 -88 1711 -635 3090 -1685 4252 -161 177 -463 471 -654 635 -180 155 -269 217 -572 399 -1351 812 -2828 1301 -4475 1481 -535 58 -1180 83 -1724 66 -184 -6 -336 -10 -337 -8 -3 2 1168 14194 1181 14320 8 73 -9 76 -29 5z"></path>
-                        </g>
-                    </svg>
-                </a>
-                <div class="nav_box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path fill="none" d="M0 0h24v24H0V0z" />
-                        <path d="M4 15h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0 4h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-8h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z" />
-                    </svg>
-                </div>
+<script>
+    let dark = window.localStorage.getItem('dark');
+    if (dark == 1) {
+        document.querySelector('body').classList.add('dark');
+    }
+</script>
+<div class="banner">
+    <div class="banner_wrap">
+        <div class="head">
+            <a href="/" class="logo" title="一个球">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2308.000000 2436.000000" preserveAspectRatio="xMidYMid meet">
+                    <g transform="translate(0.000000,2436.000000) scale(0.100000,-0.100000)">
+                        <path d="M2760 24242 c0 -40 39 -621 125 -1887 201 -2928 383 -4854 636 -6704 436 -3194 1097 -5987 2063 -8714 194 -546 552 -1487 566 -1487 8 0 265 323 486 610 1116 1447 2096 3027 3106 5008 94 183 169 335 167 336 -2 2 -56 28 -120 58 -146 69 -369 197 -524 301 -1347 899 -2563 2675 -3830 5592 -453 1043 -851 2060 -1592 4065 -504 1366 -610 1649 -750 2020 -204 538 -315 824 -324 835 -5 5 -9 -9 -9 -33z"></path>
+                        <path d="M14756 23788 c-9 -29 -47 -168 -86 -308 -484 -1741 -1122 -3735 -1730 -5410 -1009 -2778 -2148 -5349 -3375 -7620 -2082 -3853 -4406 -6853 -6794 -8769 -567 -456 -1168 -865 -1752 -1191 -187 -104 -608 -315 -779 -389 -124 -54 -153 -78 -79 -66 989 160 2108 415 4259 970 2117 546 3281 806 4521 1009 2056 337 3992 417 5939 245 1255 -110 2496 -320 3805 -644 592 -147 1034 -270 1715 -480 1424 -439 1838 -499 2207 -320 118 57 149 85 228 204 111 167 167 313 201 523 22 139 31 783 15 1096 -88 1711 -635 3090 -1685 4252 -161 177 -463 471 -654 635 -180 155 -269 217 -572 399 -1351 812 -2828 1301 -4475 1481 -535 58 -1180 83 -1724 66 -184 -6 -336 -10 -337 -8 -3 2 1168 14194 1181 14320 8 73 -9 76 -29 5z"></path>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav_box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path
+                        d="M4 15h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0 4h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-8h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z" />
+                </svg>
             </div>
-        </div>
-        <div class="post_title_wrap">
-            <h1 class="post_title center"><span style="display: block;">Front-end Developer / Music Producer</span></h1>
-        </div>
+        </div>        
     </div>
-    <div class="wrap">
-        <div class="nav_box_bottom">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="none" d="M0 0h24v24H0V0z" />
-                <path d="M4 15h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0 4h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-8h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z" />
-            </svg>
-        </div>
-        <div class="switch_light_bottom">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="none" d="M0 0h24v24H0V0z" />
-                <path d="M20 15.31l1.9-1.9c.78-.78.78-2.05 0-2.83L20 8.69V6c0-1.1-.9-2-2-2h-2.69l-1.9-1.9c-.78-.78-2.05-.78-2.83 0L8.69 4H6c-1.1 0-2 .9-2 2v2.69l-1.9 1.9c-.78.78-.78 2.05 0 2.83l1.9 1.9V18c0 1.1.9 2 2 2h2.69l1.9 1.9c.78.78 2.05.78 2.83 0l1.9-1.9H18c1.1 0 2-.9 2-2v-2.69zm-8 1.59V7.1c0-.61.55-1.11 1.15-.99C15.91 6.65 18 9.08 18 12s-2.09 5.35-4.85 5.89c-.6.12-1.15-.38-1.15-.99z" />
-            </svg>
-        </div>
-        <div class="nav_list_wrap">
-            <ul class="nav_list">
-                <li>
-                    <a href="/about.html" class="about">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z" />
-                        </svg> 关于我
-                    </a>
-                </li>
-                <li>
-                    <a href="/privacy.html" class="privacy">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm1 14H8c-.55 0-1-.45-1-1s.45-1 1-1h5c.55 0 1 .45 1 1s-.45 1-1 1zm3-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1zm0-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1z" />
-                        </svg> 隐私声明
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;" class="js-search">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-                            <path d="M0 0h24v24H0V0z" fill="none" />
-                            <path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></svg> 搜索
-                    </a>
-                </li>
-                <li>
-                    <a href="/atom.xml" class="sitemap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <circle cx="6.18" cy="17.82" r="2.18" />
-                            <path d="M5.59 10.23c-.84-.14-1.59.55-1.59 1.4 0 .71.53 1.28 1.23 1.4 2.92.51 5.22 2.82 5.74 5.74.12.7.69 1.23 1.4 1.23.85 0 1.54-.75 1.41-1.59-.68-4.2-3.99-7.51-8.19-8.18zm-.03-5.71C4.73 4.43 4 5.1 4 5.93c0 .73.55 1.33 1.27 1.4 6.01.6 10.79 5.38 11.39 11.39.07.73.67 1.28 1.4 1.28.84 0 1.5-.73 1.42-1.56-.73-7.34-6.57-13.19-13.92-13.92z" />
-                        </svg> RSS
-                    </a>
-                </li>
-                <li class="sep"></li>
-                <li class="claim">
-                    点击任意空白处关闭侧栏
-                </li>
-            </ul>
-        </div>
-        <div class="page">
-            <h2 class="index-title">Posts</h2>
-            <ul class="article">
-                <li><a href="/post/202007/a02.html"><span class="title">ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</span><span class="date"><span class="y">2020</span> <span class="m">07</span>.<span class="d">20</span></span>
-                        <div class="sum">“？？？” ...</div>
-                        <div class="tags"><span>ElementUI</span><span>Vue</span><span>前端工具</span></div>
-                    </a></li>
-                <li><a href="/post/202007/a01.html"><span class="title">Github Pages常见问题一览</span><span class="date"><span class="y">2020</span> <span class="m">07</span>.<span class="d">07</span></span>
-                        <div class="sum">使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下 ...</div>
-                        <div class="tags"><span>Github Pages</span></div>
-                    </a></li>
-                <li><a href="/post/202005/a01.html"><span class="title">LNMP如何配置Gitlab的反向代理和HTTPS</span><span class="date"><span class="y">2020</span> <span class="m">05</span>.<span class="d">09</span></span>
-                        <div class="sum">使用Gitlab CE版已经有一年多了，期间一直在使用`http://ip:port`的方式来进行访问。很明显，缺点有二 ...</div>
-                        <div class="tags"><span>Gitlab</span><span>Nginx</span><span>HTTPS</span><span>LNMP</span></div>
-                    </a></li>
-                <li><a href="/post/202003/a01.html"><span class="title">在本地/服务器部署less.js</span><span class="date"><span class="y">2020</span> <span class="m">03</span>.<span class="d">04</span></span>
-                        <div class="sum">Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题 ...</div>
-                        <div class="tags"><span>less.js</span><span>服务器</span><span>本地</span><span>部署</span></div>
-                    </a></li>
-                <li><a href="/post/201912/a01.html"><span class="title">Ableton Live 10中的坑</span><span class="date"><span class="y">2019</span> <span class="m">12</span>.<span class="d">18</span></span>
-                        <div class="sum">去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下 ...</div>
-                        <div class="tags"><span>DAW</span><span>Ableton Live</span><span>编曲</span></div>
-                    </a></li>
-                <li><a href="/post/201911/a02.html"><span class="title">如何加快VS Code的启动以及运行速度</span><span class="date"><span class="y">2019</span> <span class="m">11</span>.<span class="d">14</span></span>
-                        <div class="sum">2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，但是 ...</div>
-                        <div class="tags"><span>VS Code</span><span>代码编辑器</span></div>
-                    </a></li>
-                <li><a href="/post/201911/a01.html"><span class="title">来自一个不喜欢用Vim的弱鸡程序员的Vim教程</span><span class="date"><span class="y">2019</span> <span class="m">11</span>.<span class="d">11</span></span>
-                        <div class="sum">在网上看过一个笑话：问：如何生成一个随机字符串？答：让新手退出vim ...</div>
-                        <div class="tags"><span>Vim</span><span>代码编辑器</span></div>
-                    </a></li>
-                <li><a href="/post/201910/a03.html"><span class="title">使用JavaScript达成 background-size: cover 的效果</span><span class="date"><span class="y">2019</span> <span class="m">10</span>.<span class="d">28</span></span>
-                        <div class="sum">最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼 ...</div>
-                        <div class="tags"><span>JavaScript</span><span>CSS</span><span>IE</span><span>兼容</span></div>
-                    </a></li>
-                <li><a href="/post/201910/a02.html"><span class="title">职业生涯分享</span><span class="date"><span class="y">2019</span> <span class="m">10</span>.<span class="d">25</span></span>
-                        <div class="sum">一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯 ...</div>
-                        <div class="tags"><span>职业生涯</span><span>经验</span></div>
-                    </a></li>
-                <li><a href="/post/201910/a01.html"><span class="title">GitHub OAuth App怎么跳转到用户授权之前的页面？</span><span class="date"><span class="y">2019</span> <span class="m">10</span>.<span class="d">22</span></span>
-                        <div class="sum">最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等… 但是他们好像都忽略了一个问题 ...</div>
-                        <div class="tags"><span>GitHub</span><span>OAuth</span><span>Web App</span></div>
-                    </a></li>
-            </ul>
-            <div class="page_count"><a href="/page/2/">下一页</a></div>
-            <div class="page_guide">1 / 2</div>
-            <h2 class="index-title">Friends</h2>
-            <ul class="links">
-                <li><a target="_blank" rel="friend colleague" href="https://www.logcg.com/">落格博客</a></li>
-                <li><a target="_blank" rel="friend colleague" href="https://starryvoid.com/">StarryVoid</a></li>
-                <li><a target="_blank" rel="friend colleague" href="https://admiraldesvl.github.io">Desvl</a></li>
-            </ul>
-        </div>
-        <div class="comment_box_wrap">
-            <div class="comment_box mt">
-                <div class="preview_box">
-                    <div class="preview_title">
-                        预览
-                        <div class="close">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="none" d="M0 0h24v24H0V0z" />
-                                <path d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="preview_content article_out">
-                        加载中...
-                    </div>
-                </div>
-                <div class="comment_title">
-                    <span><label for="cmt"># 发表您的评论</label></span>
-                </div>
-                <div class="comment_text">
-                    <textarea id="cmt" placeholder="试试Markdown？" spellcheck="false" class="mt"></textarea>
-                </div>
-                <div class="comment_widget">
-                    <div class="publish comp mt">
-                        发布 <svg class="pub" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M3.4 20.4l17.45-7.48c.81-.35.81-1.49 0-1.84L3.4 3.6c-.66-.29-1.39.2-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z" />
-                        </svg>
-                        <svg class="wait" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M7 19h10c.55 0 1 .45 1 1s-.45 1-1 1H7c-.55 0-1-.45-1-1s.45-1 1-1z" /></svg>
-                    </div>
-                    <div class="preview comp">
-                        预览 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="comment_close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path fill="none" d="M0 0h24v24H0V0z" />
-                        <path d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z" />
-                    </svg> 关闭当前窗口
-                </div>
-            </div>
-        </div>
-        <div class="confirm_box_wrap">
-            <div class="confirm_box">
-                <div class="confirm_icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M4.47 21h15.06c1.54 0 2.5-1.67 1.73-3L13.73 4.99c-.77-1.33-2.69-1.33-3.46 0L2.74 18c-.77 1.33.19 3 1.73 3zM12 14c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1zm1 4h-2v-2h2v2z" />
-                    </svg>
-                </div>
-                <div class="confirm_box_title">
-
-                </div>
-                <div class="confirm_box_btn">
-                    <a href="javascript:;" class="_btn _accecpt">确定 👌</a>
-                    <a href="javascript:;" class="_btn _cancel">取消 😅</a>
-                </div>
-            </div>
-        </div>
-        <div class="img_wrap_box">
-            <div class="img_loading"></div>
-            <img class="detailed_img" alt="image detail">
-        </div>
-
-        <div class="search-wrap">
-            <div class="close_area">
-
-            </div>
-            <div class="search-box">
-                <div class="search-head">
-                    <input type="text" class="js-search-input" placeholder="输入关键字进行搜索">
-                </div>
-                <div class="search-body">
-                    <div class="tit">
-                        结果
-                    </div>
-                    <ul>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tips">
-    </div>
-    <div class="footer">
-        © <span class="copy_right_year">2018 - 2020</span>&emsp;一个球的博客&emsp;<svg alt="code" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
-            <path fill="none" d="M0 0h24v24H0V0z" />
-            <path d="M8.7 15.9L4.8 12l3.9-3.9c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0l-4.59 4.59c-.39.39-.39 1.02 0 1.41l4.59 4.6c.39.39 1.01.39 1.4 0 .39-.39.39-1.01 0-1.4zm6.6 0l3.9-3.9-3.9-3.9c-.39-.39-.39-1.01 0-1.4.39-.39 1.01-.39 1.4 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.6c-.39.39-1.01.39-1.4 0-.39-.39-.39-1.01 0-1.4z" />
-        </svg> with <svg alt="heart" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-            <path fill="none" d="M0 0h24v24H0V0z" />
-            <path d="M13.35 20.13c-.76.69-1.93.69-2.69-.01l-.11-.1C5.3 15.27 1.87 12.16 2 8.28c.06-1.7.93-3.33 2.34-4.29 2.64-1.8 5.9-.96 7.66 1.1 1.76-2.06 5.02-2.91 7.66-1.1 1.41.96 2.28 2.59 2.34 4.29.14 3.88-3.3 6.99-8.55 11.76l-.1.09z" />
+    <div class="post_title_wrap"><h1 class="post_title center"><span style="display: block;">Front-end Developer / Music Producer</span></h1></div></div><div class="wrap">
+<div class="nav_box_bottom">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" d="M0 0h24v24H0V0z" />
+        <path
+            d="M4 15h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0 4h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-8h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z" />
+    </svg>
+</div>
+<div class="switch_light_bottom">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" d="M0 0h24v24H0V0z" />
+        <path
+            d="M20 15.31l1.9-1.9c.78-.78.78-2.05 0-2.83L20 8.69V6c0-1.1-.9-2-2-2h-2.69l-1.9-1.9c-.78-.78-2.05-.78-2.83 0L8.69 4H6c-1.1 0-2 .9-2 2v2.69l-1.9 1.9c-.78.78-.78 2.05 0 2.83l1.9 1.9V18c0 1.1.9 2 2 2h2.69l1.9 1.9c.78.78 2.05.78 2.83 0l1.9-1.9H18c1.1 0 2-.9 2-2v-2.69zm-8 1.59V7.1c0-.61.55-1.11 1.15-.99C15.91 6.65 18 9.08 18 12s-2.09 5.35-4.85 5.89c-.6.12-1.15-.38-1.15-.99z" />
         </svg>
+</div>
+<div class="nav_list_wrap">
+    <ul class="nav_list">
+        <li>
+            <a href="/about.html" class="about">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z" />
+                </svg> 关于我
+            </a>
+        </li>
+        <li>
+            <a href="/privacy.html" class="privacy">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path
+                        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm1 14H8c-.55 0-1-.45-1-1s.45-1 1-1h5c.55 0 1 .45 1 1s-.45 1-1 1zm3-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1zm0-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1z" />
+                </svg> 隐私声明
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="js-search">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> 搜索
+            </a>
+        </li>
+        <li>
+            <a href="/atom.xml" class="sitemap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <circle cx="6.18" cy="17.82" r="2.18" />
+                    <path
+                        d="M5.59 10.23c-.84-.14-1.59.55-1.59 1.4 0 .71.53 1.28 1.23 1.4 2.92.51 5.22 2.82 5.74 5.74.12.7.69 1.23 1.4 1.23.85 0 1.54-.75 1.41-1.59-.68-4.2-3.99-7.51-8.19-8.18zm-.03-5.71C4.73 4.43 4 5.1 4 5.93c0 .73.55 1.33 1.27 1.4 6.01.6 10.79 5.38 11.39 11.39.07.73.67 1.28 1.4 1.28.84 0 1.5-.73 1.42-1.56-.73-7.34-6.57-13.19-13.92-13.92z" />
+                </svg> RSS
+            </a>
+        </li>
+        <li class="sep"></li>
+        <li class="claim">
+            点击任意空白处关闭侧栏
+        </li>
+    </ul>
+</div><div class="page">
+<h2 class="index-title">Posts</h2>
+<ul class="article">
+<li><a href="/post/202007/a02.html"><span class="title">ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</span><span class="date"><span class="y">2020</span> <span class="m">07</span>.<span class="d">20</span></span><div class="sum">“？？？” ...</div><div class="tags"><span>ElementUI</span><span>Vue</span><span>前端工具</span></div></a></li><li><a href="/post/202007/a01.html"><span class="title">Github Pages常见问题一览</span><span class="date"><span class="y">2020</span> <span class="m">07</span>.<span class="d">07</span></span><div class="sum">使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下 ...</div><div class="tags"><span>Github Pages</span></div></a></li><li><a href="/post/202005/a01.html"><span class="title">LNMP如何配置Gitlab的反向代理和HTTPS</span><span class="date"><span class="y">2020</span> <span class="m">05</span>.<span class="d">09</span></span><div class="sum">使用Gitlab CE版已经有一年多了，期间一直在使用`http://ip:port`的方式来进行访问。很明显，缺点有二 ...</div><div class="tags"><span>Gitlab</span><span>Nginx</span><span>HTTPS</span><span>LNMP</span></div></a></li><li><a href="/post/202003/a01.html"><span class="title">在本地/服务器部署less.js</span><span class="date"><span class="y">2020</span> <span class="m">03</span>.<span class="d">04</span></span><div class="sum">Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题 ...</div><div class="tags"><span>less.js</span><span>服务器</span><span>本地</span><span>部署</span></div></a></li><li><a href="/post/201912/a01.html"><span class="title">Ableton Live 10中的坑</span><span class="date"><span class="y">2019</span> <span class="m">12</span>.<span class="d">18</span></span><div class="sum">去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下 ...</div><div class="tags"><span>DAW</span><span>Ableton Live</span><span>编曲</span></div></a></li><li><a href="/post/201911/a02.html"><span class="title">如何加快VS Code的启动以及运行速度</span><span class="date"><span class="y">2019</span> <span class="m">11</span>.<span class="d">14</span></span><div class="sum">2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，但是 ...</div><div class="tags"><span>VS Code</span><span>代码编辑器</span></div></a></li><li><a href="/post/201911/a01.html"><span class="title">来自一个不喜欢用Vim的弱鸡程序员的Vim教程</span><span class="date"><span class="y">2019</span> <span class="m">11</span>.<span class="d">11</span></span><div class="sum">在网上看过一个笑话：问：如何生成一个随机字符串？答：让新手退出vim ...</div><div class="tags"><span>Vim</span><span>代码编辑器</span></div></a></li><li><a href="/post/201910/a03.html"><span class="title">使用JavaScript达成 background-size: cover 的效果</span><span class="date"><span class="y">2019</span> <span class="m">10</span>.<span class="d">28</span></span><div class="sum">最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼 ...</div><div class="tags"><span>JavaScript</span><span>CSS</span><span>IE</span><span>兼容</span></div></a></li><li><a href="/post/201910/a02.html"><span class="title">职业生涯分享</span><span class="date"><span class="y">2019</span> <span class="m">10</span>.<span class="d">25</span></span><div class="sum">一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯 ...</div><div class="tags"><span>职业生涯</span><span>经验</span></div></a></li><li><a href="/post/201910/a01.html"><span class="title">GitHub OAuth App怎么跳转到用户授权之前的页面？</span><span class="date"><span class="y">2019</span> <span class="m">10</span>.<span class="d">22</span></span><div class="sum">最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等… 但是他们好像都忽略了一个问题 ...</div><div class="tags"><span>GitHub</span><span>OAuth</span><span>Web App</span></div></a></li></ul>
+<div class="page_count"><a href="/page/2/">下一页</a></div><div class="page_guide">1 / 2</div><h2 class="index-title">Friends</h2>
+<ul class="links">
+<li><a target="_blank" rel="friend colleague" href="https://www.logcg.com/">落格博客</a></li>
+<li><a target="_blank" rel="friend colleague" href="https://starryvoid.com/">StarryVoid</a></li>
+<li><a target="_blank" rel="friend colleague" href="https://admiraldesvl.github.io">Desvl</a></li>
+</ul>
+</div>
+<div class="comment_box_wrap">
+    <div class="comment_box mt">
+        <div class="preview_box">
+            <div class="preview_title">
+                预览
+                <div class="close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="none" d="M0 0h24v24H0V0z" />
+                        <path
+                            d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="preview_content article_out">
+                加载中...
+            </div>
+        </div>
+        <div class="comment_title">
+            <span><label for="cmt"># 发表您的评论</label></span>
+        </div>
+        <div class="comment_text">
+            <textarea id="cmt" placeholder="试试Markdown？" spellcheck="false" class="mt"></textarea>
+        </div>
+        <div class="comment_widget">
+            <div class="publish comp mt">
+                发布 <svg class="pub" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path
+                        d="M3.4 20.4l17.45-7.48c.81-.35.81-1.49 0-1.84L3.4 3.6c-.66-.29-1.39.2-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z" />
+                </svg>
+                <svg class="wait" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path d="M7 19h10c.55 0 1 .45 1 1s-.45 1-1 1H7c-.55 0-1-.45-1-1s.45-1 1-1z" /></svg>
+            </div>
+            <div class="preview comp">
+                预览 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path
+                        d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                </svg>
+            </div>
+        </div>
+        <div class="comment_close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path
+                    d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z" />
+            </svg> 关闭当前窗口
+        </div>
     </div>
-    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/xml2json.min.js"></script>
-    <script src="js/index.js"></script>
+</div>
+<div class="confirm_box_wrap">
+    <div class="confirm_box">
+        <div class="confirm_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                    d="M4.47 21h15.06c1.54 0 2.5-1.67 1.73-3L13.73 4.99c-.77-1.33-2.69-1.33-3.46 0L2.74 18c-.77 1.33.19 3 1.73 3zM12 14c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1zm1 4h-2v-2h2v2z" />
+            </svg>
+        </div>
+        <div class="confirm_box_title">
+
+        </div>
+        <div class="confirm_box_btn">
+            <a href="javascript:;" class="_btn _accecpt">确定 👌</a>
+            <a href="javascript:;" class="_btn _cancel">取消 😅</a>
+        </div>
+    </div>
+</div>
+<div class="img_wrap_box">
+    <div class="img_loading"></div>
+    <img class="detailed_img" alt="image detail">
+</div>
+
+<div class="search-wrap">
+    <div class="close_area">
+        
+    </div>
+    <div class="search-box">
+        <div class="search-head">
+            <input type="text" class="js-search-input" placeholder="输入关键字进行搜索">
+        </div>
+        <div class="search-body">
+            <div class="tit">
+                结果
+            </div>
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div></div>
+<div class="tips">
+</div>
+<div class="footer">
+    © <span class="copy_right_year">2018 - 2020</span>&emsp;一个球的博客&emsp;<svg alt="code" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
+        <path fill="none" d="M0 0h24v24H0V0z" />
+        <path
+            d="M8.7 15.9L4.8 12l3.9-3.9c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0l-4.59 4.59c-.39.39-.39 1.02 0 1.41l4.59 4.6c.39.39 1.01.39 1.4 0 .39-.39.39-1.01 0-1.4zm6.6 0l3.9-3.9-3.9-3.9c-.39-.39-.39-1.01 0-1.4.39-.39 1.01-.39 1.4 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.6c-.39.39-1.01.39-1.4 0-.39-.39-.39-1.01 0-1.4z" />
+    </svg> with <svg alt="heart" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+        <path fill="none" d="M0 0h24v24H0V0z" />
+        <path
+            d="M13.35 20.13c-.76.69-1.93.69-2.69-.01l-.11-.1C5.3 15.27 1.87 12.16 2 8.28c.06-1.7.93-3.33 2.34-4.29 2.64-1.8 5.9-.96 7.66 1.1 1.76-2.06 5.02-2.91 7.66-1.1 1.41.96 2.28 2.59 2.34 4.29.14 3.88-3.3 6.99-8.55 11.76l-.1.09z" />
+    </svg>
+</div><script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/xml2json.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 
 </html>
