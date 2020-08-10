@@ -164,9 +164,10 @@ let app = new Vue({
             _.blog_post_list = res.data.articles
             _.blog_page_list = res.data.pages
             _.blog_friends_list = res.data.links
-            _.showing_fake_list = false;
-
             _.initRouter()
+            setTimeout(function(){
+                _.showing_fake_list = false;
+            },200);
         },
         changeBlogTitle: function (t) {
             let _ = this
