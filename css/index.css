@@ -710,9 +710,9 @@ span.deprecated {
   margin-right: 3px;
 }
 .fake_list .tags span {
-  height: 24px;
-  border-radius: 24px;
-  background-color: #c4c4c4;
+  height: 16px;
+  border-radius: 16px;
+  background-color: #ddd;
   animation: shine 2s ease infinite;
   display: inline-block;
   margin-right: 5px;
