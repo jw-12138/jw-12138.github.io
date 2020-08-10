@@ -108,8 +108,6 @@ let app = new Vue({
                 distractionFreeMode: false // Facebook-like distraction free mode
             })
 
-            console.log(gitalk);
-
             gitalk.render('gitalk-container')
         },
         updateHighLight: function () {
