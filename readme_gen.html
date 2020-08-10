@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>atom_gen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" href="https://api.jacky97.top/file/?name=blog/favicon.png" type="image/x-icon">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+<pre>
+<code>
+# [一个球](https://jw12138.com)  
+
+[RSS订阅 🚩](https://jw12138.com/atom.xml)
+
+#### 最近的文章  
+
+<span v-for="item in blog_post_list">
+- [{{item.name}}]({{item.full_url}})
+  {{item.summary}}...
+</span>
+#### 友情链接  
+<span v-for="item in friends">
+- [{{item.name}}]({{item.url}})
+  *{{item.slogan}}*
+</span>
+
+</code>
+</pre>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://cdn.staticfile.org/axios/0.20.0-0/axios.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            calculated: {
+                
+            },
+            mounted: function () {
+                let _ = this
+                axios.get('/data/data.json')
+                    .then(function (res) {
+                        _.blog_post_list = res.data.articles
+                        _.friends = res.data.links
+                        _.renderContent()
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            methods: {
+                renderContent: function () {
+                    let _ = this
+                    for (let i = 0; i < _.blog_post_list.length; i++) {
+                        _.$set(_.blog_post_list[i], 'full_url', 'https://jw12138.com/#/' + 'post/' + _.blog_post_list[i].hash_url)
+                    }
+                }
+            },
+            data: {
+                blog_title: '一个球的博客',
+                blog_post_list: [],
+                friends: []
+            }
+        })
+    </script>
+</body>
+
+</html>
