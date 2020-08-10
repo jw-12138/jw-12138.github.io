@@ -75,10 +75,10 @@ let app = new Vue({
                     }
                     _.updateHighLight()
                     _.changeBlogTitle(_.current_page.title + ' - 一个球的博客')
-                    _.handleImgClick()
                     _.initGitTalk()
                     _.$forceUpdate()
                     _.show_fake_post = false
+                    _.handleImgClick()
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -89,12 +89,14 @@ let app = new Vue({
             let fn = function () {
                 let parent = document.querySelector('.page-content')
                 let img_arr = parent.querySelectorAll('img')
-                img_arr.forEach(img => {
-                    img.addEventListener('click', function () {
-                        let src = this.getAttribute('src')
-                        window.open(window.location.origin + src)
-                    })
-                });
+                if(img_arr){
+                    img_arr.forEach(img => {
+                        img.addEventListener('click', function () {
+                            let src = this.getAttribute('src')
+                            window.open(window.location.origin + src)
+                        })
+                    });
+                }
             }
             Vue.nextTick(fn);
         },
