@@ -652,6 +652,7 @@ span.deprecated {
   font-weight: normal;
   font-style: italic;
   padding: 3px 5px;
+  flex-shrink: 0;
 }
 .page-deprecated {
   display: inline-block;
