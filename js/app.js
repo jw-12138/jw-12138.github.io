@@ -7,7 +7,6 @@ let app = new Vue({
         let _ = this
         _.changeBlogTitle()
         _.app_div.opacity = 1
-        _.initGitTalk()
         axios.get('/data/data.json')
             .then(function (res) {
                 _.renderList(res)
