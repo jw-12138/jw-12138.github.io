@@ -6,8 +6,6 @@
     <title>Editor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link href="https://fonts.googleapis.com/css?family=Fira+Code|Google+Sans&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="https://api.jacky97.top/file/?name=blog/favicon.png" type="image/x-icon">
     <style>
         body, html{height: 100%;min-width: 640px;}
@@ -41,10 +39,8 @@
     <script src="js/highlight.min.js"></script>
     <script src="js/marked.min.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script src="js/xss.js"></script>
     <script type="text/javascript">
     $(function() {
-        console.log(`credits: \n %c Highlighting %c ====> %c https://highlightjs.org/ \n %c Remove XSS attacks %c ====> %c https://github.com/leizongmin/js-xss \n %c Markdown to HTML %c ====> %c https://github.com/markedjs/marked \n %c jQuery %c ====> %c https://jquery.com/ `, `color:black`, `color: red`, `color: blue`, `color:black`, `color: red`, `color: blue`, `color:black`, `color: red`, `color: blue`, `color:black`, `color: red`, `color: blue`);
         let mk = marked;
         mk.setOptions({
             "baseUrl": null,
@@ -63,7 +59,6 @@
             "smartypants": true,
             "xhtml": false
         });
-        let xss = filterXSS;
         let downloadMD = function(content){
             let fileName = prompt("Please enter the file name", "a01.html");
             if(!fileName){
@@ -83,10 +78,6 @@
                 'target': '_blank'
             });
             $('.md_preview textarea').val(html);
-            $(`pre code`).each(function() {
-                hljs.highlightBlock($(this)[0])
-            });
-
             $('.md_preview textarea').val($('.md_preview .article_out').html());
         }
         $('.md_edit textarea').on('change keyup paste', render);
