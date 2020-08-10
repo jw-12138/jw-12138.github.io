@@ -627,3 +627,6 @@ table th {
   border-right: 1px solid #ddd;
   padding: 8px;
 }
+.demo {
+  overflow: auto;
+}

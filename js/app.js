@@ -23,13 +23,16 @@ let app = new Vue({
             _.current_page = {
                 title: '',
                 content: '',
-                original: false
+                original: false,
+                date: '',
+                modify: ''
             }
         },
         updateCurrrentPage: function (view, id) {
             let _ = this
             _.showing_page = view
             if (view == 'index') {
+                _.clearCurrentPage()
                 _.changeBlogTitle()
                 return false
             }
@@ -173,7 +176,9 @@ let app = new Vue({
         current_page: {
             title: '',
             content: '',
-            original: false
+            original: false,
+            date: '',
+            modify: ''
         },
         menu_open: false,
         menu_visible: false

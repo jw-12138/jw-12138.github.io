@@ -6,8 +6,8 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=5" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
     <meta name="keywords" content="jw12138,一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影" id="keywords" />
@@ -86,6 +86,9 @@
                     <div class="page" data-param="post" v-if="showing_page == 'post'">
                         <div class="page-header" v-html="current_page.title">
                             
+                        </div>
+                        <div class="page-date">
+                            <span v-html="current_page.date"></span> <span v-if="current_page.modify != ''" v-html="current_page.modify" class="modify"></span>
                         </div>
                         <div class="page-content" v-html="current_page.content">
         
