@@ -383,7 +383,7 @@ header .slogan {
 }
 .page-content blockquote {
   border-left: 4px solid #ddd;
-  padding-left: 30px;
+  padding-left: 20px;
   margin-bottom: 10px;
 }
 .page-content h1 {
@@ -391,6 +391,7 @@ header .slogan {
   font-weight: bold;
   font-style: italic;
   color: #333;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 .page-content h2 {
@@ -398,6 +399,7 @@ header .slogan {
   font-weight: bold;
   font-style: italic;
   color: #333;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 .page-content h3 {
@@ -406,6 +408,7 @@ header .slogan {
   font-style: italic;
   color: #333;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .page-content h4 {
   font-size: 16px;
@@ -413,6 +416,7 @@ header .slogan {
   font-style: italic;
   color: #333;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .page-content h5 {
   font-size: 14px;
@@ -420,6 +424,7 @@ header .slogan {
   font-style: italic;
   color: #333;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .page-content h6 {
   font-size: 12px;
@@ -427,6 +432,7 @@ header .slogan {
   font-style: italic;
   color: #333;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .page-content pre {
   padding: 10px;
