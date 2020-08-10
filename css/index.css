@@ -666,3 +666,50 @@ span.deprecated {
   font-style: italic;
   padding: 3px 5px;
 }
+.fake_post .title {
+  margin-bottom: 10px;
+}
+.fake_post .title span {
+  background-color: #5e5e5e;
+  height: 28px;
+  margin-right: 3px;
+  display: inline-block;
+  animation: shine 2s ease infinite;
+}
+.fake_post .para p {
+  margin-bottom: 10px;
+}
+.fake_post .para span {
+  background-color: #ddd;
+  display: inline-block;
+  height: 20px;
+  margin-right: 6px;
+  margin-bottom: 3px;
+  animation: shine 1s ease infinite;
+}
+.fake_post .para span[data-dark-level="1"] {
+  background-color: #d5d5d5;
+}
+.fake_post .para span[data-dark-level="2"] {
+  background-color: #cecece;
+}
+.fake_post .para span[data-dark-level="3"] {
+  background-color: #c6c6c6;
+}
+.fake_post .para span[data-dark-level="4"] {
+  background-color: #bebebe;
+}
+.fake_post .para span[data-dark-level="5"] {
+  background-color: #b7b7b7;
+}
+@keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}

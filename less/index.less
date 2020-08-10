@@ -398,10 +398,12 @@ header {
 .page-content {
     color: #444;
     font-size: 16px;
-    video{
+
+    video {
         width: 100%;
         margin: 10px 0;
     }
+
     a {
         text-decoration: underline;
         color: #333
@@ -518,10 +520,11 @@ header {
     }
 }
 
-.page-date{
+.page-date {
     margin-bottom: 15px;
-    span{
-        color:#666;
+
+    span {
+        color: #666;
         font-style: italic;
         font-size: 12px;
     }
@@ -734,8 +737,8 @@ div::-webkit-scrollbar {
         display: block;
     }
 
-    .wrap{
-        section.list{
+    .wrap {
+        section.list {
             max-width: 100%;
         }
     }
@@ -749,34 +752,36 @@ div::-webkit-scrollbar {
     }
 }
 
-table{
+table {
     width: 100%;
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
-    td{
+
+    td {
         border-bottom: 1px solid #ddd;
         border-right: 1px solid #ddd;
         padding: 8px;
     }
-    th{
+
+    th {
         border-bottom: 1px solid #ddd;
         border-right: 1px solid #ddd;
         padding: 8px;
     }
 }
 
-.demo{
+.demo {
     overflow: auto;
 }
 
-.gt-container .gt-svg{
+.gt-container .gt-svg {
     position: relative;
     top: -2px;
 }
 
-span.deprecated{
+span.deprecated {
     background-color: indianred;
-    color:#fff;
+    color: #fff;
     font-size: 12px;
     font-weight: normal;
     font-style: italic;
@@ -784,13 +789,78 @@ span.deprecated{
     flex-shrink: 0;
 }
 
-.page-deprecated{
+.page-deprecated {
     display: inline-block;
     margin-bottom: 15px;
     background-color: indianred;
-    color:#fff;
+    color: #fff;
     font-size: 12px;
     font-weight: normal;
     font-style: italic;
     padding: 3px 5px;
+}
+
+@ddd: #ddd;
+
+.fake_post {
+    .title {
+        margin-bottom: 10px;
+
+        span {
+            background-color: darken(@ddd, 50%);
+            height: 28px;
+            margin-right: 3px;
+            display: inline-block;
+            animation: shine 2s ease infinite;
+        }
+    }
+
+    .para {
+        p {
+            margin-bottom: 10px;
+        }
+
+        span {
+            background-color: @ddd;
+            display: inline-block;
+            height: 20px;
+            margin-right: 6px;
+            margin-bottom: 3px;
+            animation: shine 1s ease infinite;
+
+            &[data-dark-level="1"] {
+                background-color: darken(@ddd, 3%);
+            }
+
+            &[data-dark-level="2"] {
+                background-color: darken(@ddd, 6%);
+            }
+
+            &[data-dark-level="3"] {
+                background-color: darken(@ddd, 9%);
+            }
+
+            &[data-dark-level="4"] {
+                background-color: darken(@ddd, 12%);
+            }
+
+            &[data-dark-level="5"] {
+                background-color: darken(@ddd, 15%);
+            }
+        }
+    }
+}
+
+@keyframes shine {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .8;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

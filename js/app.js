@@ -63,13 +63,13 @@ let app = new Vue({
                     if (list_arr[post_index].original) {
                         _.current_page.original = list_arr[post_index].original
                     }
-                    if(list_arr[post_index].date){
+                    if (list_arr[post_index].date) {
                         _.current_page.date = list_arr[post_index].date
                     }
-                    if(list_arr[post_index].last_mod){
+                    if (list_arr[post_index].last_mod) {
                         _.current_page.modify = list_arr[post_index].last_mod
                     }
-                    if(list_arr[post_index].deprecated){
+                    if (list_arr[post_index].deprecated) {
                         _.current_page.deprecated = list_arr[post_index].deprecated
                     }
                     _.updateHighLight()
@@ -78,6 +78,7 @@ let app = new Vue({
                     _.handleImgClick()
                     _.initGitTalk()
                     _.$forceUpdate()
+                    _.show_fake_post = false
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -110,6 +111,11 @@ let app = new Vue({
 
             gitalk.render('gitalk-container')
         },
+        getRandomInt: function (min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+        },
         updateHighLight: function () {
             let code_arr = document.querySelectorAll('pre code')
             code_arr.forEach(ele => {
@@ -125,10 +131,12 @@ let app = new Vue({
             }
             let post = function (id) {
                 update_ga()
+                _.show_fake_post = true
                 _.updateCurrrentPage('post', id)
             }
             let page = function (id) {
                 update_ga()
+                _.show_fake_post = true
                 _.updateCurrrentPage('page', id)
             }
             let update_ga = function () {
@@ -178,6 +186,7 @@ let app = new Vue({
             opacity: 0
         },
         init_button_show: true,
+        show_fake_post: false,
         current_page: {
             title: '',
             content: '',

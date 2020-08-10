@@ -89,29 +89,63 @@
                         </div>
                     </div>
                     <div class="page" data-param="post" v-if="showing_page == 'post'">
-                        <div class="page-header" v-html="current_page.title">
+                        <div class="fake_post" v-if="show_fake_post">
+                            <div class="title">
+                                <span v-for="i in getRandomInt(5, 10)" :style="{width: getRandomInt(50, 200) + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}"></span>
+                            </div>
+                            <div class="para">
+                                <p>
+                                    <span v-for="i in 2" :style="{width: 80 + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}" :data-dark-level="getRandomInt(1, 5)"></span>
+                                </p>
+                            </div>
+                            <div class="para" v-for="i in getRandomInt(5, 8)">
+                                <p>
+                                    <span v-for="i in getRandomInt(10, 20)" :style="{width: getRandomInt(50, 300) + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}" :data-dark-level="getRandomInt(1, 5)"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <span v-else>
+                            <div class="page-header" v-html="current_page.title">
                             
-                        </div>
-                        <span class="page-deprecated" v-if="current_page.deprecated">
-                            当前文章已被作者弃用，您正在阅读过时或者有错误的内容！
+                            </div>
+                            <span class="page-deprecated" v-if="current_page.deprecated">
+                                当前文章已被作者弃用，您正在阅读过时或者有错误的内容！
+                            </span>
+                            <div class="page-date">
+                                <span>发布日期：{{current_page.date}}</span><span v-if="current_page.modify != ''" class="modify"><br>上次修改：{{current_page.modify}}</span>
+                            </div>
+                            <div class="page-content" v-html="current_page.content">
+            
+                            </div>
+                            <div class="page-original">
+                                <a class="license" rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img class="ignore_js" alt="知识共享许可协议" style="border-width:0" src="../../img/cc.png"></a><br>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+                            </div>
                         </span>
-                        <div class="page-date">
-                            <span>发布日期：{{current_page.date}}</span><span v-if="current_page.modify != ''" class="modify"><br>上次修改：{{current_page.modify}}</span>
-                        </div>
-                        <div class="page-content" v-html="current_page.content">
-        
-                        </div>
-                        <div class="page-original">
-                            <a class="license" rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img class="ignore_js" alt="知识共享许可协议" style="border-width:0" src="../../img/cc.png"></a><br>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
-                        </div>
                     </div>
                     <div class="page" data-param="page" v-if="showing_page == 'page'">
-                        <div class="page-header" v-html="current_page.title">
+                        <div class="fake_post" v-if="show_fake_post">
+                            <div class="title">
+                                <span v-for="i in getRandomInt(5, 10)" :style="{width: getRandomInt(50, 200) + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}"></span>
+                            </div>
+                            <div class="para">
+                                <p>
+                                    <span v-for="i in 2" :style="{width: 80 + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}" :data-dark-level="getRandomInt(1, 5)"></span>
+                                </p>
+                            </div>
+                            <div class="para" v-for="i in getRandomInt(5, 8)">
+                                <p>
+                                    <span v-for="i in getRandomInt(10, 20)" :style="{width: getRandomInt(50, 300) + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}" :data-dark-level="getRandomInt(1, 5)"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <span v-else>
+                            <div class="page-header" v-html="current_page.title">
                             
-                        </div>
-                        <div class="page-content" v-html="current_page.content">
-        
-                        </div>
+                            </div>
+                            <div class="page-content" v-html="current_page.content">
+            
+                            </div>
+                        </span>
                     </div>
                     <div id="gitalk-container" v-if="showing_page == 'page' || showing_page == 'post'"></div>
                 </div>
