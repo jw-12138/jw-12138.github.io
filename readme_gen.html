@@ -14,21 +14,19 @@
 
 <body>
     <div id="app">
-<pre>
-<code>
-# [一个球](https://jw12138.com)  
+<pre><code># [一个球](https://jw12138.com)  
 
 [RSS订阅 🚩](https://jw12138.com/atom.xml)
 
 #### 最近的文章  
 
 <span v-for="item in blog_post_list">
-- [{{item.name}}]({{item.full_url}})  
+- [{{item.name}}]({{item.full_url}})&nbsp;&nbsp;
   {{item.summary}}...
 </span>
 #### 友情链接  
 <span v-for="item in friends">
-- [{{item.name}}]({{item.url}})  
+- [{{item.name}}]({{item.url}})&nbsp;&nbsp;
   *{{item.slogan}}*
 </span>
 
