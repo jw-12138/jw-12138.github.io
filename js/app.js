@@ -63,6 +63,15 @@ let app = new Vue({
                     if (list_arr[post_index].original) {
                         _.current_page.original = list_arr[post_index].original
                     }
+                    if(list_arr[post_index].date){
+                        _.current_page.date = list_arr[post_index].date
+                    }
+                    if(list_arr[post_index].last_mod){
+                        _.current_page.modify = list_arr[post_index].last_mod
+                    }
+                    if(list_arr[post_index].deprecated){
+                        _.current_page.deprecated = list_arr[post_index].deprecated
+                    }
                     _.updateHighLight()
                     window.scrollTo(0, 0)
                     _.changeBlogTitle(_.current_page.title + ' - 一个球的博客')
@@ -176,7 +185,8 @@ let app = new Vue({
             content: '',
             original: false,
             date: '',
-            modify: ''
+            modify: '',
+            deprecated: false
         },
         menu_open: false,
         menu_visible: false

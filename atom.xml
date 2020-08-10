@@ -1,22 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-<title>一个球的博客</title>
-<link rel="icon" href="/favicon.png" /><link rel="alternate" type="text/html" href="https://jw12138.com/"/>
-<link href="https://jw12138.com/atom.xml" rel="self" type="application/atom+xml"/>
-<link href="https://jw12138.com/"/>
-<updated>2020-08-09T14:55:30.000Z</updated>
-<id>https://jw12138.com/</id>
-<author>
-<name>Jacky Wong</name>
-</author>
 
-<entry>
-<title>ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</title>
-<link href="https://jw12138.com/post/202007/a02.html"/>
-<id>https://jw12138.com/post/202007/a02.html</id>
-<published>2020-07-20T00:00:00.000Z</published>
-<updated>2020-07-20T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>“？？？”</p>
+
+<?xml version="1.0" encoding="utf-8"?>
+    <feed xmlns="http://www.w3.org/2005/Atom">
+    <title>一个球的博客</title>
+    <link rel="icon" href="/favicon.png"/>';
+    <link rel="alternate" type="text/html" href="https://jw12138.com/"/>
+    <link href="https://jw12138.com/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jw12138.com/"/>
+    <updated>2020-08-10T13:14:41Z</updated>
+    <id>https://jw12138.com/</id>
+    <author>
+    <name>Jacky Wong</name>
+    </author>
+
+
+    <entry>
+    <title>ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</title>
+    <link href="https://jw12138.com/#/post/202007-a02.html" />
+    <id>https://jw12138.com/#/post/202007-a02.html</id>
+    <published>2020-07-20T00:00:00.000Z</published>
+    <updated>2020-07-20T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>“？？？”</p>
 <p>“卧槽？”</p>
 <p>”嗯？“</p>
 <br>
@@ -32,7 +37,7 @@
 <br>
 
 <h3>1. <code>el-scrollbar</code></h3>
-<p><img src="image-20200720172813301.png" alt="image-20200720172813301"></p>
+<p><img src="/post/202007/image-20200720172813301.png" alt="image-20200720172813301"></p>
 <p>不说废话，看官网的滚动条，很强有没有！</p>
 <p>有的朋友要说了，就这？完全可以写样式控制的呀！</p>
 <p>是的你没说错！</p>
@@ -175,12 +180,12 @@
 <br>
 
 <h3>2. <code>el-popconfirm</code></h3>
-<p><img src="image-20200720181336936.png" alt="image-20200720181336936"></p>
+<p><img src="/post/202007/image-20200720181336936.png" alt="image-20200720181336936"></p>
 <p>文档中定义的两个按钮事件，在目前版本(2.13.2)中是无效的。(或者只是我不会用，欢迎大佬指正</p>
 <br>
 
 <h3>3. <code>el-table</code></h3>
-<p><img src="image-20200720181527197.png" alt="image-20200720181527197"></p>
+<p><img src="/post/202007/image-20200720181527197.png" alt="image-20200720181527197"></p>
 <p>可能是reset CSS中的写法不同导致的样式错乱，这个问题在有固定列且数据复杂的表格中非常容易复现。</p>
 <br>
 
@@ -189,40 +194,46 @@
 <p>如果你是一个设计师兼前端程序员而且有重度强迫症不能忍受瑕疵，我的建议是：</p>
 <p><strong>自己写样式</strong>！</p>
 <p>如果领导坚持要用那你就说服他把上面那些缺点全都告诉他（嗯！</p>
-]]></content>
-<summary>
-“？？？”...</summary>  
-</entry>
 
-<entry>
-<title>Github Pages常见问题一览</title>
-<link href="https://jw12138.com/post/202007/a01.html"/>
-<id>https://jw12138.com/post/202007/a01.html</id>
-<published>2020-07-07T00:00:00.000Z</published>
-<updated>2020-07-07T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下。</p>
+        ]]></content>
+    <summary>
+        “？？？”
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>Github Pages常见问题一览</title>
+    <link href="https://jw12138.com/#/post/202007-a01.html" />
+    <id>https://jw12138.com/#/post/202007-a01.html</id>
+    <published>2020-07-07T00:00:00.000Z</published>
+    <updated>2020-07-07T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下。</p>
 <h3># 已经提交changes，但是没有立刻开始构建</h3>
 <p>根据Github的官方文档，第一次构建pages大概需要<strong>10分钟</strong>，但是很多时候我们并不是第一次构建了，而且即使过了十分钟后，pages也还是没有开始构建，就很令人着急。后来在一个issue(惭愧，找不到页面了)下面找到了问题的答案：</p>
 <p>随便选择一个Github pages主题，即使你不使用JekyII。</p>
-<p><img src="image-20200707100136926.png" alt="image-20200707100136926"></p>
+<p><img src="/post/202007/image-20200707100136926.png" alt="image-20200707100136926"></p>
 <p>选择完成后会在你的根目录创建一个<code>_config.yml</code>文件，这样以后每次提交都会立马开始自动构建了。不过理论上来说没有这个config文件也是可以构建的，只是不知道是github把构建优先级降低了还是概率性的忽略了。</p>
 <h3># 配置好了自定义域名，但是username.github.io没有跳转到我设置的域名</h3>
 <p>这是因为你的repo名称没有设置为<code>username.github.io</code>，是的，就是这么简单。而且不正确的repo名称还会影响你的其他pages：</p>
 <blockquote>
 <p>假设你创建另一个repo – <code>your_new_repo</code>，并给它开启了pages，理论上来说可以直接访问<code>username.github.io/your_new_repo</code>，但是如果你没有正确配置你的一级repo名称，这个url将会是404。解决方法也有，就是配置另一个域名。。。</p>
 </blockquote>
-<p>当然，只要你爱折腾，不改也无妨。</p>]]></content>
-<summary>
-使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下...</summary>  
-</entry>
+<p>当然，只要你爱折腾，不改也无妨。</p>
+        ]]></content>
+    <summary>
+        使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下
+    </summary>  
+    </entry>
 
-<entry>
-<title>LNMP如何配置Gitlab的反向代理和HTTPS</title>
-<link href="https://jw12138.com/post/202005/a01.html"/>
-<id>https://jw12138.com/post/202005/a01.html</id>
-<published>2020-05-09T00:00:00.000Z</published>
-<updated>2020-05-09T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>使用Gitlab CE版已经有一年多了，期间一直在使用<code>http://ip:port</code>的方式来进行访问。很明显，缺点有二：</p>
+    <entry>
+    <title>LNMP如何配置Gitlab的反向代理和HTTPS</title>
+    <link href="https://jw12138.com/#/post/202005-a01.html" />
+    <id>https://jw12138.com/#/post/202005-a01.html</id>
+    <published>2020-05-09T00:00:00.000Z</published>
+    <updated>2020-05-09T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>使用Gitlab CE版已经有一年多了，期间一直在使用<code>http://ip:port</code>的方式来进行访问。很明显，缺点有二：</p>
 <ul>
 <li>没有使用https，安全性堪忧。</li>
 <li>没有使用域名，看起来并不专业…（</li>
@@ -358,18 +369,21 @@ chmod -R 775 /var/log/gitlab</code></pre>
 <br>
 
 <p>现在你就可以用<code>https://git.aaa.com</code>来访问你的gitlab了！如果有任何问题，欢迎在下面的评论区域告诉我！</p>
-]]></content>
-<summary>
-使用Gitlab CE版已经有一年多了，期间一直在使用`http://ip:port`的方式来进行访问。很明显，缺点有二...</summary>  
-</entry>
 
-<entry>
-<title>在本地/服务器部署less.js</title>
-<link href="https://jw12138.com/post/202003/a01.html"/>
-<id>https://jw12138.com/post/202003/a01.html</id>
-<published>2020-03-04T00:00:00.000Z</published>
-<updated>2020-03-04T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p><a href="http://lesscss.org/">Less</a>这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题：</p>
+        ]]></content>
+    <summary>
+        使用Gitlab CE版已经有一年多了，期间一直在使用`http://ip:port`的方式来进行访问。很明显，缺点有二
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>在本地/服务器部署less.js</title>
+    <link href="https://jw12138.com/#/post/202003-a01.html" />
+    <id>https://jw12138.com/#/post/202003-a01.html</id>
+    <published>2020-03-04T00:00:00.000Z</published>
+    <updated>2020-03-04T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p><a href="http://lesscss.org/">Less</a>这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题：</p>
 <p><strong>不兼容IE浏览器</strong>。</p>
 <p>是的，IE 11都报错，更别提低版本的了。好在less有命令行版本，它能够让你使用less.js将less文件转换为css文件。这样在项目中，你引用的其实还是原始的css文件，这样就不存在兼容问题了。</p>
 <h4># less命令行的安装和使用</h4>
@@ -399,55 +413,64 @@ chmod -R 775 /var/log/gitlab</code></pre>
 <p>这样保存less文件后这个插件就会自动构建css，速度也是非常的快，可以同时检测多个less文件，如果只需要监测一个less文件的话，在上面的命令行后面加上该less文件的文件名就可以了：</p>
 <pre><code class="shell hljs">less-watch-compiler less css main.less</code></pre>
 <p>搞定！</p>
-]]></content>
-<summary>
-Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题...</summary>  
-</entry>
 
-<entry>
-<title>Ableton Live 10中的坑</title>
-<link href="https://jw12138.com/post/201912/a01.html"/>
-<id>https://jw12138.com/post/201912/a01.html</id>
-<published>2019-12-18T00:00:00.000Z</published>
-<updated>2019-12-18T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下。</p>
+        ]]></content>
+    <summary>
+        Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>Ableton Live 10中的坑</title>
+    <link href="https://jw12138.com/#/post/201912-a01.html" />
+    <id>https://jw12138.com/#/post/201912-a01.html</id>
+    <published>2019-12-18T00:00:00.000Z</published>
+    <updated>2019-12-18T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下。</p>
 <h4>在缩放的情况下性能有所损失</h4>
 <p>这个情况是我在无意间发现的，因为自己是13英寸的笔记本电脑，所以一直以来Ableton Live都用了130%的缩放，后来有一天重设回100%后操作了一下，发现FPS明显上去了，测试后发现：Ableton Live在缩放数值不是100%或200%的情况下，CPU使用率上升了25%，FPS也会掉到30赫兹左右。我能理解缩放的情况下需要重新计算布局什么的，但是25%实在是有点太多了。</p>
-<p><img src="image-20191218110259754.png" alt=""></p>
+<p><img src="/post/201912/image-20191218110259754.png" alt=""></p>
 <h4>轨道中的Panning</h4>
 <p>这个问题一直以来都没有注意过，直到最近看了一个油管视频，里面有提到：</p>
-<p><img src="image-20191218110444995.png" alt="image-20191218110444995"></p>
+<p><img src="/post/201912/image-20191218110444995.png" alt="image-20191218110444995"></p>
 <p>图中Ableton Live所标示的Track Pan的旋钮，它的作用其实并不是真正的调节左右音频信号的方向，而只是一个平衡旋钮而已，也就是说，他只能调节左右声道的音量。看了视频的我甚至还不相信，自己又做了一遍测试。</p>
 <p>先把声音信号全部放到左边，再去往右调Track panning，如果声音彻底没有了，那就说明左边的信号并没有到右边去。</p>
-<p><video controls="" src="record.mp4" poster="record_poster.jpg"></video></p>
+<p><video controls poster="/post/201912/record_poster.jpg">
+        <source src="/post/201912/record.mp4" type="video/mp4" />
+    </video></p>
 <p>今天才知道，被骗了这么久…心痛啊</p>
 <p>那话说回来，有没有解决方案呢？肯定是有的！可以像我一样使用panning的插件，上面视频中出现的是SoundSpot的<a href="https://www.soundspot.audio/downloads/propane-mid-side-panning-audio-plugin/">Propane</a>，目前只卖2.95英镑，估计后面会回到19英镑的价格。</p>
 <p>除了插件的方法其实Ableton Live自身也可以做到，而且也很简单：</p>
-<p><video controls="" src="record_2.mp4" poster="record_2_poster.jpg"></video></p>
+<p><video controls poster="/post/201912/record_2_poster.jpg">
+        <source src="/post/201912/record_2.mp4" type="video/mp4" />
+    </video></p>
 <p>只需要在Track Pan的旋钮上右击鼠标，选中<code>Select Split Stereo Pan Mode</code>，这样左边的信号就可以被转换到右边去了。</p>
 <hr>
 
 <p>好了，暂时就是这两个有一点点困扰我的问题，溜了！</p>
 <p>😁</p>
-]]></content>
-<summary>
-去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下...</summary>  
-</entry>
+        ]]></content>
+    <summary>
+        去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下
+    </summary>  
+    </entry>
 
-<entry>
-<title>如何加快VS Code的启动以及运行速度</title>
-<link href="https://jw12138.com/post/201911/a02.html"/>
-<id>https://jw12138.com/post/201911/a02.html</id>
-<published>2019-11-14T00:00:00.000Z</published>
-<updated>2019-11-15T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<blockquote>
+    <entry>
+    <title>如何加快VS Code的启动以及运行速度</title>
+    <link href="https://jw12138.com/#/post/201911-a02.html" />
+    <id>https://jw12138.com/#/post/201911-a02.html</id>
+    <published>2019-11-14T00:00:00.000Z</published>
+    <updated>2019-11-15T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<blockquote>
 <p> <strong>Visual Studio Code</strong>（简称<strong>VS Code</strong>）是一个由微软开发，同时支持Windows 、 Linux和macOS等操作系統且开放源代码的程式碼编辑器[4]，它支持測試，并内置了Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和代码重构等，该编辑器支持用户個性化配置，例如改变主题颜色、键盘快捷方式等各种属性和参数，同时还在编辑器中内置了扩展程序管理的功能。  </p>
 </blockquote>
 <p>2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，<strong>但是</strong>，缺点也很明显：</p>
 <p><strong>基于Electron</strong></p>
 <p>为什么说基于Electron是他的缺点呢，对于一些电脑比较好的程序员来讲，可能感受不到，但是如果你的电脑是低压CPU，机械硬盘，内存也不大，你就能感觉到了——很卡，特别卡，尤其使用了一段时间之后，打开速度几乎和IDE无异。但是有时候你可能只是想用来编辑一个小文件，或者突然有了灵感，想记录下来，那么VS Code那接近半分钟的启动速度明显不是你想要的。今天就来教大家怎么加快VS Code的启动和优化它的运行速度。</p>
 <p>首先进入VS Code，按下<code>ctrl/cmd</code> +<code>,</code>进入设置，然后点击设置界面右上角的小图标，打开<code>settings.json</code>；</p>
-<p><img src="image-20191114135952765.png" alt="image-20191114135952765"></p>
+<p><img src="/post/201911/image-20191114135952765.png" alt="image-20191114135952765"></p>
 <ol>
 <li><p>关闭小地图或者关闭小地图的渲染真实字符</p>
 <pre><code class="json hljs">// 不渲染真实字符
@@ -497,18 +520,21 @@ Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，�
 <p>好了，以上就是我用VS Code一年多总结出来的经验，希望这篇文章有帮到你们！</p>
 <p>Happy coding!</p>
 <p>✌</p>
-]]></content>
-<summary>
-2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，但是...</summary>  
-</entry>
 
-<entry>
-<title>来自一个不喜欢用Vim的弱鸡程序员的Vim教程</title>
-<link href="https://jw12138.com/post/201911/a01.html"/>
-<id>https://jw12138.com/post/201911/a01.html</id>
-<published>2019-11-11T00:00:00.000Z</published>
-<updated>2019-11-11T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>在网上看过一个笑话：</p>
+        ]]></content>
+    <summary>
+        2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，但是
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>来自一个不喜欢用Vim的弱鸡程序员的Vim教程</title>
+    <link href="https://jw12138.com/#/post/201911-a01.html" />
+    <id>https://jw12138.com/#/post/201911-a01.html</id>
+    <published>2019-11-11T00:00:00.000Z</published>
+    <updated>2019-11-11T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>在网上看过一个笑话：</p>
 <blockquote>
 <p> 问：如何生成一个随机字符串？</p>
 <p> 答：让新手退出vim</p>
@@ -516,7 +542,7 @@ Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，�
 <p>用过Vim的人肯定一眼就能Get到笑点，因为Vim的反人类设计，你需要在键盘上打出<code>:q</code>才能退出。但是作为一个老牌的文本编辑器，其地位在很多程序员心中的地位是不可撼动的，很多Linux 发行版也都是自带Vim，用来临时修改一下服务器上的文件非常方便。</p>
 <p>因为第一次也遇到了进入Vim退不出去的尴尬情景，我决定去谷歌一下Vim怎么用，看到某大牛写的Vim教程我是懵逼的，因为真的太多东西要学了，一张网页，上万px的高度，几乎键盘上每一个按键都有它的作用，大小写不一样，作用也不一样，还有组合键和命令。即使到现在，我也只记得大约5%的快捷键和命令。但是我觉得如果你只是用来编辑一些简单的文件，比如HTML里面改个标签，CSS里面改个高度这种小活，5%可以说是非常够了。</p>
 <p>在终端打出<code>vim</code>然后回车，来看一下他的界面吧：</p>
-<p><img src="vim.png" alt="image-20191111174728567"></p>
+<p><img src="/post/201911/vim.png" alt="image-20191111174728567"></p>
 <blockquote>
 <p>问：作为一个程序员，你最喜欢的代码编辑器是什么？</p>
 <p>答：乌干达</p>
@@ -577,20 +603,23 @@ Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，�
 <li>Vim 从入门到精通 <a href="https://github.com/wsdjeg/vim-galore-zh_cn">https://github.com/wsdjeg/vim-galore-zh_cn</a></li>
 </ul>
 <p>✌</p>
-]]></content>
-<summary>
-在网上看过一个笑话：问：如何生成一个随机字符串？答：让新手退出vim...</summary>  
-</entry>
 
-<entry>
-<title>使用JavaScript达成 background-size: cover 的效果</title>
-<link href="https://jw12138.com/post/201910/a03.html"/>
-<id>https://jw12138.com/post/201910/a03.html</id>
-<published>2019-10-28T00:00:00.000Z</published>
-<updated>2019-10-28T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>最近有一个项目，领导要求：要让一个<strong>视频</strong>在<strong>一屏显示</strong>的情况下<strong>不能改变宽高比</strong> and <strong>适配各种分辨率</strong> and <strong>兼容到IE 7</strong>。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。</p>
+        ]]></content>
+    <summary>
+        在网上看过一个笑话：问：如何生成一个随机字符串？答：让新手退出vim
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>使用JavaScript达成 background-size: cover 的效果</title>
+    <link href="https://jw12138.com/#/post/201910-a03.html" />
+    <id>https://jw12138.com/#/post/201910-a03.html</id>
+    <published>2019-10-28T00:00:00.000Z</published>
+    <updated>2019-10-28T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>最近有一个项目，领导要求：要让一个<strong>视频</strong>在<strong>一屏显示</strong>的情况下<strong>不能改变宽高比</strong> and <strong>适配各种分辨率</strong> and <strong>兼容到IE 7</strong>。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。</p>
 <p>不过不是我做（欸嘿），别人也没做出来，我也没站出来（面子最重要），于是领导不得不放低要求，当然这都是后话了。</p>
-<p> <img src="zhazha.jpg" alt=""></p>
+<p> <img src="/post/201910/zhazha.jpg" alt=""></p>
 <p>后来想，如果我来做的话，我会怎么做？对于领导的要求，我脑子里第一个闪过的就是<code>background-size: cover</code>这个玩意儿，但是第一，这个是CSS 3的属性，IE 8就歇菜了，更别说IE 7了，第二，这个属性只对图片有用……</p>
 <p>那能不能用js来模拟呢？</p>
 <p>说干就干，当下就开始研究<code>cover</code>属性是怎么工作的，最后结论是：</p>
@@ -652,18 +681,21 @@ Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，�
 <p>可以在这里看一下<a href="https://jw12138.com/post/201910/a03_demo/">演示</a>。代码已经测试，可以兼容到IE 7。</p>
 <p>对于视频也是一样的用法，<code>img</code>传视频元素就可以了。</p>
 <p>✌</p>
-]]></content>
-<summary>
-最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼...</summary>  
-</entry>
 
-<entry>
-<title>职业生涯分享</title>
-<link href="https://jw12138.com/post/201910/a02.html"/>
-<id>https://jw12138.com/post/201910/a02.html</id>
-<published>2019-10-25T00:00:00.000Z</published>
-<updated>2019-10-25T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯。</p>
+        ]]></content>
+    <summary>
+        最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>职业生涯分享</title>
+    <link href="https://jw12138.com/#/post/201910-a02.html" />
+    <id>https://jw12138.com/#/post/201910-a02.html</id>
+    <published>2019-10-25T00:00:00.000Z</published>
+    <updated>2019-10-25T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯。</p>
 <h4>2014年6月，一切的开始</h4>
 <p>17岁，大部分同龄人还在读高二的年纪，我却已经走上了实习岗位（并不自豪），第一份工作是上汽旗下的A车站当技术员。说白了就是修车，不过说是修车，其实呢，是拿着￥1390/月的工资，洗了八个月的车。辞职那天，有点小雨，在去地铁站的路上一直在想，这就是以后我的工作吗？这样的工作我真的能坚守并热爱下去吗？</p>
 <p>在家闲了两个星期后，我妈决定让我先随便找一份工作。于是在申通找了个仓库管理的工作，每天的工作大概就是搬东西，清点货品，爬货架，和同事唠嗑。总之，忙起来非人类，闲起来特无聊。大概做了一个月后，收到奶奶病重的消息，于是又辞职了，拿着两千多块钱回老家了。</p>
@@ -707,18 +739,21 @@ Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，�
 <ul>
 <li><strong><em>华育国际</em></strong>：<em>可以看一下知乎这个提问：<a href="https://www.zhihu.com/question/31654838">华育国际的培训怎么样？</a>。我想在这里“大放厥词”一下，目前任何培训机构教给你的课程，你完全可以自学，甚至可以学得更好。网上有一大堆免费的资源，如果你能把这些资源全部理解并熟记，足以让你成为这个领域中专家级别的人。只是你愿不愿意钻研，愿意花多少时间的问题。</em></li>
 </ul>
-]]></content>
-<summary>
-一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯...</summary>  
-</entry>
 
-<entry>
-<title>GitHub OAuth App怎么跳转到用户授权之前的页面？</title>
-<link href="https://jw12138.com/post/201910/a01.html"/>
-<id>https://jw12138.com/post/201910/a01.html</id>
-<published>2019-10-22T00:00:00.000Z</published>
-<updated>2019-12-10T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等…</p>
+        ]]></content>
+    <summary>
+        一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>GitHub OAuth App怎么跳转到用户授权之前的页面？</title>
+    <link href="https://jw12138.com/#/post/201910-a01.html" />
+    <id>https://jw12138.com/#/post/201910-a01.html</id>
+    <published>2019-10-22T00:00:00.000Z</published>
+    <updated>2019-12-10T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等…</p>
 <p>但是他们好像都忽略了一个问题：</p>
 <p>—— <strong>在获取Token或者用户信息之后，客户端要怎么跳转回用户授权之前的页面？</strong></p>
 <p>先声明一下，这篇文章不会教你怎么注册或使用GitHub OAuth App，如果你还不熟悉它，可以先阅读一下<a href="https://developer.github.com/apps/building-oauth-apps/">官方文档</a>，如果你不太喜欢英语，可以看看阮一峰的<a href="http://www.ruanyifeng.com/blog/2019/04/github-oauth.html">GitHub OAuth 第三方登录示例教程</a>或者其他大佬/论坛的教程。</p>
@@ -776,21 +811,24 @@ getCookie(<span class="hljs-string">'URL'</span>);</code></pre>
 </ol>
 <p>获取用户信息的请求可以在<code>api.blog.com</code>做，也可以像我一样带着<code>token</code>回到<code>blog.com/post/01.html</code>去做。</p>
 <p>因为自己的博客<del>URL特殊，又是Hash又是URL Param</del>(原本是单页App，现在已调整为纯静态，但是不影响思路)，而且也不想用户在回到页面的时候，URL后面跟着一个长长的<code>token</code>，我还新加了一个跳转页面 <code>blog.com/r.html</code>，这个页面负责接收<code>token</code>和跳转的页面，将<code>token</code>写入浏览器存储（上面说的<code>localStorage</code>或者Cookie）之后再进行跳转，在<code>blog.com/post/01.html</code>完成用户信息的调用后删除记录在浏览器存储里面的<code>token</code>。</p>
-<p><img src="nice.gif" alt=""></p>
+<p><img src="/post/201910/nice.gif" alt=""></p>
 <p>虽然流程跑通了，但是我还是很好奇为什么GitHub官方文档里完全找不到这一部分的说明，在搜索引擎上也找不到相关文章…</p>
 <p>随便吧，现在看起来，只能这样解决…</p>
-]]></content>
-<summary>
-最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等… 但是他们好像都忽略了一个问题...</summary>  
-</entry>
 
-<entry>
-<title>开发一个web音乐播放器到底有多难？</title>
-<link href="https://jw12138.com/post/201908/a01.html"/>
-<id>https://jw12138.com/post/201908/a01.html</id>
-<published>2019-08-22T00:00:00.000Z</published>
-<updated>2019-08-22T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>前段时间比较闲，顺便就开发了自己的音乐主页👉<a href="https://music.jw12138.com">https://music.jw12138.com</a>，开发过程中遇到不少问题，一度以为解决不了，但是最后看来，其实实现都非常简单。</p>
+        ]]></content>
+    <summary>
+        最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等… 但是他们好像都忽略了一个问题
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>开发一个web音乐播放器到底有多难？</title>
+    <link href="https://jw12138.com/#/post/201908-a01.html" />
+    <id>https://jw12138.com/#/post/201908-a01.html</id>
+    <published>2019-08-22T00:00:00.000Z</published>
+    <updated>2019-08-22T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>前段时间比较闲，顺便就开发了自己的音乐主页👉<a href="https://music.jw12138.com">https://music.jw12138.com</a>，开发过程中遇到不少问题，一度以为解决不了，但是最后看来，其实实现都非常简单。</p>
 <p>首先看看html吧</p>
 <pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
 
@@ -986,18 +1024,21 @@ audio.onended = <span class="hljs-function"><span class="hljs-keyword">function<
 },<span class="hljs-number">40</span>)</code></pre>
 <p>希望有一天js能有开发Digital Audio Workstation的能力！</p>
 <p>✌</p>
-]]></content>
-<summary>
-前段时间比较闲，顺便就开发了自己的音乐主页👉https://music.jw12138.com，开发过程中遇到不少问题，一度以为解决不了，但是最后看来...</summary>  
-</entry>
 
-<entry>
-<title>Package Control镜像Channel使用说明</title>
-<link href="https://jw12138.com/post/201906/a01.html"/>
-<id>https://jw12138.com/post/201906/a01.html</id>
-<published>2019-06-21T00:00:00.000Z</published>
-<updated>2019-06-21T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<h3>1. 安装Package Control</h3>
+        ]]></content>
+    <summary>
+        前段时间比较闲，顺便就开发了自己的音乐主页👉https://music.jw12138.com，开发过程中遇到不少问题，一度以为解决不了，但是最后看来
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>Package Control镜像Channel使用说明</title>
+    <link href="https://jw12138.com/#/post/201906-a01.html" />
+    <id>https://jw12138.com/#/post/201906-a01.html</id>
+    <published>2019-06-21T00:00:00.000Z</published>
+    <updated>2019-06-21T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<h3>1. 安装Package Control</h3>
 <p>Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再加上Package Control，无疑给了Sublime Text更大的进步空间和市场。但是，不知道什么原因，国内已经无法访问<a href="https://packagecontrol.io">packagecontrol.io</a>。作为一个Sublime Text的脑残粉自然是看不下去了，特此做了一个教程和镜像channel，方便各位和我一样喜欢Sublime text的程序<del>猿</del>。</p>
 <h4>离线安装</h4>
 <p>首先下载Package Control的安装包，鉴于Github现在还能访问，我就直接给Github的下载链接了。</p>
@@ -1010,18 +1051,21 @@ audio.onended = <span class="hljs-function"><span class="hljs-keyword">function<
 <p>当Package Control安装完成后，打开Sublime Text，按下<code>Ctrl/Command</code>+<code>Shift</code>+<code>P</code> 调出命令板，输入<code>Package Control:Add Channel</code>（Sublime Text命令板支持模糊查询，你可以只打<code>add</code>，应该就能看到结果了），选中此选项，在打开的文本框中输入<code>https://packagecontrol.jw12138.com/pc.json</code>（每天更新一次列表），再按下<code>Enter</code>，此时配置已完成。</p>
 <p>为了加快Channel读取速度，建议删除原来的Channel，还是按下<code>Ctrl/Command</code>+<code>Shift</code>+<code>P</code> 调出命令板，这时候输入<code>Package Control:Remove Channel</code>，确认后选中<code>https://packagecontrol.io/channel_v3.json</code>，按下<code>Enter</code>删除。</p>
 <p>大功告成！</p>
-]]></content>
-<summary>
-Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再加上Package Control，无疑给了Sublime Text更大的进步空间和市场。但是...</summary>  
-</entry>
 
-<entry>
-<title>CSS中的calc()</title>
-<link href="https://jw12138.com/post/201812/a01.html"/>
-<id>https://jw12138.com/post/201812/a01.html</id>
-<published>2018-12-04T00:00:00.000Z</published>
-<updated>2019-03-15T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<style>
+        ]]></content>
+    <summary>
+        Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再加上Package Control，无疑给了Sublime Text更大的进步空间和市场。但是
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>CSS中的calc()</title>
+    <link href="https://jw12138.com/#/post/201812-a01.html" />
+    <id>https://jw12138.com/#/post/201812-a01.html</id>
+    <published>2018-12-04T00:00:00.000Z</published>
+    <updated>2019-03-15T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<style>
     .demo_wrap1 {
         width: 600px;
         margin: 0 auto;
@@ -1123,33 +1167,40 @@ Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再�
 </ol>
 <p>好了，今日份的blahblah结束！</p>
 <p>有问题可以在下面评论或者发邮件给我，我都看得到，现在刚开始人少，只要是前端上的，我能解决的问题，一定会回复的！</p>
-]]></content>
-<summary>
-记得刚毕业的时候找工作面试前端，面试官问了我这样一个问题：我现在需要一个搜索框，左边放input，右边放搜索按钮，搜索框固定120px，请你写一下布局。当时我的内心：”太简单了！“。于是我劈里啪啦敲了一堆...</summary>  
-</entry>
 
-<entry>
-<title>Hello World!</title>
-<link href="https://jw12138.com/post/201811/a01.html"/>
-<id>https://jw12138.com/post/201811/a01.html</id>
-<published>2018-11-08T00:00:00.000Z</published>
-<updated>2018-11-08T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>憋了这么久的博客总算是弄好了。</p>
+        ]]></content>
+    <summary>
+        记得刚毕业的时候找工作面试前端，面试官问了我这样一个问题：我现在需要一个搜索框，左边放input，右边放搜索按钮，搜索框固定120px，请你写一下布局。当时我的内心：”太简单了！“。于是我劈里啪啦敲了一堆
+    </summary>  
+    </entry>
+
+    <entry>
+    <title>Hello World!</title>
+    <link href="https://jw12138.com/#/post/201811-a01.html" />
+    <id>https://jw12138.com/#/post/201811-a01.html</id>
+    <published>2018-11-08T00:00:00.000Z</published>
+    <updated>2018-11-08T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+<p>憋了这么久的博客总算是弄好了。</p>
 <p>之前想到了一大堆点子，实现上虽然也不算很困难，但是总觉得还是简单一点好（说白了还是懒）。</p>
 <p>Anyway,  以后一定会多多更新（假话），发一些有用的东西。</p>
 <p>博客第一天上线也没有准备什么东西，溜了！😂</p>
-]]></content>
-<summary>
-憋了这么久的博客总算是弄好了...</summary>  
-</entry>
 
-<entry>
-<title>关于我</title>
-<link href="https://jw12138.com/about.html"/>
-<id>https://jw12138.com/about.html</id>
-<published>2018-11-08T00:00:00.000Z</published>
-<updated>2019-11-15T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p>前端开发: <a href="https://jw12138.com">jw12138.com</a></p>
+        ]]></content>
+    <summary>
+        憋了这么久的博客总算是弄好了
+    </summary>  
+    </entry>
+
+
+    <entry>
+    <title>关于我</title>
+    <link href="https://jw12138.com/#/page/about.html"/>
+    <id>https://jw12138.com/#/page/about.html</id>
+    <published>2018-11-08T00:00:00.000Z</published>
+    <updated>2019-11-15T00:00:00.000Z</updated>
+    <content type="html"><![CDATA[
+    <p>前端开发: <a href="https://jw12138.com">jw12138.com</a></p>
 <p>音乐制作人: <a href="https://music.jw12138.com" target="_blank" rel="noopener">music.jw12138.com</a></p>
 <p>Github: <a href="https://github.com/jw-12138" target="_blank" rel="noopener">jw-12138</a></p>
 <p>邮箱: <a href='mailto:admin@jw12138.com'>admin@jw12138.com</a></p>
@@ -1196,117 +1247,9 @@ Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再�
         <td>Nginx</td>
         <td>⭐⭐</td>
     </tr>
-</table>]]></content>
-</entry>
+</table>
 
-<entry>
-<title>隐私声明</title>
-<link href="https://jw12138.com/privacy.html"/>
-<id>https://jw12138.com/privacy.html</id>
-<published>2019-09-05T00:00:00.000Z</published>
-<updated>2019-12-03T00:00:00.000Z</updated>
-<content type="html"><![CDATA[<p><a href="https://jw12138.com">一个球</a>（以下简称“本网站”）采用了 <a href="https://developer.github.com/v3/">GitHub API</a> 登录的方式，来对本网站的博客或单页进行评论。本隐私声明阐述了本网站如何获取信息，能获取的个人信息，处理个人信息的方式和目的，以及个人信息的存储和调用。</p>
-<h4># 如何获取信息</h4>
-<p>本站使用 <a href="https://api.jacky97.top">https://api.jacky97.top</a> 来作为唯一的 API 调用域名，在点击登录后会跳转到 <a href="https://api.jacky97.top/github/">https://api.jacky97.top/github/</a> 获取GitHub Token，之后再将 Token 传回本网站。</p>
-<h4># 能获取的个人信息</h4>
-<p>以下是调用 GitHub API 得到的信息，信息主体为站长本人。</p>
-<pre><code class="json hljs">{
-    <span class="hljs-attr">"login"</span>: <span class="hljs-string">"jw-12138"</span>,
-    <span class="hljs-attr">"id"</span>: <span class="hljs-number">29943110</span>,
-    <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"MDQ6VXNlcjI5OTQzMTEw"</span>,
-    <span class="hljs-attr">"avatar_url"</span>: <span class="hljs-string">"https://avatars2.githubusercontent.com/u/29943110?v=4"</span>,
-    <span class="hljs-attr">"gravatar_id"</span>: <span class="hljs-string">""</span>,
-    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138"</span>,
-    <span class="hljs-attr">"html_url"</span>: <span class="hljs-string">"https://github.com/jw-12138"</span>,
-    <span class="hljs-attr">"followers_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/followers"</span>,
-    <span class="hljs-attr">"following_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/following{/other_user}"</span>,
-    <span class="hljs-attr">"gists_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/gists{/gist_id}"</span>,
-    <span class="hljs-attr">"starred_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/starred{/owner}{/repo}"</span>,
-    <span class="hljs-attr">"subscriptions_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/subscriptions"</span>,
-    <span class="hljs-attr">"organizations_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/orgs"</span>,
-    <span class="hljs-attr">"repos_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/repos"</span>,
-    <span class="hljs-attr">"events_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/events{/privacy}"</span>,
-    <span class="hljs-attr">"received_events_url"</span>: <span class="hljs-string">"https://api.github.com/users/jw-12138/received_events"</span>,
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"User"</span>,
-    <span class="hljs-attr">"site_admin"</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jacky Wong"</span>,
-    <span class="hljs-attr">"company"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"blog"</span>: <span class="hljs-string">"https://jw12138.com"</span>,
-    <span class="hljs-attr">"location"</span>: <span class="hljs-string">"Shanghai"</span>,
-    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"admin@jw12138.com"</span>,
-    <span class="hljs-attr">"hireable"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"bio"</span>: <span class="hljs-string">"Front-end Developer / Music Producer"</span>,
-    <span class="hljs-attr">"public_repos"</span>: <span class="hljs-number">4</span>,
-    <span class="hljs-attr">"public_gists"</span>: <span class="hljs-number">1</span>,
-    <span class="hljs-attr">"followers"</span>: <span class="hljs-number">4</span>,
-    <span class="hljs-attr">"following"</span>: <span class="hljs-number">20</span>,
-    <span class="hljs-attr">"created_at"</span>: <span class="hljs-string">"2017-07-06T07:57:21Z"</span>,
-    <span class="hljs-attr">"updated_at"</span>: <span class="hljs-string">"2019-09-12T12:01:08Z"</span>
-}</code></pre>
-<p>key值对应的意义：</p>
-<ul>
-<li>login - 用户登录名</li>
-<li>id -  用户唯一ID</li>
-<li>node_id - 只在 GraphQL API 中有效</li>
-<li>avatar_url - 头像地址</li>
-<li>gravatar_id - <a href="https://cn.gravatar.com/">Gravatar</a>地址</li>
-<li>url - GitHub API url</li>
-<li>html_url - GitHub 用户主页</li>
-<li>followers_url - 获取 GitHub 用户粉丝的API</li>
-<li>following_url - 获取 GitHub 用户关注的API</li>
-<li>gists_url - 获取 GitHub 用户 Gist 的 API</li>
-<li>starred_url - 获取 GitHub Star 的API</li>
-<li>subscriptions_url - 获取 GitHub 用户订阅的 API</li>
-<li>organizations_url - 获取 GitHub 用户所在组织的 API</li>
-<li>repos_url - 获取 GitHub 用户所有代码仓库的 API (私密仓库不可见)</li>
-<li>events_url - 获取 GitHub 用户私密事件的API (不可见)</li>
-<li>received_events_url - 获取 GitHub 用户公开事件的 API (Create repo, PR, New issue, etc.)</li>
-<li>type - 账户类型(用户或者组织)</li>
-<li>site_admin - <strong>unknown</strong></li>
-<li>name - GitHub 用户昵称</li>
-<li>company - GitHub 用户所在公司</li>
-<li>blog - GitHub 用户博客</li>
-<li>location - GitHub 用户所在地区</li>
-<li>email - GitHub 用户邮箱</li>
-<li>hireable - GitHub 用户是否可以被雇用</li>
-<li>bio - GitHub 用户 bio</li>
-<li>public_repos - GitHub 用户公开代码仓库数量</li>
-<li>public_gists - GitHub 用户公开代码段数量</li>
-<li>followers - GitHub 用户粉丝数</li>
-<li>following - GitHub 用户关注数</li>
-<li>created_at - GitHub 用户的注册时间</li>
-<li>updated_at - GitHub 用户的最后更新时间</li>
-</ul>
-<h4># 处理个人信息的方式和目的</h4>
-<p>上面介绍了我能获取的个人信息，看起来实在是有点让人害怕，但是别担心，请您先看下去。</p>
-<p>基于已获取的个人信息，我只会选取以下几条进行存储：</p>
-<ol>
-<li><p><strong>id -  用户唯一ID</strong></p>
-<p>即使您的GitHub登录名，邮箱或登录名改变了，您的 Github 唯一ID也不会改变，所以这条数据会用来做重复用户的判断。</p>
-</li>
-<li><p><strong>login - 用户登录名</strong></p>
-<p>这条数据用来在本网站的评论系统中显示你的用户登录名。</p>
-</li>
-<li><p><strong>html_url - GitHub 用户主页</strong></p>
-<p>这条数据会以链接的形式依附在您的用户登录名上，点击后会在新标签页打开您的 GitHub 主页。</p>
-<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"在新页标签查看jacky-88的GitHub首页"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"username"</span>&gt;</span>
-        @<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>jacky-88<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
-</li>
-<li><p><strong>email - GitHub 用户邮箱</strong></p>
-<p>这条数据会用来通知您在本网站中收到的评论。</p>
-<p>您可以在 <code>GitHub -&gt; Settings -&gt; Security -&gt; Email</code> 中隐藏您的邮箱：</p>
-<p><img src="img/privacy/1.png" alt="GitHub设置隐藏邮箱"></p>
-</li>
-</ol>
-<h4># 个人信息的存储和调用</h4>
-<p>新用户在登陆时会依据GitHub返回数据中的<code>id</code>来生成一个只针对本网站有效的唯一用户ID ，此 ID 会以 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">localStorage</a> 的形式存储在浏览器中，用来判断该用户是否登陆过，与此同时，新用户登陆成功后，我会创建一条带有登陆时间的数据，用来判断登陆是否过期，如果您的登录信息超过两个星期，则需要重新登录，日期数据也是以 localStorage 形式进行存储。</p>
-<p>另外，即使一些用户的邮箱没有开启隐藏，用户的邮箱也一律只作新回复提醒使用，不会在本网站对外显示。如果调用本网站的 API，您只能获得已认证用户的 <code>GitHub用户登录名</code> 和 <code>GitHub用户主页</code> 。</p>
-<p>如果以上隐私声明让您感到不舒服，还请您暂时不要使用评论功能🤣。如果您有更好的处理方式或者点子，请您<a href="mailto:admin@jw12138.com">联系我</a>！</p>
-<p>感谢您的支持！~</p>
-]]></content>
-</entry>
+        ]]></content>
+    </entry>
 
 </feed>

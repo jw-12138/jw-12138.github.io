@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>atom_gen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" href="https://api.jacky97.top/file/?name=blog/favicon.png" type="image/x-icon">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <pre>
+<code>
+<span>
+&#x3C;?xml version=&#x22;1.0&#x22; encoding=&#x22;utf-8&#x22;?&#x3E;
+    &#x3C;feed xmlns=&#x22;http://www.w3.org/2005/Atom&#x22;&#x3E;
+    &#x3C;title&#x3E;{{blog_title}}&#x3C;/title&#x3E;
+    &#x3C;link rel=&#x22;icon&#x22; href=&#x22;/favicon.png&#x22;/&#x3E;&#x27;;
+    &#x3C;link rel=&#x22;alternate&#x22; type=&#x22;text/html&#x22; href=&#x22;https://jw12138.com/&#x22;/&#x3E;
+    &#x3C;link href=&#x22;https://jw12138.com/atom.xml&#x22; rel=&#x22;self&#x22; type=&#x22;application/atom+xml&#x22;/&#x3E;
+    &#x3C;link href=&#x22;https://jw12138.com/&#x22;/&#x3E;
+    &#x3C;updated&#x3E;{{getUpdatetime()}}&#x3C;/updated&#x3E;
+    &#x3C;id&#x3E;https://jw12138.com/&#x3C;/id&#x3E;
+    &#x3C;author&#x3E;
+    &#x3C;name&#x3E;Jacky Wong&#x3C;/name&#x3E;
+    &#x3C;/author&#x3E;
+</span>
+<span v-for="(item, i) in blog_post_list">
+    &#x3C;entry&#x3E;
+    &#x3C;title&#x3E;{{item.name}}&#x3C;/title&#x3E;
+    &#x3C;link href=&#x22;{{item.full_url}}&#x22; /&#x3E;
+    &#x3C;id&#x3E;{{item.full_url}}&#x3C;/id&#x3E;
+    &#x3C;published&#x3E;{{item.date + 'T00:00:00.000Z'}}&#x3C;/published&#x3E;
+    &#x3C;updated&#x3E;{{item.last_mod ? item.last_mod + 'T00:00:00.000Z': item.date + 'T00:00:00.000Z'}}&#x3C;/updated&#x3E;
+    &#x3C;content type=&#x22;html&#x22;&#x3E;&#x3C;![CDATA[
+{{item.content}}
+        ]]&#x3E;&#x3C;/content&#x3E;
+    &#x3C;summary&#x3E;
+        {{item.summary}}
+    &#x3C;/summary&#x3E;  
+    &#x3C;/entry&#x3E;
+</span>
+<span v-for="(item, i) in blog_page_list">
+    &#x3C;entry&#x3E;
+    &#x3C;title&#x3E;{{item.name}}&#x3C;/title&#x3E;
+    &#x3C;link href=&#x22;{{item.full_url}}&#x22;/&#x3E;
+    &#x3C;id&#x3E;{{item.full_url}}&#x3C;/id&#x3E;
+    &#x3C;published&#x3E;{{item.date + 'T00:00:00.000Z'}}&#x3C;/published&#x3E;
+    &#x3C;updated&#x3E;{{item.last_mod ? item.last_mod + 'T00:00:00.000Z': item.date + 'T00:00:00.000Z'}}&#x3C;/updated&#x3E;
+    &#x3C;content type=&#x22;html&#x22;&#x3E;&#x3C;![CDATA[
+    {{item.content}}
+        ]]&#x3E;&#x3C;/content&#x3E;
+    &#x3C;/entry&#x3E;
+</span>
+&#x3C;/feed&#x3E;
+</code>
+</pre>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://cdn.staticfile.org/axios/0.20.0-0/axios.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            calculated: {
+                
+            },
+            mounted: function () {
+                let _ = this
+                axios.get('/data/data.json')
+                    .then(function (res) {
+                        _.blog_post_list = res.data.articles
+                        _.blog_page_list = res.data.pages
+                        _.renderContent()
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            methods: {
+                getUpdatetime: function () {
+                    var currentdate = new Date();
+                    var datetime = currentdate.getFullYear() + '-' +  
+                        ((currentdate.getMonth() + 1 < 10 ? '0' + (currentdate.getMonth() + 1) : currentdate.getMonth() + 1)) + "-" + 
+                        (currentdate.getDate() < 10 ? '0' + currentdate.getDate() : currentdate.getDate()) + "T" +
+                        (currentdate.getHours() < 10 ? '0' + currentdate.getHours() : currentdate.getHours()) + ":" +
+                        (currentdate.getMinutes() < 10 ? '0' + currentdate.getMinutes() : currentdate.getMinutes()) + ":" +
+                        (currentdate.getSeconds() < 10 ? '0' + currentdate.getSeconds() : currentdate.getSeconds()) + 'Z';
+                    return datetime
+                },
+                renderContent: function () {
+                    let _ = this
+                    for (let i = 0; i < _.blog_post_list.length; i++) {
+                        let url = _.blog_post_list[i].hash_url.split('-')
+                        axios.get('post/' + url[0] + '/' + url[1]).then(function (res) {
+                            _.$set(_.blog_post_list[i], 'content', res.data)
+                            _.$set(_.blog_post_list[i], 'full_url', 'https://jw12138.com/#/' + 'post/' + _.blog_post_list[i].hash_url)
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
+                    for (let i = 0; i < _.blog_page_list.length; i++) {
+                        axios.get(_.blog_page_list[i].hash_url).then(function (res) {
+                            _.$set(_.blog_page_list[i], 'content', res.data)
+                            _.$set(_.blog_page_list[i], 'full_url', 'https://jw12138.com/#/' + 'page/' + _.blog_page_list[i].hash_url)
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
+                }
+            },
+            data: {
+                blog_title: '一个球的博客',
+                blog_post_list: [],
+                blog_page_list: []
+            }
+        })
+    </script>
+</body>
+
+</html>

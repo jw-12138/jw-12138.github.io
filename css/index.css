@@ -266,6 +266,9 @@ header .slogan {
   color: #333;
   font-weight: bold;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  height: 24px;
 }
 .wrap section.list .index_post_list ul li a .date {
   color: #888;
@@ -336,7 +339,7 @@ header .slogan {
   line-height: 1.4;
   font-size: 20px;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 .page-content {
@@ -437,10 +440,18 @@ header .slogan {
 .page-content code {
   padding: 4px 7px;
   background-color: #ddd;
-  color: #333;
+  color: #000;
   font-size: 14px;
   font-family: 'Fira Mono', 'Microsoft Yahei UI';
   margin: 0 3px;
+}
+.page-date {
+  margin-bottom: 15px;
+}
+.page-date span {
+  color: #666;
+  font-style: italic;
+  font-size: 12px;
 }
 .page-original {
   background-color: rgba(0, 0, 0, 0.03);
@@ -633,4 +644,22 @@ table th {
 .gt-container .gt-svg {
   position: relative;
   top: -2px;
+}
+span.deprecated {
+  background-color: indianred;
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: italic;
+  padding: 3px 5px;
+}
+.page-deprecated {
+  display: inline-block;
+  margin-bottom: 15px;
+  background-color: indianred;
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: italic;
+  padding: 3px 5px;
 }

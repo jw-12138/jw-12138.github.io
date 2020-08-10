@@ -58,7 +58,12 @@
                                     <ul>
                                         <li v-for="(item, i) in blog_post_list">
                                             <a :href="'#/post/' + item.hash_url">
-                                                <div class="title" v-html="item.name"></div>
+                                                <div class="title">
+                                                    {{item.name}}&nbsp;
+                                                    <span class="deprecated" v-if="item.deprecated">
+                                                        已弃用
+                                                    </span>
+                                                </div>
                                                 <div class="date" v-html="item.date"></div>
                                                 <div class="sum">{{item.summary}} ...</div>
                                                 <div class="tag">
@@ -87,8 +92,11 @@
                         <div class="page-header" v-html="current_page.title">
                             
                         </div>
+                        <span class="page-deprecated" v-if="current_page.deprecated">
+                            当前文章已被作者弃用，您正在阅读过时或者有错误的内容！
+                        </span>
                         <div class="page-date">
-                            <span v-html="current_page.date"></span> <span v-if="current_page.modify != ''" v-html="current_page.modify" class="modify"></span>
+                            <span>发布日期：{{current_page.date}}</span><span v-if="current_page.modify != ''" class="modify"><br>上次修改：{{current_page.modify}}</span>
                         </div>
                         <div class="page-content" v-html="current_page.content">
         
