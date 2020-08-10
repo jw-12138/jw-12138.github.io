@@ -89,9 +89,6 @@ let app = new Vue({
             }
             Vue.nextTick(fn);
         },
-        reInitGitTalk: function () {
-            
-        },
         initGitTalk: function () {
             const gitalk = new Gitalk({
                 clientID: '5141110640537474b2ff',
