@@ -1,5 +1,3 @@
-
-
 <?xml version="1.0" encoding="utf-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">
     <title>一个球的博客</title>
@@ -7,7 +5,7 @@
     <link rel="alternate" type="text/html" href="https://jw12138.com/"/>
     <link href="https://jw12138.com/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://jw12138.com/"/>
-    <updated>2020-08-10T13:14:41Z</updated>
+    <updated>2020-08-10T13:38:14Z</updated>
     <id>https://jw12138.com/</id>
     <author>
     <name>Jacky Wong</name>
