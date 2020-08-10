@@ -30,6 +30,7 @@ let app = new Vue({
         updateCurrrentPage: function (view, id) {
             let _ = this
             _.showing_page = view
+            window.scrollTo(0, 0)
             if (view == 'index') {
                 _.clearCurrentPage()
                 _.changeBlogTitle()
@@ -73,7 +74,6 @@ let app = new Vue({
                         _.current_page.deprecated = list_arr[post_index].deprecated
                     }
                     _.updateHighLight()
-                    window.scrollTo(0, 0)
                     _.changeBlogTitle(_.current_page.title + ' - 一个球的博客')
                     _.handleImgClick()
                     _.initGitTalk()
@@ -164,6 +164,7 @@ let app = new Vue({
             _.blog_post_list = res.data.articles
             _.blog_page_list = res.data.pages
             _.blog_friends_list = res.data.links
+            _.showing_fake_list = false;
 
             _.initRouter()
         },
@@ -187,6 +188,7 @@ let app = new Vue({
         },
         init_button_show: true,
         show_fake_post: false,
+        showing_fake_list: true,
         current_page: {
             title: '',
             content: '',

@@ -272,6 +272,7 @@ header {
 
         .index_post_list {
             padding: 30px 0;
+            min-height: 600px;
 
             ul li {
                 margin-bottom: 40px;
@@ -801,6 +802,53 @@ span.deprecated {
 }
 
 @ddd: #ddd;
+
+.fake_list{
+    padding-top: 40px;
+    .li{
+        margin-bottom: 50px;
+    }
+    .title{
+        margin-bottom: 6px;
+        span{
+            background-color: darken(@ddd, 50%);
+            animation: shine 2s ease infinite;
+            display: inline-block;
+            height: 24px;
+            margin-right: 3px;
+        }
+    }
+    .date{
+        margin-bottom: 10px;
+        span{
+            width: 120px;
+            height: 14px;
+            background-color: @ddd;
+            animation: shine 2s ease infinite;
+            display: inline-block;
+        }
+    }
+    .sum{
+        margin-bottom: 10px;
+        span{
+            height: 14px;
+            background-color: darken(@ddd, 20%);
+            animation: shine 2s ease infinite;
+            display: inline-block;
+            margin-right: 3px;
+        }
+    }
+    .tags{
+        span{
+            height: 24px;
+            border-radius: 24px;
+            background-color: darken(@ddd, 10%);
+            animation: shine 2s ease infinite;
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+}
 
 .fake_post {
     .title {

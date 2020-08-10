@@ -244,6 +244,7 @@ header .slogan {
 }
 .wrap section.list .index_post_list {
   padding: 30px 0;
+  min-height: 600px;
 }
 .wrap section.list .index_post_list ul li {
   margin-bottom: 40px;
@@ -665,6 +666,50 @@ span.deprecated {
   font-weight: normal;
   font-style: italic;
   padding: 3px 5px;
+}
+.fake_list {
+  padding-top: 40px;
+}
+.fake_list .li {
+  margin-bottom: 50px;
+}
+.fake_list .title {
+  margin-bottom: 6px;
+}
+.fake_list .title span {
+  background-color: #5e5e5e;
+  animation: shine 2s ease infinite;
+  display: inline-block;
+  height: 24px;
+  margin-right: 3px;
+}
+.fake_list .date {
+  margin-bottom: 10px;
+}
+.fake_list .date span {
+  width: 120px;
+  height: 14px;
+  background-color: #ddd;
+  animation: shine 2s ease infinite;
+  display: inline-block;
+}
+.fake_list .sum {
+  margin-bottom: 10px;
+}
+.fake_list .sum span {
+  height: 14px;
+  background-color: #aaaaaa;
+  animation: shine 2s ease infinite;
+  display: inline-block;
+  margin-right: 3px;
+}
+.fake_list .tags span {
+  height: 24px;
+  border-radius: 24px;
+  background-color: #c4c4c4;
+  animation: shine 2s ease infinite;
+  display: inline-block;
+  margin-right: 5px;
 }
 .fake_post .title {
   margin-bottom: 10px;

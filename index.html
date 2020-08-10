@@ -54,7 +54,23 @@
                         <div class="wrap">
                             <section class="list">
                                 <div class="section_title">Posts</div>
-                                <div class="index_post_list">
+                                <div class="fake_list" v-if="showing_fake_list">
+                                    <div v-for="i in 10" class="li">
+                                        <div class="title">
+                                            <span v-for="j in getRandomInt(2, 6)" :style="{width: getRandomInt(100, 200) + 'px', 'animation-duration': getRandomInt(1000, 3000) + 'ms'}"></span>
+                                        </div>
+                                        <div class="date">
+                                            <span></span>
+                                        </div>
+                                        <div class="sum">
+                                            <span v-for="j in getRandomInt(5, 20)" :style="{width: getRandomInt(50, 200) + 'px','animation-duration': getRandomInt(1000, 3000) + 'ms'}"></span>
+                                        </div>
+                                        <div class="tags">
+                                            <span v-for="j in getRandomInt(1, 4)" :style="{width: getRandomInt(80, 180) + 'px','animation-duration': getRandomInt(1000, 3000) + 'ms'}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="index_post_list" v-else>
                                     <ul>
                                         <li v-for="(item, i) in blog_post_list">
                                             <a :href="'#/post/' + item.hash_url">
