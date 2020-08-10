@@ -356,6 +356,7 @@ header .slogan {
   text-decoration: underline;
   color: #333;
   word-break: break-all;
+  display: inline;
 }
 .page-content ol {
   list-style: decimal;
