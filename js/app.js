@@ -30,7 +30,6 @@ let app = new Vue({
         updateCurrrentPage: function (view, id) {
             let _ = this
             _.showing_page = view
-            window.scrollTo(0, 0)
             if (view == 'index') {
                 _.clearCurrentPage()
                 _.changeBlogTitle()
@@ -80,6 +79,7 @@ let app = new Vue({
                     _.show_fake_post = false
                     _.handleImgClick()
                     _.handleLinkClick()
+                    window.scrollTo(0, 0)
                 })
                 .catch(function (error) {
                     console.log(error);
