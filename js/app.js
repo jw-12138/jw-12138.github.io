@@ -30,6 +30,7 @@ let app = new Vue({
         updateCurrrentPage: function (view, id) {
             let _ = this
             _.showing_page = view
+            window.scrollTo(0, 0)
             if (view == 'index') {
                 _.clearCurrentPage()
                 _.changeBlogTitle()
