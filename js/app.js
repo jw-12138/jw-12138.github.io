@@ -79,6 +79,7 @@ let app = new Vue({
                     _.$forceUpdate()
                     _.show_fake_post = false
                     _.handleImgClick()
+                    _.handleLinkClick()
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -95,6 +96,20 @@ let app = new Vue({
                             let src = this.getAttribute('src')
                             window.open(window.location.origin + src)
                         })
+                    });
+                }
+            }
+            Vue.nextTick(fn);
+        },
+        handleImgClick: function () {
+            var _ = this;
+            let fn = function () {
+                let parent = document.querySelector('.page-content')
+                let a_arr = parent.querySelectorAll('a')
+                if(a_arr){
+                    a_arr.forEach(a => {
+                        a.setAttribute('target', '_blank');
+                        a.setAttribute('rel', 'noopener noreferrer');
                     });
                 }
             }
