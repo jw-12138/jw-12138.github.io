@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Noto+Sans+SC&display=swap" rel="stylesheet">
     <meta name="keywords" content="jw12138,一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影" id="keywords" />
     <meta name="description" content="Front-end Developer / Music Producer" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123373343-1"></script>
@@ -75,10 +75,7 @@
                                         <li v-for="(item, i) in blog_post_list">
                                             <a :href="'#/post/' + item.hash_url">
                                                 <div class="title">
-                                                    {{item.name}}&nbsp;
-                                                    <span class="deprecated" v-if="item.deprecated">
-                                                        已弃用
-                                                    </span>
+                                                    {{item.name}}<span class="deprecated" v-if="item.deprecated">Deprecated</span>
                                                 </div>
                                                 <div class="date" v-html="item.date"></div>
                                                 <div class="sum">{{item.summary}} ...</div>

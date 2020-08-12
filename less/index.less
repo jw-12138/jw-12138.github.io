@@ -141,6 +141,7 @@ footer {
         fill: #121212;
         width: 14px;
         margin: 0 3px;
+        transform: translateY(1px);
     }
 }
 
@@ -156,6 +157,10 @@ a {
 html,
 html * {
     box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans SC';
 }
 
 header {
@@ -298,9 +303,7 @@ header {
                         color: #333;
                         font-weight: bold;
                         margin-bottom: 10px;
-                        display: flex;
-                        align-items: center;
-                        height: 24px;
+                        line-height: 1.4;
                     }
 
                     .date {
@@ -515,7 +518,7 @@ header {
 
     pre {
         padding: 10px;
-        font-family: 'Fira Mono', 'Microsoft Yahei UI';
+        font-family: 'Fira Mono', 'Noto Sans SC' !important;
         margin-bottom: 10px;
         background-color: rgba(0, 0, 0, .03);
         overflow-x: auto;
@@ -524,6 +527,7 @@ header {
             background-color: transparent;
             font-size: 14px;
             margin: 0;
+            font-family: 'Fira Mono', 'Noto Sans SC' !important;
         }
     }
 
@@ -532,7 +536,7 @@ header {
         background-color: #ddd;
         color: #000;
         font-size: 14px;
-        font-family: 'Fira Mono', 'Microsoft Yahei UI';
+        font-family: 'Fira Mono', 'Noto Sans SC' !important;
         margin: 0 3px;
         display: inline;
         word-break: break-word;
@@ -571,7 +575,7 @@ header {
     overflow-x: auto;
     color: #383a42;
     background: #fafafa;
-    font-family: fira mono, microsoft yahei ui;
+    font-family: 'Fira Mono', 'Noto Sans SC';
     font-size: 14px;
     background: 0 0
 }
@@ -804,8 +808,11 @@ span.deprecated {
     font-size: 12px;
     font-weight: normal;
     font-style: italic;
-    padding: 3px 5px;
-    flex-shrink: 0;
+    padding: 1px 5px;
+    line-height: 1.2;
+    display: inline-block;
+    transform: translateY(-2px);
+    margin-left: 3px;
 }
 
 .page-deprecated {
