@@ -171,7 +171,7 @@ header .slogan {
   display: flex;
   border-right: 1px solid #333;
   height: 20px;
-  width: 80px;
+  padding: 0 20px;
   flex-shrink: 0;
   justify-content: center;
   align-self: center;
@@ -351,6 +351,14 @@ header .slogan {
 .page-content video {
   width: 100%;
   margin: 10px 0;
+}
+.page-content b {
+  font-weight: bold;
+  color: #000;
+}
+.page-content strong {
+  font-weight: bold;
+  color: #000;
 }
 .page-content a {
   text-decoration: underline;
