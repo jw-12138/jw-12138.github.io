@@ -101,7 +101,7 @@ let app = new Vue({
             }
             Vue.nextTick(fn);
         },
-        handleImgClick: function () {
+        handleLinkClick: function () {
             var _ = this;
             let fn = function () {
                 let parent = document.querySelector('.page-content')
