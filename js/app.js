@@ -1,7 +1,7 @@
 let app = new Vue({
     el: '#app',
-    calculated: function () {
-
+    calculated: {
+        
     },
     mounted: function () {
         let _ = this
@@ -15,8 +15,42 @@ let app = new Vue({
                 console.log(error);
                 alert('获取博客列表失败，请刷新页面重试');
             });
+        if(!_.getSystemLighting()){
+            _.lighting = false
+        }
+        if(_.getFollowSystem()){
+            _.follow_system = true
+        }
+        document.querySelector('body').classList.add('trans')
     },
     methods: {
+        getSystemLighting: function(){
+            let ls = window.localStorage;
+            if(ls.getItem('sys_lighting') == '1'){
+                return true
+            }
+            return false
+        },
+        lighting_settings_show_fun: function(){
+            let _ = this;
+            if(_.lighting_settings){
+                _.lighting_settings_top = true
+            }else{
+                setTimeout(() => {
+                    _.lighting_settings_top = false
+                }, 300);
+            }
+        },
+        getFollowSystem: function(){
+            let ls = window.localStorage;
+            if(ls.getItem('follow_sys') == '1'){
+                return true
+            }
+            return false
+        },
+        doNothing: function(){
+
+        },
         clearCurrentPage: function () {
             let _ = this
             _.current_page = {
@@ -194,6 +228,13 @@ let app = new Vue({
                 return false
             }
             document.querySelector('title').innerHTML = t
+        },
+        system_lighting: function(){
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return false
+            }else{
+                return true
+            }
         }
     },
     data: {
@@ -217,9 +258,38 @@ let app = new Vue({
             deprecated: false
         },
         menu_open: false,
-        menu_visible: false
+        menu_visible: false,
+        lighting: true,
+        lighting_settings: false,
+        follow_system: false,
+        lighting_settings_top: false,
+        follow_system_count: -1
     },
     watch: {
-
+        follow_system: function(e){
+            let _ = this;
+            let ls = window.localStorage
+            if(e){
+                ls.setItem('follow_sys', 1)
+                _.lighting = _.system_lighting()
+                _.follow_system_count = setInterval(() => {
+                    _.lighting = _.system_lighting()
+                }, 300);
+            }else{
+                ls.setItem('follow_sys', 0)
+                window.clearInterval(_.follow_system_count);
+            }
+        },
+        lighting: function(e){
+            let body = document.querySelector('body')
+            let ls = window.localStorage
+            if(!e){
+                body.classList.add('dark')
+                ls.setItem('sys_lighting', 0)
+            }else{
+                body.classList.remove('dark')
+                ls.setItem('sys_lighting', 1)
+            }
+        }
     }
 })
