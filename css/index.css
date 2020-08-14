@@ -794,7 +794,11 @@ widget.lighting {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 100%;
 }
 widget.lighting.off {
