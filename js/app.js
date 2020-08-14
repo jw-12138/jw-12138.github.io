@@ -26,10 +26,10 @@ let app = new Vue({
     methods: {
         getSystemLighting: function(){
             let ls = window.localStorage;
-            if(ls.getItem('sys_lighting') == '1'){
-                return true
+            if(ls.getItem('sys_lighting') == '0'){
+                return false
             }
-            return false
+            return true
         },
         lighting_settings_show_fun: function(){
             let _ = this;
