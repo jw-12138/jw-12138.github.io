@@ -891,6 +891,25 @@ widget.lighting svg {
     opacity: 1;
   }
 }
+.gt-header-preview ol {
+  list-style: decimal;
+  margin-bottom: 10px;
+  padding-left: 25px;
+}
+.gt-header-preview ol li {
+  list-style: decimal;
+}
+.gt-header-preview ul {
+  list-style: disc;
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+.gt-header-preview li {
+  list-style: disc;
+}
+.gt-header-preview {
+  width: 100%;
+}
 .dark {
   background-color: #121212;
 }
@@ -1139,8 +1158,76 @@ widget.lighting svg {
 .dark .gt-container .gt-comment-content:hover {
   box-shadow: 0 0.625em 3.75em 0 #383838;
 }
+.dark .gt-container .markdown-body .pl-smi,
+.dark .gt-container .markdown-body .pl-s .pl-s1 {
+  color: #bbc2c9;
+}
 .dark .gt-container .gt-header-preview {
   background-color: #383838;
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview p {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview a {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview h1 {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview h2 {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview h3 {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview h4 {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview h5 {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview h6 {
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview code {
+  background-color: #383838;
+  color: #ddd;
+}
+.dark .gt-container .gt-header-preview b {
+  color: #fff;
+}
+.dark .gt-container .gt-header-preview strong {
+  color: #fff;
+}
+.dark .gt-container .gt-header-preview blockquote {
+  color: #ddd;
+  border-color: #5f5f5f;
+}
+.dark .gt-container .gt-header-preview pre {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.dark .gt-container .gt-header-preview pre code {
+  background-color: transparent;
+}
+.dark .gt-container .gt-header-preview img {
+  opacity: 0.7;
+}
+.dark .gt-container .gt-header-preview ol {
+  list-style: decimal;
+  margin-bottom: 10px;
+  padding-left: 25px;
+}
+.dark .gt-container .gt-header-preview ol li {
+  list-style: decimal;
+}
+.dark .gt-container .gt-header-preview ul {
+  list-style: disc;
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+.dark .gt-container .gt-header-preview li {
+  list-style: disc;
 }
 .dark .gt-container .markdown-body .highlight pre,
 .dark .gt-container .markdown-body pre {
