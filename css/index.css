@@ -910,6 +910,9 @@ widget.lighting svg {
 .gt-header-preview {
   width: 100%;
 }
+.gt-container .gt-header-textarea {
+  font-family: 'Fira Mono', 'Noto Sans SC';
+}
 .dark {
   background-color: #121212;
 }
