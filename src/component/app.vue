@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import Vue from 'vue/dist/vue.js'
+import Vue from 'vue/dist/vue.min.js'
 import axios from 'axios'
 import base from '../js/base'
 import hljs from 'highlight.js'
