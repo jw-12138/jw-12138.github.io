@@ -1,0 +1,5 @@
+test.html
+node_modules
+node_modules/*
+build.sh
+server.js

@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/assets/posts/201812/a01.css">
+<p>记得刚毕业的时候找工作面试前端，面试官问了我这样一个问题：</p>
+<p><code>我现在需要一个搜索框，左边放input，右边放搜索按钮，搜索框固定120px，请你写一下布局。</code></p>
+<p>当时我的内心：”太简单了！“。</p>
+<p>于是我劈里啪啦敲了一堆：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo_wrap"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre><code class="css hljs"><span class="hljs-selector-class">.demo_wrap</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">600px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> auto;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">input</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">480px</span>;<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">button</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">120px</span>;<span class="hljs-attribute">border</span>:none;<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}</code></pre>
+<p>一个简单的搜索框就出来了，像这样：</p>
+<div class="demo">
+    <div class="demo_wrap1">
+        <input type="text"><button>search</button>
+    </div>
+</div>
+
+<p>然而面试官就是面试官，他又加了一个要求，<code>我需要适配多种设备的分辨率</code>。</p>
+<p>“切，看我CSS媒体查询一梭子！”</p>
+<pre><code class="css hljs">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1440px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1366px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1080px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">960px</span>){}
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">720px</span>){}
+<span class="hljs-comment">/*...*/</span></code></pre>
+<p>面试官看了后还是摇头：<code>“我要input随窗口大小变化而变化，而且button长度不变。”</code></p>
+<p>然后，</p>
+<p>我就，</p>
+<p>呆了，</p>
+<p>这他妈，</p>
+<p>怎么搞？？？</p>
+<p>你个犊子是来搞我的吗？？？</p>
+<p>嗯，理所当然的，这家公司没有面试上，（谁要去你家啊那么远）。</p>
+<p>（废话了一堆你到底要说什么啊？）</p>
+<pre><code class="css hljs"><span class="hljs-selector-tag">calc</span>(100% <span class="hljs-selector-tag">-</span> 120<span class="hljs-selector-tag">px</span>)</code></pre>
+<p>我要说的就是这个了。（催你🐎呢）</p>
+<p>改成这样之后，我的搜索框就变成了这样：</p>
+<div class="demo">
+    <div class="demo_wrap2">
+        <input type="text"><button>search</button>
+    </div>
+</div>
+
+<p>完整代码：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo_wrap"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre><code class="css hljs"><span class="hljs-selector-class">.demo_wrap</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> auto;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">input</span>{<span class="hljs-attribute">width</span>:<span class="hljs-built_in">calc</span>(100% - 120px);<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}
+<span class="hljs-selector-class">.demo_wrap</span> <span class="hljs-selector-tag">button</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">120px</span>;<span class="hljs-attribute">border</span>:none;<span class="hljs-attribute">height</span>:<span class="hljs-number">40px</span>;}</code></pre>
+<p>可以试试改变浏览器的大小来验证是否真的达到了那位面试官的要求。</p>
+<p><code>calc()</code>会让你的css也拥有计算能力，支持<code>+ 、- 、*、/</code>四种运算符（小学啦）。这个属性的应用很简单，不过有几点要注意一下：</p>
+<ol>
+<li>运算符左右一定要有空格，如果你写成<code>100%-5px</code>是不会工作的。</li>
+<li><code>calc</code>不要拼错（废话</li>
+<li>不要滥用<code>calc()</code>，能定实际数值就定实际数值，css的运算速度肯定是没有js快的。</li>
+</ol>
+<p>好了，今日份的blahblah结束！</p>
+<p>有问题可以在下面评论或者发邮件给我，我都看得到，现在刚开始人少，只要是前端上的，我能解决的问题，一定会回复的！</p>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jw1.dev/atom.xml

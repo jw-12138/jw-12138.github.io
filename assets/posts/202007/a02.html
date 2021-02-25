@@ -1,0 +1,173 @@
+<p>“？？？”</p>
+<p>“卧槽？”</p>
+<p>”嗯？“</p>
+<br>
+
+<p>是我，也是你，对不对？</p>
+<p>对于刚开始使用<a href="https://element.eleme.io/#/zh-CN" rel="noopener" target="_blank">ElementUI</a>的朋友们，我敢肯定90%的你们反应都是上面那样。</p>
+<p>先来看看那些官网没有讲过的玩法</p>
+<br>
+
+<blockquote>
+<p>Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库</p>
+</blockquote>
+<br>
+
+<h3>1. <code>el-scrollbar</code></h3>
+<p><img src="/assets/posts/202007/image-20200720172813301.png" alt="image-20200720172813301"></p>
+<p>不说废话，看官网的滚动条，很强有没有！</p>
+<p>有的朋友要说了，就这？完全可以写样式控制的呀！</p>
+<p>是的你没说错！</p>
+<br>
+
+<p>然而样式控制滚动条只能在使用chromium内核的浏览器上才能实现，简单来说就是，<strong>会导致用户体验不一致</strong>。</p>
+<p>一般JS库搞出来的虚拟滚动条又不如原生滚动条顺滑流畅而且极度不稳定。</p>
+<p>ElementUI滚动条的新思路可以说是既保留了原生滚动条的流畅性，又保证了几个主流浏览器上样式的一致性。</p>
+<p>具体用法很简单：</p>
+<pre><code class="html">&lt;el-scrollbar style="height:200px"&gt;
+    &lt;div class="your-content"&gt;
+        blah blah blah
+    &lt;/div&gt;
+&lt;/el-scrollbar&gt;</code></pre>
+<p>需要注意的就是<code>el-scrollbar</code>标签或者父级元素必须要有css: <code>height</code>属性，不然滚动条出不来，<code>max-height</code>是不管用的。</p>
+<p>至于原理，其实也很简单。只是在此之前我们都没有想到就是了：</p>
+<pre><code class="html">&lt;div class="scroll-bar-wrap" style="overflow:hidden;width:100%"&gt;
+    &lt;div class="scroll-bar" style="height:100px;overflow-y: scroll"&gt;
+        &lt;div class="content" style="height:200px"&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<blockquote>
+<ol>
+<li>获取页面滚动条的宽度</li>
+<li><code>.scroll-bar</code>的宽度设置为100% + 滚动条宽度，这样多出去的宽度会被scroll-bar-wrap给挡住</li>
+<li>接下来创建虚拟滚动条以及mount事件啥的</li>
+</ol>
+<p>由于滚动事件都是通过原生滚动条反馈出来的，所以使用感受上与原生无异。</p>
+</blockquote>
+<br>
+
+<h3>2. 表格中自定义行Class及选择框的开关</h3>
+<p>关于这块，文档里其实有列出来，但是没有demo，而我又不是很喜欢看文档的那种（该打），所以摸黑摸了一段时间。</p>
+<br>
+
+<p><strong>需求：首先他是个多选表格，然后用户可以点击行末按钮移除该列，但并不是立马移除，而且让这一行变灰，移除按钮要变成<code>已移除</code>文字，同时，前面的选择框也要变成不可选。</strong></p>
+<pre><code class="html">&lt;template&gt;
+    &lt;el-table :data="tableData" style="width: 100%" :row-class-name="getRowClassName"&gt;
+        &lt;el-table-column type="selection" :selectable="getRowDisabled"&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column prop="date" label="日期" width="180"&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column prop="name" label="姓名" width="180"&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column prop="address" label="地址"&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column label="操作"&gt;
+            &lt;template slot-scope="scope"&gt;
+
+                &lt;el-button v-if="!scope.row.deleted" size="mini" type="danger" 
+                @click="handleDelete(scope.$index, scope.row)"&gt;移除&lt;/el-button&gt;
+
+                &lt;span v-else&gt;已移除&lt;/span&gt;
+
+            &lt;/template&gt;
+        &lt;/el-table-column&gt;
+    &lt;/el-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+    export default {
+        data() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    deleted: false
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄',
+                    deleted: false
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄',
+                    deleted: false
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄',
+                    deleted: false
+                }]
+            }
+        },
+        methods() {
+            return {
+                getRowClassName: function(row){
+                    if (row.row.deleted) {
+                        return 'deleted';
+                    }
+                },
+                getRowDisabled: function(row){
+                    if (row.deleted) {
+                        return false;
+                    }else{
+                        return true
+                    }
+                },
+                handleDelete: function(index, row){
+                    var _this = this;
+                    _this.tableData[index].deleted = true
+                }
+            }
+        }
+    }
+&lt;/script&gt;</code></pre>
+<p>看起来很长一块代码，其实就三点需要注意一下：</p>
+<ol>
+<li><code>el-table</code>上加上<code>:row-class-name</code>来注册一个改变行class的方法，这样的话，<code>tableData</code>中<code>deleted</code>一旦发生改变，行class也会相应跟着变化</li>
+<li>在选择列上加上<code>:selectable</code>属性来注册一个改变选择状态的方法，<code>tableData</code>中<code>deleted</code>变成<code>false</code>时，此属性的值也变成<code>false</code>，这样这一行就不能被选中了。</li>
+<li>剩下就是按钮和文字的切换，这就不用我再多赘述了吧~</li>
+</ol>
+<br>
+
+<p>好的，接下来我们说</p>
+<h3>坑</h3>
+<h2>坑</h2>
+<h1>坑</h1>
+<p>是的，三个超大加粗的坑。</p>
+<br>
+
+<h3>1. 还是<code>el-scrollbar</code></h3>
+<p>世上没有完美的东西，是的，又流畅又保持了一致性的滚动条组件也是有缺点的。</p>
+<ul>
+<li><p>它不支持<code>max-height</code>属性，在一些特定场景上局限性非常大。</p>
+</li>
+<li><p>没有集成到ElementUI自己的组件中去，如：固定表头、表列的表格中使用的还是浏览器自带的滚动条，对于有强迫症开发者/用户简直就是…抓狂</p>
+<p>只留给开发者两条路：</p>
+<ul>
+<li>自己造轮子</li>
+<li>干脆不使用<code>el-scrollbar</code></li>
+</ul>
+</li>
+<li><p>稳定性有待优化，在目前项目使用中有小概率滚动条会出不来，具体原因没有去深究</p>
+</li>
+</ul>
+<br>
+
+<h3>2. <code>el-popconfirm</code></h3>
+<p><img src="/assets/posts/202007/image-20200720181336936.png" alt="image-20200720181336936"></p>
+<p>文档中定义的两个按钮事件，在目前版本(2.13.2)中是无效的。(或者只是我不会用，欢迎大佬指正</p>
+<br>
+
+<h3>3. <code>el-table</code></h3>
+<p><img src="/assets/posts/202007/image-20200720181527197.png" alt="image-20200720181527197"></p>
+<p>可能是reset CSS中的写法不同导致的样式错乱，这个问题在有固定列且数据复杂的表格中非常容易复现。</p>
+<br>
+
+<p>最后总结的话就是：</p>
+<p>如果你没有强迫症，对于这些小瑕疵持无所谓的态度，那我给你的建议是：直接上，不要犹豫！</p>
+<p>如果你是一个设计师兼前端程序员而且有重度强迫症不能忍受瑕疵，我的建议是：</p>
+<p><strong>自己写样式</strong>！</p>
+<p>如果领导坚持要用那你就说服他把上面那些缺点全都告诉他（嗯！</p>

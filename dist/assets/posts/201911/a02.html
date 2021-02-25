@@ -1,0 +1,57 @@
+<blockquote>
+<p> <strong>Visual Studio Code</strong>（简称<strong>VS Code</strong>）是一个由微软开发，同时支持Windows 、 Linux和macOS等操作系統且开放源代码的程式碼编辑器[4]，它支持測試，并内置了Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和代码重构等，该编辑器支持用户個性化配置，例如改变主题颜色、键盘快捷方式等各种属性和参数，同时还在编辑器中内置了扩展程序管理的功能。  </p>
+</blockquote>
+<p>2015年，VS Code发布了他的第一个版本，渐渐的，这个刚出世不久的代码编辑器就占领了大半江山。它的优点不计其数，各大论坛讲的天花乱坠，但也不是吹，VS Code确实有很多优点，<strong>但是</strong>，缺点也很明显：</p>
+<p><strong>基于Electron</strong></p>
+<p>为什么说基于Electron是他的缺点呢，对于一些电脑比较好的程序员来讲，可能感受不到，但是如果你的电脑是低压CPU，机械硬盘，内存也不大，你就能感觉到了——很卡，特别卡，尤其使用了一段时间之后，打开速度几乎和IDE无异。但是有时候你可能只是想用来编辑一个小文件，或者突然有了灵感，想记录下来，那么VS Code那接近半分钟的启动速度明显不是你想要的。今天就来教大家怎么加快VS Code的启动和优化它的运行速度。</p>
+<p>首先进入VS Code，按下<code>ctrl/cmd</code> +<code>,</code>进入设置，然后点击设置界面右上角的小图标，打开<code>settings.json</code>；</p>
+<p><img src="/assets/posts/201911/image-20191114135952765.png" alt="image-20191114135952765"></p>
+<ol>
+<li><p>关闭小地图或者关闭小地图的渲染真实字符</p>
+<pre><code class="json hljs">// 不渲染真实字符
+<span class="hljs-string">"editor.minimap.renderCharacters"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs">// 关闭小地图
+<span class="hljs-string">"editor.minimap.enabled"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭动画</p>
+<pre><code class="json hljs">// 关闭平滑滚动
+<span class="hljs-string">"editor.smoothScrolling"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs">// 关闭光标平滑滚动
+<span class="hljs-string">"editor.cursorSmoothCaretAnimation"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>缩进提示</p>
+<p><strong>如果您是初级程序员，建议保留。</strong></p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.renderIndentGuides"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭自动高亮</p>
+<pre><code class="json hljs">// 单击在某一字符串上的自动匹配高亮
+<span class="hljs-string">"editor.occurrencesHighlight"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs">// 选中在某一字符串上的自动匹配高亮
+<span class="hljs-string">"editor.selectionHighlight"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>鼠标hover时的弹窗</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.hover.enabled"</span>: <span class="hljs-literal">false</span></code></pre>
+<pre><code class="json hljs"><span class="hljs-string">"editor.hover.sticky"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭代码大纲（面包屑</p>
+<pre><code class="json hljs"><span class="hljs-string">"breadcrumbs.enabled"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>关闭颜色预览</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.colorDecorators"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+</ol>
+<p>以上7步如果全部做完，你的VS Code相对以前会快很多，如果想要更快，你还可以再添加以下配置：</p>
+<ol start="8">
+<li><p>括号配对高亮</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.matchBrackets"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+<li><p>当前行高亮</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.renderLineHighlight"</span>: <span class="hljs-string">"none"</span></code></pre>
+</li>
+<li><p>关闭链接的渲染</p>
+<pre><code class="json hljs"><span class="hljs-string">"editor.links"</span>: <span class="hljs-literal">false</span></code></pre>
+</li>
+</ol>
+<p>好了，以上就是我用VS Code一年多总结出来的经验，希望这篇文章有帮到你们！</p>
+<p>Happy coding!</p>
+<p>✌</p>
