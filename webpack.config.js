@@ -25,7 +25,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'assets'), to: path.resolve(__dirname, 'dist/assets') },
-        { from: path.resolve(__dirname, 'atom.xml'), to: path.resolve(__dirname, 'dist/atom.xml') }
+        { from: path.resolve(__dirname, 'atom.xml'), to: path.resolve(__dirname, 'dist/atom.xml') },
+        { from: path.resolve(__dirname, 'dist'), to: path.resolve(__dirname, 'docs') }
       ],
     })
 ],

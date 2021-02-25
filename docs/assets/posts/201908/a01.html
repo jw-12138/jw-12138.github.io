@@ -1,0 +1,196 @@
+<p>前段时间比较闲，顺便就开发了自己的音乐主页👉<a href="https://music.jw12138.com">https://music.jw12138.com(已下架)</a>，开发过程中遇到不少问题，一度以为解决不了，但是最后看来，其实实现都非常简单。</p>
+<p>首先看看html吧</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 或者 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">audio</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/mpeg"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span></code></pre>
+<p>这时候打开页面你会发现…什么都没有。</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span> <span class="hljs-attr">controls</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span></code></pre>
+<p>加上<code>controls</code>这个属性，浏览器才会显示原生的音频组件。至于浏览器兼容性我就不讲了，还是老样子扔个MDN链接在这里😁：<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility</a></p>
+<p>所以，搞定了？</p>
+<p>不！像我这种有强迫症的人，怎么可能让每个浏览器的显示都不一致！</p>
+<p>要做的第一件事情就是，隐藏<code>audio</code>的原生控制组件：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 去掉 controls --&gt;</span></code></pre>
+<p>(👆三遍了🤣</p>
+<p>然后用CSS将<code>audio</code> 移出文档流：</p>
+<pre><code class="css hljs"><span class="hljs-selector-tag">audio</span>{<span class="hljs-attribute">position</span>:fixed;<span class="hljs-attribute">top</span>:<span class="hljs-number">0</span>;<span class="hljs-attribute">left</span>:-<span class="hljs-number">12138px</span>;}</code></pre>
+<p>为什么要这么做？</p>
+<p>—— 为了避免一些非主流的浏览器会让<code>audio</code>在没有<code>controls</code>属性的情况下出现在不应该出现的地方。(好累</p>
+<p>接下来看JS的部分</p>
+<pre><code class="javascript hljs"><span class="hljs-keyword">let</span> audio = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'audio'</span>)
+
+<span class="hljs-comment">// 或者用jQuery</span>
+<span class="hljs-keyword">let</span> audio = $(<span class="hljs-string">'audio'</span>)
+
+<span class="hljs-built_in">console</span>.log(audio)</code></pre>
+<p>原生JavaScript在log下只能看到标签，而jQuery则会把所有和这个元素有关的东西都列出来，不论是有用的还是没有用的。但是知道有那么多属性/事件可以用是件好事，在这里说几样比较重要的。</p>
+<blockquote>
+<p>接下来js区域中的<code>audio</code>都是以原生js获取的对象，如果你使用jQuery，audio赋值应该为</p>
+<pre><code class="javascript hljs"><span class="hljs-keyword">let</span> audio = $($(<span class="hljs-string">'audio'</span>)[<span class="hljs-number">0</span>])</code></pre>
+</blockquote>
+<h3>audio.play()</h3>
+<p>可以调用此方法来播放音频。因为市面上大多数浏览器不允许直接用js触发音乐播放，必须要由用户来触发该事件(‘click’, ‘scroll’, ‘focus’, etc.)，所以我们可以加一个播放按钮来触发事件：</p>
+<pre><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/your/audio/file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"play"</span>&gt;</span>play<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 获取play button</span>
+<span class="hljs-keyword">let</span> playBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.play'</span>);
+
+<span class="hljs-comment">// 给play button添加点击事件</span>
+playBtn.addEventListener(<span class="hljs-string">'click'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// play button 点击后播放音频</span>
+    audio.play()
+})</code></pre>
+<h3>audio.pause() &amp; audio.paused</h3>
+<p>调用<code>audio.pause()</code>来暂停音频。</p>
+<p>调用<code>audio.paused</code>来获取音频暂停状态，<code>true</code>为暂停状态，<code>false</code>则为播放状态。</p>
+<p>比如我现在需要再点击一次play button来暂停音频，我们可以这样做：</p>
+<pre><code class="javascript hljs">playBtn.addEventListener(<span class="hljs-string">'click'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 点击后判断音频是否为暂停状态</span>
+    <span class="hljs-keyword">if</span>(audio.paused){
+
+        <span class="hljs-comment">// 如果audio.paused为true</span>
+        <span class="hljs-comment">// 则音频为暂停状态</span>
+        <span class="hljs-comment">// 这时候我们就要播放音频</span>
+        <span class="hljs-comment">// 同时修改button的文字为pause</span>
+        audio.play()
+        playBtn.innerHTML = <span class="hljs-string">'pause'</span>
+    }<span class="hljs-keyword">else</span>{
+
+        <span class="hljs-comment">// 如果audio.paused为false</span>
+        <span class="hljs-comment">// 则音频为播放状态</span>
+        <span class="hljs-comment">// 这时候我们就要暂停音频</span>
+        <span class="hljs-comment">// 同时修改button的文字为play</span>
+        audio.pause()
+        playBtn.innerHTML = <span class="hljs-string">'play'</span>
+    }
+})</code></pre>
+<h3>audio.currentTime</h3>
+<p>调用此属性获取音频当前已播放时间。</p>
+<p>修改此属性可以达到切换音频当前播放位置的功能：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 快进十秒</span>
+fastForward = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    audio.currentTime = audio.currentTime + <span class="hljs-number">10</span>
+}
+fastForward()</code></pre>
+<h3>audio.duration</h3>
+<p>调用此属性获取音频的长度，单位为秒。</p>
+<p><strong>已知问题</strong>：</p>
+<ol>
+<li>在<code>Firefox</code>上会出现读不到duration的情况，可能和修改<code>audio.src</code>有关，我在自己项目中的做法是使用了<code>ffmpeg</code>读取出duration，直接当作变量使用，没有使用浏览器给的这个属性。</li>
+</ol>
+<h3>audio.ontimeupdate</h3>
+<p>此方法在音频播放期间会循环调用，经测试，调用间隔大约为200ms一次。</p>
+<p>此方法可以用在更新音频进度条上。有了上面的<code>audio.currentTime</code>和<code>audio.duration</code>，我们可以算出当前音频播放进度的百分比：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 将百分比定为全局变量</span>
+<span class="hljs-keyword">let</span> audioProgressPercent = <span class="hljs-number">0</span>;
+audio.ontimeupdate = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 在audio时间更新的时候计算当前进度百分比</span>
+    audioProgressPercent = audio.currentTime / audio.duration
+    <span class="hljs-built_in">console</span>.log(audioProgressPercent)
+}</code></pre>
+<p>这个时候如果你打开页面开始播放音频，就会看到控制台一直在更新进度百分比了，至于这个数值怎么用，不用我教大家了吧。😁</p>
+<h3>audio.buffered</h3>
+<p>调用此属性可以获取当前音频的缓冲进度和区间：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 每200ms获取一次缓冲区间</span>
+<span class="hljs-keyword">let</span> bufferedTimeInterval = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 缓冲可以有多个区间</span>
+    <span class="hljs-comment">// 所以我们尽量都获取到</span>
+    <span class="hljs-keyword">let</span> bufferedLength = audio.buffered.length
+
+    <span class="hljs-comment">// 以bufferedLength做循环</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; bufferedLength; i++) {
+        <span class="hljs-keyword">let</span> bufferedStart = audio.buffered.start(i)
+        <span class="hljs-keyword">let</span> bufferedEnd = audio.buffered.end(i)
+        <span class="hljs-built_in">console</span>.log(bufferedStart, bufferedEnd)
+    }
+},<span class="hljs-number">200</span>)</code></pre>
+<p>控制台输出：</p>
+<pre><code class="text">&gt; 0 17.64
+  56.45 78.90</code></pre>
+<p>输出的含义为：</p>
+<p>这一次读取<code>audio.buffered</code>得到了两个区间，所以循环了两次。</p>
+<p>第一次获得的区间是<code>[0,17.64]</code>，代表第0秒到第17.64秒之间的音频已经缓冲好了，可以直接播放。</p>
+<p>第二次获得的区间是<code>[56.45,78.90]</code>，代表这两个数字之间的音频已经缓冲好了，可以直接播放。</p>
+<h3>audio.onwaiting &amp; audio.onplay</h3>
+<p><code>audio.onwaiting</code>会在音频开始缓冲的时候被激活；</p>
+<p><code>audio.onplay</code>会在音频开始播放的时候被激活；</p>
+<p>这时候我们可以做一个loading的动画，告诉用户音频正在加载了：</p>
+<pre><code class="javascript hljs">audio.onwaiting = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'audio is loading'</span>)
+    <span class="hljs-comment">// 在这里激活loading动画</span>
+}
+audio.onplay = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'audio is playing'</span>)
+    <span class="hljs-comment">// 在这里关闭loading动画</span>
+}</code></pre>
+<h3>audio.ended &amp; audio.src</h3>
+<p><code>audio.ended</code>顾名思义，会在音频结束后被激活；</p>
+<p><code>audio.src</code>是音频文件的位置，可修改；</p>
+<p>当你有一个播放列表，且想在音频结束后播放下一首歌，你就可以：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 定义播放列表</span>
+<span class="hljs-keyword">let</span> playList = [
+    <span class="hljs-string">'path/to/song1'</span>,
+    <span class="hljs-string">'path/to/song2'</span>,
+    <span class="hljs-string">'path/to/song3'</span>
+]
+
+<span class="hljs-comment">// 定义当前播放歌曲的ID</span>
+<span class="hljs-keyword">let</span> currentSongID = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">// 音频结束后自动播放下一首</span>
+audio.onended = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    <span class="hljs-comment">// 更新当前播放歌曲的ID</span>
+    currentSongID = currentSongID + <span class="hljs-number">1</span>
+
+    <span class="hljs-comment">// 如果当前播放歌曲为播放列表中最后一首</span>
+    <span class="hljs-comment">// 就从第一首开始放</span>
+    <span class="hljs-keyword">if</span>(currentSongID &gt;= playList.length){
+        currentSongID = <span class="hljs-number">0</span>
+    }
+
+    <span class="hljs-comment">// 改变audio的src属性</span>
+    audio.src = playList[currentSongID]
+    audio.play()
+}</code></pre>
+<p>哦还有！</p>
+<h3>audio.volume</h3>
+<p>调用获取音频的音量，可修改；</p>
+<p>可以做点fade in / fade out的效果，使用jQuery可以很简单的做出来，原文中也有原生js的实现方法(太长没看</p>
+<blockquote>
+<pre><code class="javascript hljs">$audio.animate({<span class="hljs-attr">volume</span>: newVolume}, <span class="hljs-number">1000</span>)</code></pre>
+</blockquote>
+<p>原文链接：<a href="https://stackoverflow.com/questions/7451508/html5-audio-playback-with-fade-in-and-fade-out">https://stackoverflow.com/questions/7451508/html5-audio-playback-with-fade-in-and-fade-out</a></p>
+<p>好了，以上就是我开发音乐主页之后想和大家分享的。</p>
+<p>至于题中的问题，我的答案是：真的很简单。</p>
+<p>只是js有一些性能上的限制，不能什么功能都往网页上搬…</p>
+<p>在我的音乐主页中有一个砍掉的功能</p>
+<p>—— 节拍器</p>
+<p>为啥砍掉了呢…</p>
+<p>因为js的处理效率真的不高(或者只是我太辣鸡)，中低端手机做出来的节拍器根本不准，至于实现原理，很简单：</p>
+<p>歌曲的bpm(beat per minute)是已知的：</p>
+<pre><code class="javascript hljs"><span class="hljs-comment">// 假设现在我有一首歌bpm为120</span>
+<span class="hljs-keyword">let</span> bpm = <span class="hljs-number">120</span>
+
+<span class="hljs-comment">// 每40毫秒更新一次，目的是让bpm更新不低于24fps</span>
+<span class="hljs-comment">// 然而中低端手机的效果却不尽人意</span>
+<span class="hljs-comment">// pc端倒是没啥问题</span>
+<span class="hljs-keyword">let</span> bpmTimeInterval = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-comment">// 计算每秒有多少beats</span>
+    <span class="hljs-keyword">let</span> interval = bpm / <span class="hljs-number">60</span>
+
+    <span class="hljs-comment">// _b会在时间线呈现出一个锯齿状的图形</span>
+    <span class="hljs-comment">// 最高那个点，也就是齿尖，就是一个beat</span>
+    <span class="hljs-keyword">let</span> _b = audio.currentTime % interval
+    <span class="hljs-comment">// ...</span>
+},<span class="hljs-number">40</span>)</code></pre>
+<p>希望有一天js能有开发Digital Audio Workstation的能力！</p>
+<p>✌</p>
