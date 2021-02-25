@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     publicPath: ASSET_PATH,
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     filename: '[name].js'
   },
   devServer: {
@@ -24,9 +24,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: path.resolve(__dirname, 'assets'), to: path.resolve(__dirname, 'dist/assets') },
-        { from: path.resolve(__dirname, 'atom.xml'), to: path.resolve(__dirname, 'dist/atom.xml') },
-        { from: path.resolve(__dirname, 'dist'), to: path.resolve(__dirname, 'docs') }
+        { from: path.resolve(__dirname, 'assets'), to: path.resolve(__dirname, 'docs/assets') },
+        { from: path.resolve(__dirname, 'atom.xml'), to: path.resolve(__dirname, 'docs/atom.xml') }
       ],
     })
 ],
