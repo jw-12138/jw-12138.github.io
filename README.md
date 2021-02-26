@@ -4,6 +4,9 @@
 
 #### 最近的文章  
 
+- [Ableton Live 11, 那些你不知道的小事情](https://jw1.dev/#/post/202102-a01.html)  
+  > 24号一大早就收到Ableton的邮件，Live 11经过了三个月的公测终于出了正式版，二话不说，直接从床上蹦起来去下载正式版安装包...  
+
 - [Trackspacer值得买吗？](https://jw1.dev/#/post/202012-a01.html)  
   > Trackspacer是一个18年发布的VST插件，最近却突然爆火，几乎各大平台 (Splice, PluginBoutique, etc.) 都可以看到他的身影。那对于标题的提问，作者的想法是什么呢？...  
 

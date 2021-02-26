@@ -1,6 +1,15 @@
 {
   "articles": [
     {
+      "id": 20210226,
+      "name": "Ableton Live 11, 那些你不知道的小事情",
+      "date": "2021-02-26",
+      "hash_url": "202102-a01.html",
+      "original": true,
+      "summary": "24号一大早就收到Ableton的邮件，Live 11经过了三个月的公测终于出了正式版，二话不说，直接从床上蹦起来去下载正式版安装包",
+      "tags": ["编曲", "DAW"]
+    },
+    {
       "id": 20201207,
       "name": "Trackspacer值得买吗？",
       "date": "2020-12-07",
