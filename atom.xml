@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jw1.dev/</id>
     <title>Jacky's Blog</title>
-    <updated>2021-02-26T06:10:29.610Z</updated>
+    <updated>2021-02-26T06:16:19.331Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Jacky Wong</name>
@@ -27,21 +27,21 @@
 <p>第一次经历DAW的大版本更新还是有点激动的，感觉这次Live更新主要是针对MPE和录音优化(Comping)，而且还添加了几个非常不错的Device(音频插件)，可以说是诚意满满。除了官方说的这些优化，个人在实际使用中也发现了一些相比Live 10更加优秀的小细节。  </p>
 <h3 id="ui在缩放情况下造成的卡顿已经修复">UI在缩放情况下造成的卡顿已经修复</h3>
 <p>这一点在我之前的博客中有提到，显然这一问题在新版本中得到了解决。</p>
-<p><video src="https://jw1.dev/assets/posts/202102/1.mp4" muted autoplay loop></video></p>
+<p><video src="https://jw1.dev/assets/posts/202102/1.mp4" muted autoplay loop playsinline></video></p>
 <h3 id="性能提升">性能提升</h3>
 <ul>
-<li><p>音频加载<br />在没有.asd文件的情况下，Live 11加载音频的速度明显要快很多<br /><video src="https://jw1.dev/assets/posts/202102/2.mp4" muted autoplay loop></video></p>
+<li><p>音频加载<br />在没有.asd文件的情况下，Live 11加载音频的速度明显要快很多<br /><video src="https://jw1.dev/assets/posts/202102/2.mp4" muted autoplay loop playsinline></video></p>
 </li>
-<li><p>自带插件加载<br />在没有预加载的情况下，一些自带插件的加载速度明显快了不少，几乎就是瞬间加载完成<br /><video src="https://jw1.dev/assets/posts/202102/3.mp4" muted autoplay loop></video></p>
+<li><p>自带插件加载<br />在没有预加载的情况下，一些自带插件的加载速度明显快了不少，几乎就是瞬间加载完成<br /><video src="https://jw1.dev/assets/posts/202102/3.mp4" muted autoplay loop playsinline></video></p>
 </li>
-<li><p>文件indexing速度提升<br />以前添加一个音效库Live都要扫描半天，更新后直接起飞<br /><video src="https://jw1.dev/assets/posts/202102/4.mp4" muted autoplay loop></video></p>
+<li><p>文件indexing速度提升<br />以前添加一个音效库Live都要扫描半天，更新后直接起飞<br /><video src="https://jw1.dev/assets/posts/202102/4.mp4" muted autoplay loop playsinline></video></p>
 </li>
 </ul>
 <h3 id="用户体验">用户体验</h3>
 <ul>
-<li><p>可以单独显示每轨占用的CPU资源<br />在Arrangement视图下点击右下角新增的<code>C</code>字按钮即可显示<br /><video src="https://jw1.dev/assets/posts/202102/5.mp4" muted autoplay loop></video></p>
+<li><p>可以单独显示每轨占用的CPU资源<br />在Arrangement视图下点击右下角新增的<code>C</code>字按钮即可显示<br /><video src="https://jw1.dev/assets/posts/202102/5.mp4" muted autoplay loop playsinline></video></p>
 </li>
-<li><p>Comping并不只是适用于音频，MIDI也一样可以用<br /><video src="https://jw1.dev/assets/posts/202102/6.mp4" muted autoplay loop></video></p>
+<li><p>Comping并不只是适用于音频，MIDI也一样可以用<br /><video src="https://jw1.dev/assets/posts/202102/6.mp4" muted autoplay loop playsinline></video></p>
 </li>
 </ul>
 <h3 id="总结">总结</h3>
