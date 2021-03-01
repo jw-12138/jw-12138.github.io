@@ -216,7 +216,7 @@ export default {
         }
       }
 
-      if (spec) {
+      if (typeof spec == 'string' && spec != '') {
         if (spec == 'on') {
           _on()
         } else {
