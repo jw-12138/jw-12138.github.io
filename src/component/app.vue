@@ -159,13 +159,13 @@ export default {
       .get(__ASSET + 'data.json')
       .then(function(res) {
         _.renderList(res)
+        document.querySelector('body').classList.add('trans')
       })
       .catch(function(error) {
         console.log(error)
         alert('获取博客列表失败，请刷新页面重试')
       })
     _.resizeFunc()
-    document.querySelector('body').classList.add('trans')
     window.onresize = function() {
       _.resizeFunc()
     }
