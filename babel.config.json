@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "android": "4.0",
+          "ie": "9"
+        }
+      }
+    ]
+  ],
+  "plugins": [],
+  "comments": false,
+  "minified": true
+}
