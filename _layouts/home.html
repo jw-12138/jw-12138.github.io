@@ -24,12 +24,12 @@
                   <div class="section_title" title="Below is the blog list">POSTS</div>
                   <div class="index_post_list">
                     <ul>
-                      {% for item in site.data.data.posts %}
+                      {% for item in site.posts %}
                       <li>
-                        <a href="{{ item.url }}">
-                          <div class="title">{{ item.name }} {%if item.deprecated %} <span class="deprecated">DEPRECATED</span> {% endif %}</div>
-                          <div class="date">{{ item.date }}</div>
-                          <div class="sum" title="This is blog summary">{{ item.summary }}</div>
+                        <a href="{{ item.id }}.html">
+                          <div class="title">{{ item.title }} {%if item.deprecated %} <span class="deprecated">DEPRECATED</span> {% endif %}</div>
+                          <div class="date">{{ item.date | date: "%Y-%m-%d" }}</div>
+                          <div class="sum" title="This is blog summary">{{ item.excerpt | strip_html | truncatewords: 20 }}</div>
                           <div class="tag" title="These are blog tags">
                             {% for tag in item.tags %}
                             <span>{{tag}}</span>
