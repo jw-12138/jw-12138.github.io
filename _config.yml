@@ -26,5 +26,3 @@ defaults:
       layout: page
       show_date: true
       original: true
-
-theme: jekyll-theme-cayman
