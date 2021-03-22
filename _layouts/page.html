@@ -43,6 +43,18 @@
               </div>
             </div>
           </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              {% for item in site.data.data.pages %}
+              <li>
+                <a href="{{item.url}}" class="dontread" title="{{item.name}}">{{item.icon}} {{item.name}}</a>
+              </li>
+              {% endfor %}
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
         </div>
         {% include footer.html %}
       </div>
