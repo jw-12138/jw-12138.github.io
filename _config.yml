@@ -13,6 +13,7 @@ plugins:
 
 feed:
   path: atom.xml
+  posts_limit: 5000
 
 markdown: CommonMarkGhPages
 
