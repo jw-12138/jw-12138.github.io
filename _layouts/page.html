@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{page.title}} - {{site.title}}</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css" />
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影,{{page.tags}}" id="keywords" />
+    <meta name="description" content="Front-end Developer / Music Producer" />
+    {% if page.style %}
+    <style>
+      {{page.style}}
+    </style>
+    {%endif%}
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        {% include header.html %}
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <h2 class="page-header">{{page.title}}</h2>
+                {%if page.deprecated%}
+                <span class="page-deprecated"> This article might contains outdated or misleading contents due to it is tagged as "Deprecated" by its author. </span>
+                {%endif%} {%if page.show_date%}
+                <div class="page-date">
+                  <span>👨‍💻 {{page.date | date: "%Y-%m-%d"}}</span>
+                  {% if page.modified %}
+                  <span> <br />✍ {{page.modified}}</span>
+                  {%endif%}
+                </div>
+                {%endif%}
+                <div class="page-content">{{ content }}</div>
+                <div class="page-original">
+                  <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        {% include footer.html %}
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/components/appAudio.js"></script>
+    <script src="/assets/js/components/appAudioDiff.js"></script>
+    <script src="/assets/js/post.js"></script>
+  </body>
+</html>

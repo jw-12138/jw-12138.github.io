@@ -1,0 +1,28 @@
+title: Jacky's Blog
+description: Frontend Developer / Music Producer
+baseurl: '/'
+url: 'https://jw1.dev'
+github_username: jw-12138
+
+exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json']
+
+plugins:
+  - jekyll-feed
+
+feed:
+  path: atom.xml
+
+markdown: CommonMarkGhPages
+
+defaults:
+  - scope:
+      path: '/_assets/img'
+    values:
+      image: true
+  - scope:
+      path: ''
+      type: posts
+    values:
+      layout: page
+      show_date: true
+      original: true

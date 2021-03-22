@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{site.title}}</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css">
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影" id="keywords" />
+    <meta name="description" content="Front-end Developer / Music Producer" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        {% include header.html %}
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <section class="list">
+                  <div class="section_title" title="Below is the blog list">POSTS</div>
+                  <div class="index_post_list">
+                    <ul>
+                      {% for item in site.data.data.posts %}
+                      <li>
+                        <a href="{{ item.url }}">
+                          <div class="title">{{ item.name }} {%if item.deprecated %} <span class="deprecated">DEPRECATED</span> {% endif %}</div>
+                          <div class="date">{{ item.name }}</div>
+                          <div class="sum" title="This is blog summary">{{ item.summary }}</div>
+                          <div class="tag" title="These are blog tags">
+                            {% for tag in item.tags %}
+                            <span>{{tag}}</span>
+                            {% endfor %}
+                          </div>
+                        </a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </section>
+                <section class="friends">
+                  <div class="section_title" title="Below are my friends links">FRIENDS</div>
+                  <div class="index_friends_list">
+                    <ul>
+                      {% for item in site.data.data.links %}
+                      <li>
+                        <a href="{{item.url}}" target="_blank" rel="friend colleague">
+                          <div class="title">{{ item.name }}</div>
+                        </a>
+                        <span>- {{ item.slogan }}</span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              {% for item in site.data.data.pages %}
+              <li>
+                <a href="{{item.url}}" class="dontread" title="{{item.name}}">{{item.icon}} {{item.name}}</a>
+              </li>
+              {% endfor %}
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        {% include footer.html %}
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+  </body>
+</html>
