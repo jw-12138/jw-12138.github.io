@@ -6,6 +6,8 @@ github_username: jw-12138
 
 exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json']
 
+include: ['favicon.png', 'favicon_w.png']
+
 plugins:
   - jekyll-feed
 
