@@ -24,7 +24,7 @@
                   <div class="section_title" title="Below is the blog list">POSTS</div>
                   <div class="index_post_list">
                     <ul>
-                      {% for item in site.posts %}
+                      {% for item in paginator.posts %}
                       <li>
                         <a href="{{ item.id }}.html">
                           <div class="title">{{ item.title }} {%if item.deprecated %} <span class="deprecated">DEPRECATED</span> {% endif %}</div>
@@ -39,6 +39,23 @@
                       </li>
                       {% endfor %}
                     </ul>
+                    <div class="paginate">
+                      {% if paginator.total_pages > 1 %}
+                      <ul>
+                        {% if paginator.previous_page %}
+                        <li>
+                          <a href="{{ paginator.previous_page_path }}">Newer</a>
+                        </li>
+                        {% endif %}
+                        {% if paginator.next_page %}
+                        <li>
+                          <a href="{{ paginator.next_page_path }}">Older</a>
+                        </li>
+                        {% endif %}
+                      </ul>
+                      {% endif %}
+                      {{paginator.page}} / {{paginator.total_pages}}
+                    </div>
                   </div>
                 </section>
                 <section class="friends">

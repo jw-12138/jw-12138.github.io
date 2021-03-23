@@ -10,12 +10,19 @@ include: ['favicon.png', 'favicon_w.png']
 
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
 
 feed:
   path: atom.xml
   posts_limit: 5000
 
 markdown: CommonMarkGhPages
+
+pagination:
+  enabled: true
+  per_page: 10
+  sort_reverse: true
+  permalink: '/page/:num/'
 
 defaults:
   - scope:
