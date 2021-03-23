@@ -29,7 +29,13 @@
                         <a href="{{ item.id }}.html">
                           <div class="title">{{ item.title }} {%if item.deprecated %} <span class="deprecated">DEPRECATED</span> {% endif %}</div>
                           <div class="date">{{ item.date | date: "%Y-%m-%d" }}</div>
-                          <div class="sum" title="This is blog summary">{{ item.excerpt | strip_html | truncatewords: 20 }}</div>
+                          <div class="sum" title="This is blog summary">
+                            {%if item.desc%}
+                            {{item.desc}}
+                            {%else%}
+                            {{ item.excerpt | strip_html | truncatewords: 20 }}
+                            {%endif%}
+                          </div>
                           <div class="tag" title="These are blog tags">
                             {% for tag in item.tags %}
                             <span>{{tag}}</span>
