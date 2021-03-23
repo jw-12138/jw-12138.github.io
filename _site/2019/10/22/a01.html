@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub OAuth App怎么跳转到用户授权之前的页面？ - Jacky's Blog</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css" />
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影,GitHub,OAuth,Web App" id="keywords" />
+    <meta name="description" content="Frontend Developer / Music Producer" />
+    
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        <header>
+  <div class="logo">
+    <a href="/" title="Click here to navigate homepage" id="header">
+      <div class="img">
+        <img src="/assets/img/logo-black.png" alt="logo" class="dark" />
+        <img src="/assets/img/logo.png" alt="logo" class="light" />
+      </div>
+    </a>
+  </div>
+  <div class="slogan" ref="slogan">
+    Frontend Developer / Music Producer
+  </div>
+  <div class="page-small-menu" v-if="page_small">
+    <ul>
+      
+      <li>
+        <a href="/about/">About Me</a>
+      </li>
+      
+      <li>
+        <a href="/atom.xml" target="_blank">RSS</a>
+      </li>
+    </ul>
+  </div>
+</header>
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <h2 class="page-header">GitHub OAuth App怎么跳转到用户授权之前的页面？</h2>
+                 
+                <div class="page-date">
+                  <span>👨‍💻 2019-10-22</span>
+                  
+                  <span> <br />✍ 2019-12-10</span>
+                  
+                </div>
+                
+                <div class="page-content"><p>最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等...</p>
+<p>但是他们好像都忽略了一个问题：</p>
+<p>—— <strong>在获取Token或者用户信息之后，客户端要怎么跳转回用户授权之前的页面？</strong></p>
+<p>先声明一下，这篇文章不会教你怎么注册或使用GitHub OAuth App，如果你还不熟悉它，可以先阅读一下<a href="https://developer.github.com/apps/building-oauth-apps/">官方文档</a>，如果你不太喜欢英语，可以看看阮一峰的<a href="http://www.ruanyifeng.com/blog/2019/04/github-oauth.html">GitHub OAuth 第三方登录示例教程</a>或者其他大佬/论坛的教程。</p>
+<p>好了，先看一下GitHub OAuth的流程：</p>
+<ol>
+<li>浏览器带 <code>client_id</code> 和 <code>redirect_uri</code> 跳转到GitHub</li>
+<li>用户授权</li>
+<li>如果用户同意授权，GitHub会返回一个<code>code</code>参数，形式为 <code>https://redirect_uri?code=xxxxxxxxxxxxx</code></li>
+<li>客户端带<code>code</code> <code>client_id</code> 和 <code>client_secret</code>发送POST请求到GitHub获取 <code>token</code></li>
+<li>客户端使用 <code>token</code> 获取用户信息</li>
+</ol>
+<p>如果用URL的跳转来表现的话大概就是这样：</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blog.com/post/01.html
+    ----&gt;
+https://github.com/login/oauth/authorize?client_id=xxx&amp;redirect_uri=xxx
+    ----&gt;
+api.blog.com/?code=xxx        # api.blog.com就是你填在GitHub OAuth App的Callback URL
+    ----&gt; POST
+https://github.com/login/oauth/access_token
+    ----&gt;
+???
+</code></pre></div></div>
+<p>对！问题来了！</p>
+<p>怎么跳转？跳哪里？</p>
+<p>作为开发者，我肯定是想跳回<code>blog.com/post/01.html</code>实现无缝体验对吧...</p>
+<p>然而就这个问题，不管是CSDN，还是Stack Overflow，甚至官方文档，</p>
+<p><strong>全都没有！</strong></p>
+<p>终于，在死了不知道多少脑细胞后，我想出了如下实现过程：</p>
+<ol>
+<li>
+<p>假设用户在<code>blog.com/post/01.html</code>这张页面上点击了GitHub登录按钮，这个登录按钮不要直接跳转到GitHub授权页面，先跳转到你自己设置的GitHub OAuth App的Callback URL，这里假设是<code>api.blog.com</code>，把当前页面的URL传给<code>api.blog.com</code>，例如：<code>api.blog.com?url=blog.com/post/01.html</code></p>
+</li>
+<li>
+<p>这样在跳转到<code>api.blog.com</code>的时候，你就知道了点击登录的是哪张页面了，这时候可以把传过来URL记录到<code>localStorage</code>或者Cookie，甚至是后端的Session，反正不管怎么样，找个地方记录一下就可以了，因为这时候我们还要跳转到<code>github.com</code>，不记录的话就丢失了数据</p>
+</li>
+<li>
+<p>用户在<code>github.com</code>完成授权后，还是会跳转到<code>api.blog.com</code>，因为跳转前记录了授权前传来的页面URL，在你获取到Token之后，你可以把URL再读取出来：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// localStorage 这么用</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">URL</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Cookie 这么用</span>
+<span class="c1">// 这个function w3c抄来的</span>
+<span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">cname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">cname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">=</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">ca</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">;</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">c</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="dl">""</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">getCookie</span><span class="p">(</span><span class="dl">'</span><span class="s1">URL</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+</ol>
+<p>获取用户信息的请求可以在<code>api.blog.com</code>做，也可以像我一样带着<code>token</code>回到<code>blog.com/post/01.html</code>去做。</p>
+<p>因为自己的博客~~URL特殊，又是Hash又是URL Param~~(原本是单页App，现在已调整为纯静态，但是不影响思路)，而且也不想用户在回到页面的时候，URL后面跟着一个长长的<code>token</code>，我还新加了一个跳转页面 <code>blog.com/r.html</code>，这个页面负责接收<code>token</code>和跳转的页面，将<code>token</code>写入浏览器存储（上面说的<code>localStorage</code>或者Cookie）之后再进行跳转，在<code>blog.com/post/01.html</code>完成用户信息的调用后删除记录在浏览器存储里面的<code>token</code>。</p>
+<p><img src="/p_assets/201910/nice.gif" alt="" /></p>
+<p>虽然流程跑通了，但是我还是很好奇为什么GitHub官方文档里完全找不到这一部分的说明，在搜索引擎上也找不到相关文章...</p>
+<p>随便吧，现在看起来，只能这样解决...</p>
+</div>
+                <div class="page-original">
+                  <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              
+              <li>
+                <a href="/about/" class="dontread" title="About Me">👦 About Me</a>
+              </li>
+              
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <footer>© <span class="copy_right_year">2018 - 2021</span><a href="/" class="footer-link">Jacky's Blog</a>code with ❤</footer>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/components/appAudio.js"></script>
+    <script src="/assets/js/components/appAudioDiff.js"></script>
+    <script src="/assets/js/post.js"></script>
+  </body>
+</html>

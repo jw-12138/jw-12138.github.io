@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑 - Jacky's Blog</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css" />
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影,ElementUI,Vue,前端工具" id="keywords" />
+    <meta name="description" content="Frontend Developer / Music Producer" />
+    
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        <header>
+  <div class="logo">
+    <a href="/" title="Click here to navigate homepage" id="header">
+      <div class="img">
+        <img src="/assets/img/logo-black.png" alt="logo" class="dark" />
+        <img src="/assets/img/logo.png" alt="logo" class="light" />
+      </div>
+    </a>
+  </div>
+  <div class="slogan" ref="slogan">
+    Frontend Developer / Music Producer
+  </div>
+  <div class="page-small-menu" v-if="page_small">
+    <ul>
+      
+      <li>
+        <a href="/about/">About Me</a>
+      </li>
+      
+      <li>
+        <a href="/atom.xml" target="_blank">RSS</a>
+      </li>
+    </ul>
+  </div>
+</header>
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <h2 class="page-header">ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</h2>
+                 
+                <div class="page-date">
+                  <span>👨‍💻 2020-07-20</span>
+                  
+                </div>
+                
+                <div class="page-content"><p>“？？？”</p>
+<p>“卧槽？”</p>
+<p>”嗯？“</p>
+<p>是我，也是你，对不对？</p>
+<p>对于刚开始使用<a href="https://element.eleme.io/#/zh-CN">ElementUI</a>的朋友们，我敢肯定 90%的你们反应都是上面那样。</p>
+<p>先来看看那些官网没有讲过的玩法</p>
+<blockquote>
+<p>Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库</p>
+</blockquote>
+<h3 id="codeel-scrollbarcode">1. <code>el-scrollbar</code></h3>
+<p><img src="/p_assets/202007/image-20200720172813301.png" alt="image-20200720172813301" /></p>
+<p>不说废话，看官网的滚动条，很强有没有！</p>
+<p>有的朋友要说了，就这？完全可以写样式控制的呀！</p>
+<p>是的你没说错！</p>
+<p>然而样式控制滚动条只能在使用 chromium 内核的浏览器上才能实现，简单来说就是，<strong>会导致用户体验不一致</strong>。</p>
+<p>一般 JS 库搞出来的虚拟滚动条又不如原生滚动条顺滑流畅而且极度不稳定。</p>
+<p>ElementUI 滚动条的新思路可以说是既保留了原生滚动条的流畅性，又保证了几个主流浏览器上样式的一致性。</p>
+<p>具体用法很简单：</p>
+<pre><code>&lt;el-scrollbar style=&quot;height:200px&quot;&gt;
+    &lt;div class=&quot;your-content&quot;&gt;
+        blah blah blah
+    &lt;/div&gt;
+&lt;/el-scrollbar&gt;
+</code></pre>
+<p>需要注意的就是<code>el-scrollbar</code>标签或者父级元素必须要有 css: <code>height</code>属性，不然滚动条出不来，<code>max-height</code>是不管用的。</p>
+<p>至于原理，其实也很简单。只是在此之前我们都没有想到就是了：</p>
+<pre><code>&lt;div class=&quot;scroll-bar-wrap&quot; style=&quot;overflow:hidden;width:100%&quot;&gt;
+    &lt;div class=&quot;scroll-bar&quot; style=&quot;height:100px;overflow-y: scroll&quot;&gt;
+        &lt;div class=&quot;content&quot; style=&quot;height:200px&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<blockquote>
+<ol>
+<li>获取页面滚动条的宽度</li>
+<li><code>.scroll-bar</code>的宽度设置为 100% + 滚动条宽度，这样多出去的宽度会被 scroll-bar-wrap 给挡住</li>
+<li>接下来创建虚拟滚动条以及 mount 事件啥的</li>
+</ol>
+<p>由于滚动事件都是通过原生滚动条反馈出来的，所以使用感受上与原生无异。</p>
+</blockquote>
+<h3 id="class-">2. 表格中自定义行 Class 及选择框的开关</h3>
+<p>关于这块，文档里其实有列出来，但是没有 demo，而我又不是很喜欢看文档的那种（该打），所以摸黑摸了一段时间。</p>
+<p><strong>需求：首先他是个多选表格，然后用户可以点击行末按钮移除该列，但并不是立马移除，而且让这一行变灰，移除按钮要变成<code>已移除</code>文字，同时，前面的选择框也要变成不可选。</strong></p>
+<pre><code>&lt;template&gt;
+    &lt;el-table :data=&quot;tableData&quot; style=&quot;width: 100%&quot; :row-class-name=&quot;getRowClassName&quot;&gt;
+        &lt;el-table-column type=&quot;selection&quot; :selectable=&quot;getRowDisabled&quot;&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column prop=&quot;date&quot; label=&quot;日期&quot; width=&quot;180&quot;&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column prop=&quot;name&quot; label=&quot;姓名&quot; width=&quot;180&quot;&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column prop=&quot;address&quot; label=&quot;地址&quot;&gt;
+        &lt;/el-table-column&gt;
+        &lt;el-table-column label=&quot;操作&quot;&gt;
+            &lt;template slot-scope=&quot;scope&quot;&gt;
+
+                &lt;el-button v-if=&quot;!scope.row.deleted&quot; size=&quot;mini&quot; type=&quot;danger&quot;
+                @click=&quot;handleDelete(scope.$index, scope.row)&quot;&gt;移除&lt;/el-button&gt;
+
+                &lt;span v-else&gt;已移除&lt;/span&gt;
+
+            &lt;/template&gt;
+        &lt;/el-table-column&gt;
+    &lt;/el-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+    export default {
+        data() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    deleted: false
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄',
+                    deleted: false
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄',
+                    deleted: false
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄',
+                    deleted: false
+                }]
+            }
+        },
+        methods() {
+            return {
+                getRowClassName: function(row){
+                    if (row.row.deleted) {
+                        return 'deleted';
+                    }
+                },
+                getRowDisabled: function(row){
+                    if (row.deleted) {
+                        return false;
+                    }else{
+                        return true
+                    }
+                },
+                handleDelete: function(index, row){
+                    var _this = this;
+                    _this.tableData[index].deleted = true
+                }
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p>看起来很长一块代码，其实就三点需要注意一下：</p>
+<ol>
+<li><code>el-table</code>上加上<code>:row-class-name</code>来注册一个改变行 class 的方法，这样的话，<code>tableData</code>中<code>deleted</code>一旦发生改变，行 class 也会相应跟着变化</li>
+<li>在选择列上加上<code>:selectable</code>属性来注册一个改变选择状态的方法，<code>tableData</code>中<code>deleted</code>变成<code>false</code>时，此属性的值也变成<code>false</code>，这样这一行就不能被选中了。</li>
+<li>剩下就是按钮和文字的切换，这就不用我再多赘述了吧~</li>
+</ol>
+<p>好的，接下来我们说</p>
+<h3 id="section">坑</h3>
+<h2 id="section-1">坑</h2>
+<h1 id="section-2">坑</h1>
+<p>是的，三个超大加粗的坑。</p>
+<h3 id="codeel-scrollbarcode-1">1. 还是<code>el-scrollbar</code></h3>
+<p>世上没有完美的东西，是的，又流畅又保持了一致性的滚动条组件也是有缺点的。</p>
+<ul>
+<li>
+<p>它不支持<code>max-height</code>属性，在一些特定场景上局限性非常大。</p>
+</li>
+<li>
+<p>没有集成到 ElementUI 自己的组件中去，如：固定表头、表列的表格中使用的还是浏览器自带的滚动条，对于有强迫症开发者/用户简直就是…抓狂</p>
+<p>只留给开发者两条路：</p>
+<ul>
+<li>自己造轮子</li>
+<li>干脆不使用<code>el-scrollbar</code></li>
+</ul>
+</li>
+<li>
+<p>稳定性有待优化，在目前项目使用中有小概率滚动条会出不来，具体原因没有去深究</p>
+</li>
+</ul>
+<h3 id="codeel-popconfirmcode">2. <code>el-popconfirm</code></h3>
+<p><img src="/p_assets/202007/image-20200720181336936.png" alt="image-20200720181336936" /></p>
+<p>文档中定义的两个按钮事件，在目前版本(2.13.2)中是无效的。(或者只是我不会用，欢迎大佬指正</p>
+<h3 id="codeel-tablecode">3. <code>el-table</code></h3>
+<p><img src="/p_assets/202007/image-20200720181527197.png" alt="image-20200720181527197" /></p>
+<p>可能是 reset CSS 中的写法不同导致的样式错乱，这个问题在有固定列且数据复杂的表格中非常容易复现。</p>
+<p>最后总结的话就是：</p>
+<p>如果你没有强迫症，对于这些小瑕疵持无所谓的态度，那我给你的建议是：直接上，不要犹豫！</p>
+<p>如果你是一个设计师兼前端程序员而且有重度强迫症不能忍受瑕疵，我的建议是：</p>
+<p><strong>自己写样式</strong>！</p>
+<p>如果领导坚持要用那你就说服他把上面那些缺点全都告诉他（嗯！</p>
+</div>
+                <div class="page-original">
+                  <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              
+              <li>
+                <a href="/about/" class="dontread" title="About Me">👦 About Me</a>
+              </li>
+              
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <footer>© <span class="copy_right_year">2018 - 2021</span><a href="/" class="footer-link">Jacky's Blog</a>code with ❤</footer>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/components/appAudio.js"></script>
+    <script src="/assets/js/components/appAudioDiff.js"></script>
+    <script src="/assets/js/post.js"></script>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LNMP如何配置Gitlab的反向代理和HTTPS - Jacky's Blog</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css" />
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影,Gitlab,Nginx,HTTPS,LNMP" id="keywords" />
+    <meta name="description" content="Frontend Developer / Music Producer" />
+    
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        <header>
+  <div class="logo">
+    <a href="/" title="Click here to navigate homepage" id="header">
+      <div class="img">
+        <img src="/assets/img/logo-black.png" alt="logo" class="dark" />
+        <img src="/assets/img/logo.png" alt="logo" class="light" />
+      </div>
+    </a>
+  </div>
+  <div class="slogan" ref="slogan">
+    Frontend Developer / Music Producer
+  </div>
+  <div class="page-small-menu" v-if="page_small">
+    <ul>
+      
+      <li>
+        <a href="/about/">About Me</a>
+      </li>
+      
+      <li>
+        <a href="/atom.xml" target="_blank">RSS</a>
+      </li>
+    </ul>
+  </div>
+</header>
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <h2 class="page-header">LNMP如何配置Gitlab的反向代理和HTTPS</h2>
+                 
+                <div class="page-date">
+                  <span>👨‍💻 2020-05-09</span>
+                  
+                </div>
+                
+                <div class="page-content"><p>使用Gitlab CE版已经有一年多了，期间一直在使用<code>http://ip:port</code>的方式来进行访问。很明显，缺点有二：</p>
+<ul>
+<li>没有使用https，安全性堪忧。</li>
+<li>没有使用域名，看起来并不专业...（</li>
+</ul>
+<p>初期使用的时候并不是没有考虑过这两个问题，但是网上的教程大多都是直接nginx配置反向代理，且没有https，（且大部分都长得一样，(╬▔皿▔)凸），所以按照他们的教程来，没有一次是成功的... 后来也就放弃了配置域名和https...</p>
+<p>直到今天，决定再闯一次虎山，终于掌握了要点...啊~</p>
+<h3 id="gitlab"># 修改Gitlab配置文件</h3>
+<p>假设你已经拥有一台服务器，一个域名，且已经解析到你使用的服务器上，你的服务器已经装好gitlab，而且可以正常使用ip地址进行访问。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 使用vim编辑gitlab配置文件</span>
+vim /etc/gitlab/gitlab.rb
+</code></pre></div></div>
+<p>如果你还不会使用vim可以看看我写的另一篇博客《<a href="https://jw1.dev/2019/11/11/a01.html">来自一个不喜欢用Vim的弱鸡程序员的Vim教程</a>》。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 修改gitlab外部访问链接，也就是你想配置的域名</span>
+<span class="c"># 这里假设你的外部域名为</span>
+external_url <span class="s1">'https://git.aaa.com'</span>
+</code></pre></div></div>
+<p>这里是修改gitlab监听的外部nginx端口，端口号随意，只要别占用一些重要端口就可以。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 使用`/`命令搜索 `nginx['listen_port']`</span>
+nginx[<span class="s1">'listen_port'</span><span class="o">]</span> <span class="o">=</span> 8118
+</code></pre></div></div>
+<p>然后<code>:wq</code>保存并退出</p>
+<p>重新配置gitlab，然后重启gitlab服务</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitlab-ctl reconfigure
+gitlab-ctl restart
+</code></pre></div></div>
+<h3 id="lnmphttps"># 使用lnmp配置https</h3>
+<p>我这里lnmp版本为1.5。</p>
+<p>至于怎么用lnmp配置https，网上教程已经满天飞了，我就不多废话了...</p>
+<p>不过还是提两句：</p>
+<ul>
+<li>最好的教程：官网 --&gt; https://lnmp.org/install.html</li>
+<li>如果ssl配置的时候验证不成功，首先确认一下你的服务器80端口是否可以访问</li>
+</ul>
+<h3 id="lnmpnginx-vhost"># 编辑lnmp中的Nginx Vhost配置文件以进行反向代理</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 进入到这个文件夹，你应该就能看到所有的lnmp域名配置文件</span>
+<span class="nb">cd</span> /usr/local/nginx/conf/vhost
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 修改你的git域名配置</span>
+vim git.aaa.com.conf
+</code></pre></div></div>
+<p>你看到的格式应该如下：</p>
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">server</span>
+    <span class="p">{</span>
+        <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+        <span class="c1"># listen [::]:80;</span>
+        <span class="c1"># ...</span>
+    
+    	<span class="c1"># 可以在监听80端口这里添加一句，这样http就会自动跳转到https</span>
+    	<span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+    
+        <span class="kn">location</span> <span class="n">/</span>
+        <span class="p">{</span>
+            <span class="c1"># ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 在文件头部添加本地git服务信息</span>
+<span class="k">upstream</span> <span class="s">git</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="nf">localhost</span><span class="p">:</span><span class="mi">8118</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span>
+    <span class="p">{</span>
+        <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+<span class="kn">...</span> <span class="s">...</span> <span class="s">...</span> <span class="s">...</span> 
+</code></pre></div></div>
+<p>好了，80端口的部分不用管，我们主要看443部分，也就是https部分</p>
+<p>server里上面部分不用动，下面的location先全部删除</p>
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">server</span>
+    <span class="p">{</span>
+        <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+        <span class="kn">server_name</span> <span class="s">git.jacky97.top</span> <span class="p">;</span>
+        <span class="kn">ssl_certificate</span> <span class="p">;</span>
+        <span class="kn">ssl_certificate_key</span> <span class="p">;</span>
+        <span class="kn">ssl_session_timeout</span> <span class="mi">5m</span><span class="p">;</span>
+        <span class="kn">ssl_protocols</span> <span class="p">;</span>
+        <span class="kn">ssl_prefer_server_ciphers</span> <span class="p">;</span>
+        <span class="kn">ssl_ciphers</span> <span class="p">;</span>
+        <span class="kn">ssl_session_cache</span> <span class="p">;</span>
+        <span class="kn">ssl_dhparam</span> <span class="p">;</span>
+        <span class="kn">include</span> <span class="nc">rewrite/other</span><span class="s">.conf</span><span class="p">;</span>
+        <span class="kn">include</span> <span class="s">enable-php.conf</span><span class="p">;</span>
+    
+    	<span class="c1"># ====== 重点 ======</span>
+    	<span class="c1"># 这里就照抄网上的教程了</span>
+    	<span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+            <span class="kn">client_max_body_size</span> <span class="mi">512m</span><span class="p">;</span>
+            <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
+            <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+            <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+            <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+        
+            <span class="c1"># 不一样的是这里设置一下缓存，不然会出现400错误</span>
+        	<span class="kn">proxy_buffer_size</span> <span class="mi">64k</span><span class="p">;</span>
+            <span class="kn">proxy_buffers</span> <span class="mi">32</span> <span class="mi">32k</span><span class="p">;</span>
+            <span class="kn">proxy_busy_buffers_size</span> <span class="mi">128k</span><span class="p">;</span>
+			
+        	<span class="c1"># 这里设置成你服务器gitlab的访问路径和刚刚设置的端口</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8118</span><span class="p">;</span>
+            <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<h3 id="http-502"># 如果出现http 502错误怎么办</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 进入/var/log文件夹</span>
+<span class="nb">cd</span> /var/log
+<span class="c"># 将gitlab文件夹的权限设置为775</span>
+<span class="nb">chmod</span> <span class="nt">-R</span> 775 gitlab
+</code></pre></div></div>
+<h3 id="web-ide"># Web IDE打不开怎么办</h3>
+<p>一般是出现<code>Mixed Context</code>错误 —— https站引用了http资源。解决方法也很简单：</p>
+<p>确认一下你的gitlab配置文件中外部链接是<code>HTTPS</code>开头，且gitlab自带的监听https是关闭状态。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>external_url <span class="s1">'https://git.aaa.com'</span>
+
+nginx[<span class="s1">'listen_https'</span><span class="o">]</span> <span class="o">=</span> <span class="nb">false</span>
+</code></pre></div></div>
+<p>完成后，重新配置、重启gitlab和lnmp，再设置一遍log文件的权限</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitlab-ctl reconfigure
+gitlab-ctl restart
+lnmp restart
+<span class="nb">chmod</span> <span class="nt">-R</span> 775 /var/log/gitlab
+</code></pre></div></div>
+<p>现在你就可以用<code>https://git.aaa.com</code>来访问你的gitlab了！如果有任何问题，欢迎下面的评论区域告诉我！</p>
+</div>
+                <div class="page-original">
+                  <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              
+              <li>
+                <a href="/about/" class="dontread" title="About Me">👦 About Me</a>
+              </li>
+              
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <footer>© <span class="copy_right_year">2018 - 2021</span><a href="/" class="footer-link">Jacky's Blog</a>code with ❤</footer>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/components/appAudio.js"></script>
+    <script src="/assets/js/components/appAudioDiff.js"></script>
+    <script src="/assets/js/post.js"></script>
+  </body>
+</html>

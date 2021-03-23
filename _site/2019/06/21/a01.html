@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Package Control镜像Channel使用说明 - Jacky's Blog</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css" />
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影,Sublime Text,Package Control,代码编辑器" id="keywords" />
+    <meta name="description" content="Frontend Developer / Music Producer" />
+    
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        <header>
+  <div class="logo">
+    <a href="/" title="Click here to navigate homepage" id="header">
+      <div class="img">
+        <img src="/assets/img/logo-black.png" alt="logo" class="dark" />
+        <img src="/assets/img/logo.png" alt="logo" class="light" />
+      </div>
+    </a>
+  </div>
+  <div class="slogan" ref="slogan">
+    Frontend Developer / Music Producer
+  </div>
+  <div class="page-small-menu" v-if="page_small">
+    <ul>
+      
+      <li>
+        <a href="/about/">About Me</a>
+      </li>
+      
+      <li>
+        <a href="/atom.xml" target="_blank">RSS</a>
+      </li>
+    </ul>
+  </div>
+</header>
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <h2 class="page-header">Package Control镜像Channel使用说明</h2>
+                
+                <span class="page-deprecated"> This article might contains outdated or misleading contents due to it is tagged as "Deprecated" by its author. </span>
+                 
+                <div class="page-date">
+                  <span>👨‍💻 2019-06-21</span>
+                  
+                </div>
+                
+                <div class="page-content"><h3 id="package-control">1. 安装Package Control</h3>
+<p>Sublime Text作为一款编辑器，其自身功能就已经足够优秀，再加上Package Control，无疑给了Sublime Text更大的进步空间和市场。但是，不知道什么原因，国内已经无法访问<a href="https://packagecontrol.io">packagecontrol.io</a>。作为一个Sublime Text的脑残粉自然是看不下去了，特此做了一个教程和镜像channel，方便各位和我一样喜欢Sublime text的程序~~猿~~。</p>
+<h4 id="section">离线安装</h4>
+<p>首先下载Package Control的安装包，鉴于Github现在还能访问，我就直接给Github的下载链接了。</p>
+<p><a href="https://github.com/wbond/package_control/releases/tag/3.3.0">3.3.0正式版</a> 👈推荐下载正式版</p>
+<p><a href="https://github.com/wbond/package_control/releases/tag/3.3.0">3.3.1 beta2 测试版</a></p>
+<p>或者直接从<a href="https://github.com/wbond/package_control/releases/">Package Control的Release页</a>下载。</p>
+<p>下载好后解压，将文件夹<code>package_control-x.x.x</code>更名为<code>Package Control</code>。注意大小写！</p>
+<p>打开Sublime Text，点击菜单中的<code>Preferences</code>，找到<code>Browse Packages</code>，这时候Sublime Text会打开一个文件夹，把刚刚改好名字的<code>Package Control</code>文件夹直接复制到这个打开的文件夹中。重启Sublime Text，再次进入菜单中的<code>Preferences</code>，如果能看到<code>Package Settings</code>和<code>Package Control</code>两个选项的话，就说明安装成功了。如果没有看到，可以去本项目的主页<a href="https://github.com/Jacky-88/mirror-channel-of-packagecontrol/issues">新开一个Issue</a>，我看到后会回复的！</p>
+<h3 id="channel">2.添加新的Channel</h3>
+<p>当Package Control安装完成后，打开Sublime Text，按下<code>Ctrl/Command</code>+<code>Shift</code>+<code>P</code> 调出命令板，输入<code>Package Control:Add Channel</code>（Sublime Text命令板支持模糊查询，你可以只打<code>add</code>，应该就能看到结果了），选中此选项，在打开的文本框中输入<code>https://packagecontrol.jw1.dev/pc.json</code>（每天更新一次列表），再按下<code>Enter</code>，此时配置已完成。</p>
+<p>为了加快Channel读取速度，建议删除原来的Channel，还是按下<code>Ctrl/Command</code>+<code>Shift</code>+<code>P</code> 调出命令板，这时候输入<code>Package Control:Remove Channel</code>，确认后选中<code>https://packagecontrol.io/channel_v3.json</code>，按下<code>Enter</code>删除。</p>
+<p>大功告成！</p>
+</div>
+                <div class="page-original">
+                  <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              
+              <li>
+                <a href="/about/" class="dontread" title="About Me">👦 About Me</a>
+              </li>
+              
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <footer>© <span class="copy_right_year">2018 - 2021</span><a href="/" class="footer-link">Jacky's Blog</a>code with ❤</footer>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/components/appAudio.js"></script>
+    <script src="/assets/js/components/appAudioDiff.js"></script>
+    <script src="/assets/js/post.js"></script>
+  </body>
+</html>

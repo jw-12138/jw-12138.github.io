@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用JavaScript达成 background-size: cover 的效果 - Jacky's Blog</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/index.min.css" />
+    <meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影,JavaScript,CSS,IE,兼容" id="keywords" />
+    <meta name="description" content="Frontend Developer / Music Producer" />
+    
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        <header>
+  <div class="logo">
+    <a href="/" title="Click here to navigate homepage" id="header">
+      <div class="img">
+        <img src="/assets/img/logo-black.png" alt="logo" class="dark" />
+        <img src="/assets/img/logo.png" alt="logo" class="light" />
+      </div>
+    </a>
+  </div>
+  <div class="slogan" ref="slogan">
+    Frontend Developer / Music Producer
+  </div>
+  <div class="page-small-menu" v-if="page_small">
+    <ul>
+      
+      <li>
+        <a href="/about/">About Me</a>
+      </li>
+      
+      <li>
+        <a href="/atom.xml" target="_blank">RSS</a>
+      </li>
+    </ul>
+  </div>
+</header>
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <h2 class="page-header">使用JavaScript达成 background-size: cover 的效果</h2>
+                 
+                <div class="page-date">
+                  <span>👨‍💻 2019-10-28</span>
+                  
+                </div>
+                
+                <div class="page-content"><p>最近有一个项目，领导要求：要让一个<strong>视频</strong>在<strong>一屏显示</strong>的情况下<strong>不能改变宽高比</strong> and <strong>适配各种分辨率</strong> and <strong>兼容到IE 7</strong>。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。</p>
+<p>不过不是我做（欸嘿），别人也没做出来，我也没站出来（面子最重要），于是领导不得不放低要求，当然这都是后话了。</p>
+<p><img src="/p_assets/201910/zhazha.jpg" alt="" /></p>
+<p>后来想，如果我来做的话，我会怎么做？对于领导的要求，我脑子里第一个闪过的就是<code>background-size: cover</code>这个玩意儿，但是第一，这个是CSS 3的属性，IE 8就歇菜了，更别说IE 7了，第二，这个属性只对图片有用......</p>
+<p>那能不能用js来模拟呢？</p>
+<p>说干就干，当下就开始研究<code>cover</code>属性是怎么工作的，最后结论是：</p>
+<p><code>cover</code>在正常情况下，只是单纯的将图片宽度放到与容器一样宽，在缩放过程中，<strong>当图片高度小于容器高度时</strong>，<strong>会根据原始图片的宽高比(ratio)来放大图片宽度</strong>，使原始图片始终撑满容器。</p>
+<p>听起来有点绕，直接上代码：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">;(</span><span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">kkkover</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">_</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">w</span><span class="p">.</span><span class="nx">onresize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">_</span><span class="p">.</span><span class="nx">resized</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">ratio</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">/</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">;</span>
+                <span class="nx">_</span><span class="p">.</span><span class="nx">calcStyle</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">ratio</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">/</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">;</span>
+            <span class="nx">_</span><span class="p">.</span><span class="nx">calcStyle</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">calcStyle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">wrapCell</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">relative</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">50%</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">zIndex</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">50%</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">100%</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginLeft</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">&lt;=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">wrapCell</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">){</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxWidth</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">wrapCell</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">;</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">wrapCell</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">/</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">ratio</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginLeft</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">wrapCell</span><span class="p">.</span><span class="nx">clientWidth</span> <span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">){</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">100%</span><span class="dl">'</span><span class="p">;</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span><span class="p">;</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginLeft</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+                <span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">resized</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">_</span><span class="p">.</span><span class="nx">calcStyle</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">kkkover</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">wp</span> <span class="o">=</span> <span class="nx">w</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">||</span> <span class="nx">w</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">||</span> <span class="nx">w</span><span class="p">;</span>
+    <span class="nx">wp</span><span class="p">.</span><span class="nx">kkkover</span> <span class="o">=</span> <span class="nx">app</span><span class="p">.</span><span class="nx">init</span><span class="p">;</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">));</span>
+</code></pre></div></div>
+<p>使用的话大概就是这样：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"test"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"path/to/img"</span> <span class="na">id=</span><span class="s">"test_img"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">kkkover</span><span class="p">({</span>
+    <span class="na">wrapCell</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">),</span> <span class="c1">// 传入容器</span>
+    <span class="na">img</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_img</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// 传入容器中的图片</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>可以在这里看一下<a href="/p_assets/201910/a03_demo/">演示</a>。代码已经测试，可以兼容到IE 7。</p>
+<p>对于视频也是一样的用法，<code>img</code>传视频元素就可以了。</p>
+<p>✌</p>
+</div>
+                <div class="page-original">
+                  <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              
+              <li>
+                <a href="/about/" class="dontread" title="About Me">👦 About Me</a>
+              </li>
+              
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <footer>© <span class="copy_right_year">2018 - 2021</span><a href="/" class="footer-link">Jacky's Blog</a>code with ❤</footer>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/components/appAudio.js"></script>
+    <script src="/assets/js/components/appAudioDiff.js"></script>
+    <script src="/assets/js/post.js"></script>
+  </body>
+</html>
