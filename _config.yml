@@ -6,7 +6,7 @@ github_username: jw-12138
 
 destination: ./docs
 
-exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json']
+exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json', '/**/*.map']
 
 include: ['favicon.png', 'favicon_w.png']
 
