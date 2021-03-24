@@ -87,8 +87,6 @@ Site Generator: [Jekyll](https://jekyllrb.com/)
 
 Code highlighting：[highlight.js](https://highlightjs.org/)  
 
-Comment system：[Gitalk](https://github.com/gitalk/gitalk/)  
-
 CSS preprocessor：[Less](http://lesscss.org/)  
 
 Fonts：[Google Fonts](https://fonts.google.com/)  
