@@ -83,15 +83,18 @@ E-mail: <a href='mailto:jw_12138@outlook.com'>jw_12138@outlook.com</a>
 
 ### Open-source projects that this website is using
 
-Frame: <a href="https://vuejs.org/">vue.js</a>  
-Ajax：<a href="https://github.com/axios/axios">axios.js</a>  
-Router：<a href="https://github.com/flatiron/director">director.js</a>  
-Code highlighting：<a href="https://highlightjs.org/">highlight.js</a>  
-Comment system：<a href="https://github.com/gitalk/gitalk/">Gitalk</a>  
-CSS preprocessor：<a href="http://lesscss.org/">Less</a>  
-Fonts：<a href="https://fonts.google.com/">Google Fonts</a>  
-Icons：<a href="https://material.io/resources/icons/?style=round">Material Design -- Icons</a>
+Site Generator: [Jekyll](https://jekyllrb.com/)  
 
-It was impossible to show you guys this website without these amazing open-source projects.
+Code highlighting：[highlight.js](https://highlightjs.org/)  
+
+Comment system：[Gitalk](https://github.com/gitalk/gitalk/)  
+
+CSS preprocessor：[Less](http://lesscss.org/)  
+
+Fonts：[Google Fonts](https://fonts.google.com/)  
+
+Icons：[Material Design -- Icons](https://material.io/resources/icons/?style=round)
+
+It was impossible to show you guys this website without these amazing open-source projects.  
 
 Huge thanks to you-all!
