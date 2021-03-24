@@ -85,8 +85,6 @@ E-mail: <a href='mailto:jw_12138@outlook.com'>jw_12138@outlook.com</a>
 
 Site Generator: [Jekyll](https://jekyllrb.com/)  
 
-Code highlighting：[highlight.js](https://highlightjs.org/)  
-
 CSS preprocessor：[Less](http://lesscss.org/)  
 
 Fonts：[Google Fonts](https://fonts.google.com/)  

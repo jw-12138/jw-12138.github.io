@@ -1,12 +1,13 @@
-title: Jacky's Blog
-description: Frontend Developer / Music Producer
+title: 一个球的博客
+description: Front-end Developer / Music Producer
 baseurl: '/'
 url: 'https://jw1.dev'
 github_username: jw-12138
+keywords: 一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影
 
 destination: ./docs
 
-exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json', '/**/*.map']
+exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json']
 
 include: ['favicon.png', 'favicon_w.png']
 

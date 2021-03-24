@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jw1.dev/atom.xml" rel="self" type="application/atom+xml" /><link href="https://jw1.dev/" rel="alternate" type="text/html" /><updated>2021-03-25T00:20:41+08:00</updated><id>https://jw1.dev/atom.xml</id><title type="html">Jacky’s Blog</title><subtitle>Frontend Developer / Music Producer</subtitle><entry><title type="html">Ableton Live 11, 那些你不知道的小事情</title><link href="https://jw1.dev/2021/02/26/a01.html" rel="alternate" type="text/html" title="Ableton Live 11, 那些你不知道的小事情" /><published>2021-02-26T00:00:00+08:00</published><updated>2021-02-26T00:00:00+08:00</updated><id>https://jw1.dev/2021/02/26/a01</id><content type="html" xml:base="https://jw1.dev/2021/02/26/a01.html">&lt;p&gt;24号一大早就收到Ableton的邮件，Live 11经过了三个月的公测终于出了正式版，二话不说，直接从床上蹦起来去下载正式版安装包。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jw1.dev/atom.xml" rel="self" type="application/atom+xml" /><link href="https://jw1.dev/" rel="alternate" type="text/html" /><updated>2021-03-25T01:16:37+08:00</updated><id>https://jw1.dev/atom.xml</id><title type="html">一个球的博客</title><subtitle>Front-end Developer / Music Producer</subtitle><entry><title type="html">Ableton Live 11, 那些你不知道的小事情</title><link href="https://jw1.dev/2021/02/26/a01.html" rel="alternate" type="text/html" title="Ableton Live 11, 那些你不知道的小事情" /><published>2021-02-26T00:00:00+08:00</published><updated>2021-02-26T00:00:00+08:00</updated><id>https://jw1.dev/2021/02/26/a01</id><content type="html" xml:base="https://jw1.dev/2021/02/26/a01.html">&lt;p&gt;24号一大早就收到Ableton的邮件，Live 11经过了三个月的公测终于出了正式版，二话不说，直接从床上蹦起来去下载正式版安装包。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/p_assets/202102/image-20210226104829699.png&quot; alt=&quot;image-20210226104829699&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;第一次经历DAW的大版本更新还是有点激动的，感觉这次Live更新主要是针对MPE和录音优化(Comping)，而且还添加了几个非常不错的Device(音频插件)，可以说是诚意满满。除了官方说的这些优化，个人在实际使用中也发现了一些相比Live 10更加优秀的小细节。&lt;/p&gt;
 &lt;h3 id=&quot;ui&quot;&gt;UI在缩放情况下造成的卡顿已经修复&lt;/h3&gt;
@@ -459,11 +459,11 @@ lnmp restart
 &lt;p&gt;是的，IE 11都报错，更别提低版本的了。好在less有命令行版本，它能够让你使用less.js将less文件转换为css文件。这样在项目中，你引用的其实还是原始的css文件，这样就不存在兼容问题了。&lt;/p&gt;
 &lt;h4 id=&quot;less&quot;&gt;# less命令行的安装和使用&lt;/h4&gt;
 &lt;p&gt;如果你的电脑上装了npm，那么事情将会变得简单得多：&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;less &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;less &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;只需要一个命令就可以安装，less命令行的运行依赖nodejs环境，如果你还没有安装nodejs，可以在它的&lt;a href=&quot;https://nodejs.org/zh-cn/&quot;&gt;官网&lt;/a&gt;下载安装。&lt;/p&gt;
 &lt;p&gt;less的安装完成了，使用的话也很简单：&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lessc main.less main.css
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lessc main.less main.css
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;以上命令将会把&lt;code&gt;main.less&lt;/code&gt;直接转换成&lt;code&gt;main.css&lt;/code&gt;。&lt;/p&gt;
 &lt;h4 id=&quot;lesscss&quot;&gt;# less到css的自动转换&lt;/h4&gt;
@@ -471,24 +471,24 @@ lnmp restart
 &lt;p&gt;万能的&lt;a href=&quot;https://github.com/&quot;&gt;G站&lt;/a&gt;啊，我搜了一下，还真有：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jonycheung/deadsimple-less-watch-compiler&quot;&gt;deadsimple-less-watch-compiler&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;还是npm：&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; less-watch-compiler
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; less-watch-compiler
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;或者yarn：&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yarn global add less-watch-compiler
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;假设你的文件系统如下：&lt;/p&gt;
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; root 
+&lt;pre&gt;&lt;code&gt; root 
  └──less
  │    └── main.less
  │    └── skin.less
  └──css
       └── main.css
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;那么具体的使用方法如下：&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;less-watch-compiler less css
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;less-watch-compiler less css
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;这样保存less文件后这个插件就会自动构建css，速度也是非常的快，可以同时检测多个less文件，如果只需要监测一个less文件的话，在上面的命令行后面加上该less文件的文件名就可以了：&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;less-watch-compiler less css main.less
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;less-watch-compiler less css main.less
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;搞定！&lt;/p&gt;</content><author><name></name></author><category term="less.js" /><category term="服务器" /><category term="本地" /><category term="部署" /><summary type="html">Less这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题：</summary></entry><entry><title type="html">Ableton Live 10中的坑</title><link href="https://jw1.dev/2019/12/18/a01.html" rel="alternate" type="text/html" title="Ableton Live 10中的坑" /><published>2019-12-18T00:00:00+08:00</published><updated>2019-12-18T00:00:00+08:00</updated><id>https://jw1.dev/2019/12/18/a01</id><content type="html" xml:base="https://jw1.dev/2019/12/18/a01.html">&lt;p&gt;去年双十一趁着活动购入了Ableton Live 10，毕竟是享誉世界的DAW，质量过硬，但是在使用过程中也发现了一些坑。问题不大，不过值得注意一下。&lt;/p&gt;
 &lt;h4 id=&quot;section&quot;&gt;在缩放的情况下性能有所损失&lt;/h4&gt;
