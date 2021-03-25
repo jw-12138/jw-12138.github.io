@@ -7,11 +7,7 @@ permalink: list.md
 ## Recent Posts
 {%for item in site.posts%}
 - [{{item.title}}](https://jw1.dev{{item.url}})  
-  {%if item.desc%}
-  {{item.desc}}...
-  {%else%}
-  {{ item.excerpt | strip_html | truncatewords: 10 }}...
-  {%endif%}
+  {{item.date | date: "%Y-%m-%d"}}
 {%endfor%}
 
 ## Friends
