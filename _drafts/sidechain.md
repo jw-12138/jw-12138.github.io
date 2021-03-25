@@ -46,3 +46,6 @@ tags:
 - 使用VST插件，更简单
 - 使用压缩器，更灵活
 
+#### 使用VST插件
+
+- Duck - Devious Machines
