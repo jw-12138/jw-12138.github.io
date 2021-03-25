@@ -4,7 +4,7 @@ permalink: list.md
 
 # {{site.title}}
 
-## Recent Posts
+## Posts
 {%for item in site.posts%}
 - [{{item.title}}](https://jw1.dev{{item.url}})  
   {{item.date | date: "%Y-%m-%d"}}

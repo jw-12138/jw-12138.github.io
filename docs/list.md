@@ -1,5 +1,5 @@
 <h1 id="section">一个球的博客</h1>
-<h2 id="recent-posts">Recent Posts</h2>
+<h2 id="posts">Posts</h2>
 <ul>
 <li>
 <p><a href="https://jw1.dev/2021/02/26/a01.html">Ableton Live 11, 那些你不知道的小事情</a><br />
