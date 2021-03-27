@@ -6,7 +6,10 @@ permalink: /about/
 
 ### My website(s)
 
-Blog: <a href="https://jw1.dev">jw1.dev</a>  
+Blog: [jw1.dev](https://jw1.dev)  
+
+kover.js: [kover.js](https://jw1.dev/kover.js/index.html)  
+
 <br>
 
 ### You can find me via
