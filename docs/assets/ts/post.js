@@ -1,3 +1,13 @@
+let appAudio = window.appAudio
+let appAudioDiff = window.appAudioDiff
+
+if(!appAudio) {
+  appAudio = {}
+}
+if(!appAudioDiff) {
+  appAudioDiff = {}
+}
+
 new Vue({
   el: '#app',
   data: function() {
@@ -11,12 +21,6 @@ new Vue({
     window.onresize = function() {
       _.resizeFunc()
     }
-    hljs.configure({
-      tabReplace: '  '
-    })
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightElement(block)
-    })
     _.handleLinkClick()
     _.handleImgClick()
   },
