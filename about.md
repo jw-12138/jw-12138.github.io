@@ -14,9 +14,10 @@ kover.js: [kover.js](https://jw1.dev/kover.js/index.html)
 
 ### You can find me via
 
-Github: <a href="https://github.com/jw-12138" target="_blank" rel="noopener">jw-12138</a>
+Github: [jw-12138](https://github.com/jw-12138)
 
-E-mail: <a href='mailto:jw_12138@outlook.com'>jw_12138@outlook.com</a>  
+E-mail: [jw_12138@outlook.com](mailto:jw_12138@outlook.com)  
+
 <br>
 
 ### Things that I good at
