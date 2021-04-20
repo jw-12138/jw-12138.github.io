@@ -8,7 +8,9 @@ permalink: /about/
 
 Blog: [jw1.dev](https://jw1.dev)  
 
-kover.js: [kover.js](https://jw1.dev/kover.js/index.html)  
+kover.js: [https://jw1.dev/kover.js/](https://jw1.dev/kover.js/index.html)  
+
+lessby: [https://jw1.dev/lessby/](https://jw1.dev/lessby/)  
 
 <br>
 
