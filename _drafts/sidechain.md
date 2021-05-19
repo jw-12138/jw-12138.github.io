@@ -1,5 +1,5 @@
 ---
-title: Sidechain（侧链）详解
+title: Sidechain「侧链」详解
 desc: 如果你通过搜索引擎找到这篇博客，那说明你的脑子里起码有这样几个问题
 tags:
   - 混音
