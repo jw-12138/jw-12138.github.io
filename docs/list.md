@@ -2,6 +2,10 @@
 <h2 id="posts">Posts</h2>
 <ul>
 <li>
+<p><a href="https://jw1.dev/2021/07/02/a01.html">编曲中Sidechain的作用</a><br />
+2021-07-02</p>
+</li>
+<li>
 <p><a href="https://jw1.dev/2021/02/26/a01.html">Ableton Live 11, 那些你不知道的小事情</a><br />
 2021-02-26</p>
 </li>
