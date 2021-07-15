@@ -18,7 +18,7 @@ lessby: [https://jw1.dev/lessby/](https://jw1.dev/lessby/)
 
 Github: [jw-12138](https://github.com/jw-12138)
 
-E-mail: [jw_12138@outlook.com](mailto:jw_12138@outlook.com)  
+E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)  
 
 <br>
 
