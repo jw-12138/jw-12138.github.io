@@ -1,102 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator>
-  <link href="https://jw1.dev/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://jw1.dev/" rel="alternate" type="text/html"/>
-  <updated>2021-08-31T16:34:30+08:00</updated>
-  <id>https://jw1.dev/atom.xml</id>
-  <title type="html">一个球的博客</title>
-  <subtitle>Front-end Developer / Music Producer</subtitle>
-  <entry>
-    <title type="html">从VSCode到WebStorm，我后悔了吗？</title>
-    <link href="https://jw1.dev/2021/08/31/a01.html" rel="alternate" type="text/html" title="从VSCode到WebStorm，我后悔了吗？"/>
-    <published>2021-08-31T00:00:00+08:00</published>
-    <updated>2021-08-31T00:00:00+08:00</updated>
-    <id>https://jw1.dev/2021/08/31/a01</id>
-    <content type="html" xml:base="https://jw1.dev/2021/08/31/a01.html">&lt;p&gt;是的，又一篇关于代码编辑器的文章。以前的我说过，不要纠结什么软件厉害，什么软件是行业标准，只管用适合你的，但是今天我又在这里讲抛弃用了两年的VSCode，头也不回地就加入了WebStorm的阵营。我错了吗？我没有，我只是发现WebStorm更适合我。&lt;/p&gt;
-      &lt;p&gt;不过讲真的，第一天使用WebStorm最直接的感受就是——累。&lt;/p&gt;
-      &lt;ul&gt;
-      &lt;li&gt;超级复杂的配置项&lt;/li&gt;
-      &lt;li&gt;摸不着头脑的设置同步&lt;/li&gt;
-      &lt;li&gt;发育不良的插件市场&lt;/li&gt;
-      &lt;li&gt;一点头绪都没有的快捷键，甚至有点反人类&lt;/li&gt;
-      &lt;li&gt;奇怪的版本管理&lt;/li&gt;
-      &lt;li&gt;无法理解的单项目设计&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;p&gt;等等等等，还有数不清的无法习惯的习惯，让我一度开始怀疑自己这项决定是否正确和值得。&lt;/p&gt;
-      &lt;p&gt;光是解决&lt;code&gt;tabSize&lt;/code&gt;就花了我半天时间，你需要进每个文件类型选择相应的&lt;code&gt;tabSize&lt;/code&gt;。这一点相比VSCode确实不怎么方便。但是往好了想，独立的文件配置确实会让你看起来更加专业，对于一些特殊的文件类型也可以自定义配置。这就好像WebPack和Parcel的区别，一个方便但是傻，一个聪明但是麻烦。好在这些东西你只需要设置一遍，因为WebStorm和VSCode一样，都有同步设置的选项。&lt;/p&gt;
-      &lt;p&gt;WebStorm同步主要有两种：&lt;/p&gt;
-      &lt;ul&gt;
-      &lt;li&gt;Git仓库同步&lt;/li&gt;
-      &lt;li&gt;JetBrains账号同步&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;p&gt;作为小白的我第一次用就算是踩到了坑，直接使用了Git仓库同步。你需要在任意Git平台新开一个仓库来存储所有的设置，可以从本地提交覆盖线上的设置(Push)，也可以从线上下载覆盖本地的设置(Pull)，听起来一切都很完美，Git仓库不支持同步插件。主要是，在你使用Git仓库同步设置之后，使用JetBrains账号同步的功能是置灰的，也就是说一次只能使用一个同步方式，为此我还特地去论坛上查了一下怎么使用JetBrains账户同步设置。好吧，你需要先把之前设置的Git仓库地址删掉，之后才可以使用JetBrains账号来同步。当然了，这一项功能仅限购买了正版WebStorm的用户使用😎。使用账户同步之后一切都变得简单了，一切设置和插件更改都能多端同步。&lt;/p&gt;
-      &lt;p&gt;说到插件，WebStorm的插件市场和VSCode比起来可以说是“发育不良”。截至我写博客的这个时间点，VSCode已经有22k+之多的插件了，而WebStorm只有2.7k+。造成这一现象的原因，我猜不只是因为VSCode更受欢迎或者开源之类的，WebStorm作为一个IDE本来就包揽了强大功能的同时也造就了插件市场的萎靡。不过苦苦寻找之后，作者还是发现了几个之前在VSCode上钟爱的几款插件：&lt;/p&gt;
-      &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/7573-fast-scrolling&quot;&gt;Fast-Scrolling&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/2162-string-manipulation&quot;&gt;String
-      Manipulation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/15727-xcode-theme&quot;&gt;XCode Theme&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/12062-vscode-keymap&quot;&gt;VSCode Keymap&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;p&gt;最喜欢的当然还是VSCode Keymap，习惯一款软件的快捷键需要漫长的时间，这是我当下不愿意支出的时间成本。&lt;/p&gt;
-      &lt;p&gt;最后两点让我很难受就是版本控制的UI设计和一次只能打开一个项目的设计了。&lt;/p&gt;
-      &lt;p&gt;为什么说版本控制的UI让我很难受，确实，信息量对比无插件的VSCode来说多了不少，但是Push操作面板要和提交面板分开？是为了不让用户误触吗？是为了防止新手乱搞吗？然而问题是，菜鸟总有办法乱搞，Pro总有办法恢复。&lt;/p&gt;
-      &lt;p&gt;至于单项目设计，我看论坛上已经有人问过了：&lt;/p&gt;
-      &lt;blockquote&gt;
-      &lt;p&gt;如何在一个WebStorm实例中打开多个项目？&lt;/p&gt;
-      &lt;/blockquote&gt;
-      &lt;p&gt;官方给出的回答是：Never. (我帮你们简化了一下&lt;/p&gt;
-      &lt;p&gt;不过，替代方案总归是有的，左上角找到&lt;code&gt;File → Attach Project&lt;/code&gt;，这样确实可以实现一个WebStorm实例打开多个项目。但是随着我更加深入的使用WebStorm，渐渐地我发现了这样设计的妙处。&lt;/p&gt;
-      &lt;p&gt;一次打开一个项目可以让你更加专注在项目上，而不用多个项目切换来切换去，而且你可以针对每个项目做出不同的配置，比如Web服务、Npm脚本或者项目构建，在单实例单项目的模式下，你可以很好的专注在这些细节上。&lt;/p&gt;
-      &lt;p&gt;很多人追求做Web开发就是要快，所以代码编辑器一定也不能慢，在后续一系列的测试中也表明了，VSCode不论是启动速度还是代码提示速度确实比WebStorm要快。以前的我对这些也是洋洋得意，但是看了很多反面描写的文章之后，我开始意识到，速度快，并代表你能写好代码。这也是为什么我会有这样的好奇心来试一试WebStorm是不是真的像他们说的那么好。&lt;/p&gt;
-      &lt;p&gt;在实际使用中，WebStorm从启动到完全显示UI组件大概在10-20秒之间，VSCode大概在5秒以内，启动速度确实慢了一些，但是处于可接受范围内。再来看生产效率，WebStorm几乎会在任何地方给你提示：&lt;/p&gt;
-      &lt;ul&gt;
-      &lt;li&gt;编辑Vue项目时，可以跟踪到内嵌在html标签上方法和变量，也有语法高亮&lt;/li&gt;
-      &lt;li&gt;编辑JS文件时，可以跟踪一个不在当前文件中的方法&lt;/li&gt;
-      &lt;li&gt;编辑JS模版时，会高亮html语法&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;p&gt;同时，得益于单实例单项目的设计，Reference和Usage模糊查询几乎不会出错。&lt;/p&gt;
-      &lt;p&gt;再说代码格式化(Reformat)，WebStorm格式化一个3000行的Less文件只需要200ms左右，而同样使用Prettier引擎的VSCode需要800ms - 1000ms左右。&lt;/p&gt;
-      &lt;p&gt;更甚于，WebStorm会把所有的不规范的语法，事无巨细的告诉你，初期我只觉得烦，后来慢慢的，一点点的去核查，一点点的消除警告和错误，才发现，WebStorm一直在尝试让你写出规范漂亮的代码，在项目初期就直接规避掉日后可能会使整个项目崩溃的小错误。&lt;/p&gt;
-      &lt;p&gt;所以，从VSCode到WebStorm，我后悔了吗？&lt;/p&gt;
-      &lt;p&gt;嗯，暂时还没有，为什么说暂时呢，按照VSCode的发展速度，以及其插件市场的扩展速度，可能没几年，VSCode的体验就会超过WebStorm，至于JetBrains公司是否会因为感到压力陡增进而加速发展对应产品，我们拭目以待吧！&lt;/p&gt;
-    </content>
-    <author>
-      <name></name>
-    </author>
-    <category term="代码编辑器"/>
-    <summary type="html">
-      是的，又一篇关于代码编辑器的文章。以前的我说过，不要纠结什么软件厉害，什么软件是行业标准，只管用适合你的，但是今天我又在这里讲抛弃用了两年的VSCode，头也不回地就加入了WebStorm的阵营。我错了吗？我没有，我只是发现WebStorm更适合我。
-    </summary>
-  </entry>
-  <entry>
-    <title type="html">记「第一次商业摄影」</title>
-    <link href="https://jw1.dev/2021/07/15/a01.html" rel="alternate" type="text/html" title="记「第一次商业摄影」"/>
-    <published>2021-07-15T00:00:00+08:00</published>
-    <updated>2021-07-15T00:00:00+08:00</updated>
-    <id>https://jw1.dev/2021/07/15/a01</id>
-    <content type="html" xml:base="https://jw1.dev/2021/07/15/a01.html">&lt;h3 id=&quot;section&quot;&gt;2021.05.27&lt;/h3&gt;
-      &lt;p&gt;虽然又是社畜的一天，不过今天和往常不一样的是，下班后得去即将拍摄的工厂参观一下。&lt;/p&gt;
-      &lt;p&gt;几天前，朋友找到我，说要给他家工厂做一个宣传片，看我最近在研究剪辑。于是商量能不能找我搞个宣传片。嚯！就我这个暴脾气当下就接了下来，也直接确定了到时候拍摄可以租专业设备进行拍摄的想法。这一点，对于刚刚接触影视制作没多久的我来说，诱惑着实是有点大的。&lt;/p&gt;
-      &lt;p&gt;不得不说，专车接送还是非常爽的。五点半下班后，准时上了朋友的奔驰S400前往工厂。&lt;/p&gt;
-      &lt;p&gt;厂子和我想象中有点不太一样，并不是很高大上的样子你们懂我意思吧🌝。但是管他呢，过两天就能玩到牛逼的设备了。朋友老爸给我介绍了一圈，对于基本的生产流程我已经了解了，剩下的就是制定拍摄方案了，原定5月29号的拍摄也延到了6月5号，一切都是为了拍摄当天不至于手忙脚乱。&lt;/p&gt;
-      &lt;h3 id=&quot;section-1&quot;&gt;2021.06.05&lt;/h3&gt;
-      &lt;p&gt;于是拍摄当天我就开启了手忙脚乱模式：&lt;/p&gt;
-      &lt;ul&gt;
-      &lt;li&gt;第一次借设备，没好意思问，结果拿到的脚架只能pan(左右)，tilt(上下)非常卡顿&lt;/li&gt;
-      &lt;li&gt;借了两张存储卡，一张256Gb，一张512Gb，512Gb那张不能用&lt;/li&gt;
-      &lt;li&gt;为了压低制作成本，没有借跟焦器和电影镜头&lt;/li&gt;
-&lt;li&gt;没有分镜，没有细化拍摄脚本，只有大概流程&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这车翻的……妥妥地&lt;/p&gt;
-&lt;h3 id=&quot;section-2&quot;&gt;这次的翻车心得&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;千万不要在不熟悉设备的情况下直接就去拍摄，如果这是非常严肃的商业摄影，你到时候连死都不知道怎么死的。(literally&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;永远永远都要记住检查你的存储媒介，因为你不想出现那种，导演到了，道具准备好了，演员也就位了，都在酝酿情绪了，你却告诉导演储存卡坏了的情况...&lt;/p&gt;
+    <generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator>
+    <link href="https://jw1.dev/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jw1.dev/" rel="alternate" type="text/html"/>
+    <updated>2021-08-31T23:35:30+08:00</updated>
+    <id>https://jw1.dev/atom.xml</id>
+    <title type="html">一个球的博客</title>
+    <subtitle>Front-end Developer / Music Producer</subtitle>
+    <entry>
+        <title type="html">从VSCode到WebStorm，我后悔了吗？</title>
+        <link href="https://jw1.dev/2021/08/31/a01.html" rel="alternate" type="text/html"
+              title="从VSCode到WebStorm，我后悔了吗？"/>
+        <published>2021-08-31T00:00:00+08:00</published>
+        <updated>2021-08-31T00:00:00+08:00</updated>
+        <id>https://jw1.dev/2021/08/31/a01</id>
+        <content type="html" xml:base="https://jw1.dev/2021/08/31/a01.html">&lt;p&gt;是的，又一篇关于代码编辑器的文章。以前的我说过，不要纠结什么软件厉害，什么软件是行业标准，只管用适合你的，但是今天我又在这里讲抛弃用了两年的VSCode，头也不回地就加入了WebStorm的阵营。我错了吗？我没有，我只是发现WebStorm更适合我。&lt;/p&gt;
+            &lt;p&gt;不过讲真的，第一天使用WebStorm最直接的感受就是——累。&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;超级复杂的配置项&lt;/li&gt;
+            &lt;li&gt;摸不着头脑的设置同步&lt;/li&gt;
+            &lt;li&gt;发育不良的插件市场&lt;/li&gt;
+            &lt;li&gt;一点头绪都没有的快捷键，甚至有点反人类&lt;/li&gt;
+            &lt;li&gt;奇怪的版本管理&lt;/li&gt;
+            &lt;li&gt;无法理解的单项目设计&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;等等等等，还有数不清的无法习惯的习惯，让我一度开始怀疑自己这项决定是否正确和值得。&lt;/p&gt;
+            &lt;p&gt;光是解决&lt;code&gt;tabSize&lt;/code&gt;就花了我半天时间，你需要进每个文件类型选择相应的&lt;code&gt;tabSize&lt;/code&gt;
+            。这一点相比VSCode确实不怎么方便。但是往好了想，独立的文件配置确实会让你看起来更加专业，对于一些特殊的文件类型也可以自定义配置。这就好像WebPack和Parcel的区别，一个方便但是傻，一个聪明但是麻烦。好在这些东西你只需要设置一遍，因为WebStorm和VSCode一样，都有同步设置的选项。&lt;/p&gt;
+            &lt;p&gt;WebStorm同步主要有两种：&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;Git仓库同步&lt;/li&gt;
+            &lt;li&gt;JetBrains账号同步&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;作为小白的我第一次用就算是踩到了坑，直接使用了Git仓库同步。你需要在任意Git平台新开一个仓库来存储所有的设置，可以从本地提交覆盖线上的设置(Push)，也可以从线上下载覆盖本地的设置(Pull)
+            ，听起来一切都很完美，然而Git仓库不支持同步插件。主要是，在你使用Git仓库同步设置之后，使用JetBrains账号同步的功能是置灰的，也就是说一次只能使用一个同步方式，为此我还特地去论坛上查了一下怎么使用JetBrains账户同步设置。好吧，你需要先把之前设置的Git仓库地址删掉，之后才可以使用JetBrains账号来同步。当然了，这一项功能仅限购买了正版WebStorm的用户使用😎。使用账户同步之后一切都变得简单了，一切设置和插件更改都能多端同步。&lt;/p&gt;
+            &lt;p&gt;说到插件，WebStorm的插件市场和VSCode比起来可以说是“发育不良”。截至我写博客的这个时间点，VSCode已经有22k+之多的插件了，而WebStorm只有2.7k+。造成这一现象的原因，我猜不只是因为VSCode更受欢迎或者开源之类的，WebStorm作为一个IDE本来就包揽了强大功能的同时也造就了插件市场的萎靡。不过苦苦寻找之后，作者还是发现了几个之前在VSCode上钟爱的几款插件：&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/7573-fast-scrolling&quot;&gt;Fast-Scrolling&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/2162-string-manipulation&quot;&gt;String
+            Manipulation&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/15727-xcode-theme&quot;&gt;XCode Theme&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/12062-vscode-keymap&quot;&gt;VSCode Keymap&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;最喜欢的当然还是VSCode Keymap，习惯一款软件的快捷键需要漫长的时间，这是我当下不愿意支出的时间成本。&lt;/p&gt;
+            &lt;p&gt;最后两点让我很难受就是版本控制的UI设计和一次只能打开一个项目的设计了。&lt;/p&gt;
+            &lt;p&gt;为什么说版本控制的UI让我很难受，确实，信息量对比无插件的VSCode来说多了不少，但是Push操作面板要和提交面板分开？是为了不让用户误触吗？是为了防止新手乱搞吗？然而问题是，菜鸟总有办法乱搞，Pro总有办法恢复。&lt;/p&gt;
+            &lt;p&gt;至于单项目设计，我看论坛上已经有人问过了：&lt;/p&gt;
+            &lt;blockquote&gt;
+            &lt;p&gt;如何在一个WebStorm实例中打开多个项目？&lt;/p&gt;
+            &lt;/blockquote&gt;
+            &lt;p&gt;官方给出的回答是：Never. (我帮你们简化了一下&lt;/p&gt;
+            &lt;p&gt;不过，替代方案总归是有的，左上角找到&lt;code&gt;File → Attach Project&lt;/code&gt;，这样确实可以实现一个WebStorm实例打开多个项目。但是随着我更加深入的使用WebStorm，渐渐地我发现了这样设计的妙处。&lt;/p&gt;
+            &lt;p&gt;一次打开一个项目可以让你更加专注在项目上，而不用多个项目切换来切换去，而且你可以针对每个项目做出不同的配置，比如Web服务、Npm脚本或者项目构建，在单实例单项目的模式下，你可以很好的专注在这些细节上。&lt;/p&gt;
+            &lt;p&gt;很多人追求做Web开发就是要快，所以代码编辑器一定也不能慢，在后续一系列的测试中也表明了，VSCode不论是启动速度还是代码提示速度确实比WebStorm要快。以前的我对这些也是洋洋得意，但是看了很多反面描写的文章之后，我开始意识到，速度快，并代表你能写好代码。这也是为什么我会有这样的好奇心来试一试WebStorm是不是真的像他们说的那么好。&lt;/p&gt;
+            &lt;p&gt;在实际使用中，WebStorm从启动到完全显示UI组件大概在10-20秒之间，VSCode大概在5秒以内，启动速度确实慢了一些，但是处于可接受范围内。再来看生产效率，WebStorm几乎会在任何地方给你提示：&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;编辑Vue项目时，可以跟踪到内嵌在html标签上方法和变量，也有语法高亮&lt;/li&gt;
+            &lt;li&gt;编辑JS文件时，可以跟踪一个不在当前文件中的方法&lt;/li&gt;
+            &lt;li&gt;编辑JS模版时，会高亮html语法&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;同时，得益于单实例单项目的设计，Reference和Usage模糊查询几乎不会出错。&lt;/p&gt;
+            &lt;p&gt;再说代码格式化(Reformat)，WebStorm格式化一个3000行的Less文件只需要200ms左右，而同样使用Prettier引擎的VSCode需要800ms - 1000ms左右。&lt;/p&gt;
+            &lt;p&gt;更甚于，WebStorm会把所有的不规范的语法，事无巨细的告诉你，初期我只觉得烦，后来慢慢的，一点点的去核查，一点点的消除警告和错误，才发现，WebStorm一直在尝试让你写出规范漂亮的代码，在项目初期就直接规避掉日后可能会使整个项目崩溃的小错误。&lt;/p&gt;
+            &lt;p&gt;所以，从VSCode到WebStorm，我后悔了吗？&lt;/p&gt;
+            &lt;p&gt;嗯，暂时还没有，为什么说暂时呢，按照VSCode的发展速度，以及其插件市场的扩展速度，可能没几年，VSCode的体验就会超过WebStorm，至于JetBrains公司是否会因为感到压力陡增进而加速发展对应产品，我们拭目以待吧！&lt;/p&gt;
+        </content>
+        <author>
+            <name></name>
+        </author>
+        <category term="代码编辑器"/>
+        <summary type="html">
+            是的，又一篇关于代码编辑器的文章。以前的我说过，不要纠结什么软件厉害，什么软件是行业标准，只管用适合你的，但是今天我又在这里讲抛弃用了两年的VSCode，头也不回地就加入了WebStorm的阵营。我错了吗？我没有，我只是发现WebStorm更适合我。
+        </summary>
+    </entry>
+    <entry>
+        <title type="html">记「第一次商业摄影」</title>
+        <link href="https://jw1.dev/2021/07/15/a01.html" rel="alternate" type="text/html" title="记「第一次商业摄影」"/>
+        <published>2021-07-15T00:00:00+08:00</published>
+        <updated>2021-07-15T00:00:00+08:00</updated>
+        <id>https://jw1.dev/2021/07/15/a01</id>
+        <content type="html" xml:base="https://jw1.dev/2021/07/15/a01.html">&lt;h3 id=&quot;section&quot;&gt;2021.05.27&lt;/h3&gt;
+            &lt;p&gt;虽然又是社畜的一天，不过今天和往常不一样的是，下班后得去即将拍摄的工厂参观一下。&lt;/p&gt;
+            &lt;p&gt;几天前，朋友找到我，说要给他家工厂做一个宣传片，看我最近在研究剪辑。于是商量能不能找我搞个宣传片。嚯！就我这个暴脾气当下就接了下来，也直接确定了到时候拍摄可以租专业设备进行拍摄的想法。这一点，对于刚刚接触影视制作没多久的我来说，诱惑着实是有点大的。&lt;/p&gt;
+            &lt;p&gt;不得不说，专车接送还是非常爽的。五点半下班后，准时上了朋友的奔驰S400前往工厂。&lt;/p&gt;
+            &lt;p&gt;厂子和我想象中有点不太一样，并不是很高大上的样子你们懂我意思吧🌝。但是管他呢，过两天就能玩到牛逼的设备了。朋友老爸给我介绍了一圈，对于基本的生产流程我已经了解了，剩下的就是制定拍摄方案了，原定5月29号的拍摄也延到了6月5号，一切都是为了拍摄当天不至于手忙脚乱。&lt;/p&gt;
+            &lt;h3 id=&quot;section-1&quot;&gt;2021.06.05&lt;/h3&gt;
+            &lt;p&gt;于是拍摄当天我就开启了手忙脚乱模式：&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;第一次借设备，没好意思问，结果拿到的脚架只能pan(左右)，tilt(上下)非常卡顿&lt;/li&gt;
+            &lt;li&gt;借了两张存储卡，一张256Gb，一张512Gb，512Gb那张不能用&lt;/li&gt;
+            &lt;li&gt;为了压低制作成本，没有借跟焦器和电影镜头&lt;/li&gt;
+            &lt;li&gt;没有分镜，没有细化拍摄脚本，只有大概流程&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;这车翻的……妥妥地&lt;/p&gt;
+            &lt;h3 id=&quot;section-2&quot;&gt;这次的翻车心得&lt;/h3&gt;
+            &lt;ol&gt;
+            &lt;li&gt;
+            &lt;p&gt;千万不要在不熟悉设备的情况下直接就去拍摄，如果这是非常严肃的商业摄影，你到时候连死都不知道怎么死的。(literally&lt;/p&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+            &lt;p&gt;永远永远都要记住检查你的存储媒介，因为你不想出现那种，导演到了，道具准备好了，演员也就位了，都在酝酿情绪了，你却告诉导演储存卡坏了的情况...&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;在自己经济条件和制作成本够的上的情况下，不要吝啬租借一些高级的设备，因为你永远不知道你手头上看似过得去的设备会给你怎么样的惊喜。&lt;/p&gt;
@@ -287,77 +290,99 @@
 &lt;/div&gt;
 &lt;p&gt;刚开始搞音乐的时候，总是有朋友告诉我，“这段bass要加个压缩器”、“这人声要加个压缩器”...，好的，我加了，也调了些参数啊啥的，嗯。当时我的内心：&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;&lt;strong&gt;这不就声音变小了嘛&lt;/strong&gt;🤦‍♂️&lt;/p&gt;
-&lt;br&gt;
-&lt;p&gt;当然了，那时候太年轻不懂事儿，现在几乎每首歌，每个轨道，我都会用压缩器，所以究竟什么是压缩器呢？这玩意儿到底有什么用呢？不着急，请看下面。&lt;/p&gt;
-&lt;h3 id=&quot;section&quot;&gt;# 什么是压缩器&lt;/h3&gt;
-&lt;p&gt;顾名思义，它&lt;strong&gt;压缩&lt;/strong&gt;你的声音。🌝&lt;/p&gt;
-&lt;p&gt;上面的解释肯定是有点太简短了，你不一定能理解，因为确实，声音这东西太抽象了。我们可以先从压缩器的几个固有参数开始说起：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;threshold&lt;/code&gt; &lt;code&gt;ratio&lt;/code&gt; &lt;code&gt;attack&lt;/code&gt; &lt;code&gt;release&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/p_assets/202009/image-20200915095827695.png&quot; alt=&quot;image-20200915095827695&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;那翻译过来一定就是&lt;code&gt;阈值&lt;/code&gt; &lt;code&gt;比&lt;/code&gt; &lt;code&gt;攻击&lt;/code&gt; &lt;code&gt;释放&lt;/code&gt;，对，就是这样。&lt;/p&gt;
-&lt;p&gt;开玩笑的哈，呐，声音信号进入压缩器时，阈值就像一只手，他会检测进入的信号强度是否超过它本身，如果超过了，这只手就会往下压，而压缩比则代表了这只手下压的温柔程度，&lt;code&gt;1:1&lt;/code&gt;的话是溺爱，&lt;code&gt;10:1&lt;/code&gt;那就是&lt;strong&gt;无情&lt;/strong&gt;，任何企图超越阈值的声音信号都会被压得死死的。这里的&lt;code&gt;attack&lt;/code&gt;也明显不是攻击的意思，它代表了阈值这只手下压的速度，也就是手速快慢与否，&lt;code&gt;release&lt;/code&gt;也是手速，只不过是手抬起来的速度。&lt;/p&gt;
-  &lt;p&gt;这么说你们应该差不多能懂了吧。&lt;/p&gt;
-  &lt;p&gt;不懂的话也可以，直接看图：&lt;/p&gt;
-  &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;code&gt;attack&lt;/code&gt;和&lt;code&gt;release&lt;/code&gt;的值这里我都调得特别大，是为了能让你们看得更清楚，就我自己而言，实际使用中，几乎不会出现这种情况。&lt;/p&gt;
-  &lt;h3 id=&quot;section-1&quot;&gt;# 压缩器的作用&lt;/h3&gt;
-  &lt;p&gt;存在既合理，更何况压缩器这个东西，都快一个世纪了，还是有好多人在研究它。那究竟，这样一个效果器在混音中有什么样的实际应用呢？&lt;/p&gt;
-  &lt;h4 id=&quot;section-2&quot;&gt;# 人声&lt;/h4&gt;
-  &lt;p&gt;一首歌，如果想要引起听众的共鸣，必定少不了人声。然而，即使是非常专业的歌手，也不能保证在面对麦克风时能够稳定输出音量。从混音师的角度来看，人声音量不够稳定一定会对整个混音作品造成毁灭性的打击，为什么呢？&lt;/p&gt;
-  &lt;p&gt;有的地方声音太大，会盖过伴奏，有的地方声音太小，伴奏又会盖过人声。&lt;/p&gt;
-  &lt;p&gt;不过压缩器的出现完美的解决了这个问题。大家可以听一下下面这个demo：&lt;/p&gt;
-  &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: '/p_assets/202009/diff-1-Audio.mp3', text: '没有压缩的人声'}&quot; :off=&quot;{src:
-  '/p_assets/202009/diff-2-Audio.mp3', text: '经过压缩的人声'}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
-  &lt;p&gt;原曲来自我的好朋友Wynes：https://music.163.com/#/song?id=1416869953&lt;/p&gt;
-  &lt;br&gt;
-  &lt;p&gt;可以感受到，经过压缩人声明显稳定了很多，从下图中更加可以看出，原本比较轻的人声被放大，而原本比较突兀的地方，也被压缩到了同等级别。这样的在混音中可以保持很好的稳定性，当然，前提是伴奏也要保持稳定。需要注意的是，歌手的换气声也被放大了，这里先埋个坑，以后再给大家详细讲一讲怎么处理人声。&lt;/p&gt;
-  &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;h4 id=&quot;section-3&quot;&gt;# 鼓&lt;/h4&gt;
-  &lt;p&gt;压缩器在鼓的作用上与人声大致相同，小的声音变大，大的声音变小。&lt;/p&gt;
-  &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: '/p_assets/202009/drum-diff-2.mp3', text: '未经压缩的鼓组'}&quot; :off=&quot;{src:
-  '/p_assets/202009/drum-diff-1.mp3', text: '经过压缩后的鼓组'}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
-  &lt;br&gt;
-  &lt;p&gt;不过在鼓组上，压缩器的&lt;code&gt;attack&lt;/code&gt;和&lt;code&gt;release&lt;/code&gt;比较讲究。&lt;/p&gt;
-  &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;p&gt;图片是上面两个鼓组音轨的对比，我们可以看到kick进来的瞬间，有压缩的振幅明显要比未压缩的振幅大，而之后的频谱振幅则没有太大变化。这是因为压缩器设置了合适的&lt;code&gt;attack&lt;/code&gt;，在kick信号刚进来时不进行压缩，也就是保留了瞬态，这样做的好处是能让鼓听起来更加有力！&lt;/p&gt;
-  &lt;p&gt;而适当的&lt;code&gt;release&lt;/code&gt;会让鼓组听起来更有弹性，太长或者太短都不行，最好是在下一个peak来临之前能够彻底release掉，也就是让压缩器回归初始状态。举个极端的例子，如果你设置了10秒的&lt;code&gt;release&lt;/code&gt;，kick和snare之间的间隔可能只有300毫秒，这样设置之后，阈值那只手永远也没办法抬起来，因为速度太慢了，刚抬起来一点点，下一个信号peak又来了，这样做只有一个意义——减小音量。&lt;/p&gt;
-  &lt;h4 id=&quot;sidechain&quot;&gt;# 侧链(Sidechain)&lt;/h4&gt;
-  &lt;p&gt;Sidechain，中文叫侧链，也可以叫旁链，老实说，第一次看到这个概念我也是：&lt;/p&gt;
-  &lt;p&gt;&lt;img src=&quot;/p_assets/202009/what.jpeg&quot; alt=&quot;黑人问号&quot; /&gt;&lt;/p&gt;
-  &lt;p&gt;关于这个概念以后我会专门写一篇博客详细阐述一下，现在我只能告诉你侧链这玩意儿的出现完全是个意外。&lt;/p&gt;
-  &lt;blockquote&gt;
-  &lt;p&gt;It may shock you to learn that the initial applications for sidechain compression in the 1930s were not
-  directed at making French filter house. Rather, it started with a film audio engineer named Douglas Shearer, who
-  needed a way to tame the sibilance (the hard “s” sounds) of dialogue recordings. Sidechaining was born when Shearer
-  conceived of a compressor with a “side” signal chain (separate to the main trigger signal) with an EQ slapped on it –
-  rather than evenly compressing the incoming signal, this “de-esser” would only be triggered when the specific sibilant
-  sounds appeared.&lt;/p&gt;
-  &lt;/blockquote&gt;
-  &lt;p&gt;大家有兴趣可以看看Ableton的官方博客原文：https://www.ableton.com/en/blog/sidechain-compression-part-1/&lt;/p&gt;
-  &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;p&gt;这是FL Studio的一张截图，(因为比较直观)，Sidechain其实就是把2号轨的声音信号，传送到1号轨，但是这个声音信号不会经过主轨(Master)，“旁” 路 “链” 接，大概是这个意思吧，所以这样，&lt;/p&gt;
-  &lt;p&gt;&lt;strong&gt;1号轨上的压缩器就可以针对2号轨的信号对1号轨自身信号做出一系列调整。&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;大家请听示例：&lt;/p&gt;
-  &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: '/p_assets/202009/sc-diff-1.mp3', text: 'Bass没有侧链，和鼓组糊成一团'}&quot; :off=&quot;{src:
-  '/p_assets/202009/sc-diff-2.mp3', text: 'Bass有侧链，可以清晰听到鼓组中的kick，snare和tom'}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
-  &lt;p&gt;从没有侧链的音频可以感受到，因为bass和kick都属于比较低频的声音，所以他俩打架了，让鼓组失去了爆发力。而有侧链的那段音频，我们可以很清晰的听到一系列频率较低的打击乐，我们用侧链让bass给kick主动让开了一条路。可以仔细听听bass
-  solo的时候有侧链和没侧链的区别。&lt;/p&gt;
-  &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: '/p_assets/202009/bass-diff-1.mp3', text: 'Bass没有侧链'}&quot; :off=&quot;{src:
-  '/p_assets/202009/bass-diff-2.mp3', text: 'Bass有侧链'}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
-  &lt;p&gt;当然了，为了区分明显，demo都比较极端，实际应用还是要看个人喜好或客户需求。在整体的混音作品里，我们可以使用侧链来突出任何你想要突出的元素，比如用人声的信号去侧链伴奏，让伴奏让开空间给人声，又比如在电子音乐中用lead去侧链chord/pad，等等等等。而这些全都离不开压缩器，这也是为什么压缩器在音乐制作业内备受关注的原因。&lt;/p&gt;
-  &lt;br&gt;
-  &lt;p&gt;好了，今天就讲到这里，希望这篇文章对你有帮助！&lt;/p&gt;</content><author><name></name></author><category term="编曲" /><category term="FX" /><category term="压缩器" /><summary type="html">看起来你正在使用RSS阅读器浏览本页面，通常情况下作者不会要求您去官网进行阅读，但是此页面包含一些自定义音频组件，为了得到更好的体验，请访问博客官网 https://jw1.dev 进行阅读。谢谢！</summary></entry><entry><title type="html">ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</title><link href="https://jw1.dev/2020/07/20/a02.html" rel="alternate" type="text/html" title="ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑" /><published>2020-07-20T00:00:00+08:00</published><updated>2020-07-20T00:00:00+08:00</updated><id>https://jw1.dev/2020/07/20/a02</id><content type="html" xml:base="https://jw1.dev/2020/07/20/a02.html">&lt;p&gt;“？？？”&lt;/p&gt;
-&lt;p&gt;“卧槽？”&lt;/p&gt;
-&lt;p&gt;”嗯？“&lt;/p&gt;
-&lt;p&gt;是我，也是你，对不对？&lt;/p&gt;
-&lt;p&gt;对于刚开始使用&lt;a href=&quot;https://element.eleme.io/#/zh-CN&quot;&gt;ElementUI&lt;/a&gt;的朋友们，我敢肯定 90%的你们反应都是上面那样。&lt;/p&gt;
-&lt;p&gt;先来看看那些官网没有讲过的玩法&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;codeel-scrollbarcode&quot;&gt;1. &lt;code&gt;el-scrollbar&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/p_assets/202007/image-20200720172813301.png&quot; alt=&quot;image-20200720172813301&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;这不就声音变小了嘛&lt;/strong&gt;🤦‍♂️&lt;/p&gt;
+    &lt;br&gt;
+    &lt;p&gt;当然了，那时候太年轻不懂事儿，现在几乎每首歌，每个轨道，我都会用压缩器，所以究竟什么是压缩器呢？这玩意儿到底有什么用呢？不着急，请看下面。&lt;/p&gt;
+    &lt;h3 id=&quot;section&quot;&gt;# 什么是压缩器&lt;/h3&gt;
+    &lt;p&gt;顾名思义，它&lt;strong&gt;压缩&lt;/strong&gt;你的声音。🌝&lt;/p&gt;
+    &lt;p&gt;上面的解释肯定是有点太简短了，你不一定能理解，因为确实，声音这东西太抽象了。我们可以先从压缩器的几个固有参数开始说起：&lt;/p&gt;
+    &lt;p&gt;&lt;code&gt;threshold&lt;/code&gt; &lt;code&gt;ratio&lt;/code&gt; &lt;code&gt;attack&lt;/code&gt; &lt;code&gt;release&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/202009/image-20200915095827695.png&quot; alt=&quot;image-20200915095827695&quot;
+    /&gt;&lt;/p&gt;
+    &lt;p&gt;那翻译过来一定就是&lt;code&gt;阈值&lt;/code&gt; &lt;code&gt;比&lt;/code&gt; &lt;code&gt;攻击&lt;/code&gt; &lt;code&gt;释放&lt;/code&gt;，对，就是这样。&lt;/p&gt;
+    &lt;p&gt;开玩笑的哈，呐，声音信号进入压缩器时，阈值就像一只手，他会检测进入的信号强度是否超过它本身，如果超过了，这只手就会往下压，而压缩比则代表了这只手下压的温柔程度，&lt;code&gt;1:1&lt;/code&gt;的话是溺爱，&lt;code&gt;10:1&lt;/code&gt;那就是&lt;strong&gt;无情&lt;/strong&gt;，任何企图超越阈值的声音信号都会被压得死死的。这里的&lt;code&gt;attack&lt;/code&gt;也明显不是攻击的意思，它代表了阈值这只手下压的速度，也就是手速快慢与否，&lt;code&gt;release&lt;/code&gt;也是手速，只不过是手抬起来的速度。&lt;/p&gt;
+    &lt;p&gt;这么说你们应该差不多能懂了吧。&lt;/p&gt;
+    &lt;p&gt;不懂的话也可以，直接看图：&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code&gt;attack&lt;/code&gt;和&lt;code&gt;release&lt;/code&gt;的值这里我都调得特别大，是为了能让你们看得更清楚，就我自己而言，实际使用中，几乎不会出现这种情况。&lt;/p&gt;
+    &lt;h3 id=&quot;section-1&quot;&gt;# 压缩器的作用&lt;/h3&gt;
+    &lt;p&gt;存在既合理，更何况压缩器这个东西，都快一个世纪了，还是有好多人在研究它。那究竟，这样一个效果器在混音中有什么样的实际应用呢？&lt;/p&gt;
+    &lt;h4 id=&quot;section-2&quot;&gt;# 人声&lt;/h4&gt;
+    &lt;p&gt;一首歌，如果想要引起听众的共鸣，必定少不了人声。然而，即使是非常专业的歌手，也不能保证在面对麦克风时能够稳定输出音量。从混音师的角度来看，人声音量不够稳定一定会对整个混音作品造成毁灭性的打击，为什么呢？&lt;/p&gt;
+    &lt;p&gt;有的地方声音太大，会盖过伴奏，有的地方声音太小，伴奏又会盖过人声。&lt;/p&gt;
+    &lt;p&gt;不过压缩器的出现完美的解决了这个问题。大家可以听一下下面这个demo：&lt;/p&gt;
+    &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: &apos;/p_assets/202009/diff-1-Audio.mp3&apos;, text: &apos;没有压缩的人声&apos;}&quot;
+    :off=&quot;{src: &apos;/p_assets/202009/diff-2-Audio.mp3&apos;, text: &apos;经过压缩的人声&apos;}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
+    &lt;p&gt;原曲来自我的好朋友Wynes：https://music.163.com/#/song?id=1416869953&lt;/p&gt;
+    &lt;br&gt;
+    &lt;p&gt;可以感受到，经过压缩人声明显稳定了很多，从下图中更加可以看出，原本比较轻的人声被放大，而原本比较突兀的地方，也被压缩到了同等级别。这样的在混音中可以保持很好的稳定性，当然，前提是伴奏也要保持稳定。需要注意的是，歌手的换气声也被放大了，这里先埋个坑，以后再给大家详细讲一讲怎么处理人声。&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;h4 id=&quot;section-3&quot;&gt;# 鼓&lt;/h4&gt;
+    &lt;p&gt;压缩器在鼓的作用上与人声大致相同，小的声音变大，大的声音变小。&lt;/p&gt;
+    &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: &apos;/p_assets/202009/drum-diff-2.mp3&apos;, text: &apos;未经压缩的鼓组&apos;}&quot;
+    :off=&quot;{src: &apos;/p_assets/202009/drum-diff-1.mp3&apos;, text: &apos;经过压缩后的鼓组&apos;}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
+    &lt;br&gt;
+    &lt;p&gt;不过在鼓组上，压缩器的&lt;code&gt;attack&lt;/code&gt;和&lt;code&gt;release&lt;/code&gt;比较讲究。&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;图片是上面两个鼓组音轨的对比，我们可以看到kick进来的瞬间，有压缩的振幅明显要比未压缩的振幅大，而之后的频谱振幅则没有太大变化。这是因为压缩器设置了合适的&lt;code&gt;attack&lt;/code&gt;，在kick信号刚进来时不进行压缩，也就是保留了瞬态，这样做的好处是能让鼓听起来更加有力！&lt;/p&gt;
+    &lt;p&gt;而适当的&lt;code&gt;release&lt;/code&gt;会让鼓组听起来更有弹性，太长或者太短都不行，最好是在下一个peak来临之前能够彻底release掉，也就是让压缩器回归初始状态。举个极端的例子，如果你设置了10秒的&lt;code&gt;release&lt;/code&gt;，kick和snare之间的间隔可能只有300毫秒，这样设置之后，阈值那只手永远也没办法抬起来，因为速度太慢了，刚抬起来一点点，下一个信号peak又来了，这样做只有一个意义——减小音量。&lt;/p&gt;
+    &lt;h4 id=&quot;sidechain&quot;&gt;# 侧链(Sidechain)&lt;/h4&gt;
+    &lt;p&gt;Sidechain，中文叫侧链，也可以叫旁链，老实说，第一次看到这个概念我也是：&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/202009/what.jpeg&quot; alt=&quot;黑人问号&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;关于这个概念以后我会专门写一篇博客详细阐述一下，现在我只能告诉你侧链这玩意儿的出现完全是个意外。&lt;/p&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;It may shock you to learn that the initial applications for sidechain compression in the 1930s were not
+    directed at making French filter house. Rather, it started with a film audio engineer named Douglas Shearer, who
+    needed a way to tame the sibilance (the hard “s” sounds) of dialogue recordings. Sidechaining was born when Shearer
+    conceived of a compressor with a “side” signal chain (separate to the main trigger signal) with an EQ slapped on it
+    – rather than evenly compressing the incoming signal, this “de-esser” would only be triggered when the specific
+    sibilant sounds appeared.&lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;p&gt;大家有兴趣可以看看Ableton的官方博客原文：https://www.ableton.com/en/blog/sidechain-compression-part-1/&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;这是FL Studio的一张截图，(因为比较直观)，Sidechain其实就是把2号轨的声音信号，传送到1号轨，但是这个声音信号不会经过主轨(Master)，“旁” 路 “链” 接，大概是这个意思吧，所以这样，&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;1号轨上的压缩器就可以针对2号轨的信号对1号轨自身信号做出一系列调整。&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;大家请听示例：&lt;/p&gt;
+    &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: &apos;/p_assets/202009/sc-diff-1.mp3&apos;, text: &apos;Bass没有侧链，和鼓组糊成一团&apos;}&quot;
+    :off=&quot;{src: &apos;/p_assets/202009/sc-diff-2.mp3&apos;, text: &apos;Bass有侧链，可以清晰听到鼓组中的kick，snare和tom&apos;}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
+    &lt;p&gt;从没有侧链的音频可以感受到，因为bass和kick都属于比较低频的声音，所以他俩打架了，让鼓组失去了爆发力。而有侧链的那段音频，我们可以很清晰的听到一系列频率较低的打击乐，我们用侧链让bass给kick主动让开了一条路。可以仔细听听bass
+    solo的时候有侧链和没侧链的区别。&lt;/p&gt;
+    &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: &apos;/p_assets/202009/bass-diff-1.mp3&apos;, text: &apos;Bass没有侧链&apos;}&quot;
+    :off=&quot;{src: &apos;/p_assets/202009/bass-diff-2.mp3&apos;, text: &apos;Bass有侧链&apos;}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
+    &lt;p&gt;当然了，为了区分明显，demo都比较极端，实际应用还是要看个人喜好或客户需求。在整体的混音作品里，我们可以使用侧链来突出任何你想要突出的元素，比如用人声的信号去侧链伴奏，让伴奏让开空间给人声，又比如在电子音乐中用lead去侧链chord/pad，等等等等。而这些全都离不开压缩器，这也是为什么压缩器在音乐制作业内备受关注的原因。&lt;/p&gt;
+    &lt;br&gt;
+    &lt;p&gt;好了，今天就讲到这里，希望这篇文章对你有帮助！&lt;/p&gt;
+</content>
+    <author>
+        <name></name>
+    </author>
+    <category term="编曲"/>
+    <category term="FX"/>
+    <category term="压缩器"/>
+    <summary type="html">看起来你正在使用RSS阅读器浏览本页面，通常情况下作者不会要求您去官网进行阅读，但是此页面包含一些自定义音频组件，为了得到更好的体验，请访问博客官网 https://jw1.dev
+        进行阅读。谢谢！
+    </summary>
+</entry>
+    <entry>
+        <title type="html">ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑</title>
+        <link href="https://jw1.dev/2020/07/20/a02.html" rel="alternate" type="text/html"
+              title="ElementUI：那些官方文档里没有介绍的玩法，当然了，还有坑"/>
+        <published>2020-07-20T00:00:00+08:00</published>
+        <updated>2020-07-20T00:00:00+08:00</updated>
+        <id>https://jw1.dev/2020/07/20/a02</id>
+        <content type="html" xml:base="https://jw1.dev/2020/07/20/a02.html">&lt;p&gt;“？？？”&lt;/p&gt;
+            &lt;p&gt;“卧槽？”&lt;/p&gt;
+            &lt;p&gt;”嗯？“&lt;/p&gt;
+            &lt;p&gt;是我，也是你，对不对？&lt;/p&gt;
+            &lt;p&gt;对于刚开始使用&lt;a href=&quot;https://element.eleme.io/#/zh-CN&quot;&gt;ElementUI&lt;/a&gt;的朋友们，我敢肯定
+            90%的你们反应都是上面那样。&lt;/p&gt;
+            &lt;p&gt;先来看看那些官网没有讲过的玩法&lt;/p&gt;
+            &lt;blockquote&gt;
+            &lt;p&gt;Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库&lt;/p&gt;
+            &lt;/blockquote&gt;
+            &lt;h3 id=&quot;codeel-scrollbarcode&quot;&gt;1. &lt;code&gt;el-scrollbar&lt;/code&gt;&lt;/h3&gt;
+            &lt;p&gt;&lt;img src=&quot;/p_assets/202007/image-20200720172813301.png&quot; alt=&quot;image-20200720172813301&quot;
+            /&gt;&lt;/p&gt;
 &lt;p&gt;不说废话，看官网的滚动条，很强有没有！&lt;/p&gt;
 &lt;p&gt;有的朋友要说了，就这？完全可以写样式控制的呀！&lt;/p&gt;
 &lt;p&gt;是的你没说错！&lt;/p&gt;
@@ -399,73 +424,73 @@
         &amp;lt;el-table-column prop=&amp;quot;date&amp;quot; label=&amp;quot;日期&amp;quot; width=&amp;quot;180&amp;quot;&amp;gt;
         &amp;lt;/el-table-column&amp;gt;
         &amp;lt;el-table-column prop=&amp;quot;name&amp;quot; label=&amp;quot;姓名&amp;quot; width=&amp;quot;180&amp;quot;&amp;gt;
-        &amp;lt;/el-table-column&amp;gt;
-        &amp;lt;el-table-column prop=&amp;quot;address&amp;quot; label=&amp;quot;地址&amp;quot;&amp;gt;
-        &amp;lt;/el-table-column&amp;gt;
-        &amp;lt;el-table-column label=&amp;quot;操作&amp;quot;&amp;gt;
+            &amp;lt;/el-table-column&amp;gt;
+            &amp;lt;el-table-column prop=&amp;quot;address&amp;quot; label=&amp;quot;地址&amp;quot;&amp;gt;
+            &amp;lt;/el-table-column&amp;gt;
+            &amp;lt;el-table-column label=&amp;quot;操作&amp;quot;&amp;gt;
             &amp;lt;template slot-scope=&amp;quot;scope&amp;quot;&amp;gt;
-
-                &amp;lt;el-button v-if=&amp;quot;!scope.row.deleted&amp;quot; size=&amp;quot;mini&amp;quot; type=&amp;quot;danger&amp;quot;
-                @click=&amp;quot;handleDelete(scope.$index, scope.row)&amp;quot;&amp;gt;移除&amp;lt;/el-button&amp;gt;
-
-                &amp;lt;span v-else&amp;gt;已移除&amp;lt;/span&amp;gt;
-  
-  &amp;lt;/template&amp;gt;
-  &amp;lt;/el-table-column&amp;gt;
-  &amp;lt;/el-table&amp;gt;
-  &amp;lt;/template&amp;gt;
-  &amp;lt;script&amp;gt;
-  export default {
-  data() {
-  return {
-  tableData: [{
-  date: '2016-05-02',
-  name: '王小虎',
-  address: '上海市普陀区金沙江路 1518 弄',
-  deleted: false
-  }, {
-  date: '2016-05-04',
-  name: '王小虎',
-  address: '上海市普陀区金沙江路 1517 弄',
-  deleted: false
-  }, {
-  date: '2016-05-01',
-  name: '王小虎',
-  address: '上海市普陀区金沙江路 1519 弄',
-  deleted: false
-  }, {
-  date: '2016-05-03',
-  name: '王小虎',
-  address: '上海市普陀区金沙江路 1516 弄',
-  deleted: false
-  }]
-  }
-  },
-  methods() {
-  return {
-  getRowClassName: function(row){
-  if (row.row.deleted) {
-  return 'deleted';
-  }
-  },
-  getRowDisabled: function(row){
-  if (row.deleted) {
-  return false;
-  }else{
-  return true
-  }
-  },
-  handleDelete: function(index, row){
-                    var _this = this;
-                    _this.tableData[index].deleted = true
-                }
+            
+            &amp;lt;el-button v-if=&amp;quot;!scope.row.deleted&amp;quot; size=&amp;quot;mini&amp;quot; type=&amp;quot;danger&amp;quot;
+            @click=&amp;quot;handleDelete(scope.$index, scope.row)&amp;quot;&amp;gt;移除&amp;lt;/el-button&amp;gt;
+            
+            &amp;lt;span v-else&amp;gt;已移除&amp;lt;/span&amp;gt;
+            
+            &amp;lt;/template&amp;gt;
+            &amp;lt;/el-table-column&amp;gt;
+            &amp;lt;/el-table&amp;gt;
+            &amp;lt;/template&amp;gt;
+            &amp;lt;script&amp;gt;
+            export default {
+            data() {
+            return {
+            tableData: [{
+            date: &apos;2016-05-02&apos;,
+            name: &apos;王小虎&apos;,
+            address: &apos;上海市普陀区金沙江路 1518 弄&apos;,
+            deleted: false
+            }, {
+            date: &apos;2016-05-04&apos;,
+            name: &apos;王小虎&apos;,
+            address: &apos;上海市普陀区金沙江路 1517 弄&apos;,
+            deleted: false
+            }, {
+            date: &apos;2016-05-01&apos;,
+            name: &apos;王小虎&apos;,
+            address: &apos;上海市普陀区金沙江路 1519 弄&apos;,
+            deleted: false
+            }, {
+            date: &apos;2016-05-03&apos;,
+            name: &apos;王小虎&apos;,
+            address: &apos;上海市普陀区金沙江路 1516 弄&apos;,
+            deleted: false
+            }]
             }
-        }
-    }
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;看起来很长一块代码，其实就三点需要注意一下：&lt;/p&gt;
-&lt;ol&gt;
+            },
+            methods() {
+            return {
+            getRowClassName: function(row){
+            if (row.row.deleted) {
+            return &apos;deleted&apos;;
+            }
+            },
+            getRowDisabled: function(row){
+            if (row.deleted) {
+            return false;
+            }else{
+            return true
+            }
+            },
+            handleDelete: function(index, row){
+            var _this = this;
+            _this.tableData[index].deleted = true
+            }
+            }
+            }
+            }
+            &amp;lt;/script&amp;gt;
+            &lt;/code&gt;&lt;/pre&gt;
+            &lt;p&gt;看起来很长一块代码，其实就三点需要注意一下：&lt;/p&gt;
+            &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;el-table&lt;/code&gt;上加上&lt;code&gt;:row-class-name&lt;/code&gt;来注册一个改变行 class 的方法，这样的话，&lt;code&gt;tableData&lt;/code&gt;中&lt;code&gt;deleted&lt;/code&gt;一旦发生改变，行 class 也会相应跟着变化&lt;/li&gt;
 &lt;li&gt;在选择列上加上&lt;code&gt;:selectable&lt;/code&gt;属性来注册一个改变选择状态的方法，&lt;code&gt;tableData&lt;/code&gt;中&lt;code&gt;deleted&lt;/code&gt;变成&lt;code&gt;false&lt;/code&gt;时，此属性的值也变成&lt;code&gt;false&lt;/code&gt;，这样这一行就不能被选中了。&lt;/li&gt;
 &lt;li&gt;剩下就是按钮和文字的切换，这就不用我再多赘述了吧~&lt;/li&gt;
@@ -514,52 +539,55 @@
 &lt;blockquote&gt;
 &lt;p&gt;假设你创建另一个repo – &lt;code&gt;your_new_repo&lt;/code&gt;，并给它开启了pages，理论上来说可以直接访问&lt;code&gt;username.github.io/your_new_repo&lt;/code&gt;，但是如果你没有正确配置你的一级repo名称，这个url将会是404。解决方法也有，就是配置另一个域名。。。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;当然，只要你爱折腾，不改也无妨。&lt;/p&gt;</content><author><name></name></author><category term="Github Pages" /><summary type="html">使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下。</summary></entry><entry><title type="html">LNMP如何配置Gitlab的反向代理和HTTPS</title><link href="https://jw1.dev/2020/05/09/a01.html" rel="alternate" type="text/html" title="LNMP如何配置Gitlab的反向代理和HTTPS" /><published>2020-05-09T00:00:00+08:00</published><updated>2020-05-09T00:00:00+08:00</updated><id>https://jw1.dev/2020/05/09/a01</id><content type="html" xml:base="https://jw1.dev/2020/05/09/a01.html">&lt;p&gt;使用Gitlab CE版已经有一年多了，期间一直在使用&lt;code&gt;http://ip:port&lt;/code&gt;的方式来进行访问。很明显，缺点有二：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;没有使用https，安全性堪忧。&lt;/li&gt;
-&lt;li&gt;没有使用域名，看起来并不专业...（&lt;/li&gt;
-&lt;/ul&gt;
-  &lt;p&gt;初期使用的时候并不是没有考虑过这两个问题，但是网上的教程大多都是直接nginx配置反向代理，且没有https，（且大部分都长得一样，(╬▔皿▔)凸），所以按照他们的教程来，没有一次是成功的...
-  后来也就放弃了配置域名和https...&lt;/p&gt;
-  &lt;p&gt;直到今天，决定再闯一次虎山，终于掌握了要点...啊~&lt;/p&gt;
-  &lt;h3 id=&quot;gitlab&quot;&gt;# 修改Gitlab配置文件&lt;/h3&gt;
-  &lt;p&gt;假设你已经拥有一台服务器，一个域名，且已经解析到你使用的服务器上，你的服务器已经装好gitlab，而且可以正常使用ip地址进行访问。&lt;/p&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;c&quot;&gt;# 使用vim编辑gitlab配置文件&lt;/span&gt;
-  vim /etc/gitlab/gitlab.rb
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;如果你还不会使用vim可以看看我写的另一篇博客《&lt;a href=&quot;https://jw1.dev/2019/11/11/a01.html&quot;&gt;来自一个不喜欢用Vim的弱鸡程序员的Vim教程&lt;/a&gt;》。&lt;/p&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;c&quot;&gt;# 修改gitlab外部访问链接，也就是你想配置的域名&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;# 这里假设你的外部域名为&lt;/span&gt;
-  external_url &lt;span class=&quot;s1&quot;&gt;'https://git.aaa.com'&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;这里是修改gitlab监听的外部nginx端口，端口号随意，只要别占用一些重要端口就可以。&lt;/p&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;c&quot;&gt;# 使用`/`命令搜索 `nginx['listen_port']`&lt;/span&gt;
-  nginx[&lt;span class=&quot;s1&quot;&gt;'listen_port'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span
-  class=&quot;o&quot;&gt;=&lt;/span&gt; 8118
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;然后&lt;code&gt;:wq&lt;/code&gt;保存并退出&lt;/p&gt;
-  &lt;p&gt;重新配置gitlab，然后重启gitlab服务&lt;/p&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gitlab-ctl
-  reconfigure
-  gitlab-ctl restart
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;h3 id=&quot;lnmphttps&quot;&gt;# 使用lnmp配置https&lt;/h3&gt;
-  &lt;p&gt;我这里lnmp版本为1.5。&lt;/p&gt;
-  &lt;p&gt;至于怎么用lnmp配置https，网上教程已经满天飞了，我就不多废话了...&lt;/p&gt;
-  &lt;p&gt;不过还是提两句：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;最好的教程：官网 --&amp;gt; https://lnmp.org/install.html&lt;/li&gt;
-&lt;li&gt;如果ssl配置的时候验证不成功，首先确认一下你的服务器80端口是否可以访问&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;lnmpnginx-vhost&quot;&gt;# 编辑lnmp中的Nginx Vhost配置文件以进行反向代理&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 进入到这个文件夹，你应该就能看到所有的lnmp域名配置文件&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /usr/local/nginx/conf/vhost
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 修改你的git域名配置&lt;/span&gt;
-vim git.aaa.com.conf
+&lt;p&gt;当然，只要你爱折腾，不改也无妨。&lt;/p&gt;</content><author><name></name></author><category term="Github Pages" /><summary type="html">使用Github Pages作为我博客的host server已经有一段时间了，初期使用中遇到了不少问题，今天就来和你们分享一下。</summary></entry><entry><title type="html">LNMP如何配置Gitlab的反向代理和HTTPS</title><link href="https://jw1.dev/2020/05/09/a01.html" rel="alternate" type="text/html" title="LNMP如何配置Gitlab的反向代理和HTTPS" /><published>2020-05-09T00:00:00+08:00</published><updated>2020-05-09T00:00:00+08:00</updated><id>https://jw1.dev/2020/05/09/a01</id><content type="html" xml:base="https://jw1.dev/2020/05/09/a01.html">
+    &lt;p&gt;使用Gitlab CE版已经有一年多了，期间一直在使用&lt;code&gt;http://ip:port&lt;/code&gt;的方式来进行访问。很明显，缺点有二：&lt;/p&gt;
+    &lt;ul&gt;
+    &lt;li&gt;没有使用https，安全性堪忧。&lt;/li&gt;
+    &lt;li&gt;没有使用域名，看起来并不专业...（&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;初期使用的时候并不是没有考虑过这两个问题，但是网上的教程大多都是直接nginx配置反向代理，且没有https，（且大部分都长得一样，(╬▔皿▔)凸），所以按照他们的教程来，没有一次是成功的...
+    后来也就放弃了配置域名和https...&lt;/p&gt;
+    &lt;p&gt;直到今天，决定再闯一次虎山，终于掌握了要点...啊~&lt;/p&gt;
+    &lt;h3 id=&quot;gitlab&quot;&gt;# 修改Gitlab配置文件&lt;/h3&gt;
+    &lt;p&gt;假设你已经拥有一台服务器，一个域名，且已经解析到你使用的服务器上，你的服务器已经装好gitlab，而且可以正常使用ip地址进行访问。&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;c&quot;&gt;# 使用vim编辑gitlab配置文件&lt;/span&gt;
+    vim /etc/gitlab/gitlab.rb
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;如果你还不会使用vim可以看看我写的另一篇博客《&lt;a href=&quot;https://jw1.dev/2019/11/11/a01.html&quot;&gt;来自一个不喜欢用Vim的弱鸡程序员的Vim教程&lt;/a&gt;》。&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;c&quot;&gt;# 修改gitlab外部访问链接，也就是你想配置的域名&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# 这里假设你的外部域名为&lt;/span&gt;
+    external_url &lt;span class=&quot;s1&quot;&gt;&apos;https://git.aaa.com&apos;&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;这里是修改gitlab监听的外部nginx端口，端口号随意，只要别占用一些重要端口就可以。&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;c&quot;&gt;# 使用`/`命令搜索 `nginx[&apos;listen_port&apos;]`&lt;/span&gt;
+    nginx[&lt;span class=&quot;s1&quot;&gt;&apos;listen_port&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 8118
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;然后&lt;code&gt;:wq&lt;/code&gt;保存并退出&lt;/p&gt;
+    &lt;p&gt;重新配置gitlab，然后重启gitlab服务&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gitlab-ctl
+    reconfigure
+    gitlab-ctl restart
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;h3 id=&quot;lnmphttps&quot;&gt;# 使用lnmp配置https&lt;/h3&gt;
+    &lt;p&gt;我这里lnmp版本为1.5。&lt;/p&gt;
+    &lt;p&gt;至于怎么用lnmp配置https，网上教程已经满天飞了，我就不多废话了...&lt;/p&gt;
+    &lt;p&gt;不过还是提两句：&lt;/p&gt;
+    &lt;ul&gt;
+    &lt;li&gt;最好的教程：官网 --&amp;gt; https://lnmp.org/install.html&lt;/li&gt;
+    &lt;li&gt;如果ssl配置的时候验证不成功，首先确认一下你的服务器80端口是否可以访问&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;h3 id=&quot;lnmpnginx-vhost&quot;&gt;# 编辑lnmp中的Nginx Vhost配置文件以进行反向代理&lt;/h3&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;c&quot;&gt;# 进入到这个文件夹，你应该就能看到所有的lnmp域名配置文件&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /usr/local/nginx/conf/vhost
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;c&quot;&gt;# 修改你的git域名配置&lt;/span&gt;
+    vim git.aaa.com.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;你看到的格式应该如下：&lt;/p&gt;
 &lt;div class=&quot;language-nginx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;server&lt;/span&gt;
@@ -612,53 +640,79 @@ vim git.aaa.com.conf
             &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Host&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
             &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;X-Real-IP&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$remote_addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
             &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;X-Forwarded-For&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$proxy_add_x_forwarded_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        
-            &lt;span class=&quot;c1&quot;&gt;# 不一样的是这里设置一下缓存，不然会出现400错误&lt;/span&gt;
-        	&lt;span class=&quot;kn&quot;&gt;proxy_buffer_size&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;64k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;kn&quot;&gt;proxy_buffers&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;kn&quot;&gt;proxy_busy_buffers_size&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-			
-        	&lt;span class=&quot;c1&quot;&gt;# 这里设置成你服务器gitlab的访问路径和刚刚设置的端口&lt;/span&gt;
-            &lt;span class=&quot;kn&quot;&gt;proxy_pass&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://localhost:8118&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;kn&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.html&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.htm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# 不一样的是这里设置一下缓存，不然会出现400错误&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;proxy_buffer_size&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;64k&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;proxy_buffers&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span
+    class=&quot;mi&quot;&gt;32k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;proxy_busy_buffers_size&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128k&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# 这里设置成你服务器gitlab的访问路径和刚刚设置的端口&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;proxy_pass&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://localhost:8118&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.html&lt;/span&gt; &lt;span
+    class=&quot;s&quot;&gt;index.htm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;h3 id=&quot;http-502&quot;&gt;# 如果出现http 502错误怎么办&lt;/h3&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;c&quot;&gt;# 进入/var/log文件夹&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/log
-  &lt;span class=&quot;c&quot;&gt;# 将gitlab文件夹的权限设置为775&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; 775 gitlab
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;h3 id=&quot;web-ide&quot;&gt;# Web IDE打不开怎么办&lt;/h3&gt;
-  &lt;p&gt;一般是出现&lt;code&gt;Mixed Context&lt;/code&gt;错误 —— https站引用了http资源。解决方法也很简单：&lt;/p&gt;
-  &lt;p&gt;确认一下你的gitlab配置文件中外部链接是&lt;code&gt;HTTPS&lt;/code&gt;开头，且gitlab自带的监听https是关闭状态。&lt;/p&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;external_url
-  &lt;span class=&quot;s1&quot;&gt;'https://git.aaa.com'&lt;/span&gt;
-  
-  nginx[&lt;span class=&quot;s1&quot;&gt;'listen_https'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span
-  class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;完成后，重新配置、重启gitlab和lnmp，再设置一遍log文件的权限&lt;/p&gt;
-  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gitlab-ctl
-  reconfigure
-  gitlab-ctl restart
-  lnmp restart
-  &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; 775
-  /var/log/gitlab
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;现在你就可以用&lt;code&gt;https://git.aaa.com&lt;/code&gt;来访问你的gitlab了！如果有任何问题，欢迎下面的评论区域告诉我！&lt;/p&gt;</content><author><name></name></author><category term="Gitlab" /><category term="Nginx" /><category term="HTTPS" /><category term="LNMP" /><summary type="html">使用Gitlab CE版已经有一年多了，期间一直在使用http://ip:port的方式来进行访问。很明显，缺点有二：</summary></entry><entry><title type="html">在本地/服务器部署less.js</title><link href="https://jw1.dev/2020/03/04/a01.html" rel="alternate" type="text/html" title="在本地/服务器部署less.js" /><published>2020-03-04T00:00:00+08:00</published><updated>2020-03-04T00:00:00+08:00</updated><id>https://jw1.dev/2020/03/04/a01</id><content type="html" xml:base="https://jw1.dev/2020/03/04/a01.html">&lt;p&gt;&lt;a href=&quot;http://lesscss.org/&quot;&gt;Less&lt;/a&gt;这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;不兼容IE浏览器&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;是的，IE 11都报错，更别提低版本的了。好在less有命令行版本，它能够让你使用less.js将less文件转换为css文件。这样在项目中，你引用的其实还是原始的css文件，这样就不存在兼容问题了。&lt;/p&gt;
-&lt;h4 id=&quot;less&quot;&gt;# less命令行的安装和使用&lt;/h4&gt;
-&lt;p&gt;如果你的电脑上装了npm，那么事情将会变得简单得多：&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;less &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;只需要一个命令就可以安装，less命令行的运行依赖nodejs环境，如果你还没有安装nodejs，可以在它的&lt;a href=&quot;https://nodejs.org/zh-cn/&quot;&gt;官网&lt;/a&gt;下载安装。&lt;/p&gt;
-&lt;p&gt;less的安装完成了，使用的话也很简单：&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lessc main.less main.css
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;h3 id=&quot;http-502&quot;&gt;# 如果出现http 502错误怎么办&lt;/h3&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;c&quot;&gt;# 进入/var/log文件夹&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/log
+    &lt;span class=&quot;c&quot;&gt;# 将gitlab文件夹的权限设置为775&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; 775 gitlab
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;h3 id=&quot;web-ide&quot;&gt;# Web IDE打不开怎么办&lt;/h3&gt;
+    &lt;p&gt;一般是出现&lt;code&gt;Mixed Context&lt;/code&gt;错误 —— https站引用了http资源。解决方法也很简单：&lt;/p&gt;
+    &lt;p&gt;确认一下你的gitlab配置文件中外部链接是&lt;code&gt;HTTPS&lt;/code&gt;开头，且gitlab自带的监听https是关闭状态。&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;external_url
+    &lt;span class=&quot;s1&quot;&gt;&apos;https://git.aaa.com&apos;&lt;/span&gt;
+    
+    nginx[&lt;span class=&quot;s1&quot;&gt;&apos;listen_https&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;完成后，重新配置、重启gitlab和lnmp，再设置一遍log文件的权限&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gitlab-ctl
+    reconfigure
+    gitlab-ctl restart
+    lnmp restart
+    &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; 775
+    /var/log/gitlab
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;现在你就可以用&lt;code&gt;https://git.aaa.com&lt;/code&gt;来访问你的gitlab了！如果有任何问题，欢迎下面的评论区域告诉我！&lt;/p&gt;
+</content>
+    <author>
+        <name></name>
+    </author>
+    <category term="Gitlab"/>
+    <category term="Nginx"/>
+    <category term="HTTPS"/>
+    <category term="LNMP"/>
+    <summary type="html">使用Gitlab CE版已经有一年多了，期间一直在使用http://ip:port的方式来进行访问。很明显，缺点有二：</summary>
+</entry>
+    <entry>
+        <title type="html">在本地/服务器部署less.js</title>
+        <link href="https://jw1.dev/2020/03/04/a01.html" rel="alternate" type="text/html" title="在本地/服务器部署less.js"/>
+        <published>2020-03-04T00:00:00+08:00</published>
+        <updated>2020-03-04T00:00:00+08:00</updated>
+        <id>https://jw1.dev/2020/03/04/a01</id>
+        <content type="html" xml:base="https://jw1.dev/2020/03/04/a01.html">&lt;p&gt;&lt;a href=&quot;http://lesscss.org/&quot;&gt;Less&lt;/a&gt;这个项目在我刚开始学习前端的时候就已经有所耳闻了，直到今天才有了在项目中一展拳脚的机会。之前做demo的时候一直是在html中引入less.min.js来使用的，但是很快就发现一个问题：&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;不兼容IE浏览器&lt;/strong&gt;。&lt;/p&gt;
+            &lt;p&gt;是的，IE
+            11都报错，更别提低版本的了。好在less有命令行版本，它能够让你使用less.js将less文件转换为css文件。这样在项目中，你引用的其实还是原始的css文件，这样就不存在兼容问题了。&lt;/p&gt;
+            &lt;h4 id=&quot;less&quot;&gt;# less命令行的安装和使用&lt;/h4&gt;
+            &lt;p&gt;如果你的电脑上装了npm，那么事情将会变得简单得多：&lt;/p&gt;
+            &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;less
+            &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;只需要一个命令就可以安装，less命令行的运行依赖nodejs环境，如果你还没有安装nodejs，可以在它的&lt;a href=&quot;https://nodejs.org/zh-cn/&quot;&gt;官网&lt;/a&gt;下载安装。&lt;/p&gt;
+            &lt;p&gt;less的安装完成了，使用的话也很简单：&lt;/p&gt;
+            &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;lessc main.less main.css
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;以上命令将会把&lt;code&gt;main.less&lt;/code&gt;直接转换成&lt;code&gt;main.css&lt;/code&gt;。&lt;/p&gt;
 &lt;h4 id=&quot;lesscss&quot;&gt;# less到css的自动转换&lt;/h4&gt;
 &lt;p&gt;转换是完成了，可是又出现一个问题，我们知道，css这种东西是需要不断的调试的。现有的机制下，每保存一下less，就要去CMD里面转换一下，这样无疑降低了我们的工作效率，要是能在保存的时候自动转换css就好了。&lt;/p&gt;
@@ -787,61 +841,61 @@ vim git.aaa.com.conf
 &lt;p&gt;答：让新手退出vim&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;用过Vim的人肯定一眼就能Get到笑点，因为Vim的反人类设计，你需要在键盘上打出&lt;code&gt;:q&lt;/code&gt;才能退出。但是作为一个老牌的文本编辑器，其地位在很多程序员心中的地位是不可撼动的，很多Linux 发行版也都是自带Vim，用来临时修改一下服务器上的文件非常方便。&lt;/p&gt;
-&lt;p&gt;因为第一次也遇到了进入Vim退不出去的尴尬情景，我决定去谷歌一下Vim怎么用，看到某大牛写的Vim教程我是懵逼的，因为真的太多东西要学了，一张网页，上万px的高度，几乎键盘上每一个按键都有它的作用，大小写不一样，作用也不一样，还有组合键和命令。即使到现在，我也只记得大约5%的快捷键和命令。但是我觉得如果你只是用来编辑一些简单的文件，比如HTML里面改个标签，CSS里面改个高度这种小活，5%可以说是非常够了。&lt;/p&gt;
-&lt;p&gt;在终端打出&lt;code&gt;vim&lt;/code&gt;然后回车，来看一下他的界面吧：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/p_assets/201911/vim.png&quot; alt=&quot;image-20191111174728567&quot; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;问：作为一个程序员，你最喜欢的代码编辑器是什么？&lt;/p&gt;
-&lt;p&gt;答：乌干达&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;界面很简洁，但是其反人类的设计，会让你有点不相信打&lt;code&gt;:help&lt;/code&gt;能出帮助文档。&lt;/p&gt;
-&lt;p&gt;Vim有五种模式：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;正常模式&lt;/li&gt;
-  &lt;li&gt;插入模式&lt;/li&gt;
-  &lt;li&gt;命令模式&lt;/li&gt;
-  &lt;li&gt;视图模式&lt;/li&gt;
-  &lt;li&gt;Ex模式 (~~前女友模式~~)&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;p&gt;作为初学者，你可能并不明白为什么Vim要设计“模式”这种东西，时间一长你就会发现：你还是不懂；but whatever&lt;/p&gt;
-  &lt;p&gt;&lt;strong&gt;正常模式&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;刚进入vim的界面就是正常模式。从技术上来讲，所有的按键在这个模式下都是快捷键。(雾&lt;/p&gt;
-  &lt;p&gt;&lt;strong&gt;插入模式&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;在插入模式下，Vim的表现和Windows的记事本一样，yeah that's how you can type...so&lt;/p&gt;
-  &lt;p&gt;&lt;strong&gt;命令模式&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;在正常模式按下&lt;code&gt;:&lt;/code&gt;就可以进入命令模式。&lt;/p&gt;
-  &lt;p&gt;按下&lt;code&gt;Enter&lt;/code&gt;执行命令，执行完命令后，Vim会默认回到正常模式，如果没有也同样可以按下&lt;code&gt;esc&lt;/code&gt;。&lt;/p&gt;
-  &lt;p&gt;&lt;strong&gt;视图模式&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;在这个模式下，移动光标会选中文字，很像鼠标操作。&lt;/p&gt;
-  &lt;p&gt;&lt;strong&gt;Ex模式&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;Wikipedia:&lt;/p&gt;
-  &lt;blockquote&gt;
-  &lt;p&gt;这和命令行模式比较相似，在使用&amp;quot;:visual&amp;quot;命令离开Ex模式前，可以一次执行多条命令。&lt;/p&gt;
-  &lt;/blockquote&gt;
-  &lt;p&gt;反正我是没看懂...&lt;/p&gt;
-  &lt;hr&gt;
-  &lt;blockquote&gt;
-  &lt;p&gt;Yeah all the crap you just said, I still don't know how to type in this fucking thing!&lt;/p&gt;
-  &lt;/blockquote&gt;
-  &lt;p&gt;不说废话了，其实想要快乐的和Vim玩耍，只需要记住以下几条：&lt;/p&gt;
-  &lt;ul&gt;
-  &lt;li&gt;
-  &lt;p&gt;命令&lt;code&gt;vim test.html&lt;/code&gt;打开该文件进行编辑，如果没有该文件，在保存后，Vim会新建该文件。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;如果你想打字的话，在正常模式按下&lt;code&gt;i&lt;/code&gt;键就可以进入♂插入模式&lt;code&gt;Insert Mode&lt;/code&gt; ，在插入模式下才能打字&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-&lt;p&gt;如果你想保存文件就按下&lt;code&gt;:w&lt;/code&gt;，强制保存是&lt;code&gt;:w!&lt;/code&gt;，保存并退出 &lt;code&gt;:wq&lt;/code&gt;，强制保存退出&lt;code&gt;:wq!&lt;/code&gt;，强制退出&lt;code&gt;:q!&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;撤销修改是在正常模式按下&lt;code&gt;u&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;重做是在正常模式按下&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;r&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;跳到具体的某一行可以在正常模式下按下&lt;code&gt;:&lt;/code&gt;进入命令模式，后面跟上你想要定位到的行号 &lt;code&gt;:12138&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;因为第一次也遇到了进入Vim退不出去的尴尬情景，我决定去谷歌一下Vim怎么用，看到某大牛写的Vim教程我是懵逼的，因为真的太多东西要学了，一张网页，上万px的高度，几乎键盘上每一个按键都有它的作用，大小写不一样，作用也不一样，还有组合键和命令。即使到现在，我也只记得大约5%的快捷键和命令。但是我觉得如果你只是用来编辑一些简单的文件，比如HTML里面改个标签，CSS里面改个高度这种小活，5%可以说是非常够了。&lt;/p&gt;
+    &lt;p&gt;在终端打出&lt;code&gt;vim&lt;/code&gt;然后回车，来看一下他的界面吧：&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/201911/vim.png&quot; alt=&quot;image-20191111174728567&quot; /&gt;&lt;/p&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;问：作为一个程序员，你最喜欢的代码编辑器是什么？&lt;/p&gt;
+    &lt;p&gt;答：乌干达&lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;p&gt;界面很简洁，但是其反人类的设计，会让你有点不相信打&lt;code&gt;:help&lt;/code&gt;能出帮助文档。&lt;/p&gt;
+    &lt;p&gt;Vim有五种模式：&lt;/p&gt;
+    &lt;ul&gt;
+    &lt;li&gt;正常模式&lt;/li&gt;
+    &lt;li&gt;插入模式&lt;/li&gt;
+    &lt;li&gt;命令模式&lt;/li&gt;
+    &lt;li&gt;视图模式&lt;/li&gt;
+    &lt;li&gt;Ex模式 (~~前女友模式~~)&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;作为初学者，你可能并不明白为什么Vim要设计“模式”这种东西，时间一长你就会发现：你还是不懂；but whatever&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;正常模式&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;刚进入vim的界面就是正常模式。从技术上来讲，所有的按键在这个模式下都是快捷键。(雾&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;插入模式&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;在插入模式下，Vim的表现和Windows的记事本一样，yeah that&apos;s how you can type...so&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;命令模式&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;在正常模式按下&lt;code&gt;:&lt;/code&gt;就可以进入命令模式。&lt;/p&gt;
+    &lt;p&gt;按下&lt;code&gt;Enter&lt;/code&gt;执行命令，执行完命令后，Vim会默认回到正常模式，如果没有也同样可以按下&lt;code&gt;esc&lt;/code&gt;。&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;视图模式&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;在这个模式下，移动光标会选中文字，很像鼠标操作。&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Ex模式&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;Wikipedia:&lt;/p&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;这和命令行模式比较相似，在使用&amp;quot;:visual&amp;quot;命令离开Ex模式前，可以一次执行多条命令。&lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;p&gt;反正我是没看懂...&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;Yeah all the crap you just said, I still don&apos;t know how to type in this fucking thing!&lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;p&gt;不说废话了，其实想要快乐的和Vim玩耍，只需要记住以下几条：&lt;/p&gt;
+    &lt;ul&gt;
+    &lt;li&gt;
+    &lt;p&gt;命令&lt;code&gt;vim test.html&lt;/code&gt;打开该文件进行编辑，如果没有该文件，在保存后，Vim会新建该文件。&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;如果你想打字的话，在正常模式按下&lt;code&gt;i&lt;/code&gt;键就可以进入♂插入模式&lt;code&gt;Insert Mode&lt;/code&gt; ，在插入模式下才能打字&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;如果你想保存文件就按下&lt;code&gt;:w&lt;/code&gt;，强制保存是&lt;code&gt;:w!&lt;/code&gt;，保存并退出 &lt;code&gt;:wq&lt;/code&gt;，强制保存退出&lt;code&gt;:wq!&lt;/code&gt;，强制退出&lt;code&gt;:q!&lt;/code&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;撤销修改是在正常模式按下&lt;code&gt;u&lt;/code&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;重做是在正常模式按下&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;r&lt;/code&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;跳到具体的某一行可以在正常模式下按下&lt;code&gt;:&lt;/code&gt;进入命令模式，后面跟上你想要定位到的行号 &lt;code&gt;:12138&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;查找是在正常模式下按下&lt;code&gt;/&lt;/code&gt;，后面跟上你想要查找的字符&lt;code&gt;/myFunktion&lt;/code&gt;，按下&lt;code&gt;Enter&lt;/code&gt;会进入第一个查找结果，按下&lt;code&gt;n&lt;/code&gt;显示下一条搜索结果，按下&lt;code&gt;N&lt;/code&gt;显示上一条搜索结果。&lt;/p&gt;
@@ -859,206 +913,240 @@ vim git.aaa.com.conf
 &lt;p&gt;✌&lt;/p&gt;</content><author><name></name></author><category term="Vim" /><category term="代码编辑器" /><summary type="html">在网上看过一个笑话：</summary></entry><entry><title type="html">使用JavaScript达成 background-size: cover 的效果</title><link href="https://jw1.dev/2019/10/28/a03.html" rel="alternate" type="text/html" title="使用JavaScript达成 background-size: cover 的效果" /><published>2019-10-28T00:00:00+08:00</published><updated>2019-10-28T00:00:00+08:00</updated><id>https://jw1.dev/2019/10/28/a03</id><content type="html" xml:base="https://jw1.dev/2019/10/28/a03.html">&lt;p&gt;最近有一个项目，领导要求：要让一个&lt;strong&gt;视频&lt;/strong&gt;在&lt;strong&gt;一屏显示&lt;/strong&gt;的情况下&lt;strong&gt;不能改变宽高比&lt;/strong&gt; and &lt;strong&gt;适配各种分辨率&lt;/strong&gt; and &lt;strong&gt;兼容到IE 7&lt;/strong&gt;。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。&lt;/p&gt;
 &lt;p&gt;不过不是我做（欸嘿），别人也没做出来，我也没站出来（面子最重要），于是领导不得不放低要求，当然这都是后话了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/p_assets/201910/zhazha.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;后来想，如果我来做的话，我会怎么做？对于领导的要求，我脑子里第一个闪过的就是&lt;code&gt;background-size: cover&lt;/code&gt;这个玩意儿，但是第一，这个是CSS 3的属性，IE 8就歇菜了，更别说IE 7了，第二，这个属性只对图片有用......&lt;/p&gt;
-&lt;p&gt;那能不能用js来模拟呢？&lt;/p&gt;
-&lt;p&gt;说干就干，当下就开始研究&lt;code&gt;cover&lt;/code&gt;属性是怎么工作的，最后结论是：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cover&lt;/code&gt;在正常情况下，只是单纯的将图片宽度放到与容器一样宽，在缩放过程中，&lt;strong&gt;当图片高度小于容器高度时&lt;/strong&gt;，&lt;strong&gt;会根据原始图片的宽高比(ratio)来放大图片宽度&lt;/strong&gt;，使原始图片始终撑满容器。&lt;/p&gt;
-&lt;p&gt;听起来有点绕，直接上代码：&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onresize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resized&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;zIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;marginLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;marginTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span
-  class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;maxWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;marginTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;marginLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;marginLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;marginTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resized&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;__proto__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;wp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;使用的话大概就是这样：&lt;/p&gt;
-  &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span
-  class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span
-  class=&quot;s&quot;&gt;&quot;path/to/img&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span
-  class=&quot;s&quot;&gt;&quot;test_img&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 传入容器&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;test_img&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 传入容器中的图片&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;可以在这里看一下&lt;a href=&quot;/p_assets/201910/a03_demo/&quot;&gt;演示&lt;/a&gt;。代码已经测试，可以兼容到IE 7。&lt;/p&gt;
-  &lt;p&gt;对于视频也是一样的用法，&lt;code&gt;img&lt;/code&gt;传视频元素就可以了。&lt;/p&gt;
-  &lt;p&gt;✌&lt;/p&gt;</content><author><name></name></author><category term="JavaScript" /><category term="CSS" /><category term="IE" /><category term="兼容" /><summary type="html">最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。</summary></entry><entry><title type="html">职业生涯分享</title><link href="https://jw1.dev/2019/10/25/a02.html" rel="alternate" type="text/html" title="职业生涯分享" /><published>2019-10-25T00:00:00+08:00</published><updated>2019-10-25T00:00:00+08:00</updated><id>https://jw1.dev/2019/10/25/a02</id><content type="html" xml:base="https://jw1.dev/2019/10/25/a02.html">&lt;p&gt;一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯。&lt;/p&gt;
-&lt;h4 id=&quot;section&quot;&gt;2014年6月，一切的开始&lt;/h4&gt;
-&lt;p&gt;17岁，大部分同龄人还在读高二的年纪，我却已经走上了实习岗位（并不自豪），第一份工作是上汽旗下的A车站当技术员。说白了就是修车，不过说是修车，其实呢，是拿着￥1390/月的工资，洗了八个月的车。辞职那天，有点小雨，在去地铁站的路上一直在想，这就是以后我的工作吗？这样的工作我真的能坚守并热爱下去吗？&lt;/p&gt;
-&lt;p&gt;在家闲了两个星期后，我妈决定让我先随便找一份工作。于是在申通找了个仓库管理的工作，每天的工作大概就是搬东西，清点货品，爬货架，和同事唠嗑。总之，忙起来非人类，闲起来特无聊。大概做了一个月后，收到奶奶病重的消息，于是又辞职了，拿着两千多块钱回老家了。&lt;/p&gt;
-&lt;p&gt;奶奶在2015年5月去世，办完丧事后回到上海，偶然间看到&lt;em&gt;华育国际&lt;/em&gt; *的PHP培训广告。于是说服父母，打算转行做程序员。&lt;/p&gt;
-&lt;h4 id=&quot;php&quot;&gt;2015年6月，开始学习PHP&lt;/h4&gt;
-&lt;p&gt;在讲师放了一堆PPT和视频之后，我就觉得，“哇，这简直就是我梦寐以求的工作！”&lt;/p&gt;
-&lt;p&gt;然后，现实他就给了我一耳光。我发现我的耐心很差，后面学到Javascript的时候就有点心不在焉了。后面三个月的重点PHP课程是真的一点都没听进去，钱倒是浪费了一大半。后来找工作的时候没有办法，只能硬着头皮去面试前端。&lt;/p&gt;
-&lt;h4 id=&quot;section-1&quot;&gt;2016年3月，第一份工作&lt;/h4&gt;
-&lt;p&gt;不知道经过多少次碰一鼻子灰后，终于有一家公司录用（收留）了我。这家公司主要就是帮别人建网站的，所以工作很纯粹，就是切图，设计师给我PSD，我出HTML，没有五险一金，过年过节也没有福利，但是有些地方却让我慢慢的驱散了之前找不到工作时的不安和来自父母的压力。不管技术经理还是设计师，对我这个新人都非常有耐心，遇到问题也不会对我大喊大叫，而是很温柔的教我应该怎么处理才是正确的。这样的氛围，让我感觉整个世界都亮了起来，让我更加坚定了自己要当一个程序员的想法。就是这一年，让我明白培训机构教的东西，真的只是皮毛而已。也是这一年，让我的切图技能达到了饱和状态。后来离职，老板没有意外，他也知道在他那里再待下去，也没有什么提升空间了。&lt;/p&gt;
-&lt;h4 id=&quot;section-2&quot;&gt;2017年6月，第二份工作&lt;/h4&gt;
+    &lt;p&gt;后来想，如果我来做的话，我会怎么做？对于领导的要求，我脑子里第一个闪过的就是&lt;code&gt;background-size: cover&lt;/code&gt;这个玩意儿，但是第一，这个是CSS
+    3的属性，IE 8就歇菜了，更别说IE 7了，第二，这个属性只对图片有用......&lt;/p&gt;
+    &lt;p&gt;那能不能用js来模拟呢？&lt;/p&gt;
+    &lt;p&gt;说干就干，当下就开始研究&lt;code&gt;cover&lt;/code&gt;属性是怎么工作的，最后结论是：&lt;/p&gt;
+    &lt;p&gt;&lt;code&gt;cover&lt;/code&gt;在正常情况下，只是单纯的将图片宽度放到与容器一样宽，在缩放过程中，&lt;strong&gt;当图片高度小于容器高度时&lt;/strong&gt;，&lt;strong&gt;会根据原始图片的宽高比(ratio)来放大图片宽度&lt;/strong&gt;，使原始图片始终撑满容器。&lt;/p&gt;
+    &lt;p&gt;听起来有点绕，直接上代码：&lt;/p&gt;
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+    class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt; &lt;span
+    class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onresize&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span
+    class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resized&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span
+    class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;zIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;marginLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;marginTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span
+    class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;maxWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;marginTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;marginLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span
+    class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;marginLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;marginTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;px&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resized&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calcStyle&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;__proto__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;wp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;使用的话大概就是这样：&lt;/p&gt;
+    &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
+    class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span
+    class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span
+    class=&quot;s&quot;&gt;&quot;path/to/img&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span
+    class=&quot;s&quot;&gt;&quot;test_img&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+    class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;kkkover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;wrapCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 传入容器&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;test_img&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 传入容器中的图片&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;可以在这里看一下&lt;a href=&quot;/p_assets/201910/a03_demo/&quot;&gt;演示&lt;/a&gt;。代码已经测试，可以兼容到IE 7。&lt;/p&gt;
+    &lt;p&gt;对于视频也是一样的用法，&lt;code&gt;img&lt;/code&gt;传视频元素就可以了。&lt;/p&gt;
+    &lt;p&gt;✌&lt;/p&gt;
+</content>
+    <author>
+        <name></name>
+    </author>
+    <category term="JavaScript"/>
+    <category term="CSS"/>
+    <category term="IE"/>
+    <category term="兼容"/>
+    <summary type="html">最近有一个项目，领导要求：要让一个视频在一屏显示的情况下不能改变宽高比 and 适配各种分辨率 and 兼容到IE 7。嘶~，有点棘手，对于要兼容到IE 7的项目，写CSS简直头疼。
+    </summary>
+</entry>
+    <entry>
+        <title type="html">职业生涯分享</title>
+        <link href="https://jw1.dev/2019/10/25/a02.html" rel="alternate" type="text/html" title="职业生涯分享"/>
+        <published>2019-10-25T00:00:00+08:00</published>
+        <updated>2019-10-25T00:00:00+08:00</updated>
+        <id>https://jw1.dev/2019/10/25/a02</id>
+        <content type="html" xml:base="https://jw1.dev/2019/10/25/a02.html">&lt;p&gt;一转眼，做前端也有三年多了。今天不想写代码，就想说一说我的职业生涯。&lt;/p&gt;
+            &lt;h4 id=&quot;section&quot;&gt;2014年6月，一切的开始&lt;/h4&gt;
+            &lt;p&gt;17岁，大部分同龄人还在读高二的年纪，我却已经走上了实习岗位（并不自豪），第一份工作是上汽旗下的A车站当技术员。说白了就是修车，不过说是修车，其实呢，是拿着￥1390/月的工资，洗了八个月的车。辞职那天，有点小雨，在去地铁站的路上一直在想，这就是以后我的工作吗？这样的工作我真的能坚守并热爱下去吗？&lt;/p&gt;
+            &lt;p&gt;在家闲了两个星期后，我妈决定让我先随便找一份工作。于是在申通找了个仓库管理的工作，每天的工作大概就是搬东西，清点货品，爬货架，和同事唠嗑。总之，忙起来非人类，闲起来特无聊。大概做了一个月后，收到奶奶病重的消息，于是又辞职了，拿着两千多块钱回老家了。&lt;/p&gt;
+            &lt;p&gt;奶奶在2015年5月去世，办完丧事后回到上海，偶然间看到&lt;em&gt;华育国际&lt;/em&gt; *的PHP培训广告。于是说服父母，打算转行做程序员。&lt;/p&gt;
+            &lt;h4 id=&quot;php&quot;&gt;2015年6月，开始学习PHP&lt;/h4&gt;
+            &lt;p&gt;在讲师放了一堆PPT和视频之后，我就觉得，“哇，这简直就是我梦寐以求的工作！”&lt;/p&gt;
+            &lt;p&gt;然后，现实他就给了我一耳光。我发现我的耐心很差，后面学到Javascript的时候就有点心不在焉了。后面三个月的重点PHP课程是真的一点都没听进去，钱倒是浪费了一大半。后来找工作的时候没有办法，只能硬着头皮去面试前端。&lt;/p&gt;
+            &lt;h4 id=&quot;section-1&quot;&gt;2016年3月，第一份工作&lt;/h4&gt;
+            &lt;p&gt;不知道经过多少次碰一鼻子灰后，终于有一家公司录用（收留）了我。这家公司主要就是帮别人建网站的，所以工作很纯粹，就是切图，设计师给我PSD，我出HTML，没有五险一金，过年过节也没有福利，但是有些地方却让我慢慢的驱散了之前找不到工作时的不安和来自父母的压力。不管技术经理还是设计师，对我这个新人都非常有耐心，遇到问题也不会对我大喊大叫，而是很温柔的教我应该怎么处理才是正确的。这样的氛围，让我感觉整个世界都亮了起来，让我更加坚定了自己要当一个程序员的想法。就是这一年，让我明白培训机构教的东西，真的只是皮毛而已。也是这一年，让我的切图技能达到了饱和状态。后来离职，老板没有意外，他也知道在他那里再待下去，也没有什么提升空间了。&lt;/p&gt;
+            &lt;h4 id=&quot;section-2&quot;&gt;2017年6月，第二份工作&lt;/h4&gt;
 &lt;p&gt;这是一家媒体公司，主要做音频优化和影音设备的，我也不明白他们为什么会需要前端，也不明白为什么会选到我，刚开始我的工作就是切切图，美化一下表单。&lt;/p&gt;
 &lt;p&gt;再后来，公司终于决定搞个大项目——在线音频优化平台。&lt;/p&gt;
 &lt;p&gt;项目研发的五个月里，我从一个不太会Javascript的小白，变成了一个可以独挡一面的中级前端工程师，从一个完全没接触过Linux的菜鸟，拥有了一个运维实习生的水平，也对各种工具有了很深的了解，而最主要的一件事，就是让我的PHP技能入门了。这着实让我很开心，在2018年，我拥有了自己的第一个域名，拥有了硕大互联网中的一个旮旯。&lt;/p&gt;
@@ -1108,232 +1196,272 @@ https://github.com/login/oauth/authorize?client_id=xxx&amp;amp;redirect_uri=xxx
     ----&amp;gt;
 api.blog.com/?code=xxx        # api.blog.com就是你填在GitHub OAuth App的Callback URL
     ----&amp;gt; POST
-https://github.com/login/oauth/access_token
+    https://github.com/login/oauth/access_token
     ----&amp;gt;
-???
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;对！问题来了！&lt;/p&gt;
-&lt;p&gt;怎么跳转？跳哪里？&lt;/p&gt;
-&lt;p&gt;作为开发者，我肯定是想跳回&lt;code&gt;blog.com/post/01.html&lt;/code&gt;实现无缝体验对吧...&lt;/p&gt;
-&lt;p&gt;然而就这个问题，不管是CSDN，还是Stack Overflow，甚至官方文档，&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;全都没有！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;终于，在死了不知道多少脑细胞后，我想出了如下实现过程：&lt;/p&gt;
-  &lt;ol&gt;
-  &lt;li&gt;
-  &lt;p&gt;假设用户在&lt;code&gt;blog.com/post/01.html&lt;/code&gt;这张页面上点击了GitHub登录按钮，这个登录按钮不要直接跳转到GitHub授权页面，先跳转到你自己设置的GitHub
-  OAuth App的Callback URL，这里假设是&lt;code&gt;api.blog.com&lt;/code&gt;，把当前页面的URL传给&lt;code&gt;api.blog.com&lt;/code&gt;，例如：&lt;code&gt;api.blog.com?url=blog.com/post/01.html&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;这样在跳转到&lt;code&gt;api.blog.com&lt;/code&gt;的时候，你就知道了点击登录的是哪张页面了，这时候可以把传过来URL记录到&lt;code&gt;localStorage&lt;/code&gt;或者Cookie，甚至是后端的Session，反正不管怎么样，找个地方记录一下就可以了，因为这时候我们还要跳转到&lt;code&gt;github.com&lt;/code&gt;，不记录的话就丢失了数据&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;用户在&lt;code&gt;github.com&lt;/code&gt;完成授权后，还是会跳转到&lt;code&gt;api.blog.com&lt;/code&gt;，因为跳转前记录了授权前传来的页面URL，在你获取到Token之后，你可以把URL再读取出来：&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// localStorage 这么用&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;);&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// Cookie 这么用&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 这个function w3c抄来的&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getCookie&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;cname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span
-  class=&quot;s2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ca&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;ca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;ca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;];&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
-  &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;getCookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;/li&gt;
-  &lt;/ol&gt;
-  &lt;p&gt;获取用户信息的请求可以在&lt;code&gt;api.blog.com&lt;/code&gt;做，也可以像我一样带着&lt;code&gt;token&lt;/code&gt;回到&lt;code&gt;blog.com/post/01.html&lt;/code&gt;去做。&lt;/p&gt;
-  &lt;p&gt;因为自己的博客~~URL特殊，又是Hash又是URL Param~~(原本是单页App，现在已调整为纯静态，但是不影响思路)，而且也不想用户在回到页面的时候，URL后面跟着一个长长的&lt;code&gt;token&lt;/code&gt;，我还新加了一个跳转页面
-  &lt;code&gt;blog.com/r.html&lt;/code&gt;，这个页面负责接收&lt;code&gt;token&lt;/code&gt;和跳转的页面，将&lt;code&gt;token&lt;/code&gt;写入浏览器存储（上面说的&lt;code&gt;localStorage&lt;/code&gt;或者Cookie）之后再进行跳转，在&lt;code&gt;blog.com/post/01.html&lt;/code&gt;完成用户信息的调用后删除记录在浏览器存储里面的&lt;code&gt;token&lt;/code&gt;。&lt;/p&gt;
-  &lt;p&gt;&lt;img src=&quot;/p_assets/201910/nice.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;p&gt;虽然流程跑通了，但是我还是很好奇为什么GitHub官方文档里完全找不到这一部分的说明，在搜索引擎上也找不到相关文章...&lt;/p&gt;
-  &lt;p&gt;随便吧，现在看起来，只能这样解决...&lt;/p&gt;</content><author><name></name></author><category term="GitHub" /><category term="OAuth" /><category term="Web App" /><summary type="html">最近完成了博客的评论系统，第三方登录使用了GitHub OAuth App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等...</summary></entry><entry><title type="html">开发一个web音乐播放器到底有多难？</title><link href="https://jw1.dev/2019/08/22/a01.html" rel="alternate" type="text/html" title="开发一个web音乐播放器到底有多难？" /><published>2019-08-22T00:00:00+08:00</published><updated>2019-08-22T00:00:00+08:00</updated><id>https://jw1.dev/2019/08/22/a01</id><content type="html" xml:base="https://jw1.dev/2019/08/22/a01.html">&lt;p&gt;前段时间比较闲，顺便就开发了自己的音乐主页👉&lt;a href=&quot;https://music.jw1.dev&quot;&gt;https://music.jw1.dev&lt;/a&gt;，开发过程中遇到不少问题，一度以为解决不了，但是最后看来，其实实现都非常简单。&lt;/p&gt;
-&lt;p&gt;首先看看html吧&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 或者 --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;source&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;audio/mpeg&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这时候打开页面你会发现...什么都没有。&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;controls&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;加上&lt;code&gt;controls&lt;/code&gt;这个属性，浏览器才会显示原生的音频组件。至于浏览器兼容性我就不讲了，还是老样子扔个MDN链接在这里😁：&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;所以，搞定了？&lt;/p&gt;
-&lt;p&gt;不！像我这种有强迫症的人，怎么可能让每个浏览器的显示都不一致！&lt;/p&gt;
-&lt;p&gt;要做的第一件事情就是，隐藏&lt;code&gt;audio&lt;/code&gt;的原生控制组件：&lt;/p&gt;
-  &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;&lt;span
-  class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 去掉 controls --&amp;gt;&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;(👆三遍了🤣&lt;/p&gt;
-  &lt;p&gt;然后用CSS将&lt;code&gt;audio&lt;/code&gt; 移出文档流：&lt;/p&gt;
-  &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;nt&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fixed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span
-  class=&quot;nl&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span
-  class=&quot;m&quot;&gt;-12138px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;为什么要这么做？&lt;/p&gt;
-  &lt;p&gt;—— 为了避免一些非主流的浏览器会让&lt;code&gt;audio&lt;/code&gt;在没有&lt;code&gt;controls&lt;/code&gt;属性的情况下出现在不应该出现的地方。(好累&lt;/p&gt;
-  &lt;p&gt;接下来看JS的部分&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 或者用jQuery&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;原生JavaScript在log下只能看到标签，而jQuery则会把所有和这个元素有关的东西都列出来，不论是有用的还是没有用的。但是知道有那么多属性/事件可以用是件好事，在这里说几样比较重要的。&lt;/p&gt;
-  &lt;blockquote&gt;
-  &lt;p&gt;接下来js区域中的&lt;code&gt;audio&lt;/code&gt;都是以原生js获取的对象，如果你使用jQuery，audio赋值应该为&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span
-  class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;/blockquote&gt;
-  &lt;h4 id=&quot;audioplay&quot;&gt;# audio.play()&lt;/h4&gt;
-  &lt;p&gt;可以调用此方法来播放音频。因为市面上大多数浏览器不允许直接用js触发音乐播放，必须要由用户来触发该事件('click', 'scroll', 'focus', etc.)，所以我们可以加一个播放按钮来触发事件：&lt;/p&gt;
-  &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span
-  class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;&lt;span
-  class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
-  
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span
-  class=&quot;s&quot;&gt;&quot;play&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;play&lt;span
-  class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 获取play button&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt; &lt;span
-  class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;.play&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 给play button添加点击事件&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// play button 点击后播放音频&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;h4 id=&quot;audiopause-amp-audiopaused&quot;&gt;# audio.pause() &amp;amp; audio.paused&lt;/h4&gt;
-  &lt;p&gt;调用&lt;code&gt;audio.pause()&lt;/code&gt;来暂停音频。&lt;/p&gt;
-  &lt;p&gt;调用&lt;code&gt;audio.paused&lt;/code&gt;来获取音频暂停状态，&lt;code&gt;true&lt;/code&gt;为暂停状态，&lt;code&gt;false&lt;/code&gt;则为播放状态。&lt;/p&gt;
-  &lt;p&gt;比如我现在需要再点击一次play button来暂停音频，我们可以这样做：&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
-  class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span
-  class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 点击后判断音频是否为暂停状态&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;paused&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 如果audio.paused为true&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 则音频为暂停状态&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 这时候我们就要播放音频&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 同时修改button的文字为pause&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;pause&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 如果audio.paused为false&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 则音频为播放状态&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 这时候我们就要暂停音频&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 同时修改button的文字为play&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pause&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;play&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;h4 id=&quot;audiocurrenttime&quot;&gt;# audio.currentTime&lt;/h4&gt;
-  &lt;p&gt;调用此属性获取音频当前已播放时间。&lt;/p&gt;
-  &lt;p&gt;修改此属性可以达到切换音频当前播放位置的功能：&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 快进十秒&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;fastForward&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span
-  class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTime&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;currentTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;fastForward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h4 id=&quot;audioduration&quot;&gt;# audio.duration&lt;/h4&gt;
-&lt;p&gt;调用此属性获取音频的长度，单位为秒。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;已知问题&lt;/strong&gt;：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在&lt;code&gt;Firefox&lt;/code&gt;上会出现读不到duration的情况，可能和修改&lt;code&gt;audio.src&lt;/code&gt;有关，我在自己项目中的做法是使用了&lt;code&gt;ffmpeg&lt;/code&gt;读取出duration，直接当作变量使用，没有使用浏览器给的这个属性。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&quot;audioontimeupdate&quot;&gt;# audio.ontimeupdate&lt;/h4&gt;
-&lt;p&gt;此方法在音频播放期间会循环调用，经测试，调用间隔大约为200ms一次。&lt;/p&gt;
+    ???
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;对！问题来了！&lt;/p&gt;
+    &lt;p&gt;怎么跳转？跳哪里？&lt;/p&gt;
+    &lt;p&gt;作为开发者，我肯定是想跳回&lt;code&gt;blog.com/post/01.html&lt;/code&gt;实现无缝体验对吧...&lt;/p&gt;
+    &lt;p&gt;然而就这个问题，不管是CSDN，还是Stack Overflow，甚至官方文档，&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;全都没有！&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;终于，在死了不知道多少脑细胞后，我想出了如下实现过程：&lt;/p&gt;
+    &lt;ol&gt;
+    &lt;li&gt;
+    &lt;p&gt;假设用户在&lt;code&gt;blog.com/post/01.html&lt;/code&gt;这张页面上点击了GitHub登录按钮，这个登录按钮不要直接跳转到GitHub授权页面，先跳转到你自己设置的GitHub
+    OAuth App的Callback URL，这里假设是&lt;code&gt;api.blog.com&lt;/code&gt;，把当前页面的URL传给&lt;code&gt;api.blog.com&lt;/code&gt;，例如：&lt;code&gt;api.blog.com?url=blog.com/post/01.html&lt;/code&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;这样在跳转到&lt;code&gt;api.blog.com&lt;/code&gt;的时候，你就知道了点击登录的是哪张页面了，这时候可以把传过来URL记录到&lt;code&gt;localStorage&lt;/code&gt;或者Cookie，甚至是后端的Session，反正不管怎么样，找个地方记录一下就可以了，因为这时候我们还要跳转到&lt;code&gt;github.com&lt;/code&gt;，不记录的话就丢失了数据&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;p&gt;用户在&lt;code&gt;github.com&lt;/code&gt;完成授权后，还是会跳转到&lt;code&gt;api.blog.com&lt;/code&gt;，因为跳转前记录了授权前传来的页面URL，在你获取到Token之后，你可以把URL再读取出来：&lt;/p&gt;
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+    class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// localStorage 这么用&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Cookie 这么用&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 这个function w3c抄来的&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getCookie&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;cname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span
+    class=&quot;s2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ca&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+    class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span
+    class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;getCookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+    class=&quot;s1&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;p&gt;获取用户信息的请求可以在&lt;code&gt;api.blog.com&lt;/code&gt;做，也可以像我一样带着&lt;code&gt;token&lt;/code&gt;回到&lt;code&gt;blog.com/post/01.html&lt;/code&gt;去做。&lt;/p&gt;
+    &lt;p&gt;因为自己的博客~~URL特殊，又是Hash又是URL Param~~(原本是单页App，现在已调整为纯静态，但是不影响思路)，而且也不想用户在回到页面的时候，URL后面跟着一个长长的&lt;code&gt;token&lt;/code&gt;，我还新加了一个跳转页面
+    &lt;code&gt;blog.com/r.html&lt;/code&gt;，这个页面负责接收&lt;code&gt;token&lt;/code&gt;和跳转的页面，将&lt;code&gt;token&lt;/code&gt;写入浏览器存储（上面说的&lt;code&gt;localStorage&lt;/code&gt;或者Cookie）之后再进行跳转，在&lt;code&gt;blog.com/post/01.html&lt;/code&gt;完成用户信息的调用后删除记录在浏览器存储里面的&lt;code&gt;token&lt;/code&gt;。&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/p_assets/201910/nice.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;虽然流程跑通了，但是我还是很好奇为什么GitHub官方文档里完全找不到这一部分的说明，在搜索引擎上也找不到相关文章...&lt;/p&gt;
+    &lt;p&gt;随便吧，现在看起来，只能这样解决...&lt;/p&gt;
+</content>
+    <author>
+        <name></name>
+    </author>
+    <category term="GitHub"/>
+    <category term="OAuth"/>
+    <category term="Web App"/>
+    <summary type="html">最近完成了博客的评论系统，第三方登录使用了GitHub OAuth
+        App。至于教程或者示例，随便谷歌、百度一下都是一大片，或许正是因为查的太多了，以至于所有的教程都在告诉你怎么注册、怎么调用API、怎么用XXX后端获取数据等等等等...
+    </summary>
+</entry>
+    <entry>
+        <title type="html">开发一个web音乐播放器到底有多难？</title>
+        <link href="https://jw1.dev/2019/08/22/a01.html" rel="alternate" type="text/html" title="开发一个web音乐播放器到底有多难？"/>
+        <published>2019-08-22T00:00:00+08:00</published>
+        <updated>2019-08-22T00:00:00+08:00</updated>
+        <id>https://jw1.dev/2019/08/22/a01</id>
+        <content type="html" xml:base="https://jw1.dev/2019/08/22/a01.html">&lt;p&gt;前段时间比较闲，顺便就开发了自己的音乐主页👉&lt;a href=&quot;https://music.jw1.dev&quot;&gt;https://music.jw1.dev&lt;/a&gt;，开发过程中遇到不少问题，一度以为解决不了，但是最后看来，其实实现都非常简单。&lt;/p&gt;
+            &lt;p&gt;首先看看html吧&lt;/p&gt;
+            &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span
+            class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;&lt;span
+            class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
+            
+            &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 或者 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;source&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span
+            class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span
+            class=&quot;s&quot;&gt;&quot;audio/mpeg&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;这时候打开页面你会发现...什么都没有。&lt;/p&gt;
+            &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span
+            class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;controls&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;加上&lt;code&gt;controls&lt;/code&gt;这个属性，浏览器才会显示原生的音频组件。至于浏览器兼容性我就不讲了，还是老样子扔个MDN链接在这里😁：&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Browser_compatibility&lt;/a&gt;&lt;/p&gt;
+            &lt;p&gt;所以，搞定了？&lt;/p&gt;
+            &lt;p&gt;不！像我这种有强迫症的人，怎么可能让每个浏览器的显示都不一致！&lt;/p&gt;
+            &lt;p&gt;要做的第一件事情就是，隐藏&lt;code&gt;audio&lt;/code&gt;的原生控制组件：&lt;/p&gt;
+            &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span
+            class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;&lt;span
+            class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 去掉 controls --&amp;gt;&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;(👆三遍了🤣&lt;/p&gt;
+            &lt;p&gt;然后用CSS将&lt;code&gt;audio&lt;/code&gt; 移出文档流：&lt;/p&gt;
+            &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span
+            class=&quot;nb&quot;&gt;fixed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;top&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span
+            class=&quot;nl&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-12138px&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;;}&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;为什么要这么做？&lt;/p&gt;
+            &lt;p&gt;—— 为了避免一些非主流的浏览器会让&lt;code&gt;audio&lt;/code&gt;在没有&lt;code&gt;controls&lt;/code&gt;属性的情况下出现在不应该出现的地方。(好累&lt;/p&gt;
+            &lt;p&gt;接下来看JS的部分&lt;/p&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 或者用jQuery&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt; &lt;span
+            class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;原生JavaScript在log下只能看到标签，而jQuery则会把所有和这个元素有关的东西都列出来，不论是有用的还是没有用的。但是知道有那么多属性/事件可以用是件好事，在这里说几样比较重要的。&lt;/p&gt;
+            &lt;blockquote&gt;
+            &lt;p&gt;接下来js区域中的&lt;code&gt;audio&lt;/code&gt;都是以原生js获取的对象，如果你使用jQuery，audio赋值应该为&lt;/p&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/blockquote&gt;
+            &lt;h4 id=&quot;audioplay&quot;&gt;# audio.play()&lt;/h4&gt;
+            &lt;p&gt;可以调用此方法来播放音频。因为市面上大多数浏览器不允许直接用js触发音乐播放，必须要由用户来触发该事件(&apos;click&apos;, &apos;scroll&apos;, &apos;focus&apos;,
+            etc.)，所以我们可以加一个播放按钮来触发事件：&lt;/p&gt;
+            &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;audio&lt;/span&gt; &lt;span
+            class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;path/to/your/audio/file&quot;&lt;/span&gt;&lt;span
+            class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/audio&amp;gt;&lt;/span&gt;
+            
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span
+            class=&quot;s&quot;&gt;&quot;play&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;play&lt;span
+            class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 获取play button&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt; &lt;span
+            class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.play&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 给play button添加点击事件&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// play button 点击后播放音频&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;h4 id=&quot;audiopause-amp-audiopaused&quot;&gt;# audio.pause() &amp;amp; audio.paused&lt;/h4&gt;
+            &lt;p&gt;调用&lt;code&gt;audio.pause()&lt;/code&gt;来暂停音频。&lt;/p&gt;
+            &lt;p&gt;调用&lt;code&gt;audio.paused&lt;/code&gt;来获取音频暂停状态，&lt;code&gt;true&lt;/code&gt;为暂停状态，&lt;code&gt;false&lt;/code&gt;则为播放状态。&lt;/p&gt;
+            &lt;p&gt;比如我现在需要再点击一次play button来暂停音频，我们可以这样做：&lt;/p&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 点击后判断音频是否为暂停状态&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;paused&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 如果audio.paused为true&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 则音频为暂停状态&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 这时候我们就要播放音频&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 同时修改button的文字为pause&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;pause&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;{&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 如果audio.paused为false&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 则音频为播放状态&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 这时候我们就要暂停音频&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 同时修改button的文字为play&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;pause&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;playBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;h4 id=&quot;audiocurrenttime&quot;&gt;# audio.currentTime&lt;/h4&gt;
+            &lt;p&gt;调用此属性获取音频当前已播放时间。&lt;/p&gt;
+            &lt;p&gt;修改此属性可以达到切换音频当前播放位置的功能：&lt;/p&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 快进十秒&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;fastForward&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;currentTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span
+            class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTime&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;fastForward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;h4 id=&quot;audioduration&quot;&gt;# audio.duration&lt;/h4&gt;
+            &lt;p&gt;调用此属性获取音频的长度，单位为秒。&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;已知问题&lt;/strong&gt;：&lt;/p&gt;
+            &lt;ol&gt;
+            &lt;li&gt;在&lt;code&gt;Firefox&lt;/code&gt;上会出现读不到duration的情况，可能和修改&lt;code&gt;audio.src&lt;/code&gt;有关，我在自己项目中的做法是使用了&lt;code&gt;ffmpeg&lt;/code&gt;读取出duration，直接当作变量使用，没有使用浏览器给的这个属性。&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;h4 id=&quot;audioontimeupdate&quot;&gt;# audio.ontimeupdate&lt;/h4&gt;
+            &lt;p&gt;此方法在音频播放期间会循环调用，经测试，调用间隔大约为200ms一次。&lt;/p&gt;
 &lt;p&gt;此方法可以用在更新音频进度条上。有了上面的&lt;code&gt;audio.currentTime&lt;/code&gt;和&lt;code&gt;audio.duration&lt;/code&gt;，我们可以算出当前音频播放进度的百分比：&lt;/p&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 将百分比定为全局变量&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audioProgressPercent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -1355,80 +1483,111 @@ https://github.com/login/oauth/access_token
     &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedLength&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;
 
     &lt;span class=&quot;c1&quot;&gt;// 以bufferedLength做循环&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedStart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedEnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bufferedStart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedEnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;控制台输出：&lt;/p&gt;
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; 0 17.64
-  56.45 78.90
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;p&gt;输出的含义为：&lt;/p&gt;
-  &lt;p&gt;这一次读取&lt;code&gt;audio.buffered&lt;/code&gt;得到了两个区间，所以循环了两次。&lt;/p&gt;
-  &lt;p&gt;第一次获得的区间是&lt;code&gt;[0,17.64]&lt;/code&gt;，代表第0秒到第17.64秒之间的音频已经缓冲好了，可以直接播放。&lt;/p&gt;
-  &lt;p&gt;第二次获得的区间是&lt;code&gt;[56.45,78.90]&lt;/code&gt;，代表这两个数字之间的音频已经缓冲好了，可以直接播放。&lt;/p&gt;
-  &lt;h4 id=&quot;audioonwaiting-amp-audioonplay&quot;&gt;# audio.onwaiting &amp;amp; audio.onplay&lt;/h4&gt;
-  &lt;p&gt;&lt;code&gt;audio.onwaiting&lt;/code&gt;会在音频开始缓冲的时候被激活；&lt;/p&gt;
-  &lt;p&gt;&lt;code&gt;audio.onplay&lt;/code&gt;会在音频开始播放的时候被激活；&lt;/p&gt;
-  &lt;p&gt;这时候我们可以做一个loading的动画，告诉用户音频正在加载了：&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
-  class=&quot;nx&quot;&gt;onwaiting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;audio
-  is loading&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 在这里激活loading动画&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onplay&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span
-  class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;audio
-  is playing&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 在这里关闭loading动画&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;h4 id=&quot;audioended-amp-audiosrc&quot;&gt;# audio.ended &amp;amp; audio.src&lt;/h4&gt;
-  &lt;p&gt;&lt;code&gt;audio.ended&lt;/code&gt;顾名思义，会在音频结束后被激活；&lt;/p&gt;
-  &lt;p&gt;&lt;code&gt;audio.src&lt;/code&gt;是音频文件的位置，可修改；&lt;/p&gt;
-  &lt;p&gt;当你有一个播放列表，且想在音频结束后播放下一首歌，你就可以：&lt;/p&gt;
-  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
-  class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 定义播放列表&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playList&lt;/span&gt; &lt;span
-  class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path/to/song1&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path/to/song2&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path/to/song3&lt;/span&gt;&lt;span
-  class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 定义当前播放歌曲的ID&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span
-  class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 音频结束后自动播放下一首&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onended&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 更新当前播放歌曲的ID&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span
-  class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    
-    &lt;span class=&quot;c1&quot;&gt;// 如果当前播放歌曲为播放列表中最后一首&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 就从第一首开始放&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    
-    &lt;span class=&quot;c1&quot;&gt;// 改变audio的src属性&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span
+            class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+            &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span
+            class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedLength&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedStart&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedEnd&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buffered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bufferedStart&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bufferedEnd&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;控制台输出：&lt;/p&gt;
+            &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; 0 17.64
+            56.45 78.90
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;p&gt;输出的含义为：&lt;/p&gt;
+            &lt;p&gt;这一次读取&lt;code&gt;audio.buffered&lt;/code&gt;得到了两个区间，所以循环了两次。&lt;/p&gt;
+            &lt;p&gt;第一次获得的区间是&lt;code&gt;[0,17.64]&lt;/code&gt;，代表第0秒到第17.64秒之间的音频已经缓冲好了，可以直接播放。&lt;/p&gt;
+            &lt;p&gt;第二次获得的区间是&lt;code&gt;[56.45,78.90]&lt;/code&gt;，代表这两个数字之间的音频已经缓冲好了，可以直接播放。&lt;/p&gt;
+            &lt;h4 id=&quot;audioonwaiting-amp-audioonplay&quot;&gt;# audio.onwaiting &amp;amp; audio.onplay&lt;/h4&gt;
+            &lt;p&gt;&lt;code&gt;audio.onwaiting&lt;/code&gt;会在音频开始缓冲的时候被激活；&lt;/p&gt;
+            &lt;p&gt;&lt;code&gt;audio.onplay&lt;/code&gt;会在音频开始播放的时候被激活；&lt;/p&gt;
+            &lt;p&gt;这时候我们可以做一个loading的动画，告诉用户音频正在加载了：&lt;/p&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onwaiting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span
+            class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+            class=&quot;s1&quot;&gt;audio is loading&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 在这里激活loading动画&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;onplay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+            class=&quot;s1&quot;&gt;audio is playing&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 在这里关闭loading动画&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;h4 id=&quot;audioended-amp-audiosrc&quot;&gt;# audio.ended &amp;amp; audio.src&lt;/h4&gt;
+            &lt;p&gt;&lt;code&gt;audio.ended&lt;/code&gt;顾名思义，会在音频结束后被激活；&lt;/p&gt;
+            &lt;p&gt;&lt;code&gt;audio.src&lt;/code&gt;是音频文件的位置，可修改；&lt;/p&gt;
+            &lt;p&gt;当你有一个播放列表，且想在音频结束后播放下一首歌，你就可以：&lt;/p&gt;
+            &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre
+            class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 定义播放列表&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playList&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path/to/song1&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path/to/song2&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path/to/song3&lt;/span&gt;&lt;span
+            class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 定义当前播放歌曲的ID&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;;&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 音频结束后自动播放下一首&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;onended&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 更新当前播放歌曲的ID&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+            &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 如果当前播放歌曲为播放列表中最后一首&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 就从第一首开始放&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playList&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+            &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;// 改变audio的src属性&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playList&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentSongID&lt;/span&gt;&lt;span
+            class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span
+            class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;哦还有！&lt;/p&gt;
