@@ -7,9 +7,7 @@
     <title>{{page.title}} - {{site.title}}</title>
     {% include head.html %}
     {% if page.style %}
-    <style>
       {{page.style}}
-    </style>
     {%endif%}
   </head>
   <body>
@@ -34,6 +32,9 @@
                 <div class="page-content">{{ content }}</div>
                 <div class="page-original">
                   <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                </div>
+                <div class="disqus-box">
+                  {% include disqus.html %}
                 </div>
               </div>
             </div>

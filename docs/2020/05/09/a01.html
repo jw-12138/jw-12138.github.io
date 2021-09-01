@@ -183,6 +183,46 @@ lnmp restart
                 <div class="page-original">
                   <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
                 </div>
+                <div class="disqus-box">
+                  <div id="disqus_thread" class="on">
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+    <path d="M0 0h24v24H0V0z" fill="none" />
+    <path d="M20 6h-1v8c0 .55-.45 1-1 1H6v1c0 1.1.9 2 2 2h10l4 4V8c0-1.1-.9-2-2-2zm-3 5V4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v13l4-4h9c1.1 0 2-.9 2-2z" />
+  </svg>
+  点击加载DISQUS
+  <div class="clairation"></div>
+</div>
+<script>
+  window.addEventListener('load', function () {
+    var Disqus = function () {
+      window.disqus_config = function () {
+        this.page.url = location.href
+        this.page.identifier = location.href
+      }
+      this.init = function () {
+        var _ = this
+        var disqus_box = document.getElementById('disqus_thread')
+        disqus_box.addEventListener('click', function () {
+          disqus_box.classList.remove('on')
+          disqus_box.innerHTML = ''
+          disqus.startDisqus()
+        })
+      }
+      this.startDisqus = function () {
+        var d = document
+        var s = d.createElement('script')
+        s.src = 'https://jw1dev.disqus.com/embed.js'
+        s.setAttribute('data-timestamp', +new Date())
+        ;(d.head || d.body).appendChild(s)
+      }
+    }
+
+    var disqus = new Disqus()
+    disqus.init()
+  })
+</script>
+
+                </div>
               </div>
             </div>
           </section>

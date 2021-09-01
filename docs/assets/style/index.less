@@ -3,8 +3,8 @@
 @main-blue: #565656;
 @main-gold: #cc8633;
 @link: #0066cc;
-@view-font: "Lexend", "Microsoft Yahei UI";
-@mono-font: "Fira Mono";
+@view-font: 'Lexend', 'Microsoft Yahei UI';
+@mono-font: 'Fira Mono';
 
 // reset
 html,
@@ -124,7 +124,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -281,7 +281,7 @@ header {
 .clear {
   &:after {
     clear: both;
-    content: "";
+    content: '';
     display: block;
   }
 }
@@ -550,7 +550,7 @@ header {
     color: #333;
     margin-top: 10px;
     margin-bottom: 10px;
-    .heading-title("h1");
+    .heading-title('h1');
   }
 
   h2 {
@@ -560,7 +560,7 @@ header {
     color: #333;
     margin-top: 10px;
     margin-bottom: 10px;
-    .heading-title("h2");
+    .heading-title('h2');
   }
 
   h3 {
@@ -570,7 +570,7 @@ header {
     color: #333;
     margin-bottom: 10px;
     margin-top: 40px;
-    .heading-title("h3")
+    .heading-title('h3');
   }
 
   h4 {
@@ -580,7 +580,7 @@ header {
     color: #333;
     margin-bottom: 10px;
     margin-top: 30px;
-    .heading-title("h4");
+    .heading-title('h4');
   }
 
   h5 {
@@ -590,7 +590,7 @@ header {
     color: #333;
     margin-bottom: 10px;
     margin-top: 20px;
-    .heading-title("h5");
+    .heading-title('h5');
   }
 
   h6 {
@@ -600,7 +600,7 @@ header {
     color: #333;
     margin-bottom: 10px;
     margin-top: 10px;
-    .heading-title("h6");
+    .heading-title('h6');
   }
 
   pre {
@@ -830,7 +830,7 @@ span.deprecated {
     animation: playing_w 1.2s linear infinite;
   }
 
-  input[type="range"] {
+  input[type='range'] {
     width: 100%;
     margin-top: 20px;
     -webkit-appearance: none;
@@ -1022,20 +1022,41 @@ span.deprecated {
   }
 }
 
-.paginate{
+.paginate {
   color: #999;
   font-size: 14px;
   padding: 40px 0 40px;
   text-align: center;
-  ul{
+  ul {
     text-align: center;
-    li{
+    li {
       display: inline-block;
       margin: 0 20px;
     }
   }
-  a{
+  a {
     color: @link;
+  }
+}
+
+#disqus_thread {
+  &.on {
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    border-radius: 5px;
+    margin: 0 auto;
+    line-height: 1.45;
+    font-size: 16px;
+    background-color: @main-blue;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+
+    svg {
+      vertical-align: middle;
+      fill: #fff;
+    }
   }
 }
 
@@ -1045,8 +1066,8 @@ span.deprecated {
     background-color: darken(@main-blue, 30%);
   }
 
-  .paginate{
-    a{
+  .paginate {
+    a {
       color: @main-gold;
     }
   }
@@ -1075,7 +1096,7 @@ span.deprecated {
     background-color: darken(@main-blue, 7%);
     border-color: darken(@main-blue, 7%);
 
-    input[type="range"] {
+    input[type='range'] {
       background-color: darken(@main-blue, 7%);
 
       &:hover {
@@ -1283,10 +1304,9 @@ span.deprecated {
   }
 
   .page-wrap section.aside ul li {
-
     a {
       color: #fff;
-      
+
       svg {
         fill: #fff;
       }
@@ -1321,5 +1341,16 @@ span.deprecated {
 
   ::-webkit-scrollbar-thumb:vertical:active {
     background-color: lighten(@main-blue, 10%);
+  }
+
+  #disqus_thread {
+    &.on {
+      background-color: @main-blue;
+      color: #fff;
+  
+      svg {
+        fill: #fff;
+      }
+    }
   }
 }
