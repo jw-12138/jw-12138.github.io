@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>一个球的博客</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Lexend&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/index.min.css" />
+<meta name="keywords" content="一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影," id="keywords" />
+<meta name="description" content="Front-end Developer / Music Producer" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-wrap">
+        <header>
+  <div class="logo">
+    <a href="/" title="Click here to navigate homepage" id="header">
+      <div class="img">
+        <img src="/assets/img/logo-black.png" alt="logo" class="dark" />
+        <img src="/assets/img/logo.png" alt="logo" class="light" />
+      </div>
+    </a>
+  </div>
+  <div class="slogan" ref="slogan">
+    Front-end Developer / Music Producer
+  </div>
+  <div class="page-small-menu" v-if="page_small">
+    <ul>
+      
+      <li>
+        <a href="/about/">About Me</a>
+      </li>
+      
+      <li>
+        <a href="/atom.xml" target="_blank">RSS</a>
+      </li>
+    </ul>
+  </div>
+</header>
+        <div class="page-wrap">
+          <section class="pages" style="padding-top: 20px">
+            <div class="page">
+              <div class="wrap">
+                <section class="list">
+                  <div class="section_title" title="Below is the blog list">POSTS</div>
+                  <div class="index_post_list">
+                    <ul>
+                      
+                      <li>
+                        <a href="/2018/11/08/a01.html">
+                          <div class="title">Hello World! </div>
+                          <div class="date">2018-11-08</div>
+                          <div class="sum" title="This is blog summary">
+                            
+                            憋了这么久的博客总算是弄好了。
+
+                            
+                          </div>
+                          <div class="tag" title="These are blog tags">
+                            
+                            <span>HelloWorld</span>
+                            
+                          </div>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                    <div class="paginate">
+                      
+                      <ul>
+                        
+                        <li>
+                          <a href="/page/2/">Newer</a>
+                        </li>
+                        
+                        
+                      </ul>
+                      
+                      3 / 3
+                    </div>
+                  </div>
+                </section>
+                <section class="friends">
+                  <div class="section_title" title="Below are my friends links">FRIENDS</div>
+                  <div class="index_friends_list">
+                    <ul>
+                      
+                      <li>
+                        <a href="https://www.logcg.com/" target="_blank" rel="friend colleague">
+                          <div class="title">落格博客</div>
+                        </a>
+                        <span>- Log everything.</span>
+                      </li>
+                      
+                      <li>
+                        <a href="https://starryvoid.com/" target="_blank" rel="friend colleague">
+                          <div class="title">StarryVoid</div>
+                        </a>
+                        <span>- 星光璀璨之空 StarryVoid 的个人博客网站</span>
+                      </li>
+                      
+                      <li>
+                        <a href="https://admiraldesvl.github.io" target="_blank" rel="friend colleague">
+                          <div class="title">Desvl</div>
+                        </a>
+                        <span>- Interest comes from thinking.</span>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+          <section class="aside" v-if="!page_small" aria-label="aside">
+            <ul>
+              
+              <li>
+                <a href="/about/" class="dontread" title="About Me">👦 About Me</a>
+              </li>
+              
+              <li>
+                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <footer>© <span class="copy_right_year">2018 - 2021</span><a href="/" class="footer-link">一个球的博客</a>code with ❤</footer>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+  </body>
+</html>

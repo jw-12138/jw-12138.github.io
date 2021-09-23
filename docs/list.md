@@ -2,6 +2,10 @@
 <h2 id="posts">Posts</h2>
 <ul>
 <li>
+<p><a href="https://jw1.dev/2021/09/23/a01.html">关于瞬态控制器（Transient Shaper）</a><br />
+2021-09-23</p>
+</li>
+<li>
 <p><a href="https://jw1.dev/2021/08/31/a01.html">从VSCode到WebStorm，我后悔了吗？</a><br />
 2021-08-31</p>
 </li>
