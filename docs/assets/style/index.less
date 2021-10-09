@@ -3,134 +3,11 @@
 @main-blue: #565656;
 @main-gold: #cc8633;
 @link: #0066cc;
-@view-font: 'Lexend', 'Microsoft Yahei UI';
-@mono-font: 'Fira Mono';
+@view-font: 'JetBrains Mono', 'Microsoft Yahei UI';
+@mono-font: 'JetBrains Mono';
 
-// reset
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+html{
+  font-size: 20px;
 }
 
 footer {
@@ -167,13 +44,9 @@ html * {
   box-sizing: border-box;
 }
 
-html {
-  font-size: 20px;
-}
-
 body {
   font-family: @view-font;
-  font-weight: 500;
+  font-weight: normal;
   transition: background-color 0s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -248,6 +121,7 @@ header {
   ul {
     display: flex;
     justify-content: center;
+    padding: 0;
 
     li {
       display: flex;
@@ -342,6 +216,9 @@ header {
     .index_post_list {
       padding: 30px 0;
       min-height: 600px;
+      ul{
+        padding: 0;
+      }
 
       ul li {
         // margin-bottom: 20px;
@@ -415,6 +292,9 @@ header {
     .index_friends_list {
       padding: 20px 0;
 
+      ul{
+        padding: 0;
+      }
       ul li {
         list-style: none;
         padding: 0 0 20px;
@@ -473,7 +353,7 @@ header {
 
 .page-content {
   color: @dark;
-  font-size: 16px;
+  font-size: .8em;
   padding-top: 40px;
 
   &.on {
@@ -743,6 +623,7 @@ table {
   width: 100%;
   border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;
+  border-collapse: collapse;
 
   td {
     border-bottom: 1px solid #ddd;

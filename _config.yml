@@ -20,6 +20,7 @@ feed:
   posts_limit: 5000
 
 markdown: CommonMarkGhPages
+highlighter: rouge
 
 pagination:
   enabled: true

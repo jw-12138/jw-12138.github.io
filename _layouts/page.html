@@ -23,18 +23,15 @@
                 <span class="page-deprecated"> This article might contains outdated or misleading contents due to it is tagged as "Deprecated" by its author. </span>
                 {%endif%} {%if page.show_date%}
                 <div class="page-date">
-                  <span>👨‍💻 {{page.date | date: "%Y-%m-%d"}}</span>
+                  <span>👨‍💻: {{page.date | date: "%Y-%m-%d"}}</span>
                   {% if page.modified %}
-                  <span> <br />✍ {{page.modified}}</span>
+                  <span> <br />✍: {{page.modified}}</span>
                   {%endif%}
                 </div>
                 {%endif%}
                 <div class="page-content">{{ content }}</div>
                 <div class="page-original">
                   <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width: 0" src="/assets/img/cc.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-                </div>
-                <div class="disqus-box">
-                  {% include disqus.html %}
                 </div>
               </div>
             </div>
@@ -43,11 +40,11 @@
             <ul>
               {% for item in site.data.data.pages %}
               <li>
-                <a href="{{item.url}}" class="dontread" title="{{item.name}}">{{item.icon}} {{item.name}}</a>
+                <a href="{{item.url}}" title="{{item.name}}">{{item.icon}} {{item.name}}</a>
               </li>
               {% endfor %}
               <li>
-                <a href="/atom.xml" title="RSS feeds" class="dontread" target="_blank">🚩 RSS</a>
+                <a href="/atom.xml" title="RSS feeds" target="_blank">🚩 RSS</a>
               </li>
             </ul>
           </section>
