@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jw1.dev/atom.xml" rel="self" type="application/atom+xml" /><link href="https://jw1.dev/" rel="alternate" type="text/html" /><updated>2021-10-09T17:29:31+08:00</updated><id>https://jw1.dev/atom.xml</id><title type="html">一个球的博客</title><subtitle>Front-end Developer / Music Producer</subtitle><entry><title type="html">关于瞬态控制器（Transient Shaper）</title><link href="https://jw1.dev/2021/09/23/a01.html" rel="alternate" type="text/html" title="关于瞬态控制器（Transient Shaper）" /><published>2021-09-23T00:00:00+08:00</published><updated>2021-09-23T00:00:00+08:00</updated><id>https://jw1.dev/2021/09/23/a01</id><content type="html" xml:base="https://jw1.dev/2021/09/23/a01.html">&lt;div class=&quot;sugg-back&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jw1.dev/atom.xml" rel="self" type="application/atom+xml" /><link href="https://jw1.dev/" rel="alternate" type="text/html" /><updated>2021-10-09T17:38:19+08:00</updated><id>https://jw1.dev/atom.xml</id><title type="html">一个球的博客</title><subtitle>Front-end Developer / Music Producer</subtitle><entry><title type="html">关于瞬态控制器（Transient Shaper）</title><link href="https://jw1.dev/2021/09/23/a01.html" rel="alternate" type="text/html" title="关于瞬态控制器（Transient Shaper）" /><published>2021-09-23T00:00:00+08:00</published><updated>2021-09-23T00:00:00+08:00</updated><id>https://jw1.dev/2021/09/23/a01</id><content type="html" xml:base="https://jw1.dev/2021/09/23/a01.html">&lt;div class=&quot;sugg-back&quot;&gt;
     &lt;strong&gt;看起来你正在使用RSS阅读器浏览本页面，通常情况下作者不会要求您去官网进行阅读，但是此页面包含一些自定义音频组件，为了得到更好的体验，请访问博客官网 https://jw1.dev 进行阅读。谢谢！&lt;/strong&gt;
     &lt;br&gt;
 &lt;/div&gt;
@@ -308,7 +308,7 @@
 &lt;p&gt;有的地方声音太大，会盖过伴奏，有的地方声音太小，伴奏又会盖过人声。&lt;/p&gt;
 &lt;p&gt;不过压缩器的出现完美的解决了这个问题。大家可以听一下下面这个demo：&lt;/p&gt;
 &lt;p&gt;&lt;app-audio-diff :on=&quot;{src: '/p_assets/202009/diff-1-Audio.mp3', text: '没有压缩的人声'}&quot; :off=&quot;{src: '/p_assets/202009/diff-2-Audio.mp3', text: '经过压缩的人声'}&quot;&gt;&lt;/app-audio-diff&gt;&lt;/p&gt;
-&lt;p&gt;原曲来自我的好朋友Wynes：https://music.163.com/#/song?id=1416869953&lt;/p&gt;
+&lt;p&gt;原曲来自我的好朋友Wynes：&lt;a href=&quot;https://music.163.com/#/song?id=1416869953&quot;&gt;https://music.163.com/#/song?id=1416869953&lt;/a&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;可以感受到，经过压缩人声明显稳定了很多，从下图中更加可以看出，原本比较轻的人声被放大，而原本比较突兀的地方，也被压缩到了同等级别。这样的在混音中可以保持很好的稳定性，当然，前提是伴奏也要保持稳定。需要注意的是，歌手的换气声也被放大了，这里先埋个坑，以后再给大家详细讲一讲怎么处理人声。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -327,7 +327,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;It may shock you to learn that the initial applications for sidechain compression in the 1930s were not directed at making French filter house. Rather, it started with a film audio engineer named Douglas Shearer, who needed a way to tame the sibilance (the hard “s” sounds) of dialogue recordings. Sidechaining was born when Shearer conceived of a compressor with a “side” signal chain (separate to the main trigger signal) with an EQ slapped on it – rather than evenly compressing the incoming signal, this “de-esser” would only be triggered when the specific sibilant sounds appeared.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;大家有兴趣可以看看Ableton的官方博客原文：https://www.ableton.com/en/blog/sidechain-compression-part-1/&lt;/p&gt;
+&lt;p&gt;大家有兴趣可以看看Ableton的官方博客原文：&lt;a href=&quot;https://www.ableton.com/en/blog/sidechain-compression-part-1/&quot;&gt;https://www.ableton.com/en/blog/sidechain-compression-part-1/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/p_assets/202009/a01-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;这是FL Studio的一张截图，(因为比较直观)，Sidechain其实就是把2号轨的声音信号，传送到1号轨，但是这个声音信号不会经过主轨(Master)，“旁” 路 “链” 接，大概是这个意思吧，所以这样，&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1号轨上的压缩器就可以针对2号轨的信号对1号轨自身信号做出一系列调整。&lt;/strong&gt;&lt;/p&gt;
