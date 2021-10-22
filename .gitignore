@@ -4,7 +4,5 @@ _site
 .jekyll-metadata
 vendor
 node_modules
-Gemfile.lock
-package-lock.json
 /**/*.map
 .idea
