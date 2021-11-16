@@ -4,8 +4,6 @@ title: About Me
 permalink: /about/
 ---
 
-![](/assets/img/undraw_content_creator_re_pt5b.svg)
-
 ### My website(s)
 
 Blog: [jw1.dev](https://jw1.dev)
