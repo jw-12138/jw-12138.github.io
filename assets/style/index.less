@@ -1,8 +1,8 @@
-@dark: #121212;
-@main-red: #ff4d4d;
+@dark: #252c41;
+@main-red: #d74b4b;
 @main-blue: #565656;
-@main-gold: #cc8633;
-@link: #0066cc;
+@main-gold: #d74b4b;
+@link: #f1404b;
 @view-font: 'JetBrains Mono', 'Microsoft Yahei UI';
 @mono-font: 'JetBrains Mono';
 
@@ -50,6 +50,7 @@ body {
   transition: background-color 0s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f5f9;
   
   &.trans {
     transition-duration: 0.3s;
@@ -232,7 +233,7 @@ header {
         a {
           display: block;
           text-decoration: none;
-          border-radius: 5px;
+          border-radius: 8px;
           padding: 20px 0;
           
           &:hover {
@@ -335,22 +336,8 @@ header {
 }
 
 .heading-title(@text) {
-  padding-left: 20px;
   position: relative;
   line-height: 1.4;
-  
-  &:before {
-    content: @text;
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 13px;
-    font-family: @mono-font;
-    color: lighten(@main-blue, 30%);
-    font-style: italic;
-    display: block;
-    font-weight: normal;
-  }
 }
 
 .page-content {
@@ -365,7 +352,7 @@ header {
   video {
     width: 100%;
     margin: 10px 0;
-    border-radius: 5px;
+    border-radius: 8px;
   }
   
   b {
@@ -409,7 +396,8 @@ header {
     max-width: 100%;
     display: block;
     margin: 10px auto;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
   
   line-height: 1.85;
@@ -487,7 +475,7 @@ header {
   
   pre {
     margin-top: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
     padding: 10px;
     padding-top: 40px;
     font-family: @mono-font, @view-font !important;
@@ -524,11 +512,11 @@ header {
   
   code {
     padding: 4px 7px;
-    background-color: lighten(#dee1e6, 7%);
     color: #000000;
+    background-color: #dddfe6;
     font-size: 14px;
     font-family: @mono-font, @view-font !important;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 3px;
     display: inline;
     word-break: break-word;
@@ -716,12 +704,13 @@ span.deprecated {
 }
 
 .app-audio-wrap {
-  background-color: lighten(#dee1e6, 7%);
+  background-color: #ffffff;
   padding: 12px 15px;
   margin: 10px 0;
   position: relative;
-  border-radius: 5px;
-  border: 1px solid lighten(#dee1e6, 7%);
+  border-radius: 8px;
+  border: 1px solid lighten(#dddfe6, 7%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   
   &.playing {
     animation: playing_w 1.2s linear infinite;
@@ -745,7 +734,7 @@ span.deprecated {
       height: 20px;
       cursor: pointer;
       background-color: rgba(0, 0, 0, 0.05);
-      border-radius: 4px;
+      border-radius: 8px;
       border: none;
     }
     
@@ -830,7 +819,7 @@ span.deprecated {
     &.bg {
       background-color: rgba(0, 0, 0, 0.08);
       padding: 10px;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
       
       &:hover {
@@ -939,31 +928,9 @@ span.deprecated {
   }
 }
 
-#disqus_thread {
-  &.on {
-    cursor: pointer;
-    display: block;
-    width: 200px;
-    border-radius: 5px;
-    margin: 0 auto;
-    line-height: 1.45;
-    font-size: 16px;
-    background-color: @main-blue;
-    color: #ffffff;
-    text-align: center;
-    padding: 12px 0;
-    
-    svg {
-      vertical-align: middle;
-      fill: #ffffff;
-    }
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: @dark;
-    background-color: darken(@main-blue, 30%);
+    background-color: darken(#354b5e, 20%);
   }
   
   .paginate {
@@ -1097,7 +1064,7 @@ span.deprecated {
   }
   
   .wrap section.list .index_post_list ul li a .title {
-    color: #ffffff;
+    color: #f4f5f9;
   }
   
   .wrap section.list .index_post_list ul li a .sum {
@@ -1188,8 +1155,8 @@ span.deprecated {
     }
     
     pre {
-      background-color: darken(@main-blue, 23%);
-      border-color: #666;
+      background-color: darken(#354b5e, 19%);
+      border-color: #666666;
     }
     
     pre code {
