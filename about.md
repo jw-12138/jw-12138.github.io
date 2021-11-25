@@ -8,13 +8,17 @@ permalink: /about/
 
 Blog: [jw1.dev](https://jw1.dev)
 
+Patreon: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq)
+
+<br>
+
+### Some side projects
+
 kover.js: [https://jw1.dev/kover.js/](https://jw1.dev/kover.js/index.html)
 
 lessby: [https://jw1.dev/lessby/](https://jw1.dev/lessby/)
 
 vsharp: [https://jw1.dev/vite-plugin-vsharp/](https://jw1.dev/vite-plugin-vsharp/)
-
-Patreon: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq)
 
 <br>
 
