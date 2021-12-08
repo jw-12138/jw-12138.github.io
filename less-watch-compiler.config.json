@@ -1,6 +1,0 @@
-{
-  "watchFolder": "./assets/style",
-  "outputFolder": "./assets/css",
-  "sourceMap": true,
-  "minified": true
-}

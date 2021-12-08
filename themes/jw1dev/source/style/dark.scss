@@ -1,0 +1,147 @@
+$radius: 0.4em;
+$light-bg: rgba(#fff, .02);
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    color: #fff;
+    background: #000 !important;
+  }
+  
+  header {
+    .logo {
+      img {
+        &.light{
+          display: inline;
+        }
+        &.dark{
+          display: none;
+        }
+      }
+    }
+    .navigation {
+      ul {
+        
+        li {
+          
+          a {
+            color: #ddd;
+            border: 1px solid #555;
+            background: $light-bg;
+          }
+        }
+      }
+    }
+  }
+  
+  main {
+    
+    .pagination {
+      
+      a {
+        border: 1px solid #555;
+        background: $light-bg;
+        color: #989898;
+      }
+      
+      .total {
+        color: #aaa;
+      }
+    }
+    
+    &.index {
+      ul {
+        
+        li {
+          
+          a {
+            color: #d1d1d1;
+            
+            .title {
+              color: #eee;
+            }
+            
+            .date {
+              color: #777;
+            }
+            
+            .slogan {
+              color: #777;
+            }
+            
+            .tags {
+              .item {
+                color: #bbb;
+                border: 1px solid #555;
+                background: $light-bg;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    .page-original {
+      color: #888;
+      
+      a {
+        color: #777;
+      }
+    }
+    
+    .page-content {
+      color: #ddd;
+      
+      a {
+        color: #d1d1d1;
+      }
+      
+      table {
+        $border-color: #555;
+        border-left: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+        border-collapse: collapse;
+        
+        td {
+          border-right: 1px solid $border-color;
+          border-bottom: 1px solid $border-color;
+        }
+      }
+      
+      hr {
+        background: $light-bg;
+        border: 1px solid #555;
+      }
+      
+      blockquote {
+        border: 1px solid #555;
+        background: $light-bg;
+      }
+      
+      code {
+        background: $light-bg;
+        border: 1px solid #555;
+        color: #d1d1d1;
+      }
+      
+      pre {
+        
+        code {
+          color: inherit;
+        }
+      }
+    }
+    
+    .page-info {
+      color: #aaa;
+    }
+  }
+  
+  footer {
+    color: #bbb;
+    
+    a {
+      color: #eee;
+    }
+  }
+}
+

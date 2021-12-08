@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%- page.title + ' - ' + config.title %></title>
+  <%- partial('partial/meta') %>
+  <% if(page.style){ %>
+    <%- page.style %>
+  <% } %>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>
+      <%- page.title %>
+    </h1>
+  </header>
+  <main>
+    <% if(page.__post){ %>
+      <div class="page-info">
+        作者: <a href="https://github.com/jw-12138"><%- config.author %></a> <br>
+        发布时间: <%- moment(page.date).format('YYYY-MM-DD') %>
+        <% if(page.modified) { %>
+          <br>上次修改：<%- moment(page.modified).format('YYYY-MM-DD') %>
+        <% } %>
+        <% if(page.deprecated) { %>
+          <br>状态：<span class="deprecated">已废弃</span>
+        <% } %>
+      </div>
+    <% } %>
+    <div class="page-content">
+      <%- page.content %>
+    </div>
+    <div class="page-original">
+      <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img
+          alt="Creative Commons License" style="border-width: 0" src="/images/cc.png"/></a><br/>This work is licensed
+      under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons
+        Attribution-NonCommercial 4.0 International License</a>.
+    </div>
+    <%- partial('partial/comment') %>
+  </main>
+  <%- partial('partial/footer') %>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script src="https://cusdis.jw1.dev/js/widget/lang/zh-cn.js"></script>
+<script defer src="https://cusdis.jw1.dev/js/cusdis.es.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+<script src="/js/post.js"></script>
+</body>
+</html>

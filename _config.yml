@@ -1,42 +1,104 @@
+# Site
 title: 一个球的博客
-description: Front-end Developer / Music Producer
-baseurl: '/'
-url: 'https://jw1.dev'
-github_username: jw-12138
+subtitle: ''
+description: 'Front-end Developer / Music Producer'
 keywords: 一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影
+author: 一个球
+language: zh
+timezone: 'Asia/Shanghai'
 
-destination: ./docs
+# URL
+url: https://jw1.dev/
+permalink: :year/:month/:day/:title.html
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
-exclude: ['Gemfile', 'Gemfile.lock', 'node_modules', 'vendor/bundle/', 'vendor/cache/', 'vendor/gems/', 'vendor/ruby/', 'package.json', 'package-lock.json', 'less-watch-compiler.config.json', 'babel.config.json']
+# Directory
+source_dir: source
+public_dir: docs
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+skip_render:
 
-include: ['favicon.png', 'favicon_w.png']
+# Writing
+new_post_name: :year-:month-:day-:title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: true
+future: false
+highlight:
+  enable: true
+  hljs: true
+  tab_replace: '  '
+  wrap: false,
+  line_number: false
+prismjs:
+  enable: false
 
-plugins:
-  - jekyll-feed
-  - jekyll-paginate-v2
-
-feed:
-  path: atom.xml
-  posts_limit: 5000
-
-markdown: CommonMarkGhPages
-highlighter: rouge
-
-pagination:
-  enabled: true
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
   per_page: 10
-  sort_reverse: true
-  permalink: '/page/:num/'
+  order_by: -date
 
-defaults:
-  - scope:
-      path: '/_assets/img'
-    values:
-      image: true
-  - scope:
-      path: ''
-      type: posts
-    values:
-      layout: page
-      show_date: true
-      original: true
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: jw1dev
+babelify:
+  presets:
+    - '@babel/preset-env'
+  sourceMaps: true
+feed:
+  # Generate atom feed
+  type: atom
+  path:
+    - atom.xml
+  limit: 0
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: ''
