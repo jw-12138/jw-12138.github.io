@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "npx concurrently npm:watch-*",
     "watch-less": "less-watch-compiler",
-    "watch-file": "jekyll serve --trace",
+    "watch-file": "bundle exec jekyll serve --trace",
     "watch-js": "npx babel --verbose ./assets/ts -w --minified -d ./assets/js/ -s",
-    "build": "jekyll build"
+    "build": "bundle exec jekyll build"
   },
   "author": "",
   "license": "ISC",
