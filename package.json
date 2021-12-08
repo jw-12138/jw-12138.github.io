@@ -1,28 +1,31 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "jw-12138.github.io",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "npx concurrently npm:watch-*",
-    "watch-less": "less-watch-compiler",
-    "watch-file": "bundle exec jekyll serve --trace",
-    "watch-js": "npx babel --verbose ./assets/ts -w --minified -d ./assets/js/ -s",
-    "build": "bundle exec jekyll build"
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "dev": "hexo server --debug",
+    "preview": "hexo server -s"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
-    "@babel/preset-typescript": "^7.13.0",
-    "walk": "^2.3.15"
+  "hexo": {
+    "version": "5.4.0"
   },
   "dependencies": {
-    "concurrently": "^6.0.0",
-    "less": "^4.1.1",
-    "less-watch-compiler": "^1.14.6",
-    "typescript": "^4.2.3"
+    "hexo": "^5.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-babelify": "0.0.2",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^4.0.0",
+    "hexo-server": "^2.0.0",
+    "walk": "^2.3.15"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4"
   }
 }
