@@ -10,10 +10,11 @@ html, body {
 
 header {
   width: 100%;
-  max-width: 680px;
+  max-width: 640px;
   box-sizing: border-box;
   padding: 2em 1rem 0;
   margin: 0 auto;
+  display: block;
   
   .logo {
     width: 2rem;
@@ -71,6 +72,7 @@ main {
   max-width: 640px;
   margin: 0 auto;
   padding: 20px;
+  display: block;
   
   .pagination {
     margin: 0 0 1.5rem;
@@ -318,6 +320,7 @@ footer {
   line-height: 8rem;
   font-size: .8em;
   color: #777;
+  display: block;
   
   a {
     color: #666;
