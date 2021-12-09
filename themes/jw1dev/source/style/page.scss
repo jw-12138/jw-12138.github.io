@@ -12,7 +12,7 @@ header {
   width: 100%;
   max-width: 640px;
   box-sizing: border-box;
-  padding: 2em 1rem 0;
+  padding: 2rem 20px 0;
   margin: 0 auto;
   display: block;
   
@@ -41,7 +41,7 @@ header {
   .navigation {
     ul {
       list-style: none;
-      margin: 2rem 0 0;
+      margin: 1rem 0 .5rem;
       white-space: nowrap;
       overflow-x: auto;
       padding: .5rem 0 0;
@@ -130,6 +130,7 @@ main {
             color: #333;
             line-height: 1.5;
             margin-bottom: .8rem;
+            font-weight: bold;
             
             .deprecated{
               background: $main-red;
@@ -138,6 +139,7 @@ main {
               font-size: .7rem;
               color: #fff;
               text-decoration: none;
+              font-weight: normal;
             }
           }
           
@@ -157,7 +159,8 @@ main {
           }
           
           .slogan {
-            margin-top: .3rem;
+            margin-top: -.5rem;
+            display: block;
             font-size: .8rem;
             color: #777;
           }
@@ -197,8 +200,17 @@ main {
     line-height: 1.8;
     color: #555;
     
+    h2, h3{
+      margin-bottom: 1rem;
+    }
+    
+    p{
+      margin-bottom: 1rem;
+    }
+    
     video {
       width: 100%;
+      margin: 1rem 0;
     }
     
     a{
@@ -218,6 +230,7 @@ main {
     }
     
     table {
+      margin: 1rem 0;
       $border-color: #ddd;
       border-left: 1px solid $border-color;
       border-top: 1px solid $border-color;
@@ -242,8 +255,11 @@ main {
       border-radius: $radius;
       border: 1px solid #ddd;
       margin: 1em 0;
-      padding: 0 1em;
+      padding: 1em;
       background: $light-bg;
+      p{
+        margin: 0;
+      }
     }
     
     img {
@@ -294,6 +310,7 @@ main {
         border: none;
         padding: 0;
         margin: 0;
+        line-height: 1.6;
       }
     }
   }
