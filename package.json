@@ -23,6 +23,7 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^4.0.0",
     "hexo-server": "^2.0.0",
+    "moment": "^2.29.1",
     "walk": "^2.3.15"
   },
   "devDependencies": {
