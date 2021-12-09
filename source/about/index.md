@@ -27,39 +27,19 @@ E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)
 
 <table class="about_table">
   <tr>
-    <td>Google</td>
+    <td>Google, HTML</td>
     <td>⭐⭐⭐⭐⭐+</td>
   </tr>
   <tr>
-    <td>HTML</td>
+    <td>CSS, LessCSS, SCSS, Stylus</td>
     <td>⭐⭐⭐⭐⭐</td>
   </tr>
   <tr>
-    <td>CSS</td>
-    <td>⭐⭐⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>Less</td>
+    <td>JavaScript, Vue, JQuery</td>
     <td>⭐⭐⭐⭐</td>
   </tr>
   <tr>
-    <td>Stylus</td>
-    <td>⭐⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>JavaScript</td>
-    <td>⭐⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>Vue</td>
-    <td>⭐⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>JQuery</td>
-    <td>⭐⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>PHP</td>
+    <td>NodeJs, PHP, Python</td>
     <td>⭐⭐⭐</td>
   </tr>
   <tr>
@@ -67,32 +47,24 @@ E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)
     <td>⭐⭐⭐⭐</td>
   </tr>
   <tr>
-    <td>NodeJs</td>
+    <td>NPM, Webpack, Vite, Parcel</td>
     <td>⭐⭐⭐</td>
   </tr>
   <tr>
-    <td>NPM</td>
+    <td>MySQL, Sqlite</td>
     <td>⭐⭐⭐</td>
   </tr>
   <tr>
-    <td>MySQL</td>
-    <td>⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>Caddy</td>
-    <td>⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>Nginx</td>
+    <td>Caddy, Nginx</td>
     <td>⭐⭐⭐</td>
   </tr>
 </table>
 
 ### Open-source projects that this website is using
 
-Site Generator: [Jekyll](https://jekyllrb.com/)
+Site Generator: [Hexo](https://hexo.io/)
 
-CSS preprocessor：[Less](http://lesscss.org/)
+CSS preprocessor：[Sass](https://sass-lang.com/)
 
 Fonts：[Google Fonts](https://fonts.google.com/)
 
