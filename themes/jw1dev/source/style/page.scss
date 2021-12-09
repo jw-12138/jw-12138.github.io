@@ -1,4 +1,3 @@
-@use 'sass:math';
 $radius: 0.4em;
 $main-red: #ff4d4d;
 $light-bg: rgba(#000, .02);
@@ -196,8 +195,13 @@ main {
     line-height: 1.8;
     color: #555;
     
+    video {
+      width: 100%;
+    }
+    
     a{
       color: #333;
+      word-break: break-all;
     }
     
     .sugg-back{
