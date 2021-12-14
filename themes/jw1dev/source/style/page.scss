@@ -5,7 +5,7 @@ $main-red: #ff4d4d;
 $light-bg: rgba(#000, .02);
 
 html, body {
-  font-family: 'JetBrains Mono', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'JetBrains Mono', 'Noto Sans SC', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -257,6 +257,7 @@ main {
     }
     
     table {
+      font-size: .8rem;
       margin: 1rem 0;
       $border-color: #ddd;
       border-left: 1px solid $border-color;
