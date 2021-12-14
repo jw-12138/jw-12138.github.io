@@ -33,7 +33,6 @@ jobs:
         push: true
         message: 'Update README.md'
     - run: git status
-    - run: ls -l
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v2.5.0
       with: 
