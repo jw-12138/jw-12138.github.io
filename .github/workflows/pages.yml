@@ -30,7 +30,8 @@ jobs:
     - uses: EndBug/add-and-commit@v7
       with:
         add: README.md
-        push: false
+        push: true
+        message: 'Update README.md'
     - run: git status
     - run: ls -l
     - name: GitHub Pages
