@@ -58,7 +58,7 @@
     border-top: 1px solid #555;
     border-collapse: collapse;
   }
-  main .page-content table td {
+  main .page-content table td, main .page-content table th {
     border-right: 1px solid #555;
     border-bottom: 1px solid #555;
   }

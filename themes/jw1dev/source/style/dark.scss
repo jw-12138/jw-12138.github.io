@@ -101,7 +101,7 @@ $light-bg: rgba(#fff, .02);
         border-top: 1px solid $border-color;
         border-collapse: collapse;
         
-        td {
+        td, th {
           border-right: 1px solid $border-color;
           border-bottom: 1px solid $border-color;
         }
