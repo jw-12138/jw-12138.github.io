@@ -21,10 +21,10 @@
 - [Ableton Live 10中的坑](https://jw1.dev/2019/12/18/a01.html) - 2019-12-18 
 - [如何加快VS Code的启动以及运行速度](https://jw1.dev/2019/11/14/a02.html) - 2019-11-14 
 - [来自一个不喜欢用Vim的弱鸡程序员的Vim教程](https://jw1.dev/2019/11/11/a01.html) - 2019-11-11 
+- [开发一个web音乐播放器到底有多难？](https://jw1.dev/2019/08/22/a01.html) - 2019-08-22 
 - [使用JavaScript达成 background-size: cover 的效果](https://jw1.dev/2019/10/28/a03.html) - 2019-10-28 
 - [职业生涯分享](https://jw1.dev/2019/10/25/a02.html) - 2019-10-25 
 - [GitHub OAuth App怎么跳转到用户授权之前的页面？](https://jw1.dev/2019/10/22/a01.html) - 2019-10-22 
-- [开发一个web音乐播放器到底有多难？](https://jw1.dev/2019/08/22/a01.html) - 2019-08-22 
 - [Package Control镜像Channel使用说明](https://jw1.dev/2019/06/21/a01.html) - 2019-06-21 
 - [CSS中的calc()](https://jw1.dev/2018/12/04/a01.html) - 2018-12-04 
 - [Hello World!](https://jw1.dev/2018/11/08/a01.html) - 2018-11-08 
