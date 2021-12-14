@@ -1,3 +1,93 @@
+@media (prefers-color-scheme: dark) {
+  html, body {
+    color: #fff;
+    background: #000 !important;
+  }
 
+  header .logo img.light {
+    display: inline;
+  }
+  header .logo img.dark {
+    display: none;
+  }
+  header .navigation ul li a {
+    color: #ddd;
+    border: 1px solid #555;
+    background: rgba(255, 255, 255, 0.02);
+  }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%5D,%22names%22:%5B%5D,%22mappings%22:%22%22,%22file%22:%22dark.css%22%7D */
+  main .pagination a {
+    border: 1px solid #555;
+    background: rgba(255, 255, 255, 0.02);
+    color: #989898;
+  }
+  main .pagination .total {
+    color: #aaa;
+  }
+  main.index ul li a {
+    color: #d1d1d1;
+  }
+  main.index ul li a .title {
+    color: #eee;
+  }
+  main.index ul li a .date {
+    color: #777;
+  }
+  main.index ul li a .slogan {
+    color: #777;
+  }
+  main.index ul li a .tags .item {
+    color: #bbb;
+    border: 1px solid #555;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  main .page-original {
+    color: #888;
+  }
+  main .page-original a {
+    color: #777;
+  }
+  main .page-content {
+    color: #ddd;
+  }
+  main .page-content a {
+    color: #d1d1d1;
+  }
+  main .page-content table {
+    border-left: 1px solid #555;
+    border-top: 1px solid #555;
+    border-collapse: collapse;
+  }
+  main .page-content table td {
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+  }
+  main .page-content hr {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #555;
+  }
+  main .page-content blockquote {
+    border: 1px solid #555;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  main .page-content code {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #555;
+    color: #d1d1d1;
+  }
+  main .page-content pre code {
+    color: inherit;
+  }
+  main .page-info {
+    color: #aaa;
+  }
+
+  footer {
+    color: #bbb;
+  }
+  footer a {
+    color: #eee;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACE;IACE;IACA;;;EAMI;IACE;;EAEF;IACE;;EASA;IACE;IACA;IACA,YA3BD;;;EAsCL;IACE;IACA,YAxCG;IAyCH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YAzEL;;EAiFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE,YA7GG;IA8GH;;EAGF;IACE;IACA,YAnHG;;EAsHL;IACE,YAvHG;IAwHH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE%22,%22file%22:%22dark.css%22%7D */

@@ -6,7 +6,9 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "dev": "hexo server --debug",
+    "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
+    "dev-hexo": "hexo server --debug",
+    "dev": "npx concurrently npm:dev-*",
     "preview": "hexo server -s"
   },
   "hexo": {
@@ -27,6 +29,8 @@
     "walk": "^2.3.15"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.4"
+    "@babel/preset-env": "^7.16.4",
+    "concurrently": "^6.4.0",
+    "sass": "^1.45.0"
   }
 }

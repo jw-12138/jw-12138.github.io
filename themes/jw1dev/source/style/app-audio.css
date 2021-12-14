@@ -11,7 +11,7 @@
   padding: 12px 15px;
   margin: 10px 0;
   position: relative;
-  border-radius: 5px;
+  border-radius: 0.4em;
   border: 1px solid #f2f3f5;
 }
 .app-audio-wrap.playing {
@@ -34,7 +34,7 @@
   height: 20px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  border-radius: 0.4em;
   border: none;
 }
 .app-audio-wrap input[type=range]::-webkit-slider-thumb {
@@ -50,7 +50,7 @@
   width: 100%;
   margin-top: 0;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 0.4em;
   position: relative;
   display: block;
 }
@@ -106,7 +106,7 @@
 .app-audio-wrap .name.bg {
   background-color: rgba(0, 0, 0, 0.08);
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 0.4em;
   cursor: pointer;
 }
 .app-audio-wrap .name.bg:hover {
@@ -156,4 +156,56 @@
   transition: transform 0.3s ease;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22app-audio.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AACA;EACE;EACA;;AAEA;EACE;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAKN;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;;AAEA;EACE;;AAKF;EACE;;AAKN;EACE;EACA;EACA%22,%22file%22:%22app-audio.css%22%7D */
+@media (prefers-color-scheme: dark) {
+  .app-audio-wrap {
+    background-color: #444444;
+    border-color: #444444;
+  }
+  .app-audio-wrap input[type=range] {
+    background-color: #444444;
+  }
+  .app-audio-wrap input[type=range]:hover {
+    background-color: #444444;
+  }
+  .app-audio-wrap input[type=range]::-webkit-slider-thumb {
+    background-color: #ffffff;
+  }
+  .app-audio-wrap.playing {
+    animation-name: playing_b;
+  }
+  .app-audio-wrap .time {
+    color: #dddddd;
+  }
+  .app-audio-wrap .time .b {
+    color: #ffffff;
+  }
+  .app-audio-wrap .name {
+    color: #ffffff;
+  }
+  .app-audio-wrap .name .icon svg {
+    fill: #ffffff;
+  }
+  .app-audio-wrap .name.bg {
+    background-color: #7c7c7c;
+  }
+  .app-audio-wrap .name.bg:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .app-audio-wrap .name.bg:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .app-audio-wrap .control .btn {
+    background-color: #a3a3a3;
+  }
+  .app-audio-wrap .control .btn.on {
+    background-color: #ff4d4d;
+  }
+  .app-audio-wrap .control .btn.on svg {
+    fill: #ffffff;
+  }
+  .app-audio-wrap .control svg {
+    fill: #ffffff;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22app-audio.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;EACA;;AAEA;EACE;;;AAIJ;EACE;EACA;EACA;EACA;EACA,eAlBO;EAmBP;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA,eA3CG;EA4CH;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;EACA,eA/DK;EAgEL;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAKN;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA,eA/HG;EAgIH;;AAEA;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;;AAEA;EACE;;AAKF;EACE;;AAKN;EACE;EACA;EACA;;;AAKN;EACE;IACE;IACA;;EAEA;IACE;;EAEA;IACE;;EAGF;IACE;;EAIJ;IACE;;EAGF;IACE;;EAEA;IACE;;EAIJ;IACE;;EAGE;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IACE;;EAMJ;IACE;;EAEA;IACE,kBAtPC;;EAwPD;IACE;;EAKN;IACE%22,%22file%22:%22app-audio.css%22%7D */
