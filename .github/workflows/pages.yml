@@ -1,6 +1,8 @@
 name: Build page
 
 on:
+  schedule:
+    - cron: "30 10 1 1 *"
   push:
     branches: [ main ]
 
