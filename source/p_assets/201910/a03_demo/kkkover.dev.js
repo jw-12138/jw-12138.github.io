@@ -1,6 +1,6 @@
 ;(function(w) {
     var kkkover = function () {
-        _ = this;
+        let _ = this;
         this.init = function (obj) {
             if(!obj){
                 throw 'kkkover.js: Give me an object! You can see docs at https://jw1.dev/kkkover.js';
