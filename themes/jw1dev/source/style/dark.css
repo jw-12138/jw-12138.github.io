@@ -67,8 +67,7 @@
     border: 1px solid #555;
   }
   main .page-content blockquote {
-    border: 1px solid #555;
-    background: rgba(255, 255, 255, 0.02);
+    border-left-color: #555;
   }
   main .page-content code {
     background: rgba(255, 255, 255, 0.02);
@@ -90,4 +89,4 @@
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACE;IACE;IACA;;;EAMI;IACE;;EAEF;IACE;;EASA;IACE;IACA;IACA,YA3BD;;;EAsCL;IACE;IACA,YAxCG;IAyCH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YAzEL;;EAiFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE,YA7GG;IA8GH;;EAGF;IACE;IACA,YAnHG;;EAsHL;IACE,YAvHG;IAwHH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE%22,%22file%22:%22dark.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACE;IACE;IACA;;;EAMI;IACE;;EAEF;IACE;;EASA;IACE;IACA;IACA,YA3BD;;;EAsCL;IACE;IACA,YAxCG;IAyCH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YAzEL;;EAiFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE,YA7GG;IA8GH;;EAGF;IACE;;EAGF;IACE,YAtHG;IAuHH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE%22,%22file%22:%22dark.css%22%7D */

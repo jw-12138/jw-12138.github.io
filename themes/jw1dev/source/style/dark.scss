@@ -113,8 +113,7 @@ $light-bg: rgba(#fff, .02);
       }
       
       blockquote {
-        border: 1px solid #555;
-        background: $light-bg;
+        border-left-color: #555;
       }
       
       code {

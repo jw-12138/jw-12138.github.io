@@ -253,6 +253,9 @@ main {
       
       table {
         margin-top: 0;
+        code {
+          white-space: nowrap;
+        }
       }
     }
     
@@ -284,11 +287,9 @@ main {
     }
     
     blockquote {
-      border-radius: $radius;
-      border: 1px solid #ddd;
+      border-left: .3em solid #ddd;
+      padding-left: 1em;
       margin: 1em 0;
-      padding: 1em;
-      background: $light-bg;
       
       p {
         margin: 0;

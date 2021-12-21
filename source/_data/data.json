@@ -26,6 +26,11 @@
       "name": "About Me",
       "url": "/about/",
       "icon": "👦"
+    },
+    {
+      "name": "RSS",
+      "url": "/rss/",
+      "icon": "\uD83D\uDCF0"
     }
   ]
 }
