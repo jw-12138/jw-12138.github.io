@@ -5,19 +5,20 @@ date: 2021-12-08 23:24:16
 
 ### My website(s)
 
-Blog: [jw1.dev](https://jw1.dev)
+**Blog**: [jw1.dev](https://jw1.dev)
 - yep, my stupid blog.
 
-kover.js: [https://jw1.dev/kover.js/](https://jw1.dev/kover.js/index.html) 
-- **kover.js** is a jQuery plugin that implements CSS `background-size: cover`.
+**kover.js**: [https://jw1.dev/kover.js/](https://jw1.dev/kover.js/index.html) 
+- kover.js is a jQuery plugin that implements CSS `background-size: cover`.
 
-lessby: [https://jw1.dev/lessby/](https://jw1.dev/lessby/) 
-- **lessby** is a CLI compiler tool I made for Less.js, but I still recommend you to use [Sass](https://sass-lang.com/) instead.
+**lessby**: [https://jw1.dev/lessby/](https://jw1.dev/lessby/) 
+- lessby is a CLI compiler tool I made for Less.js, but I **still recommend you to use [Sass](https://sass-lang.com/) instead**.
 
-vsharp: [https://jw1.dev/vite-plugin-vsharp/](https://jw1.dev/vite-plugin-vsharp/) 
-- **vsharp** is a Vite plugin that compresses images from your assets and bundles.
+**vsharp**: [https://jw1.dev/vite-plugin-vsharp/](https://jw1.dev/vite-plugin-vsharp/) 
+- vsharp is a Vite plugin that compresses images from your assets and bundles.
 
-Patreon: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq) - you can ignore this one if you're not interested in music.
+**Patreon**: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq) 
+- you can ignore this one if you're not interested in music.
 
 <br>
 
@@ -68,15 +69,15 @@ E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)
 
 ### Open-source projects that this website is using
 
-Site Generator: [Hexo](https://hexo.io/)
+**Site Generator**: [Hexo](https://hexo.io/)
 
-Comment System: [Cusdis](https://cusdis.com/)
+**Comment System**: [Cusdis](https://cusdis.com/)
 
-CSS preprocessor：[Sass](https://sass-lang.com/)
+**CSS preprocessor**：[Sass](https://sass-lang.com/)
 
-Fonts：[Google Fonts](https://fonts.google.com/)
+**Fonts**：[Google Fonts](https://fonts.google.com/)
 
-Icons：[Material Design -- Icons](https://material.io/resources/icons/?style=round)
+**Icons**：[Material Design -- Icons](https://material.io/resources/icons/?style=round)
 
 It was impossible to show you guys this website without these amazing open-source projects.
 
