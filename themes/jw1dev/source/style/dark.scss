@@ -1,23 +1,30 @@
+@use 'color';
 $radius: 0.4em;
 $light-bg: rgba(#fff, .02);
 
 @media (prefers-color-scheme: dark) {
   html, body {
     color: #fff;
-    background: #000 !important;
+    background: color.$neutral-900 !important;
   }
   
   header {
     .logo {
       img {
-        &.light{
+        &.light {
           display: inline;
         }
-        &.dark{
+        
+        &.dark {
           display: none;
         }
       }
     }
+  
+    desc {
+      color: color.$slate-100
+    }
+    
     .navigation {
       ul {
         
@@ -92,7 +99,7 @@ $light-bg: rgba(#fff, .02);
       color: #ddd;
       
       a {
-        color: #d1d1d1;
+        color: color.$blue-400;
       }
       
       table {
@@ -105,6 +112,10 @@ $light-bg: rgba(#fff, .02);
           border-right: 1px solid $border-color;
           border-bottom: 1px solid $border-color;
         }
+      }
+      
+      h1, h2, h3, h4, {
+        color: #fff;
       }
       
       hr {

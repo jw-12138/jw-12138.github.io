@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
   html, body {
     color: #fff;
-    background: #000 !important;
+    background: #171717 !important;
   }
 
   header .logo img.light {
@@ -9,6 +9,9 @@
   }
   header .logo img.dark {
     display: none;
+  }
+  header desc {
+    color: #f1f5f9;
   }
   header .navigation ul li a {
     color: #ddd;
@@ -51,7 +54,7 @@
     color: #ddd;
   }
   main .page-content a {
-    color: #d1d1d1;
+    color: #60a5fa;
   }
   main .page-content table {
     border-left: 1px solid #555;
@@ -61,6 +64,9 @@
   main .page-content table td, main .page-content table th {
     border-right: 1px solid #555;
     border-bottom: 1px solid #555;
+  }
+  main .page-content h1, main .page-content h2, main .page-content h3, main .page-content h4 {
+    color: #fff;
   }
   main .page-content hr {
     background: rgba(255, 255, 255, 0.02);
@@ -89,4 +95,4 @@
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACE;IACE;IACA;;;EAMI;IACE;;EAEF;IACE;;EASA;IACE;IACA;IACA,YA3BD;;;EAsCL;IACE;IACA,YAxCG;IAyCH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YAzEL;;EAiFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE,YA7GG;IA8GH;;EAGF;IACE;;EAGF;IACE,YAtHG;IAuHH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE%22,%22file%22:%22dark.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;IACE;IACA;;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCrBM;;ED6BF;IACE;IACA;IACA,YAjCD;;;EA4CL;IACE;IACA,YA9CG;IA+CH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YA/EL;;EAuFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE,OC3DG;;ED8DL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YAvHG;IAwHH;;EAGF;IACE;;EAGF;IACE,YAhIG;IAiIH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE%22,%22file%22:%22dark.css%22%7D */

@@ -1,11 +1,12 @@
 @use 'sass:math';
+@use 'color';
 
 $radius: 0.4em;
-$main-red: #ff4d4d;
-$light-bg: rgba(#000, .02);
+$main-red: #ef4444;
+$light-bg: rgba(#0f172a, .02);
 
 html, body {
-  font-family: 'JetBrains Mono', 'Noto Sans SC', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Noto Sans SC', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -38,6 +39,7 @@ header {
   
   desc {
     font-size: .8rem;
+    color: color.$slate-900
   }
   
   .navigation {
@@ -60,10 +62,10 @@ header {
           text-decoration: none;
           position: relative;
           display: block;
-          color: #333;
+          color: color.$slate-700;
+          background-color: color.$gray-50;
           border-radius: 2rem;
-          border: 1px solid #ddd;
-          background: $light-bg;
+          border: 1px solid color.$slate-300;
         }
       }
     }
@@ -81,14 +83,14 @@ main {
     text-align: center;
     
     a {
-      border: 1px solid #ddd;
+      border: 1px solid color.$slate-200;
       border-radius: $radius;
       padding: .3rem .5rem;
       font-size: .8rem;
       text-decoration: none;
       display: inline-block;
-      background: $light-bg;
-      color: #565656;
+      background: color.$slate-50;
+      color: color.$slate-700;
       margin: 0 .5rem;
     }
     
@@ -96,7 +98,7 @@ main {
       display: block;
       font-size: .8rem;
       margin-top: 1rem;
-      color: #888;
+      color: color.$slate-600;
     }
   }
   
@@ -124,31 +126,33 @@ main {
         a {
           border-radius: $radius;
           display: block;
-          color: #333;
+          color: color.$slate-700;
           text-decoration: none;
           
           .title {
-            font-size: 1rem;
-            color: #333;
+            font-size: 1.1rem;
+            color: color.$slate-900;
             line-height: 1.5;
             margin-bottom: .8rem;
             font-weight: bold;
             
             .deprecated {
-              background: $main-red;
+              background: color.$red-500;
               border-radius: 3rem;
-              padding: .3rem .5rem;
+              padding: .2rem .5rem;
               font-size: .7rem;
               color: #fff;
               text-decoration: none;
               font-weight: normal;
+              position: relative;
+              top: -.15em;
             }
           }
           
           .date {
             margin-top: .3rem;
             font-size: .8rem;
-            color: #777;
+            color: color.$slate-500;
           }
           
           .desc {
@@ -164,7 +168,7 @@ main {
             margin-top: -.5rem;
             display: block;
             font-size: .8rem;
-            color: #777;
+            color: color.$slate-600;
           }
           
           .tags {
@@ -173,11 +177,11 @@ main {
             .item {
               display: inline;
               font-size: .7rem;
-              color: #777;
+              color: color.$slate-700;
               padding: .3rem .5rem;
-              border: 1px solid #ddd;
+              border: 1px solid color.$slate-200;
               border-radius: 3rem;
-              background: $light-bg;
+              background: color.$slate-50;
             }
           }
         }
@@ -207,8 +211,21 @@ main {
       margin: 0 0 1rem;
     }
     
-    h2, h3 {
-      margin-bottom: 1rem;
+    h1, h2, h3, h4 {
+      padding-left: 1em;
+      margin-bottom: 1em;
+      color: #000;
+      position: relative;
+      
+      &:after {
+        font-size: .6em;
+        color: #999;
+        content: '#';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: .5em;
+      }
     }
     
     p {
@@ -231,7 +248,7 @@ main {
     }
     
     a {
-      color: #333;
+      color: color.$blue-600;
       word-break: break-all;
     }
     
@@ -253,10 +270,15 @@ main {
       
       table {
         margin-top: 0;
+        
         code {
           white-space: nowrap;
         }
       }
+    }
+    
+    .demo{
+      margin: 2em 0;
     }
     
     table {
@@ -280,10 +302,10 @@ main {
     
     hr {
       height: .3rem;
-      background: $light-bg;
+      background: color.$gray-200;
       border-radius: $radius;
       margin: 2rem 4rem;
-      border: 1px solid #ddd;
+      border: 1px solid color.$gray-300;
     }
     
     blockquote {
@@ -304,9 +326,9 @@ main {
     }
     
     code {
-      background: $light-bg;
-      padding: .3em;
-      border: 1px solid #ddd;
+      background: color.$gray-100;
+      padding: .1em .3em;
+      border: 1px solid color.$gray-200;
       border-radius: $radius;
       margin: 0 .3em;
       color: #333;
