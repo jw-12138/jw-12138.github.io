@@ -6,7 +6,7 @@ $main-red: #ef4444;
 $light-bg: rgba(#0f172a, .02);
 
 html, body {
-  font-family: 'Noto Sans SC', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'DM Sans', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -209,11 +209,17 @@ main {
     
     ul {
       margin: 0 0 1rem;
+      li{
+        ul{
+          margin-bottom: 0;
+        }
+      }
     }
     
     h1, h2, h3, h4 {
       padding-left: 1em;
-      margin-bottom: 1em;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
       color: #000;
       position: relative;
       
