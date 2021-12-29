@@ -55,6 +55,6 @@ Sylenth1, Pigments, Serum, Vital, PhasePlant, 想必这些软件合成器大家�
 
 ### 模块化合成器的声音
 
-好了，高级话术吹是吹了一堆，但是实际体验下来究竟怎么样？请大家欣赏我做的Demo。虽然有点敷衍，但是一定能刷新你对Generative Music的看法。
+好了，高级话术吹是吹了一堆，但是实际体验下来究竟怎么样？请大家欣赏我做的Demo。除了一些声效(SFX)和一轨Horn，其他全部使用了VCV Rack。
 
-
+<app-audio src="/p_assets/202112/vcv-test.mp3" label="VCV Rack in action"></app-audio>  
