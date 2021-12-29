@@ -16,7 +16,7 @@ const App = function () {
     let walker = walk.walk('./', { followLinks: false })
 
     walker.on('file', function (root, stat, next) {
-      if (path.extname(stat.name) == '.mp3' || path.extname(stat.name) == '.MP3') {
+      if (path.extname(stat.name) === '.mp3' || path.extname(stat.name) === '.MP3') {
         files.push(stat.name)
       }
       next()

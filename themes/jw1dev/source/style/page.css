@@ -271,7 +271,7 @@ main .page-content code {
   border-radius: 0.4em;
   margin: 0 0.3em;
   color: #333;
-  font-family: "JetBrains Mono", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetBrains Mono", monospace, sans-serif;
   font-size: 0.875em;
 }
 main .page-content .highlight {
