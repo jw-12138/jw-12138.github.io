@@ -55,4 +55,6 @@ Sylenth1, Pigments, Serum, Vital, PhasePlant, 想必这些软件合成器大家�
 
 ### Demo
 
-好了，高级话术吹是吹了一堆，但是实际体验下来究竟怎么样？请大家欣赏我做的Demo，除了鼓组外，各轨道完全使用VCV Rack。
+好了，高级话术吹是吹了一堆，但是实际体验下来究竟怎么样？请大家欣赏我做的Demo。虽然有点敷衍，但是一定能刷新你对Generative Music的看法。
+
+
