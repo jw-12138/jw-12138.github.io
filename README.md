@@ -1,8 +1,6 @@
 
 # My stupid blog
 
-![Build Pages](https://github.com/jw-12138/jw-12138.github.io/actions/workflows/pages.yml/badge.svg)
-
 ## Posts
 
 - [I’m tired.](https://jw1.dev/2022/01/04/im-tired.html) - 2022-01-04 
