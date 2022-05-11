@@ -13,8 +13,8 @@
 }
 
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
-  color: #000000;
+  background: rgba(59, 130, 246, 0.5);
+  color: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,9 +33,8 @@
   }
 
   ::selection {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: rgba(59, 130, 246, 0.2);
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22scroll-bar.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;EACA;;;AAGF;EACE;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA;;;AAGF;EACE;IACE;IACA;;;EAGF;IACE;IACA;;;EAGF;IACE;;;EAGF;IACE;IACA%22,%22file%22:%22scroll-bar.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22scroll-bar.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACE;EACA;;;AAGF;EACE;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA;;;AAGF;EACE;IACE;IACA;;;EAGF;IACE;IACA;;;EAGF;IACE;;;EAGF;IACE%22,%22file%22:%22scroll-bar.css%22%7D */

@@ -5,6 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title><%- page.title ? page.title + ' - ' + config.title : '' %></title>
+  <script>
+    if(window.self !== window.top){
+      location.href = 'https://pornhub.com'
+    }
+    if (location.hostname !== 'jw1.dev' && location.hostname !== 'localhost'){
+      location.href = 'https://pornhub.com'
+    }
+  </script>
 </head>
 <body>
   <%- page.content %>

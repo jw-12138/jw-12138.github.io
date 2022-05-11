@@ -6,11 +6,20 @@
   })
 } %>
 
+<script>
+  if(window.self !== window.top){
+    location.href = 'https://pornhub.com'
+  }
+  if (location.hostname !== 'jw1.dev' && location.hostname !== 'localhost'){
+    location.href = 'https://pornhub.com'
+  }
+</script>
+
 <meta name="keywords" content="<%- `${config.keywords},${tags.join(',')}` %>" id="keywords" />
 <meta name="description" content="<%- config.description %>" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css" />
 <%- css('style/style.css') %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=DM+Sans&display=swap" rel="stylesheet">
 <link rel="icon" href="/images/logo-black.png">

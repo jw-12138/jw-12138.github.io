@@ -64,13 +64,17 @@ export default {
     canplayFun: function (a) {
       let _this = this
       _this.audio = a
+      if(_this.audio.duration === Infinity){
+        _this.audio.currentTime = 1e101
+      }
   
-      console.log(_this.audio, _this.audio.duration)
+      _this.audio.currentTime = 0
+      
       _this.duration = _this.audio.duration
       _this.percent = _this.calcPercentage()
       _this.hasWave()
       _this.audio.ontimeupdate = function () {
-        if (!_this.adjust_progress_ready && _this.range_count == 0) {
+        if (!_this.adjust_progress_ready && _this.range_count === 0) {
           _this.percent = _this.calcPercentage()
           _this.currentTime = _this.audio.currentTime
         }
@@ -103,13 +107,13 @@ export default {
         url: url
       })
         .then(function (res) {
-          if (res.status == 200) {
+          if (res.status === 200) {
             _this.wave_img = true
             _this.wave_img_src = url
           }
         })
         .catch(function (error) {
-          console.log(error)
+        
         })
     },
     handleClick: function (e) {

@@ -1,23 +1,30 @@
+@use 'color';
 $radius: 0.4em;
 $light-bg: rgba(#fff, .02);
 
 @media (prefers-color-scheme: dark) {
   html, body {
     color: #fff;
-    background: #000 !important;
+    background: color.$neutral-900 !important;
   }
   
   header {
     .logo {
       img {
-        &.light{
+        &.light {
           display: inline;
         }
-        &.dark{
+        
+        &.dark {
           display: none;
         }
       }
     }
+  
+    desc {
+      color: color.$slate-100
+    }
+    
     .navigation {
       ul {
         
@@ -92,7 +99,7 @@ $light-bg: rgba(#fff, .02);
       color: #ddd;
       
       a {
-        color: #d1d1d1;
+        color: color.$blue-400;
       }
       
       table {
@@ -107,14 +114,17 @@ $light-bg: rgba(#fff, .02);
         }
       }
       
+      h1, h2, h3, h4, {
+        color: #fff;
+      }
+      
       hr {
         background: $light-bg;
         border: 1px solid #555;
       }
       
       blockquote {
-        border: 1px solid #555;
-        background: $light-bg;
+        border-left-color: #555;
       }
       
       code {

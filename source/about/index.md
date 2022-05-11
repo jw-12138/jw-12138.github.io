@@ -5,13 +5,20 @@ date: 2021-12-08 23:24:16
 
 ### My website(s)
 
-Blog: [jw1.dev](https://jw1.dev)
+**Blog**: [jw1.dev](https://jw1.dev)
+- yep, my stupid blog.
 
-kover.js: [https://jw1.dev/kover.js/](https://jw1.dev/kover.js/index.html)
+**kover.js**: [https://jw1.dev/kover.js/](https://jw1.dev/kover.js/index.html) 
+- kover.js is a jQuery plugin that implements CSS `background-size: cover`.
 
-lessby: [https://jw1.dev/lessby/](https://jw1.dev/lessby/)
+**lessby**: [https://jw1.dev/lessby/](https://jw1.dev/lessby/) 
+- lessby is a CLI compiler tool I made for Less.js, but I **still recommend you to use [Sass](https://sass-lang.com/) instead**.
 
-Patreon: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq)
+**vsharp**: [https://jw1.dev/vite-plugin-vsharp/](https://jw1.dev/vite-plugin-vsharp/) 
+- vsharp is a Vite plugin that compresses images from your assets and bundles.
+
+**Patreon**: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq) 
+- you can ignore this one if you're not interested in music.
 
 <br>
 
@@ -27,50 +34,50 @@ E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)
 
 <table class="about_table">
   <tr>
-    <td>Google, HTML</td>
-    <td>⭐⭐⭐⭐⭐+</td>
+    <td>Google</td>
+    <td><strong>6</strong> / 5</td>
   </tr>
   <tr>
-    <td>CSS, LessCSS, SCSS, Stylus</td>
-    <td>⭐⭐⭐⭐⭐</td>
+    <td>HTML, CSS, LessCSS, SCSS, Stylus</td>
+    <td><strong>5</strong> / 5</td>
   </tr>
   <tr>
-    <td>JavaScript, Vue, JQuery</td>
-    <td>⭐⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>NodeJs, PHP, Python</td>
-    <td>⭐⭐⭐</td>
-  </tr>
-  <tr>
-    <td>Linux Command Line</td>
-    <td>⭐⭐⭐⭐</td>
+    <td>JavaScript, Babel, TypeScript, Vue, JQuery</td>
+    <td>4 / 5</td>
   </tr>
   <tr>
     <td>NPM, Webpack, Vite, Parcel</td>
-    <td>⭐⭐⭐</td>
+    <td>4 / 5</td>
   </tr>
   <tr>
-    <td>MySQL, Sqlite</td>
-    <td>⭐⭐⭐</td>
+    <td>NodeJs, PHP, Python</td>
+    <td>3.5 / 5</td>
+  </tr>
+  <tr>
+    <td>Linux Command Line</td>
+    <td>3.5 / 5</td>
+  </tr>
+  <tr>
+    <td>MySQL, SQLite, MongoDB</td>
+    <td>3 / 5</td>
   </tr>
   <tr>
     <td>Caddy, Nginx</td>
-    <td>⭐⭐⭐</td>
+    <td>3 / 5</td>
   </tr>
 </table>
 
 ### Open-source projects that this website is using
 
-Site Generator: [Hexo](https://hexo.io/)
+**Site Generator**: [Hexo](https://hexo.io/)
 
-Comment System: [Cusdis](https://cusdis.com/)
+**Comment System**: [Cusdis](https://cusdis.com/)
 
-CSS preprocessor：[Sass](https://sass-lang.com/)
+**CSS preprocessor**：[Sass](https://sass-lang.com/)
 
-Fonts：[Google Fonts](https://fonts.google.com/)
+**Fonts**：[Google Fonts](https://fonts.google.com/)
 
-Icons：[Material Design -- Icons](https://material.io/resources/icons/?style=round)
+**Icons**：[Material Design -- Icons](https://material.io/resources/icons/?style=round)
 
 It was impossible to show you guys this website without these amazing open-source projects.
 

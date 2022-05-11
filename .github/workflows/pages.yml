@@ -35,7 +35,7 @@ jobs:
     - run: git status
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v2.5.0
-      with: 
+      with:
         jekyll: false
         build_dir: docs
       env:
