@@ -17,9 +17,6 @@ date: 2021-12-08 23:24:16
 **vsharp**: [https://jw1.dev/vite-plugin-vsharp/](https://jw1.dev/vite-plugin-vsharp/) 
 - vsharp is a Vite plugin that compresses images from your assets and bundles.
 
-**Patreon**: [https://www.patreon.com/jackyq](https://www.patreon.com/jackyq) 
-- you can ignore this one if you're not interested in music.
-
 <br>
 
 ### You can find me via
@@ -70,8 +67,6 @@ E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)
 ### Open-source projects that this website is using
 
 **Site Generator**: [Hexo](https://hexo.io/)
-
-**Comment System**: [Cusdis](https://cusdis.com/)
 
 **CSS preprocessor**：[Sass](https://sass-lang.com/)
 

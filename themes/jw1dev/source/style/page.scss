@@ -6,7 +6,7 @@ $main-red: #ef4444;
 $light-bg: rgba(#0f172a, .02);
 
 html, body {
-  font-family: 'DM Sans', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   margin: 0;
   padding: 0;
 }
@@ -396,10 +396,13 @@ main {
 
 footer {
   text-align: center;
-  line-height: 8rem;
   font-size: .8em;
   color: #777;
-  display: block;
+  display: flex;
+  height: 8em;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   
   a {
     color: #666;

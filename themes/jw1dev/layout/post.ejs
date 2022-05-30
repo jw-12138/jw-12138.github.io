@@ -15,6 +15,12 @@
 <body>
 <div id="app">
   <header>
+    <div class="logo" style="margin-bottom: 30px">
+      <a href="<%- config.url %>">
+        <img src="/images/logo-black.png" class="dark" alt="<%- config.title %>">
+        <img src="/images/logo.png" class="light" alt="<%- config.title %>">
+      </a>
+    </div>
     <h1>
       <%- page.title %>
     </h1>
@@ -22,7 +28,6 @@
   <main>
     <% if(page.__post){ %>
       <div class="page-info">
-        作者: <a href="https://github.com/jw-12138"><%- config.author %></a> <br>
         发布时间: <%- moment(page.date).format('YYYY-MM-DD') %>
         <% if(page.modified) { %>
           <br>上次修改：<%- moment(page.modified).format('YYYY-MM-DD') %>
@@ -47,8 +52,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
-<script src="https://cusdis.jw1.dev/js/widget/lang/zh-cn.js"></script>
-<script defer src="https://cusdis.jw1.dev/js/cusdis.es.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
 <script src="/js/post.js"></script>
 </body>
