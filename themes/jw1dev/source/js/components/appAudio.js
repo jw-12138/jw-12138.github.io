@@ -1,4 +1,4 @@
-import {sec2time, getTimeStamp, getRandomInt} from "../utils";
+import {sec2time, getTimeStamp, getRandomInt, getDuration} from "../utils";
 
 export default {
   props: {
@@ -14,6 +14,20 @@ export default {
   },
   template: `<div class="app-audio-wrap">
   <audio :src="src" ref="audio_ele" preload="metadata"></audio>
+  <div class="spectrum">
+    <div class="item-wrap">
+        <div class="item" v-for="item in fDataSub" :style="{height: item / 255 * 90 + '%'}"></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" v-for="item in fDataLow" :style="{height: item / 255 * 90 + '%'}"></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" v-for="item in fDataHigh" :style="{height: item / 255 * 90 + '%'}"></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" v-for="item in fDataSHigh" :style="{height: item / 255 * 90 + '%'}"></div>
+      </div>
+  </div>
   <div class="name">
     {{ label }}
   </div>
@@ -23,65 +37,69 @@ export default {
   <div class="control" title="This is the control panel">
     <div class="btn-grp">
       <button class="btn" @click="handleClick" :title="!playing ? 'Paused, click to start playing audio' : 'started, click to pause audio'">
-        <svg v-if="!playing" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M10.8 15.9l4.67-3.5c.27-.2.27-.6 0-.8L10.8 8.1c-.33-.25-.8-.01-.8.4v7c0 .41.47.65.8.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /></svg>
-        <svg v-if="playing" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M10 16c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1s-1 .45-1 1v6c0 .55.45 1 1 1zm2-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm2-4c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1s-1 .45-1 1v6c0 .55.45 1 1 1z" /></svg>
+        <span class="material-symbols-rounded" v-if="!playing">
+          play_arrow
+        </span>
+        <span class="material-symbols-rounded" v-if="playing">
+          pause
+        </span>
       </button>
       <button class="btn" @click="stopAudio" title="click to stop playing audio">
-        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
-          <g>
-            <rect fill="none" height="24" width="24" />
-            <rect fill="none" height="24" width="24" />
-          </g>
-          <g><path d="M9,16h6c0.55,0,1-0.45,1-1V9c0-0.55-0.45-1-1-1H9C8.45,8,8,8.45,8,9v6 C8,15.55,8.45,16,9,16z M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2L12,2z" fill-rule="evenodd" /></g>
-        </svg>
+        <span class="material-symbols-rounded">
+          stop
+        </span>
       </button>
       <button v-if="hasloop" class="btn" :title="!looping ? 'Put audio on loop' : 'Currently on loop, click again to disable'" @click="toggle_loop" :class="{ on: looping }">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 4V2.21c0-.45-.54-.67-.85-.35l-2.8 2.79c-.2.2-.2.51 0 .71l2.79 2.79c.32.31.86.09.86-.36V6c3.31 0 6 2.69 6 6 0 .79-.15 1.56-.44 2.25-.15.36-.04.77.23 1.04.51.51 1.37.33 1.64-.34.37-.91.57-1.91.57-2.95 0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-.79.15-1.56.44-2.25.15-.36.04-.77-.23-1.04-.51-.51-1.37-.33-1.64.34C4.2 9.96 4 10.96 4 12c0 4.42 3.58 8 8 8v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.2.2-.51 0-.71l-2.79-2.79c-.31-.31-.85-.09-.85.36V18z" /></svg>
+        <span class="material-symbols-rounded">
+        all_inclusive
+        </span>
       </button>
     </div>
   </div>
-  <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @change="onRangeChange" @input="onRangeInput" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown" :style="{ 'background-image': 'url(' + wave_img_src + ')' }" />
+  <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @change="onRangeChange" @input="onRangeInput" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown" />
 </div>`,
-  computed: {},
+  computed: {
+    fftSize(){
+      let _ = this
+      return Math.pow(2, _.fftSizeInPow)
+    }
+  },
   mounted: function () {
     let _this = this
     let a = this.$refs.audio_ele
-    a.addEventListener('loadedmetadata', function () {
+    _this.getDuration(a.src, function (d) {
+      _this.duration = d
       _this.canplayFun(a)
+      
+      _this.instance_id = getTimeStamp()
+      document.addEventListener('mouseup', function () {
+        _this.range_count = 0
+      })
+      document.addEventListener('touchend', function () {
+        _this.range_count = 0
+      })
     })
-    _this.instance_id = getTimeStamp()
-    document.addEventListener('mouseup', function () {
-      _this.range_count = 0
-    })
-    document.addEventListener('touchend', function () {
-      _this.range_count = 0
-    })
+    
   },
   methods: {
     sec2time: sec2time,
     getTimeStamp: getTimeStamp,
     getRandomInt: getRandomInt,
+    getDuration: getDuration,
     canplayFun: function (a) {
       let _this = this
+      _this.initFreqData()
       _this.audio = a
-      if(_this.audio.duration === Infinity){
-        _this.audio.currentTime = 1e101
-      }
-  
-      _this.audio.currentTime = 0
-      
-      _this.duration = _this.audio.duration
       _this.percent = _this.calcPercentage()
-      _this.hasWave()
-      _this.audio.ontimeupdate = function () {
+      a.ontimeupdate = function () {
         if (!_this.adjust_progress_ready && _this.range_count === 0) {
           _this.percent = _this.calcPercentage()
+          console.log(_this.percent)
           _this.currentTime = _this.audio.currentTime
         }
       }
       _this.audio.onended = function () {
         _this.percent = 0
-        _this.audio.currentTime = 0
         _this.currentTime = 0
         if (_this.looping) {
           _this.audio.play()
@@ -96,25 +114,8 @@ export default {
 
       _this.audio.onplay = function () {
         _this.playing = true
+        _this.initSpectrum()
       }
-    },
-    hasWave: function () {
-      let _this = this
-      let url_arr = _this.src.split('.')
-      let url = url_arr[0] + '.png'
-      axios({
-        method: 'get',
-        url: url
-      })
-        .then(function (res) {
-          if (res.status === 200) {
-            _this.wave_img = true
-            _this.wave_img_src = url
-          }
-        })
-        .catch(function (error) {
-        
-        })
     },
     handleClick: function (e) {
       e.preventDefault()
@@ -124,7 +125,8 @@ export default {
     calcPercentage: function () {
       let _this = this
       let ct = _this.audio.currentTime
-      let du = _this.audio.duration
+      let du = _this.duration
+      console.log(ct, du)
       return (ct / du) * 100
     },
     stopAudio: function (e) {
@@ -139,12 +141,36 @@ export default {
       e.preventDefault()
       this.looping = !this.looping
     },
+    initSpectrum: function() {
+      let _ = this
+      if(_.clickPlayCount > 0) {
+        return false
+      }
+      _.clickPlayCount++
+      let audio = _.audio
+    
+      let audioContext = new AudioContext()
+      let audioSrc = audioContext.createMediaElementSource(audio)
+      _.analyzer = audioContext.createAnalyser()
+      _.analyzer.fftSize = _.fftSize
+    
+      audioSrc.connect(_.analyzer)
+      _.analyzer.connect(audioContext.destination)
+      
+      setInterval(() => {
+        _.bufferLength = _.analyzer.frequencyBinCount
+        let frequencyData = new Uint8Array(_.bufferLength)
+        _.analyzer.getByteFrequencyData(frequencyData)
+        _.fData = _.uint8ArrayToArray(frequencyData)
+        _.frequencyResolver()
+      }, 1000 / 60)
+    },
     onRangeChange: function () {
       let _this = this
       let range_input = document.getElementById(_this.instance_id)
       _this.adjust_progress_ready = false
-      _this.percent = range_input.value
-      _this.audio.currentTime = (_this.percent / 100) * _this.audio.duration
+      _this.percent = parseInt(range_input.value)
+      _this.audio.currentTime = (_this.percent / 100) * _this.duration
       _this.currentTime = _this.audio.currentTime
       _this.range_count = 0
     },
@@ -152,7 +178,7 @@ export default {
       let _this = this
       let range_input = document.getElementById(_this.instance_id)
       _this.percent = range_input.value
-      _this.currentTime = (_this.percent / 100) * _this.audio.duration
+      _this.currentTime = (_this.percent / 100) * _this.duration
       _this.adjust_progress_ready = false
       _this.range_count++
     },
@@ -160,9 +186,118 @@ export default {
       let _this = this
       let range_input = document.getElementById(_this.instance_id)
       _this.percent = range_input.value
-      _this.audio.currentTime = (_this.percent / 100) * _this.audio.duration
-      _this.currentTime = _this.audio.currentTime
       _this.adjust_progress_ready = true
+    },
+    getArrMid(arr) {
+      if (arr.length < 1) {
+        return arr[0]
+      }
+    
+      return arr[Math.floor(arr.length / 2)]
+    },
+    getArrAvg(arr) {
+      let sum = 0
+      arr.forEach(el => {
+        sum += el
+      })
+    
+      return (sum / arr.length).toFixed(0)
+    },
+    splitArray(arr, split) {
+      let _ = this
+      let chunk
+      let chunkSize = Math.floor(arr.length / split)
+      let splitArray = []
+    
+      while (arr.length > 0) {
+        chunk = arr.splice(0, chunkSize)
+        splitArray.push(chunk)
+      }
+    
+      return splitArray
+    },
+    getBand(range, minSplitNumber) {
+      let _ = this
+      let data = _.fData
+    
+      let arr = []
+    
+      for (let i = 0; i < range[1] - range[0]; i++) {
+        arr.push(data[i + range[0]])
+      }
+    
+      let splitArr = _.splitArray(arr, minSplitNumber)
+      let rArr = []
+    
+      for (let i = 0; i < splitArr.length; i++) {
+        rArr.push(_.getArrMid(splitArr[i]))
+      }
+    
+      return rArr
+    },
+    enhanceGraph(arr, ratio) {
+      let newArr = arr.map(el => {
+        return el * ratio > 255 ? 255 : el * ratio
+      })
+    
+      return newArr
+    },
+    shrinkArr(arr, shrinkIndex) {
+      if (arr.length < 2) {
+        return arr
+      }
+    
+      let temp = []
+      for (let i = 0; i < arr.length; i++) {
+        if (i % shrinkIndex === 0) {
+          temp.push(arr[i])
+        }
+      }
+    
+      return temp
+    },
+    frequencyResolver() {
+      let _ = this
+      let analyzerRange = [10, 30000]
+      let ar = analyzerRange[1] - analyzerRange[0]
+      let subRatio = 90 / ar // [10, 100] 30%
+      let lowRatio = 900 / ar // [100, 1000] 30%
+      let highRatio = 9000 / ar // [1000, 10000] 30%
+      let sHighRatio = 10000 / ar // [10000, 20000] 10%
+    
+      let dataCount = _.fftSize / 2
+      let subCount = Math.floor(dataCount * subRatio)
+      let lowCount = Math.floor(dataCount * lowRatio)
+      let highCount = Math.floor(dataCount * highRatio)
+      let sHighCount = Math.floor(dataCount - highCount - lowCount - subCount)
+    
+      let subRange = [0, subCount]
+      let lowRange = [subCount + 1, lowCount]
+      let highRange = [lowCount + 1, highCount]
+      let sHighRange = [highCount + 1, sHighCount]
+    
+      _.fDataSub = _.shrinkArr(_.enhanceGraph(_.getBand(subRange, subCount), .8), 2)
+      _.fDataLow = _.shrinkArr(_.enhanceGraph(_.getBand(lowRange, subCount), .9), 1)
+      _.fDataHigh = _.shrinkArr(_.enhanceGraph(_.getBand(highRange, subCount), 1.2), 1)
+      _.fDataSHigh = _.shrinkArr(_.enhanceGraph(_.getBand(sHighRange, subCount), 1.6), 8)
+    
+      _.fDataShrink = _.shrinkArr(_.fData, 128)
+    },
+    initFreqData: function(){
+      let _ = this
+      _.fDataSub = [0,0,]
+      _.fDataLow = [0,0,0,0]
+      _.fDataHigh = [0,0,0]
+      _.fDataSHigh = [0]
+    },
+    uint8ArrayToArray(uint8Array) {
+      let array = []
+    
+      for (let i = 0; i < uint8Array.byteLength; i++) {
+        array[i] = uint8Array[i]
+      }
+    
+      return array
     }
   },
   data: function () {
@@ -178,7 +313,17 @@ export default {
       timeOffset: 0.25,
       instance_id: null,
       looping: false,
-      range_count: 0
+      range_count: 0,
+      fData: null,
+      fDataShrink: [],
+      fDataSub: [],
+      fDataLow: [],
+      fDataHigh: [],
+      fDataSHigh: [],
+      fftSizeInPow: 11,
+      bufferLength: 0,
+      analyzer: null,
+      clickPlayCount: 0,
     }
   },
   watch: {

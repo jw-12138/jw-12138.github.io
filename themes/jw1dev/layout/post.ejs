@@ -6,53 +6,54 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%- page.title + ' - ' + config.title %></title>
-  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=628f255c8a206c0019619086&product=inline-share-buttons" async="async"></script>
   <%- partial('partial/meta') %>
   <% if(page.style){ %>
     <%- page.style %>
   <% } %>
 </head>
 <body>
-<div id="app">
-  <header>
-    <div class="logo" style="margin-bottom: 30px">
-      <a href="<%- config.url %>">
-        <img src="/images/logo-black.png" class="dark" alt="<%- config.title %>">
-        <img src="/images/logo.png" class="light" alt="<%- config.title %>">
-      </a>
-    </div>
-    <h1>
-      <%- page.title %>
-    </h1>
-  </header>
-  <main>
-    <% if(page.__post){ %>
-      <div class="page-info">
-        发布时间: <%- moment(page.date).format('YYYY-MM-DD') %>
-        <% if(page.modified) { %>
-          <br>上次修改：<%- moment(page.modified).format('YYYY-MM-DD') %>
-        <% } %>
-        <% if(page.deprecated) { %>
-          <br>状态：<span class="deprecated">已废弃</span>
-        <% } %>
+  <div id="app">
+    <header>
+      <div class="logo" style="margin-bottom: 30px">
+        <a href="<%- config.url %>">
+          <img src="/images/logo-black.png" class="dark" alt="<%- config.title %>">
+          <img src="/images/logo.png" class="light" alt="<%- config.title %>">
+        </a>
       </div>
-    <% } %>
-    <div class="page-content">
-      <%- page.content %>
-    </div>
-    <div class="page-original">
-      <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img
-          alt="Creative Commons License" style="border-width: 0" src="/images/cc.png"/></a><br/>This work is licensed
-      under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons
-        Attribution-NonCommercial 4.0 International License</a>.
-    </div>
-    <%- partial('partial/comment') %>
-  </main>
-  <%- partial('partial/footer') %>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-<script src="/js/post.js"></script>
+      <h1>
+        <%- page.title %>
+      </h1>
+    </header>
+    <main>
+      <% if(page.__post){ %>
+        <div class="page-info">
+          发布时间: <%- moment(page.date).format('YYYY-MM-DD') %>
+          <% if(page.modified) { %>
+            <br>上次修改：<%- moment(page.modified).format('YYYY-MM-DD') %>
+          <% } %>
+          <% if(page.deprecated) { %>
+            <br>状态：<span class="deprecated">已废弃</span>
+          <% } %>
+        </div>
+      <% } %>
+      <div class="page-content">
+        <%- page.content %>
+      </div>
+      <div class="page-original">
+        <a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img
+            alt="Creative Commons License" style="border-width: 0" src="/images/cc.png"/></a><br/>This work is licensed
+        under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons
+          Attribution-NonCommercial 4.0 International License</a>.
+      </div>
+      <%- partial('partial/comment') %>
+    </main>
+    <%- partial('partial/footer') %>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.8/vue.min.js"
+          integrity="sha512-FBUSVbYJGylZSdYsKcPzD8eeP7xHN3ke9AeIZhmGWigvqdTibWEPGGOv0ppwvawuJswJ6/vQIfsq6q/7dAAx9g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/post.js"></script>
 </body>
 </html>
