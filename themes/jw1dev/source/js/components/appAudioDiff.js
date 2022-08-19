@@ -348,16 +348,16 @@ export default {
       let highRange = [lowCount + 1, highCount]
       let sHighRange = [highCount + 1, sHighCount]
       
-      _.fDataSub = _.shrinkArr(_.enhanceGraph(_.getBand(subRange, subCount), .8), 2)
-      _.fDataLow = _.shrinkArr(_.enhanceGraph(_.getBand(lowRange, subCount), .9), 1)
-      _.fDataHigh = _.shrinkArr(_.enhanceGraph(_.getBand(highRange, subCount), 1.2), 1)
+      _.fDataSub = _.shrinkArr(_.enhanceGraph(_.getBand(subRange, subCount), .8), 4)
+      _.fDataLow = _.shrinkArr(_.enhanceGraph(_.getBand(lowRange, subCount), .9), 2)
+      _.fDataHigh = _.shrinkArr(_.enhanceGraph(_.getBand(highRange, subCount), 1.2), 4)
       _.fDataSHigh = _.shrinkArr(_.enhanceGraph(_.getBand(sHighRange, subCount), 1.6), 8)
     },
     initFreqData: function () {
       let _ = this
-      _.fDataSub = [0, 0]
-      _.fDataLow = [0, 0, 0, 0]
-      _.fDataHigh = [0, 0, 0]
+      _.fDataSub = [0]
+      _.fDataLow = [0, 0]
+      _.fDataHigh = [0]
       _.fDataSHigh = [0]
     },
     uint8ArrayToArray(uint8Array) {

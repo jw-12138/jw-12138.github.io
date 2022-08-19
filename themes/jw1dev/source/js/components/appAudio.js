@@ -1,4 +1,4 @@
-import {sec2time, getTimeStamp, getRandomInt, getDuration} from "../utils";
+import {sec2time, getTimeStamp, getRandomInt, getDuration} from '../utils'
 
 export default {
   props: {
@@ -59,7 +59,7 @@ export default {
   <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @change="onRangeChange" @input="onRangeInput" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown" />
 </div>`,
   computed: {
-    fftSize(){
+    fftSize() {
       let _ = this
       return Math.pow(2, _.fftSizeInPow)
     }
@@ -105,11 +105,11 @@ export default {
         }
         _this.playing = false
       }
-
+      
       _this.audio.onpause = function () {
         _this.playing = false
       }
-
+      
       _this.audio.onplay = function () {
         _this.playing = true
         _this.initSpectrum()
@@ -138,19 +138,19 @@ export default {
       e.preventDefault()
       this.looping = !this.looping
     },
-    initSpectrum: function() {
+    initSpectrum: function () {
       let _ = this
-      if(_.clickPlayCount > 0) {
+      if (_.clickPlayCount > 0) {
         return false
       }
       _.clickPlayCount++
       let audio = _.audio
-    
+      
       let audioContext = new AudioContext()
       let audioSrc = audioContext.createMediaElementSource(audio)
       _.analyzer = audioContext.createAnalyser()
       _.analyzer.fftSize = _.fftSize
-    
+      
       audioSrc.connect(_.analyzer)
       _.analyzer.connect(audioContext.destination)
       
@@ -189,7 +189,7 @@ export default {
       if (arr.length < 1) {
         return arr[0]
       }
-    
+      
       return arr[Math.floor(arr.length / 2)]
     },
     getArrAvg(arr) {
@@ -197,7 +197,7 @@ export default {
       arr.forEach(el => {
         sum += el
       })
-    
+      
       return (sum / arr.length).toFixed(0)
     },
     splitArray(arr, split) {
@@ -205,52 +205,52 @@ export default {
       let chunk
       let chunkSize = Math.floor(arr.length / split)
       let splitArray = []
-    
+      
       while (arr.length > 0) {
         chunk = arr.splice(0, chunkSize)
         splitArray.push(chunk)
       }
-    
+      
       return splitArray
     },
     getBand(range, minSplitNumber) {
       let _ = this
       let data = _.fData
-    
+      
       let arr = []
-    
+      
       for (let i = 0; i < range[1] - range[0]; i++) {
         arr.push(data[i + range[0]])
       }
-    
+      
       let splitArr = _.splitArray(arr, minSplitNumber)
       let rArr = []
-    
+      
       for (let i = 0; i < splitArr.length; i++) {
         rArr.push(_.getArrMid(splitArr[i]))
       }
-    
+      
       return rArr
     },
     enhanceGraph(arr, ratio) {
       let newArr = arr.map(el => {
         return el * ratio > 255 ? 255 : el * ratio
       })
-    
+      
       return newArr
     },
     shrinkArr(arr, shrinkIndex) {
       if (arr.length < 2) {
         return arr
       }
-    
+      
       let temp = []
       for (let i = 0; i < arr.length; i++) {
         if (i % shrinkIndex === 0) {
           temp.push(arr[i])
         }
       }
-    
+      
       return temp
     },
     frequencyResolver() {
@@ -261,39 +261,39 @@ export default {
       let lowRatio = 900 / ar // [100, 1000] 30%
       let highRatio = 9000 / ar // [1000, 10000] 30%
       let sHighRatio = 10000 / ar // [10000, 20000] 10%
-    
+      
       let dataCount = _.fftSize / 2
       let subCount = Math.floor(dataCount * subRatio)
       let lowCount = Math.floor(dataCount * lowRatio)
       let highCount = Math.floor(dataCount * highRatio)
       let sHighCount = Math.floor(dataCount - highCount - lowCount - subCount)
-    
+      
       let subRange = [0, subCount]
       let lowRange = [subCount + 1, lowCount]
       let highRange = [lowCount + 1, highCount]
       let sHighRange = [highCount + 1, sHighCount]
-    
-      _.fDataSub = _.shrinkArr(_.enhanceGraph(_.getBand(subRange, subCount), .8), 2)
-      _.fDataLow = _.shrinkArr(_.enhanceGraph(_.getBand(lowRange, subCount), .9), 1)
-      _.fDataHigh = _.shrinkArr(_.enhanceGraph(_.getBand(highRange, subCount), 1.2), 1)
+      
+      _.fDataSub = _.shrinkArr(_.enhanceGraph(_.getBand(subRange, subCount), .8), 4)
+      _.fDataLow = _.shrinkArr(_.enhanceGraph(_.getBand(lowRange, subCount), .9), 2)
+      _.fDataHigh = _.shrinkArr(_.enhanceGraph(_.getBand(highRange, subCount), 1.2), 4)
       _.fDataSHigh = _.shrinkArr(_.enhanceGraph(_.getBand(sHighRange, subCount), 1.6), 8)
-    
+      
       _.fDataShrink = _.shrinkArr(_.fData, 128)
     },
-    initFreqData: function(){
+    initFreqData: function () {
       let _ = this
-      _.fDataSub = [0,0,]
-      _.fDataLow = [0,0,0,0]
-      _.fDataHigh = [0,0,0]
+      _.fDataSub = [0]
+      _.fDataLow = [0, 0]
+      _.fDataHigh = [0]
       _.fDataSHigh = [0]
     },
     uint8ArrayToArray(uint8Array) {
       let array = []
-    
+      
       for (let i = 0; i < uint8Array.byteLength; i++) {
         array[i] = uint8Array[i]
       }
-    
+      
       return array
     }
   },
@@ -320,7 +320,7 @@ export default {
       fftSizeInPow: 11,
       bufferLength: 0,
       analyzer: null,
-      clickPlayCount: 0,
+      clickPlayCount: 0
     }
   },
   watch: {
