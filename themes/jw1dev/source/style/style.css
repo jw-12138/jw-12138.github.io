@@ -769,8 +769,18 @@ footer a {
 .app-audio-wrap .control .btn.on svg {
   fill: #ffffff;
 }
+.app-audio-wrap .control .btn.spin span {
+  transform: rotate(-180deg);
+}
 .app-audio-wrap .control .btn.spin svg {
   transform: rotate(-180deg);
+}
+.app-audio-wrap .control span.material-symbols-rounded {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 .app-audio-wrap .control svg {
   fill: #555555;

@@ -31,7 +31,7 @@ export default {
   <audio :src="off.src" preload="metadata" ref="audio_2" :loop="looping"></audio>
   <div class="name">
     <span class="icon" aria-hidden="true">
-      <span class="material-symbols-rounded">
+      <span class="material-symbols-rounded" style="position: relative; top: 2px;">
       music_note
       </span>
     </span>
@@ -45,26 +45,27 @@ export default {
   <div class="control" title="This is the control panel">
     <div class="btn-grp">
       <button class="btn" @click="playFun" :title="!playing ? 'Paused, click to start playing audio' : 'started, click to pause audio'">
-        <svg v-if="!playing" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M10.8 15.9l4.67-3.5c.27-.2.27-.6 0-.8L10.8 8.1c-.33-.25-.8-.01-.8.4v7c0 .41.47.65.8.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /></svg>
-        <svg v-if="playing" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M10 16c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1s-1 .45-1 1v6c0 .55.45 1 1 1zm2-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm2-4c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1s-1 .45-1 1v6c0 .55.45 1 1 1z" /></svg>
+        <span class="material-symbols-rounded" v-if="!playing">
+          play_arrow
+        </span>
+        <span class="material-symbols-rounded" v-if="playing">
+          pause
+        </span>
       </button>
       <button class="btn" @click="stopAudio" title="click to stop playing audio">
-        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
-          <g>
-            <rect fill="none" height="24" width="24" />
-            <rect fill="none" height="24" width="24" />
-          </g>
-          <g><path d="M9,16h6c0.55,0,1-0.45,1-1V9c0-0.55-0.45-1-1-1H9C8.45,8,8,8.45,8,9v6 C8,15.55,8.45,16,9,16z M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2L12,2z" fill-rule="evenodd" /></g>
-        </svg>
+        <span class="material-symbols-rounded">
+          stop
+        </span>
       </button>
       <button class="btn" @click="switchSource" title="click to switch audio source" :class="{ on: playing_index == 1, spin: playing_index == 1 }">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path d="M9.01 14H3c-.55 0-1 .45-1 1s.45 1 1 1h6.01v1.79c0 .45.54.67.85.35l2.78-2.79c.19-.2.19-.51 0-.71l-2.78-2.79c-.31-.32-.85-.09-.85.35V14zm5.98-2.21V10H21c.55 0 1-.45 1-1s-.45-1-1-1h-6.01V6.21c0-.45-.54-.67-.85-.35l-2.78 2.79c-.19.2-.19.51 0 .71l2.78 2.79c.31.31.85.09.85-.36z" />
-        </svg>
+        <span class="material-symbols-rounded">
+          switch_left
+        </span>
       </button>
       <button class="btn" :title="!looping ? 'Put audio on loop' : 'Currently on loop, click again to disable'" @click="toggle_loop" :class="{ on: looping }">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 4V2.21c0-.45-.54-.67-.85-.35l-2.8 2.79c-.2.2-.2.51 0 .71l2.79 2.79c.32.31.86.09.86-.36V6c3.31 0 6 2.69 6 6 0 .79-.15 1.56-.44 2.25-.15.36-.04.77.23 1.04.51.51 1.37.33 1.64-.34.37-.91.57-1.91.57-2.95 0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-.79.15-1.56.44-2.25.15-.36.04-.77-.23-1.04-.51-.51-1.37-.33-1.64.34C4.2 9.96 4 10.96 4 12c0 4.42 3.58 8 8 8v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.2.2-.51 0-.71l-2.79-2.79c-.31-.31-.85-.09-.85.36V18z" /></svg>
+        <span class="material-symbols-rounded">
+          all_inclusive
+        </span>
       </button>
     </div>
   </div>

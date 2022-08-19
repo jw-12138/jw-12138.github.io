@@ -177,10 +177,21 @@ $main-blue: #565656;
       }
       
       &.spin {
+        span{
+          transform: rotate(-180deg);
+        }
         svg {
           transform: rotate(-180deg);
         }
       }
+    }
+    
+    span.material-symbols-rounded{
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      overflow: hidden;
+      transition: transform 0.3s ease;
     }
     
     svg {
