@@ -92,6 +92,7 @@ export default {
     
     _this.audio_1 = _this.$refs.audio_1
     _this.audio_2 = _this.$refs.audio_2
+    _this.audio_2.volume = 0
     _this.getDuration(_this.audio_1.src, function (d) {
       _this.duration = d
       _this.canplayFun()
@@ -129,7 +130,7 @@ export default {
       let _this = this
       _this.percent = _this.calcPercentage()
       _this.audio_1.ontimeupdate = function () {
-        if (!_this.adjust_progress_ready && _this.range_count == 0) {
+        if (!_this.adjust_progress_ready && _this.range_count === 0) {
           _this.percent = _this.calcPercentage()
           _this.currentTime = _this.audio_1.currentTime
         }
@@ -153,21 +154,9 @@ export default {
       e.preventDefault()
       let _this = this
       _this.audio_ctx = _this.audio_ctx == null ? new (window.AudioContext || window.webAudioContext || window.webkitAudioContext)() : _this.audio_ctx
-      _this.gainNode = _this.gainNode == null ? _this.audio_ctx.createGain() : _this.gainNode
-      _this.gainNode_2 = _this.gainNode_2 == null ? _this.audio_ctx.createGain() : _this.gainNode_2
-      
-      if (_this.source_1 == null && _this.source_2 == null) {
-        _this.gainNode.gain.value = 1
-        _this.gainNode_2.gain.value = 0
-      }
       
       _this.source_1 = _this.source_1 == null ? _this.audio_ctx.createMediaElementSource(_this.$refs.audio_1) : _this.source_1
       _this.source_2 = _this.source_2 == null ? _this.audio_ctx.createMediaElementSource(_this.$refs.audio_2) : _this.source_2
-      
-      _this.source_1.connect(_this.gainNode)
-      _this.source_2.connect(_this.gainNode_2)
-      _this.gainNode.connect(_this.audio_ctx.destination)
-      _this.gainNode_2.connect(_this.audio_ctx.destination)
       
       _this.playing = !_this.playing
     },
@@ -200,10 +189,8 @@ export default {
         _this.playing_index = 1
         _this.source_1.disconnect(_this.analyzer)
         _this.source_2.connect(_this.analyzer)
-        if (_this.gainNode) {
-          _this.gainNode.gain.value = 0
-          _this.gainNode_2.gain.value = 1
-        }
+        _this.audio_1.volume = 0
+        _this.audio_2.volume = 1
       }
       let _on = function () {
         if (_this.playing_index == 0) {
@@ -212,14 +199,12 @@ export default {
         _this.playing_index = 0
         _this.source_2.disconnect(_this.analyzer)
         _this.source_1.connect(_this.analyzer)
-        if (_this.gainNode) {
-          _this.gainNode.gain.value = 1
-          _this.gainNode_2.gain.value = 0
-        }
+        _this.audio_1.volume = 1
+        _this.audio_2.volume = 0
       }
       
-      if (typeof spec == 'string' && spec != '') {
-        if (spec == 'on') {
+      if (typeof spec == 'string' && spec !== '') {
+        if (spec === 'on') {
           _on()
         } else {
           _off()
@@ -227,7 +212,7 @@ export default {
         return false
       }
       
-      if (_this.playing_index == 0) {
+      if (_this.playing_index === 0) {
         _off()
       } else {
         _on()

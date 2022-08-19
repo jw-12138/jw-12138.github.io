@@ -70,7 +70,6 @@ export default {
     _this.getDuration(a.src, function (d) {
       _this.duration = d
       _this.canplayFun(a)
-      
       _this.instance_id = getTimeStamp()
       document.addEventListener('mouseup', function () {
         _this.range_count = 0
@@ -94,7 +93,6 @@ export default {
       a.ontimeupdate = function () {
         if (!_this.adjust_progress_ready && _this.range_count === 0) {
           _this.percent = _this.calcPercentage()
-          console.log(_this.percent)
           _this.currentTime = _this.audio.currentTime
         }
       }
@@ -126,7 +124,6 @@ export default {
       let _this = this
       let ct = _this.audio.currentTime
       let du = _this.duration
-      console.log(ct, du)
       return (ct / du) * 100
     },
     stopAudio: function (e) {

@@ -33,6 +33,8 @@ export function getDuration(url, next) {
       let duration = this.duration
       _player.remove()
       next(duration)
+    } else {
+      next(Infinity)
     }
     
   }, false)
