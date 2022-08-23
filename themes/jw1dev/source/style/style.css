@@ -194,6 +194,7 @@ main .page-content p {
 main .page-content video {
   width: 100%;
   margin: 1rem 0;
+  border-radius: 5px;
 }
 main .page-content li p {
   margin-bottom: 0.5rem;
