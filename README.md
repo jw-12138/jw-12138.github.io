@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [关于Web Audio中Analyzer输出的频率数据分布问题](https://jw1.dev/2022/08/19/a01.html) - 2022-08-19 
 - [I’m tired.](https://jw1.dev/2022/01/04/im-tired.html) - 2022-01-04 
 - [VCV Rack 2.0 Pro初体验](https://jw1.dev/2021/12/24/vcvrack-2-pro-first-glance.html) - 2021-12-24 
 - [把博客引擎从Jekyll换到了Hexo](https://jw1.dev/2021/12/14/a01.html) - 2021-12-14 
