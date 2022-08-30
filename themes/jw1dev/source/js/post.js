@@ -1,5 +1,6 @@
 import appAudio from "./components/appAudio";
 import appAudioDiff from "./components/appAudioDiff";
+import videoView from './components/videoView.js'
 
 new Vue({
   el: '#app',
@@ -14,7 +15,8 @@ new Vue({
   },
   components: {
     'app-audio': appAudio,
-    'app-audio-diff': appAudioDiff
+    'app-audio-diff': appAudioDiff,
+    'video-view': videoView
   },
   methods: {
     handleImgClick: function () {

@@ -9,7 +9,7 @@
     "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
     "dev-hexo": "hexo server --debug --draft",
     "dev": "npx concurrently npm:dev-*",
-    "preview": "hexo server -s"
+    "preview": "hexo server -s -p 5100"
   },
   "hexo": {
     "version": "5.4.0"

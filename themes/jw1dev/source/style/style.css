@@ -1,5 +1,5 @@
 html, body {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Menlo", "Cascadia Code", monospace, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -114,7 +114,7 @@ main.index ul li a .title .deprecated {
   border-radius: 3rem;
   padding: 0.2rem 0.5rem;
   font-size: 0.7rem;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-weight: normal;
   position: relative;
@@ -154,17 +154,17 @@ main.index ul li a .tags .item {
 main .page-original {
   margin: 4rem 0;
   font-size: 0.7rem;
-  color: #888;
+  color: #888888;
 }
 main .page-original img {
   margin-bottom: 0.5rem;
 }
 main .page-original a {
-  color: #777;
+  color: #777777;
 }
 main .page-content {
   line-height: 1.8;
-  color: #555;
+  color: #333333;
 }
 main .page-content ul {
   margin: 0 0 1rem;
@@ -176,12 +176,12 @@ main .page-content h1, main .page-content h2, main .page-content h3, main .page-
   padding-left: 1em;
   margin-top: 1em;
   margin-bottom: 0.5em;
-  color: #000;
+  color: #000000;
   position: relative;
 }
 main .page-content h1:after, main .page-content h2:after, main .page-content h3:after, main .page-content h4:after {
   font-size: 0.6em;
-  color: #999;
+  color: #999999;
   content: "#";
   display: block;
   position: absolute;
@@ -232,13 +232,13 @@ main .page-content .demo {
 main .page-content table {
   font-size: 0.8rem;
   margin: 1rem 0;
-  border-left: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-left: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
   border-collapse: collapse;
 }
 main .page-content table td, main .page-content table th {
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
   padding: 0.8rem;
 }
 main .page-content table th {
@@ -252,7 +252,7 @@ main .page-content hr {
   border: 1px solid #D1D5DB;
 }
 main .page-content blockquote {
-  border-left: 0.3em solid #ddd;
+  border-left: 0.3em solid #dddddd;
   padding-left: 1em;
   margin: 1em 0;
 }
@@ -271,8 +271,8 @@ main .page-content code {
   border: 1px solid #E5E7EB;
   border-radius: 0.4em;
   margin: 0 0.3em;
-  color: #333;
-  font-family: "JetBrains Mono", monospace, sans-serif;
+  color: #333333;
+  font-family: "Menlo", "Cascadia Code", monospace, sans-serif;
   font-size: 0.875em;
 }
 main .page-content .highlight {
@@ -305,7 +305,7 @@ main .page-content pre code {
 }
 main .page-info {
   font-size: 0.8em;
-  color: #888;
+  color: #888888;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -320,7 +320,7 @@ main .page-info .deprecated {
 footer {
   text-align: center;
   font-size: 0.8em;
-  color: #777;
+  color: #777777;
   display: flex;
   height: 8em;
   justify-content: center;
@@ -328,7 +328,7 @@ footer {
   align-content: center;
 }
 footer a {
-  color: #666;
+  color: #666666;
 }
 
 /*!
