@@ -264,6 +264,7 @@ main .page-content img {
   display: block;
   margin: 0 auto;
   border-radius: 0.4em;
+  cursor: zoom-in;
 }
 main .page-content code {
   background: #F3F4F6;
