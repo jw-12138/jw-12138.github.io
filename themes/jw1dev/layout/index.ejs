@@ -8,84 +8,84 @@
   <%- partial('partial/meta') %>
 </head>
 <body>
-<header>
-  <div class="logo">
-    <a href="<%- config.url %>">
-      <img src="/images/logo-black.png" class="dark" alt="<%- config.title %>">
-      <img src="/images/logo.png" class="light" alt="<%- config.title %>">
-    </a>
-  </div>
-  <desc>
-    <%- config.description %>
-  </desc>
-  <div class="navigation">
+  <header>
+    <div class="logo">
+      <a href="<%- config.url %>">
+        <img src="/images/logo-black.png" class="dark" alt="<%- config.title %>">
+        <img src="/images/logo.png" class="light" alt="<%- config.title %>">
+      </a>
+    </div>
+    <desc>
+      <%- config.description %>
+    </desc>
+    <div class="navigation">
+      <ul>
+        <% site.data.data.pages.forEach(item => { %>
+          <li>
+            <a href="<%- url_for(item.url) %>"><%- item.icon %> <%- item.name %></a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </header>
+  <main class="index">
+    <h2>Posts</h2>
     <ul>
-      <% site.data.data.pages.forEach(item => { %>
-      <li>
-        <a href="<%- url_for(item.url) %>"><%- item.icon %> <%- item.name %></a>
-      </li>
+      <% page.posts.forEach(item => { %>
+        <li>
+          <% let tags = item.tags.map(el => {
+            return el.name
+          }) %>
+          <a href="<%- url_for(item.path) %>">
+            <div class="title">
+              <%- item.title %>
+              <% if(item.deprecated) { %>
+                <span class="deprecated">Deprecated</span>
+              <% } %>
+            </div>
+            <div class="date">
+              <%- moment(item.date).format('YYYY-MM-DD') %>
+            </div>
+            <div class="desc">
+              <%- item.desc %>
+            </div>
+            <div class="tags">
+              <% tags.forEach(tag => { %>
+                <div class="item"><%- tag %></div>
+              <% }) %>
+            </div>
+          </a>
+        </li>
       <% }) %>
     </ul>
-  </div>
-</header>
-<main class="index">
-  <h2>Posts</h2>
-  <ul>
-    <% page.posts.forEach(item => { %>
-      <li>
-        <% let tags = item.tags.map(el => {
-          return el.name
-        }) %>
-        <a href="<%- url_for(item.path) %>">
-          <div class="title">
-            <%- item.title %>
-            <% if(item.deprecated) { %>
-              <span class="deprecated">Deprecated</span>
-            <% } %>
-          </div>
-          <div class="date">
-            <%- moment(item.date).format('YYYY-MM-DD') %>
-          </div>
-          <div class="desc">
-            <%- item.desc %>
-          </div>
-          <div class="tags">
-            <% tags.forEach(tag => { %>
-              <div class="item"><%- tag %></div>
-            <% }) %>
-          </div>
-        </a>
-      </li>
-    <% }) %>
-  </ul>
-  <nav class="pagination">
-    <% if (page.prev){ %>
-      <a href="<%- url_for(page.prev_link) %>" class="alignleft prev">上一页</a>
-    <% } %>
-    <% if (page.next){ %>
-      <a href="<%- url_for(page.next_link) %>" class="alignright next">下一页</a>
-    <% } %>
-    <span class="total"><%- `${page.current} / ${page.total}` %></span>
-  </nav>
-  <h2>
-    Friends
-  </h2>
-  <ul>
-    <% site.data.data.links.forEach(el => {%>
-      <li>
-        <a href="<%- el.url %>">
-          <div class="title">
-            <%- el.name %>
-          </div>
-          <span class="slogan">
+    <nav class="pagination">
+      <% if (page.prev){ %>
+        <a href="<%- url_for(page.prev_link) %>" class="alignleft prev">上一页</a>
+      <% } %>
+      <% if (page.next){ %>
+        <a href="<%- url_for(page.next_link) %>" class="alignright next">下一页</a>
+      <% } %>
+      <span class="total"><%- `${page.current} / ${page.total}` %></span>
+    </nav>
+    <h2>
+      Friends </h2>
+    <ul>
+      <% site.data.data.links.forEach(el => { %>
+        <li>
+          <a href="<%- el.url %>">
+            <div class="title">
+              <%- el.name %>
+            </div>
+            <span class="slogan">
             - <%- el.slogan %>
           </span>
-        </a>
-      </li>
-    <% }) %>
-  </ul>
-</main>
-<%- partial('partial/footer') %>
-<%- partial('partial/analytics') %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
+  <%- partial('partial/footer') %>
+  <%- partial('partial/analytics') %>
+  <script src="/js/g-analytics.js"></script>
 </body>
 </html>
