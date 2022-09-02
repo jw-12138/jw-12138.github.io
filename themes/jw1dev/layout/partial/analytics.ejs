@@ -1,0 +1,74 @@
+<script>
+  let template = `
+  <div class="icon">
+    🥺
+  </div>
+  <div class="title">
+    我想用 Google Analytics 来分析您在此网站的操作，请问可以吗？
+  </div>
+  <div class="btn-grp">
+    <a href="javascript:" class="btn primary" id="userPermitted">可以的 🤟</a>
+    <a href="javascript:" class="btn" id="userDenied">不可以 ✋</a>
+  </div>
+`
+  
+  let url = 'https://www.googletagmanager.com/gtag/js?id=G-1H0PBGR814'
+  let userNotified = localStorage.getItem('userNotified')
+  
+  function insertScript() {
+    let script = document.createElement('script')
+    script.src = url
+    script.async = 'async'
+    document.body.appendChild(script)
+    
+    script.addEventListener('load', function () {
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-1H0PBGR814')
+      console.log('Google Analytics Enabled, Thank you!')
+    })
+  }
+  
+  if (userNotified) {
+    insertScript()
+  } else {
+    let noteBox = document.createElement('div')
+    noteBox.classList.add('analytics-note-box')
+    noteBox.innerHTML = template
+    document.body.append(noteBox)
+  
+    let userDenied = document.getElementById('userDenied')
+    let userPermitted = document.getElementById('userPermitted')
+  
+    userPermitted.addEventListener('click', function () {
+      insertScript()
+      localStorage.setItem('userNotified', '1')
+      userPermitted.innerHTML = "🥰"
+      userPermitted.setAttribute('disabled', 'disabled')
+      setTimeout(function () {
+        document.body.classList.remove('show-analytics-notification')
+        setTimeout(function () {
+          noteBox.remove()
+        }, 400)
+      }, 1500)
+    })
+  
+    userDenied.addEventListener('click', function () {
+      userDenied.innerHTML = '🥲'
+      userDenied.setAttribute('disabled', 'disabled')
+      setTimeout(function () {
+        document.body.classList.remove('show-analytics-notification')
+        setTimeout(function () {
+          noteBox.remove()
+        }, 400)
+      }, 1500)
+    })
+    
+    setTimeout(function () {
+      document.body.classList.add('show-analytics-notification')
+    }, 1000)
+  }
+</script>

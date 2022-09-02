@@ -412,3 +412,56 @@ footer {
     color: #666666;
   }
 }
+
+.analytics-note-box {
+  width: 220px;
+  height: auto;
+  position: fixed;
+  right: -260px;
+  bottom: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,.8);
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+  font-size: 14px;
+  border: 1px solid #eee;
+  line-height: 1.5;
+  transition: right .4s ease;
+  
+  .icon{
+    font-size: 24px;
+  }
+  
+  .title{
+    margin-top: 10px;
+  }
+  
+  .btn-grp{
+    margin-top: 4px;
+    .btn{
+      margin-top: 10px;
+      border: 1px solid color.$slate-200;
+      padding: 6px;
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+      color: color.$slate-700;
+      background: #fff;
+      border-radius: 20px;
+      text-decoration: none;
+      
+      &.primary{
+        background: color.$slate-900;
+        border-color: color.$slate-800;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.show-analytics-notification{
+  .analytics-note-box{
+    right: 20px;
+  }
+}

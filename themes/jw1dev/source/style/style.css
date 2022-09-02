@@ -332,6 +332,53 @@ footer a {
   color: #666666;
 }
 
+.analytics-note-box {
+  width: 220px;
+  height: auto;
+  position: fixed;
+  right: -260px;
+  bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  border: 1px solid #eee;
+  line-height: 1.5;
+  transition: right 0.4s ease;
+}
+.analytics-note-box .icon {
+  font-size: 24px;
+}
+.analytics-note-box .title {
+  margin-top: 10px;
+}
+.analytics-note-box .btn-grp {
+  margin-top: 4px;
+}
+.analytics-note-box .btn-grp .btn {
+  margin-top: 10px;
+  border: 1px solid #e2e8f0;
+  padding: 6px;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  color: #334155;
+  background: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.analytics-note-box .btn-grp .btn.primary {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #fff;
+}
+
+.show-analytics-notification .analytics-note-box {
+  right: 20px;
+}
+
 /*!
   Theme: GitHub
   Description: Light theme as seen on github.com
@@ -964,6 +1011,22 @@ footer a {
   }
   footer a {
     color: #eee;
+  }
+
+  .analytics-note-box {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #222;
+  }
+  .analytics-note-box .btn-grp .btn {
+    border: 1px solid #111827;
+    color: #F3F4F6;
+    background: #1F2937;
+  }
+  .analytics-note-box .btn-grp .btn.primary {
+    background: #F9FAFB;
+    border-color: #f1f5f9;
+    color: #333;
   }
 }
 

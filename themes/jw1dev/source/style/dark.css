@@ -93,6 +93,22 @@
   footer a {
     color: #eee;
   }
+
+  .analytics-note-box {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #222;
+  }
+  .analytics-note-box .btn-grp .btn {
+    border: 1px solid #111827;
+    color: #F3F4F6;
+    background: #1F2937;
+  }
+  .analytics-note-box .btn-grp .btn.primary {
+    background: #F9FAFB;
+    border-color: #f1f5f9;
+    color: #333;
+  }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;IACE;IACA;;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCrBM;;ED6BF;IACE;IACA;IACA,YAjCD;;;EA4CL;IACE;IACA,YA9CG;IA+CH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YA/EL;;EAuFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE,OC3DG;;ED8DL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YAvHG;IAwHH;;EAGF;IACE;;EAGF;IACE,YAhIG;IAiIH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE%22,%22file%22:%22dark.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;IACE;IACA;;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCrBM;;ED6BF;IACE;IACA;IACA,YAjCD;;;EA4CL;IACE;IACA,YA9CG;IA+CH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YA/EL;;EAuFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE,OC3DG;;ED8DL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YAvHG;IAwHH;;EAGF;IACE;;EAGF;IACE,YAhIG;IAiIH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE;;;EAIJ;IACE;IACA;IACA;;EAGE;IACE;IACA,OCrJG;IDsJH,YC/IG;;EDiJH;IACE,YC1JA;ID2JA,cCtKE;IDuKF%22,%22file%22:%22dark.css%22%7D */

@@ -20,7 +20,7 @@ new Vue({
   },
   methods: {
     handleImgClick: function () {
-      var _ = this
+      let _ = this
       let fn = function () {
         let parent = document.querySelector('.page-content')
         let img_arr = parent ? parent.querySelectorAll('img') : null
