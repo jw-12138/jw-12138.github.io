@@ -1,5 +1,4 @@
-<script>
-  let template = `
+<div class="analytics-note-box" aria-hidden="true">
   <div class="icon">
     🥺
   </div>
@@ -10,7 +9,9 @@
     <a href="javascript:" class="btn primary" id="userPermitted">可以的 🤟</a>
     <a href="javascript:" class="btn" id="userDenied">不可以 ✋</a>
   </div>
-`
+</div>
+
+<script>
   
   let url = 'https://www.googletagmanager.com/gtag/js?id=G-1H0PBGR814'
   let userNotified = localStorage.getItem('userNotified')
@@ -35,11 +36,6 @@
   if (userNotified) {
     insertScript()
   } else {
-    let noteBox = document.createElement('div')
-    noteBox.classList.add('analytics-note-box')
-    noteBox.innerHTML = template
-    document.body.append(noteBox)
-  
     let userDenied = document.getElementById('userDenied')
     let userPermitted = document.getElementById('userPermitted')
   
