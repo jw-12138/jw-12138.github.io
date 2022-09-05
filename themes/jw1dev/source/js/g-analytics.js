@@ -27,19 +27,30 @@
     let userDenied = document.getElementById('userDenied')
     let userPermitted = document.getElementById('userPermitted')
     
+    let markClickable = function () {
+      userPermitted.setAttribute('disabled', 'disabled')
+      userDenied.setAttribute('disabled', 'disabled')
+    }
+    
     userPermitted.addEventListener('click', function () {
+      if(userPermitted.hasAttribute('disabled') || userDenied.hasAttribute('disabled')){
+        return false
+      }
+      markClickable()
       insertScript()
       localStorage.setItem('userNotified', '1')
       userPermitted.innerHTML = '🥰'
-      userPermitted.setAttribute('disabled', 'disabled')
       setTimeout(function () {
         document.body.classList.remove('show-analytics-notification')
       }, 1500)
     })
     
     userDenied.addEventListener('click', function () {
+      if(userPermitted.hasAttribute('disabled') || userDenied.hasAttribute('disabled')){
+        return false
+      }
       userDenied.innerHTML = '🥲'
-      userDenied.setAttribute('disabled', 'disabled')
+      markClickable()
       setTimeout(function () {
         document.body.classList.remove('show-analytics-notification')
       }, 1500)
