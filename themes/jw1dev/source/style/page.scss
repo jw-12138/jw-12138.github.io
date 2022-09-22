@@ -139,7 +139,6 @@ main {
           display: block;
           color: color.$slate-700;
           text-decoration: none;
-          transition: padding .2s ease;
           
           .title {
             font-size: 1.1rem;
@@ -451,7 +450,7 @@ footer {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 6px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+  @extend .shadow-xl;
   font-size: 14px;
   border: 1px solid #eeeeee;
   line-height: 1.5;

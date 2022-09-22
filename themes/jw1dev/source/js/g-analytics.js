@@ -1,8 +1,15 @@
 (function () {
   let url = 'https://www.googletagmanager.com/gtag/js?id=G-1H0PBGR814'
   let userNotified = localStorage.getItem('userNotified')
+  let userDenied = document.getElementById('userDenied')
+  let userPermitted = document.getElementById('userPermitted')
   
   let insertScript = function () {
+    markClickable()
+    let box = document.querySelector('.analytics-note-box')
+    setTimeout(function () {
+      box.style.display = 'none'
+    }, 3000)
     let script = document.createElement('script')
     script.src = url
     script.async = 'async'
@@ -21,22 +28,18 @@
     })
   }
   
+  let markClickable = function () {
+    userPermitted.setAttribute('disabled', 'disabled')
+    userDenied.setAttribute('disabled', 'disabled')
+  }
+  
   if (userNotified) {
     insertScript()
   } else {
-    let userDenied = document.getElementById('userDenied')
-    let userPermitted = document.getElementById('userPermitted')
-    
-    let markClickable = function () {
-      userPermitted.setAttribute('disabled', 'disabled')
-      userDenied.setAttribute('disabled', 'disabled')
-    }
-    
     userPermitted.addEventListener('click', function () {
       if(userPermitted.hasAttribute('disabled') || userDenied.hasAttribute('disabled')){
         return false
       }
-      markClickable()
       insertScript()
       localStorage.setItem('userNotified', '1')
       userPermitted.innerHTML = '🥰'
