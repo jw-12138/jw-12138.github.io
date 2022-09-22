@@ -60,15 +60,6 @@ $light-bg: rgba(#fff, .02);
       ul {
         
         li {
-  
-          &:hover {
-            background: color.$neutral-700;
-            border-color: #555;
-            border-bottom-color: #444;
-            border-right-color: #444;
-            @include vars.shadow-xl;
-          }
-          
           a {
             color: #d1d1d1;
             

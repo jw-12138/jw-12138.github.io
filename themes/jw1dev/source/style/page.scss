@@ -8,7 +8,7 @@ $light-bg: rgba(#0f172a, .02);
 $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
 html, body {
-  font-family: "Jost", $mono-font;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -105,9 +105,10 @@ main {
   }
   
   &.index {
-    h2{
+    h2 {
       margin-bottom: 2rem;
     }
+    
     ul {
       padding: 0;
       list-style: none;
@@ -122,14 +123,13 @@ main {
         border: 1px solid transparent;
         
         &:hover {
-          background: color.$neutral-50;
-          @extend .shadow-xl;
-          border-color: #f6f6f6;
-          border-right-color: #e6e6e6;
-          border-bottom-color: #eeeeee;
-          
-          a{
-            padding: 1.5rem;
+          a {
+            .title {
+              text-decoration: underline;
+              .deprecated {
+                text-decoration: none;
+              }
+            }
           }
         }
         
@@ -226,14 +226,8 @@ main {
     line-height: 1.9;
     color: #333333;
     
-    ul {
+    p + ul, p + ol{
       margin: 0 0 1rem;
-      
-      li {
-        ul {
-          margin-bottom: 0;
-        }
-      }
     }
     
     h1, h2, h3, h4 {
@@ -261,7 +255,7 @@ main {
     
     video {
       width: 100%;
-      margin: 3rem auto !important;
+      margin: 0 auto;
       border-radius: 5px;
     }
     
@@ -361,7 +355,7 @@ main {
     img {
       display: block;
       max-width: 100%;
-      margin: 1em auto 3em;
+      margin: 0 auto;
       border-radius: $radius;
       cursor: zoom-in;
     }

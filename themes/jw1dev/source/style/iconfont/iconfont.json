@@ -1,0 +1,44 @@
+{
+  "id": "3666545",
+  "name": "jw1.dev",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "23563259",
+      "name": "Stop",
+      "font_class": "Stop",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "23563295",
+      "name": "Play",
+      "font_class": "Play",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "23563296",
+      "name": "Pause",
+      "font_class": "Pause",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "23563303",
+      "name": "Shuffle",
+      "font_class": "Shuffle",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "23563306",
+      "name": "RepeatOnce",
+      "font_class": "RepeatOnce",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    }
+  ]
+}

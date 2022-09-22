@@ -139,15 +139,22 @@
   justify-content: center;
   margin-right: 10px;
 }
+.app-audio-wrap .control .btn i.iconfont {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
 .app-audio-wrap .control .btn:last-child {
   margin-right: 0;
 }
 .app-audio-wrap .control .btn.on {
   background-color: #6190e8;
-  color: #fff;
+  color: #ffffff;
 }
 .app-audio-wrap .control .btn.on svg {
   fill: #ffffff;
+}
+.app-audio-wrap .control .btn.spin i.iconfont {
+  transform: rotate(-180deg);
 }
 .app-audio-wrap .control .btn.spin span {
   transform: rotate(-180deg);
@@ -195,7 +202,7 @@
     color: #ffffff;
   }
   .app-audio-wrap .name .icon {
-    color: #fff;
+    color: #ffffff;
   }
   .app-audio-wrap .name .icon svg {
     fill: #ffffff;
@@ -210,15 +217,15 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
   .app-audio-wrap .control {
-    color: #fff;
+    color: #ffffff;
   }
   .app-audio-wrap .control .btn {
     background-color: #a3a3a3;
-    color: #fff;
+    color: #ffffff;
   }
   .app-audio-wrap .control .btn.on {
     background-color: #ff4d4d;
-    color: #fff;
+    color: #ffffff;
   }
   .app-audio-wrap .control .btn.on svg {
     fill: #ffffff;
@@ -242,10 +249,10 @@
 .spectrum .item-wrap .item {
   width: 4px;
   min-height: 4px;
-  background: #999;
+  background: #999999;
   border-radius: 2px;
   margin-right: 2px;
   flex-shrink: 1;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22app-audio.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;EACA;;AAEA;EACE;;;AAIJ;EACE;EACA;EACA;EACA;EACA,eAlBO;EAmBP;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA,eA3CG;EA4CH;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;EACA,eA/DK;EAgEL;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAKN;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA,eAhIG;EAiIH;;AAEA;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EAKA;;AAHA;EACE;;AAMF;EACE;;AAEF;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;;AAKN;EACE;IACE;IACA;;EAEA;IACE;;EAEA;IACE;;EAGF;IACE;;EAIJ;IACE;;EAGF;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EACA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IACE;;EAKN;IAcE;;EAbA;IACE;IACA;;EAEA;IACE,kBArQC;IAsQD;;EAEA;IACE;;EAMN;IACE;;;AAMR;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA%22,%22file%22:%22app-audio.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22app-audio.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;EACA;;AAEA;EACE;;;AAIJ;EACE;EACA;EACA;EACA;EACA,eAlBO;EAmBP;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA,eA3CG;EA4CH;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;EACA,eA/DK;EAgEL;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAKN;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA,eAhIG;EAiIH;;AAEA;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;;AAGF;EACE;EAMA;;AAJA;EACE;;AAOF;EACE;;AAGF;EACE;;AAGF;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;;AAKN;EACE;IACE;IACA;;EAEA;IACE;;EAEA;IACE;;EAGF;IACE;;EAIJ;IACE;;EAGF;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE;;EAGF;IACE;;EAKN;IAeE;;EAdA;IACE;IACA;;EAEA;IACE,kBAjRC;IAkRD;;EAEA;IACE;;EAON;IACE;;;AAMR;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA%22,%22file%22:%22app-audio.css%22%7D */

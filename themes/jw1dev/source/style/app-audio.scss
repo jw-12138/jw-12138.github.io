@@ -23,7 +23,7 @@ $main-blue: #565656;
     animation: playing_w 1.2s linear infinite;
   }
   
-  input[type='range'] {
+  input[type="range"] {
     width: 100%;
     margin-top: 20px;
     -webkit-appearance: none;
@@ -96,7 +96,7 @@ $main-blue: #565656;
     color: #666666;
     font-size: 12px;
     margin-bottom: 10px;
-    font-family: 'JetBrains Mono', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "JetBrains Mono", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
     
     .b {
       color: #333333;
@@ -163,6 +163,11 @@ $main-blue: #565656;
       justify-content: center;
       margin-right: 10px;
       
+      i.iconfont {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+      
       &:last-child {
         margin-right: 0;
       }
@@ -173,20 +178,26 @@ $main-blue: #565656;
         svg {
           fill: #ffffff;
         }
-        color: #fff;
+        
+        color: #ffffff;
       }
       
       &.spin {
-        span{
+        i.iconfont {
           transform: rotate(-180deg);
         }
+        
+        span {
+          transform: rotate(-180deg);
+        }
+        
         svg {
           transform: rotate(-180deg);
         }
       }
     }
     
-    span.material-symbols-rounded{
+    span.material-symbols-rounded {
       width: 24px;
       height: 24px;
       display: inline-block;
@@ -207,7 +218,7 @@ $main-blue: #565656;
     background-color: darken($main-blue, 7%);
     border-color: darken($main-blue, 7%);
     
-    input[type='range'] {
+    input[type="range"] {
       background-color: darken($main-blue, 7%);
       
       &:hover {
@@ -235,7 +246,8 @@ $main-blue: #565656;
       color: #ffffff;
       
       .icon {
-        color: #fff;
+        color: #ffffff;
+        
         svg {
           fill: #ffffff;
         }
@@ -257,18 +269,19 @@ $main-blue: #565656;
     .control {
       .btn {
         background-color: lighten($main-blue, 30%);
-        color: #fff;
+        color: #ffffff;
         
         &.on {
           background-color: $main-red;
-          color: #fff;
+          color: #ffffff;
           
           svg {
             fill: #ffffff;
           }
         }
       }
-      color: #fff;
+      
+      color: #ffffff;
       
       svg {
         fill: #ffffff;
@@ -292,7 +305,7 @@ $main-blue: #565656;
     .item {
       width: 4px;
       min-height: 4px;
-      background: #999;
+      background: #999999;
       border-radius: 2px;
       margin-right: 2px;
       flex-shrink: 1;
