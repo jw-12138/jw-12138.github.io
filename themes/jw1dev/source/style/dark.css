@@ -1,6 +1,22 @@
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
 @media (prefers-color-scheme: dark) {
   html, body {
-    color: #fff;
+    color: #f8fafc;
     background: #171717 !important;
   }
 
@@ -27,6 +43,13 @@
   main .pagination .total {
     color: #aaa;
   }
+  main.index ul li:hover {
+    background: #404040;
+    border-color: #555;
+    border-bottom-color: #444;
+    border-right-color: #444;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
   main.index ul li a {
     color: #d1d1d1;
   }
@@ -45,16 +68,23 @@
     background: rgba(255, 255, 255, 0.02);
   }
   main .page-original {
-    color: #888;
+    color: #d4d4d4;
+    background: #404040;
+    border-color: #555;
+    border-bottom-color: #444;
+    border-right-color: #444;
   }
   main .page-original a {
-    color: #777;
+    color: #bfdbfe;
   }
   main .page-content {
-    color: #ddd;
+    color: #f1f5f9;
+  }
+  main .page-content strong, main .page-content b {
+    color: #fff;
   }
   main .page-content a {
-    color: #60a5fa;
+    color: #bfdbfe;
   }
   main .page-content table {
     border-left: 1px solid #555;
@@ -101,14 +131,27 @@
   }
   .analytics-note-box .btn-grp .btn {
     border: 1px solid #111827;
-    color: #F3F4F6;
-    background: #1F2937;
+    color: #f3f4f6;
+    background: #1f2937;
   }
   .analytics-note-box .btn-grp .btn.primary {
-    background: #F9FAFB;
+    background: #f9fafb;
     border-color: #f1f5f9;
     color: #333;
   }
+
+  .donation-box .img img.dark {
+    display: block;
+  }
+  .donation-box .img img.light {
+    display: none;
+  }
+  .donation-box .text {
+    color: #aaa;
+  }
+  .donation-box .text b {
+    color: #ddd;
+  }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAIA;EACE;IACE;IACA;;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCrBM;;ED6BF;IACE;IACA;IACA,YAjCD;;;EA4CL;IACE;IACA,YA9CG;IA+CH;;EAGF;IACE;;EASE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YA/EL;;EAuFP;IACE;;EAEA;IACE;;EAIJ;IACE;;EAEA;IACE,OC3DG;;ED8DL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YAvHG;IAwHH;;EAGF;IACE;;EAGF;IACE,YAhIG;IAiIH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE;;;EAIJ;IACE;IACA;IACA;;EAGE;IACE;IACA,OCrJG;IDsJH,YC/IG;;EDiJH;IACE,YC1JA;ID2JA,cCtKE;IDuKF%22,%22file%22:%22dark.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACRF;EACE;IACE,OCLO;IDMP;;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCtBM;;ED8BF;IACE;IACA;IACA,YAjCD;;;EA4CL;IACE;IACA,YA9CG;IA+CH;;EAGF;IACE;;EASE;IACE,YCPE;IDQF;IACA;IACA;IDlDV;;ECsDQ;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA;IACA,YAvFL;;EA+FP;IACE,OC9CQ;ID+CR,YC3CQ;ID4CR;IACA;IACA;;EAEA;IACE,OClEG;;EDsEP;IACE,OC5GM;;ED8GN;IACE;;EAGF;IACE,OC9EG;;EDiFL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YAvIG;IAwIH;;EAGF;IACE;;EAGF;IACE,YAhJG;IAiJH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE;;;EAIJ;IACE;IACA;IACA;;EAGE;IACE;IACA,OCtKG;IDuKH,YChKG;;EDkKH;IACE,YC3KA;ID4KA,cCvLE;IDwLF;;;EAQF;IACE;;EAGF;IACE;;EAIN;IACE;;EACA;IACE%22,%22file%22:%22dark.css%22%7D */

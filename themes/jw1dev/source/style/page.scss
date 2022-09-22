@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "color";
+@use "vars";
 
 $radius: 0.4em;
 $main-red: #ef4444;
@@ -7,7 +8,7 @@ $light-bg: rgba(#0f172a, .02);
 $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
 html, body {
-  font-family: $mono-font;
+  font-family: "Jost", $mono-font;
   margin: 0;
   padding: 0;
 }
@@ -16,7 +17,7 @@ header {
   width: 100%;
   max-width: 640px;
   box-sizing: border-box;
-  padding: 2rem 20px 0;
+  padding: 2rem 1.5rem 0;
   margin: 0 auto;
   display: block;
   
@@ -40,7 +41,7 @@ header {
   
   desc {
     font-size: .8rem;
-    color: color.$slate-900
+    color: color.$slate-900;
   }
   
   .navigation {
@@ -76,11 +77,11 @@ header {
 main {
   max-width: 640px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.5rem;
   display: block;
   
   .pagination {
-    margin: 0 0 1.5rem;
+    margin: 1.5rem 0 3.5rem;
     text-align: center;
     
     a {
@@ -104,31 +105,41 @@ main {
   }
   
   &.index {
+    h2{
+      margin-bottom: 2rem;
+    }
     ul {
       padding: 0;
       list-style: none;
       
       li {
         list-style: inherit;
-        padding: 1.5rem 0;
+        margin-bottom: .5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 0 rgba(#000, 0);
+        background: transparent;
+        transition: box-shadow .2s ease, background-color .2s ease;
+        border: 1px solid transparent;
         
         &:hover {
-          a {
-            .title {
-              text-decoration: underline;
-              
-              .deprecated {
-                text-decoration: none;
-              }
-            }
+          background: color.$neutral-50;
+          @extend .shadow-xl;
+          border-color: #f6f6f6;
+          border-right-color: #e6e6e6;
+          border-bottom-color: #eeeeee;
+          
+          a{
+            padding: 1.5rem;
           }
         }
         
         a {
+          padding: 1.5rem 0;
           border-radius: $radius;
           display: block;
           color: color.$slate-700;
           text-decoration: none;
+          transition: padding .2s ease;
           
           .title {
             font-size: 1.1rem;
@@ -191,9 +202,16 @@ main {
   }
   
   .page-original {
+    border: 1px solid #f6f6f6;
+    border-right-color: #e6e6e6;
+    border-bottom-color: #eeeeee;
     margin: 4rem 0;
     font-size: .7rem;
     color: #888888;
+    background: color.$neutral-50;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    @extend .shadow-xl;
     
     img {
       margin-bottom: .5rem;
@@ -205,7 +223,7 @@ main {
   }
   
   .page-content {
-    line-height: 1.8;
+    line-height: 1.9;
     color: #333333;
     
     ul {
@@ -238,11 +256,12 @@ main {
     
     p {
       margin-bottom: 1rem;
+      overflow-x: auto;
     }
     
     video {
       width: 100%;
-      margin: 1rem 0;
+      margin: 3rem auto !important;
       border-radius: 5px;
     }
     
@@ -256,9 +275,21 @@ main {
       }
     }
     
+    h3 {
+      a {
+        padding: 0;
+      }
+    }
+    
+    strong, b {
+      color: #000000;
+    }
+    
     a {
-      color: color.$blue-600;
+      color: color.$slate-500;
       word-break: break-all;
+      padding: 0 .3rem;
+      position: relative;
     }
     
     .sugg-back {
@@ -328,19 +359,21 @@ main {
     }
     
     img {
-      max-width: 100%;
       display: block;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 1em auto 3em;
       border-radius: $radius;
       cursor: zoom-in;
     }
     
     code {
-      background: color.$gray-100;
+      background: transparent;
       padding: .1em .3em;
       border: 1px solid color.$gray-200;
       border-radius: $radius;
-      margin: 0 .3em;
+      margin: 0;
+      position: relative;
+      top: -.05em;
       color: #333333;
       font-family: $mono-font;
       font-size: math.div(14, 16) + 0em;
@@ -420,27 +453,28 @@ footer {
   right: -260px;
   bottom: 20px;
   padding: 15px;
-  background: rgba(255,255,255,.8);
+  background: rgba(255, 255, 255, .8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 6px;
-  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
   font-size: 14px;
-  border: 1px solid #eee;
+  border: 1px solid #eeeeee;
   line-height: 1.5;
   transition: right .4s ease;
   
-  .icon{
+  .icon {
     font-size: 24px;
   }
   
-  .title{
+  .title {
     margin-top: 10px;
   }
   
-  .btn-grp{
+  .btn-grp {
     margin-top: 4px;
-    .btn{
+    
+    .btn {
       margin-top: 10px;
       border: 1px solid color.$slate-200;
       padding: 6px;
@@ -448,21 +482,49 @@ footer {
       display: inline-block;
       text-align: center;
       color: color.$slate-700;
-      background: #fff;
+      background: #ffffff;
       border-radius: 20px;
       text-decoration: none;
       
-      &.primary{
+      &.primary {
         background: color.$slate-900;
         border-color: color.$slate-800;
-        color: #fff;
+        color: #ffffff;
       }
     }
   }
 }
 
-.show-analytics-notification{
-  .analytics-note-box{
+.show-analytics-notification {
+  .analytics-note-box {
     right: 20px;
+  }
+}
+
+.donation-box {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  
+  .img {
+    img {
+      &.dark {
+        display: none;
+      }
+      
+      display: block;
+      max-width: 300px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  
+  .text {
+    color: #777777;
+    font-size: 12px;
+    text-align: center;
+    
+    b {
+      color: #333333;
+    }
   }
 }

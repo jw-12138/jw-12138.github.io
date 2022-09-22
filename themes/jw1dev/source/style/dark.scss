@@ -1,10 +1,11 @@
 @use 'color';
+@use "vars";
 $radius: 0.4em;
 $light-bg: rgba(#fff, .02);
 
 @media (prefers-color-scheme: dark) {
   html, body {
-    color: #fff;
+    color: color.$slate-50;
     background: color.$neutral-900 !important;
   }
   
@@ -59,6 +60,14 @@ $light-bg: rgba(#fff, .02);
       ul {
         
         li {
+  
+          &:hover {
+            background: color.$neutral-700;
+            border-color: #555;
+            border-bottom-color: #444;
+            border-right-color: #444;
+            @include vars.shadow-xl;
+          }
           
           a {
             color: #d1d1d1;
@@ -88,18 +97,26 @@ $light-bg: rgba(#fff, .02);
     }
     
     .page-original {
-      color: #888;
+      color: color.$neutral-300;
+      background: color.$neutral-700;
+      border-color: #555;
+      border-bottom-color: #444;
+      border-right-color: #444;
       
       a {
-        color: #777;
+        color: color.$blue-200;
       }
     }
     
     .page-content {
-      color: #ddd;
+      color: color.$slate-100;
+  
+      strong, b{
+        color: #fff;
+      }
       
       a {
-        color: color.$blue-400;
+        color: color.$blue-200;
       }
       
       table {
@@ -170,6 +187,25 @@ $light-bg: rgba(#fff, .02);
           border-color: color.$slate-100;
           color: #333;
         }
+      }
+    }
+  }
+  .donation-box{
+    .img{
+      img{
+        &.dark{
+          display: block;
+        }
+        
+        &.light{
+          display: none;
+        }
+      }
+    }
+    .text{
+      color: #aaa;
+      b{
+        color: #ddd;
       }
     }
   }
