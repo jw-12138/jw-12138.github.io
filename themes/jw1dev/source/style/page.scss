@@ -8,9 +8,10 @@ $light-bg: rgba(#0f172a, .02);
 $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
 html, body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "PingFang SC", "Microsoft YaHei", sans-serif;
   margin: 0;
   padding: 0;
+  text-rendering: optimizeLegibility;
 }
 
 main {

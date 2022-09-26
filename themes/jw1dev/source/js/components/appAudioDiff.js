@@ -13,14 +13,12 @@ export default {
   },
   template: `
     <div class="app-audio-wrap" :class="{ playing: playing }">
-    <audio :src="on.src" preload="metadata" ref="audio_1" :loop="looping"></audio>
-    <audio :src="off.src" preload="metadata" ref="audio_2" :loop="looping"></audio>
-    <div class="name">
-    <span class="icon" aria-hidden="true">
-      <i class="iconfont">
-      &#xe7c1;
-      </i>
-    </span>
+    <div class="name" :class="{playing: playing}">
+      <span class="icon" aria-hidden="true">
+        <i class="iconfont">
+        &#xe7c1;
+        </i>
+      </span>
       <span>
       {{ playing_index === 0 ? activeText : inactiveText }}
     </span>
@@ -108,7 +106,7 @@ export default {
         }
         _.percent = _.calcPercentage()
         _.currentTime = _.audio_1.seek()
-      }, 100)
+      }, 1000 / 30)
       
       _.audio_1.once('load', function () {
         _.duration = _.audio_1.duration(0)

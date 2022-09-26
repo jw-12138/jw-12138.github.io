@@ -13,7 +13,7 @@ export default {
     }
   },
   template: `<div class="app-audio-wrap">
-  <div class="name">
+  <div class="name" :class="{playing: playing}">
     <span class="icon" aria-hidden="true">
       <i class="iconfont">
       &#xe7c1;
@@ -75,7 +75,7 @@ export default {
         }
         _.percent = _.calcPercentage()
         _.currentTime = _.audio.seek()
-      }, 100)
+      }, 1000 / 30)
       
       _.audio.once('load', function () {
         _.duration = _.audio.duration()
