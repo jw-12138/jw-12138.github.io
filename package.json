@@ -28,7 +28,6 @@
     "hexo-server": "^2.0.0",
     "moment": "^2.29.4",
     "music-metadata": "^8.1.0",
-    "vuex": "^4.0.2",
     "walk": "^2.3.15"
   },
   "devDependencies": {
