@@ -1,6 +1,8 @@
 $radius: 0.4em;
 $main-red: #ff4d4d;
 $main-blue: #565656;
+@use "vars";
+@use "color";
 
 .md-shaodw {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -12,12 +14,15 @@ $main-blue: #565656;
 }
 
 .app-audio-wrap {
-  background-color: lighten(#dee1e6, 7%);
+  background: color.$neutral-50;
   padding: 12px 15px;
   margin: 10px 0;
   position: relative;
   border-radius: $radius;
-  border: 1px solid lighten(#dee1e6, 7%);
+  border: 1px solid #f6f6f6;
+  border-right-color: #e6e6e6;
+  border-bottom-color: #eeeeee;
+  @include vars.shadow-xl;
   
   &.playing {
     animation: playing_w 1.2s linear infinite;
@@ -31,6 +36,7 @@ $main-blue: #565656;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center center;
+    border-radius: $radius;
     
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
@@ -215,14 +221,16 @@ $main-blue: #565656;
 
 @media (prefers-color-scheme: dark) {
   .app-audio-wrap {
-    background-color: darken($main-blue, 7%);
-    border-color: darken($main-blue, 7%);
+    background: color.$neutral-700;
+    border-color: #555;
+    border-bottom-color: #444;
+    border-right-color: #444;
     
     input[type="range"] {
-      background-color: darken($main-blue, 7%);
+      background-color: color.$neutral-600;
       
       &:hover {
-        background-color: darken($main-blue, 7%);
+        background-color: color.$neutral-600;
       }
       
       &::-webkit-slider-thumb {

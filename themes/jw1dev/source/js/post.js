@@ -1,5 +1,5 @@
-import appAudio from "./components/appAudio";
-import appAudioDiff from "./components/appAudioDiff";
+import appAudio from './components/appAudio'
+import appAudioDiff from './components/appAudioDiff'
 import videoView from './components/videoView.js'
 
 new Vue({

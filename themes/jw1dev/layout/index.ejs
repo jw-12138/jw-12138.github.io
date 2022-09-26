@@ -8,26 +8,7 @@
   <%- partial('partial/meta') %>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <a href="<%- config.url %>">
-        <img src="/images/logo-black.png" class="dark" alt="<%- config.title %>">
-        <img src="/images/logo.png" class="light" alt="<%- config.title %>">
-      </a>
-    </div>
-    <desc>
-      <%- config.description %>
-    </desc>
-    <div class="navigation">
-      <ul>
-        <% site.data.data.pages.forEach(item => { %>
-          <li>
-            <a href="<%- url_for(item.url) %>"><%- item.icon %> <%- item.name %></a>
-          </li>
-        <% }) %>
-      </ul>
-    </div>
-  </header>
+  <%- partial('partial/header') %>
   <main class="index">
     <h2>Posts</h2>
     <ul>
@@ -45,14 +26,13 @@
             </div>
             <div class="date">
               <%- moment(item.date).format('YYYY-MM-DD') %>
+              <% tags.forEach((tag, index) => { %>
+                <span class="sep">/</span>
+                <div class="tag-item"><%- tag %></div>
+              <% }) %>
             </div>
             <div class="desc">
               <%- item.desc %>
-            </div>
-            <div class="tags">
-              <% tags.forEach(tag => { %>
-                <div class="item"><%- tag %></div>
-              <% }) %>
             </div>
           </a>
         </li>

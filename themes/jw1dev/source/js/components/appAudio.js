@@ -15,6 +15,11 @@ export default {
   template: `<div class="app-audio-wrap">
   <audio :src="src" ref="audio_ele" preload="metadata"></audio>
   <div class="name">
+    <span class="icon" aria-hidden="true">
+      <i class="iconfont">
+      &#xe7c1;
+      </i>
+    </span>
     {{ label }}
   </div>
   <div class="time" title="This is the timing panel">
@@ -62,10 +67,20 @@ export default {
       let _this = this
       _this.audio = a
       _this.percent = _this.calcPercentage()
+      let interval = 0
       a.ontimeupdate = function () {
+        clearInterval(interval)
         if (!_this.adjust_progress_ready && _this.range_count === 0) {
           _this.percent = _this.calcPercentage()
           _this.currentTime = _this.audio.currentTime
+          let recurring = 0
+          interval = setInterval(function () {
+            if(recurring >= 25){
+              clearInterval(interval)
+            }
+            _this.currentTime = _this.audio.currentTime
+            recurring++
+          }, 10)
         }
       }
       _this.audio.onended = function () {

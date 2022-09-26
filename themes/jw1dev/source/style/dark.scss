@@ -78,8 +78,10 @@ $light-bg: rgba(#fff, .02);
             .tags {
               .item {
                 color: #bbb;
-                border: 1px solid #555;
                 background: $light-bg;
+              }
+              .sep{
+                color: color.$emerald-700;
               }
             }
           }
@@ -128,7 +130,7 @@ $light-bg: rgba(#fff, .02);
       
       hr {
         background: $light-bg;
-        border: 1px solid #555;
+        border-bottom: 1px solid #555;
       }
       
       blockquote {
@@ -155,7 +157,7 @@ $light-bg: rgba(#fff, .02);
   }
   
   footer {
-    color: #bbb;
+    color: #eee;
     
     a {
       color: #eee;

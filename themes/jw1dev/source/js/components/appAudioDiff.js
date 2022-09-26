@@ -17,9 +17,9 @@ export default {
   <audio :src="off.src" preload="metadata" ref="audio_2" :loop="looping"></audio>
   <div class="name">
     <span class="icon" aria-hidden="true">
-      <span class="material-symbols-rounded" style="position: relative; top: 2px;">
-      music_note
-      </span>
+      <i class="iconfont">
+      &#xe7c1;
+      </i>
     </span>
     <span>
       {{ playing_index === 0 ? activeText : inactiveText }}
@@ -88,6 +88,8 @@ export default {
     getRandomInt: getRandomInt,
     toggle_loop: function (e) {
       e.preventDefault()
+      this.audio_1.currentTime = 0
+      this.audio_2.currentTime = 0
       this.looping = !this.looping
     },
     calcPercentage: function () {
@@ -99,15 +101,30 @@ export default {
     canplayFun: function () {
       let _this = this
       _this.percent = _this.calcPercentage()
+      let interval = 0
       _this.audio_1.ontimeupdate = function () {
+        clearInterval(interval)
         if (!_this.adjust_progress_ready && _this.range_count === 0) {
           _this.percent = _this.calcPercentage()
           _this.currentTime = _this.audio_1.currentTime
+          let recurring = 0
+          interval = setInterval(function () {
+            if(recurring >= 25){
+              clearInterval(interval)
+            }
+            _this.currentTime = _this.audio_1.currentTime
+            recurring++
+          }, 10)
         }
       }
       _this.audio_1.onended = function () {
         _this.percent = 0
         _this.audio_1.currentTime = 0
+        _this.currentTime = 0
+      }
+  
+      _this.audio_2.onended = function () {
+        _this.percent = 0
         _this.audio_2.currentTime = 0
         _this.currentTime = 0
       }
@@ -117,6 +134,14 @@ export default {
       }
       
       _this.audio_1.onplay = function () {
+        _this.playing = true
+      }
+  
+      _this.audio_2.onpause = function () {
+        _this.playing = false
+      }
+  
+      _this.audio_2.onplay = function () {
         _this.playing = true
       }
     },
@@ -196,7 +221,6 @@ export default {
       _this.audio_1.currentTime = (_this.percent / 100) * _this.duration
       _this.audio_2.currentTime = (_this.percent / 100) * _this.duration
       _this.currentTime = (_this.percent / 100) * _this.duration
-      console.log(_this.currentTime)
       _this.adjust_progress_ready = false
       _this.range_count = 0
     },

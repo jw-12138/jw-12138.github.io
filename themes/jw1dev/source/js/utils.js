@@ -8,9 +8,11 @@ export function sec2time(s) {
     time = parseFloat(s).toFixed(3),
     hours = Math.floor(time / 60 / 60),
     minutes = Math.floor(time / 60) % 60,
-    seconds = Math.floor(time - minutes * 60)
+    seconds = Math.floor(time - minutes * 60),
+    ms = s + ''
+  ms = ms.split('.')
   
-  return pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2)
+  return pad(minutes, 2) + ':' + pad(seconds, 2) + '.' + pad(ms[1] || '00', 2)
 }
 
 export function getRandomInt(min, max) {
