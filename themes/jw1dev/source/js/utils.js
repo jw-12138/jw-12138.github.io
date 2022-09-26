@@ -12,7 +12,7 @@ export function sec2time(s) {
     ms = s + ''
   ms = ms.split('.')
   
-  return pad(minutes, 2) + ':' + pad(seconds, 2) + '.' + pad(ms[1] || '00', 2)
+  return pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2)
 }
 
 export function getRandomInt(min, max) {
