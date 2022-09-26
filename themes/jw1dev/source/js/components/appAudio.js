@@ -85,6 +85,10 @@ export default {
         _.playing = true
       })
   
+      _.audio.on('pause', function () {
+        _.playing = false
+      })
+  
       _.audio.on('end', function () {
         _.playing = false
         
