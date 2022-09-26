@@ -748,8 +748,8 @@ header .navigation ul li a:hover {
 
 .app-audio-wrap {
   background: #fafafa;
-  padding: 12px 15px;
-  margin: 10px 0;
+  padding: 0.8rem 1.2rem;
+  margin: 1rem 0 2rem;
   position: relative;
   border-radius: 0.4em;
   border: 1px solid #f6f6f6;

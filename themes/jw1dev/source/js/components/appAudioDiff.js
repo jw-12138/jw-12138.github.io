@@ -128,6 +128,13 @@ export default {
         if (_.looping) {
           _.audio_1.play()
           _.audio_2.play()
+          if(_.playing_index === 0){
+            _.audio_1.volume(1)
+            _.audio_2.volume(0)
+          }else{
+            _.audio_1.volume(0)
+            _.audio_2.volume(1)
+          }
         }
       })
       
@@ -136,7 +143,20 @@ export default {
         _.looping = false
       })
       
-      _.audio_1.volume(1, 0)
+      // ====
+  
+      _.audio_2.on('play', function () {
+        _.playing = true
+      })
+  
+      _.audio_2.on('pause', function () {
+        _.playing = false
+      })
+  
+      _.audio_2.on('stop', function () {
+        _.playing = false
+        _.looping = false
+      })
     },
     playFun: function (e) {
       e.preventDefault()
