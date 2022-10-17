@@ -10,41 +10,6 @@
   <% if(page.style){ %>
     <%- page.style %>
   <% } %>
-  <script>
-    // Fix iOS Audio Context by Blake Kus https://gist.github.com/kus/3f01d60569eeadefe3a1
-    // MIT license
-    (function() {
-      window.AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (window.AudioContext) {
-        window.audioContext = new window.AudioContext();
-      }
-      var fixAudioContext = function (e) {
-        if (window.audioContext) {
-          // Create empty buffer
-          var buffer = window.audioContext.createBuffer(1, 1, 22050);
-          var source = window.audioContext.createBufferSource();
-          source.buffer = buffer;
-          // Connect to output (speakers)
-          source.connect(window.audioContext.destination);
-          // Play sound
-          if (source.start) {
-            source.start(0);
-          } else if (source.play) {
-            source.play(0);
-          } else if (source.noteOn) {
-            source.noteOn(0);
-          }
-        }
-        // Remove events
-        document.removeEventListener('touchstart', fixAudioContext);
-        document.removeEventListener('touchend', fixAudioContext);
-      };
-      // iOS 6-8
-      document.addEventListener('touchstart', fixAudioContext);
-      // iOS 9
-      document.addEventListener('touchend', fixAudioContext);
-    })();
-  </script>
 </head>
 <body>
   <div id="app">
@@ -68,7 +33,7 @@
           <% } %>
           <% if(page.tags) { %>
             <% page.tags.forEach((tag, index) => {%>
-              <%- tag.name %>
+              <a href="/tags/<%- tag.name %>"><%- tag.name %></a>
               <% if(index !== page.tags.length - 1) { %>
                 /
               <% } %>
@@ -96,6 +61,7 @@
           integrity="sha512-FBUSVbYJGylZSdYsKcPzD8eeP7xHN3ke9AeIZhmGWigvqdTibWEPGGOv0ppwvawuJswJ6/vQIfsq6q/7dAAx9g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/js/post.js"></script>
   <script src="/js/g-analytics.js"></script>
 </body>

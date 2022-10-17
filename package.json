@@ -26,9 +26,7 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^4.0.0",
     "hexo-server": "^2.0.0",
-    "moment": "^2.29.4",
-    "music-metadata": "^8.1.0",
-    "walk": "^2.3.15"
+    "music-metadata": "^8.1.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",

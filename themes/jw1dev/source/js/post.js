@@ -22,16 +22,10 @@ new Vue({
     handleImgClick: function () {
       let _ = this
       let fn = function () {
-        let parent = document.querySelector('.page-content')
-        let img_arr = parent ? parent.querySelectorAll('img') : null
-        if (img_arr) {
-          img_arr.forEach((img) => {
-            img.addEventListener('click', function () {
-              let src = this.getAttribute('src')
-              window.open(window.location.origin + src)
-            })
-          })
-        }
+        $('.page-content img').on('click', function () {
+          let src = $(this).attr('src')
+          window.open(window.location.origin + src)
+        })
       }
       Vue.nextTick(fn)
     }
