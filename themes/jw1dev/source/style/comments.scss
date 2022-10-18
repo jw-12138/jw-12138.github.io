@@ -1,0 +1,59 @@
+@use "vars";
+@use "color";
+$mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
+
+.reactions {
+  margin: 2em 0;
+  text-align: center;
+  user-select: none;
+  
+  .info {
+    text-align: center;
+    font-size: .8em;
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-top: 3em;
+    transition: height .1s ease, margin .1s ease;
+    
+    &.expanded{
+      height: 2em;
+    }
+  }
+  
+  .item {
+    display: inline-block;
+    font-size: 1em;
+    font-family: $mono-font;
+    cursor: pointer;
+    margin: 0 .5em;
+    @extend .shadow-xl;
+    border-radius: 1em;
+    padding: .3em 1em;
+    border: 1px solid color.$neutral-100;
+    background-color: #ffffff;
+    transition: transform .3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+    }
+    
+    em {
+      font-style: normal;
+      font-size: .8em;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .reactions {
+    
+    .item {
+      border: 1px solid color.$neutral-500;
+      background-color: color.$neutral-700;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-xl, .reactions .item {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.reactions {
+  margin: 2em 0;
+  text-align: center;
+  user-select: none;
+}
+.reactions .info {
+  text-align: center;
+  font-size: 0.8em;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-top: 3em;
+  transition: height 0.1s ease, margin 0.1s ease;
+}
+.reactions .info.expanded {
+  height: 2em;
+}
+.reactions .item {
+  display: inline-block;
+  font-size: 1em;
+  font-family: "Menlo", "Cascadia Code", monospace, sans-serif;
+  cursor: pointer;
+  margin: 0 0.5em;
+  border-radius: 1em;
+  padding: 0.3em 1em;
+  border: 1px solid #f5f5f5;
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+.reactions .item:hover {
+  transform: translateY(-3px);
+}
+.reactions .item em {
+  font-style: normal;
+  font-size: 0.8em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reactions .item {
+    border: 1px solid #737373;
+    background-color: #404040;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22comments.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACTF;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA,aA3BQ;EA4BR;EACA;EAEA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;;;AAKN;EAGI;IACE;IACA,kBCEQ%22,%22file%22:%22comments.css%22%7D */
