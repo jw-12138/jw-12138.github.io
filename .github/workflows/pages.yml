@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
 
     steps:
     - uses: szenius/set-timezone@v1.0
@@ -24,9 +24,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run audio_meta_gen
-    - run: npm run build --if-present
+    - run: npm i yarn -g
+    - run: yarn 
+    - run: yarn audio_meta_gen
+    - run: yarn build
     - run: node readme_gen.js
     - uses: EndBug/add-and-commit@v7
       with:
