@@ -44,10 +44,10 @@
       <div class="page-content">
         <%- page.content %>
       </div>
+      <%- partial('partial/comment') %>
       <% if(!page.no_donation) { %>
         <%- partial('partial/donate') %>
       <% } %>
-        <%- partial('partial/comment') %>
       <% if(!is_page()){ %>
         <%- partial('partial/original') %>
       <% } %>
