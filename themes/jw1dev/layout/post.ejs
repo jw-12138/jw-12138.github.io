@@ -45,8 +45,9 @@
         <%- page.content %>
       </div>
       <% if(!page.no_donation) { %>
-        <%- partial('partial/comment') %>
+        <%- partial('partial/donate') %>
       <% } %>
+        <%- partial('partial/comment') %>
       <% if(!is_page()){ %>
         <%- partial('partial/original') %>
       <% } %>
