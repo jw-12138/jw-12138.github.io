@@ -46,7 +46,6 @@ export default {
       owner: 'jw-12138',
       repo: 'jw-12138.github.io',
       comments: [],
-      comments_per_page: {},
       issue: {},
       tab_active: 0,
       preview_content: '',
@@ -80,12 +79,7 @@ export default {
     },
     getIssues() {
       let _ = this
-      axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues?labels=Comment`, {
-        headers: {
-          'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer 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'
-        }
-      }).then(res => {
+      axios.get(`https://api.jw1.dev/gha/forward?action=get_issues`).then(res => {
         if (res.status === 200) {
           let hasRelatedIssue = false
           let data = res.data.reverse()
@@ -161,27 +155,12 @@ export default {
     async getComments(issueNumber) {
       let _ = this
       _.issue_number = _.issue_number ? _.issue_number : issueNumber
-      axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues/${issueNumber}/comments?per_page=${_.per_page}&page=${_.comment_page}`, {
-        headers: {
-          'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer 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'
-        }
+      axios.get(`https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${issueNumber}`, {
       }).then(res => {
         if (res.status === 200) {
-          _.comments_per_page[_.comment_page] = res.data
-          _.comments = _.resolveComments()
+          _.comments = res.data
         }
       })
-    },
-    resolveComments(){
-      let _ = this
-      let keys = Object.keys(_.comments_per_page)
-      let arr = []
-      keys.forEach(el => {
-        arr = arr.concat(_.comments_per_page[el])
-      })
-      
-      return arr
     },
     createIssue(cb) {
       let _ = this
