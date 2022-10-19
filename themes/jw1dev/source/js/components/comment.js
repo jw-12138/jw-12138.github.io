@@ -83,7 +83,7 @@ export default {
       axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues?labels=Comment`, {
         headers: {
           'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer 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'
         }
       }).then(res => {
         if (res.status === 200) {
@@ -164,7 +164,7 @@ export default {
       axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues/${issueNumber}/comments?per_page=${_.per_page}&page=${_.comment_page}`, {
         headers: {
           'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer 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'
         }
       }).then(res => {
         if (res.status === 200) {
