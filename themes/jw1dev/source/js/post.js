@@ -2,6 +2,7 @@ import appAudio from './components/appAudio'
 import appAudioDiff from './components/appAudioDiff'
 import videoView from './components/videoView.js'
 import reactions from './components/reactions.js'
+import comment from './components/comment.js'
 
 new Vue({
   el: '#app',
@@ -18,7 +19,8 @@ new Vue({
     'app-audio': appAudio,
     'app-audio-diff': appAudioDiff,
     'video-view': videoView,
-    'reactions': reactions
+    'reactions': reactions,
+    'v-comment': comment
   },
   methods: {
     handleImgClick: function () {

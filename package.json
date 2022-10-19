@@ -27,6 +27,7 @@
     "hexo-renderer-marked": "^4.0.0",
     "hexo-server": "^2.0.0",
     "music-metadata": "^8.1.0",
+    "octokit": "^2.0.9",
     "walk": "^2.3.15"
   },
   "devDependencies": {

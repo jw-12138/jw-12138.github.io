@@ -19,7 +19,6 @@
     color: #f8fafc;
     background: #171717 !important;
   }
-
   header .logo img.light {
     display: inline;
   }
@@ -32,7 +31,6 @@
   header .navigation ul li a {
     color: #ddd;
   }
-
   main .pagination a {
     border: 1px solid #555;
     background: rgba(255, 255, 255, 0.02);
@@ -109,14 +107,12 @@
   main .page-info {
     color: #aaa;
   }
-
   footer {
     color: #eee;
   }
   footer a {
     color: #eee;
   }
-
   .analytics-note-box {
     background: rgba(0, 0, 0, 0.7);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -132,7 +128,6 @@
     border-color: #f1f5f9;
     color: #333;
   }
-
   .donation-box .img img.dark {
     display: block;
   }
@@ -147,4 +142,4 @@
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACRF;EACE;IACE,OCLO;IDMP;;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCtBM;;ED8BF;IACE;;;EAWN;IACE;IACA,YA5CG;IA6CH;;EAGF;IACE;;EAQE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA,YA3EL;;EA6EG;IACE,OCZF;;EDoBV;IACE,OCrCQ;IDsCR,YClCQ;IDmCR;IACA;IACA;;EAEA;IACE,OCzDG;;ED6DP;IACE,OCnGM;;EDqGN;IACE;;EAGF;IACE,OCrEG;;EDwEL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YA9HG;IA+HH;;EAGF;IACE;;EAGF;IACE,YAvIG;IAwIH;IACA;;EAKA;IACE;;EAKN;IACE;;;EAIJ;IACE;;EAEA;IACE;;;EAIJ;IACE;IACA;IACA;;EAGE;IACE;IACA,OC7JG;ID8JH,YCvJG;;EDyJH;IACE,YClKA;IDmKA,cC9KE;ID+KF;;;EAQF;IACE;;EAGF;IACE;;EAIN;IACE;;EACA;IACE%22,%22file%22:%22dark.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22dark.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACRF;EACE;IACE,OCLO;IDMP;;EAMI;IACE;;EAGF;IACE;;EAKN;IACE,OCtBM;;ED8BF;IACE;;EAWN;IACE;IACA,YA5CG;IA6CH;;EAGF;IACE;;EAQE;IACE;;EAEA;IACE;;EAGF;IACE;;EAGF;IACE;;EAIA;IACE;IACA,YA3EL;;EA6EG;IACE,OCZF;;EDoBV;IACE,OCrCQ;IDsCR,YClCQ;IDmCR;IACA;IACA;;EAEA;IACE,OCzDG;;ED6DP;IACE,OCnGM;;EDqGN;IACE;;EAGF;IACE,OCrEG;;EDwEL;IAEE;IACA;IACA;;EAEA;IACE;IACA;;EAIJ;IACE;;EAGF;IACE,YA9HG;IA+HH;;EAGF;IACE;;EAGF;IACE,YAvIG;IAwIH;IACA;;EAKA;IACE;;EAKN;IACE;;EAIJ;IACE;;EAEA;IACE;;EAIJ;IACE;IACA;IACA;;EAGE;IACE;IACA,OC7JG;ID8JH,YCvJG;;EDyJH;IACE,YClKA;IDmKA,cC9KE;ID+KF;;EAQF;IACE;;EAGF;IACE;;EAIN;IACE;;EACA;IACE%22,%22file%22:%22dark.css%22%7D */

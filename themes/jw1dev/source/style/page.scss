@@ -158,7 +158,6 @@ main {
     background: color.$neutral-50;
     padding: 1.5rem;
     border-radius: 1rem;
-    @extend .shadow-xl;
     
     img {
       margin-bottom: .5rem;

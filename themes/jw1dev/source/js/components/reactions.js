@@ -108,8 +108,8 @@ export default {
   },
   template: `
 <div class="reactions">
-  <span class="item" @click="upFunc">👍 <em>{{ up }}</em></span>
-  <span class="item" @click="downFunc">👎 <em>{{ down }}</em></span>
+  <a href="javascript:;" role="button" class="item" @click="upFunc">👍 <em>{{ up }}</em></a>
+  <a href="javascript:;" role="button" class="item" @click="downFunc">👎 <em>{{ down }}</em></a>
   <div class="info" :class="{expanded: expanded}">{{active_index === 0 ? info[0] : info[1]}}</div>
 </div>
   `
