@@ -85,10 +85,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         justify-content: center;
         align-items: center;
         background-color: color.$slate-100;
-        border-radius: 1em 1em 0 0;
+        border-radius: 1em 0 0 0;
         border: 1px solid transparent;
         border-bottom: none;
         color: color.$slate-700;
+        
+        &:last-child{
+          border-radius: 0 1em 0 0;
+        }
         
         &.on {
           font-weight: bold;

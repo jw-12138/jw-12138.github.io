@@ -1,5 +1,3 @@
-import {log} from 'hexo/lib/plugins/helper/debug.js'
-
 export default {
   computed: {
     authURL: function () {
@@ -70,13 +68,19 @@ export default {
         md.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')
       )
     },
-    async getUser() {
+    getUser() {
       let _ = this
-      let res = await this.ax.get('/user')
-      if (res.status === 200) {
-        _.logged_in = true
-        _.user = res.data
-      }
+      this.ax.get('/user').then(res => {
+        if (res.status === 200) {
+          _.logged_in = true
+          _.user = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+        if(err.response.status === 401){
+          _.quit()
+        }
+      })
     },
     getIssues() {
       let _ = this
@@ -153,7 +157,7 @@ export default {
         _.sending_comment = false
       })
     },
-    async getComments(issueNumber) {
+    getComments(issueNumber) {
       let _ = this
       _.issue_number = _.issue_number ? _.issue_number : issueNumber
       axios.get(`https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${issueNumber}`, {
@@ -163,11 +167,12 @@ export default {
         }
       })
     },
-    createIssue(cb) {
+    createIssue() {
       let _ = this
       _.ax.post(`/repos/${_.owner}/${_.repo}/issues`, {
         title: document.title,
-        body: `This issue was generated for blog post [${document.title}](${location.href})`
+        body: `This issue was generated for blog post [${document.title}](${location.href})`,
+        labels: ['Comment']
       }).then(res => {
         if (res.status === 201) {
           _.issue_number = res.data.number
