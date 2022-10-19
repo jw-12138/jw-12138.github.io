@@ -78,29 +78,33 @@ export default {
         _.user = res.data
       }
     },
-    async getIssues() {
+    getIssues() {
       let _ = this
-      let res = await axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues`, {
+      axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues?labels=Comment`, {
         headers: {
           'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer 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'
         }
-      })
-      if (res.status === 200) {
-        let hasRelatedIssue = false
-        let data = res.data.reverse()
-        data.forEach(el => {
-          if (el.title === document.title && !hasRelatedIssue) {
-            hasRelatedIssue = true
-            _.issue = el
-            _.getComments(el.number)
+      }).then(res => {
+        if (res.status === 200) {
+          let hasRelatedIssue = false
+          let data = res.data.reverse()
+          data.forEach(el => {
+            if (el.title === document.title && !hasRelatedIssue) {
+              hasRelatedIssue = true
+              _.issue = el
+              _.getComments(el.number)
+            }
+          })
+    
+          if (!hasRelatedIssue && _.logged_in) {
+            _.createIssue()
           }
-        })
-        
-        if (!hasRelatedIssue && _.logged_in) {
-          _.createIssue()
         }
-      }
+      }).catch(err => {
+        console.log(err)
+      })
+      
     },
     deleteComment(id){
       let _ = this
@@ -160,7 +164,7 @@ export default {
       axios.get(`https://api.github.com/repos/${_.owner}/${_.repo}/issues/${issueNumber}/comments?per_page=${_.per_page}&page=${_.comment_page}`, {
         headers: {
           'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer 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'
         }
       }).then(res => {
         if (res.status === 200) {
