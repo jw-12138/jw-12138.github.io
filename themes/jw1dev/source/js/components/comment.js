@@ -14,6 +14,7 @@ export default {
     if (token && type) {
       localStorage.setItem('access_token', token)
       localStorage.setItem('token_type', type)
+      localStorage.setItem('token_timestamp', new Date())
       location.href = location.protocol + '//' + location.host + location.pathname + '#comments'
       
       return
