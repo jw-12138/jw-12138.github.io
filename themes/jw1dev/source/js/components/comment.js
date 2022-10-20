@@ -31,14 +31,16 @@ export default {
       
       _.getUser()
     }
-  
+    
     _.getIssues()
   },
   data: function () {
     return {
       ax: null,
+      commentsLoading: true,
       getDeleteID: -1,
       issue_number: undefined,
+      isWritingComment: false,
       comment_page: 1,
       per_page: 50,
       user: {},
@@ -56,7 +58,7 @@ export default {
     }
   },
   methods: {
-    quit(){
+    quit() {
       localStorage.removeItem('access_token')
       localStorage.removeItem('token_type')
       this.logged_in = false
@@ -77,7 +79,7 @@ export default {
         }
       }).catch(err => {
         console.log(err)
-        if(err.response.status === 401){
+        if (err.response.status === 401) {
           _.quit()
         }
       })
@@ -95,8 +97,9 @@ export default {
               _.getComments(el.number)
             }
           })
-    
+          
           if (!hasRelatedIssue && _.logged_in) {
+            _.commentsLoading = false
             _.createIssue()
           }
         }
@@ -105,15 +108,15 @@ export default {
       })
       
     },
-    deleteComment(id){
+    deleteComment(id) {
       let _ = this
       let c = confirm('确定要删除这条评论吗？😯')
-      if(!c){
+      if (!c) {
         return
       }
       _.getDeleteID = id
       _.ax.delete(`/repos/${_.owner}/${_.repo}/issues/comments/${id}`).then(res => {
-        if(res.status === 204){
+        if (res.status === 204) {
           _.getComments(_.issue_number)
           _.issue.comments = _.issue.comments - 1
         }
@@ -122,6 +125,15 @@ export default {
         _.getDeleteID = -1
         alert('没有删除成功，服务端好像出了点问题😅')
       })
+    },
+    monitKeys(e) {
+      if ((e.keyCode === 10 || e.keyCode === 13) && e.ctrlKey) {
+        this.sendComment()
+      }
+    },
+    mention(id) {
+      this.write_content = `@${id} ` + this.write_content
+      document.getElementById('comments_area').focus()
     },
     sendComment() {
       let _ = this
@@ -137,20 +149,20 @@ export default {
         alert('写点什么吧 😅')
         return
       }
-  
+      
       _.sending_comment = true
-  
+      
       if (_.issue_number === undefined) {
         alert('评论系统遇到点问题，刷新一下页面试试？😅')
         return
       }
-  
+      
       _.ax.post(`/repos/${_.owner}/${_.repo}/issues/${_.issue_number}/comments`, {
         body: _.write_content
       }).then(res => {
         _.getComments(_.issue_number)
         _.write_content = ''
-        _.issue.comments ++
+        _.issue.comments++
         _.sending_comment = false
       }).catch(err => {
         alert('评论系统遇到点问题，刷新一下页面试试？😅')
@@ -160,11 +172,13 @@ export default {
     getComments(issueNumber) {
       let _ = this
       _.issue_number = _.issue_number ? _.issue_number : issueNumber
-      axios.get(`https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${issueNumber}`, {
-      }).then(res => {
+      axios.get(`https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${issueNumber}`, {}).then(res => {
         if (res.status === 200) {
           _.comments = res.data
         }
+        _.commentsLoading = false
+      }).catch(err => {
+        _.commentsLoading = false
       })
     },
     createIssue() {
@@ -203,41 +217,45 @@ export default {
       <a role="button" href="javascript:;" class="item" @click="tab_active = 1" :class="{on: tab_active === 1}">Preview</a>
     </div>
     <div class="write-box" v-show="tab_active === 0" :class="{on: tab_active === 0}">
-      <textarea name="" id="comments" v-model="write_content" :placeholder="logged_in ? 'Write something meaningful' : 'Sign in to comment'" :disabled="tab_active === 1"></textarea>
+      <textarea name="" id="comments_area" v-model="write_content" :placeholder="logged_in ? '提些问题或者打个招呼 🎈' : '评论前要先登录的哇 👆'" :disabled="tab_active === 1 || !logged_in" @focus="isWritingComment = true" @blur="isWritingComment = false" @keyup="monitKeys"></textarea>
     </div>
-    <div v-show="tab_active === 1" :class="{on: tab_active === 1}" class="preview-box comment-content" v-html="preview_content">
+    <div v-show="tab_active === 1" :class="{on: tab_active === 1}" class="preview-box comment-content" v-html="preview_content === '' ? '没有可以预览的东西哇' : preview_content">
     
     </div>
     <div class="buttons">
       <a class="btn send" role="button" href="javascript:;" @click="sendComment" :class="{disabled: sending_comment}">🌹 发送评论</a>
     </div>
+    <span class="key-stroke-info">ctrl + Enter ⏎</span>
   </div>
   
   <div class="c-footer">
     <div class="info">
-      {{issue.comments || 0}} 条评论
+      <span v-show="commentsLoading">评论加载中 🫣</span>
+      <span v-show="!commentsLoading">{{issue.comments || 0}} 条评论</span>
     </div>
     <div class="comments-list">
       <div class="item" v-for="(item, i) in comments" :id="item.id" :style="{
         opacity: getDeleteID === item.id ? '.5' : '1'
       }">
-        <div class="user">
-          <a :href="item.user.html_url"><img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}</a>
-        </div>
-        <div class="comment-body comment-content" v-html="parseMarkdown(item.body)">
-        </div>
         <div class="datetime">
           {{new Date(item.created_at).toLocaleString('zh-CN')}}
         </div>
-        <div class="comment-actions" v-show="user.login === item.user.login">
-          <a href="javascript:;" @click="deleteComment(item.id)" role="button">🗑️ 删除</a>
+        <div class="user">
+          <a :href="item.user.html_url" class="outer-box">
+            <div class="user-info"><img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}</div>
+            <div class="comment-actions" v-show="logged_in">
+              <a v-show="user.login === item.user.login" href="javascript:;" @click="deleteComment(item.id)" role="button">🗑️ 删除</a>
+              <a v-show="user.login !== item.user.login" href="javascript:;" @click="mention(item.user.login)" role="button">@</a>
+            </div>
+          </a>
+        </div>
+        <div class="comment-body comment-content" v-html="parseMarkdown(item.body)">
         </div>
       </div>
-      <div style="text-align: center; margin-top: 2em">
-        <a :href="issue.html_url" target="_blank" v-show="issue.comments > per_page">在 GitHub 上查看更多评论</a>
-      </div>
     </div>
-  </div>
+    <div style="text-align: center; margin-top: 2em">
+      <a :href="issue.html_url" target="_blank" v-show="issue.comments > per_page">在 GitHub 上查看更多评论</a>
+    </div>
 </div>
   `
 }

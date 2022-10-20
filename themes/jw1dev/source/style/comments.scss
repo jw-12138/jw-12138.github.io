@@ -84,11 +84,11 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: color.$slate-100;
+        background-color: color.$neutral-100;
         border-radius: 1em 0 0 0;
         border: 1px solid transparent;
         border-bottom: none;
-        color: color.$slate-700;
+        color: color.$neutral-700;
         
         &:last-child{
           border-radius: 0 1em 0 0;
@@ -97,7 +97,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         &.on {
           font-weight: bold;
           background-color: #ffffff;
-          border: 1px solid color.$slate-200;
+          border: 1px solid color.$neutral-200;
           border-bottom: none;
         }
       }
@@ -112,18 +112,22 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         resize: vertical;
         min-height: 100px;
         width: 100%;
-        border: 1px solid color.$slate-200;
-        border-radius: 0 1em 1em 1em;
+        border: 1px solid color.$neutral-200;
+        border-radius: 0 1em 0 1em;
         font-size: .9em;
         font-family: $mono-font;
-        color: color.$slate-700;
+        color: color.$neutral-700;
+        
+        &[disabled]{
+          cursor: not-allowed;
+        }
       }
     }
     
     .preview-box {
       padding: 1em;
       min-height: 100px;
-      border: 1px solid color.$slate-200;
+      border: 1px solid color.$neutral-200;
       border-radius: 0 1em 1em 1em;
       font-size: 1em;
       margin-bottom: 1.4em;
@@ -145,8 +149,8 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         
         &.send {
           color: #ffffff;
-          background-color: color.$slate-700;
-          border-color: color.$slate-700
+          background-color: color.$neutral-700;
+          border-color: color.$neutral-700
         }
   
         &.disabled{
@@ -154,6 +158,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
           cursor: not-allowed;
         }
       }
+    }
+    
+    .key-stroke-info{
+      text-align: center;
+      display: block;
+      margin-top: .5em;
+      font-size: .8em;
+      margin-bottom: 3em;
     }
   }
   
@@ -167,21 +179,24 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     
     .comments-list {
       .item {
-        border-radius: 1em;
-        border: 1px solid color.$slate-200;
-        background-color: #ffffff;
-        margin-bottom: 1em;
+        margin-bottom: 3em;
         overflow: hidden;
-        @extend .shadow-md;
+        padding-bottom: 1em;
         
         .user {
-          padding: .5em 1em;
-          background-color: color.$slate-50;
-          border-bottom: 1px solid color.$slate-200;
+          margin-bottom: .1em;
           
-          a {
+          .user-info{
             display: flex;
             align-items: center;
+          }
+          
+          a.outer-box {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: space-between;
           }
           
           img {
@@ -192,15 +207,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         }
         
         .comment-body {
-          padding: 2em 1em;
+          padding-bottom:1em;
         }
         
         .comment-actions {
           padding: 1em;
-          background-color: color.$slate-50;
-          border-top: 1px solid color.$slate-200;
+          text-align: center;
           font-size: .8em;
-          color: color.$slate-500;
+          color: color.$neutral-500;
           line-height: 1.8;
           
           a {
@@ -210,17 +224,13 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
             padding: .3em 1em;
             background-color: #ffffff;
             border-radius: 3em;
-            border: 1px solid color.$slate-200;
+            border: 1px solid color.$neutral-200;
           }
         }
   
         .datetime {
-          border-top: 1px solid color.$slate-200;
           font-size: .8em;
-          background-color: color.$slate-50;
-          color: color.$slate-600;
-          padding: .5em 0;
-          text-align: center;
+          color: color.$neutral-400;
           line-height: 1.5;
         }
       }
@@ -256,7 +266,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
           
           &.on {
             background-color: color.$neutral-600;
-            border: 1px solid color.$neutral-800;
+            border: 1px solid color.$neutral-600;
             border-bottom: none;
           }
         }
@@ -264,14 +274,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       
       .write-box {
         textarea {
-          border: 1px solid color.$neutral-800;
+          border: 1px solid color.$neutral-600;
           color: color.$neutral-50;
           background-color: transparent;
         }
       }
       
       .preview-box {
-        border: 1px solid color.$neutral-800;
+        border: 1px solid color.$neutral-600;
       }
       
       .buttons {
@@ -294,17 +304,9 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       
       .comments-list {
         .item {
-          border: 1px solid color.$neutral-700;
-          background-color: #121212;
-          
-          .user {
-            background-color: color.$neutral-700;
-            border-bottom: 1px solid color.$neutral-700;
-          }
+          border-bottom-color: color.$neutral-700;
           
           .comment-actions {
-            background-color: color.$neutral-700;
-            border-top: 1px solid color.$neutral-600;
             color: color.$neutral-500;
             
             a {
@@ -315,8 +317,6 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
           }
           
           .datetime {
-            border-top: 1px solid color.$neutral-700;
-            background-color: color.$neutral-600;
             color: color.$neutral-200;
           }
         }
