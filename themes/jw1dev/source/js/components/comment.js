@@ -2,6 +2,14 @@ export default {
   computed: {
     authURL: function () {
       return `${this.auth_api}?client_id=${this.client_id}&redirect_uri=https://api.jw1.dev/gho/callback?r=${location.href}&scope=public_repo`
+    },
+    issue_number: function () {
+      let input = document.querySelector('input[name=ISSUE_NUMBER]')
+      if (input) {
+        return parseInt(input.value)
+      } else {
+        return undefined
+      }
     }
   },
   mounted() {
@@ -13,33 +21,37 @@ export default {
       localStorage.setItem('access_token', token)
       localStorage.setItem('token_type', type)
       localStorage.setItem('token_timestamp', new Date())
-      location.href = location.protocol + '//' + location.host + location.pathname + '#comments'
-      
+      location.href =
+        location.protocol +
+        '//' +
+        location.host +
+        location.pathname +
+        '#comments'
+
       return
     }
-    
+
     let l_token = localStorage.getItem('access_token')
-    
+
     if (l_token) {
       _.ax = axios.create({
         baseURL: 'https://api.github.com',
         headers: {
-          'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer ' + l_token
+          Accept: 'application/vnd.github+json',
+          Authorization: 'Bearer ' + l_token
         }
       })
-      
+
       _.getUser()
     }
-    
-    _.getIssues()
+
+    _.getComments()
   },
   data: function () {
     return {
       ax: null,
       commentsLoading: true,
       getDeleteID: -1,
-      issue_number: undefined,
       isWritingComment: false,
       comment_page: 1,
       per_page: 50,
@@ -72,41 +84,20 @@ export default {
     },
     getUser() {
       let _ = this
-      this.ax.get('/user').then(res => {
-        if (res.status === 200) {
-          _.logged_in = true
-          _.user = res.data
-        }
-      }).catch(err => {
-        console.log(err)
-        if (err.response.status === 401) {
-          _.quit()
-        }
-      })
-    },
-    getIssues() {
-      let _ = this
-      axios.get(`https://api.jw1.dev/gha/forward?action=get_issues`).then(res => {
-        if (res.status === 200) {
-          let hasRelatedIssue = false
-          let data = res.data.reverse()
-          data.forEach(el => {
-            if (el.title === document.title && !hasRelatedIssue) {
-              hasRelatedIssue = true
-              _.issue = el
-              _.getComments(el.number)
-            }
-          })
-          
-          if (!hasRelatedIssue && _.logged_in) {
-            _.commentsLoading = false
-            _.createIssue()
+      this.ax
+        .get('/user')
+        .then((res) => {
+          if (res.status === 200) {
+            _.logged_in = true
+            _.user = res.data
           }
-        }
-      }).catch(err => {
-        console.log(err)
-      })
-      
+        })
+        .catch((err) => {
+          console.log(err)
+          if (err.response.status === 401) {
+            _.quit()
+          }
+        })
     },
     deleteComment(id) {
       let _ = this
@@ -115,16 +106,19 @@ export default {
         return
       }
       _.getDeleteID = id
-      _.ax.delete(`/repos/${_.owner}/${_.repo}/issues/comments/${id}`).then(res => {
-        if (res.status === 204) {
-          _.getComments(_.issue_number)
-          _.issue.comments = _.issue.comments - 1
-        }
-      }).catch(err => {
-        console.log('delete err: ' + err)
-        _.getDeleteID = -1
-        alert('没有删除成功，服务端好像出了点问题😅')
-      })
+      _.ax
+        .delete(`/repos/${_.owner}/${_.repo}/issues/comments/${id}`)
+        .then((res) => {
+          if (res.status === 204) {
+            _.getComments(_.issue_number)
+            _.issue.comments = _.issue.comments - 1
+          }
+        })
+        .catch((err) => {
+          console.log('delete err: ' + err)
+          _.getDeleteID = -1
+          alert('没有删除成功，服务端好像出了点问题😅')
+        })
     },
     monitKeys(e) {
       if ((e.keyCode === 10 || e.keyCode === 13) && e.ctrlKey) {
@@ -144,68 +138,66 @@ export default {
       if (_.sending_comment) {
         return
       }
-      
+
       if (_.write_content === '') {
         alert('写点什么吧 😅')
         return
       }
-      
+
       _.sending_comment = true
-      
+
       if (_.issue_number === undefined) {
         alert('评论系统遇到点问题，刷新一下页面试试？😅')
         return
       }
-      
-      _.ax.post(`/repos/${_.owner}/${_.repo}/issues/${_.issue_number}/comments`, {
-        body: _.write_content
-      }).then(res => {
-        _.getComments(_.issue_number)
-        _.write_content = ''
-        _.issue.comments++
-        _.sending_comment = false
-      }).catch(err => {
-        alert('评论系统遇到点问题，刷新一下页面试试？😅')
-        _.sending_comment = false
-      })
+
+      _.ax
+        .post(`/repos/${_.owner}/${_.repo}/issues/${_.issue_number}/comments`, {
+          body: _.write_content
+        })
+        .then((res) => {
+          _.getComments(_.issue_number)
+          _.write_content = ''
+          _.issue.comments++
+          _.sending_comment = false
+        })
+        .catch((err) => {
+          alert('评论系统遇到点问题，刷新一下页面试试？😅')
+          _.sending_comment = false
+        })
     },
     getComments(issueNumber) {
       let _ = this
+      if (!_.issue_number) {
+        return
+      }
+
       _.issue_number = _.issue_number ? _.issue_number : issueNumber
-      axios.get(`https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${issueNumber}`, {}).then(res => {
-        if (res.status === 200) {
-          _.comments = res.data
-        }
-        _.commentsLoading = false
-      }).catch(err => {
-        _.commentsLoading = false
-      })
-    },
-    createIssue() {
-      let _ = this
-      _.ax.post(`/repos/${_.owner}/${_.repo}/issues`, {
-        title: document.title,
-        body: `This issue was generated for blog post [${document.title}](${location.href})`,
-        labels: ['Comment']
-      }).then(res => {
-        if (res.status === 201) {
-          _.issue_number = res.data.number
-          _.issue = res.data
-        }
-      }).catch(err => {
-        console.log(err.response)
-      })
+      axios
+        .get(
+          `https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${_.issue_number}`,
+          {}
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            _.comments = res.data
+          }
+          _.commentsLoading = false
+        })
+        .catch((err) => {
+          _.commentsLoading = false
+        })
     }
   },
   watch: {
     write_content(val) {
-      this.preview_content = filterXSS(marked.parse(
-        val.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')
-      ))
+      this.preview_content = filterXSS(
+        marked.parse(val.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''))
+      )
     }
   },
   template: `
-<div class="comments-box" id="comments">
+<div class="comments-box" id="comments" v-if="issue_number">
   <div class="actions">
     <a class="login_action" :href="logged_in ? 'javascript:;' : authURL" v-show="!logged_in">使用GitHub登录 🐙</a>
     <span v-show="logged_in" class="login_welcome">👋 Welcome! <a target="_blank" :href="user.html_url">{{user.login}}</a><br><a href="javascript:;" @click="quit">退出登录</a></span>

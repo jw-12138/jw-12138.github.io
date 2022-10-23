@@ -26,9 +26,10 @@ new Vue({
     handleImgClick: function () {
       let _ = this
       let fn = function () {
-        $('.page-content img').on('click', function () {
-          let src = $(this).attr('src')
-          window.open(window.location.origin + src)
+        document.querySelectorAll('.page-content img').forEach(el => {
+          el.addEventListener('click', function () {
+            window.open(el.src)
+          })
         })
       }
       Vue.nextTick(fn)

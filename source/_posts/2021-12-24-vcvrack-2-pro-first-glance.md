@@ -1,5 +1,6 @@
 ---
 title: VCV Rack 2.0 Pro初体验
+issue: 51
 tags: 
   - 模块化合成器
   - Eurorack
