@@ -196,8 +196,9 @@
             </div>
             <div class="user">
               <span class="outer-box">
-                <a :href="item.user.login" class="user-info"><img :src="item.user.avatar_url"
-                                                                  alt="用户头像">{{item.user.login}}</a>
+                <a :href="item.user.login" class="user-info">
+                  <img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}
+                </a>
                 <div class="comment-actions" v-show="logged_in">
                   <a v-show="user.login === item.user.login" href="javascript:;" @click="deleteComment(item.id)"
                      role="button">🗑️ 删除</a>

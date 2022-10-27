@@ -17,15 +17,11 @@ I'm a _Front-end Developer_ and a _Music Producer_. It's really nice to meet you
 - [lessby](https://jw1.dev/lessby/)  —— a CLI tool which was made to provide better less compile experience
 - [vsharp](https://jw1.dev/vite-plugin-vsharp/) —— a Vite plugin that can automatically compresses images after each builds
 
-<br>
-
 ### Contact
 
 Github: [jw-12138](https://github.com/jw-12138)
 
-E-mail: [vendors.lowbrow_0z@icloud.com](mailto:vendors.lowbrow_0z@icloud.com)
-
-<br>
+E-mail: [jw@jw1.dev](mailto:jw@jw1.dev)
 
 ### Things that I good at
 
