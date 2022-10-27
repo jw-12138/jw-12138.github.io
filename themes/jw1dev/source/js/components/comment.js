@@ -111,7 +111,6 @@ export default {
         .then((res) => {
           if (res.status === 204) {
             _.getComments(_.issue_number)
-            _.issue.comments = _.issue.comments - 1
           }
         })
         .catch((err) => {
@@ -158,7 +157,6 @@ export default {
         .then((res) => {
           _.getComments(_.issue_number)
           _.write_content = ''
-          _.issue.comments++
           _.sending_comment = false
         })
         .catch((err) => {

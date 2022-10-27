@@ -88,7 +88,7 @@ $main-blue: #565656;
     
     &::-webkit-slider-runnable-track {
       -webkit-appearance: none;
-      height: 20px;
+      height: 5px;
       cursor: pointer;
       background-color: rgba(0, 0, 0, 0.05);
       border-radius: $radius;
@@ -99,6 +99,8 @@ $main-blue: #565656;
       -webkit-appearance: none;
       border: none;
       width: 20px;
+      position: relative;
+      top: -8px;
       height: 20px;
       border-radius: 20px;
       background-color: #ffffff;

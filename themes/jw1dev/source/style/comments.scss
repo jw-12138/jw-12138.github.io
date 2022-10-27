@@ -67,6 +67,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
   
   .actions {
     text-align: center;
+    
+    .user_avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 72px;
+      margin-bottom: .5rem;
+      display: inline-block;
+    }
   }
   
   .c-body {
@@ -191,7 +199,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
             align-items: center;
           }
           
-          a.outer-box {
+          .outer-box {
             height: 48px;
             display: flex;
             align-items: center;
