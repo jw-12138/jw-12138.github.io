@@ -196,58 +196,5 @@ export default {
       )
     }
   },
-  template: `
-<div class="comments-box" id="comments" v-if="issue_number">
-  <div class="actions">
-    <a class="login_action" :href="logged_in ? 'javascript:;' : authURL" v-show="!logged_in">使用GitHub登录 🐙</a>
-    <span v-show="logged_in" class="login_welcome">👋 Welcome! <a target="_blank" :href="user.html_url">{{user.login}}</a><br><a href="javascript:;" @click="quit">退出登录</a></span>
-  </div>
-  
-  <div class="c-body">
-    <div class="tabs">
-      <a role="button" href="javascript:;" class="item" @click="tab_active = 0" :class="{on: tab_active === 0}">Write</a>
-      <a role="button" href="javascript:;" class="item" @click="tab_active = 1" :class="{on: tab_active === 1}">Preview</a>
-    </div>
-    <div class="write-box" v-show="tab_active === 0" :class="{on: tab_active === 0}">
-      <textarea name="" id="comments_area" v-model="write_content" :placeholder="logged_in ? '提些问题或者打个招呼 🎈' : '评论前要先登录的哇 👆'" :disabled="tab_active === 1 || !logged_in" @focus="isWritingComment = true" @blur="isWritingComment = false" @keyup="monitKeys"></textarea>
-    </div>
-    <div v-show="tab_active === 1" :class="{on: tab_active === 1}" class="preview-box comment-content" v-html="preview_content === '' ? '没有可以预览的东西哇' : preview_content">
-    
-    </div>
-    <div class="buttons">
-      <a class="btn send" role="button" href="javascript:;" @click="sendComment" :class="{disabled: sending_comment}">🌹 发送评论</a>
-    </div>
-    <span class="key-stroke-info">ctrl + Enter ⏎</span>
-  </div>
-  
-  <div class="c-footer">
-    <div class="info">
-      <span v-show="commentsLoading">评论加载中 🫣</span>
-      <span v-show="!commentsLoading">{{issue.comments || 0}} 条评论</span>
-    </div>
-    <div class="comments-list">
-      <div class="item" v-for="(item, i) in comments" :id="item.id" :style="{
-        opacity: getDeleteID === item.id ? '.5' : '1'
-      }">
-        <div class="datetime">
-          {{new Date(item.created_at).toLocaleString('zh-CN')}}
-        </div>
-        <div class="user">
-          <a :href="item.user.html_url" class="outer-box">
-            <div class="user-info"><img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}</div>
-            <div class="comment-actions" v-show="logged_in">
-              <a v-show="user.login === item.user.login" href="javascript:;" @click="deleteComment(item.id)" role="button">🗑️ 删除</a>
-              <a v-show="user.login !== item.user.login" href="javascript:;" @click="mention(item.user.login)" role="button">@</a>
-            </div>
-          </a>
-        </div>
-        <div class="comment-body comment-content" v-html="parseMarkdown(item.body)">
-        </div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 2em">
-      <a :href="issue.html_url" target="_blank" v-show="issue.comments > per_page">在 GitHub 上查看更多评论</a>
-    </div>
-</div>
-  `
+  template: '#temp_comments'
 }

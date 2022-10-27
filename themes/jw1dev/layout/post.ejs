@@ -32,7 +32,7 @@
             <span class="deprecated">Deprecated</span> /
           <% } %>
           <% if(page.tags) { %>
-            <% page.tags.forEach((tag, index) => {%>
+            <% page.tags.forEach((tag, index) => { %>
               <a href="/tags/<%- tag.name %>"><%- tag.name %></a>
               <% if(index !== page.tags.length - 1) { %>
                 /
@@ -51,20 +51,184 @@
       <% if(!is_page()){ %>
         <%- partial('partial/original') %>
       <% } %>
-      
+    
     </main>
     <%- partial('partial/footer') %>
     <%- partial('partial/analytics') %>
   </div>
-
+  
   <% if(page.issue){ %>
     <input type="hidden" name="ISSUE_NUMBER" value="<%- page.issue %>">
   <% } %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.13/vue.min.js" integrity="sha512-9PmLIATEd4w0OxdTHq61p12lQqa8OtDC6nXu0+S1Icb800oxoADle+gaPfmAXLa35KSvk/6bGeNRfi3nq0Hvvw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.1.1/marked.min.js" integrity="sha512-+mCmSlBpa1bF0npQzdpxFWIyJaFbVdEcuyET6FtmHmlXIacQjN/vQs1paCsMlVHHZ2ltD2VTHy3fLFhXQu0AMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <template id="temp_reactions">
+    <div class="reactions">
+      <a href="javascript:;" role="button" class="item" @click="upFunc">👍 <em>{{ up }}</em></a>
+      <a href="javascript:;" role="button" class="item" @click="downFunc">👎 <em>{{ down}}</em></a>
+      <div class="info" :class="{expanded: expanded}">{{active_index === 0 ? info[0] : info[1]}}</div>
+    </div>
+  </template>
+  
+  <template id="temp_app_audio">
+    <div class="app-audio-wrap">
+      <div class="name" :class="{playing: playing}">
+    <span class="icon" aria-hidden="true">
+      <i class="iconfont">
+      &#xe7c1;
+      </i>
+    </span>
+        {{ label }}
+      </div>
+      <div class="time" title="This is the timing panel">
+        <span class="b"
+              :title="'Currently on the ' + parseInt(currentTime) + ' second'">{{ sec2time(currentTime) }}</span> <em
+          aria-hidden="true">/</em> <span
+          :title="'This track has ' + parseInt(duration) + ' seconds'">{{ sec2time(duration) }}</span>
+      </div>
+      <div class="control" title="This is the control panel">
+        <div class="btn-grp">
+          <button class="btn" @click="handleClick" title="Play and Pause">
+            <i class="iconfont" v-if="!playing">&#xe66b;</i>
+            <i class="iconfont" v-if="playing">&#xe66c;</i>
+          </button>
+          <button class="btn" @click="stopAudio" title="Stop">
+            <i class="iconfont">&#xe661;</i>
+          </button>
+          <button v-if="hasloop" class="btn" title="Loop" @click="toggle_loop" :class="{ on: looping }">
+            <i class="iconfont">&#xe66e;</i>
+          </button>
+        </div>
+      </div>
+      <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @change="onRangeChange"
+             @input="onRangeInput" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown"/>
+    </div>
+  </template>
+  
+  <template id="temp_app_audio_diff">
+    <div class="app-audio-wrap" :class="{ playing: playing }">
+      <div class="name" :class="{playing: playing}">
+      <span class="icon" aria-hidden="true">
+        <i class="iconfont">
+        &#xe7c1;
+        </i>
+      </span>
+        <span>
+      {{ playing_index === 0 ? activeText : inactiveText }}
+    </span>
+      </div>
+      <div class="time" title="This is the timing panel">
+      <span class="b"
+            :title="'Currently on the ' + parseInt(currentTime) + ' second'">{{ sec2time(currentTime) }}</span> <em
+          aria-hidden="true">/</em> <span
+          :title="'This track has ' + parseInt(duration) + ' seconds'">{{ sec2time(duration) }}</span>
+      </div>
+      <div class="control" title="This is the control panel">
+        <div class="btn-grp">
+          <button class="btn" @click="playFun" title="Play and Pause">
+            <i class="iconfont" v-if="!playing">&#xe66b;</i>
+            <i class="iconfont" v-if="playing">&#xe66c;</i>
+          </button>
+          <button class="btn" @click="stopAudio" title="Stop">
+            <i class="iconfont">&#xe661;</i>
+          </button>
+          <button class="btn" @click="switchSource" title="Switch"
+                  :class="{ on: playing_index === 1, spin: playing_index === 1 }">
+            <i class="iconfont">&#xe66d;</i>
+          </button>
+          <button class="btn" title="Loop" @click="toggle_loop" :class="{ on: looping }">
+            <i class="iconfont">&#xe66e;</i>
+          </button>
+        </div>
+      </div>
+      <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @input="onRangeInput"
+             @change="onRangeChange" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown"/>
+    </div>
+  </template>
+  
+  <template id="temp_comments">
+    <div class="comments-box" id="comments" v-if="issue_number">
+      <div class="actions">
+        <a class="login_action" :href="logged_in ? 'javascript:;' : authURL" v-show="!logged_in">使用GitHub登录 🐙</a>
+        <span v-show="logged_in" class="login_welcome">👋 Welcome!
+          <a target="_blank" :href="user.html_url">{{user.login}}</a>
+          <br>
+          <a href="javascript:;" @click="quit">退出登录</a></span>
+      </div>
+      
+      <div class="c-body">
+        <div class="tabs">
+          <a role="button" href="javascript:;" class="item" @click="tab_active = 0"
+             :class="{on: tab_active === 0}">Write</a>
+          <a role="button" href="javascript:;" class="item" @click="tab_active = 1"
+             :class="{on: tab_active === 1}">Preview</a>
+        </div>
+        <div class="write-box" v-show="tab_active === 0" :class="{on: tab_active === 0}">
+          <textarea name="" id="comments_area" v-model="write_content"
+                    :placeholder="logged_in ? '提些问题或者打个招呼 🎈' : '评论前要先登录的哇 👆'"
+                    :disabled="tab_active === 1 || !logged_in" @focus="isWritingComment = true"
+                    @blur="isWritingComment = false" @keyup="monitKeys"></textarea>
+        </div>
+        <div v-show="tab_active === 1" :class="{on: tab_active === 1}" class="preview-box comment-content"
+             v-html="preview_content === '' ? '没有可以预览的东西哇' : preview_content">
+        
+        </div>
+        <div class="buttons">
+          <a class="btn send" role="button" href="javascript:;" @click="sendComment"
+             :class="{disabled: sending_comment}">🌹 发送评论</a>
+        </div>
+        <span class="key-stroke-info">ctrl + Enter ⏎</span>
+      </div>
+      
+      <div class="c-footer">
+        <div class="info">
+          <span v-show="commentsLoading">评论加载中 🫣</span>
+          <span v-show="!commentsLoading">{{issue.comments || 0}} 条评论</span>
+        </div>
+        <div class="comments-list">
+          <div class="item" v-for="(item, i) in comments" :id="item.id" :style="{
+        opacity: getDeleteID === item.id ? '.5' : '1'
+      }">
+            <div class="datetime">
+              {{new Date(item.created_at).toLocaleString('zh-CN')}}
+            </div>
+            <div class="user">
+              <a :href="item.user.html_url" class="outer-box">
+                <div class="user-info"><img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}</div>
+                <div class="comment-actions" v-show="logged_in">
+                  <a v-show="user.login === item.user.login" href="javascript:;" @click="deleteComment(item.id)"
+                     role="button">🗑️ 删除</a>
+                  <a v-show="user.login !== item.user.login" href="javascript:;" @click="mention(item.user.login)"
+                     role="button">@</a>
+                </div>
+              </a>
+            </div>
+            <div class="comment-body comment-content" v-html="parseMarkdown(item.body)"></div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2em">
+          <a :href="issue.html_url" target="_blank" v-show="issue.comments > per_page">
+            在 GitHub 上查看更多评论
+          </a>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+          integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.13/vue.min.js"
+          integrity="sha512-9PmLIATEd4w0OxdTHq61p12lQqa8OtDC6nXu0+S1Icb800oxoADle+gaPfmAXLa35KSvk/6bGeNRfi3nq0Hvvw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+          integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+          integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.1.1/marked.min.js"
+          integrity="sha512-+mCmSlBpa1bF0npQzdpxFWIyJaFbVdEcuyET6FtmHmlXIacQjN/vQs1paCsMlVHHZ2ltD2VTHy3fLFhXQu0AMA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-xss/0.3.3/xss.min.js" referrerpolicy="no-referrer"></script>
   <script src="/js/post.js"></script>
   <script src="/js/g-analytics.js"></script>

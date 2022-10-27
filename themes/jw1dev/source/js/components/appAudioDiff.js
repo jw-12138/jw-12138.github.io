@@ -11,46 +11,7 @@ export default {
       type: 'object'
     }
   },
-  template: `
-    <div class="app-audio-wrap" :class="{ playing: playing }">
-    <div class="name" :class="{playing: playing}">
-      <span class="icon" aria-hidden="true">
-        <i class="iconfont">
-        &#xe7c1;
-        </i>
-      </span>
-      <span>
-      {{ playing_index === 0 ? activeText : inactiveText }}
-    </span>
-    </div>
-    <div class="time" title="This is the timing panel">
-      <span class="b"
-            :title="'Currently on the ' + parseInt(currentTime) + ' second'">{{ sec2time(currentTime) }}</span> <em
-      aria-hidden="true">/</em> <span
-      :title="'This track has ' + parseInt(duration) + ' seconds'">{{ sec2time(duration) }}</span>
-    </div>
-    <div class="control" title="This is the control panel">
-      <div class="btn-grp">
-        <button class="btn" @click="playFun" title="Play and Pause">
-          <i class="iconfont" v-if="!playing">&#xe66b;</i>
-          <i class="iconfont" v-if="playing">&#xe66c;</i>
-        </button>
-        <button class="btn" @click="stopAudio" title="Stop">
-          <i class="iconfont">&#xe661;</i>
-        </button>
-        <button class="btn" @click="switchSource" title="Switch"
-                :class="{ on: playing_index === 1, spin: playing_index === 1 }">
-          <i class="iconfont">&#xe66d;</i>
-        </button>
-        <button class="btn" title="Loop" @click="toggle_loop" :class="{ on: looping }">
-          <i class="iconfont">&#xe66e;</i>
-        </button>
-      </div>
-    </div>
-    <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @input="onRangeInput"
-           @change="onRangeChange" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown"/>
-    </div>
-  `,
+  template: '#temp_app_audio_diff',
   computed: {},
   mounted: function () {
     let _ = this
