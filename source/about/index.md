@@ -13,6 +13,7 @@ I'm a _Front-end Developer_ and a _Music Producer_. It's really nice to meet you
 ### Personal projects
 
 - [jw1.dev](https://jw1.dev) —— My Blog
+- [M42](https://m42.jw1.dev)  —— Message for two, an [open source](https://github.com/jw-12138/m42) Instant Messaging App with strong security features
 - [kover.js](https://jw1.dev/kover.js/index.html) —— a jQuery plug-in which was made to implement `background-size: cover` in CSS3
 - [lessby](https://jw1.dev/lessby/)  —— a CLI tool which was made to provide better less compile experience
 - [vsharp](https://jw1.dev/vite-plugin-vsharp/) —— a Vite plugin that can automatically compresses images after each builds
