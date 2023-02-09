@@ -25,6 +25,9 @@ header {
 header .logo {
   width: 2rem;
 }
+header .logo a {
+  display: block;
+}
 header .logo img {
   width: 100%;
 }
@@ -68,4 +71,4 @@ header .navigation ul li a:hover {
   text-decoration: underline;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22header.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACRF;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAEA;EACE;;AAEA;EACE;;AAKN;EACE;EACA;EACA;;AAGF;EACE;EACA,OCtBQ;;AD0BR;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA,OCnDE;;ADqDF;EACE%22,%22file%22:%22header.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22header.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACRF;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAEA;EACE;;AAGF;EACE;;AAEA;EACE;;AAKN;EACE;EACA;EACA;;AAGF;EACE;EACA,OC1BQ;;AD8BR;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA,OCvDE;;ADyDF;EACE%22,%22file%22:%22header.css%22%7D */

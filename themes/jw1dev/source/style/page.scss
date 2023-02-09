@@ -14,16 +14,33 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 
+a {
+  outline: 2px solid transparent;
+  border-radius: 6px;
+
+  &:focus {
+    outline: 2px solid color.$blue-500;
+    outline-offset: 2px;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    outline: 2px solid color.$blue-500;
+    outline-offset: 2px;
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
 main {
   max-width: 640px;
   margin: 0 auto;
   padding: 1.5rem;
   display: block;
-  
+
   .pagination {
     margin: 1.5rem 0 3.5rem;
     text-align: center;
-    
+
     a {
       border: 1px solid color.$slate-200;
       border-radius: $radius;
@@ -35,7 +52,7 @@ main {
       color: color.$slate-700;
       margin: 0 .5rem;
     }
-    
+
     .total {
       display: block;
       font-size: .8rem;
@@ -43,16 +60,16 @@ main {
       color: color.$slate-600;
     }
   }
-  
+
   &.index {
     h2 {
       margin-bottom: 2rem;
     }
-    
+
     ul {
       padding: 0;
       list-style: none;
-      
+
       li {
         list-style: inherit;
         margin-bottom: .5rem;
@@ -61,32 +78,33 @@ main {
         background: transparent;
         transition: box-shadow .2s ease, background-color .2s ease;
         border: 1px solid transparent;
-        
+
         &:hover {
           a {
             .title {
               text-decoration: underline;
+
               .deprecated {
                 text-decoration: none;
               }
             }
           }
         }
-        
+
         a {
           padding: 1.5rem 0;
           border-radius: $radius;
           display: block;
           color: color.$slate-700;
           text-decoration: none;
-          
+
           .title {
             font-size: 1.1rem;
             color: color.$slate-900;
             line-height: 1.5;
             margin-bottom: .8rem;
             font-weight: bold;
-            
+
             .deprecated {
               background: color.$red-500;
               border-radius: 3rem;
@@ -99,18 +117,18 @@ main {
               top: -.15em;
             }
           }
-          
+
           .date {
             margin-top: .3rem;
             font-size: .7rem;
             color: color.$slate-500;
             font-style: italic;
-            
-            .tag-item{
+
+            .tag-item {
               display: inline;
             }
           }
-          
+
           .desc {
             white-space: nowrap;
             overflow: hidden;
@@ -119,24 +137,25 @@ main {
             text-overflow: ellipsis;
             margin: .5rem 0;
           }
-          
+
           .slogan {
             margin-top: -.5rem;
             display: block;
             font-size: .8rem;
             color: color.$slate-600;
           }
-          
+
           .tags {
             margin-top: .5rem;
-            
+
             .item {
               display: inline;
               font-size: .7rem;
               color: color.$slate-700;
               font-style: italic;
             }
-            .sep{
+
+            .sep {
               font-size: .7rem;
               color: color.$red-300;
               padding: 0 .3rem;
@@ -147,7 +166,7 @@ main {
       }
     }
   }
-  
+
   .page-original {
     border: 1px solid #f6f6f6;
     border-right-color: #e6e6e6;
@@ -158,31 +177,31 @@ main {
     background: color.$neutral-50;
     padding: 1.5rem;
     border-radius: 1rem;
-    
+
     img {
       margin-bottom: .5rem;
     }
-    
+
     a {
       color: #777777;
     }
   }
-  
+
   .page-content {
     line-height: 1.9;
     color: #333333;
-    
-    p + ul, p + ol{
+
+    p + ul, p + ol {
       margin: 0 0 1rem;
     }
-    
+
     h1, h2, h3, h4 {
       padding-left: 1em;
       margin-top: 3em;
       margin-bottom: 1em;
       color: #000000;
       position: relative;
-      
+
       &:after {
         font-size: .6em;
         color: #999999;
@@ -193,78 +212,78 @@ main {
         top: .5em;
       }
     }
-    
+
     p {
       margin-bottom: 1rem;
     }
-    
+
     video {
       width: 100%;
       margin: 1em auto 2em;
       border-radius: 5px;
       transition: transform .3s ease;
 
-      &:hover{
+      &:hover {
         transform: scale(1.05);
       }
     }
-    
+
     li {
       p {
         margin-bottom: .5rem;
       }
-      
+
       pre {
         margin-top: 0;
       }
     }
-    
+
     h3 {
       a {
         padding: 0;
       }
     }
-    
+
     strong, b {
       color: #000000;
     }
-    
+
     a {
       color: color.$slate-500;
       word-break: break-all;
       padding: 0 .3rem;
       position: relative;
     }
-    
+
     .sugg-back {
       pointer-events: none;
       height: 0;
       opacity: 0;
       overflow: hidden;
     }
-    
+
     .demo {
       overflow: auto;
     }
-    
+
     .table-wrap {
       overflow-x: auto;
       width: 100%;
       margin-bottom: 1rem;
-      
+
       table {
         margin-top: 0;
-        
+
         code {
           white-space: nowrap;
         }
       }
     }
-    
+
     .demo {
       margin: 2em 0;
     }
-    
+
     table {
       font-size: .8rem;
       margin: 1rem 0;
@@ -272,18 +291,18 @@ main {
       border-left: 1px solid $border-color;
       border-top: 1px solid $border-color;
       border-collapse: collapse;
-      
+
       td, th {
         border-right: 1px solid $border-color;
         border-bottom: 1px solid $border-color;
         padding: .8rem;
       }
-      
+
       th {
         font-weight: bolder;
       }
     }
-    
+
     hr {
       height: 0;
       background: color.$gray-200;
@@ -291,17 +310,17 @@ main {
       border: none;
       border-bottom: 1px solid color.$gray-300;
     }
-    
+
     blockquote {
       border-left: .3em solid #dddddd;
       padding-left: 1em;
       margin: 1em 0;
-      
+
       p {
         margin: 0;
       }
     }
-    
+
     img {
       display: block;
       max-width: 100%;
@@ -310,11 +329,11 @@ main {
       cursor: zoom-in;
       transition: transform .3s ease;
 
-      &:hover{
+      &:hover {
         transform: scale(1.05);
       }
     }
-    
+
     code {
       background: transparent;
       padding: .1em .3em;
@@ -327,30 +346,30 @@ main {
       font-family: $mono-font;
       font-size: math.div(14, 16) + 0em;
     }
-    
+
     .highlight {
       margin: 1em 0;
-      
+
       table {
         width: 100%;
         table-layout: fixed;
         overflow: hidden;
         border: none;
-        
+
         td.code {
           border: none;
           padding: 0;
-          
+
           pre {
             overflow-x: auto;
           }
         }
       }
     }
-    
+
     pre {
       font-size: 16px;
-      
+
       code {
         font-size: math.div(13, 16) + 0em;
         background: transparent;
@@ -362,18 +381,18 @@ main {
       }
     }
   }
-  
+
   .page-info {
     font-size: .7em;
     color: #555;
     font-style: italic;
     line-height: 1.6;
     margin-bottom: 2rem;
-    
+
     a {
       color: inherit;
     }
-    
+
     .deprecated {
       color: $main-red;
       font-weight: bold;
@@ -390,7 +409,7 @@ footer {
   justify-content: center;
   align-items: center;
   align-content: center;
-  
+
   a {
     color: #666666;
   }
@@ -412,18 +431,18 @@ footer {
   border: 1px solid #eeeeee;
   line-height: 1.5;
   transition: right .4s ease;
-  
+
   .icon {
     font-size: 24px;
   }
-  
+
   .title {
     margin-top: 10px;
   }
-  
+
   .btn-grp {
     margin-top: 4px;
-    
+
     .btn {
       margin-top: 10px;
       border: 1px solid color.$slate-200;
@@ -435,7 +454,7 @@ footer {
       background: #ffffff;
       border-radius: 20px;
       text-decoration: none;
-      
+
       &.primary {
         background: color.$slate-900;
         border-color: color.$slate-800;
@@ -454,25 +473,25 @@ footer {
 .donation-box {
   padding-top: 30px;
   padding-bottom: 60px;
-  
+
   .img {
     img {
       &.dark {
         display: none;
       }
-      
+
       display: block;
       max-width: 300px;
       width: 100%;
       margin: 0 auto;
     }
   }
-  
+
   .text {
     color: #777777;
     font-size: 12px;
     text-align: center;
-    
+
     b {
       color: #333333;
     }
