@@ -8,7 +8,7 @@ $light-bg: rgba(#0f172a, .02);
 $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
 html, body {
-  font-family: "Poppins", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
@@ -28,6 +28,14 @@ a {
     outline: 2px solid color.$blue-500;
     outline-offset: 2px;
     background: rgba(0, 0, 0, 0.05);
+  }
+
+  &[target="_blank"]{
+    &:after{
+      content: "↗";
+      margin-left: 2px;
+      font-size: .8rem;
+    }
   }
 }
 
@@ -97,6 +105,10 @@ main {
           display: block;
           color: color.$slate-700;
           text-decoration: none;
+
+          &:after{
+            content: ''
+          }
 
           .title {
             font-size: 1.1rem;
@@ -184,6 +196,9 @@ main {
 
     a {
       color: #777777;
+      &:after{
+        content: ''
+      }
     }
   }
 
@@ -251,7 +266,6 @@ main {
     a {
       color: color.$slate-500;
       word-break: break-all;
-      padding: 0 .3rem;
       position: relative;
     }
 

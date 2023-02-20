@@ -67,6 +67,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
   
   .actions {
     text-align: center;
+
+    .login_welcome{
+      a{
+        &:after{
+          content: ''
+        }
+      }
+    }
     
     .user_avatar{
       width: 72px;
@@ -97,6 +105,10 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         border: 1px solid transparent;
         border-bottom: none;
         color: color.$neutral-700;
+
+        &:focus{
+          z-index: 5;
+        }
         
         &:last-child{
           border-radius: 0 1em 0 0;
