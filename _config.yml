@@ -98,6 +98,11 @@ feed:
     - atom.xml
   limit: 0
 
+# Lazyload
+lazy_load:
+  enable: true
+  fallback: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
