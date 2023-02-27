@@ -1,0 +1,26 @@
+.donate-box {
+  margin: 4rem 0;
+}
+.donate-box .icon {
+  display: flex;
+  justify-content: center;
+}
+.donate-box .icon:after {
+  content: none;
+}
+.donate-box .icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.donate-box code {
+  margin: 1rem 0;
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+}
+.donate-box .desc {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22donate.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;AACA;EACE;EACA;;AACA;EACE;;AAEF;EACE;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA%22,%22file%22:%22donate.css%22%7D */

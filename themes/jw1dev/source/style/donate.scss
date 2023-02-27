@@ -1,0 +1,26 @@
+.donate-box{
+  margin: 4rem 0;
+  .icon{
+    display: flex;
+    justify-content: center;
+    &:after{
+      content: none;
+    }
+    svg{
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  code{
+    margin: 1rem 0;
+    display: block;
+    text-align: center;
+    font-size: .7rem;
+  }
+
+  .desc{
+    font-size: .7rem;
+    text-align: center;
+  }
+}
