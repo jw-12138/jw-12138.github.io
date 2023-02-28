@@ -1,7 +1,11 @@
 {
   "rewrites": [
-    {"source": "/vite-plugin-vsharp/", "destination": "https://jw-12138.github.io/vite-plugin-vsharp/"},
-    {"source": "/", "destination": "https://jw1.dev/"},
-    {"source": "/:match*", "destination": "https://jw1.dev/:match*"}
+    {
+      "source": "/vite-plugin-vsharp",
+      "destination": "https://jw-12138.github.io/vite-plugin-vsharp/",
+      "permanent": true
+    },
+    { "source": "/", "destination": "https://jw1.dev/" },
+    { "source": "/:match*", "destination": "https://jw1.dev/:match*" }
   ]
 }
