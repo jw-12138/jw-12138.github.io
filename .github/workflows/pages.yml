@@ -1,4 +1,4 @@
-name: Build page
+name: Production Build
 
 on:
   schedule:

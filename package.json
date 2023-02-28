@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "node audio_meta_gen.mjs; npx hexo generate; node readme_gen.js; node push.js;",
+    "build": "hexo generate",
     "clean": "hexo clean",
     "audio_meta_gen": "node audio_meta_gen.mjs",
     "deploy": "hexo deploy",

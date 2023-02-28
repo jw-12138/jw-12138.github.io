@@ -53,11 +53,10 @@ function gen(posts, siteData){
   
   fs.writeFile('README.md', str, function (err) {
     if(err){
-      console.log(err)
       console.log('\n\n  Generating [README.md] has Failed!\n\n')
-      return false
+      throw err
     }
   
-    console.log('\n\n  Successfully Generated [README.md]\n\n')
+    console.log('\n\nSuccessfully Generated [README.md]\n\n')
   })
 }
