@@ -1,5 +1,9 @@
 name: Production Build
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   schedule:
     - cron: "30 10 1 1 *"
@@ -19,26 +23,20 @@ jobs:
       with:
         timezoneLinux: "Asia/Shanghai"
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i yarn -g
-    - run: yarn 
-    - run: yarn audio_meta_gen
-    - run: yarn build
-    - run: node readme_gen.js
+    - run: npm run audio_meta_gen
+    - name: Install Vercel CLI
+    - run: npm i vercel@latest -g
+    - name: Pull Vercel Environment Information
+      run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+    - name: Build Project Artifacts
+      run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+    - name: Deploy Project Artifacts to Vercel
+      run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+    - name: Generate Readme
+      run: node readme_gen.js
     - uses: EndBug/add-and-commit@v7
       with:
         add: README.md
         push: true
         message: 'Update README.md'
     - run: git status
-    - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v2.5.0
-      with:
-        jekyll: false
-        build_dir: docs
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
