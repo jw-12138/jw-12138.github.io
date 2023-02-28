@@ -13,17 +13,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-    - uses: szenius/set-timezone@v1.0
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: npm
+    - name: Setup Timezone
+      uses: szenius/set-timezone@v1.0
       with:
         timezoneLinux: "Asia/Shanghai"
     - uses: actions/checkout@v2
-    - run: npm i
+    - run: npm ci
     - run: npm run build
     - run: vercel deploy ./jw1dev_dist --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --regions=hkg1
     - run: node readme_gen.js
