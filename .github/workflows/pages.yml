@@ -27,6 +27,7 @@ jobs:
         cache-dependency-path: yarn.lock
     - run: yarn
     - run: yarn build
+    - run: cp vercel.json ./jw1dev_dist/vercel.json
     - run: vercel deploy ./jw1dev_dist --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --regions=hkg1
     - run: node readme_gen.js
     - uses: EndBug/add-and-commit@v7
