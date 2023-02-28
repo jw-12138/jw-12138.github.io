@@ -15,7 +15,7 @@ async function configGit() {
     stderr
   } = await exec(`git config --global user.name 'build@vercel'; git config --global user.email '29943110+jw-12138@users.noreply.github.com'`)
   if (err) {
-    console.log(err)
+    throw err
   }
   if (stderr) {
     console.log(stderr)
@@ -31,7 +31,7 @@ async function push() {
     stderr
   } = exec(`git add README.md; git commit -m 'update README.md'; git push https://${t}@github.com/${repo} main`)
   if (err) {
-    console.error(err)
+    throw err
   }
 
   if (stderr) {
