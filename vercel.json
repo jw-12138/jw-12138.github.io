@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/vite-plugin-vsharp",
+      "source": "\/vite-plugin-vsharp.*",
       "destination": "https://jw-12138.github.io/vite-plugin-vsharp/",
       "permanent": true
     }
