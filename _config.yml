@@ -17,7 +17,7 @@ pretty_urls:
 
 # Directory
 source_dir: source
-public_dir: docs
+public_dir: jw1dev_dist
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -97,11 +97,6 @@ feed:
   path:
     - atom.xml
   limit: 0
-
-# Lazyload
-lazy_load:
-  enable: true
-  fallback: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

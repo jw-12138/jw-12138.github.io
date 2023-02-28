@@ -4,11 +4,11 @@
      *
      * @author Zongmin Lei<leizongmin@gmail.com>
      */
-    
+
     var FilterCSS = require("cssfilter").FilterCSS;
     var getDefaultCSSWhiteList = require("cssfilter").getDefaultWhiteList;
     var _ = require("./util");
-    
+
     function getDefaultWhiteList() {
       return {
         a: ["target", "href", "title"],
@@ -100,9 +100,9 @@
         ],
       };
     }
-    
+
     var defaultCSSFilter = new FilterCSS();
-    
+
     /**
      * default onTag function
      *
@@ -114,7 +114,7 @@
     function onTag(tag, html, options) {
       // do nothing
     }
-    
+
     /**
      * default onIgnoreTag function
      *
@@ -126,7 +126,7 @@
     function onIgnoreTag(tag, html, options) {
       // do nothing
     }
-    
+
     /**
      * default onTagAttr function
      *
@@ -138,7 +138,7 @@
     function onTagAttr(tag, name, value) {
       // do nothing
     }
-    
+
     /**
      * default onIgnoreTagAttr function
      *
@@ -150,7 +150,7 @@
     function onIgnoreTagAttr(tag, name, value) {
       // do nothing
     }
-    
+
     /**
      * default escapeHtml function
      *
@@ -159,7 +159,7 @@
     function escapeHtml(html) {
       return html.replace(REGEXP_LT, "&lt;").replace(REGEXP_GT, "&gt;");
     }
-    
+
     /**
      * default safeAttrValue function
      *
@@ -172,7 +172,7 @@
     function safeAttrValue(tag, name, value, cssFilter) {
       // unescape attribute value firstly
       value = friendlyAttrValue(value);
-      
+
       if (name === "href" || name === "src") {
         // filter `href` and `src` attribute
         // only allow the value that starts with `http://` | `https://` | `mailto:` | `/` | `#`
@@ -220,7 +220,7 @@
           value = cssFilter.process(value);
         }
       }
-      
+
       // escape `<>"` before returns
       value = escapeAttrValue(value);
       return value;
@@ -242,7 +242,7 @@
     var REGEXP_DEFAULT_ON_TAG_ATTR_7 =
       /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi;
     var REGEXP_DEFAULT_ON_TAG_ATTR_8 = /u\s*r\s*l\s*\(.*/gi;
-    
+
     /**
      * escape double quote
      *
@@ -252,7 +252,7 @@
     function escapeQuote(str) {
       return str.replace(REGEXP_QUOTE, "&quot;");
     }
-    
+
     /**
      * unescape double quote
      *
@@ -262,7 +262,7 @@
     function unescapeQuote(str) {
       return str.replace(REGEXP_QUOTE_2, '"');
     }
-    
+
     /**
      * escape html entities
      *
@@ -276,7 +276,7 @@
           : String.fromCharCode(parseInt(code, 10));
       });
     }
-    
+
     /**
      * escape html5 new danger entities
      *
@@ -288,7 +288,7 @@
         .replace(REGEXP_ATTR_VALUE_COLON, ":")
         .replace(REGEXP_ATTR_VALUE_NEWLINE, " ");
     }
-    
+
     /**
      * clear nonprintable characters
      *
@@ -302,7 +302,7 @@
       }
       return _.trim(str2);
     }
-    
+
     /**
      * get friendly attribute value
      *
@@ -316,7 +316,7 @@
       str = clearNonPrintableCharacter(str);
       return str;
     }
-    
+
     /**
      * unescape attribute value
      *
@@ -328,14 +328,14 @@
       str = escapeHtml(str);
       return str;
     }
-    
+
     /**
      * `onIgnoreTag` function for removing all the tags that are not in whitelist
      */
     function onIgnoreTagStripAll() {
       return "";
     }
-    
+
     /**
      * remove tag body
      * specify a `tags` list, if the tag is not in the `tags` list then process by the specify function (optional)
@@ -347,16 +347,16 @@
       if (typeof next !== "function") {
         next = function () {};
       }
-      
+
       var isRemoveAllTag = !Array.isArray(tags);
       function isRemoveTag(tag) {
         if (isRemoveAllTag) return true;
         return _.indexOf(tags, tag) !== -1;
       }
-      
+
       var removeList = [];
       var posStart = false;
-      
+
       return {
         onIgnoreTag: function (tag, html, options) {
           if (isRemoveTag(tag)) {
@@ -391,7 +391,7 @@
         },
       };
     }
-    
+
     /**
      * remove html comments
      *
@@ -416,7 +416,7 @@
       }
       return retHtml;
     }
-    
+
     /**
      * remove invisible characters
      *
@@ -436,7 +436,7 @@
       });
       return chars.join("");
     }
-    
+
     exports.whiteList = getDefaultWhiteList();
     exports.getDefaultWhiteList = getDefaultWhiteList;
     exports.onTag = onTag;
@@ -458,18 +458,18 @@
     exports.stripBlankChar = stripBlankChar;
     exports.cssFilter = defaultCSSFilter;
     exports.getDefaultCSSWhiteList = getDefaultCSSWhiteList;
-    
+
   },{"./util":4,"cssfilter":8}],2:[function(require,module,exports){
     /**
      * xss
      *
      * @author Zongmin Lei<leizongmin@gmail.com>
      */
-    
+
     var DEFAULT = require("./default");
     var parser = require("./parser");
     var FilterXSS = require("./xss");
-    
+
     /**
      * filter xss function
      *
@@ -481,11 +481,11 @@
       var xss = new FilterXSS(options);
       return xss.process(html);
     }
-    
+
     exports = module.exports = filterXSS;
     exports.filterXSS = filterXSS;
     exports.FilterXSS = FilterXSS;
-    
+
     (function () {
       for (var i in DEFAULT) {
         exports[i] = DEFAULT[i];
@@ -511,16 +511,16 @@
     if (isWorkerEnv()) {
       self.filterXSS = module.exports;
     }
-    
+
   },{"./default":1,"./parser":3,"./xss":5}],3:[function(require,module,exports){
     /**
      * Simple HTML Parser
      *
      * @author Zongmin Lei<leizongmin@gmail.com>
      */
-    
+
     var _ = require("./util");
-    
+
     /**
      * get tag name
      *
@@ -540,7 +540,7 @@
       if (tagName.slice(-1) === "/") tagName = tagName.slice(0, -1);
       return tagName;
     }
-    
+
     /**
      * is close tag?
      *
@@ -550,7 +550,7 @@
     function isClosing(html) {
       return html.slice(0, 2) === "</";
     }
-    
+
     /**
      * parse input html and returns processed html
      *
@@ -561,7 +561,7 @@
      */
     function parseTag(html, onTag, escapeHtml) {
       "use strict";
-      
+
       var rethtml = "";
       var lastPos = 0;
       var tagStart = false;
@@ -570,7 +570,7 @@
       var len = html.length;
       var currentTagName = "";
       var currentHtml = "";
-      
+
       chariterator: for (currentPos = 0; currentPos < len; currentPos++) {
         var c = html.charAt(currentPos);
         if (tagStart === false) {
@@ -604,7 +604,7 @@
             if (c === '"' || c === "'") {
               var i = 1;
               var ic = html.charAt(currentPos - i);
-              
+
               while (ic.trim() === "" || ic === "=") {
                 if (ic === "=") {
                   quoteStart = c;
@@ -624,12 +624,12 @@
       if (lastPos < len) {
         rethtml += escapeHtml(html.substr(lastPos));
       }
-      
+
       return rethtml;
     }
-    
+
     var REGEXP_ILLEGAL_ATTR_NAME = /[^a-zA-Z0-9\\_:.-]/gim;
-    
+
     /**
      * parse input attributes and returns processed attributes
      *
@@ -639,13 +639,13 @@
      */
     function parseAttr(html, onAttr) {
       "use strict";
-      
+
       var lastPos = 0;
       var lastMarkPos = 0;
       var retAttrs = [];
       var tmpName = false;
       var len = html.length;
-      
+
       function addAttr(name, value) {
         name = _.trim(name);
         name = name.replace(REGEXP_ILLEGAL_ATTR_NAME, "").toLowerCase();
@@ -653,7 +653,7 @@
         var ret = onAttr(name, value || "");
         if (ret) retAttrs.push(ret);
       }
-      
+
       // 逐个分析字符
       for (var i = 0; i < len; i++) {
         var c = html.charAt(i);
@@ -710,7 +710,7 @@
           }
         }
       }
-      
+
       if (lastPos < html.length) {
         if (tmpName === false) {
           addAttr(html.slice(lastPos));
@@ -718,10 +718,10 @@
           addAttr(tmpName, stripQuoteWrap(_.trim(html.slice(lastPos))));
         }
       }
-      
+
       return _.trim(retAttrs.join(" "));
     }
-    
+
     function findNextEqual(str, i) {
       for (; i < str.length; i++) {
         var c = str[i];
@@ -730,7 +730,7 @@
         return -1;
       }
     }
-    
+
     function findNextQuotationMark(str, i) {
       for (; i < str.length; i++) {
         var c = str[i];
@@ -739,7 +739,7 @@
         return -1;
       }
     }
-    
+
     function findBeforeEqual(str, i) {
       for (; i > 0; i--) {
         var c = str[i];
@@ -748,7 +748,7 @@
         return -1;
       }
     }
-    
+
     function isQuoteWrapString(text) {
       if (
         (text[0] === '"' && text[text.length - 1] === '"') ||
@@ -759,7 +759,7 @@
         return false;
       }
     }
-    
+
     function stripQuoteWrap(text) {
       if (isQuoteWrapString(text)) {
         return text.substr(1, text.length - 2);
@@ -767,10 +767,10 @@
         return text;
       }
     }
-    
+
     exports.parseTag = parseTag;
     exports.parseAttr = parseAttr;
-    
+
   },{"./util":4}],4:[function(require,module,exports){
     module.exports = {
       indexOf: function (arr, item) {
@@ -806,21 +806,21 @@
         return match ? match.index : -1;
       },
     };
-    
+
   },{}],5:[function(require,module,exports){
     /**
      * filter xss
      *
      * @author Zongmin Lei<leizongmin@gmail.com>
      */
-    
+
     var FilterCSS = require("cssfilter").FilterCSS;
     var DEFAULT = require("./default");
     var parser = require("./parser");
     var parseTag = parser.parseTag;
     var parseAttr = parser.parseAttr;
     var _ = require("./util");
-    
+
     /**
      * returns `true` if the input value is `undefined` or `null`
      *
@@ -830,7 +830,7 @@
     function isNull(obj) {
       return obj === undefined || obj === null;
     }
-    
+
     /**
      * get attributes for a tag
      *
@@ -855,7 +855,7 @@
         closing: isClosing,
       };
     }
-    
+
     /**
      * shallow copy
      *
@@ -869,7 +869,7 @@
       }
       return ret;
     }
-    
+
     function keysToLowerCase(obj) {
       var ret = {};
       for (var i in obj) {
@@ -883,7 +883,7 @@
       }
       return ret;
     }
-    
+
     /**
      * FilterXSS class
      *
@@ -895,7 +895,7 @@
      */
     function FilterXSS(options) {
       options = shallowCopyObject(options || {});
-      
+
       if (options.stripIgnoreTag) {
         if (options.onIgnoreTag) {
           console.error(
@@ -909,7 +909,7 @@
       } else {
         options.whiteList = DEFAULT.whiteList;
       }
-      
+
       options.onTag = options.onTag || DEFAULT.onTag;
       options.onTagAttr = options.onTagAttr || DEFAULT.onTagAttr;
       options.onIgnoreTag = options.onIgnoreTag || DEFAULT.onIgnoreTag;
@@ -917,7 +917,7 @@
       options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
       options.escapeHtml = options.escapeHtml || DEFAULT.escapeHtml;
       this.options = options;
-      
+
       if (options.css === false) {
         this.cssFilter = false;
       } else {
@@ -925,7 +925,7 @@
         this.cssFilter = new FilterCSS(options.css);
       }
     }
-    
+
     /**
      * start process and returns result
      *
@@ -937,7 +937,7 @@
       html = html || "";
       html = html.toString();
       if (!html) return "";
-      
+
       var me = this;
       var options = me.options;
       var whiteList = options.whiteList;
@@ -948,17 +948,17 @@
       var safeAttrValue = options.safeAttrValue;
       var escapeHtml = options.escapeHtml;
       var cssFilter = me.cssFilter;
-      
+
       // remove invisible characters
       if (options.stripBlankChar) {
         html = DEFAULT.stripBlankChar(html);
       }
-      
+
       // remove html comments
       if (!options.allowCommentTag) {
         html = DEFAULT.stripCommentTag(html);
       }
-      
+
       // if enable stripIgnoreTagBody
       var stripIgnoreTagBody = false;
       if (options.stripIgnoreTagBody) {
@@ -968,7 +968,7 @@
         );
         onIgnoreTag = stripIgnoreTagBody.onIgnoreTag;
       }
-      
+
       var retHtml = parseTag(
         html,
         function (sourcePosition, position, tag, html, isClosing) {
@@ -978,16 +978,16 @@
             isClosing: isClosing,
             isWhite: Object.prototype.hasOwnProperty.call(whiteList, tag),
           };
-          
+
           // call `onTag()`
           var ret = onTag(tag, html, info);
           if (!isNull(ret)) return ret;
-          
+
           if (info.isWhite) {
             if (info.isClosing) {
               return "</" + tag + ">";
             }
-            
+
             var attrs = getAttrs(html);
             var whiteAttrList = whiteList[tag];
             var attrsHtml = parseAttr(attrs.html, function (name, value) {
@@ -995,7 +995,7 @@
               var isWhiteAttr = _.indexOf(whiteAttrList, name) !== -1;
               var ret = onTagAttr(tag, name, value, isWhiteAttr);
               if (!isNull(ret)) return ret;
-              
+
               if (isWhiteAttr) {
                 // call `safeAttrValue()`
                 value = safeAttrValue(tag, name, value, cssFilter);
@@ -1011,7 +1011,7 @@
                 return;
               }
             });
-            
+
             // build new tag html
             html = "<" + tag;
             if (attrsHtml) html += " " + attrsHtml;
@@ -1027,29 +1027,29 @@
         },
         escapeHtml
       );
-      
+
       // if enable stripIgnoreTagBody
       if (stripIgnoreTagBody) {
         retHtml = stripIgnoreTagBody.remove(retHtml);
       }
-      
+
       return retHtml;
     };
-    
+
     module.exports = FilterXSS;
-    
+
   },{"./default":1,"./parser":3,"./util":4,"cssfilter":8}],6:[function(require,module,exports){
     /**
      * cssfilter
      *
      * @author 老雷<leizongmin@gmail.com>
      */
-    
+
     var DEFAULT = require('./default');
     var parseStyle = require('./parser');
     var _ = require('./util');
-    
-    
+
+
     /**
      * 返回值是否为空
      *
@@ -1059,7 +1059,7 @@
     function isNull (obj) {
       return (obj === undefined || obj === null);
     }
-    
+
     /**
      * 浅拷贝对象
      *
@@ -1073,7 +1073,7 @@
       }
       return ret;
     }
-    
+
     /**
      * 创建CSS过滤器
      *
@@ -1091,72 +1091,72 @@
       options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
       this.options = options;
     }
-    
+
     FilterCSS.prototype.process = function (css) {
       // 兼容各种奇葩输入
       css = css || '';
       css = css.toString();
       if (!css) return '';
-      
+
       var me = this;
       var options = me.options;
       var whiteList = options.whiteList;
       var onAttr = options.onAttr;
       var onIgnoreAttr = options.onIgnoreAttr;
       var safeAttrValue = options.safeAttrValue;
-      
+
       var retCSS = parseStyle(css, function (sourcePosition, position, name, value, source) {
-        
+
         var check = whiteList[name];
         var isWhite = false;
         if (check === true) isWhite = check;
         else if (typeof check === 'function') isWhite = check(value);
         else if (check instanceof RegExp) isWhite = check.test(value);
         if (isWhite !== true) isWhite = false;
-        
+
         // 如果过滤后 value 为空则直接忽略
         value = safeAttrValue(name, value);
         if (!value) return;
-        
+
         var opts = {
           position: position,
           sourcePosition: sourcePosition,
           source: source,
           isWhite: isWhite
         };
-        
+
         if (isWhite) {
-          
+
           var ret = onAttr(name, value, opts);
           if (isNull(ret)) {
             return name + ':' + value;
           } else {
             return ret;
           }
-          
+
         } else {
-          
+
           var ret = onIgnoreAttr(name, value, opts);
           if (!isNull(ret)) {
             return ret;
           }
-          
+
         }
       });
-      
+
       return retCSS;
     };
-    
-    
+
+
     module.exports = FilterCSS;
-    
+
   },{"./default":7,"./parser":9,"./util":10}],7:[function(require,module,exports){
     /**
      * cssfilter
      *
      * @author 老雷<leizongmin@gmail.com>
      */
-    
+
     function getDefaultWhiteList () {
       // 白名单值说明：
       // true: 允许该属性
@@ -1164,7 +1164,7 @@
       // RegExp: regexp.test(val) 返回true表示允许该属性，其他值均表示不允许
       // 除上面列出的值外均表示不允许
       var whiteList = {};
-      
+
       whiteList['align-content'] = false; // default: auto
       whiteList['align-items'] = false; // default: auto
       whiteList['align-self'] = false; // default: auto
@@ -1500,11 +1500,11 @@
       whiteList['wrap-through'] = false; // default: wrap
       whiteList['writing-mode'] = false; // default: horizontal-tb
       whiteList['z-index'] = false; // default: auto
-      
+
       return whiteList;
     }
-    
-    
+
+
     /**
      * 匹配到白名单上的一个属性时
      *
@@ -1516,7 +1516,7 @@
     function onAttr (name, value, options) {
       // do nothing
     }
-    
+
     /**
      * 匹配到不在白名单上的一个属性时
      *
@@ -1528,9 +1528,9 @@
     function onIgnoreAttr (name, value, options) {
       // do nothing
     }
-    
+
     var REGEXP_URL_JAVASCRIPT = /javascript\s*\:/img;
-    
+
     /**
      * 过滤属性值
      *
@@ -1542,25 +1542,25 @@
       if (REGEXP_URL_JAVASCRIPT.test(value)) return '';
       return value;
     }
-    
-    
+
+
     exports.whiteList = getDefaultWhiteList();
     exports.getDefaultWhiteList = getDefaultWhiteList;
     exports.onAttr = onAttr;
     exports.onIgnoreAttr = onIgnoreAttr;
     exports.safeAttrValue = safeAttrValue;
-    
+
   },{}],8:[function(require,module,exports){
     /**
      * cssfilter
      *
      * @author 老雷<leizongmin@gmail.com>
      */
-    
+
     var DEFAULT = require('./default');
     var FilterCSS = require('./css');
-    
-    
+
+
     /**
      * XSS过滤
      *
@@ -1583,17 +1583,17 @@
     if (typeof window !== 'undefined') {
       window.filterCSS = module.exports;
     }
-    
+
   },{"./css":6,"./default":7}],9:[function(require,module,exports){
     /**
      * cssfilter
      *
      * @author 老雷<leizongmin@gmail.com>
      */
-    
+
     var _ = require('./util');
-    
-    
+
+
     /**
      * 解析style
      *
@@ -1610,7 +1610,7 @@
       var lastPos = 0;
       var i = 0;
       var retCSS = '';
-      
+
       function addNewAttr () {
         // 如果没有正常的闭合圆括号，则直接忽略当前属性
         if (!isParenthesisOpen) {
@@ -1628,7 +1628,7 @@
         }
         lastPos = i + 1;
       }
-      
+
       for (; i < cssLength; i++) {
         var c = css[i];
         if (c === '/' && css[i + 1] === '*') {
@@ -1654,12 +1654,12 @@
           addNewAttr();
         }
       }
-      
+
       return _.trim(retCSS);
     }
-    
+
     module.exports = parseStyle;
-    
+
   },{"./util":10}],10:[function(require,module,exports){
     module.exports = {
       indexOf: function (arr, item) {
@@ -1696,5 +1696,5 @@
         return str.replace(/(\s*$)/g, '');
       }
     };
-    
+
   },{}]},{},[2]);
