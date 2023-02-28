@@ -9,6 +9,7 @@ let t = process.env.GITHUB_TOKEN
 let repo = 'jw-12138/jw-12138.github.io.git'
 
 async function configGit() {
+  console.log('Configuring git...')
   let {
     err,
     stdout,
@@ -25,6 +26,7 @@ async function configGit() {
 }
 
 async function push() {
+  console.log('Pushing to GitHub...')
   let {
     err,
     stdout,

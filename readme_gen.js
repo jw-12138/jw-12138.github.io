@@ -6,6 +6,8 @@ var hexo = new Hexo(process.cwd(), {
   silent: true
 })
 
+console.log('Generating README.md...')
+
 let baseUrl
 
 hexo.init().then(function(){

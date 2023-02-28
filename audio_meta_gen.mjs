@@ -3,6 +3,8 @@ import {inspect} from 'util'
 import fs from 'fs'
 import path from 'path'
 
+console.log('Generating audio metadata...')
+
 const walk = function (dir, done) {
   let results = []
   fs.readdir(dir, function (err, list) {
