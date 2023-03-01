@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo clean; node audio_meta_gen.mjs; hexo generate",
+    "build": "hexo clean; node audio_meta_gen.mjs; hexo generate; node readme_gen.js",
     "clean": "hexo clean",
-    "deploy": "cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes",
+    "deploy": "npm run build; cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes",
     "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
     "dev-hexo": "hexo server --draft",
     "dev": "npx concurrently npm:dev-*",

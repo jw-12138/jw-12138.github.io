@@ -22,9 +22,7 @@ hexo.init().then(function(){
 function gen(posts, siteData){
   
   let str = `
-# My stupid blog
-
-![Build Pages](https://github.com/jw-12138/jw-12138.github.io/actions/workflows/pages.yml/badge.svg)
+# 🙌[jw1.dev](https://jw1.dev) 🙌
 
 ## Posts
 
