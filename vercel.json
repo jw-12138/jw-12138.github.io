@@ -5,6 +5,11 @@
       "source": "/vite-plugin-vsharp(.*)",
       "destination": "https://jw-12138.github.io/vite-plugin-vsharp",
       "permanent": true
+    },
+    {
+      "source": "/picgo/:path",
+      "destination": "https://jw-12138.github.io/picgo/:path*",
+      "permanent": true
     }
   ]
 }
