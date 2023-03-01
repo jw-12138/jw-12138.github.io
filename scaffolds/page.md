@@ -1,4 +1,4 @@
 ---
 title: {{ title }}
-date: {{ date }}
+date: {{ date.toISOString() }}
 ---
