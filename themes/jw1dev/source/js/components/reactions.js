@@ -15,7 +15,7 @@ export default {
         _.expanded = false
       }, 1200)
       
-      axios.get(_.apiBase + '/thumbs/up?path=' + location.pathname).then(res => {
+      axios.get(_.apiBase + '/thumb/up?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
           _.up = res.data.count
         }
@@ -71,7 +71,7 @@ export default {
         _.expanded = false
       }, 2500)
       
-      axios.get(_.apiBase + '/thumbs/down?path=' + location.pathname).then(res => {
+      axios.get(_.apiBase + '/thumb/down?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
           _.down = res.data.count
         }
@@ -83,7 +83,7 @@ export default {
     },
     getThumbs: function () {
       let _ = this
-      axios.get(_.apiBase + '/thumbs/get?path=' + location.pathname).then(res => {
+      axios.get(_.apiBase + '/thumb/get?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
           _.up = res.data.data.up
           _.down = res.data.data.down
@@ -97,7 +97,7 @@ export default {
   },
   data: function () {
     return {
-      apiBase: 'https://api.jw1.dev',
+      apiBase: 'https://blog.api.jw1.dev/api',
       active_index: 0,
       up: 0,
       page_up_count: 0,

@@ -1,7 +1,7 @@
 export default {
   computed: {
     authURL: function () {
-      return `${this.auth_api}?client_id=${this.client_id}&redirect_uri=https://api.jw1.dev/gho/callback?r=${location.href}&scope=public_repo`
+      return `${this.auth_api}?client_id=${this.client_id}&redirect_uri=https://blog.api.jw1.dev/api/github/callback?r=${location.href}&scope=public_repo`
     },
     issue_number: function () {
       let input = document.querySelector('input[name=ISSUE_NUMBER]')
@@ -173,7 +173,7 @@ export default {
       _.issue_number = _.issue_number ? _.issue_number : issueNumber
       axios
         .get(
-          `https://api.jw1.dev/gha/forward?action=get_issue_comments&number=${_.issue_number}`,
+          `https://blog.api.jw1.dev/api/github/forward?action=get_issue_comments&number=${_.issue_number}`,
           {}
         )
         .then((res) => {
