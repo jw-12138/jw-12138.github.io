@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "dist",
   "redirects": [
     {
       "source": "\/vite-plugin-vsharp.*",

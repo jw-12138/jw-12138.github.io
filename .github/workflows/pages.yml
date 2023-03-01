@@ -9,15 +9,13 @@ on:
     - cron: "30 10 1 1 *"
   push:
     branches: [ main ]
+    paths-ignore:
+      - '**/README.md'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Timezone
-      uses: szenius/set-timezone@v1.0
-      with:
-        timezoneLinux: "Asia/Shanghai"
     - uses: actions/checkout@v2
     - name: Setup Node.js
       uses: actions/setup-node@v3.6.0
@@ -25,14 +23,5 @@ jobs:
         node-version: 18.x
         cache: npm
         cache-dependency-path: yarn.lock
-    - run: yarn
-    - run: yarn build
-    - run: cp vercel.json ./jw1dev_dist/vercel.json
-    - run: vercel deploy ./jw1dev_dist --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --regions=hkg1
-    - run: node readme_gen.js
-    - uses: EndBug/add-and-commit@v7
-      with:
-        add: README.md
-        push: true
-        message: 'Update README.md'
-    - run: git status
+    - run: yarn add vercel
+    - run: vercel deploy ./ --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --regions=hkg1

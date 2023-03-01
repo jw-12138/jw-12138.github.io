@@ -25,7 +25,7 @@
               <% } %>
             </div>
             <div class="date">
-              <%- moment(item.date).format('YYYY-MM-DD') %>
+              <%- mmtz(item.date) %>
               <% tags.forEach((tag, index) => { %>
                 <span class="sep">/</span>
                 <div class="tag-item"><%- tag %></div>
