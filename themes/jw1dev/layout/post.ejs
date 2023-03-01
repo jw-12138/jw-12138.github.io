@@ -27,7 +27,7 @@
     <main>
       <% if(page.__post){ %>
         <div class="page-info">
-          <%- mmtz(page.date) %> /
+          <%- moment(page.date).format('YYYY-MM-DD') %> /
           <% if(page.deprecated) { %>
             <span class="deprecated">Deprecated</span> /
           <% } %>
