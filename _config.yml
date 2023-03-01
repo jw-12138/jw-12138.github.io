@@ -17,7 +17,7 @@ pretty_urls:
 
 # Directory
 source_dir: source
-public_dir: jw1dev_dist
+public_dir: dist
 tag_dir: tags
 archive_dir: archives
 category_dir: categories

@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "node audio_meta_gen.mjs; npx hexo generate",
+    "build": "hexo clean; node audio_meta_gen.mjs; hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
+    "deploy": "cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes",
     "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
     "dev-hexo": "hexo server --draft",
     "dev": "npx concurrently npm:dev-*",
@@ -28,6 +28,7 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^4.0.0",
     "hexo-server": "^2.0.0",
+    "moment-timezone": "^0.5.41",
     "music-metadata": "^8.1.0",
     "octokit": "^2.0.9",
     "walk": "^2.3.15"
@@ -35,7 +36,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
     "concurrently": "^6.4.0",
-    "sass": "^1.45.0",
-    "vercel": "^28.16.7"
+    "sass": "^1.45.0"
   }
 }
