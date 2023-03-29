@@ -10,6 +10,16 @@
       "source": "/picgo/:path",
       "destination": "https://jw-12138.github.io/picgo/:path*",
       "permanent": true
+    },
+    {
+      "source": "/kover.js/:path",
+      "destination": "https://jw-12138.github.io/kover.js/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/lessby/:path",
+      "destination": "https://jw-12138.github.io/lessby/:path*",
+      "permanent": true
     }
   ]
 }
