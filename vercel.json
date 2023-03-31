@@ -17,8 +17,8 @@
       "permanent": true
     },
     {
-      "source": "/lessby/:path",
-      "destination": "https://jw-12138.github.io/lessby/:path*",
+      "source": "/lessby/",
+      "destination": "https://jw-12138.github.io/lessby/",
       "permanent": true
     }
   ]
