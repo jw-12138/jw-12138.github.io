@@ -10,34 +10,41 @@ header {
   padding: 2rem 1.5rem 0;
   margin: 0 auto;
   display: block;
-  
+
   .logo {
     width: 2rem;
 
     a{
       display: block;
+      height: 2rem;
+      width: 2rem;
     }
-    
+
+    svg{
+      width: 100%;
+      fill: black;
+    }
+
     img {
       width: 100%;
-      
+
       &.light {
         display: none;
       }
     }
   }
-  
+
   h1 {
     margin-top: 0;
     font-size: 2rem;
     line-height: 1.5;
   }
-  
+
   desc {
     font-size: .8rem;
     color: color.$slate-900;
   }
-  
+
   .navigation {
     ul {
       list-style: none;
@@ -45,25 +52,25 @@ header {
       white-space: nowrap;
       overflow-x: auto;
       padding: .5rem 0 0;
-      
+
       .sep{
         margin: 0 1rem;
         font-size: .7rem;
       }
-      
+
       li {
         list-style: inherit;
         padding: 0;
         display: inline-block;
         font-size: .8rem;
         margin: 0;
-        
+
         a {
           text-decoration: none;
           position: relative;
           display: block;
           color: color.$slate-700;
-          
+
           &:hover{
             text-decoration: underline;
           }

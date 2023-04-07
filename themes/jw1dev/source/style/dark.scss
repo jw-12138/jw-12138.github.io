@@ -1,5 +1,6 @@
 @use 'color';
 @use "vars";
+
 $radius: 0.4em;
 $light-bg: rgba(#fff, .02);
 
@@ -8,29 +9,33 @@ $light-bg: rgba(#fff, .02);
     color: color.$slate-50;
     background: color.$neutral-900 !important;
   }
-  
+
   header {
     .logo {
+      svg {
+        fill: white;
+      }
+
       img {
         &.light {
           display: inline;
         }
-        
+
         &.dark {
           display: none;
         }
       }
     }
-  
+
     desc {
       color: color.$slate-100
     }
-    
+
     .navigation {
       ul {
-        
+
         li {
-          
+
           a {
             color: #ddd;
           }
@@ -38,47 +43,48 @@ $light-bg: rgba(#fff, .02);
       }
     }
   }
-  
+
   main {
-    
+
     .pagination {
-      
+
       a {
         border: 1px solid #555;
         background: $light-bg;
         color: #989898;
       }
-      
+
       .total {
         color: #aaa;
       }
     }
-    
+
     &.index {
       ul {
-        
+
         li {
           a {
             color: #d1d1d1;
-            
+
             .title {
               color: #eee;
             }
-            
+
             .date {
               color: #777;
             }
-            
+
             .slogan {
               color: #777;
             }
-            
+
             .tags {
               .item {
                 color: #bbb;
                 background: $light-bg;
               }
-              .sep{
+
+              .sep {
                 color: color.$emerald-700;
               }
             }
@@ -86,94 +92,94 @@ $light-bg: rgba(#fff, .02);
         }
       }
     }
-    
+
     .page-original {
       color: color.$neutral-300;
       background: color.$neutral-700;
       border-color: #555;
       border-bottom-color: #444;
       border-right-color: #444;
-      
+
       a {
         color: color.$blue-200;
       }
     }
-    
+
     .page-content {
       color: color.$slate-100;
-  
-      strong, b{
+
+      strong, b {
         color: #fff;
       }
-      
+
       a {
         color: color.$blue-200;
       }
-      
+
       table {
         $border-color: #555;
         border-left: 1px solid $border-color;
         border-top: 1px solid $border-color;
         border-collapse: collapse;
-        
+
         td, th {
           border-right: 1px solid $border-color;
           border-bottom: 1px solid $border-color;
         }
       }
-      
+
       h1, h2, h3, h4, {
         color: #fff;
       }
-      
+
       hr {
         background: $light-bg;
         border-bottom: 1px solid #555;
       }
-      
+
       blockquote {
         border-left-color: #555;
       }
-      
+
       code {
         background: $light-bg;
         border: 1px solid #555;
         color: #d1d1d1;
       }
-      
+
       pre {
-        
+
         code {
           color: inherit;
         }
       }
     }
-    
+
     .page-info {
       color: #aaa;
     }
   }
-  
+
   footer {
     color: #eee;
-    
+
     a {
       color: #eee;
     }
   }
-  
+
   .analytics-note-box {
-    background: rgba(0,0,0,.7);
-    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    background: rgba(0, 0, 0, .7);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
     border: 1px solid #222;
-    
-    .btn-grp{
-      .btn{
+
+    .btn-grp {
+      .btn {
         border: 1px solid color.$gray-900;
         color: color.$gray-100;
         background: color.$gray-800;
-        
-        &.primary{
+
+        &.primary {
           background: color.$gray-50;
           border-color: color.$slate-100;
           color: #333;
@@ -181,21 +187,23 @@ $light-bg: rgba(#fff, .02);
       }
     }
   }
-  .donation-box{
-    .img{
-      img{
-        &.dark{
+  .donation-box {
+    .img {
+      img {
+        &.dark {
           display: block;
         }
-        
-        &.light{
+
+        &.light {
           display: none;
         }
       }
     }
-    .text{
+
+    .text {
       color: #aaa;
-      b{
+
+      b {
         color: #ddd;
       }
     }
