@@ -199,7 +199,7 @@
           </div>
           <div class="user">
               <span class="outer-box">
-                <a :href="item.user.html_url" class="user-info">
+                <a :href="item.user.html_url" target="_blank" class="user-info">
                   <img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}
                 </a>
                 <div class="comment-actions" v-show="logged_in">
