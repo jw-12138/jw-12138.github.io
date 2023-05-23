@@ -31,23 +31,23 @@ E-mail: [jw@jw1.dev](mailto:jw@jw1.dev)
 <table class="about_table">
   <tr>
     <td>Google</td>
-    <td><strong>6</strong> / 5</td>
+    <td><strong>5.1</strong> / 5</td>
   </tr>
   <tr>
-    <td>HTML, CSS, LessCSS, SCSS, Stylus</td>
-    <td><strong>5</strong> / 5</td>
+    <td>HTML, CSS</td>
+    <td>4.9 / 5</td>
   </tr>
   <tr>
     <td>JavaScript, Babel, TypeScript, Vue, JQuery</td>
-    <td>4 / 5</td>
+    <td>4.5 / 5</td>
   </tr>
   <tr>
     <td>NPM, Webpack, Vite, Parcel</td>
-    <td>4 / 5</td>
+    <td>4.2 / 5</td>
   </tr>
   <tr>
     <td>NodeJs, PHP, Python</td>
-    <td>3.5 / 5</td>
+    <td>3.8 / 5</td>
   </tr>
   <tr>
     <td>Linux Command Line</td>
