@@ -38,15 +38,15 @@ E-mail: [jw@jw1.dev](mailto:jw@jw1.dev)
     <td>4.9 / 5</td>
   </tr>
   <tr>
-    <td>JavaScript, Babel, TypeScript, Vue, JQuery</td>
+    <td>JavaScript</td>
     <td>4.5 / 5</td>
   </tr>
   <tr>
-    <td>NPM, Webpack, Vite, Parcel</td>
+    <td>Webpack, Vite</td>
     <td>4.2 / 5</td>
   </tr>
   <tr>
-    <td>NodeJs, PHP, Python</td>
+    <td>NodeJs</td>
     <td>3.8 / 5</td>
   </tr>
   <tr>
@@ -54,7 +54,7 @@ E-mail: [jw@jw1.dev](mailto:jw@jw1.dev)
     <td>3.5 / 5</td>
   </tr>
   <tr>
-    <td>MySQL, SQLite, MongoDB</td>
+    <td>MongoDB</td>
     <td>3 / 5</td>
   </tr>
   <tr>
