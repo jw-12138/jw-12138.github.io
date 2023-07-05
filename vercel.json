@@ -20,6 +20,11 @@
       "source": "/lessby/",
       "destination": "https://jw-12138.github.io/lessby/",
       "permanent": true
+    },
+    {
+      "source": "/frequency-test/:path",
+      "destination": "https://frequency-test-ten.vercel.app/:path*",
+      "permanent": true
     }
   ]
 }
