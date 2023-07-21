@@ -71,6 +71,10 @@ export default {
   },
   methods: {
     quit() {
+      let c = confirm('确定要退出登录吗？😯')
+      if (!c) {
+        return false
+      }
       localStorage.removeItem('access_token')
       localStorage.removeItem('token_type')
       this.logged_in = false

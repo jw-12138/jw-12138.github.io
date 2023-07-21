@@ -7,20 +7,24 @@ export default {
       let _ = this
       _.active_index = 0
       
-      if (_.expanded) {
+      if (_.expanded || _.disabled) {
         return
       }
       
       setTimeout(function () {
         _.expanded = false
       }, 1200)
-      
+
+
+      _.disabled = true
       axios.get(_.apiBase + '/thumb/up?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
-          _.up = res.data.count
+          _.up = res.data.data.up
         }
       }).catch(err => {
         console.log(err)
+      }).finally(() => {
+        _.disabled = false
       })
       
       _.page_up_count++
@@ -63,26 +67,31 @@ export default {
       let _ = this
       _.active_index = 1
       
-      if (_.expanded) {
+      if (_.expanded || _.disabled) {
         return
       }
       
       setTimeout(function () {
         _.expanded = false
       }, 2500)
+
+      _.disabled = true
       
       axios.get(_.apiBase + '/thumb/down?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
-          _.down = res.data.count
+          _.down = res.data.data.down
         }
       }).catch(err => {
         console.log(err)
+      }).finally(() => {
+        _.disabled = false
       })
       
       _.expanded = true
     },
     getThumbs: function () {
       let _ = this
+      _.disabled = true
       axios.get(_.apiBase + '/thumb/get?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
           _.up = res.data.data.up
@@ -92,12 +101,15 @@ export default {
         }
       }).catch(err => {
         console.log(err)
+      }).finally(() => {
+        _.disabled = false
       })
     }
   },
   data: function () {
     return {
-      apiBase: 'https://blog.api.jw1.dev/api',
+      disabled: false,
+      apiBase: 'https://blog-api.jw1dev.workers.dev',
       active_index: 0,
       up: 0,
       page_up_count: 0,

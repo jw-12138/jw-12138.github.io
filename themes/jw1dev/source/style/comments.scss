@@ -41,7 +41,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     text-decoration: none;
     
     &:hover {
-      transform: translateY(-3px);
+      transform: scale(1.05);
     }
     
     em {
@@ -77,10 +77,9 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     }
     
     .user_avatar{
-      width: 72px;
-      height: 72px;
-      border-radius: 72px;
-      margin-bottom: .5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 36px;
       display: inline-block;
     }
   }
@@ -155,7 +154,31 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     
     .buttons {
       margin-top: 1em;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+
+      .login_welcome{
+        display: inline-block;
+        height: 34px;
+        a{
+          display: inline-block;
+          margin-right: 10px;
+          margin-bottom: 0;
+          height: 34px;
+          &:after{
+            content: '';
+            display: none;
+          }
+        }
+        img{
+          width: 34px;
+          height: 34px;
+          border-radius: 34px;
+          display: inline-block;
+        }
+      }
       
       .btn {
         @extend .shadow-md;
