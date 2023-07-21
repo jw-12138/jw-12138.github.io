@@ -10,8 +10,8 @@
 <body>
   <%- partial('partial/header') %>
   <main class="index">
-    <h2>Posts</h2>
-    <ul>
+    <h2 style="margin-bottom: 20px; font-size: 24px; margin-top: 20px; font-style: italic;">_Posts</h2>
+    <ul style="margin-top: 0">
       <% page.posts.forEach(item => { %>
         <li>
           <% let tags = item.tags.map(el => {
@@ -47,12 +47,13 @@
       <% } %>
       <span class="total"><%- `${page.current} / ${page.total}` %></span>
     </nav>
-    <h2>
-      Friends </h2>
-    <ul>
+    <h2 style="margin-bottom: 40px; font-size: 24px; margin-top: 20px; font-style: italic;">
+      _Friends
+    </h2>
+    <ul style="margin-top: 20px">
       <% site.data.data.links.forEach(el => { %>
         <li>
-          <a href="<%- el.url %>">
+          <a href="<%- el.url %>" style="padding: 0">
             <div class="title">
               <%- el.name %>
             </div>
