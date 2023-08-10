@@ -177,7 +177,7 @@ export default {
       _.issue_number = _.issue_number ? _.issue_number : issueNumber
       axios
         .get(
-          `https://blog-api.jw1dev.workers.dev/github/forward?action=get_issue_comments&number=${_.issue_number}`,
+          `https://blog-api-cf-worker.jw1.dev/github/forward?action=get_issue_comments&number=${_.issue_number}`,
           {}
         )
         .then((res) => {

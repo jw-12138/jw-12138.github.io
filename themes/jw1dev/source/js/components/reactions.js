@@ -109,7 +109,7 @@ export default {
   data: function () {
     return {
       disabled: false,
-      apiBase: 'https://blog-api.jw1dev.workers.dev',
+      apiBase: 'https://blog-api-cf-worker.jw1.dev',
       active_index: 0,
       up: 0,
       page_up_count: 0,
