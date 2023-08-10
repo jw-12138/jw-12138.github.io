@@ -96,7 +96,7 @@ feed:
   type: atom
   path:
     - atom.xml
-  limit: 0
+  limit: 10
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
