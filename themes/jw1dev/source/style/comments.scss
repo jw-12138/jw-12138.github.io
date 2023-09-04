@@ -7,7 +7,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
   margin: 2em 0;
   text-align: center;
   user-select: none;
-  
+
   .info {
     text-align: center;
     font-size: .8em;
@@ -19,12 +19,12 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     align-content: center;
     margin-top: 3em;
     transition: height .1s ease, margin .1s ease;
-    
+
     &.expanded {
       height: 2em;
     }
   }
-  
+
   .item {
     display: inline-block;
     font-size: 1em;
@@ -39,11 +39,11 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     transition: transform .3s ease;
     color: color.$neutral-700;
     text-decoration: none;
-    
+
     &:hover {
       transform: scale(1.05);
     }
-    
+
     em {
       font-style: normal;
       font-size: .8em;
@@ -51,8 +51,8 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
   }
 }
 
-.comment-content{
-  blockquote{
+.comment-content {
+  blockquote {
     border-left: 3px solid #999;
     padding: .1em .3em;
   }
@@ -60,7 +60,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
 .comments-box {
   font-size: .8em;
-  
+
   a {
     color: #fff;
     text-decoration: none;
@@ -68,28 +68,30 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
     background: #404040;
     border-radius: 30px;
 
-    &.user-info{
+    &.user-info {
       background: transparent;
       padding: 0;
+      color: color.$neutral-800
     }
 
-    &.user_avatar{
-      padding: 0
+    &.user_avatar {
+      padding: 0;
+      color: color.$neutral-800
     }
   }
-  
+
   .actions {
     text-align: center;
 
-    .login_welcome{
-      a{
-        &:after{
+    .login_welcome {
+      a {
+        &:after {
           content: ''
         }
       }
     }
-    
-    .user_avatar{
+
+    .user_avatar {
       width: 36px;
       height: 36px;
       border-radius: 36px;
@@ -97,14 +99,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       padding: 0;
     }
   }
-  
+
   .c-body {
     margin-top: 1em;
     padding: 1em 0 0;
-    
+
     .tabs {
       display: flex;
-      
+
       .item {
         cursor: pointer;
         text-decoration: none;
@@ -119,14 +121,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         border-bottom: none;
         color: color.$neutral-700;
 
-        &:focus{
+        &:focus {
           z-index: 5;
         }
-        
-        &:last-child{
+
+        &:last-child {
           border-radius: 0 1em 0 0;
         }
-        
+
         &.on {
           font-weight: bold;
           background-color: #ffffff;
@@ -135,10 +137,10 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         }
       }
     }
-    
+
     .write-box {
       min-height: 100px;
-      
+
       textarea {
         margin: 0;
         padding: 1em;
@@ -150,13 +152,13 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         font-size: .9em;
         font-family: $mono-font;
         color: color.$neutral-700;
-        
-        &[disabled]{
+
+        &[disabled] {
           cursor: not-allowed;
         }
       }
     }
-    
+
     .preview-box {
       padding: 1em;
       min-height: 100px;
@@ -165,7 +167,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       font-size: 1em;
       margin-bottom: 1.4em;
     }
-    
+
     .buttons {
       margin-top: 1em;
       display: flex;
@@ -173,27 +175,30 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       align-content: center;
       align-items: center;
 
-      .login_welcome{
+      .login_welcome {
         display: inline-block;
         height: 34px;
-        a{
+
+        a {
           display: inline-block;
           margin-right: 10px;
           margin-bottom: 0;
           height: 34px;
-          &:after{
+
+          &:after {
             content: '';
             display: none;
           }
         }
-        img{
+
+        img {
           width: 34px;
           height: 34px;
           border-radius: 34px;
           display: inline-block;
         }
       }
-      
+
       .btn {
         @extend .shadow-md;
         display: inline-block;
@@ -203,21 +208,21 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         background: #ffffff;
         color: color.$neutral-700;
         text-decoration: none;
-        
+
         &.send {
           color: #ffffff;
           background-color: color.$neutral-700;
           border-color: color.$neutral-700
         }
-  
-        &.disabled{
+
+        &.disabled {
           opacity: .5;
           cursor: not-allowed;
         }
       }
     }
-    
-    .key-stroke-info{
+
+    .key-stroke-info {
       text-align: center;
       display: block;
       margin-top: .5em;
@@ -225,29 +230,29 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       margin-bottom: 3em;
     }
   }
-  
+
   .c-footer {
     margin-top: 1em;
-    
+
     .info {
       margin-bottom: 1em;
       text-align: center;
     }
-    
+
     .comments-list {
       .item {
         margin-bottom: 3em;
         overflow: hidden;
         padding-bottom: 1em;
-        
+
         .user {
           margin-bottom: .1em;
-          
-          .user-info{
+
+          .user-info {
             display: flex;
             align-items: center;
           }
-          
+
           .outer-box {
             height: 48px;
             display: flex;
@@ -255,26 +260,27 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
             align-content: center;
             justify-content: space-between;
           }
-          
+
           img {
             border-radius: 100%;
             height: 2em;
             margin-right: .5em;
           }
         }
-        
+
         .comment-body {
-          padding-bottom:1em;
+          padding-bottom: 1em;
         }
-        
+
         .comment-actions {
           padding: 1em;
           text-align: center;
           font-size: .8em;
           color: color.$neutral-500;
           line-height: 1.8;
-          
+
           a {
+            color: #737373;
             display: inline-block;
             text-decoration: none;
             margin-right: 1em;
@@ -284,7 +290,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
             border: 1px solid color.$neutral-200;
           }
         }
-  
+
         .datetime {
           font-size: .8em;
           color: color.$neutral-400;
@@ -293,34 +299,45 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       }
     }
   }
-  
+
 }
 
 @media (prefers-color-scheme: dark) {
   .reactions {
-    
+
     .item {
       border: 1px solid color.$neutral-500;
       background-color: color.$neutral-700;
       color: #fff;
     }
   }
-  
+
   .comments-box {
-    
+
     a {
       color: color.$neutral-300;
+
+      &.user-info {
+        background: transparent;
+        padding: 0;
+        color: color.$neutral-300
+      }
+
+      &.user_avatar {
+        padding: 0;
+        color: color.$neutral-300
+      }
     }
-    
+
     .c-body {
-      
+
       .tabs {
-        
+
         .item {
           background-color: color.$neutral-800;
           color: color.$neutral-200;
           border-bottom: none;
-          
+
           &.on {
             background-color: color.$neutral-600;
             border: 1px solid color.$neutral-600;
@@ -328,7 +345,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
           }
         }
       }
-      
+
       .write-box {
         textarea {
           border: 1px solid color.$neutral-600;
@@ -336,18 +353,18 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
           background-color: transparent;
         }
       }
-      
+
       .preview-box {
         border: 1px solid color.$neutral-600;
       }
-      
+
       .buttons {
-        
+
         .btn {
           border: 1px solid color.$neutral-600;
           background: #ffffff;
           color: color.$neutral-300;
-          
+
           &.send {
             color: #ffffff;
             background-color: color.$neutral-700;
@@ -356,23 +373,23 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         }
       }
     }
-    
+
     .c-footer {
-      
+
       .comments-list {
         .item {
           border-bottom-color: color.$neutral-700;
-          
+
           .comment-actions {
             color: color.$neutral-500;
-            
+
             a {
               background-color: color.$neutral-800;
               border: 1px solid color.$neutral-200;
               color: color.$neutral-200
             }
           }
-          
+
           .datetime {
             color: color.$neutral-200;
           }
