@@ -175,8 +175,8 @@
       </div>
       <div class="buttons">
         <span v-show="logged_in" class="login_welcome">
-            <a :href="user.html_url" target="_blank">
-              <img :src="user.avatar_url" alt="user avatar" class="user_avatar">
+            <a :href="user.html_url" target="_blank" class="user_avatar">
+              <img :src="user.avatar_url" alt="user avatar">
             </a>
         </span>
         <a class="btn send" role="button" href="javascript:;" @click="sendComment"
