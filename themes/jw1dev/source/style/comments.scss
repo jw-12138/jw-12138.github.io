@@ -270,6 +270,13 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
         .comment-body {
           padding-bottom: 1em;
+
+          a{
+            padding: 0;
+            text-decoration: none;
+            background: none;
+            color: color.$blue-500
+          }
         }
 
         .comment-actions {
@@ -313,6 +320,9 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
   }
 
   .comments-box {
+    .c-footer .comments-list .item .comment-body a{
+      color: color.$blue-400
+    }
 
     a {
       color: color.$neutral-300;

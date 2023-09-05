@@ -6,12 +6,17 @@ $radius: 0.4em;
 $main-red: #ef4444;
 $light-bg: rgba(#0f172a, .02);
 $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
+$default-fonts: system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 
 html, body {
-  font-family: system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: $default-fonts;
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3{
+  font-family: 'Voltaire', $default-fonts;
 }
 
 a {
@@ -264,9 +269,10 @@ main {
     }
 
     a {
-      color: color.$slate-500;
+      color: color.$blue-500;
       word-break: break-all;
       position: relative;
+      text-decoration: none;
     }
 
     .sugg-back {
