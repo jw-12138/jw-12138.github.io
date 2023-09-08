@@ -11,7 +11,7 @@ tags:
   <br>
 </div>
   
-![VCV Rack 2.0](/p_assets/202112/rack.jpg)
+![VCV Rack 2.0](https://blog-r2.jw1.dev/p_assets/202112/rack.jpg)
   
 在油管看一些音乐制作大佬的视频的时候，总是能发现一些大盒子上插满了线，上面的灯光还总是一闪一闪的，在好奇心的驱使下我终于知道，这些大盒子是**模块化合成器**。模块化合成器有很多种类，其中Eurorack算是受众比较广的，不过他的价格也是让人望而却步，那个时候我就在想，如果能有软件模拟Eurorack就好了……
 
@@ -24,17 +24,17 @@ tags:
 先来看看我能直接感受到的关于VCV Rack 2.0的一些新变化：
 
 - 暗夜模式 —— **非传统意义上的**暗夜模式
-  ![Dark Mode](/p_assets/202112/img.png)
+  ![Dark Mode](https://blog-r2.jw1.dev/p_assets/202112/img.png)
 - 模块现在支持**多选**，拖动，编辑以及**保存模块组**
-  ![Module Selection](/p_assets/202112/img_1.png)
+  ![Module Selection](https://blog-r2.jw1.dev/p_assets/202112/img_1.png)
 - 模块浏览器现在支持**缩放**，**收藏单个模块**和一系列**排序功能**
-  ![Module Browser](/p_assets/202112/img_2.png)
+  ![Module Browser](https://blog-r2.jw1.dev/p_assets/202112/img_2.png)
 - 模块库现在支持**仅添加单一模块**了，而不是像之前一样只能按照厂商订阅
 - 模块库数量由此前 **1200+** 扩展到了 **1900+** （每天都在增加中……）
 
 不过，以上这些变化本质上只是让VCV Rack成为了一个更好的玩具，真正让他变成生产力工具的，是Pro版本中的**官方VST插件**！啊，盼星星盼月亮，它终于来了！
 
-![VCV Rack 2.0 Pro in Ableton live 11](/p_assets/202112/rack-in-live-s.jpg)
+![VCV Rack 2.0 Pro in Ableton live 11](https://blog-r2.jw1.dev/p_assets/202112/rack-in-live-s.jpg)
 
 <br>
 
@@ -58,4 +58,4 @@ Sylenth1, Pigments, Serum, Vital, PhasePlant, 想必这些软件合成器大家�
 
 好了，高级话术吹是吹了一堆，但是实际体验下来究竟怎么样？请大家欣赏我做的Demo。除了一些声效(SFX)和一轨Horn，其他全部使用了VCV Rack。
 
-<app-audio src="/p_assets/202112/vcv-test.mp3" label="VCV Rack in action"></app-audio>  
+<app-audio src="https://blog-r2.jw1.dev/p_assets/202112/vcv-test.mp3" label="VCV Rack in action"></app-audio>  
