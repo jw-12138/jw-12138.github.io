@@ -307,13 +307,13 @@ main {
     table {
       font-size: .8rem;
       margin: 1rem 0;
+      min-width: 100%;
       $border-color: #dddddd;
-      border-left: 1px solid $border-color;
       border-top: 1px solid $border-color;
       border-collapse: collapse;
 
       td, th {
-        border-right: 1px solid $border-color;
+
         border-bottom: 1px solid $border-color;
         padding: .8rem;
       }

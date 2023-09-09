@@ -118,12 +118,10 @@ $light-bg: rgba(#fff, .02);
 
       table {
         $border-color: #555;
-        border-left: 1px solid $border-color;
         border-top: 1px solid $border-color;
         border-collapse: collapse;
 
         td, th {
-          border-right: 1px solid $border-color;
           border-bottom: 1px solid $border-color;
         }
       }
