@@ -3,6 +3,7 @@
 
 ## Posts
 
+- [简单对比一下Bun与NodeJs的性能](https://jw1.dev/2023/09/11/bun-node-perf-diff.html) - 2023-09-11 
 - [博客断更的9个月](https://jw1.dev/2023/09/09/a01.html) - 2023-09-09 
 - [关于m42的技术细节](https://jw1.dev/2022/12/18/a01.html) - 2022-12-18 
 - [从头做一个基于GitHub Issues的评论系统](https://jw1.dev/2022/10/23/a01.html) - 2022-10-23 
