@@ -80,7 +80,7 @@ console.log('========\n')
 
 ![NodeJs API response speed test](https://r2-api-blog.jw1dev.workers.dev/c324dc23fd78447185d7744f95d0f32a/Untitled.png)
 
-Node 这边三次测试，每次调用 1000 次 API，平均大概在 300ms 左右。再来看看 Bun 这边：
+NodeJs 这边三次测试，每次调用 1000 次 API，平均大概在 300ms 左右。再来看看 Bun 这边：
 
 ![Bun API response speed test](https://r2-api-blog.jw1dev.workers.dev/c324dc23fd78447185d7744f95d0f32a/Untitled_1.png)
 
@@ -118,7 +118,7 @@ NodeJs 这边 1 万次 AES 加密消耗时间大约在 650ms，再来看看 Bun 
 
 ![Bun Encryption speed test](https://r2-api-blog.jw1dev.workers.dev/c324dc23fd78447185d7744f95d0f32a/Untitled_3.png)
 
-基本在 140ms 左右，在以上测试中我们也看到了，Bun 的速度确实是比 NodeJS 要快的，难道 Node 真的就是被完爆吗？
+基本在 140ms 左右，在以上测试中我们也看到了，Bun 的速度确实是比 NodeJS 要快的，难道 NodeJs 真的就是被完爆吗？
 
 只能说，不完全是。
 
@@ -147,7 +147,7 @@ console.log(`Took ${end - start}ms.`)
 console.log('========\n')
 ```
 
-运行之后来看看结果：
+运行之后来看看 NodeJs 这边的结果：
 
 ![NodeJs Math speed test](https://r2-api-blog.jw1dev.workers.dev/c324dc23fd78447185d7744f95d0f32a/Untitled_4.png)
 
@@ -163,8 +163,7 @@ Bun 居然还比 NodeJs 慢了 40ms。
 
 ### 我的想法
 
-就在我基本拥抱 Serverless 的时候，Bun 出现了，一开始我会觉得它的出现有点不是时候，但是亲自上手之后，可以说 Bun 又激起了我写 Server-ful
-App 的兴趣，不仅仅因为性能，更加是因为 Bun 的开发体验，很多经过重构的 API 简直美的不像话！
+就在我基本拥抱 Serverless 的时候，Bun 出现了，一开始我会觉得它的出现有点不是时候，但是亲自上手之后，可以说 Bun 又激起了我写 Server-ful App 的兴趣，不仅仅因为性能，更加是因为 Bun 的开发体验，很多经过重构的 API 简直美的不像话！
 
 <br>
 
