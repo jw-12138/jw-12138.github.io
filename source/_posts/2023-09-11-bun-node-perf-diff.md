@@ -17,7 +17,7 @@ tags:
 >
 > …
 >
-> Bun is a drop-in replacement for Node.js. That means existing Node.js applications and npm packages*just work*in Bun.
+> Bun is a drop-in replacement for Node.js. That means existing Node.js applications and npm packages _just work_ in Bun.
 
 根据官网的描述来看，Bun 是一个多合一的 JS 工具箱，其中包括运行、构建和调试 JS 和 TS 代码，也就是和 NodeJS、Deno 一样，同样属于 JS 的运行时，不过 NodeJS 已称霸江湖多时，而 Deno 却一直不温不火，就在我们以为 NodeJs 将会一直稳坐王位的时候，前几天这个突然印入眼帘的家伙，Bun，貌似在圈中产生了巨大的讨论，目前看下来，究其原因，一个是基本完全兼容 NodeJs，官方用词为“drop-in”，我在这里翻译为“无脑”，是的，无脑替换 NodeJs。还有一个就是讨论声最大的——性能。
 
@@ -159,7 +159,7 @@ Bun 居然还比 NodeJs 慢了 40ms。
 
 🥲
 
-怎么说呢，以我的智商想要给你们解释这件事情……还是太难为我了，不过 1 亿次计算，40ms 的差距貌似在生产环境中看起来也不是那么明显，毕竟是第一个稳定版本嘛，相信后面 Bun 团队应该会解决的！
+怎么说呢，以我的智商想要给你们解释这件事情……还是太难为我了，我猜大概率还是因为底层 JS 引擎不同导致的（Bun 使用 Safari 的 Js core，NodeJs 使用 Chrome 的 V8），不过 1 亿次计算，40ms 的差距貌似在生产环境中看起来也不是那么明显，毕竟是第一个稳定版本嘛，相信后面 Bun 团队应该会解决的！
 
 ### 我的想法
 
