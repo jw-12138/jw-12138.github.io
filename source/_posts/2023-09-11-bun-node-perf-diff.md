@@ -23,8 +23,7 @@ tags:
 
 ### API Serving 性能对比
 
-首先我能想到最常见的场景就是 API serving，通过 NodeJs 的 http 模块和 Bun 的 Serve 模块，我做了两个功能一摸一样的 API，GET 的时候返回“Hello
-World”：
+首先我能想到最常见的场景就是 API serving，通过 NodeJs 的 http 模块和 Bun 的 Serve 模块，我做了两个功能一摸一样的 API，GET 的时候返回“Hello World”：
 
 ```js
 // NodeJS
