@@ -200,7 +200,7 @@
           <div class="user">
               <span class="outer-box">
                 <a :href="item.user.html_url" target="_blank" class="user-info">
-                  <img :src="item.user.avatar_url" alt="用户头像">{{item.user.login}}
+                  <img :src="item.user.avatar_url" alt="用户头像"> <span>{{item.user.login}} <span class="author-tag" v-show="item.author_association === 'OWNER'">作者</span> </span>
                 </a>
                 <div class="comment-actions" v-show="logged_in">
                   <a v-show="user.login === item.user.login" href="javascript:;" @click="deleteComment(item.id)"

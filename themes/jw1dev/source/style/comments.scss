@@ -259,6 +259,13 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
             align-items: center;
             align-content: center;
             justify-content: space-between;
+
+            .author-tag {
+              padding: 2px 4px;
+              border-radius: 4px;
+              background: rgba(0, 0, 0, .12);
+              font-size: 12px;
+            }
           }
 
           img {
@@ -271,7 +278,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
         .comment-body {
           padding-bottom: 1em;
 
-          a{
+          a {
             padding: 0;
             text-decoration: none;
             background: none;
@@ -320,7 +327,7 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
   }
 
   .comments-box {
-    .c-footer .comments-list .item .comment-body a{
+    .c-footer .comments-list .item .comment-body a {
       color: color.$blue-400
     }
 
@@ -389,6 +396,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       .comments-list {
         .item {
           border-bottom-color: color.$neutral-700;
+
+          .user {
+            .outer-box {
+              .author-tag {
+                background: rgba(255, 255, 255, .12);
+              }
+            }
+          }
 
           .comment-actions {
             color: color.$neutral-500;
