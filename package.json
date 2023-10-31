@@ -3,23 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo clean; node audio_meta_gen.mjs; hexo generate; node readme_gen.js",
+    "build": "hexo clean; node audio_meta_gen.mjs; hexo generate; node readme_gen.js; npm run build-tailwind",
     "clean": "hexo clean",
     "deploy": "npm run build; cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes; hexo clean",
     "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
+    "dev-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css --watch",
+    "build-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css",
     "dev-hexo": "hexo server --draft",
     "dev": "npx concurrently npm:dev-*",
     "preview": "hexo server -s -p 5100"
   },
   "hexo": {
-    "version": "5.4.2"
+    "version": "6.0.0"
   },
   "dependencies": {
     "bun-types": "^1.0.1",
     "cssfilter": "^0.0.10",
     "dotenv": "^16.0.3",
     "glob": "^9.0.1",
-    "hexo": "5.4.2",
+    "hexo": "6.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^3.0.0",
@@ -37,6 +39,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
     "concurrently": "^6.4.0",
-    "sass": "^1.45.0"
+    "sass": "^1.45.0",
+    "tailwindcss": "^3.3.5"
   }
 }

@@ -71,7 +71,11 @@ $light-bg: rgba(#fff, .02);
             }
 
             .date {
-              color: #777;
+              color: #999;
+
+              .highlight {
+                color: color.$neutral-100
+              }
             }
 
             .slogan {

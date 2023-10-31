@@ -138,8 +138,12 @@ main {
           .date {
             margin-top: .3rem;
             font-size: .7rem;
-            color: color.$slate-500;
+            color: color.$neutral-500;
             font-style: italic;
+
+            .highlight {
+              color: color.$neutral-900
+            }
 
             .tag-item {
               display: inline;

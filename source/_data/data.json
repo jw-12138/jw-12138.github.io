@@ -3,29 +3,38 @@
     {
       "name": "落格博客",
       "url": "https://www.logcg.com/",
-      "slogan": "Log everything."
+      "slogan": "Log everything.",
+      "avatar": "https://www.logcg.com/favicon.ico"
     },
     {
       "name": "StarryVoid",
       "url": "https://starryvoid.com/",
-      "slogan": "星光璀璨之空 StarryVoid 的个人博客网站"
+      "slogan": "星光璀璨之空 StarryVoid 的个人博客网站",
+      "avatar": "https://starryvoid.com/favicon.ico"
     },
     {
       "name": "Desvl",
       "url": "https://admiraldesvl.github.io",
-      "slogan": "Interest comes from thinking."
+      "slogan": "Interest comes from thinking.",
+      "avatar": "https://desvl.xyz/img/avatar.png"
     },
     {
       "name": "Cyris",
       "url": "https://cyris.moe",
-      "slogan": "花如解笑还多事，石不能言最可人"
+      "slogan": "花如解笑还多事，石不能言最可人",
+      "avatar": "https://cdn.jsdelivr.net/npm/cyris/images/avatar.png"
     }
   ],
   "pages": [
     {
-      "name": "About Me",
+      "name": "关于我",
       "url": "/about/",
       "icon": "😎"
+    },
+    {
+      "name": "友链",
+      "url": "/friends/",
+      "icon": "🤝"
     },
     {
       "name": "RSS",
