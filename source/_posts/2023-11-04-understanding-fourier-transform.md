@@ -72,7 +72,7 @@ tags:
 
 ![1000Hz + 2000Hz的正弦波频率拆解](https://blog-r2.jw1.dev/VtCfDi9ApekFOZ7e.png)
 
-记录下的数据完美的展示出两个峰值，想法成立！计算峰值频率也很简单，哪个正弦波能出发最高相位，那么波形所在频率就一定是这个正弦波的频率，而且这个方法在理论上的分析精确度可以做到比傅里叶变换要高，但是缺点也是有的：
+记录下的数据完美的展示出两个峰值，想法成立！计算峰值频率也很简单，哪个正弦波能触发最高相位，那么波形所在频率就一定是这个正弦波的频率，而且这个方法在理论上的分析精确度可以做到比傅里叶变换要高，但是缺点也是有的：
 
 1. 计算效率；如果需要得到精确的频谱图，则需要大量的计算，在解析步长为 0.1 的时候，一次 0Hz 到 20000Hz 的扫描需要 200,000 次计算。
 2. 解析步长小于（采样率 / 数据节点数）时无法准确还原时域数据；傅里叶变换可以在没有信息丢失的情况进行两种数据角度的转换。
@@ -184,5 +184,5 @@ Fourier.Transform = function (data) {
 
 最后，感谢 3Blue1Brown 的视频和 Better Explained 的博客：
 
-1. https://youtu.be/spUNpyF58BY?si=Gh7qpXlvSGG1sGd_
+1. https://www.youtube.com/watch?v=spUNpyF58BY
 2. https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/
