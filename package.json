@@ -9,10 +9,10 @@
     "dev-hexo": "ENV=DEV; hexo server --draft",
     "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
     "dev-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css --watch",
-    "build": "hexo clean; node audio_meta_gen.mjs; hexo generate; node readme_gen.js; npm run build-tailwind",
+    "build": "hexo clean; node audio_meta_gen.js; hexo generate; node readme_gen.js; npm run build-tailwind",
     "build-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css",
     "start": "concurrently npm:dev-*",
-    "deploy": "npm run build; cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; cp -r ./api dist/api; vercel ./dist --prod --yes; hexo clean",
+    "deploy": "npm run build; cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes; hexo clean",
     "preview": "hexo server -s -p 5100"
   },
   "hexo": {

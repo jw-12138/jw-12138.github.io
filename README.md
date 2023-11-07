@@ -3,7 +3,6 @@
 
 ## Posts
 
-- [test](https://jw1.dev/2023/11/06/a01.html) - 2023-11-06 
 - [从音乐制作认识傅里叶变换](https://jw1.dev/2023/11/04/understanding-fourier-transform.html) - 2023-11-04 
 - [如何计算向量数据的相似度？](https://jw1.dev/2023/10/18/a01.html) - 2023-10-18 
 - [简单对比一下Bun与NodeJs的性能](https://jw1.dev/2023/09/11/bun-node-perf-diff.html) - 2023-09-11 
