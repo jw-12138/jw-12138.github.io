@@ -45,14 +45,14 @@ export default {
       _.getUser()
     }
 
-    window.addEventListener('click', function() {
-      if(_.mouseIsInsideWindow === false){
+    window.addEventListener('click', function () {
+      if (_.mouseIsInsideWindow === false) {
         _.userActionWindow = false
       }
     })
 
-    window.addEventListener('keydown', function(e){
-      if(e.key === 'Escape' && _.userActionWindow === true){
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && _.userActionWindow === true) {
         _.userActionWindow = false
       }
     })
@@ -87,11 +87,14 @@ export default {
     }
   },
   methods: {
-    quit() {
-      let c = confirm('确定要退出登录吗？😯')
-      if (!c) {
-        return false
+    quit(noConfirm) {
+      if (!noConfirm) {
+        let c = confirm('确定要退出登录吗？😯')
+        if (!c) {
+          return false
+        }
       }
+
       localStorage.removeItem('access_token')
       localStorage.removeItem('token_type')
       this.logged_in = false
@@ -115,7 +118,7 @@ export default {
       }).catch((err) => {
         console.log(err)
         if (err.response.status === 401) {
-          _.quit()
+          _.quit(true)
         }
       }).finally(() => {
         _.gettingUser = false
