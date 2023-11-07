@@ -23,6 +23,12 @@
       "url": "https://cyris.moe",
       "slogan": "花如解笑还多事，石不能言最可人",
       "avatar": "https://cdn.jsdelivr.net/npm/cyris/images/avatar.png"
+    },
+    {
+      "name": "PRIN BLOG",
+      "url": "https://printempw.github.io/",
+      "slogan": "半吊子全栈开发者的日常",
+      "avatar": "https://printempw.github.io/images/favicon.png"
     }
   ],
   "pages": [

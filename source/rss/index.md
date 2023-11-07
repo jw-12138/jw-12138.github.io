@@ -5,9 +5,7 @@ date: 2021-12-21 23:18
 issue: 84
 ---
 
-### 本站唯一RSS链接
-
-[https://jw1.dev/atom.xml](https://jw1.dev/atom.xml)
+本站唯一RSS链接：[https://jw1.dev/atom.xml](https://jw1.dev/atom.xml)
 
 ### 什么是RSS？
 
