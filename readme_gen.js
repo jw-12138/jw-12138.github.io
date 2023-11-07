@@ -1,7 +1,7 @@
-const fs = require('fs')
-const moment = require('moment-timezone')
-var Hexo = require('hexo')
-var hexo = new Hexo(process.cwd(), {
+import fs from 'fs'
+import moment from 'moment-timezone'
+import Hexo from 'hexo'
+let hexo = new Hexo(process.cwd(), {
   safe: true,
   silent: true
 })

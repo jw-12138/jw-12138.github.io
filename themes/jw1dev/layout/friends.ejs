@@ -18,7 +18,7 @@
     <div class="pt-[2rem] pb-[1rem]">
       <% site.data.data.links.forEach(el => { %>
         <a
-          class="item flex items-center content-center mb-4 py-4 hover:px-4 transition-all hover:bg-white hover:shadow dark:hover:bg-neutral-700 group"
+          class="item flex items-center content-center mb-4 py-4 hover:px-4 transition-all hover:bg-neutral-50 hover:shadow dark:hover:bg-neutral-700 group"
           href="<%- el.url %>" target="_blank" rel="friend colleague noopener">
           <div
             class="avatar rounded-full w-[2rem] h-[2rem] overflow-hidden dark:bg-neutral-700 bg-white shadow transition-all">
@@ -42,105 +42,11 @@
   <%- partial('partial/footer') %>
 </div>
 
-<template id="temp_reactions">
-  <div class="reactions">
-    <a href="javascript:;" role="button" class="item" @click="upFunc" :style="{
-    opacity: disabled ? '.5' : '1'
-    }">👍 <em>{{ up }}</em></a>
-    <div class="info" :class="{expanded: expanded}">{{active_index === 0 ? info[0] : info[1]}}</div>
-  </div>
-</template>
-
-<template id="temp_comments">
-  <div class="comments-box" id="comments" v-if="issue_number">
-    <div class="actions">
-      <a class="login_action" :href="logged_in ? 'javascript:;' : authURL" v-show="!logged_in">使用GitHub登录 🐙</a>
-      <a href="javascript:;" @click="quit" v-show="logged_in">❌ 退出登录</a>
-    </div>
-
-    <div class="c-body">
-      <div class="tabs">
-        <a role="button" href="javascript:;" class="item" @click="tab_active = 0"
-           :class="{on: tab_active === 0}">Write</a>
-        <a role="button" href="javascript:;" class="item" @click="tab_active = 1"
-           :class="{on: tab_active === 1}">Preview</a>
-      </div>
-      <div class="write-box" v-show="tab_active === 0" :class="{on: tab_active === 0}">
-          <textarea name="" id="comments_area" v-model="write_content"
-                    :placeholder="logged_in ? '提些问题或者打个招呼 🎈' : '评论前要先登录的哇 👆'"
-                    :disabled="tab_active === 1 || !logged_in" @focus="isWritingComment = true"
-                    @blur="isWritingComment = false" @keyup="monitKeys"></textarea>
-      </div>
-      <div v-show="tab_active === 1" :class="{on: tab_active === 1}" class="preview-box comment-content"
-           v-html="preview_content === '' ? '没有可以预览的东西哇' : preview_content">
-
-      </div>
-      <div class="buttons">
-        <span v-show="logged_in" class="login_welcome">
-            <a :href="user.html_url" target="_blank" class="user_avatar">
-              <img :src="user.avatar_url" alt="user avatar">
-            </a>
-        </span>
-        <a class="btn send" role="button" href="javascript:;" @click="sendComment"
-           :class="{disabled: sending_comment}">🌹 发送评论</a>
-      </div>
-      <span class="key-stroke-info">Ctrl + Enter 也可以发送评论</span>
-    </div>
-
-    <div class="c-footer">
-      <div class="info">
-        <span v-show="commentsLoading">评论加载中 🫣</span>
-        <span v-show="!commentsLoading">{{comments.length}} 条评论</span>
-      </div>
-      <div class="comments-list">
-        <div class="item" v-for="(item, i) in comments" :id="item.id" :style="{
-        opacity: getDeleteID === item.id ? '.5' : '1'
-      }">
-          <div class="datetime">
-            {{new Date(item.created_at).toLocaleString('zh-CN')}}
-          </div>
-          <div class="user">
-              <span class="outer-box">
-                <a :href="item.user.html_url" target="_blank" class="user-info">
-                  <img :src="item.user.avatar_url" alt="用户头像"> <span>{{item.user.login}} <span class="author-tag"
-                                                                                                   v-show="item.author_association === 'OWNER'">作者</span> </span>
-                </a>
-                <div class="comment-actions" v-show="logged_in">
-                  <a v-show="user.login === item.user.login" href="javascript:;" @click="deleteComment(item.id)"
-                     role="button">🗑️ 删除</a>
-                  <a v-show="user.login !== item.user.login" href="javascript:;" @click="mention(item.user.login)"
-                     role="button">@</a>
-                </div>
-              </span>
-          </div>
-          <div class="comment-body comment-content" v-html="parseMarkdown(item.body)"></div>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 2em">
-        <a :href="issue.html_url" target="_blank" v-show="issue.comments > per_page">
-          在 GitHub 上查看更多评论
-        </a>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
-        integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.13/vue.min.js"
-        integrity="sha512-9PmLIATEd4w0OxdTHq61p12lQqa8OtDC6nXu0+S1Icb800oxoADle+gaPfmAXLa35KSvk/6bGeNRfi3nq0Hvvw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
-        integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.1.1/marked.min.js"
-        integrity="sha512-+mCmSlBpa1bF0npQzdpxFWIyJaFbVdEcuyET6FtmHmlXIacQjN/vQs1paCsMlVHHZ2ltD2VTHy3fLFhXQu0AMA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-xss/0.3.3/xss.min.js" referrerpolicy="no-referrer"></script>
-<script src="/js/post.js"></script>
+<script src="/lib/axios.min.js"></script>
+<script src="/lib/vue.min.js"></script>
+<script src="/lib/howler.min.js"></script>
+<script src="/lib/marked.min.js"></script>
+<script src="/lib/xss.min.js"></script>
+<script src="/js/post.js" type="module"></script>
 </body>
 </html>

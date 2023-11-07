@@ -87,10 +87,6 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: jw1dev
-babelify:
-  presets:
-    - '@babel/preset-env'
-  sourceMaps: true
 feed:
   # Generate atom feed
   type: atom

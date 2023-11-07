@@ -2,7 +2,7 @@
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
-.shadow-md, .comments-box .c-body .buttons .btn {
+.shadow-md {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
@@ -12,6 +12,11 @@
 
 .shadow-xl, .reactions .item {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.user-window a[target=_blank]:after {
+  content: "";
+  display: none;
 }
 
 .reactions {
@@ -95,7 +100,6 @@
 }
 .comments-box .c-body {
   margin-top: 1em;
-  padding: 1em 0 0;
 }
 .comments-box .c-body .tabs {
   display: flex;
@@ -130,13 +134,14 @@
   min-height: 100px;
 }
 .comments-box .c-body .write-box textarea {
+  display: block;
   margin: 0;
   padding: 1em;
   resize: vertical;
   min-height: 100px;
   width: 100%;
   border: 1px solid #e5e5e5;
-  border-radius: 0 1em 0 1em;
+  border-radius: 16px 16px 0 16px;
   font-size: 0.9em;
   font-family: "Menlo", "Cascadia Code", monospace, sans-serif;
   color: #404040;
@@ -148,54 +153,14 @@
   padding: 1em;
   min-height: 100px;
   border: 1px solid #e5e5e5;
-  border-radius: 0 1em 1em 1em;
+  border-radius: 16px;
   font-size: 1em;
-  margin-bottom: 1.4em;
+  word-break: break-all;
 }
-.comments-box .c-body .buttons {
-  margin-top: 1em;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
-.comments-box .c-body .buttons .login_welcome {
-  display: inline-block;
-  height: 34px;
-}
-.comments-box .c-body .buttons .login_welcome a {
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 0;
-  height: 34px;
-}
-.comments-box .c-body .buttons .login_welcome a:after {
-  content: "";
-  display: none;
-}
-.comments-box .c-body .buttons .login_welcome img {
-  width: 34px;
-  height: 34px;
-  border-radius: 34px;
-  display: inline-block;
-}
-.comments-box .c-body .buttons .btn {
-  display: inline-block;
-  border-radius: 3em;
-  padding: 0.5em 1.5em;
-  border: 1px solid #f5f5f5;
-  background: #ffffff;
-  color: #404040;
-  text-decoration: none;
-}
-.comments-box .c-body .buttons .btn.send {
-  color: #ffffff;
-  background-color: #404040;
-  border-color: #404040;
-}
-.comments-box .c-body .buttons .btn.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.comments-box .c-body .preview-box a {
+  color: #3b82f6;
+  padding: 0;
+  background: transparent;
 }
 .comments-box .c-body .key-stroke-info {
   text-align: center;
@@ -273,6 +238,16 @@
   line-height: 1.5;
 }
 
+@keyframes slideUp_offset {
+  0% {
+    transform: translateY(50px) translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+  }
+}
 @media (prefers-color-scheme: dark) {
   .reactions .item {
     border: 1px solid #737373;
@@ -312,16 +287,6 @@
   .comments-box .c-body .preview-box {
     border: 1px solid #525252;
   }
-  .comments-box .c-body .buttons .btn {
-    border: 1px solid #525252;
-    background: #ffffff;
-    color: #d4d4d4;
-  }
-  .comments-box .c-body .buttons .btn.send {
-    color: #ffffff;
-    background-color: #404040;
-    border-color: #404040;
-  }
   .comments-box .c-footer .comments-list .item {
     border-bottom-color: #404040;
   }
@@ -341,4 +306,4 @@
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22comments.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACRF;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA,aA3BQ;EA4BR;EACA;EAEA;EACA;EACA;EACA;EACA;EACA,OCkBU;EDjBV;;AAEA;EACE;;AAGF;EACE;EACA;;;AAMJ;EACE;EACA;;;AAIJ;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,OCfQ;;ADkBV;EACE;EACA,OCpBQ;;ADwBZ;EACE;;AAII;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAIJ;EACE;EACA;;AAEA;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBClEM;EDmEN;EACA;EACA;EACA,OChEM;;ADkEN;EACE;;AAGF;EACE;;AAGF;EACE;EACA;EACA;EACA;;AAKN;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,aArJI;EAsJJ,OChGM;;ADkGN;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAIJ;EAEE;EACA;EACA;EACA;EACA;EACA,OCvJM;EDwJN;;AAEA;EACE;EACA,kBC5JI;ED6JJ,cC7JI;;ADgKN;EACE;EACA;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAIJ;EACE;;AAEA;EACE;EACA;;AAIA;EACE;EACA;EACA;;AAEA;EACE;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;;AAIJ;EACE;;AAEA;EACE;EACA;EACA;EACA,OCjPD;;ADqPH;EACE;EACA;EACA;EACA,OC7OI;ED8OJ;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAIJ;EACE;EACA,OC/PI;EDgQJ;;;AAQV;EAGI;IACE;IACA,kBC1QQ;ID2QR;;EAKF;IACE,OChSK;;EDmSP;IACE,OCzRQ;;ED2RR;IACE;IACA;IACA,OC9RM;;EDiSR;IACE;IACA,OCnSM;;ED2SN;IACE,kBCvSI;IDwSJ,OC9SI;ID+SJ;;EAEA;IACE,kBC9SE;ID+SF;IACA;;EAMJ;IACE;IACA,OC9TG;ID+TH;;EAIJ;IACE;;EAKA;IACE;IACA;IACA,OCzUI;;ED2UJ;IACE;IACA,kBCzUE;ID0UF,cC1UE;;EDmVN;IACE,qBCpVI;;EDwVA;IACE;;EAKN;IACE,OCjWE;;EDmWF;IACE,kBCjWA;IDkWA;IACA,OCzWA;;ED6WJ;IACE,OC9WE%22,%22file%22:%22comments.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22vars.scss%22,%22comments.scss%22,%22color.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;;;AAGF;EACE;;;ACPA;EACE;EACA;;;AAIJ;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;EACA,aAlCQ;EAmCR;EACA;EAEA;EACA;EACA;EACA;EACA;EACA,OCWU;EDVV;;AAEA;EACE;;AAGF;EACE;EACA;;;AAMJ;EACE;EACA;;;AAIJ;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,OCtBQ;;ADyBV;EACE;EACA,OC3BQ;;AD+BZ;EACE;;AAII;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAIJ;EACE;;AAEA;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBCxEM;EDyEN;EACA;EACA;EACA,OCtEM;;ADwEN;EACE;;AAGF;EACE;;AAGF;EACE;EACA;EACA;EACA;;AAKN;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,aA5JI;EA6JJ,OCvGM;;ADyGN;EACE;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE,OCtIG;EDuIH;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAIJ;EACE;;AAEA;EACE;EACA;;AAIA;EACE;EACA;EACA;;AAEA;EACE;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;;AAIJ;EACE;;AAEA;EACE;EACA;EACA;EACA,OCxMD;;AD4MH;EACE;EACA;EACA;EACA,OCpMI;EDqMJ;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAIJ;EACE;EACA,OCtNI;EDuNJ;;;AAQV;EACE;IACE;IACA;;EAGF;IACE;IACA;;;AAIJ;EAGI;IACE;IACA,kBC7OQ;ID8OR;;EAKF;IACE,OCnQK;;EDsQP;IACE,OC5PQ;;ED8PR;IACE;IACA;IACA,OCjQM;;EDoQR;IACE;IACA,OCtQM;;ED8QN;IACE,kBC1QI;ID2QJ,OCjRI;IDkRJ;;EAEA;IACE,kBCjRE;IDkRF;IACA;;EAMJ;IACE;IACA,OCjSG;IDkSH;;EAIJ;IACE;;EAOA;IACE,qBCxSI;;ED4SA;IACE;;EAKN;IACE,OCrTE;;EDuTF;IACE,kBCrTA;IDsTA;IACA,OC7TA;;EDiUJ;IACE,OClUE%22,%22file%22:%22comments.css%22%7D */

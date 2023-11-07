@@ -6,11 +6,11 @@ export default {
     upFunc: function () {
       let _ = this
       _.active_index = 0
-      
+
       if (_.expanded || _.disabled) {
         return
       }
-      
+
       setTimeout(function () {
         _.expanded = false
       }, 1200)
@@ -26,11 +26,11 @@ export default {
       }).finally(() => {
         _.disabled = false
       })
-      
+
       _.page_up_count++
-      
+
       _.changeText()
-      
+
       _.expanded = true
     },
     changeText: function () {
@@ -66,17 +66,17 @@ export default {
     downFunc: function () {
       let _ = this
       _.active_index = 1
-      
+
       if (_.expanded || _.disabled) {
         return
       }
-      
+
       setTimeout(function () {
         _.expanded = false
       }, 2500)
 
       _.disabled = true
-      
+
       axios.get(_.apiBase + '/thumb/down?path=' + location.pathname).then(res => {
         if (res.data.status === 0) {
           _.down = res.data.data.down
@@ -86,7 +86,7 @@ export default {
       }).finally(() => {
         _.disabled = false
       })
-      
+
       _.expanded = true
     },
     getThumbs: function () {
@@ -118,5 +118,11 @@ export default {
       info: ['谢谢！🥰', '我会努力的！🥹']
     }
   },
-  template: '#temp_reactions'
+  template: `
+    <div class="reactions">
+      <a href="javascript:;" role="button" class="item" @click="upFunc" :style="{
+    opacity: disabled ? '.5' : '1'
+    }">👍 <em>{{ up }}</em></a>
+      <div class="info" :class="{expanded: expanded}">{{ active_index === 0 ? info[0] : info[1] }}</div>
+    </div>`
 }

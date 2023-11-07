@@ -3,6 +3,13 @@
 
 $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
+.user-window {
+  a[target=_blank]:after {
+    content: '';
+    display: none;
+  }
+}
+
 .reactions {
   margin: 2em 0;
   text-align: center;
@@ -102,7 +109,6 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
   .c-body {
     margin-top: 1em;
-    padding: 1em 0 0;
 
     .tabs {
       display: flex;
@@ -142,13 +148,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       min-height: 100px;
 
       textarea {
+        display: block;
         margin: 0;
         padding: 1em;
         resize: vertical;
         min-height: 100px;
         width: 100%;
         border: 1px solid color.$neutral-200;
-        border-radius: 0 1em 0 1em;
+        border-radius: 16px 16px 0 16px;
         font-size: .9em;
         font-family: $mono-font;
         color: color.$neutral-700;
@@ -163,62 +170,14 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
       padding: 1em;
       min-height: 100px;
       border: 1px solid color.$neutral-200;
-      border-radius: 0 1em 1em 1em;
+      border-radius: 16px;
       font-size: 1em;
-      margin-bottom: 1.4em;
-    }
+      word-break: break-all;
 
-    .buttons {
-      margin-top: 1em;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      align-items: center;
-
-      .login_welcome {
-        display: inline-block;
-        height: 34px;
-
-        a {
-          display: inline-block;
-          margin-right: 10px;
-          margin-bottom: 0;
-          height: 34px;
-
-          &:after {
-            content: '';
-            display: none;
-          }
-        }
-
-        img {
-          width: 34px;
-          height: 34px;
-          border-radius: 34px;
-          display: inline-block;
-        }
-      }
-
-      .btn {
-        @extend .shadow-md;
-        display: inline-block;
-        border-radius: 3em;
-        padding: .5em 1.5em;
-        border: 1px solid color.$neutral-100;
-        background: #ffffff;
-        color: color.$neutral-700;
-        text-decoration: none;
-
-        &.send {
-          color: #ffffff;
-          background-color: color.$neutral-700;
-          border-color: color.$neutral-700
-        }
-
-        &.disabled {
-          opacity: .5;
-          cursor: not-allowed;
-        }
+      a {
+        color: color.$blue-500;
+        padding: 0;
+        background: transparent;
       }
     }
 
@@ -316,6 +275,18 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
 }
 
+@keyframes slideUp_offset {
+  0% {
+    transform: translateY(50px) translateX(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .reactions {
 
@@ -373,21 +344,6 @@ $mono-font: "Menlo", "Cascadia Code", monospace, sans-serif;
 
       .preview-box {
         border: 1px solid color.$neutral-600;
-      }
-
-      .buttons {
-
-        .btn {
-          border: 1px solid color.$neutral-600;
-          background: #ffffff;
-          color: color.$neutral-300;
-
-          &.send {
-            color: #ffffff;
-            background-color: color.$neutral-700;
-            border-color: color.$neutral-700
-          }
-        }
       }
     }
 

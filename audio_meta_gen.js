@@ -1,5 +1,4 @@
 import {parseFile} from 'music-metadata'
-import {inspect} from 'util'
 import fs from 'fs'
 import path from 'path'
 

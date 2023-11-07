@@ -1,5 +1,5 @@
-import appAudio from './components/appAudio'
-import appAudioDiff from './components/appAudioDiff'
+import appAudio from './components/appAudio.js'
+import appAudioDiff from './components/appAudioDiff.js'
 import videoView from './components/videoView.js'
 import reactions from './components/reactions.js'
 import comment from './components/comment.js'

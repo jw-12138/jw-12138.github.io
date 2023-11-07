@@ -1,4 +1,4 @@
-import {sec2time, getTimeStamp, getRandomInt} from '../utils'
+import {sec2time, getTimeStamp, getRandomInt} from '../utils.js'
 
 export default {
   props: {
@@ -11,7 +11,44 @@ export default {
       type: 'object'
     }
   },
-  template: '#temp_app_audio_diff',
+  template: `<div class="app-audio-wrap" :class="{ playing: playing }">
+    <div class="name" :class="{playing: playing}">
+      <span class="icon" aria-hidden="true">
+        <i class="iconfont">
+        &#xe7c1;
+        </i>
+      </span>
+      <span>
+      {{ playing_index === 0 ? activeText : inactiveText }}
+    </span>
+    </div>
+    <div class="time" title="This is the timing panel">
+      <span class="b"
+            :title="'Currently on the ' + parseInt(currentTime) + ' second'">{{ sec2time(currentTime) }}</span> <em
+        aria-hidden="true">/</em> <span
+        :title="'This track has ' + parseInt(duration) + ' seconds'">{{ sec2time(duration) }}</span>
+    </div>
+    <div class="control" title="This is the control panel">
+      <div class="btn-grp">
+        <button class="btn" @click="playFun" title="Play and Pause">
+          <i class="iconfont" v-if="!playing">&#xe66b;</i>
+          <i class="iconfont" v-if="playing">&#xe66c;</i>
+        </button>
+        <button class="btn" @click="stopAudio" title="Stop">
+          <i class="iconfont">&#xe661;</i>
+        </button>
+        <button class="btn" @click="switchSource" title="Switch"
+                :class="{ on: playing_index === 1, spin: playing_index === 1 }">
+          <i class="iconfont">&#xe66d;</i>
+        </button>
+        <button class="btn" title="Loop" @click="toggle_loop" :class="{ on: looping }">
+          <i class="iconfont">&#xe66e;</i>
+        </button>
+      </div>
+    </div>
+    <input type="range" min="0" max="100" v-model="percent" :id="instance_id" @input="onRangeInput"
+           @change="onRangeChange" title="Progress bar" @mousedown="rangeChangeDown" @touchstart="rangeChangeDown"/>
+  </div>`,
   computed: {},
   mounted: function () {
     let _ = this
@@ -20,14 +57,14 @@ export default {
         _.on.src
       ]
     })
-    
+
     _.audio_2 = new Howl({
       volume: 0,
       src: [
         _.off.src
       ]
     })
-    
+
     let dataPath = _.on.src.replace('.mp3', '.json')
     axios.get(dataPath).then(res => {
       _.duration = res.data.format.duration
@@ -60,7 +97,7 @@ export default {
       _.audio_1.on('loaderror', function (err) {
         console.log(err)
       })
-      
+
       setInterval(function () {
         if (_.adjust_progress_ready) {
           return false
@@ -68,22 +105,22 @@ export default {
         _.percent = _.calcPercentage()
         _.currentTime = _.audio_1.seek()
       }, 1000 / 30)
-      
+
       _.audio_1.once('load', function () {
         _.duration = _.audio_1.duration(0)
       })
-      
+
       _.audio_1.on('play', function () {
         _.playing = true
       })
-  
+
       _.audio_1.on('pause', function () {
         _.playing = false
       })
-      
+
       _.audio_1.on('end', function () {
         _.playing = false
-        
+
         if (_.looping) {
           _.audio_1.play()
           _.audio_2.play()
@@ -96,22 +133,22 @@ export default {
           }
         }
       })
-      
+
       _.audio_1.on('stop', function () {
         _.playing = false
         _.looping = false
       })
-      
+
       // ====
-  
+
       _.audio_2.on('play', function () {
         _.playing = true
       })
-  
+
       _.audio_2.on('pause', function () {
         _.playing = false
       })
-  
+
       _.audio_2.on('stop', function () {
         _.playing = false
         _.looping = false

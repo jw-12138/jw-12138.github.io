@@ -1,4 +1,8 @@
-babelify:
-  presets:
-    - '@babel/preset-env'
-  sourceMaps: true
+babel:
+  options:
+    presets:
+      - - "@babel/preset-env"
+        - targets: ie 11
+    sourceType: script
+  exclude:
+    - "lib/*"
