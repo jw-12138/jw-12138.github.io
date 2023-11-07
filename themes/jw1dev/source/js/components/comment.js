@@ -258,7 +258,7 @@ export default {
               <img :src="user.avatar_url" alt="user avatar" class="w-full h-full">
             </span>
             <span class="text-xs pl-2 pr-2">
-              {{ user.name }}
+              {{ user.login }}
             </span>
             <span>
               <i class="iconfont icon-zhankai pr-2" style="font-size: 14px" v-show="!userActionWindow"></i>
