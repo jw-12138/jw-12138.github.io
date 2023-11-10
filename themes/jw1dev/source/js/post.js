@@ -14,6 +14,11 @@ new Vue({
   mounted: function () {
     let _ = this
     _.handleImgClick()
+    _.handleVideoAutoPlay()
+
+    window.addEventListener('scroll', function(){
+      _.handleVideoAutoPlay()
+    })
   },
   components: {
     'app-audio': appAudio,
@@ -23,6 +28,25 @@ new Vue({
     'v-comment': comment
   },
   methods: {
+    handleVideoAutoPlay(){
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      let windowHeight = document.documentElement.clientHeight || document.body.clientHeight
+      document.querySelectorAll('.page-content video').forEach((el, index) => {
+        let aboutToShow = el.offsetTop - scrollTop - windowHeight
+
+        if(index === 0){
+          console.log(aboutToShow)
+        }
+
+        if(aboutToShow < -50 && el.paused && el.getAttribute('muted')){
+          el.play()
+        }
+
+        if(aboutToShow < -50 && el.paused && !el.getAttribute('muted')){
+          el.setAttribute('preload', 'auto')
+        }
+      })
+    },
     handleImgClick: function () {
       let _ = this
       let fn = function () {
