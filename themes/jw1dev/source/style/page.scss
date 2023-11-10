@@ -189,13 +189,11 @@ main {
   }
 
   .page-original {
-    border: 1px solid #f6f6f6;
-    border-right-color: #e6e6e6;
-    border-bottom-color: #eeeeee;
+    border: none;
     margin: 4rem 0;
     font-size: .7rem;
     color: #888888;
-    background: color.$neutral-50;
+    background: color.$neutral-100;
     padding: 1.5rem;
     border-radius: 1rem;
 
@@ -204,7 +202,7 @@ main {
     }
 
     a {
-      color: #777777;
+      color: color.$blue-500;
       &:after{
         content: ''
       }

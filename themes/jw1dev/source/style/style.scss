@@ -6,3 +6,7 @@
 @use 'dark';
 @use 'comments';
 @use 'donate';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -594,10 +594,6 @@ video {
   margin-bottom: 1rem;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
 .ml-4 {
   margin-left: 1rem;
 }
@@ -612,6 +608,10 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .block {
@@ -819,6 +819,10 @@ video {
 
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pt-\[2rem\] {
+  padding-top: 2rem;
 }
 
 .pt-\[1rem\] {
