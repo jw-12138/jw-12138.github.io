@@ -43,3 +43,4 @@
 - [StarryVoid](https://starryvoid.com/) - 星光璀璨之空 StarryVoid 的个人博客网站  
 - [Desvl](https://admiraldesvl.github.io) - Interest comes from thinking.  
 - [Cyris](https://cyris.moe) - 花如解笑还多事，石不能言最可人  
+- [PRIN BLOG](https://prinsss.github.io/) - 半吊子全栈开发者的日常  
