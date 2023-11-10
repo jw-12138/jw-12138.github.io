@@ -322,7 +322,7 @@ export default {
               <span class="outer-box">
                 <a :href="item.user.html_url" target="_blank" class="user-info">
                   <img :src="item.user.avatar_url" alt="用户头像"> <span>{{ item.user.login }} <span class="author-tag"
-                                                                                                     v-show="item.author_association === 'OWNER'">作者</span> </span>
+                                                                                                     v-if="item.author_association === 'OWNER'">作者</span> </span>
                 </a>
                 <span class="comment-actions" v-show="logged_in">
                   <button v-show="user.login === item.user.login" @click="deleteComment(item.id)"
