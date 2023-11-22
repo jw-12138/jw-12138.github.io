@@ -11,3 +11,4 @@ docs
 .env
 jw1dev_dist
 dist
+.wrangler

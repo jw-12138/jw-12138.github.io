@@ -12,8 +12,7 @@
     "build": "hexo clean; node audio_meta_gen.js; hexo generate; node readme_gen.js; npm run build-tailwind",
     "build-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css",
     "start": "concurrently npm:dev-*",
-    "deploy": "npm run build; cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes; hexo clean",
-    "deploy:cf": "npm run build; cp _redirects dist/_redirects",
+    "deploy": "npm run build; cp _redirects dist/_redirects; cp wrangler.toml dist/wrangler.toml; wrangler pages deploy ./dist --commit-dirty=true --project-name jw1dev-blog; hexo clean",
     "preview": "hexo server -s -p 5100"
   },
   "hexo": {
