@@ -13,6 +13,7 @@
     "build-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css",
     "start": "concurrently npm:dev-*",
     "deploy": "npm run build; cp vercel.json dist/vercel.json; cp -r .vercel dist/.vercel; vercel ./dist --prod --yes; hexo clean",
+    "deploy:cf": "npm run build; cp _redirects dist/_redirects",
     "preview": "hexo server -s -p 5100"
   },
   "hexo": {
