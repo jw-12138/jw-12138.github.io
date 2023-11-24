@@ -17,7 +17,7 @@ export default {
 
 
       _.disabled = true
-      axios.get(_.apiBase + '/thumb/up?path=' + location.pathname).then(res => {
+      axios.get(_.apiBase + '/thumb/up?path=' + _.pathname).then(res => {
         if (res.data.status === 0) {
           _.up = res.data.data.up
         }
@@ -63,36 +63,10 @@ export default {
         _.info[0] = '谢谢！🥰'
       }
     },
-    downFunc: function () {
-      let _ = this
-      _.active_index = 1
-
-      if (_.expanded || _.disabled) {
-        return
-      }
-
-      setTimeout(function () {
-        _.expanded = false
-      }, 2500)
-
-      _.disabled = true
-
-      axios.get(_.apiBase + '/thumb/down?path=' + location.pathname).then(res => {
-        if (res.data.status === 0) {
-          _.down = res.data.data.down
-        }
-      }).catch(err => {
-        console.log(err)
-      }).finally(() => {
-        _.disabled = false
-      })
-
-      _.expanded = true
-    },
     getThumbs: function () {
       let _ = this
       _.disabled = true
-      axios.get(_.apiBase + '/thumb/get?path=' + location.pathname).then(res => {
+      axios.get(_.apiBase + '/thumb/get?path=' + _.pathname).then(res => {
         if (res.data.status === 0) {
           _.up = res.data.data.up
           _.down = res.data.data.down
@@ -104,6 +78,18 @@ export default {
       }).finally(() => {
         _.disabled = false
       })
+    }
+  },
+  computed: {
+    pathname: function (){
+      let path = location.pathname
+      let regex = /\.html$/
+
+      if(!regex.test(path)){
+        return path + '.html'
+      }
+
+      return path
     }
   },
   data: function () {

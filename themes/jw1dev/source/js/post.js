@@ -34,10 +34,6 @@ new Vue({
       document.querySelectorAll('.page-content video').forEach((el, index) => {
         let aboutToShow = el.offsetTop - scrollTop - windowHeight
 
-        if(index === 0){
-          console.log(aboutToShow)
-        }
-
         if(aboutToShow < -50 && el.paused && el.getAttribute('muted')){
           el.play()
         }
