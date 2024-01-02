@@ -85,7 +85,7 @@ export default {
       let path = location.pathname
       let regex = /\.html$/
 
-      if(!regex.test(path)){
+      if(path[path.length - 1] !== '/' && !regex.test(path)){
         return path + '.html'
       }
 
