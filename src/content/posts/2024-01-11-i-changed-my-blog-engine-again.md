@@ -94,7 +94,7 @@ const {Content} = await entry.render()
 
 ### 实现 Hexo 的文章分类
 
-在用 Hexo 写博客的时候，我们可以很方面的在 Markdown 里面加上 tags 数组来告诉 Hexo 这篇文章属于那些分类，或者说拥有那些标签，这对于 SEO 来说也是非常有帮助的，Astro 默认没有这个功能，但是实现起来不困难，还是动态路由。我们需要在`pages`文件夹下创建一个新的文件夹叫`tags`，然后再在这个文件夹下创建一个`[tag].astro`的文件，这个文件就是我们的分类页面，然后我们需要在`[tag].astro`里面写入下面的代码：
+在用 Hexo 写博客的时候，我们可以很方面的在 Markdown 里面加上 tags 数组来告诉 Hexo 这篇文章属于哪些分类，或者说拥有哪些标签，这对于 SEO 来说也是非常有帮助的，Astro 默认没有这个功能，但是实现起来不困难，还是动态路由。我们需要在`pages`文件夹下创建一个新的文件夹叫`tags`，然后再在这个文件夹下创建一个`[tag].astro`的文件，这个文件就是我们的分类页面，然后我们需要在`[tag].astro`里面写入下面的代码：
 
 ```astro
 ---
@@ -140,7 +140,7 @@ Markdown 文件如果直接放在`src/pages`下面，你的链接结构会变得
 :year-:month-:day-:title
 ```
 
-如果我需要保持原有的链接结构，我就需要把 Markdown 文件放到`src/content/posts`下面，然后再用`getCollection`和`getEntry`来获取文章内容。需要注意的是，这里我们多了一个 posts 文件夹，按照官网的描述，这个文件夹可以看作是一个集合，你可以定义多个集合比如门户、新闻或者博客，这里我们只需要 posts 一个文件夹用来放文章就好了。不过，要让这个集合能被正常使用，我们还需要在`src/contens`下面创建一个`config.js`来定义我们这个集合的行为。
+如果我需要保持原有的链接结构，我就需要把 Markdown 文件放到`src/content/posts`下面，然后再用`getCollection`和`getEntry`来获取文章内容。需要注意的是，这里我们多了一个 posts 文件夹，按照官网的描述，这个文件夹可以看作是一个集合，你可以定义多个集合比如门户、新闻或者博客，这里我们只需要 posts 一个文件夹用来放文章就好了。不过，要让这个集合能被正常使用，我们还需要在`src/content`下面创建一个`config.js`来定义我们这个集合的行为。
 
 ```js
 import { z, defineCollection } from 'astro:content'
