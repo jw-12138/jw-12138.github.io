@@ -1,0 +1,69 @@
+---
+import PageLayout from '../layouts/page-layout.astro'
+import Header from '../components/header.astro'
+import Nav from '../components/nav.astro'
+
+const friends = [
+  {
+    name: '落格博客',
+    url: 'https://www.logcg.com/',
+    slogan: 'Log everything.',
+    avatar: 'https://www.logcg.com/favicon.ico'
+  },
+  {
+    name: 'StarryVoid',
+    url: 'https://starryvoid.com/',
+    slogan: '星光璀璨之空 StarryVoid 的个人博客网站',
+    avatar: 'https://starryvoid.com/favicon.ico'
+  },
+  {
+    name: 'Desvl',
+    url: 'https://admiraldesvl.github.io',
+    slogan: 'Interest comes from thinking.',
+    avatar: 'https://desvl.xyz/img/avatar.png'
+  },
+  {
+    name: 'Cyris',
+    url: 'https://cyris.moe',
+    slogan: '花如解笑还多事，石不能言最可人',
+    avatar: 'https://cdn.jsdelivr.net/npm/cyris/images/avatar.png'
+  },
+  {
+    name: 'PRIN BLOG',
+    url: 'https://prinsss.github.io/',
+    slogan: '半吊子全栈开发者的日常',
+    avatar: 'https://printempw.github.io/images/favicon.png'
+  }
+]
+---
+
+<PageLayout title="友链" issue={99}>
+  <div slot="header">
+    <Header />
+    <Nav highlight="friends" />
+  </div>
+
+  <div slot="content">
+    <div class="py-[3rem] italic">My Friends</div>
+    <p class="text-sm">以下是朋友们的博客，顺序为最早到最新，欢迎大家互换友链。</p>
+    <div class="pt-8">
+      {
+        friends.map((friend) => {
+          return (
+            <a
+              target="_blank"
+              rel="friend colleague noopener"
+              href={friend.url}
+              class="item flex items-center content-center mb-4 py-4 transition-all group rounded opacity-90 hover:opacity-100 group"
+            >
+              <div class="">
+                <div class="text-[1rem] group-hover:font-black">{friend.name}</div>
+                <div class="text-xs mt-2 opacity-80">{friend.slogan}</div>
+              </div>
+            </a>
+          )
+        })
+      }
+    </div>
+  </div>
+</PageLayout>

@@ -1,0 +1,183 @@
+---
+
+---
+
+<style is:global lang="scss">
+  html,
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
+    @apply bg-white text-black dark:bg-neutral-950 dark:text-white min-w-[320px];
+  }
+
+  aside {
+    @apply lg:w-[20rem] w-full lg:fixed lg:top-0 lg:left-0 lg:h-[100vh] px-6 bg-gradient-to-b lg:bg-gradient-to-r dark:from-zinc-900 dark:to-neutral-950 bg-white border-r border-neutral-200 dark:border-neutral-900;
+  }
+
+  main {
+    @apply lg:w-[calc(100vw-20rem)] lg:relative lg:ml-[20rem] w-full lg:px-0 px-6;
+  }
+
+  #app {
+    @apply w-full max-w-[42rem] px-0 mx-auto
+  }
+
+  .sugg-back {
+    display: none
+  }
+
+  img {
+    @apply max-w-full mb-6 block mx-auto rounded;
+  }
+
+  video {
+    @apply max-w-full w-full mb-6 block mx-auto rounded;
+  }
+
+  .page-content {
+    @apply pb-8;
+
+    .table-wrap {
+      @apply overflow-auto;
+    }
+
+    blockquote {
+      @apply border-l-4 dark:border-white/70 border-black/80 pl-4 pt-3 mb-4;
+
+      p {
+        @apply pb-4 leading-6 mb-0
+      }
+    }
+
+    table {
+      @apply border-collapse w-full mb-6 border-t-[1px] border-l-[1px] border-neutral-500;
+
+      th,
+      td {
+        @apply border-r-[1px] border-b-[1px] border-neutral-500 px-4 py-2;
+      }
+    }
+
+    hr {
+      @apply my-8 w-[10rem] mx-auto dark:bg-neutral-700 bg-neutral-400 border-none h-[1px];
+    }
+
+    ul, ol {
+      @apply list-disc list-outside pl-6 pb-6;
+
+      li {
+        @apply mb-1 leading-7 relative;
+
+        p {
+          @apply mb-2;
+        }
+
+        &::marker {
+          @apply absolute left-0 block;
+        }
+      }
+    }
+
+    ol {
+      @apply list-decimal;
+    }
+
+    p {
+      @apply text-base leading-8 mb-6;
+    }
+
+    .demo {
+      @apply mb-6 overflow-auto;
+    }
+
+    a {
+      @apply dark:text-indigo-400 text-indigo-500 hover:underline decoration-wavy break-words break-all;
+
+      &[target='_blank'] {
+        @apply after:content-['↗'];
+      }
+    }
+
+    h1 {
+      @apply text-3xl leading-9 font-semibold mb-6;
+
+      &::before {
+        content: '#';
+        @apply opacity-60 inline-block mr-2;
+      }
+    }
+
+    h2 {
+      @apply text-2xl leading-9 font-semibold mb-6;
+
+      &::before {
+        content: '#';
+        @apply opacity-60 inline-block mr-2;
+      }
+    }
+
+    h3 {
+      @apply text-xl leading-8 font-semibold mb-6;
+
+      &::before {
+        content: '#';
+        @apply opacity-60 inline-block mr-2;
+      }
+    }
+
+    h4 {
+      @apply text-lg leading-7 font-semibold mb-6;
+
+      &::before {
+        content: '#';
+        @apply opacity-60 inline-block mr-2;
+      }
+    }
+
+    h5 {
+      @apply text-base leading-6 font-semibold mb-6;
+    }
+
+    h6 {
+      @apply text-base leading-6 font-semibold mb-6;
+    }
+  }
+
+  code {
+    @apply text-xs dark:bg-white/20 rounded bg-black/10 px-2 mx-1 py-1;
+  }
+
+  pre {
+    @apply leading-6 px-0 py-0 rounded mb-6 bg-transparent mx-0;
+
+    code {
+      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0;
+    }
+  }
+
+  footer {
+    @apply text-xs py-[4rem] text-center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .astro-code-themes,
+    .astro-code-themes span {
+      color: var(--shiki-dark) !important;
+      background-color: transparent !important;
+      /* Optional, if you also want font styles */
+      font-style: var(--shiki-dark-font-style) !important;
+      font-weight: var(--shiki-dark-font-weight) !important;
+      text-decoration: var(--shiki-dark-text-decoration) !important;
+    }
+  }
+
+  @keyframes slideUp_offset {
+    0% {
+      transform: translateY(10px) translateX(-50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0) translateX(-50%);
+      opacity: 1;
+    }
+  }
+</style>

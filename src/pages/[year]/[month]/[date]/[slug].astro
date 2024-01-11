@@ -1,0 +1,32 @@
+---
+import {getCollection, getEntry} from 'astro:content'
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts')
+  return allPosts.map(post => {
+    let date_str = post.slug
+    let date_array = date_str.split('-')
+    let year = date_array[0]
+    let month = date_array[1]
+    let day = date_array[2]
+    let postPath = post.slug.slice(11)
+    return {
+      params: {
+        slug: postPath,
+        year: year,
+        month: month,
+        date: day
+      },
+      props: {
+        entry: post
+      }
+    }
+  })
+}
+
+const entry = await getEntry('posts', Astro.props.entry.slug)
+const {Content} = await entry.render()
+---
+
+<Content/>
+

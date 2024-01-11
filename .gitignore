@@ -1,14 +1,26 @@
-.DS_Store
-Thumbs.db
-db.json
-*.log
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
 node_modules/
-public/
-.deploy*/
-.idea
-docs
-.vercel
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
 .env
-jw1dev_dist
-dist
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+.idea
+.env
+**/.obsidian
 .wrangler

@@ -1,0 +1,31 @@
+---
+import GlobalStyle from "../components/global-style.astro"
+import Footer from "../components/footer.astro"
+import Header from "../components/header.astro"
+import Nav from "../components/nav.astro"
+import Meta from "../components/meta.astro"
+
+let {pageName} = Astro.props
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="generator" content={Astro.generator}/>
+  <title>一个球的博客</title>
+  <GlobalStyle/>
+  <Meta/>
+</head>
+<body>
+  <aside>
+    <Header/>
+    <Nav highlight={pageName === 'index' ? 'index' : ''}/>
+  </aside>
+	<main>
+    <div id="app">
+      <slot/>
+    </div>
+    <Footer/>
+  </main>
+</body>
+</html>

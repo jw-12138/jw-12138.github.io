@@ -1,0 +1,30 @@
+---
+import GlobalStyle from "../components/global-style.astro"
+const {title, issue} = Astro.props
+import Footer from "../components/footer.astro"
+import Comments from '../components/comments.vue'
+import Meta from "../components/meta.astro";
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta name="generator" content={Astro.generator}/>
+  <title>{title} - 一个球的博客</title>
+  <GlobalStyle/>
+  <Meta/>
+</head>
+<body>
+  <aside>
+    <slot name="header"/>
+  </aside>
+	<main>
+    <div id="app">
+      <slot name="content"/>
+      <Comments client:load github-issue-id={issue} />
+    </div>
+    <Footer></Footer>
+  </main>
+</body>
+</html>

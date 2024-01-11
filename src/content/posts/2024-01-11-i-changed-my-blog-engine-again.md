@@ -1,0 +1,277 @@
+---
+layout: ../../layouts/post-layout.astro
+title: 又双叒叕换博客引擎了
+issue: 101
+draft: true
+date: 2024-01-11T06:44:01.235Z
+tags:
+  - Astro
+  - 博客引擎
+  - 折腾日记
+---
+
+2021 年 6 月，[Astro](https://astro.build) 问世，截止目前，Astro 的最新版本已经更新到了 4.1 。而我开始了解 Astro 也仅仅是上周，但是带给我的感受可以说是前所未有的。
+
+> There’s a simple secret to building a faster website — *just ship less*.
+
+<p style="text-align: center">
+<svg style="display: inline-block" height="40" viewBox="0 0 85 107" class="ml-1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.5893 91.1365C22.7555 86.7178 21.3443 77.4335 23.3583 70.7072C26.8503 74.948 31.6888 76.2914 36.7005 77.0497C44.4374 78.2199 52.0358 77.7822 59.2231 74.2459C60.0453 73.841 60.8052 73.3027 61.7036 72.7574C62.378 74.714 62.5535 76.6892 62.3179 78.6996C61.7452 83.5957 59.3086 87.3778 55.4332 90.2448C53.8835 91.3916 52.2437 92.4167 50.6432 93.4979C45.7262 96.8213 44.3959 100.718 46.2435 106.386C46.2874 106.525 46.3267 106.663 46.426 107C43.9155 105.876 42.0817 104.24 40.6844 102.089C39.2086 99.8193 38.5065 97.3081 38.4696 94.5909C38.4511 93.2686 38.4511 91.9345 38.2733 90.6309C37.8391 87.4527 36.3471 86.0297 33.5364 85.9478C30.6518 85.8636 28.37 87.6469 27.7649 90.4554C27.7187 90.6707 27.6517 90.8837 27.5847 91.1341L27.5893 91.1365Z" fill="currentColor"/>
+<path d="M0 69.5866C0 69.5866 14.3139 62.6137 28.6678 62.6137L39.4901 29.1204C39.8953 27.5007 41.0783 26.3999 42.4139 26.3999C43.7495 26.3999 44.9325 27.5007 45.3377 29.1204L56.1601 62.6137C73.1601 62.6137 84.8278 69.5866 84.8278 69.5866C84.8278 69.5866 60.5145 3.35233 60.467 3.21944C59.7692 1.2612 58.5911 0 57.0029 0H27.8274C26.2392 0 25.1087 1.2612 24.3634 3.21944C24.3108 3.34983 0 69.5866 0 69.5866Z" fill="currentColor"/>
+</svg>
+</p>
+
+说白了，Astro 就是一个模版引擎，这不是什么新鲜玩意儿，在 PHP 称霸 Web 开发的年代，我们有 Smarty，进入 NodeJs 时代之后我们有 EJS、Pug 等基于 JS 的模版引擎。这些模版引擎所做的事情无非就是把页面代码模块化，最后编译成静态文件，这样的应用维护成本相对较低，且成品能够提供很好的搜索引擎优化能力，爬虫能够非常容易获取网站内容，页面的性能也会比单页面应用要更好，因为省去了客户端渲染步骤。市面上有那么多模版引擎，为什么选 Astro 呢？很简单的一个原因，它能集成 Vue/React 组件，并最终编译为静态。
+
+---
+
+既然是换博客引擎，那一定少不了折腾，之前从 Jekyll 转到 Hexo 其实还算是比较无痛的，但是从 Hexo 转到 Astro 就有点蛋疼了，因为 Astro 的定位并不是一个博客引擎，而是模版引擎，意味着 Astro 在代码层面其实更加靠底层，所以大部分博客的功能需要手动实现，新站点倒还好，老站点如果需要实现向下兼容，还真不是一件容易的事情。
+
+### 实现 Hexo 的链接结构
+
+我之前用的链接结构长这样：
+
+```plaintext
+:year/:month/:day/:title.html
+```
+
+但是我的 markdown 文件是平铺的：
+
+```plaintext
+:year-:month-:day-:title.md
+```
+
+而 Astro 使用的是基于文件夹的路由，如果需要达成和 Hexo 一样的效果，最先进我脑子的想法就是把 markdown 文件拆分到对应的 Astro 文件夹（路由）中去，这个想法也仅仅是存在了 3 秒，有没有一种更聪明的做法呢？有！Astro 提供了动态路由功能，和 Vue 的路由一样，对于同种类型的链接，我们只需要定义一遍路由即可，不同的是，Astro 路由的定义需要文件夹结构和名称来完成：
+
+```plaintext
+src
+└── pages
+    └── [year]
+        └── [month]
+            └── [date]
+                └── [slug].astro
+```
+
+中括号里面的字符就是路由变量，我们可以在全局变量`Astro.params`中获取到，而针对任何动态路由，Astro 在文档中也明确指出了，需要导出一个`getStaticPaths`方法，因为 Astro 是一个静态网站生成器，它需要明确知道，动态路由中每一个变量都存在哪些值。
+
+```astro
+---
+// src/pages/[year]/[month]/[date]/[slug].astro
+import {getCollection, getEntry} from 'astro:content'
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts')
+  return allPosts.map(post => {
+    let date_str = post.slug
+    let date_array = date_str.split('-')
+    let year = date_array[0]
+    let month = date_array[1]
+    let day = date_array[2]
+    let postPath = post.slug.slice(11)
+    return {
+      params: {
+        slug: postPath,
+        year: year,
+        month: month,
+        date: day
+      },
+      props: {
+        entry: post
+      }
+    }
+  })
+}
+
+const entry = await getEntry('posts', Astro.props.entry.slug)
+const {Content} = await entry.render()
+---
+
+<Content/>
+
+```
+
+里面 `.astro` 组件的代码就是这样的，我们这边用到了一个`getCollection`和
+`getEntry`的方法，我们暂时先放一旁，后面会讲到。
+
+### 实现 Hexo 的文章分类
+
+在用 Hexo 写博客的时候，我们可以很方面的在 Markdown 里面加上 tags 数组来告诉 Hexo 这篇文章属于那些分类，或者说拥有那些标签，这对于 SEO 来说也是非常有帮助的，Astro 默认没有这个功能，但是实现起来不困难，还是动态路由。我们需要在`pages`文件夹下创建一个新的文件夹叫`tags`，然后再在这个文件夹下创建一个`[tag].astro`的文件，这个文件就是我们的分类页面，然后我们需要在`[tag].astro`里面写入下面的代码：
+
+```astro
+---
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+  let allPosts = await getCollection('posts')
+  let allTags = []
+  allPosts.map(post => {
+    allTags = allTags.concat(post.data.tags)
+  })
+
+  return allTags.map(tag => {
+    return {
+      params: {
+        tag: tag,
+      }
+    }
+  })
+}
+
+let allPosts = await getCollection('posts')
+
+// 获取当前 tag
+const currentTag = Astro.params.tag
+---
+
+{
+  // allPosts.filter ...
+  // allPosts.map ...
+  // 你的列表实现，jsx语法
+}
+
+```
+
+这一步和上一步的代码基本相同，只是这里我们需要先获取所有的 tag，然后再根据当前 tag 来过滤文章，最后渲染出列表。
+
+### Markdown 文件如何安置？
+
+Markdown 文件如果直接放在`src/pages`下面，你的链接结构会变得非常简单，就是`domain.com/:title`，也不会需要动态路由，你的 Markdown 文件名就是你的路由。按照 Astro 官网的描述，任何 `src/pages` 下被支持的文件（`.astro` `.md` `.mdx` `.html` `.js`）都会被编译到路由中去。所以自然而然的，我也把之前的 Markdown 文件全都放到了 pages 里面，但是文章的链接结构会变成这样：
+
+```plaintext
+:year-:month-:day-:title
+```
+
+如果我需要保持原有的链接结构，我就需要把 Markdown 文件放到`src/content/posts`下面，然后再用`getCollection`和`getEntry`来获取文章内容。需要注意的是，这里我们多了一个 posts 文件夹，按照官网的描述，这个文件夹可以看作是一个集合，你可以定义多个集合比如门户、新闻或者博客，这里我们只需要 posts 一个文件夹用来放文章就好了。不过，要让这个集合能被正常使用，我们还需要在`src/contens`下面创建一个`config.js`来定义我们这个集合的行为。
+
+```js
+import { z, defineCollection } from 'astro:content'
+
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    tags: z.array(z.string()).optional(),
+    deprecated: z.boolean().optional(),
+    draft: z.boolean().optional()
+  })
+})
+
+export const collections = {
+  posts: blogCollection
+}
+```
+
+我们用了`defineCollection`这个方法来定义集合中每一篇博客返回的数据（Markdown 中的 Frontmatter），这样我们才可以使用`getCollection`和`getEntry`来获取文章内容了。
+
+```js
+const allPosts = await getCollection('posts')
+const entry = await getEntry('posts', slug)
+```
+
+### 实现 RSS 订阅
+
+前面我们了解到，Astro 支持将 pages 文件夹中的文件转换为路由，其中就包括 js，官方把它叫做 Endpoints，通俗来讲的话，其实就是接口。
+
+我们可以先来看一下这个 js 文件的结构：
+
+```js
+export async function GET(context) {
+  let req = context.request
+
+  return new Response('Hello World!', {
+    headers: {
+      'content-type': 'text/plain'
+    }
+  })
+}
+```
+
+这个文件的结构和 Serverless Functions 非常类似，我们可以在这个文件里面写入我们的逻辑，然后返回一个 Response 对象，在这里我们返回了一个简单的字符串，同样，我们也可以返回一个 XML 文件，这样就可以生成 RSS Feed 了。
+
+```js
+// src/pages/atom.xml.js
+import { getCollection } from 'astro:content'
+
+export async function GET(context) {
+  let allPosts = await getCollection('posts')
+
+  let atom = `<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一个球的博客</title>
+  <link href="https://jw1.dev/"/>
+  <id>https://jw1.dev/</id>`
+
+  allPosts.map((post, index) => {
+    let { date, deprecated, draft } = post.data
+
+    // filter...
+    // sort...
+    // form other data...
+
+    atom += `<entry>
+  your stuff here
+</entry>`
+  })
+
+  atom += `</feed>`
+
+  return new Response(atom, {
+    headers: {
+      // important
+      'content-type': 'application/xml;charset=UTF-8'
+    }
+  })
+}
+```
+
+### 在 MDX 中使用 Vue 组件
+
+最激动人心的功能就是这个了，Astro 可以使用 MDX（JSX in Markdown）作为文章入口，而 MDX 中可以混用 7 种前端框架的组件。
+
+![](https://blog-r2.jw1.dev/POy-y13PUG5cweNy.png)
+
+在使用之前我们需要先安装 Vue 和 MDX 依赖：
+
+```bash
+npx astro add vue
+npx astro add mdx
+```
+
+现在我们就可以在 MDX 文件中使用 Vue 组件了，如果需要在已有的 Markdown 文件中使用的话，我们只需要修改文件后缀为`.mdx`就可以了。
+
+```mdx
+---
+layout: ../../layouts/post-layout.astro
+title: My Awesome Post
+---
+
+import AppAudio from '../../components/app-audio.vue'
+
+<AppAudio src="remote audio file" client:only />
+```
+
+需要注意的是，在 MDX 中传入 props 参数的时候，我们需要遵循 JSX 的语法，而不是 Vue 的语法。
+
+### 一些需要注意的地方
+
+1. 图片懒加载  
+   我需要一个能在`img`标签上插入`loading="lazy"`的机制，理想情况下，对于新博客而言，我推荐你们全部使用 MDX 作为默认的书写介质，这样就可以使用 Astro 自带的`<Image/>`组件，这个组件默认就会带上`loading="lazy"`属性，而且你也可以开发和使用自己的组件，一张图能被玩出花儿来，但是对于老博客迁移过来的 `.md` 文件，一个个修改的话多少还是有点不太现实，虽然可以用 remark 插件来做 post editing（[我查到的实现方式](https://cirry.cn/blog/frontend/astro/astro-implements-lazy-loading-of-images/)），但是牺牲了图片的`alt`属性，这并不是我想要的。
+2. 生成的链接并不包含`.html`后缀
+   如果你之前是用的是 Hexo，那么你的链接结构可能是这样的：`domain.com/:year/:month/:day/:title.html`，但是 Astro 生成的结构其实是这样的：`domain.com/:year/:month/:day/:title/index.html`，要解决这个问题其实也很简单，我们在`src/pages/[year]/[month]/[date]/`中新增一个名为`[slug].html.astro`的文件即可，你可以完全复制`[slug].astro`的逻辑，或者用来重定向，重定向的写法如下：
+
+   ```astro
+   ---
+   import {getCollection} from 'astro:content'
+
+   export async function getStaticPaths() {
+     // 与 `[slug].astro` 一致
+   }
+
+   let {year, month, date, slug} = Astro.params
+
+   ---
+
+   <meta
+     http-equiv="refresh"
+     content={`0; url=/${year}/${month}/${date}/${slug}`}
+   >
+   ```

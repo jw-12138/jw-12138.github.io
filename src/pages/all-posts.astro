@@ -1,0 +1,81 @@
+---
+import IndexLayout from '../layouts/index-layout.astro'
+import dayjs from 'dayjs'
+import { getCollection } from 'astro:content'
+
+const allPosts = await getCollection('posts')
+
+allPosts.sort((a, b) => {
+  let { date: date_a } = a.data
+  let { date: date_b } = b.data
+
+  if (!date_a) {
+    let date_str = a.slug
+
+    let date_array = date_str.split('-')
+    let year = date_array[0]
+    let month = date_array[1]
+    let day = date_array[2]
+
+    date_a = `${year}-${month}-${day}`
+  }
+
+  if (!date_b) {
+    let date_str = b.slug
+
+    let date_array = date_str.split('-')
+    let year = date_array[0]
+    let month = date_array[1]
+    let day = date_array[2]
+
+    date_b = `${year}-${month}-${day}`
+  }
+
+  return new Date(date_b).getTime() - new Date(date_a).getTime()
+})
+---
+
+<IndexLayout>
+  <div>
+    <div class="py-[3rem] italic">All Posts</div>
+    <ul class="mb-4">
+      {
+        allPosts.map((post) => {
+          let { deprecated } = post.data
+
+          let date_str = post.slug
+
+          let date_array = date_str.split('-')
+          let year = date_array[0]
+          let month = date_array[1]
+          let day = date_array[2]
+
+          let date = `${year}-${month}-${day}`
+
+          let datePath = date.split('-').join('/')
+          let postPath = post.slug.slice(11)
+
+          return (
+            <li class="group">
+              <a href={`/${datePath}/${postPath}`} class="block mb-8">
+                <div class="text-xs mb-2">
+                  <span class="opacity-80">
+                    {dayjs(date).format('YYYY-MM-DD')}
+                  </span>
+                  {deprecated && (
+                    <span class="ml-2 text-red-500 dark:text-red-400">
+                      deprecated
+                    </span>
+                  )}
+                </div>
+                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
+                  {post.data.title}
+                </div>
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </div>
+</IndexLayout>

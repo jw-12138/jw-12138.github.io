@@ -1,46 +1,30 @@
 {
-  "name": "jw-12138.github.io",
-  "version": "0.0.0",
-  "private": true,
+  "name": "jw1dev-blog",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "clean": "hexo clean",
-    "serve": "concurrently npm:dev-*",
-    "dev-hexo": "ENV=DEV; hexo server --draft",
-    "dev-scss": "npx sass themes/jw1dev/source/style:themes/jw1dev/source/style --embed-source-map -w",
-    "dev-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css --watch",
-    "build": "hexo clean; node audio_meta_gen.js; hexo generate; node readme_gen.js; npm run build-tailwind",
-    "build-tailwind": "npx tailwindcss -i themes/jw1dev/source/style/tailwind.css -o themes/jw1dev/source/style/tailwind.dist.css",
-    "start": "concurrently npm:dev-*",
-    "deploy": "npm run build; cp _redirects dist/_redirects; cp wrangler.toml dist/wrangler.toml; wrangler pages deploy ./dist --commit-dirty=true --project-name jw1dev-blog; hexo clean",
-    "preview": "hexo server -s -p 5100"
-  },
-  "hexo": {
-    "version": "6.0.0"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "bun-types": "^1.0.1",
-    "cssfilter": "^0.0.10",
-    "dotenv": "^16.0.3",
-    "glob": "^9.0.1",
-    "hexo": "6.0.0",
-    "hexo-babel": "^1.1.14",
-    "hexo-generator-archive": "^1.0.0",
-    "hexo-generator-category": "^1.0.0",
-    "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^2.0.0",
-    "hexo-generator-tag": "^1.0.0",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^4.0.0",
-    "hexo-server": "^2.0.0",
-    "moment-timezone": "^0.5.41",
-    "music-metadata": "^8.1.0",
-    "walk": "^2.3.15"
+    "dayjs": "^1.11.10",
+    "howler": "^2.2.4",
+    "sass": "^1.69.7",
+    "vue": "^3.4.7",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.4",
-    "concurrently": "^6.4.0",
-    "sass": "^1.45.0",
-    "tailwindcss": "^3.3.5"
+    "markdown-it": "^14.0.0",
+    "sanitize-html": "^2.11.0",
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vue": "^4.0.8",
+    "astro": "^4.1.1"
   }
 }

@@ -1,0 +1,20 @@
+---
+let {tags} = Astro.props
+
+if(!tags){
+  tags = []
+}
+
+let description = 'Front-end Developer / Music Producer'
+let keywords = '一个球,前端,网页,web,技术,css3,html5,frontend,front-end,ableton,live,music,production,编曲,音乐制作,制作人,摄影'
+
+tags.forEach((tag) => {
+  keywords += `,${tag}`
+})
+---
+
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="keywords" content={keywords} id="keywords" />
+<meta name="description" content={description} />
+<link rel="alternate" href="/atom.xml" title="一个球的博客" type="application/atom+xml">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">

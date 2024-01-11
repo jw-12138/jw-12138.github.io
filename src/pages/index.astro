@@ -1,0 +1,63 @@
+---
+import IndexLayout from '../layouts/index-layout.astro'
+import dayjs from 'dayjs'
+import { getCollection } from 'astro:content'
+
+const allPosts = await getCollection('posts')
+
+let renderCount = 0
+---
+
+<IndexLayout pageName="index">
+  <div>
+    <div class="py-[3rem] italic">Recently Posted</div>
+    <ul class="mb-4">
+      {
+        allPosts.reverse().map((post) => {
+          if(renderCount > 9){
+            return
+          }
+
+          let { deprecated } = post.data
+
+          let date_str = post.slug
+
+          let date_array = date_str.split('-')
+          let year = date_array[0]
+          let month = date_array[1]
+          let day = date_array[2]
+
+          let date = `${year}-${month}-${day}`
+
+          let datePath = date.split('-').join('/')
+          let postPath = post.slug.slice(11)
+
+          renderCount++
+
+          return (
+            <li class="group">
+              <a href={`${datePath}/${postPath}`} class="block mb-8">
+                <div class="text-xs mb-2">
+                  <span class="opacity-80">
+                    {dayjs(date).format('YYYY-MM-DD')}
+                  </span>
+                  {deprecated && (
+                    <span class="ml-2 text-red-500 dark:text-red-400">
+                      deprecated
+                    </span>
+                  )}
+                </div>
+                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
+                  {post.data.title}
+                </div>
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+    <div class="text-center pt-8">
+      <a href="/all-posts" class="dark:bg-neutral-800 bg-neutral-200 rounded-full text-sm px-6 py-2">查看全部文章</a>
+    </div>
+  </div>
+</IndexLayout>
