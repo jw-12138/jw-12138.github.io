@@ -2,7 +2,6 @@
 layout: ../../layouts/post-layout.astro
 title: 又双叒叕换博客引擎了
 issue: 101
-draft: true
 date: 2024-01-11T06:44:01.235Z
 tags:
   - Astro
