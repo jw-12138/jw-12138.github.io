@@ -3,3 +3,4 @@
 /kover.js/* https://jw-12138.github.io/kover.js/:splat 301
 /lessby* https://jw-12138.github.io/lessby:splat 301
 /frequency-test/* https://frequency-test-ten.vercel.app/:splat 301
+/:year/:month/:date/:title.html /:year/:month/:date/:title/ 301
