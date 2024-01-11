@@ -1,4 +1,5 @@
 ---
+import Analytics from "./analytics.astro"
 let {tags} = Astro.props
 
 if(!tags){
@@ -18,3 +19,4 @@ tags.forEach((tag) => {
 <meta name="description" content={description} />
 <link rel="alternate" href="/atom.xml" title="一个球的博客" type="application/atom+xml">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<Analytics />
