@@ -139,8 +139,11 @@
           class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
           required name="comment" placeholder="提些问题，或者打个招呼吧" v-model="userComment"></textarea>
 
-        <div class="py-2 text-xs dark:text-neutral-400 text-neutral-700 ">
-          评论系统基于 <a target="_blank" class="text-black dark:text-white" href="https://github.com/features/issues">GitHub Issues</a> 制作，发言请记得遵守 <a target="_blank" class="text-black dark:text-white" href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">GitHub 社区行为准则</a>。
+        <div class="py-2 text-xs dark:text-neutral-400 text-neutral-500 ">
+          评论系统基于 <a target="_blank" class="text-black dark:text-white" href="https://github.com/features/issues">GitHub
+          Issues</a> 制作，发言请记得遵守 <a target="_blank" class="text-black dark:text-white"
+                                            href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">GitHub
+          社区行为准则</a>。
         </div>
 
         <div class="text-center mt-2 flex justify-center">
@@ -235,13 +238,40 @@
                 </span>
               </span>
             </div>
-            <div class="mt-2 page-content" style="padding-bottom: 0" v-html="md.render(item.body)"></div>
+            <div class="mt-2 page-content comment-content" style="padding-bottom: 0"
+                 v-html="md.render(item.body)"></div>
+            <div class="mt-[-1rem] relative z-50 flex items-center" data-name="reactions" :class="{
+              'opacity-50 pointer-events-none': listingReactionCommentId === item.id
+            }">
+              <button :disabled="reactingCommentID === item.id" @click="makeReactionToComment('+1', item.id)"
+                      class="disabled:opacity-50 text-xs flex items-center border rounded-full px-2 py-1 border-indigo-500 bg-indigo-100 dark:border-indigo-700 dark:bg-indigo-500/20">
+                <svg v-show="reactingCommentID === item.id" xmlns="http://www.w3.org/2000/svg"
+                     class="icon icon-tabler icon-tabler-loader-2 animate-spin w-4 h-4 mr-1" viewBox="0 0 24 24"
+                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 3a9 9 0 1 0 9 9"/>
+                </svg>
+                👍 {{
+                  commentReactionMap[item.id] && commentReactionMap[item.id]['+1'] ? commentReactionMap[item.id]['+1'].length : 0
+                }} {{ userHasReactedToComment(item.id, '+1') ? '已赞' : '' }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<style scoped lang="scss">
+.comment-content.page-content {
+  pre {
+    max-width: 100%;
+    overflow: auto;
+  }
+}
+</style>
 
 <script setup>
 import {computed, onMounted, ref} from 'vue'
@@ -252,12 +282,20 @@ const md = markdownit({
   linkify: true
 })
 
+const proxy = 'https://blog-api-cf-worker.jw1.dev/proxy'
 let isUserLoggedIn = ref(false)
 let user = ref({})
 let userActionWindow = ref(false)
 let mouseIsInsideWindow = ref(false)
 let sending_comment = ref(false)
 let showPreview = ref(false)
+let owner = 'jw-12138'
+let repo = 'jw-12138.github.io'
+let auth_api = 'https://github.com/login/oauth/authorize'
+let client_id = '550c180c03784f339404'
+let authUrl = computed(() => {
+  return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api.jw1dev.workers.dev/github/callback?r=${location.href}&scope=public_repo`
+})
 
 let userComment = ref('')
 
@@ -270,17 +308,174 @@ let props = defineProps({
 
 let accessToken = ref('')
 
-function goToUser(){
+function goToUser() {
   location.href = user.value.html_url
 }
 
-let owner = 'jw-12138'
-let repo = 'jw-12138.github.io'
-let auth_api = 'https://github.com/login/oauth/authorize'
-let client_id = '550c180c03784f339404'
-let authUrl = computed(() => {
-  return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api.jw1dev.workers.dev/github/callback?r=${location.href}&scope=public_repo`
-})
+let reactingCommentID = ref(null)
+
+let userHasReactedToComment = function (comment_id, reaction) {
+  let username = user.value.login
+
+  if (!commentReactionMap.value[comment_id]) {
+    return null
+  }
+
+  if (!commentReactionMap.value[comment_id][reaction]) {
+    return null
+  }
+
+  let reactions = commentReactionMap.value[comment_id][reaction]
+
+  for (let i = 0; i < reactions.length; i++) {
+    if (reactions[i].user.login === username) {
+      return reactions[i].id
+    }
+  }
+}
+
+async function undoReactionToComment(comment_id, reaction_id) {
+  let c = confirm('确定要取消赞吗？😯')
+
+  if (!c) {
+    return
+  }
+
+  let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions/${reaction_id}`
+
+  let resp
+  try {
+    resp = await githubApi(api, {
+      method: 'DELETE'
+    })
+  } catch (e) {
+    console.log(e)
+    return
+  }
+
+  if (resp.ok) {
+    comments.value = comments.value.map(item => {
+      if (item.id === comment_id) {
+        item.reactions['+1']--
+      }
+      return item
+    })
+
+    commentReactionMap.value[comment_id]['+1'] = commentReactionMap.value[comment_id]['+1'].filter(item => item.id !== reaction_id)
+  } else {
+    // well, something went wrong
+  }
+}
+
+async function makeReactionToComment(reaction, comment_id) {
+
+  if (!isUserLoggedIn.value) {
+    alert('请先登录哦')
+    return false
+  }
+
+  let reaction_id = userHasReactedToComment(comment_id, reaction)
+  if (reaction_id) {
+    reactingCommentID.value = comment_id
+    await undoReactionToComment(comment_id, reaction_id)
+    reactingCommentID.value = null
+    return false
+  }
+
+  let api = proxy + `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
+
+  let resp
+
+  try {
+    reactingCommentID.value = comment_id
+    resp = await fetch(api, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      },
+      body: JSON.stringify({
+        content: reaction
+      })
+    })
+  } catch (e) {
+    console.log(e)
+    alert('点赞失败，请稍后再试')
+    return
+  } finally {
+    reactingCommentID.value = null
+  }
+
+  if (resp.status === 200) {
+    alert('已经点过赞啦，谢谢！')
+    return
+  }
+
+  if (!resp.ok) {
+    alert('点赞失败，请稍后再试')
+    return
+  }
+
+  comments.value = comments.value.map(item => {
+    if (item.id === comment_id) {
+      item.reactions[reaction]++
+    }
+    return item
+  })
+
+  await listReactionsForComment(comment_id)
+}
+
+let commentReactionMap = ref({})
+let listingReactionCommentId = ref(null)
+
+async function listReactionsForComment(comment_id, retryLeft = 3) {
+
+  if (retryLeft === 0) {
+    return false
+  }
+
+  let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
+
+  let resp
+
+  try {
+    listingReactionCommentId.value = comment_id
+    resp = await githubApi(api)
+  } catch (e) {
+    console.log(e)
+    await listReactionsForComment(comment_id, retryLeft - 1)
+    return
+  } finally {
+    listingReactionCommentId.value = null
+  }
+
+  if (!resp.ok) {
+    console.log('获取评论点赞失败')
+    await listReactionsForComment(comment_id, retryLeft - 1)
+    return false
+  }
+
+  try {
+    let reactions = await resp.json()
+
+    let contentBasedReactions = {}
+
+    reactions.forEach(item => {
+      if (!contentBasedReactions[item.content]) {
+        contentBasedReactions[item.content] = [item]
+      } else {
+        contentBasedReactions[item.content].push(item)
+      }
+    })
+
+    commentReactionMap.value[comment_id] = contentBasedReactions
+  } catch (e) {
+    console.log(e)
+    await listReactionsForComment(comment_id, retryLeft - 1)
+    return false
+  }
+}
 
 function login() {
   location.href = authUrl.value
@@ -289,7 +484,7 @@ function login() {
 function mention(username) {
   let space = ' '
 
-  if(userComment.value[userComment.value.length - 1] === ' ' || userComment.value.length === 0){
+  if (userComment.value[userComment.value.length - 1] === ' ' || userComment.value.length === 0) {
     space = ''
   }
 
@@ -337,26 +532,32 @@ function logout() {
   user.value = {}
   sending_comment.value = false
   userActionWindow.value = false
+  mouseIsInsideWindow.value = false
+
+  reactingCommentID.value = null
+  listingReactionCommentId.value = null
 }
 
 async function githubApi(endpoint, init = {}) {
-  let baseUrl = 'https://api.github.com'
-  let accessToken = localStorage.getItem('access_token')
+  let headers = {
+    'Accept': 'application/vnd.github+json',
+    ...init.headers
+  }
+
+  if (localStorage.getItem('access_token')) {
+    headers['Authorization'] = 'Bearer ' + localStorage.getItem('access_token')
+  }
 
   let _init = {
     method: init.method || 'GET',
-    headers: {
-      'Accept': 'application/vnd.github+json',
-      'Authorization': 'Bearer ' + accessToken,
-      ...init.headers
-    }
+    headers
   }
 
   if (init.body) {
     _init.body = init.body
   }
 
-  return await fetch(baseUrl + endpoint, _init)
+  return await fetch(proxy + endpoint, _init)
 }
 
 /**
@@ -383,6 +584,11 @@ async function getComments() {
 
   comments.value = await resp.json()
   gettingComments.value = false
+
+  for (let i = 0; i < comments.value.length; i++) {
+    // don't go with await here
+    listReactionsForComment(comments.value[i].id)
+  }
 }
 
 let deletingId = ref(null)
@@ -403,6 +609,7 @@ async function deleteComment(id) {
   } catch (e) {
     alert('删除失败，请稍后再试')
     console.log(e)
+    return false
   } finally {
     deletingId.value = null
   }
