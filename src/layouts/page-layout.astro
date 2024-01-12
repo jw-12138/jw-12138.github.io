@@ -21,6 +21,7 @@ import Meta from "../components/meta.astro";
   </aside>
 	<main>
     <div id="app">
+      <div class="py-[3rem] italic">{title}</div>
       <slot name="content"/>
       <Comments client:load github-issue-id={issue} />
     </div>

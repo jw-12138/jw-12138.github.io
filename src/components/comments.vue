@@ -185,7 +185,7 @@
     </section>
 
     <section data-name="comments" class="pt-8">
-      <h1 class="text-center text-base font-black italic"><span>{{ comments.length }}</span> 条评论</h1>
+      <div class="text-center text-base font-black italic"><span>{{ comments.length }}</span> 条评论</div>
       <div v-show="comments.length > 0">
         <div class="comments-list">
           <div class="item pt-8" v-for="(item, i) in comments" :id="item.id" :style="{
@@ -200,7 +200,7 @@
                   <img :src="item.user.avatar_url" alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2">
                   <span class="flex items-center">
                     {{ item.user.login }}
-                    <span class="author-tag dark:bg-white/20 bg-black/10 px-2 py-1 text-xs rounded ml-2"
+                    <span class="author-tag px-2 text-xs rounded relative top-[-.5rem] left-[-.3rem] scale-75"
                           v-if="item.author_association === 'OWNER'">Author</span>
                   </span>
                 </a>
