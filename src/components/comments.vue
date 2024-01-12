@@ -252,9 +252,11 @@
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M12 3a9 9 0 1 0 9 9"/>
                 </svg>
-                <span class="group-hover:text-2xl transition-all mr-1">👍</span> {{
+                <span class="transition-all mr-1" :class="{
+                  'text-2xl rotate-[-10deg]': userHasReactedToComment(item.id, '+1')
+                }">👍</span> {{
                   commentReactionMap[item.id] && commentReactionMap[item.id]['+1'] ? commentReactionMap[item.id]['+1'].length : 0
-                }} {{ userHasReactedToComment(item.id, '+1') ? '已赞' : '' }}
+                }}
               </button>
             </div>
           </div>
