@@ -79,7 +79,7 @@
             </span>
           </button>
           <button @click="login" v-show="!isUserLoggedIn"
-                  class="text-sm px-8 py-2 rounded-full dark:bg-neutral-800 flex items-center mx-auto bg-neutral-800 text-white shadow-2xl">
+                  class="text-sm px-8 py-2 rounded-full dark:bg-white dark:text-black flex items-center mx-auto bg-neutral-800 text-white shadow-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" viewBox="0 0 24 24" stroke-width="2"
                  stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -94,12 +94,12 @@
     <section data-name="textarea" class="pt-8" v-show="isUserLoggedIn">
       <form action="javascript:" @submit="sendComment">
         <div class="flex mb-2">
-          <button type="button" @click="showPreview = false" class="rounded-full text-sm px-4 py-2 flex items-center"
+          <button type="button" @click="showPreview = false" class="rounded-full text-sm px-4 py-2 flex items-center group transition-all"
                   :class="{
             'dark:bg-white dark:text-black bg-neutral-800 text-white': !showPreview,
             'dark:bg-white/10 dark:text-white bg-black/5 text-black': showPreview
           }">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1"
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -110,11 +110,11 @@
             书写
           </button>
           <button type="button" @click="showPreview = true"
-                  class="rounded-full text-sm px-4 py-2 ml-2 flex items-center" :class="{
+                  class="rounded-full text-sm px-4 py-2 ml-2 flex items-center group" :class="{
           'dark:bg-white dark:text-black bg-neutral-800 text-white': showPreview,
           'dark:bg-white/10 dark:text-white bg-black/5 text-black': !showPreview
           }">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1"
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -148,8 +148,8 @@
 
         <div class="text-center mt-2 flex justify-center">
           <button v-show="!sending_comment" type="submit"
-                  class="rounded-full px-4 py-2 bg-neutral-800 text-white dark:bg-white dark:text-black text-sm flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send w-4 h-4 mr-2"
+                  class="rounded-full px-4 py-2 bg-neutral-800 text-white dark:bg-white dark:text-black text-sm flex items-center group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send w-4 h-4 mr-2 top-0 group-hover:top-[-.2rem] relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -191,7 +191,7 @@
       <div class="text-center text-base font-black italic"><span>{{ comments.length }}</span> 条评论</div>
       <div v-show="comments.length > 0">
         <div class="comments-list">
-          <div class="item pt-8" v-for="(item, i) in comments" :id="item.id" :style="{
+          <div class="item pt-8 py-8" v-for="(item, i) in comments" :id="item.id" :style="{
         opacity: deletingId === item.id ? '.3' : '1'
       }">
             <div class="datetime text-xs opacity-70">
@@ -210,7 +210,7 @@
                 <span class="comment-actions flex-shrink-0" v-show="isUserLoggedIn">
                   <button :disabled="deletingId === item.id" v-show="user.login === item.user.login"
                           @click="deleteComment(item.id)"
-                          class="py-1 px-2 rounded-full bg-neutral-100 hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex">
+                          class="py-1 px-2 rounded-full bg-neutral-100 hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex transition-all">
                     <svg v-show="deletingId !== item.id" xmlns="http://www.w3.org/2000/svg"
                          class="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path
@@ -243,19 +243,12 @@
             <div class="mt-[-1rem] relative z-50 flex items-center" data-name="reactions" :class="{
               'opacity-50 pointer-events-none': listingReactionCommentId === item.id
             }">
-              <button :disabled="reactingCommentID === item.id" @click="makeReactionToComment('+1', item.id)"
-                      class="disabled:opacity-50 text-xs flex items-center border rounded-full px-2 py-1 max-h-[1.5rem] group border-indigo-500 bg-indigo-100 dark:border-indigo-700 dark:bg-indigo-500/20">
-                <svg v-show="reactingCommentID === item.id" xmlns="http://www.w3.org/2000/svg"
-                     class="icon icon-tabler icon-tabler-loader-2 animate-spin w-4 h-4 mr-1" viewBox="0 0 24 24"
-                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M12 3a9 9 0 1 0 9 9"/>
-                </svg>
-                <span class="transition-all mr-1" :class="{
-                  'text-2xl rotate-[-10deg]': userHasReactedToComment(item.id, '+1')
-                }">👍</span> {{
-                  commentReactionMap[item.id] && commentReactionMap[item.id]['+1'] ? commentReactionMap[item.id]['+1'].length : 0
+              <button v-for="button in reactionButtons" :title="button.means" :disabled="reactingCommentID.includes(item.id)" @click="makeReactionToComment(button.content, item.id)"
+                      class="mr-1 disabled:opacity-50 text-xs flex items-center rounded-full px-2 py-1 max-h-[1.5rem] group text-indigo-800 dark:text-indigo-50 dark:bg-indigo-900 bg-indigo-50">
+                <span class="transition-all mr-1 relative top-0 group-hover:text-2xl group-hover:top-[-.2rem]" :class="{
+                  'text-2xl rotate-[-12deg] top-[-.2rem]': userHasReactedToComment(item.id, button.content)
+                }">{{button.label}}</span> {{
+                  commentReactionMap[item.id] && commentReactionMap[item.id][button.content] ? commentReactionMap[item.id][button.content].length : 0
                 }}
               </button>
             </div>
@@ -299,13 +292,42 @@ let props = defineProps({
   }
 })
 
+let reactionButtons = [
+  {
+    label: '👍',
+    content: '+1',
+    means: 'agree!'
+  },
+  {
+    label: '👎',
+    content: '-1',
+    means: 'disagree!'
+  },
+  {
+    label: '❤️',
+    content: 'heart',
+    means: 'love it!'
+  },
+  {
+    label: '🚀',
+    content: 'rocket',
+    means: 'let\'s go!'
+  },
+  {
+    label: '👀',
+    content: 'eyes',
+    means: 'interesting!'
+  }
+]
+
 let accessToken = ref('')
 
 function goToUser() {
   location.href = user.value.html_url
 }
 
-let reactingCommentID = ref(null)
+let reactingCommentID = ref([])
+let reactingIds = ref([])
 
 let userHasReactedToComment = function (comment_id, reaction) {
   let username = user.value.login
@@ -327,34 +349,32 @@ let userHasReactedToComment = function (comment_id, reaction) {
   }
 }
 
-async function undoReactionToComment(comment_id, reaction_id) {
-  let c = confirm('确定要取消赞吗？😯')
-
-  if (!c) {
-    return
-  }
-
+async function undoReactionToComment(comment_id, reaction_id, content) {
   let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions/${reaction_id}`
 
   let resp
   try {
+    reactingIds.value.push(reaction_id)
     resp = await githubApi(api, {
       method: 'DELETE'
     })
   } catch (e) {
     console.log(e)
     return
+  } finally {
+    reactingIds.value = reactingIds.value.filter(item => item !== reaction_id)
   }
 
   if (resp.ok) {
     comments.value = comments.value.map(item => {
       if (item.id === comment_id) {
-        item.reactions['+1']--
+        item.reactions[content]--
       }
       return item
     })
 
-    commentReactionMap.value[comment_id]['+1'] = commentReactionMap.value[comment_id]['+1'].filter(item => item.id !== reaction_id)
+    // remove from commentReactionMap
+    commentReactionMap.value[comment_id][content] = commentReactionMap.value[comment_id][content].filter(item => item.id !== reaction_id)
   } else {
     // well, something went wrong
   }
@@ -369,9 +389,9 @@ async function makeReactionToComment(reaction, comment_id) {
 
   let reaction_id = userHasReactedToComment(comment_id, reaction)
   if (reaction_id) {
-    reactingCommentID.value = comment_id
-    await undoReactionToComment(comment_id, reaction_id)
-    reactingCommentID.value = null
+    reactingCommentID.value.push(comment_id)
+    await undoReactionToComment(comment_id, reaction_id, reaction)
+    reactingCommentID.value = reactingCommentID.value.filter(item => item !== comment_id)
     return false
   }
 
@@ -380,7 +400,8 @@ async function makeReactionToComment(reaction, comment_id) {
   let resp
 
   try {
-    reactingCommentID.value = comment_id
+    reactingCommentID.value.push(comment_id)
+    reactingIds.value.push(reaction_id)
     resp = await fetch(api, {
       method: 'POST',
       headers: {
@@ -396,7 +417,8 @@ async function makeReactionToComment(reaction, comment_id) {
     alert('点赞失败，请稍后再试')
     return
   } finally {
-    reactingCommentID.value = null
+    reactingCommentID.value = reactingCommentID.value.filter(item => item !== comment_id)
+    reactingIds.value = reactingIds.value.filter(item => item !== reaction_id)
   }
 
   if (resp.status === 200) {
@@ -527,7 +549,7 @@ function logout() {
   userActionWindow.value = false
   mouseIsInsideWindow.value = false
 
-  reactingCommentID.value = null
+  reactingCommentID.value = []
   listingReactionCommentId.value = null
 }
 
@@ -549,6 +571,10 @@ async function githubApi(endpoint, init = {}) {
   if (init.body) {
     _init.body = init.body
   }
+
+  endpoint = endpoint + '?' + new URLSearchParams({
+    t: Date.now()
+  })
 
   return await fetch(proxy + endpoint, _init)
 }
@@ -636,7 +662,6 @@ async function checkLogin() {
   }
 
   if (!resp.ok) {
-    localStorage.clear()
     return false
   }
 
