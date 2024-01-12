@@ -10,6 +10,11 @@ tags:
   - Bun
 ---
 
+import Img from '../../components/img.astro'
+export const components = {
+  img: Img
+}
+
 2023 年 9 月 8 日，Bun.js 发出了第一个稳定版本：Bun 1.0
 
 > Bun 1.0 is finally here.
@@ -165,7 +170,7 @@ Bun 居然还比 NodeJs 慢了 40ms。
 
 就在我基本拥抱 Serverless 的时候，Bun 出现了，一开始我会觉得它的出现有点不是时候，但是亲自上手之后，可以说 Bun 又激起了我写 Server-ful App 的兴趣，不仅仅因为性能，更加是因为 Bun 的开发体验，很多经过重构的 API 简直美的不像话！
 
-<br>
+<br/>
 
 **读取文件**：
 
@@ -174,7 +179,7 @@ const file = Bun.file('package.json')
 const contents = await file.text()
 ```
 
-<br>
+<br/>
 
 **WebSocket**：
 
