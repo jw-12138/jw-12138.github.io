@@ -264,15 +264,6 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-.comment-content.page-content {
-  pre {
-    max-width: 100%;
-    overflow: auto;
-  }
-}
-</style>
-
 <script setup>
 import {computed, onMounted, ref} from 'vue'
 import dayjs from 'dayjs'
