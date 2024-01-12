@@ -6,15 +6,15 @@ let {highlight} = Astro.props
   <div>
     <div class="flex text-sm pt-4 lg:block lg:pt-8">
       <div>
-        <a href="/" class={highlight === 'index' ? 'opacity-100' : 'opacity-70'}>首页</a>
+        <a href="/" class={highlight === 'index' ? 'opacity-100 font-black' : 'opacity-70'}>Home</a>
       </div>
       <div class="px-2 lg:px-0">/</div>
       <div>
-        <a href="/friends" class={highlight === 'friends' ? 'opacity-100' : 'opacity-70'}>友链</a>
+        <a href="/friends" class={highlight === 'friends' ? 'opacity-100 font-black' : 'opacity-70'}>Friends</a>
       </div>
       <div class="px-2 lg:px-0">/</div>
       <div>
-        <a href="/about" class={highlight === 'about' ? 'opacity-100' : 'opacity-70'}>关于我</a>
+        <a href="/about" class={highlight === 'about' ? 'opacity-100 font-black' : 'opacity-70'}>About</a>
       </div>
       <div class="px-2 lg:px-0">/</div>
       <div>
