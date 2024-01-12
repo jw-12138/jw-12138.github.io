@@ -94,12 +94,14 @@
     <section data-name="textarea" class="pt-8" v-show="isUserLoggedIn">
       <form action="javascript:" @submit="sendComment">
         <div class="flex mb-2">
-          <button type="button" @click="showPreview = false" class="rounded-full text-sm px-4 py-2 flex items-center group transition-all"
+          <button type="button" @click="showPreview = false"
+                  class="rounded-full text-sm px-4 py-2 flex items-center group transition-all"
                   :class="{
             'dark:bg-white dark:text-black bg-neutral-800 text-white': !showPreview,
             'dark:bg-white/10 dark:text-white bg-black/5 text-black': showPreview
           }">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -114,7 +116,8 @@
           'dark:bg-white dark:text-black bg-neutral-800 text-white': showPreview,
           'dark:bg-white/10 dark:text-white bg-black/5 text-black': !showPreview
           }">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -149,7 +152,8 @@
         <div class="text-center mt-2 flex justify-center">
           <button v-show="!sending_comment" type="submit"
                   class="rounded-full px-4 py-2 bg-neutral-800 text-white dark:bg-white dark:text-black text-sm flex items-center group">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send w-4 h-4 mr-2 top-0 group-hover:top-[-.2rem] relative transition-all"
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="icon icon-tabler icon-tabler-send w-4 h-4 mr-2 top-0 group-hover:top-[-.2rem] relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -250,11 +254,13 @@
             <div class="mt-[-1rem] relative z-50 flex items-center" data-name="reactions" :class="{
               'opacity-50 pointer-events-none': listingReactionCommentId === item.id
             }">
-              <button v-for="button in reactionButtons" :title="button.means" :disabled="reactingCommentID.includes(item.id)" @click="makeReactionToComment(button.content, item.id)"
+              <button v-for="button in reactionButtons" :title="button.means"
+                      :disabled="reactingCommentID.includes(item.id)"
+                      @click="makeReactionToComment(button.content, item.id)"
                       class="mr-1 disabled:opacity-50 text-xs flex items-center rounded-full px-2 py-1 max-h-[1.5rem] group text-indigo-800 dark:text-indigo-50 dark:bg-indigo-900 bg-indigo-50">
                 <span class="transition-all mr-1 relative top-0 group-hover:text-2xl group-hover:top-[-.2rem]" :class="{
                   'text-2xl rotate-[-12deg] top-[-.2rem]': userHasReactedToComment(item.id, button.content)
-                }">{{button.label}}</span> {{
+                }">{{ button.label }}</span> {{
                   commentReactionMap[item.id] && commentReactionMap[item.id][button.content] ? commentReactionMap[item.id][button.content].length : 0
                 }}
               </button>
