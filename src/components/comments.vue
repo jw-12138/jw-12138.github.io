@@ -188,7 +188,14 @@
     </section>
 
     <section data-name="comments" class="pt-8">
-      <div class="text-center text-base font-black italic"><span>{{ comments.length }}</span> 条评论</div>
+      <div class="text-center text-base font-black italic">
+        <span v-show="comments.length > 0">
+          <span>{{ comments.length }}</span> 条评论
+        </span>
+        <span v-show="comments.length === 0" class="font-normal text-sm opacity-80 not-italic">
+          目前还没有评论～
+        </span>
+      </div>
       <div v-show="comments.length > 0">
         <div class="comments-list">
           <div class="item pt-8 py-8" v-for="(item, i) in comments" :id="item.id" :style="{
