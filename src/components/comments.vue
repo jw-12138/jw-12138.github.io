@@ -244,7 +244,7 @@
               'opacity-50 pointer-events-none': listingReactionCommentId === item.id
             }">
               <button :disabled="reactingCommentID === item.id" @click="makeReactionToComment('+1', item.id)"
-                      class="disabled:opacity-50 text-xs flex items-center border rounded-full px-2 py-1 border-indigo-500 bg-indigo-100 dark:border-indigo-700 dark:bg-indigo-500/20">
+                      class="disabled:opacity-50 text-xs flex items-center border rounded-full px-2 py-1 max-h-[1.5rem] group border-indigo-500 bg-indigo-100 dark:border-indigo-700 dark:bg-indigo-500/20">
                 <svg v-show="reactingCommentID === item.id" xmlns="http://www.w3.org/2000/svg"
                      class="icon icon-tabler icon-tabler-loader-2 animate-spin w-4 h-4 mr-1" viewBox="0 0 24 24"
                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -252,7 +252,7 @@
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M12 3a9 9 0 1 0 9 9"/>
                 </svg>
-                👍 {{
+                <span class="group-hover:text-2xl transition-all mr-1">👍</span> {{
                   commentReactionMap[item.id] && commentReactionMap[item.id]['+1'] ? commentReactionMap[item.id]['+1'].length : 0
                 }} {{ userHasReactedToComment(item.id, '+1') ? '已赞' : '' }}
               </button>
