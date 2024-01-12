@@ -314,16 +314,6 @@ let reactionButtons = [
     label: '❤️',
     content: 'heart',
     means: 'love it!'
-  },
-  {
-    label: '🚀',
-    content: 'rocket',
-    means: 'let\'s go!'
-  },
-  {
-    label: '👀',
-    content: 'eyes',
-    means: 'interesting!'
   }
 ]
 
