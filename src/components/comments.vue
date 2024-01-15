@@ -192,7 +192,7 @@
     </section>
 
     <section data-name="comments" class="pt-8">
-      <div class="text-center text-base font-black italic">
+      <div class="text-center text-base font-black italic" v-show="!gettingComments">
         <span v-show="comments.length > 0">
           <span>{{ comments.length }}</span> 条评论
         </span>
