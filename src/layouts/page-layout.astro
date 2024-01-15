@@ -1,9 +1,11 @@
 ---
 import GlobalStyle from "../components/global-style.astro"
 const {title, issue} = Astro.props
+let path = Astro.url.pathname
 import Footer from "../components/footer.astro"
 import Comments from '../components/comments.vue'
 import Meta from "../components/meta.astro";
+import Og from "../components/og.astro";
 ---
 
 <html lang="en">
@@ -14,6 +16,7 @@ import Meta from "../components/meta.astro";
   <title>{title} - 一个球的博客</title>
   <GlobalStyle/>
   <Meta/>
+  <Og path={path} title={title}/>
 </head>
 <body>
   <aside>

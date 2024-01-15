@@ -4,6 +4,7 @@ import Footer from "../components/footer.astro"
 import Header from "../components/header.astro"
 import Nav from "../components/nav.astro"
 import Meta from "../components/meta.astro"
+import Og from "../components/og.astro"
 
 let {pageName} = Astro.props
 ---
@@ -15,6 +16,7 @@ let {pageName} = Astro.props
   <title>一个球的博客</title>
   <GlobalStyle/>
   <Meta/>
+  <Og title="一个球的博客" path="/"/>
 </head>
 <body>
   <aside>

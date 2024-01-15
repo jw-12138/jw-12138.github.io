@@ -5,7 +5,9 @@ import Nav from "../components/nav.astro"
 import Comments from "../components/comments.vue";
 import Footer from "../components/footer.astro";
 import Meta from "../components/meta.astro";
+import Og from "../components/og.astro";
 const {title, highlight, issue} = Astro.props.frontmatter
+let path = Astro.url.pathname
 ---
 
 <html lang="en">
@@ -16,6 +18,7 @@ const {title, highlight, issue} = Astro.props.frontmatter
   <title>{title} - 一个球的博客</title>
   <GlobalStyle/>
   <Meta/>
+  <Og title={title} path={path} />
 </head>
 <body>
   <aside>
