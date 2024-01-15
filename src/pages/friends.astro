@@ -33,6 +33,12 @@ const friends = [
     url: 'https://prinsss.github.io/',
     slogan: '半吊子全栈开发者的日常',
     avatar: 'https://printempw.github.io/images/favicon.png'
+  },
+  {
+    name: 'Tony He',
+    url: 'https://www.ouorz.com/',
+    slogan: 'Living an absolutely not meaningless life with totally not unachievable goals.',
+    avatar: 'https://www.ouorz.com/favicon.ico'
   }
 ]
 ---
@@ -55,9 +61,18 @@ const friends = [
               href={friend.url}
               class="item flex items-center content-center mb-4 py-4 transition-all group rounded opacity-90 hover:opacity-100 group"
             >
-              <div class="">
-                <div class="text-[1rem] group-hover:font-black">{friend.name}</div>
-                <div class="text-xs mt-2 opacity-80">{friend.slogan}</div>
+              <div class="flex flex-wrap items-center">
+                <div class="w-full sm:w-8 sm:mr-4 sm:mb-0 mb-2 flex items-center justify-start h-8">
+                  <img
+                    class="w-8 h-8 mx-0 m-0 rounded"
+                    src={friend.avatar}
+                    alt={friend.name}
+                  />
+                </div>
+                <div class="flex items-center flex-wrap">
+                  <div class="text-[1rem] group-hover:font-black w-full">{friend.name}</div>
+                  <div class="text-xs mt-2 opacity-80 w-full">{friend.slogan}</div>
+                </div>
               </div>
             </a>
           )
