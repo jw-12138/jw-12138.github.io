@@ -202,13 +202,13 @@
       </div>
       <div v-show="comments.length > 0">
         <div class="comments-list">
-          <div class="item pt-8 py-8" v-for="(item, i) in comments" :id="item.id" :style="{
+          <div class="item pt-8 py-8" v-for="(item, i) in comments" :id="item.id" :key="item.id" :style="{
         opacity: deletingId === item.id ? '.3' : '1'
       }">
             <div class="datetime text-xs opacity-70">
               {{ dayjs(item.created_at).format('YYYY-MM-DD HH:mm:ss') }}
             </div>
-            <div class="user flex mt-2 w-full">
+            <div class="user flex mt-2 w-full relative">
               <span class="outer-box flex justify-between w-full">
                 <a :href="item.user.html_url" target="_blank" class="user-info flex items-center text-sm">
                   <img :src="item.user.avatar_url" alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2">
@@ -218,24 +218,24 @@
                           v-if="item.author_association === 'OWNER'">Author</span>
                   </span>
                 </a>
-                <span class="comment-actions flex-shrink-0" v-show="isUserLoggedIn">
-                  <button :disabled="deletingId === item.id" v-show="user.login === item.user.login"
-                          @click="deleteComment(item.id)"
-                          class="py-1 px-2 rounded-full bg-neutral-100 hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex transition-all">
-                    <svg v-show="deletingId !== item.id" xmlns="http://www.w3.org/2000/svg"
-                         class="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path
-                      stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0"/><path d="M10 11l0 6"/><path
-                      d="M14 11l0 6"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/><path
-                      d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/></svg>
-                    <svg v-show="deletingId === item.id" xmlns="http://www.w3.org/2000/svg"
-                         class="icon icon-tabler icon-tabler-loader-2 w-4 h-4 mr-1 animate-spin" viewBox="0 0 24 24"
-                         stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round"
-                         stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 3a9 9 0 1 0 9 9"/>
-                          </svg> 删除
+                <span class="comment-actions flex-shrink-0" v-show="isUserLoggedIn && editingCommentId !== item.id">
+                  <button
+                    class="dark:bg-neutral-800 bg-neutral-200 rounded-full w-8 h-8 overflow-hidden flex items-center justify-center"
+                    v-show="user.login === item.user.login" @click="toggleCommentActionDropdown(item.id)"
+                    @mouseenter="mouseIsInActionWindow = true" @mouseleave="mouseIsInActionWindow = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x w-4 h-4" :class="{
+                      'hidden': commentActionDropdown !== item.id
+                    }"
+                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                      d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots w-4 h-4" :class="{
+                      hidden: commentActionDropdown === item.id
+                    }"
+                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                      d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path
+                      d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
                   </button>
                   <button
                     class="h-[30px] leading-[28px] px-2 rounded-full bg-neutral-100 hover:bg-neutral-800 hover:text-white dark:bg-neutral-800 dark:text-white dark:hover:text-black dark:hover:bg-neutral-200 text-xs"
@@ -248,10 +248,93 @@
                     d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"/></svg></button>
                 </span>
               </span>
+              <div data-name="more actions"
+                   class="absolute z-[500] top-[2.25rem] right-0 rounded-[1rem] dark:bg-neutral-800 px-2 py-2 bg-neutral-100 border-neutral-200 dark:border-neutral-700 border-[1px] shadow-xl"
+                   style="animation: 0.15s ease 0s 1 normal none running slideUp;"
+                   v-if="commentActionDropdown === item.id">
+                <button
+                  class="py-2 px-4 rounded-[.5rem] text-xs flex transition-all dark:hover:bg-white/10 hover:bg-black/10"
+                  @click="editingCommentId = item.id; editingCommentContent = item.body">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle w-4 h-4 mr-1"
+                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                       stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 15l8.385 -8.415a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3z"/>
+                    <path d="M16 5l3 3"/>
+                    <path d="M9 7.07a7 7 0 0 0 1 13.93a7 7 0 0 0 6.929 -6"/>
+                  </svg>
+                  编辑
+                </button>
+                <button :disabled="deletingId === item.id"
+                        @click="deleteComment(item.id)"
+                        class="py-2 px-4 rounded-[.5rem] hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex transition-all">
+                  <svg v-show="deletingId !== item.id" xmlns="http://www.w3.org/2000/svg"
+                       class="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 7l16 0"/>
+                    <path d="M10 11l0 6"/>
+                    <path
+                      d="M14 11l0 6"/>
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/>
+                    <path
+                      d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/>
+                  </svg>
+                  删除
+                </button>
+              </div>
             </div>
             <div class="mt-2 page-content comment-content" style="padding-bottom: 0"
-                 v-html="md.render(item.body)"></div>
-            <div class="mt-[-1rem] relative z-50 flex items-center" data-name="reactions" :class="{
+                 v-html="md.render(item.body)" v-show="editingCommentId !== item.id"></div>
+            <div class="mt-2" data-name="edit area" v-if="editingCommentId === item.id">
+              <form action="javascript:" @submit="confirmEditing">
+                <div>
+                  <textarea
+                    class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
+                    required v-model="editingCommentContent" id="comment_editing_textarea"></textarea>
+                </div>
+                <div class="mt-2 flex">
+                  <button type="button" @click="editingCommentId = null; editingCommentContent = ''"
+                          :disabled="submittingEditedComment"
+                          class="rounded-full text-sm dark:bg-neutral-700 bg-neutral-200 px-4 py-2 flex items-center disabled:opacity-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x w-4 h-4 mr-1"
+                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M18 6l-12 12"/>
+                      <path d="M6 6l12 12"/>
+                    </svg>
+                    取消
+                  </button>
+                  <button type="submit"
+                          :disabled="submittingEditedComment"
+                          class="rounded-full text-sm dark:bg-white dark:text-black bg-neutral-800 text-white px-4 py-2 flex items-center ml-2 disabled:opacity-50">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="icon icon-tabler icon-tabler-loader-2 animate-spin w-4 h-4 mr-1" :class="{
+                      'hidden': !submittingEditedComment,
+                      'block': submittingEditedComment
+                    }" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M12 3a9 9 0 1 0 9 9"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check w-4 h-4 mr-1"
+                         :class="{
+                      'hidden': submittingEditedComment,
+                      'block': !submittingEditedComment
+                    }" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M5 12l5 5l10 -10"/>
+                    </svg>
+                    确认编辑
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="mt-[-1rem] relative z-50 flex items-center" data-name="reactions"
+                 v-show="editingCommentId !== item.id" :class="{
               'opacity-50 pointer-events-none': listingReactionCommentId === item.id
             }">
               <button v-for="button in reactionButtons" :title="button.means"
@@ -280,6 +363,24 @@ import markdownit from 'markdown-it'
 const md = markdownit({
   linkify: true
 })
+
+let originalTextParser = md.renderer.rules.text
+
+// mention parser
+md.renderer.rules.text = function (tokens, idx) {
+  let text = tokens[idx].content
+  let mentionRegex = /@([a-zA-Z0-9_-]+)/g
+
+  if (mentionRegex.test(text)) {
+    text = text.replace(mentionRegex, (match, username) => {
+      return `<a href="https://github.com/${username}" target="_blank">@${username}</a>`
+    })
+
+    return text
+  }
+
+  return originalTextParser(tokens, idx)
+}
 
 const proxy = 'https://blog-api-cf-worker.jw1.dev/proxy'
 let isUserLoggedIn = ref(false)
@@ -324,6 +425,73 @@ let reactionButtons = [
 ]
 
 let accessToken = ref('')
+
+let commentActionDropdown = ref('')
+let mouseIsInActionWindow = ref(false)
+let editingCommentId = ref(null)
+let editingCommentContent = ref('')
+let submittingEditedComment = ref(false)
+
+async function confirmEditing() {
+  let id = editingCommentId.value
+  let content = editingCommentContent.value
+
+  if (!id) {
+    // reset
+    editingCommentId.value = null
+    editingCommentContent.value = ''
+    return
+  }
+
+  if (!content) {
+    alert('评论内容不能为空哦')
+    return
+  }
+
+  if (submittingEditedComment.value) {
+    return
+  }
+
+  let endpoint = `/repos/${owner}/${repo}/issues/comments/${id}`
+
+  let resp
+
+  try {
+    submittingEditedComment.value = true
+    resp = await githubApi(endpoint, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        body: content
+      })
+    })
+  } catch (e) {
+    console.log(e)
+    alert('编辑失败，再试一次？')
+  } finally {
+    submittingEditedComment.value = false
+  }
+
+  if (!resp.ok) {
+    alert('编辑失败，再试一次？')
+    return
+  }
+
+  if (resp.status === 200) {
+    editingCommentId.value = null
+    editingCommentContent.value = ''
+
+    await getComments(id)
+  }
+
+}
+
+function toggleCommentActionDropdown(id) {
+  if (commentActionDropdown.value) {
+    commentActionDropdown.value = ''
+  } else {
+    commentActionDropdown.value = id
+  }
+}
 
 function goToUser() {
   location.href = user.value.html_url
@@ -506,6 +674,12 @@ function mention(username) {
     space = ''
   }
 
+  if(editingCommentId.value){
+    editingCommentContent.value += `${space}@${username} `
+    document.getElementById('comment_editing_textarea').focus()
+    return
+  }
+
   userComment.value += `${space}@${username} `
   document.getElementById('comment_textarea').focus()
 }
@@ -589,7 +763,7 @@ async function githubApi(endpoint, init = {}) {
 let comments = ref([])
 let gettingComments = ref(false)
 
-async function getComments() {
+async function getComments(update_id) {
   let endpoint = 'https://blog-api-cf-worker.jw1.dev/github/forward?action=get_issue_comments&number=' + props.githubIssueId
 
   if (gettingComments.value) {
@@ -606,6 +780,11 @@ async function getComments() {
 
   comments.value = await resp.json()
   gettingComments.value = false
+
+  if (update_id) {
+    listReactionsForComment(update_id)
+    return false
+  }
 
   for (let i = 0; i < comments.value.length; i++) {
     // don't go with await here
@@ -698,11 +877,21 @@ onMounted(async () => {
     if (mouseIsInsideWindow.value === false) {
       userActionWindow.value = false
     }
+
+    if (mouseIsInActionWindow.value === false) {
+      commentActionDropdown.value = false
+    }
   })
 
   window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && userActionWindow.value) {
-      userActionWindow.value = false
+    if (e.key === 'Escape') {
+      if (userActionWindow.value) {
+        userActionWindow.value = false
+      }
+
+      if (commentActionDropdown.value) {
+        commentActionDropdown.value = false
+      }
     }
   })
 
