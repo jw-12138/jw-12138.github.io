@@ -142,14 +142,11 @@
           class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
           required name="comment" placeholder="提些问题，或者打个招呼吧" v-model="userComment"></textarea>
 
-        <div class="pt-2 text-xs dark:text-neutral-400 text-neutral-500 ">
+        <div class="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
           评论系统基于 <a target="_blank" class="text-black dark:text-white" href="https://github.com/features/issues">GitHub
           Issues</a> 制作，发言请记得遵守 <a target="_blank" class="text-black dark:text-white"
                                             href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">GitHub
-          社区行为准则</a>。
-        </div>
-        <div class="pb-2 mt-2 text-xs dark:text-neutral-400 text-neutral-500">
-          如果您比较关心隐私，可以查看<a href="/privacy" class="text-black dark:text-white">隐私声明</a>。
+          社区行为准则</a>。如果您比较好奇本博客是如何处理数据的，可以查看<a href="/privacy" class="text-black dark:text-white">隐私声明</a>。
         </div>
 
         <div class="text-center mt-2 flex justify-center">
