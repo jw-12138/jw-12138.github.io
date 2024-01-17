@@ -392,9 +392,9 @@ let showPreview = ref(false)
 let owner = 'jw-12138'
 let repo = 'jw-12138.github.io'
 let auth_api = 'https://github.com/login/oauth/authorize'
-let client_id = '550c180c03784f339404'
+let client_id = 'Iv1.717c117523f74671'
 let authUrl = computed(() => {
-  return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api.jw1dev.workers.dev/github/callback?r=${location.href}&scope=public_repo`
+  return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api-cf-worker.jw1.dev/gh/cb?r=${location.href}`
 })
 
 let userComment = ref('')
@@ -674,7 +674,7 @@ function mention(username) {
     space = ''
   }
 
-  if(editingCommentId.value){
+  if (editingCommentId.value) {
     editingCommentContent.value += `${space}@${username} `
     document.getElementById('comment_editing_textarea').focus()
     return
@@ -736,7 +736,7 @@ async function githubApi(endpoint, init = {}) {
     ...init.headers
   }
 
-  if (localStorage.getItem('access_token')) {
+  if ((localStorage.getItem('access_token') && isUserLoggedIn.value) || endpoint === '/user') {
     headers['Authorization'] = 'Bearer ' + localStorage.getItem('access_token')
   }
 
@@ -763,20 +763,14 @@ async function githubApi(endpoint, init = {}) {
 let comments = ref([])
 let gettingComments = ref(false)
 
-async function getComments(update_id) {
-  let endpoint = 'https://blog-api-cf-worker.jw1.dev/github/forward?action=get_issue_comments&number=' + props.githubIssueId
+async function getComments(update_id) {props.githubIssueId
 
   if (gettingComments.value) {
     return
   }
 
   gettingComments.value = true
-  let resp = await fetch(endpoint, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+  let resp = await githubApi(`/repos/${owner}/${repo}/issues/${props.githubIssueId}/comments`)
 
   comments.value = await resp.json()
   gettingComments.value = false
