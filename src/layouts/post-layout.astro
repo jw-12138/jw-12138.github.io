@@ -6,6 +6,7 @@ import Nav from '../components/nav.astro'
 import Comments from '../components/comments.vue'
 import Meta from '../components/meta.astro'
 import Og from "../components/og.astro";
+import '../style/main.scss'
 
 let { title, tags, style, deprecated, issue } = Astro.props.frontmatter
 
@@ -120,7 +121,7 @@ let path = Astro.url.pathname
       window.addEventListener('load', function () {
         handleVideoAutoPlay()
         handleLinks()
-        handleImgClick()
+        // handleImgClick()
         window.addEventListener('scroll', handleVideoAutoPlay)
       })
     </script>
