@@ -20,7 +20,7 @@
         <div
           @mouseenter="mouseIsInsideWindow = true"
           @mouseleave="mouseIsInsideWindow = false"
-          class="border-neutral-100 dark:border-neutral-700 border absolute w-[200px] px-2 py-2 rounded-[1rem] dark:bg-neutral-800 bg-white shadow left-1/2 bottom-[37px]"
+          class="border absolute w-[200px] px-2 py-2 rounded-[1rem] dark:bg-neutral-800 bg-white left-1/2 bottom-[37px] popup-border"
           style="transform: translateX(-50%); animation: slideUp_offset .15s ease"
           v-if="userActionWindow">
           <button
@@ -52,7 +52,7 @@
         <div
           @mouseenter="mouseIsInsideWindow = true"
           @mouseleave="mouseIsInsideWindow = false"
-          class="user-window dark:bg-neutral-800 bg-neutral-100 h-[32px] items-center inline-block border-none relative z-10 rounded-full hover:shadow-xl transition-all">
+          class="user-window dark:bg-neutral-800 bg-neutral-100 h-[32px] items-center inline-block border-none relative z-10 rounded-full hover:shadow-xl transition-all ">
           <button v-show="isUserLoggedIn"
                   class="flex h-[32px] items-center border-none cursor-pointer select-none rounded-full"
                   @click.stop="userActionWindow = !userActionWindow" @focus="mouseIsInsideWindow = true"
@@ -249,7 +249,7 @@
                 </span>
               </span>
               <div data-name="more actions"
-                   class="absolute z-[500] top-[2.25rem] right-0 rounded-[1rem] dark:bg-neutral-800 px-2 py-2 bg-neutral-100 border-neutral-200 dark:border-neutral-700 border-[1px] shadow-xl"
+                   class="absolute z-[500] top-[2.25rem] right-0 rounded-[1rem] dark:bg-neutral-800 px-2 py-2 bg-neutral-100 border-[1px] shadow-xl popup-border"
                    style="animation: 0.15s ease 0s 1 normal none running slideUp;"
                    v-if="commentActionDropdown === item.id">
                 <button
