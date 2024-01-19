@@ -406,10 +406,12 @@ async function renderMarkdown(markdown) {
 }
 
 let userCommentHTML = ref('')
+let lastEdit = ''
 watch(showPreview, function (val) {
-  if (val) {
+  if (val && userComment.value !== lastEdit && userComment.value) {
     renderMarkdown(userComment.value).then(html => {
       userCommentHTML.value = html
+      lastEdit = userComment.value
     })
   }
 })
@@ -724,9 +726,18 @@ async function sendComment() {
     sending_comment.value = false
   }
 
+  let json = await resp.json()
+
   if (resp.ok) {
+    json.bodyHTML = await renderMarkdown(json.body)
+    comments.value.push(json)
     userComment.value = ''
-    await getComments()
+
+    setTimeout(function(){
+      document.getElementById(json.id).scrollIntoView({
+        behavior: 'smooth'
+      })
+    }, 300)
   }
 }
 
