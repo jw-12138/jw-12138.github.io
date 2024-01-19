@@ -132,7 +132,7 @@
         </div>
         <div v-show="showPreview"
              class="rounded-2xl block px-4 py-4 border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm page-content"
-             v-html="userComment ? md.render(userComment) : '先写点什么吧'">
+             v-html="userComment ? userCommentHTML : '先写点什么吧'">
 
         </div>
 
@@ -146,7 +146,8 @@
           评论系统基于 <a target="_blank" class="text-black dark:text-white" href="https://github.com/features/issues">GitHub
           Issues</a> 制作，发言请记得遵守 <a target="_blank" class="text-black dark:text-white"
                                             href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">GitHub
-          社区行为准则</a>。如果您比较好奇本博客是如何处理数据的，可以查看<a href="/privacy" class="text-black dark:text-white">隐私声明</a>。
+          社区行为准则</a>。如果您比较好奇本博客是如何处理数据的，可以查看<a href="/privacy"
+                                                                           class="text-black dark:text-white">隐私声明</a>。
         </div>
 
         <div class="text-center mt-2 flex justify-center">
@@ -285,8 +286,19 @@
                 </button>
               </div>
             </div>
+            <div class="mt-2 flex items-center pb-8" v-show="!item.bodyHTML">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 animate-spin"
+                   width="24"
+                   height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 3a9 9 0 1 0 9 9"/>
+              </svg>
+            </div>
             <div class="mt-2 page-content comment-content" style="padding-bottom: 0"
-                 v-html="md.render(item.body)" v-show="editingCommentId !== item.id"></div>
+                 v-html="item.bodyHTML ? item.bodyHTML : '' "
+                 v-show="editingCommentId !== item.id && item.bodyHTML"></div>
             <div class="mt-2" data-name="edit area" v-if="editingCommentId === item.id">
               <form action="javascript:" @submit="confirmEditing">
                 <div>
@@ -343,9 +355,9 @@
                       class="mr-1 disabled:opacity-50 text-xs flex items-center rounded-full px-2 py-1 max-h-[1.5rem] group text-indigo-800 dark:text-indigo-50 dark:bg-indigo-900 bg-indigo-50">
                 <span class="transition-all mr-1 relative top-0 group-hover:text-2xl group-hover:top-[-.2rem]" :class="{
                   'text-2xl rotate-[-12deg] top-[-.2rem]': userHasReactedToComment(item.id, button.content)
-                }">{{ button.label }}</span> {{
+                }">{{ button.label }}</span> <span class="font-mono">{{
                   commentReactionMap[item.id] && commentReactionMap[item.id][button.content] ? commentReactionMap[item.id][button.content].length : 0
-                }}
+                }}</span>
               </button>
             </div>
           </div>
@@ -356,31 +368,9 @@
 </template>
 
 <script setup>
-import {computed, onMounted, ref} from 'vue'
+import {computed, onMounted, ref, watch} from 'vue'
 import dayjs from 'dayjs'
-import markdownit from 'markdown-it'
-
-const md = markdownit({
-  linkify: true
-})
-
-let originalTextParser = md.renderer.rules.text
-
-// mention parser
-md.renderer.rules.text = function (tokens, idx) {
-  let text = tokens[idx].content
-  let mentionRegex = /@([a-zA-Z0-9_-]+)/g
-
-  if (mentionRegex.test(text)) {
-    text = text.replace(mentionRegex, (match, username) => {
-      return `<a href="https://github.com/${username}" target="_blank">@${username}</a>`
-    })
-
-    return text
-  }
-
-  return originalTextParser(tokens, idx)
-}
+import '../style/hljs.scss'
 
 const proxy = 'https://blog-api-cf-worker.jw1.dev/proxy'
 let isUserLoggedIn = ref(false)
@@ -395,6 +385,33 @@ let auth_api = 'https://github.com/login/oauth/authorize'
 let client_id = 'Iv1.717c117523f74671'
 let authUrl = computed(() => {
   return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api-cf-worker.jw1.dev/gh/cb?r=${location.href}`
+})
+
+async function renderMarkdown(markdown) {
+  let endpoint = 'https://blog-api-cf-worker.jw1.dev/markdown/render'
+
+  let resp = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      text: markdown
+    })
+  })
+
+  let json = await resp.json()
+
+  return json.html
+}
+
+let userCommentHTML = ref('')
+watch(showPreview, function (val) {
+  if (val) {
+    renderMarkdown(userComment.value).then(html => {
+      userCommentHTML.value = html
+    })
+  }
 })
 
 let userComment = ref('')
@@ -763,19 +780,41 @@ async function githubApi(endpoint, init = {}) {
 let comments = ref([])
 let gettingComments = ref(false)
 
-async function getComments(update_id) {props.githubIssueId
+async function getComments(update_id) {
 
   if (gettingComments.value) {
     return
   }
 
+  if(update_id){
+    let theComment = comments.value.find(item => item.id === update_id)
+    theComment.bodyHTML = ''
+  }
+
   gettingComments.value = true
   let resp = await githubApi(`/repos/${owner}/${repo}/issues/${props.githubIssueId}/comments`)
 
-  comments.value = await resp.json()
+  let remoteComments = await resp.json()
   gettingComments.value = false
 
-  if (update_id) {
+  if (!update_id) {
+    comments.value = remoteComments
+  } else {
+    comments.value = comments.value.map(item => {
+      if (item.id === update_id) {
+        item = remoteComments.find(item => item.id === update_id)
+        item.bodyHTML = ''
+      }
+      return item
+    })
+
+    let theComment = comments.value.find(item => item.id === update_id)
+
+    if (theComment.body) {
+      theComment.bodyHTML = ''
+      theComment.bodyHTML = await renderMarkdown(theComment.body)
+    }
+
     listReactionsForComment(update_id)
     return false
   }
@@ -783,6 +822,10 @@ async function getComments(update_id) {props.githubIssueId
   for (let i = 0; i < comments.value.length; i++) {
     // don't go with await here
     listReactionsForComment(comments.value[i].id)
+
+    if (comments.value[i].body) {
+      comments.value[i].bodyHTML = await renderMarkdown(comments.value[i].body)
+    }
   }
 }
 

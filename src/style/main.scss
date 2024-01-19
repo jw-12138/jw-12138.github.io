@@ -146,11 +146,42 @@ video {
     @apply text-xs dark:bg-white/20 rounded bg-black/10 px-2 mx-1 py-1;
   }
 
+  .code-fence-wrapper{
+    @extend .popup-border;
+    pre {
+      @apply mb-0 px-2 pb-2 overflow-auto text-[0.8125rem];
+    }
+
+    div[data-name="title bar"] {
+      @apply overflow-hidden text-center text-xs py-2 flex;
+    }
+
+    div[data-name="mac-like icons"] {
+      @apply flex items-center px-2;
+      span {
+        @apply rounded-full w-[12px] h-[12px] bg-neutral-100 dark:bg-neutral-700 mr-2;
+
+        &[data-name="red"] {
+          @apply bg-red-500 dark:bg-red-400;
+        }
+
+        &[data-name="yellow"] {
+          @apply bg-yellow-400 dark:bg-yellow-500;
+        }
+
+        &[data-name="green"] {
+          @apply bg-green-500 dark:bg-green-500;
+        }
+      }
+    }
+
+    @apply rounded-xl overflow-hidden pb-0 mb-6;
+  }
+
   pre {
     border: none;
-    border-right: 1px solid;
-    @apply leading-6 px-0 py-0 mb-6 bg-transparent mx-0 dark:border-r-neutral-800 border-r-neutral-200;
-  
+    @apply leading-6 px-0 py-0 mb-6 bg-transparent mx-0;
+
     code {
       @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0;
     }

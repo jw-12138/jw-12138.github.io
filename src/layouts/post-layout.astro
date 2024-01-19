@@ -8,9 +8,9 @@ import Meta from '../components/meta.astro'
 import Og from "../components/og.astro";
 import '../style/main.scss'
 
-let { title, tags, style, deprecated, issue } = Astro.props.frontmatter
+let {title, tags, style, deprecated, issue} = Astro.props.frontmatter
 
-let { year, month, date } = Astro.params
+let {year, month, date} = Astro.params
 
 if (!tags) {
   tags = []
@@ -22,108 +22,110 @@ let path = Astro.url.pathname
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title} - 一个球的博客</title>
-    <GlobalStyle />
-    <Meta tags={tags} />
-    <Og title={title} path={path} />
-  </head>
-  <body>
-    <input type="hidden" value={style_str} id="customStyle" />
-    <script>
-      try {
-        let styleTag = document.createElement('style')
-        let customStyleInput = document.getElementById('customStyle')
-        styleTag.innerHTML = customStyleInput.value
-        document.head.appendChild(styleTag)
-      } catch (e) {}
-    </script>
-    <aside>
-      <Header />
-      <Nav />
-    </aside>
-    <main>
-      <div id="app">
-        <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
-        <div class="text-xs pb-[3rem] pt-2">
-          <span class="opacity-80">{`${year}-${month}-${date}`}</span>
-          {
-            tags.map((tag) => {
-              return (
-                <>
-                  <span class="px-1">/</span>
-                  <a href={`/tags/${tag}`}>{tag}</a>
-                </>
-              )
-            })
-          }
-          {
-            () => {
-              if (deprecated) {
-                return (
-                  <>
-                    <span class="px-1">/</span>
-                    <span class="text-red-500 font-black">Deprecated</span>
-                  </>
-                )
-              }
-            }
-          }
-        </div>
-        <div class="page-content">
-          <slot />
-        </div>
-        <Comments client:load github-issue-id={issue} />
-      </div>
-      <Footer />
-    </main>
-    <script>
-      let handleVideoAutoPlay = function () {
-        let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop
-        let windowHeight =
-          document.documentElement.clientHeight || document.body.clientHeight
-
-        document
-          .querySelectorAll('.page-content video')
-          .forEach((el, index) => {
-            let aboutToShow = el.offsetTop - scrollTop - windowHeight
-
-            if (aboutToShow < -50 && el.paused && el.muted) {
-              el.play()
-            }
-
-            if (aboutToShow < -50 && el.paused && !el.muted) {
-              el.setAttribute('preload', 'auto')
-            }
-          })
-      }
-
-      let handleLinks = function () {
-        document.querySelectorAll('.page-content a').forEach((el, index) => {
-          if (el.href.indexOf('http') === 0) {
-            el.setAttribute('target', '_blank')
-          }
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta name="generator" content={Astro.generator}/>
+  <title>{title} - 一个球的博客</title>
+  <GlobalStyle/>
+  <Meta tags={tags}/>
+  <Og title={title} path={path}/>
+</head>
+<body>
+<input type="hidden" value={style_str} id="customStyle"/>
+<script>
+  try {
+    let styleTag = document.createElement('style')
+    let customStyleInput = document.getElementById('customStyle')
+    styleTag.innerHTML = customStyleInput.value
+    document.head.appendChild(styleTag)
+  } catch (e) {
+  }
+</script>
+<aside>
+  <Header/>
+  <Nav/>
+</aside>
+<main>
+  <div id="app">
+    <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
+    <div class="text-xs pb-[3rem] pt-2">
+      <span class="opacity-80">{`${year}-${month}-${date}`}</span>
+      {
+        tags.map((tag) => {
+          return (
+            <>
+              <span class="px-1">/</span>
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </>
+          )
         })
       }
-
-      let handleImgClick = function () {
-        document.querySelectorAll('.page-content img').forEach((el) => {
-          el.addEventListener('click', function () {
-            window.open(el.src)
-          })
-        })
+      {
+        () => {
+          if (deprecated) {
+            return (
+              <>
+                <span class="px-1">/</span>
+                <span class="text-red-500 font-black">Deprecated</span>
+              </>
+            )
+          }
+        }
       }
+    </div>
+    <div class="page-content">
+      <slot/>
+    </div>
+    <Comments client:load github-issue-id={issue}/>
+  </div>
+  <Footer/>
+</main>
+<script>
+  let handleVideoAutoPlay = function () {
+    let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop
+    let windowHeight =
+      document.documentElement.clientHeight || document.body.clientHeight
 
-      window.addEventListener('load', function () {
-        handleVideoAutoPlay()
-        handleLinks()
-        // handleImgClick()
-        window.addEventListener('scroll', handleVideoAutoPlay)
+    document
+      .querySelectorAll('.page-content video')
+      .forEach((el, index) => {
+        let aboutToShow = el.offsetTop - scrollTop - windowHeight
+
+        if (aboutToShow < -50 && el.paused && el.muted) {
+          el.play()
+        }
+
+        if (aboutToShow < -50 && el.paused && !el.muted) {
+          el.setAttribute('preload', 'auto')
+        }
       })
-    </script>
-  </body></html
+  }
+
+  let handleLinks = function () {
+    document.querySelectorAll('.page-content a').forEach((el, index) => {
+      if (el.href.indexOf('http') === 0) {
+        el.setAttribute('target', '_blank')
+      }
+    })
+  }
+
+  let handleImgClick = function () {
+    document.querySelectorAll('.page-content img').forEach((el) => {
+      el.addEventListener('click', function () {
+        window.open(el.src)
+      })
+    })
+  }
+
+  window.addEventListener('load', function () {
+    handleVideoAutoPlay()
+    handleLinks()
+    // handleImgClick()
+    window.addEventListener('scroll', handleVideoAutoPlay)
+  })
+</script>
+</body>
+</html
 >

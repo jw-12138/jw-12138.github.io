@@ -5,7 +5,6 @@ import vue from '@astrojs/vue'
 
 import remarkPluginImage from './src/utils/remark-plugin-image.js'
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), mdx(), vue()],
   site: 'https://jw1.dev',
