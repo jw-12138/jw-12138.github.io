@@ -131,7 +131,7 @@
           </button>
         </div>
         <div v-show="showPreview"
-             class="rounded-2xl block px-4 py-4 border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm page-content"
+             class="rounded-2xl block px-4 py-4 border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm page-content comment-content"
              v-html="userComment ? userCommentHTML : '先写点什么吧'">
 
         </div>
@@ -370,7 +370,28 @@
 <script setup>
 import {computed, onMounted, ref, watch} from 'vue'
 import dayjs from 'dayjs'
-import '../style/hljs.scss'
+import MarkdownIt from 'markdown-it'
+
+const md = MarkdownIt({
+  linkify: true
+})
+
+// mention parser
+let originalTextParser = md.renderer.rules.text
+md.renderer.rules.text = function (tokens, idx) {
+  let text = tokens[idx].content
+  let mentionRegex = /@([a-zA-Z0-9_-]+)/g
+
+  if (mentionRegex.test(text)) {
+    text = text.replace(mentionRegex, (match, username) => {
+      return `<a href="https://github.com/${username}" target="_blank">@${username}</a>`
+    })
+
+    return text
+  }
+
+  return originalTextParser(tokens, idx)
+}
 
 const proxy = 'https://blog-api-cf-worker.jw1.dev/proxy'
 let isUserLoggedIn = ref(false)
@@ -388,21 +409,7 @@ let authUrl = computed(() => {
 })
 
 async function renderMarkdown(markdown) {
-  let endpoint = 'https://blog-api-cf-worker.jw1.dev/markdown/render'
-
-  let resp = await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      text: markdown
-    })
-  })
-
-  let json = await resp.json()
-
-  return json.html
+  return md.render(markdown)
 }
 
 let userCommentHTML = ref('')
@@ -733,7 +740,7 @@ async function sendComment() {
     comments.value.push(json)
     userComment.value = ''
 
-    setTimeout(function(){
+    setTimeout(function () {
       document.getElementById(json.id).scrollIntoView({
         behavior: 'smooth'
       })
@@ -797,7 +804,7 @@ async function getComments(update_id) {
     return
   }
 
-  if(update_id){
+  if (update_id) {
     let theComment = comments.value.find(item => item.id === update_id)
     theComment.bodyHTML = ''
   }
