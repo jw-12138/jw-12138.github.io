@@ -384,7 +384,7 @@ md.renderer.rules.text = function (tokens, idx) {
 
   if (mentionRegex.test(text)) {
     text = text.replace(mentionRegex, (match, username) => {
-      return `<a href="https://github.com/${username}" target="_blank">@${username}</a>`
+      return `<a href="https://github.com/${username}">@${username}</a>`
     })
 
     return text
@@ -408,7 +408,30 @@ let authUrl = computed(() => {
   return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api-cf-worker.jw1.dev/gh/cb?r=${location.href}`
 })
 
+
+function containsCodeBlocks(markdown) {
+  const codeBlockPattern = /```(.*?)```/gs
+  return codeBlockPattern.test(markdown)
+}
+
 async function renderMarkdown(markdown) {
+  if (containsCodeBlocks(markdown)) {
+    try {
+      let resp = await githubApi('/markdown', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text: markdown
+        })
+      })
+
+      return await resp.text()
+    } catch (e) {
+      return md.render(markdown)
+    }
+  }
   return md.render(markdown)
 }
 
