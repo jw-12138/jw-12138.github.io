@@ -3,7 +3,7 @@
 html,
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   tab-size: 2;
   @apply bg-white text-black dark:bg-neutral-950 dark:text-white min-w-[320px];
 }
@@ -171,6 +171,38 @@ video {
     max-width: 100%;
     overflow: auto;
     font-size: 0.875rem;
+  }
+}
+
+.markdown-alert {
+  @apply dark:text-white/70 text-black/70 mb-2;
+
+  &.markdown-alert-note {
+    @apply text-blue-700 dark:text-blue-400;
+  }
+
+  &.markdown-alert-tip {
+    @apply text-green-700 dark:text-green-400;
+  }
+
+  &.markdown-alert-warning {
+    @apply text-yellow-700 dark:text-yellow-400;
+  }
+
+  &.markdown-alert-caution {
+    @apply text-red-700 dark:text-red-400;
+  }
+
+  &.markdown-alert-important {
+    @apply text-purple-700 dark:text-purple-400;
+  }
+
+  .markdown-alert-title {
+    @apply flex items-center text-sm font-semibold text-inherit mb-0;
+
+    svg {
+      fill: currentColor;
+    }
   }
 }
 
