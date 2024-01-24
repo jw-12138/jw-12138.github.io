@@ -376,7 +376,9 @@ const md = MarkdownIt({
   linkify: true
 })
 
-// mention parser
+/**
+ * parse @username to link
+ */
 let originalTextParser = md.renderer.rules.text
 md.renderer.rules.text = function (tokens, idx) {
   let text = tokens[idx].content
@@ -408,12 +410,21 @@ let authUrl = computed(() => {
   return `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api-cf-worker.jw1.dev/gh/cb?r=${location.href}`
 })
 
-
+/**
+ * check if markdown contains any code fence
+ * @param {string} markdown
+ * @returns {boolean}
+ */
 function containsCodeBlocks(markdown) {
   const codeBlockPattern = /```(.*?)```/gs
   return codeBlockPattern.test(markdown)
 }
 
+/**
+ * render markdown to html
+ * @param markdown
+ * @returns {Promise<string>}
+ */
 async function renderMarkdown(markdown) {
   if (containsCodeBlocks(markdown)) {
     try {
@@ -481,6 +492,10 @@ let editingCommentId = ref(null)
 let editingCommentContent = ref('')
 let submittingEditedComment = ref(false)
 
+/**
+ * confirm and submit edited comment
+ * @returns {Promise<void>}
+ */
 async function confirmEditing() {
   let id = editingCommentId.value
   let content = editingCommentContent.value
@@ -534,6 +549,10 @@ async function confirmEditing() {
 
 }
 
+/**
+ * toggle comment action dropdown
+ * @param {number} id - comment id
+ */
 function toggleCommentActionDropdown(id) {
   if (commentActionDropdown.value) {
     commentActionDropdown.value = ''
@@ -542,6 +561,9 @@ function toggleCommentActionDropdown(id) {
   }
 }
 
+/**
+ * go to user page
+ */
 function goToUser() {
   location.href = user.value.html_url
 }
@@ -549,6 +571,12 @@ function goToUser() {
 let reactingCommentID = ref([])
 let reactingIds = ref([])
 
+/**
+ * check if user has reacted to a comment
+ * @param {number} comment_id
+ * @param {string} reaction
+ * @returns {number|null}
+ */
 let userHasReactedToComment = function (comment_id, reaction) {
   let username = user.value.login
 
@@ -569,6 +597,13 @@ let userHasReactedToComment = function (comment_id, reaction) {
   }
 }
 
+/**
+ * undo reaction to comment
+ * @param {number} comment_id
+ * @param {number} reaction_id
+ * @param {string} content
+ * @returns {Promise<void>}
+ */
 async function undoReactionToComment(comment_id, reaction_id, content) {
   let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions/${reaction_id}`
 
@@ -600,6 +635,12 @@ async function undoReactionToComment(comment_id, reaction_id, content) {
   }
 }
 
+/**
+ * make reaction to comment
+ * @param {string} reaction
+ * @param {number} comment_id
+ * @returns {Promise<boolean>}
+ */
 async function makeReactionToComment(reaction, comment_id) {
 
   if (!isUserLoggedIn.value) {
@@ -664,6 +705,12 @@ async function makeReactionToComment(reaction, comment_id) {
 let commentReactionMap = ref({})
 let listingReactionCommentId = ref(null)
 
+/**
+ * 获取评论点赞
+ * @param comment_id
+ * @param retryLeft
+ * @returns {Promise<boolean>}
+ */
 async function listReactionsForComment(comment_id, retryLeft = 3) {
 
   if (retryLeft === 0) {
@@ -712,10 +759,17 @@ async function listReactionsForComment(comment_id, retryLeft = 3) {
   }
 }
 
+/**
+ * go to log in
+ */
 function login() {
   location.href = authUrl.value
 }
 
+/**
+ * mention a user
+ * @param username
+ */
 function mention(username) {
   let space = ' '
 
@@ -733,6 +787,10 @@ function mention(username) {
   document.getElementById('comment_textarea').focus()
 }
 
+/**
+ * send comment
+ * @returns {Promise<void>}
+ */
 async function sendComment() {
   if (sending_comment.value) {
     return
@@ -771,6 +829,10 @@ async function sendComment() {
   }
 }
 
+/**
+ * log out
+ * @returns {boolean}
+ */
 function logout() {
   let c = confirm('确定要退出登录吗？😯')
   if (!c) {
@@ -788,6 +850,12 @@ function logout() {
   listingReactionCommentId.value = null
 }
 
+/**
+ * GitHub api helper
+ * @param {string} endpoint
+ * @param {object} init
+ * @returns {Promise<Response>}
+ */
 async function githubApi(endpoint, init = {}) {
   let headers = {
     'Accept': 'application/vnd.github+json',
@@ -898,11 +966,13 @@ async function deleteComment(id) {
   }
 }
 
-/**
- * 检查登录状态
- */
+
 let gettingUser = ref(false)
 
+/**
+ * check login status
+ * @returns {Promise<boolean>}
+ */
 async function checkLogin() {
   accessToken.value = localStorage.getItem('access_token')
 
