@@ -12,12 +12,13 @@
   "dependencies": {
     "dayjs": "^1.11.10",
     "howler": "^2.2.4",
+    "idb-keyval": "^6.2.1",
     "sass": "^1.69.7",
     "tailwindcss": "^3.4.1",
+    "unstorage": "^1.10.1",
     "vue": "^3.4.7"
   },
   "devDependencies": {
-    "sanitize-html": "^2.11.0",
     "@astrojs/mdx": "^2.0.3",
     "@astrojs/rss": "^4.0.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -26,6 +27,7 @@
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
     "markdown-it": "^14.0.0",
+    "sanitize-html": "^2.11.0",
     "unist-util-visit": "^5.0.0"
   }
 }

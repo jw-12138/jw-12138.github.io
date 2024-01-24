@@ -32,7 +32,7 @@ import '../style/main.scss'
       <div class="page-content">
         <slot/>
       </div>
-      <Comments client:load github-issue-id={issue} />
+      <Comments client:only="vue" github-issue-id={issue} />
     </div>
     <Footer/>
   </main>

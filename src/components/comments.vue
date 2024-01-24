@@ -371,6 +371,16 @@
 import {computed, onMounted, ref, watch} from 'vue'
 import dayjs from 'dayjs'
 import MarkdownIt from 'markdown-it'
+import {createStorage} from 'unstorage'
+import indexedDbDriver from 'unstorage/drivers/indexedb'
+
+const storage = createStorage({
+  driver: indexedDbDriver({
+    base: '',
+    dbName: 'blog_idb',
+    storeName: 'blog_store'
+  })
+})
 
 const md = MarkdownIt({
   linkify: true
@@ -423,9 +433,22 @@ function containsCodeBlocks(markdown) {
 /**
  * render markdown to html
  * @param markdown
+ * @param {?number} id
+ * @param {?string} updated_at
  * @returns {Promise<string>}
  */
-async function renderMarkdown(markdown) {
+async function renderMarkdown(markdown, id = -1, updated_at = '') {
+  if (id && updated_at) {
+    let timestamp = dayjs(updated_at).unix()
+    let key = `cache:markdown:comment:${id}:${timestamp}`
+
+    let cached = await storage.getItem(key)
+
+    if (cached) {
+      return cached
+    }
+  }
+
   if (containsCodeBlocks(markdown)) {
     try {
       let resp = await githubApi('/markdown', {
@@ -439,7 +462,17 @@ async function renderMarkdown(markdown) {
         })
       })
 
-      return await resp.text()
+      let remoteText = await resp.text()
+      if (id && updated_at) {
+        let timestamp = dayjs(updated_at).unix()
+        let key = `cache:markdown:comment:${id}:${timestamp}`
+        let oldCacheKeys = await storage.getKeys(`cache:markdown:comment:${id}`)
+        oldCacheKeys.map(async key => {
+          await storage.removeItem(key)
+        })
+        await storage.setItem(key, remoteText)
+      }
+      return remoteText
     } catch (e) {
       return md.render(markdown)
     }
@@ -818,7 +851,7 @@ async function sendComment() {
   let json = await resp.json()
 
   if (resp.ok) {
-    json.bodyHTML = await renderMarkdown(json.body)
+    json.bodyHTML = await renderMarkdown(json.body, json.id, json.updated_at)
     comments.value.push(json)
     userComment.value = ''
 
@@ -922,7 +955,7 @@ async function getComments(update_id) {
 
     if (theComment.body) {
       theComment.bodyHTML = ''
-      theComment.bodyHTML = await renderMarkdown(theComment.body)
+      theComment.bodyHTML = await renderMarkdown(theComment.body, theComment.id, theComment.updated_at)
     }
 
     listReactionsForComment(update_id)
@@ -934,7 +967,7 @@ async function getComments(update_id) {
     listReactionsForComment(comments.value[i].id)
 
     if (comments.value[i].body) {
-      comments.value[i].bodyHTML = await renderMarkdown(comments.value[i].body)
+      comments.value[i].bodyHTML = await renderMarkdown(comments.value[i].body, comments.value[i].id, comments.value[i].updated_at)
     }
   }
 }

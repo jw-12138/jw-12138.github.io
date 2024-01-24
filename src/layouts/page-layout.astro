@@ -27,7 +27,7 @@ import '../style/main.scss'
     <div id="app">
       <div class="py-[3rem] italic">{title}</div>
       <slot name="content"/>
-      <Comments client:load github-issue-id={issue} />
+      <Comments client:only="vue" github-issue-id={issue} />
     </div>
     <Footer></Footer>
   </main>
