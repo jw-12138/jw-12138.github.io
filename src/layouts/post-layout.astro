@@ -6,11 +6,12 @@ import Nav from '../components/nav.astro'
 import Comments from '../components/comments.vue'
 import Meta from '../components/meta.astro'
 import Og from "../components/og.astro";
+import Toc from '../components/toc.vue'
 import '../style/main.scss'
 
 let {title, tags, style, deprecated, issue} = Astro.props.frontmatter
 
-let {year, month, date} = Astro.params
+let {year, month, date, slug} = Astro.params
 
 if (!tags) {
   tags = []
@@ -45,6 +46,7 @@ let path = Astro.url.pathname
 <aside>
   <Header/>
   <Nav/>
+  <Toc data={Astro.props.headings} client:only="vue"/>
 </aside>
 <main>
   <div id="app">
