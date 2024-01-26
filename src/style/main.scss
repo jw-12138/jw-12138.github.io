@@ -9,7 +9,7 @@ body {
 }
 
 aside {
-  @apply lg:w-[14rem] w-full lg:fixed lg:top-0 lg:left-0 lg:h-[100vh] px-6 bg-gradient-to-b lg:bg-gradient-to-r dark:from-zinc-900 dark:to-neutral-950 bg-white pb-[2rem] overflow-auto;
+  @apply lg:w-[14rem] w-full lg:fixed lg:top-0 lg:left-0 lg:h-[100vh] px-6 bg-gradient-to-b lg:bg-gradient-to-r dark:from-zinc-900 dark:to-neutral-950 bg-white overflow-auto lg:pb-[2rem] pb-0;
 }
 
 main {
