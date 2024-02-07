@@ -3,7 +3,7 @@
     <button aria-label="返回顶部" class="px-2 py-1 rounded-xl hover:bg-black/15 dark:hover:bg-white/15 transition-all w-8 h-8 flex justify-center items-center mb-1 cursor-pointer opacity-70 hover:opacity-100"
          @click="goBackToTop"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-navigation-top" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.54 19.977a.34 .34 0 0 0 .357 -.07a.33 .33 0 0 0 .084 -.35l-4.981 -10.557l-4.982 10.557a.33 .33 0 0 0 .084 .35a.34 .34 0 0 0 .357 .07l4.541 -1.477l4.54 1.477z" /><path d="M12 3v2" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-navigation-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.54 12.843l-4.54 -9.843l-7.97 17.275c-.07 .2 -.017 .424 .135 .572c.15 .148 .374 .193 .57 .116l7.265 -2.463" /><path d="M19 22v-6" /><path d="M22 19l-3 -3l-3 3" /></svg>
     </button>
     <button
       @click="scrollToSlug(heading.slug)"
