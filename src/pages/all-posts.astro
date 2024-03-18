@@ -5,33 +5,18 @@ import { getCollection } from 'astro:content'
 
 const allPosts = await getCollection('posts')
 
+const extractDateFromSlug = (slug) => {
+  let date_array = slug.split('-')
+  let year = date_array[0]
+  let month = date_array[1]
+  let day = date_array[2]
+  return `${year}-${month}-${day}`
+}
+
 allPosts.sort((a, b) => {
-  let { date: date_a } = a.data
-  let { date: date_b } = b.data
-
-  if (!date_a) {
-    let date_str = a.slug
-
-    let date_array = date_str.split('-')
-    let year = date_array[0]
-    let month = date_array[1]
-    let day = date_array[2]
-
-    date_a = `${year}-${month}-${day}`
-  }
-
-  if (!date_b) {
-    let date_str = b.slug
-
-    let date_array = date_str.split('-')
-    let year = date_array[0]
-    let month = date_array[1]
-    let day = date_array[2]
-
-    date_b = `${year}-${month}-${day}`
-  }
-
-  return new Date(date_b).getTime() - new Date(date_a).getTime()
+  let dateA = new Date(extractDateFromSlug(a.slug)).getTime()
+  let dateB = new Date(extractDateFromSlug(b.slug)).getTime()
+  return dateB - dateA
 })
 ---
 
