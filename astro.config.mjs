@@ -13,7 +13,7 @@ export default defineConfig({
       remarkPluginImage
     ],
     shikiConfig: {
-      experimentalThemes: {
+      themes: {
         light: 'github-light',
         dark: 'github-dark'
       }

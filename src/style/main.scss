@@ -149,6 +149,10 @@ video {
     @apply text-xs dark:bg-white/20 rounded bg-black/10 px-2 mx-1 py-1;
   }
 
+  .astro-code {
+    background-color: transparent !important;
+  }
+
   pre {
     border: none;
     background-color: transparent !important;
