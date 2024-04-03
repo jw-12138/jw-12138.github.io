@@ -163,10 +163,6 @@ video {
       @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0;
     }
   }
-
-  img, video {
-    @apply dark:opacity-80 dark:hover:opacity-100 transition-opacity
-  }
 }
 
 .comment-content.page-content {
