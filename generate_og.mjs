@@ -106,7 +106,9 @@ fancyLog(`done in ${Date.now() - start}ms`)
 async function generateOg(post) {
   await nodeHtmlToImage({
     html: html,
-    output: `./public/og/${post.slug}.png`,
+    type: 'jpeg',
+    output: `./public/og/${post.slug}.jpg`,
+    quality: 80,
     content: {
       logoUrl: dataURI,
       title: post.title,
