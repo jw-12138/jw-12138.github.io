@@ -30,7 +30,7 @@ let path = Astro.url.pathname
   <title>{title} - 一个球的博客</title>
   <GlobalStyle/>
   <Meta tags={tags}/>
-  <Og title={title} path={path}/>
+  <Og title={title} path={path} slug={`${year}-${month}-${date}-${slug}`}/>
 </head>
 <body>
 <input type="hidden" value={style_str} id="customStyle"/>
