@@ -1,10 +1,8 @@
 import nodeHtmlToImage from 'node-html-to-image'
 import fs from 'fs'
 
-const start = Date.now()
-
 function fancyLog(message) {
-  console.log(`[${new Date()}] ${message}`)
+  console.log(`[${new Date().toLocaleTimeString()}] ${message}`)
 }
 
 let args = process.argv.slice(2)
@@ -13,7 +11,7 @@ let jsonText = await fetch('http://localhost:4321/posts.json')
 
 let posts = await jsonText.json()
 
-let generateAll = true
+let generateAll
 
 if (args.length > 0) {
   if (args[0] === 'all') {
@@ -35,17 +33,6 @@ if (!fs.existsSync('./public/og')) {
   fs.mkdirSync('./public/og')
   fancyLog('og directory created')
 }
-
-if (generateAll) {
-  // clear the og directory
-  let files = fs.readdirSync('./public/og')
-  for (const file of files) {
-    fancyLog(`deleting ${file}`)
-    fs.unlinkSync(`./public/og/${file}`)
-    fancyLog(`${file} deleted`)
-  }
-}
-
 
 const favIcon = fs.readFileSync('./public/favicon.ico')
 const base64Image = new Buffer.from(favIcon).toString('base64')
@@ -90,40 +77,74 @@ const html = `
   <div style="position: absolute; left: 2rem; top: 2rem;">
     <img src="{{logoUrl}}" alt="logo" style="width: 2rem; height: 2rem; position: relative">
   </div>
-  <div style="width: 100%; font-size: {{titleSize}}; line-height: 1.3; margin-top: 1rem">
+  <div style="width: 100%; font-size: {{titleSize}}; line-height: 1.3; margin-top: 1rem; width: 21rem;">
   {{title}}
   </div>
-  <div style="width: 100%; margin-top: 1rem; font-size: .8rem">
+  <div style="width: 100%; margin-top: 1rem; font-size: .8rem; opacity: 0.8">
   {{tags}}
+  </div>
+  <div style="margin-top: 1rem; opacity: .5; font-size: .5rem">
+    {{url}}
   </div>
 </body>
 </html>
 `
 
-for (let i = 0; i < posts.length; i++) {
-  let post = posts[i]
-  await generateOg(post)
+async function generateOg() {
+  fancyLog('generating og images')
 
-  // if(i >= 0){
-  //   break
-  // }
-}
+  let content = []
 
-fancyLog(`done in ${Date.now() - start}ms`)
+  posts.forEach((post, index) => {
+    let titleCharLength = 0
 
-async function generateOg(post) {
-  await nodeHtmlToImage({
-    html: html,
-    type: 'jpeg',
-    output: `./public/og/${post.slug}.jpg`,
-    quality: 80,
-    content: {
+    const maxFontSize = 1.5
+    const minFontSize = 1.1
+    let fontSize = 0
+
+    post.title.split('').forEach((char) => {
+      if (!!char.match(/\p{Script=Han}/u)) {
+        titleCharLength += 2
+      } else {
+        titleCharLength += 1
+      }
+    })
+
+    // page width / 48px = 25rem
+    // 25rem - 4rem padding = 21rem
+    let lineWidth = (1200 / 48) - (2 * 2)
+
+    // 21rem / titleCharLength = fontSize
+    let calculatedFontSize = lineWidth / Math.ceil((titleCharLength + 2) / 2)
+
+    if (calculatedFontSize >= maxFontSize) {
+      fontSize = maxFontSize
+    } else if (calculatedFontSize <= minFontSize) {
+      fontSize = minFontSize
+    } else {
+      fontSize = calculatedFontSize
+    }
+
+    content.push({
       logoUrl: dataURI,
+      url: post.url,
       title: post.title,
       tags: post.tags.join(', '),
       bgDataURI: bgDataURI,
-      titleSize: post.title.length > 25 ? '1.2rem' : '1.5rem'
-    }
+      titleSize: fontSize + 'rem',
+      output: `./public/og/${post.slug}.jpg`
+    })
   })
-  fancyLog(`generated og for ${post.slug}`)
+
+  let s = Date.now()
+  await nodeHtmlToImage({
+    html: html,
+    type: 'jpeg',
+    quality: 80,
+    content: content
+  })
+
+  fancyLog(`done in ${Date.now() - s}ms`)
 }
+
+await generateOg()

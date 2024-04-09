@@ -33,7 +33,26 @@ export async function GET(context) {
   })
 
   let outputJson = allPosts.map((p) => {
+    let {date} = p.data
+
+    if (!date) {
+      let date_str = p.slug
+
+      let date_array = date_str.split('-')
+      let year = date_array[0]
+      let month = date_array[1]
+      let day = date_array[2]
+
+      date = `${year}-${month}-${day}`
+    }
+
+    let datePath = date.split('-').join('/')
+    let postPath = p.slug.slice(11)
+
+    let url = `https://jw1.dev/${datePath}/${postPath}.html`
+
     return {
+      url: url,
       title: p.data.title,
       tags: p.data.tags,
       slug: p.slug,
