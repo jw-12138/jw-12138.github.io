@@ -17,19 +17,26 @@
     <button
       @click="scrollToSlug(heading.slug)"
       :title="heading.text"
-      class="text-xs max-w-full cursor-pointer hover:bg-black/15 dark:hover:bg-white/15 px-2 transition-all duration-500 block w-full text-left relative"
+      class="text-xs max-w-full cursor-pointer hover:bg-black/15 dark:hover:bg-white/15 px-2 transition-all duration-300 w-full text-left relative border flex border-none items-center"
       v-for="(heading, index) in data"
       :class="{
-        'rounded-t-xl hover:rounded-b-0 pt-[.3rem]': (!data[index - 1]) || (data[index - 1] && !slugPositionMap[data[index - 1].slug]?.isInView),
-        'rounded-b-xl hover:rounded-t-0 pb-[.25rem]': (!data[index + 1]) || (data[index + 1] && !slugPositionMap[data[index + 1].slug]?.isInView),
+        'rounded-t-2xl hover:rounded-b-0 pt-[0rem]': (!data[index - 1]) || (data[index - 1] && !slugPositionMap[data[index - 1].slug]?.isInView),
+        'rounded-b-2xl hover:rounded-t-0 pb-[0rem]': (!data[index + 1]) || (data[index + 1] && !slugPositionMap[data[index + 1].slug]?.isInView),
         'text-black dark:text-white opacity-1 bg-black/10 dark:bg-white/10': slugPositionMap[heading.slug]?.isInView,
-        'opacity-70 hover:rounded-xl pt-[.15rem] pb-[.11rem]': !slugPositionMap[heading.slug]?.isInView
-      }"
-      :style="{
-      paddingLeft: (heading.depth - maxDepth + 1) * .5 + 'rem'
-    }">
-      <span class="overflow-hidden text-ellipsis whitespace-nowrap py-[.2rem] block">
-        <span class="font-xs scale-75 transform inline-block">#</span> {{ heading.text }}
+        'opacity-70 hover:rounded-2xl pt-[0] pb-[0]': !slugPositionMap[heading.slug]?.isInView
+      }">
+      <span class="overflow-hidden py-[.2rem] flex items-center h-7">
+        <span class="w-[0rem] h-[2.5rem] flex-shrink-0 block dark:border-l-neutral-600 border-l-neutral-400 transition-all pointer-events-none"
+              :style="{
+                animationDelay: `${i * 75}ms`,
+              }"
+              style="border-left-width: 1px; animation-name: widthExpand; animation-duration: .3s; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(.51,.32,.28,1.44)"
+              v-for="(c, i) in (heading.depth - maxDepth)"
+              v-if="heading.depth - maxDepth + 1 > 0">
+        </span>
+        <span class="block text-ellipsis whitespace-nowrap overflow-hidden">
+          {{ heading.text }}
+        </span>
       </span>
       <span class="block absolute right-[-.5rem] w-[2px] dark:bg-white bg-neutral-900 top-[5%] rounded" :style="{
         height: slugPositionMap[heading.slug]?.progress * 90 + '%',

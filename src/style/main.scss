@@ -20,6 +20,16 @@ main {
   @apply w-full max-w-[42rem] px-0 mx-auto;
 }
 
+@keyframes widthExpand {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: .6rem;
+  }
+}
+
 .sugg-back {
   display: none;
 }
