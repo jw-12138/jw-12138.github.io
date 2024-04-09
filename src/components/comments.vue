@@ -139,7 +139,7 @@
         <textarea
           id="comment_textarea"
           v-show="!showPreview"
-          class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
+          class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
           required name="comment" placeholder="提些问题，或者打个招呼吧" v-model="userComment"></textarea>
 
         <div class="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
@@ -303,7 +303,7 @@
               <form action="javascript:" @submit="confirmEditing">
                 <div>
                   <textarea
-                    class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
+                    class="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
                     required v-model="editingCommentContent" id="comment_editing_textarea"></textarea>
                 </div>
                 <div class="mt-2 flex">
@@ -352,7 +352,7 @@
               <button v-for="button in reactionButtons" :title="button.means"
                       :disabled="reactingCommentID.includes(item.id)"
                       @click="makeReactionToComment(button.content, item.id)"
-                      class="mr-1 disabled:opacity-50 text-xs flex items-center rounded-full px-2 py-1 max-h-[1.5rem] group text-indigo-800 dark:text-indigo-50 dark:bg-indigo-900 bg-indigo-50">
+                      class="mr-1 disabled:opacity-50 text-xs flex items-center rounded-full px-2 py-1 max-h-[1.5rem] group text-neutral-800 dark:text-neutral-50 dark:bg-neutral-700 bg-neutral-100 hover:shadow">
                 <span class="transition-all mr-1 relative top-0 group-hover:text-2xl group-hover:top-[-.2rem]" :class="{
                   'text-2xl rotate-[-12deg] top-[-.2rem]': userHasReactedToComment(item.id, button.content)
                 }">{{ button.label }}</span> <span class="font-mono">{{
