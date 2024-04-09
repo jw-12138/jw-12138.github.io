@@ -9,7 +9,7 @@ import Og from "../components/og.astro";
 import Toc from '../components/toc.vue'
 import '../style/main.scss'
 
-let {title, tags, style, deprecated, issue} = Astro.props.frontmatter
+let {title, tags, style, deprecated, issue, wordsCount} = Astro.props.frontmatter
 
 let {year, month, date, slug} = Astro.params
 
@@ -51,18 +51,10 @@ let path = Astro.url.pathname
 <main>
   <div id="app">
     <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
-    <div class="text-xs pb-[3rem] pt-2">
+    <div class="text-xs pt-4">
+      <span class="opacity-80 italic">{wordsCount} 字，{Math.ceil(wordsCount / 220)}分钟</span>
+      <span class="px-1">/</span>
       <span class="opacity-80">{`${year}-${month}-${date}`}</span>
-      {
-        tags.map((tag) => {
-          return (
-            <>
-              <span class="px-1">/</span>
-              <a href={`/tags/${tag}`}>{tag}</a>
-            </>
-          )
-        })
-      }
       {
         () => {
           if (deprecated) {
@@ -76,8 +68,22 @@ let path = Astro.url.pathname
         }
       }
     </div>
+    <div class="text-xs pt-4 pb-[2.5rem] flex items-center flex-wrap ml-[-.25rem]">
+      {
+        tags.map((tag, index) => {
+          return (
+            <>
+              <a class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2" class:list={{
+                "ml-0": index === 0,
+                "ml-2": index !== 0
+              }} href={`/tags/${tag}`}>{tag}</a>
+            </>
+          )
+        })
+      }
+    </div>
     <div class="page-content">
-      <slot/>
+      <slot></slot>
     </div>
     <Comments client:only="vue" github-issue-id={issue}/>
   </div>

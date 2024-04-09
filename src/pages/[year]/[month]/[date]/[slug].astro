@@ -25,8 +25,35 @@ export async function getStaticPaths() {
 }
 
 const entry = await getEntry('posts', Astro.props.entry.slug)
-const {Content} = await entry.render()
+
+let {body} = entry
+const {Content, remarkPluginFrontmatter} = await entry.render()
+
+let getPostTextCount = function () {
+  let allText = body
+
+  // remove all code fences like ```
+  allText = allText.replace(/```[\s\S]*?```/g, '')
+
+  let chineseCharCount = 0
+  let englishCharCount = 0
+
+  allText.split('').forEach((char) => {
+    if (!!char.match(/\p{Script=Han}/u)) {
+      chineseCharCount++
+    }
+
+    if (!!char.match(/[a-zA-Z]/)) {
+      englishCharCount++
+    }
+  })
+
+  return Math.ceil(englishCharCount / 5) + chineseCharCount
+}
+
+let wordsCount = getPostTextCount()
+
+remarkPluginFrontmatter.wordsCount = wordsCount
 ---
 
 <Content/>
-
