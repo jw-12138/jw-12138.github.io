@@ -20,6 +20,8 @@ if (!tags) {
 let style_str = style ? style : ''
 
 let path = Astro.url.pathname
+
+let transitionSlug = `${year}-${month}-${date}-${slug}`
 ---
 
 <html lang="en">
@@ -50,7 +52,7 @@ let path = Astro.url.pathname
 </aside>
 <main>
   <div id="app">
-    <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
+    <h1 class="text-3xl font-black pt-[3rem]" transition:name={transitionSlug}>{title}</h1>
     <div class="text-xs pt-4">
       <span class="opacity-80 italic">{wordsCount} 字，{Math.ceil(wordsCount / 220)}分钟</span>
       <span class="px-1">/</span>
@@ -73,7 +75,9 @@ let path = Astro.url.pathname
         tags.map((tag, index) => {
           return (
             <>
-              <a class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2" class:list={{
+              <a class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2"
+                 transition:name={tag}
+                 class:list={{
                 "ml-0": index === 0,
                 "ml-2": index !== 0
               }} href={`/tags/${tag}`}>{tag}</a>

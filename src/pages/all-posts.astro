@@ -53,7 +53,7 @@ allPosts.sort((a, b) => {
                     </span>
                   )}
                 </div>
-                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
+                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis" transition:name={post.slug}>
                   {post.data.title}
                 </div>
               </a>

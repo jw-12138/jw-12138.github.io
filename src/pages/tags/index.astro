@@ -40,7 +40,9 @@ allPosts.forEach((post) => {
       Object.keys(allTags).map((tag, index) => {
         return (
           <>
-            <a class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2 mr-2" href={`/tags/${tag}`}>{tag}({allTags[tag].length})</a>
+            <a
+              transition:name={tag}
+              class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2 mr-2" href={`/tags/${tag}`}>{tag}({allTags[tag].length})</a>
           </>
         )
       })
