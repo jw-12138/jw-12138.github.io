@@ -23,18 +23,18 @@ import AppAudio from '../../components/app-audio.vue'
 
 先来听一下原声：
 
-<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_3.mp3" client:only />
+<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_3.mp3" client:only="vue" />
 
 再来听一下瞬态控制器处理过的声音：
 
-<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_4.mp3" client:only />
+<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_4.mp3" client:only="vue" />
 
 听起来好像也许可能大概瞬态控制器处理过的鼓组**更加有力**一点？再组合起来听一下（可以打开循环按钮，来回切换声音源感受）：
 
 <AppAudioDiff set={[
   {src: 'https://blog-r2.jw1.dev/p_assets/202109/a01/a01_3.mp3', label: '原声'},
   {src: 'https://blog-r2.jw1.dev/p_assets/202109/a01/a01_4.mp3', label: '经过瞬态控制器处理的声音'}
-]} client:only/>
+]} client:only="vue"/>
 
 如果还是不确定的话我们再来看看图：
 
@@ -62,11 +62,11 @@ import AppAudio from '../../components/app-audio.vue'
 
 原声：
 
-<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_5.mp3" client:only />
+<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_5.mp3" client:only="vue" />
 
 处理之后：
 
-<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_6.mp3" client:only />
+<AppAudio src="https://blog-r2.jw1.dev/p_assets/202109/a01/a01_6.mp3" client:only="vue" />
 
 没错！这里我弱化了大提琴演奏pizzicato技法时候的瞬态，获得了更加柔和的声音。
 

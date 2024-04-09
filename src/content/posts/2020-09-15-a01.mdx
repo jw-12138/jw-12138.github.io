@@ -65,7 +65,7 @@ import AppAudioDiff from '../../components/app-audio-diff.vue'
 <AppAudioDiff set={[
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/diff-1-Audio.mp3', label: '没有压缩的人声'},
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/diff-2-Audio.mp3', label: '经过压缩的人声'}
-]} client:only/>
+]} client:only="vue"/>
 
 原曲来自我的好朋友Wynes：[https://music.163.com/#/song?id=1416869953](https://music.163.com/#/song?id=1416869953)
 
@@ -82,7 +82,7 @@ import AppAudioDiff from '../../components/app-audio-diff.vue'
 <AppAudioDiff set={[
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/drum-diff-2.mp3', label: '未经压缩的鼓组'},
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/drum-diff-1.mp3', label: '经过压缩后的鼓组'}
-]} client:only />
+]} client:only="vue" />
 
 <br/>
 
@@ -117,14 +117,14 @@ Sidechain，中文叫侧链，也可以叫旁链，老实说，第一次看到�
 <AppAudioDiff set={[
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/sc-diff-1.mp3', label: 'Bass没有侧链，和鼓组糊成一团'},
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/sc-diff-2.mp3', label: 'Bass有侧链，可以清晰听到鼓组中的kick，snare和tom'}
-]} client:only />
+]} client:only="vue" />
 
 从没有侧链的音频可以感受到，因为bass和kick都属于比较低频的声音，所以他俩打架了，让鼓组失去了爆发力。而有侧链的那段音频，我们可以很清晰的听到一系列频率较低的打击乐，我们用侧链让bass给kick主动让开了一条路。可以仔细听听bass solo的时候有侧链和没侧链的区别。
 
 <AppAudioDiff set={[
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/bass-diff-1.mp3', label: 'Bass没有侧链'},
   {src: 'https://blog-r2.jw1.dev/p_assets/202009/bass-diff-2.mp3', label: 'Bass有侧链'}
-]} client:only />
+]} client:only="vue" />
 
 当然了，为了区分明显，demo都比较极端，实际应用还是要看个人喜好或客户需求。在整体的混音作品里，我们可以使用侧链来突出任何你想要突出的元素，比如用人声的信号去侧链伴奏，让伴奏让开空间给人声，又比如在电子音乐中用lead去侧链chord/pad，等等等等。而这些全都离不开压缩器，这也是为什么压缩器在音乐制作业内备受关注的原因。
 
