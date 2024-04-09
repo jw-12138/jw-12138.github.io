@@ -34,7 +34,7 @@ if (!fs.existsSync('./public/og')) {
   fancyLog('og directory created')
 }
 
-const favIcon = fs.readFileSync('./public/favicon.ico')
+const favIcon = fs.readFileSync('./public/og-logo.png')
 const base64Image = new Buffer.from(favIcon).toString('base64')
 const dataURI = 'data:image/png;base64,' + base64Image
 
@@ -75,7 +75,7 @@ const html = `
 
 <body>
   <div style="position: absolute; left: 2rem; top: 2rem;">
-    <img src="{{logoUrl}}" alt="logo" style="width: 2rem; height: 2rem; position: relative">
+    <img src="{{logoUrl}}" alt="logo" style="width: 2rem; height: 2rem; position: relative; left: -.2rem">
   </div>
   <div style="width: 100%; font-size: {{titleSize}}; line-height: 1.3; margin-top: 1rem; width: 21rem;">
   {{title}}
