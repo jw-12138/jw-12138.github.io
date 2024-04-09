@@ -49,7 +49,7 @@ export async function GET(context) {
     let datePath = date.split('-').join('/')
     let postPath = p.slug.slice(11)
 
-    let url = `https://jw1.dev/${datePath}/${postPath}.html`
+    let url = `jw1.dev/${datePath}/${postPath}`
 
     return {
       url: url,
