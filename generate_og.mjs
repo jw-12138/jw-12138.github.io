@@ -16,10 +16,18 @@ let posts = await jsonText.json()
 let generateAll = true
 
 if (args.length > 0) {
+  if (args[0] === 'all') {
+    generateAll = true
+  } else {
+    generateAll = false
+    posts = posts.filter((p) => {
+      return p.slug === args[0]
+    })
+  }
+} else {
+  // only generate the first one
+  posts = [posts[0]]
   generateAll = false
-  posts = posts.filter((p) => {
-    return p.slug === args[0]
-  })
 }
 
 if (!fs.existsSync('./public/og')) {
@@ -68,7 +76,7 @@ const html = `
     align-items: center;
     align-content: center;
     padding: 4rem 2rem 2rem;
-    font-family: monospace, Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,serif;
+    font-family: JetBrains Mono, monospace, Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,serif;
     background-image: url({{bgDataURI}});
     background-size: 100% 100%;
     background-repeat: no-repeat;
