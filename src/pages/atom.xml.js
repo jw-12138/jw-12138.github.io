@@ -1,10 +1,19 @@
 import {getCollection} from 'astro:content'
 import sanitizeHtml from 'sanitize-html'
 import MarkdownIt from 'markdown-it'
+import pangu from 'pangu'
 
 const parser = new MarkdownIt()
 
 export async function GET(context) {
+  let text = parser.renderer.rules.text
+
+  parser.renderer.rules.text = function (...args) {
+    let originalText = text(...args)
+
+    return pangu.spacing(originalText)
+  }
+
   let allPosts = await getCollection('posts')
 
   let atom = `<feed xmlns="http://www.w3.org/2005/Atom">
