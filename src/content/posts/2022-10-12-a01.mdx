@@ -13,12 +13,12 @@ export const components = {
   img: Img
 }
 
-我有一个梦想  
-我梦想在冬天某个周日的下午  
-坐在星巴克靠窗的位置  
-喝着咖啡  
-晒着太阳  
-抱着 iPad  
+我有一个梦想
+我梦想在冬天某个周日的下午
+坐在星巴克靠窗的位置
+喝着咖啡
+晒着太阳
+抱着 iPad
 —— **写代码**（过于装逼）
 
 ---
@@ -77,7 +77,53 @@ export const components = {
 - 慢
 
 <div class="table-wrap">
-<table><thead><tr><th>Product</th><th>SKU</th><th>Unit of measure</th><th>Price</th></tr></thead><tbody><tr><td>Codespaces Compute</td><td>2 core</td><td>1 hour</td><td>$0.18</td></tr><tr><td></td><td>4 core</td><td>1 hour</td><td>$0.36</td></tr><tr><td></td><td>8 core</td><td>1 hour</td><td>$0.72</td></tr><tr><td></td><td>16 core</td><td>1 hour</td><td>$1.44</td></tr><tr><td></td><td>32 core</td><td>1 hour</td><td>$2.88</td></tr><tr><td>Codespaces Storage</td><td>Storage</td><td>1 GB-month</td><td>$0.07</td></tr></tbody></table>
+<div class="table-wrap">
+  <table>
+    <thead>
+    <tr>
+      <th>Product</th>
+      <th>SKU</th>
+      <th>Unit of measure</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td rowspan="5">Codespaces Compute</td>
+      <td>2 core</td>
+      <td>1 hour</td>
+      <td>$0.18</td>
+    </tr>
+    <tr>
+      <td>4 core</td>
+      <td>1 hour</td>
+      <td>$0.36</td>
+    </tr>
+    <tr>
+      <td>8 core</td>
+      <td>1 hour</td>
+      <td>$0.72</td>
+    </tr>
+    <tr>
+      <td>16 core</td>
+      <td>1 hour</td>
+      <td>$1.44</td>
+    </tr>
+    <tr>
+      <td>32 core</td>
+      <td>1 hour</td>
+      <td>$2.88</td>
+    </tr>
+    <tr>
+      <td>Codespaces Storage</td>
+      <td>Storage</td>
+      <td>1 GB-month</td>
+      <td>$0.07</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
 </div>
 
 这是 Github 官方文档中给出的[价格表](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#github-codespaces-pricing)，浅浅地算一下，我们选最低配置 2 核，一小时 0.18 刀，假设平均每天写代码 6 小时，平均每月工作 21 天，那么一个月大概需要 22.68 刀来维持 Codespaces 的正常运转，怎么说呢，不算贵，但是一个月支出 150 多人民币在这玩意儿上面，好像也还是有点亏。
