@@ -9,15 +9,15 @@ body {
 }
 
 aside {
-  @apply lg:w-[14rem] w-full lg:fixed lg:top-0 lg:left-0 lg:h-[100vh] md:px-6 px-4 bg-gradient-to-b lg:bg-gradient-to-r dark:from-zinc-900 dark:to-neutral-900 bg-white overflow-auto lg:pb-[2rem] pb-0;
+  @apply lg:w-[14rem] w-full lg:fixed lg:top-0 lg:left-0 lg:h-[100vh] md:px-6 px-4 overflow-auto lg:pb-[2rem] pb-0;
 }
 
 main {
-  @apply lg:w-[calc(100vw-14rem)] lg:relative lg:ml-[14rem] w-full lg:px-0 px-4;
+  @apply lg:w-[calc(100vw-14rem)] relative lg:ml-[14rem] w-full lg:px-0 px-4;
 }
 
 #app {
-  @apply w-full max-w-[42rem] px-0 mx-auto;
+  @apply w-full max-w-[42rem] px-0 mx-auto lg:pb-[5rem] pb-0;
 }
 
 @keyframes widthExpand {
@@ -39,7 +39,7 @@ main {
 }
 
 img {
-  @apply max-w-full mb-6 block mx-auto rounded;
+  @apply max-w-full mb-6 block mx-auto rounded-xl;
 }
 
 video {
