@@ -2,7 +2,7 @@
 layout: ../layouts/md-page-layout.astro
 title: About Me
 date: 2021-12-08 23:24:16
-#issue: 87
+issue: 87
 highlight: about
 ---
 
