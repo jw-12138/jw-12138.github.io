@@ -101,7 +101,7 @@
             'dark:bg-white/10 dark:text-white bg-black/5 text-black': showPreview
           }">
             <svg xmlns="http://www.w3.org/2000/svg"
-                 class="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
+                 class="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1 top-0 relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -117,7 +117,7 @@
           'dark:bg-white/10 dark:text-white bg-black/5 text-black': !showPreview
           }">
             <svg xmlns="http://www.w3.org/2000/svg"
-                 class="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1 top-0 group-hover:top-[-.2rem] relative transition-all"
+                 class="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1 top-0 relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -131,7 +131,7 @@
           </button>
         </div>
         <div v-show="showPreview"
-             class="rounded-2xl block px-4 py-4 border-none focus:shadow-2xl dark:bg-neutral-900 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm page-content comment-content"
+             class="rounded-2xl block px-4 py-4 border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm page-content comment-content"
              v-html="userComment ? userCommentHTML : '先写点什么吧'">
 
         </div>
@@ -154,7 +154,7 @@
           <button v-show="!sending_comment" type="submit"
                   class="rounded-full px-4 py-2 bg-neutral-800 text-white dark:bg-white dark:text-black text-sm flex items-center group">
             <svg xmlns="http://www.w3.org/2000/svg"
-                 class="icon icon-tabler icon-tabler-send w-4 h-4 mr-2 top-0 group-hover:top-[-.2rem] relative transition-all"
+                 class="icon icon-tabler icon-tabler-send w-4 h-4 mr-2 top-0 relative transition-all"
                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                  stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
