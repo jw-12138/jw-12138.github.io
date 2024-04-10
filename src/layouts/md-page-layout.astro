@@ -19,22 +19,28 @@ import '../style/main.scss'
   <title>{title} - 一个球的博客</title>
   <GlobalStyle/>
   <Meta/>
-  <Og title={title} path={path} />
+  <Og title={title} path={path}/>
 </head>
 <body>
-  <aside>
-    <Header/>
-    <Nav highlight={highlight}/>
-  </aside>
-	<main>
-    <div id="app">
-      <div class="py-[3rem] italic">{title}</div>
-      <div class="page-content">
-        <slot/>
-      </div>
-      <Comments client:only="vue" github-issue-id={issue} />
+<aside>
+  <Header/>
+  <Nav highlight={highlight}/>
+  <Footer aside={true}/>
+</aside>
+<main>
+  <div id="app">
+    <div class="py-[3rem] italic">{title}</div>
+    <div class="page-content">
+      <noscript>
+        <p class="text-red-500 dark:text-red-400 mb-8">
+          看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过评论功能将不能使用。
+        </p>
+      </noscript>
+      <slot/>
     </div>
-    <Footer/>
-  </main>
+    <Comments client:only="vue" github-issue-id={issue}/>
+  </div>
+  <Footer/>
+</main>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:block hidden mt-8 relative left-[-.5rem]">
+  <div class="lg:block hidden mt-[4rem] relative left-[-.5rem]">
     <button aria-label="返回顶部"
             class="px-2 py-1 rounded-xl hover:bg-black/15 dark:hover:bg-white/15 transition-all w-8 h-8 flex justify-center items-center mb-1 cursor-pointer opacity-70 hover:opacity-100"
             @click="goBackToTop"
@@ -26,13 +26,14 @@
         'opacity-70 hover:rounded-2xl pt-[0] pb-[0]': !slugPositionMap[heading.slug]?.isInView
       }">
       <span class="overflow-hidden py-[.2rem] flex items-center h-7">
-        <span class="w-[0rem] h-[2.5rem] flex-shrink-0 block dark:border-l-neutral-600 border-l-neutral-400 transition-all pointer-events-none"
-              :style="{
+        <span
+          class="w-[0rem] h-[2.5rem] flex-shrink-0 block dark:border-l-neutral-600 border-l-neutral-400 transition-all pointer-events-none"
+          :style="{
                 animationDelay: `${i * 75}ms`,
               }"
-              style="border-left-width: 1px; animation-name: widthExpand; animation-duration: .3s; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(.51,.32,.28,1.44)"
-              v-for="(c, i) in (heading.depth - maxDepth)"
-              v-if="heading.depth - maxDepth + 1 > 0">
+          style="border-left-width: 1px; animation-name: widthExpand; animation-duration: .3s; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(.51,.32,.28,1.44)"
+          v-for="(c, i) in (heading.depth - maxDepth)"
+          v-if="heading.depth - maxDepth + 1 > 0">
         </span>
         <span class="block text-ellipsis whitespace-nowrap overflow-hidden">
           {{ heading.text }}
@@ -130,6 +131,13 @@ function getPositionForEachSlug() {
 }
 
 onMounted(async () => {
+
+  try {
+    document.getElementById('fake_toc').remove()
+  } catch (e) {
+    console.log(e)
+  }
+
   await new Promise(resolve => setTimeout(resolve, 100))
   findMaxDepth()
   getPositionForEachSlug()

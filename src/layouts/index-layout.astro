@@ -23,6 +23,7 @@ let {pageName} = Astro.props
   <aside>
     <Header/>
     <Nav highlight={pageName === 'index' ? 'index' : ''}/>
+    <Footer aside={true}/>
   </aside>
 	<main>
     <div id="app">
