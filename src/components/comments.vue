@@ -1055,6 +1055,16 @@ onMounted(async () => {
     return
   }
 
+  let pageHash = location.hash
+  if(pageHash === '#comments'){
+    document.getElementById('comments').scrollIntoView({
+      behavior: 'instant'
+    })
+
+    // replace url without hash
+    history.replaceState(null, '', location.href.split('#')[0])
+  }
+
   window.addEventListener('click', function () {
     if (mouseIsInsideWindow.value === false) {
       userActionWindow.value = false
