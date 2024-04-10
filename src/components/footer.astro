@@ -4,7 +4,7 @@ const year = new Date().getFullYear()
 let {aside} = Astro.props
 ---
 
-<footer class:list={{
+<footer class="opacity-70 hover:opacity-90 transition-all duration-500" class:list={{
   "lg:hidden": !aside,
   "lg:block hidden": aside
 }}>
