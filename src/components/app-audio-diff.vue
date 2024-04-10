@@ -61,13 +61,15 @@
           <path d="M5 5m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/>
         </svg>
       </button>
-      <button :disabled="loadStatus_1 === 0 || loadStatus_2 === 0" @click="switchSoundSource" class="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full shadow bg-neutral-100 transition-all text-black dark:text-white mr-2" :class="{
-        'bg-blue-400 dark:bg-blue-500 shadow-inner': currentActiveTrack === 1
+      <button :disabled="loadStatus_1 === 0 || loadStatus_2 === 0" @click="switchSoundSource" class="w-[2rem] h-[2rem] flex justify-center items-center  rounded-full shadow transition-all text-black dark:text-white mr-2" :class="{
+        'bg-blue-400 dark:bg-blue-500 shadow-inner': currentActiveTrack === 1,
+        'bg-neutral-100 dark:bg-white/10': currentActiveTrack !== 1
       }" :style="{
         'transform': currentActiveTrack === 0 ? 'rotate(0deg)' : 'rotate(180deg)'
       }"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M2 6m0 6a6 6 0 0 1 6 -6h8a6 6 0 0 1 6 6v0a6 6 0 0 1 -6 6h-8a6 6 0 0 1 -6 -6z" /></svg></button>
-      <button :disabled="loadStatus_1 === 0 || loadStatus_2 === 0" @click="toggleLoop" class="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full shadow bg-neutral-100 transition-all text-black dark:text-white mr-2" :class="{
-        'bg-orange-400 dark:bg-orange-500 shadow-inner': loopStatus === 1
+      <button :disabled="loadStatus_1 === 0 || loadStatus_2 === 0" @click="toggleLoop" class="w-[2rem] h-[2rem] flex justify-center items-center rounded-full shadow transition-all text-black dark:text-white mr-2" :class="{
+        'bg-orange-400 dark:bg-orange-500 shadow-inner': loopStatus === 1,
+        'dark:bg-white/10 bg-neutral-100': loopStatus !== 1
       }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-repeat w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3" /><path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3" /></svg>
       </button>
