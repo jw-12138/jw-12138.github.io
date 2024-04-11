@@ -1,6 +1,5 @@
 ---
 import IndexLayout from '../layouts/index-layout.astro'
-import dayjs from 'dayjs'
 import { getCollection } from 'astro:content'
 
 const allPosts = await getCollection('posts')
@@ -10,45 +9,61 @@ const extractDateFromSlug = (slug) => {
   let year = date_array[0]
   let month = date_array[1]
   let day = date_array[2]
-  return `${year}-${month}-${day}`
+  return {
+    year,
+    month,
+    day
+  }
 }
 
 allPosts.sort((a, b) => {
-  let dateA = new Date(extractDateFromSlug(a.slug)).getTime()
-  let dateB = new Date(extractDateFromSlug(b.slug)).getTime()
-  return dateB - dateA
+
+  let date_a = extractDateFromSlug(a.slug)
+  let date_b = extractDateFromSlug(b.slug)
+
+
+  let date_a_timestamp = new Date(`${date_a.year}-${date_a.month}-${date_a.day}`).getTime()
+  let date_b_timestamp = new Date(`${date_b.year}-${date_b.month}-${date_b.day}`).getTime()
+  return date_b_timestamp - date_a_timestamp
 })
+
+// create a map for posts, use year as key
+const postMap = {}
+
+allPosts.forEach((post) => {
+  let date = extractDateFromSlug(post.slug)
+  let year = Number(date.year)
+
+  if (!postMap[year]) {
+    postMap[year] = []
+  }
+
+  postMap[year].push({
+    data: post.data,
+    slug: post.slug,
+    date: `${date.year}-${date.month}-${date.day}`
+  })
+})
+
+let yearKeys = Object.keys(postMap).sort((a, b) => Number(b) - Number(a))
 ---
 
 <IndexLayout>
   <div>
-    <div class="py-[3rem] italic">All Posts</div>
-    <ul class="mb-4">
-      {
-        allPosts.map((post) => {
+    <div class="py-[3rem] italic">{allPosts.length} Posts</div>
+
+    {yearKeys.map(year => <section class="mb-[4rem] md:mb-[2rem] md:pl-[4.2rem]">
+      <div class="md:text-[3rem] whitespace-nowrap w-0 text-[2.5rem] leading-5 font-bolder pointer-events-none relative z-20 font-serif md:mb-[0rem] mb-[3rem] h-0 md:rotate-90 rotate-0 origin-top-left md:left-[-2rem] left-[-.2rem] opacity-20">/{year}</div>
+      <ul class="relative z-30">
+        {postMap[year].map((post) => {
           let { deprecated } = post.data
-
-          let date_str = post.slug
-
-          let date_array = date_str.split('-')
-          let year = date_array[0]
-          let month = date_array[1]
-          let day = date_array[2]
-
-          let date = `${year}-${month}-${day}`
-
-          let datePath = date.split('-').join('/')
-          let postPath = post.slug.slice(11)
 
           return (
             <li class="group">
-              <a href={`/${datePath}/${postPath}`} class="block mb-8">
-                <div class="text-xs mb-2">
-                  <span class="opacity-80">
-                    {dayjs(date).format('YYYY-MM-DD')}
-                  </span>
+              <a href={`/${post.date.split('-').join('/')}/${post.slug.slice(11)}`} class="block mb-6">
+                <div class="text-xs mb-1">
                   {deprecated && (
-                    <span class="ml-2 text-red-500 dark:text-red-400 font-black">
+                    <span class="text-red-500 dark:text-red-400 font-black">
                       Deprecated
                     </span>
                   )}
@@ -59,8 +74,8 @@ allPosts.sort((a, b) => {
               </a>
             </li>
           )
-        })
-      }
-    </ul>
+        })}
+      </ul>
+    </section>)}
   </div>
 </IndexLayout>
