@@ -52,7 +52,10 @@ let yearKeys = Object.keys(postMap).sort((a, b) => Number(b) - Number(a))
   <div>
     <div class="py-[3rem] italic">{allPosts.length} Posts</div>
 
-    {yearKeys.map(year => <section class="mb-[4rem] md:mb-[2rem] md:pl-[4.2rem]">
+    {yearKeys.map(year => <section class="mb-[4rem] md:pl-[4.2rem]" class:list={{
+      "md:mb-[3rem]": postMap[year].length > 3,
+      "md:mb-[9rem]": postMap[year].length <= 3
+    }}>
       <div class="md:text-[3rem] whitespace-nowrap w-0 text-[2.5rem] leading-5 font-bolder pointer-events-none relative z-20 font-serif md:mb-[0rem] mb-[3rem] h-0 md:rotate-90 rotate-0 origin-top-left md:left-[-2rem] left-[-.2rem] opacity-20">/{year}</div>
       <ul class="relative z-30">
         {postMap[year].map((post) => {
