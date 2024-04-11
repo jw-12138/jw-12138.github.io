@@ -122,14 +122,6 @@ let transitionSlug = `${year}-${month}-${date}-${slug}`
       })
   }
 
-  let handleLinks = function () {
-    document.querySelectorAll('.page-content a').forEach((el, index) => {
-      if (el.href.indexOf('http') === 0) {
-        el.setAttribute('target', '_blank')
-      }
-    })
-  }
-
   let handleImgClick = function () {
     document.querySelectorAll('.page-content img').forEach((el) => {
       el.addEventListener('click', function () {
@@ -140,7 +132,6 @@ let transitionSlug = `${year}-${month}-${date}-${slug}`
 
   window.addEventListener('load', function () {
     handleVideoAutoPlay()
-    handleLinks()
     handleImgClick()
     window.addEventListener('scroll', handleVideoAutoPlay)
   })
