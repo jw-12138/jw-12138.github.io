@@ -10,7 +10,7 @@ tags:
 
 从 2016 年开始玩音乐以来，滤波器（EQ / Equalizer）这种东西对于我来讲可以说不能再熟悉了，什么样的音色应该使用是什么形式的滤波，是高通（high pass）还是高切（high cut），哪个区间的频率应该增幅又或是降幅，基本可以说是手到擒来，言出法随。可是这么多年过去了，我居然一次都没有考虑过，那些跳动的频谱图是怎么来的。
 
-<video src="https://blog-r2.jw1.dev/3b8wzvg9E4_tDvUx.mp4" preload="none" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/3b8wzvg9E4_tDvUx.mp4)
 
 今天就来浅浅的认识一下傅里叶变换吧！（着实没想到本数学渣也会有今天）
 
@@ -22,11 +22,11 @@ tags:
 
 线性积分变换我们先放一旁，不用着急去理解（着急也没用），我们可以把注意力放在「时域」和「频域」这两个词上面，翻译成英语的话，一个叫「Time Domain」，另一个叫「Frequency Domain」。作为一个音乐制作人，这两个东西在我们这里犹如吃饭和喝水，是的，时域所表达的数据就是声音本身，也就是「波形」：
 
-<video preload="none" src="https://blog-r2.jw1.dev/time_domain.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/time_domain.mp4)
 
 而频域，相信你也猜到了，他所表达的数据，正是频率：
 
-<video preload="none" src="https://blog-r2.jw1.dev/lIBMdb_F5As3-nav.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/lIBMdb_F5As3-nav.mp4)
 
 而我好奇的是，这两种数据，究竟是如何转换的呢？先来看看它们之间的关联，这是一个 440Hz 的正弦波在时域和频域上的表现：
 
@@ -40,7 +40,7 @@ tags:
 
 为了更加容易理解这种数据上的变化，我们可以想象一个三维空间，我们以频域这条线延伸出一个面，这样我们就得到了一张「纸」，一个时间单位内的信号变化会让这张纸同时在时域（X）轴和频域（Y）轴以及振幅（Z）轴产生变化，如果我们从 X 轴向原点看去，我们会看到纸张的一侧在二维平面投影出了一条线，也就是频域（Y 轴），如果我们从 Y 轴向原点看去，我们会看到纸张在二维平面投影出一个矩形，也就是时域（X 轴）。傅里叶变换所做的事情无异于改变了观看数据的视角，不过现实情况中，这种转换会稍微复杂那么 🤏 亿点点。
 
-<video preload="none" src="https://blog-r2.jw1.dev/neA4FgWFaGEolIIp.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/neA4FgWFaGEolIIp.mp4)
 
 ### 时域数据到频率数据的暴力拆解
 
@@ -63,7 +63,7 @@ tags:
 
 先从 1Hz 的频率开始对比，直到 20000Hz，我们来看看记录下的图形：
 
-<video preload="none" src="https://blog-r2.jw1.dev/GJPt7TrezLFnTvRx.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/GJPt7TrezLFnTvRx.mp4)
 
 ![](https://blog-r2.jw1.dev/C-Ld_yBkX6qEeeH6.png)
 
@@ -84,7 +84,7 @@ tags:
 
 这样想象还不够直观，我们还是来做一个小工具，并且在上面的描述中做一个小改动，我们把之前使用的直角坐标系换成极坐标系，采样率 48KHz 的情况下生成一段 375Hz 的正弦波，放进图表里看看：
 
-<video preload="none" src="https://blog-r2.jw1.dev/Ie2Z3GTnFhXNyJoI.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/Ie2Z3GTnFhXNyJoI.mp4)
 
 在极坐标中，X 轴由线变成了点，Y 轴也失去了负数象限，于是 4 个正弦波在极坐标上均匀的绘制出了 8 个叶片。想象这样一个图形有一定的质量，在我们将数据从尾部一点点提取到头部的时候，图形的质心一定会发生变化。
 
@@ -92,7 +92,7 @@ tags:
 
 如果我们在移动数据的时候监测质心的变化会发生什么呢？
 
-<video preload="none" src="https://blog-r2.jw1.dev/RVpGMhV8MD_KYlmb.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/RVpGMhV8MD_KYlmb.mp4)
 
 可以看到，当线条在某一方向更加集中时，质心离原点距离越远，当所有的正弦波在某个方向上完全重叠时，记录表上会出现一个峰值，这就可以理解为是当前波形中最突出的频率。
 
@@ -100,7 +100,7 @@ tags:
 
 ![](https://blog-r2.jw1.dev/6q9Eg9tWRvJNl5Sc.png)
 
-<video preload="none" src="https://blog-r2.jw1.dev/e5hcP5iopg1ozzAf.mp4" playsinline muted loop controls></video>
+![video](https://blog-r2.jw1.dev/e5hcP5iopg1ozzAf.mp4)
 
 经过计算之后可得，峰值频率为 375Hz，与我们生成的正弦波频率完全一致！这个方法这么精确的吗？再生成一段 15017Hz 的正弦波试试：
 
@@ -110,7 +110,7 @@ tags:
 
 ### 真正的傅里叶变换
 
-真正的傅里叶变换其实可以想象为两个方法的结合，我们可以看下面的代码（[https://gist.github.com/anonymous/129d477ddb1c8025c9ac](https://gist.github.com/anonymous/129d477ddb1c8025c9ac)）：
+真正的傅里叶变换其实可以想象为两个方法的结合，我们可以看下面的[代码](https://gist.github.com/anonymous/129d477ddb1c8025c9ac)：
 
 ```javascript
 Fourier.Transform = function (data) {

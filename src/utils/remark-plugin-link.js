@@ -11,7 +11,11 @@ export default function remarkPluginLink() {
           node.data.hProperties = {}
         }
 
-        node.data.hProperties.target = '_blank'
+        if(node.url.startsWith('https://jw1.dev')){
+          node.data.hProperties.target = '_self'
+        } else {
+          node.data.hProperties.target = '_blank'
+        }
     })
   }
 }

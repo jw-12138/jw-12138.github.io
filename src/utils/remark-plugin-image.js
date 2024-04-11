@@ -21,7 +21,7 @@ export default function remarkPluginImage() {
         let nodeUrl = node.url
         let figure = ''
 
-        if(node.url.split('?')[1]){
+        if (node.url.split('?')[1]) {
           let [url, params] = node.url.split('?')
 
           nodeUrl = url
@@ -35,6 +35,10 @@ export default function remarkPluginImage() {
 
             if (paramsElementWhiteList.includes(key)) {
               figure = `<span class="figure">${node.alt}</span>`
+            }
+
+            if (key === 'center' && value) {
+              style += 'margin-left:auto;margin-right:auto;'
             }
           })
 
