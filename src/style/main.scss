@@ -2,7 +2,7 @@
 
 html,
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   tab-size: 2;
   @apply bg-white text-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 min-w-[320px];
@@ -18,6 +18,10 @@ main {
 
 #app {
   @apply w-full max-w-[42rem] px-0 mx-auto lg:pb-[5rem] pb-0;
+}
+
+.figure {
+  @apply text-center text-xs opacity-60 mt-[-1rem] pb-2 block;
 }
 
 @keyframes widthExpand {
@@ -43,7 +47,7 @@ img {
 }
 
 video {
-  @apply max-w-full w-full mb-6 block mx-auto rounded;
+  @apply max-w-full w-full mb-6 block mx-auto rounded-xl;
 }
 
 .page-content {
@@ -57,7 +61,7 @@ video {
     @apply border-l-4 dark:border-white/70 border-black/80 pl-4 pt-3 mb-4;
 
     p {
-      @apply pb-4 leading-6 mb-0;
+      @apply pb-3 leading-6 mb-0;
     }
   }
 
@@ -96,7 +100,15 @@ video {
   }
 
   p {
-    @apply text-base leading-8 mb-6 overflow-auto;
+    @apply text-base leading-8 mb-6;
+
+    img {
+      @apply sm:max-w-full mb-6 block sm:mx-auto sm:rounded-xl ml-[-1rem] w-auto max-w-[calc(100%+2rem)] rounded-none;
+    }
+
+    video {
+      @apply sm:max-w-full mb-6 block sm:mx-auto sm:rounded-xl ml-[-1rem] max-w-[calc(100%+2rem)] w-[calc(100%+2rem)] rounded-none;
+    }
   }
 
   .demo {
@@ -156,7 +168,17 @@ video {
   }
 
   code {
-    @apply text-xs dark:bg-white/20 rounded bg-black/10 px-2 mx-1 py-1;
+    &:before {
+      content: '`';
+      display: inline;
+    }
+
+    &:after {
+      content: '`';
+      display: inline;
+    }
+
+    @apply bg-transparent mx-0 font-extrabold text-black dark:text-white text-sm break-all;
   }
 
   .astro-code {
@@ -170,7 +192,17 @@ video {
     @apply leading-6 px-0 py-0 mb-6 bg-transparent mx-0;
 
     code {
-      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0;
+      &:before {
+        content: '';
+        display: none;
+      }
+
+      &:after {
+        content: '';
+        display: none;
+      }
+
+      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0 font-normal break-normal;
     }
   }
 }

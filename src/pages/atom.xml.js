@@ -1,5 +1,4 @@
 import {getCollection} from 'astro:content'
-import sanitizeHtml from 'sanitize-html'
 import MarkdownIt from 'markdown-it'
 import pangu from 'pangu'
 
@@ -91,7 +90,7 @@ export async function GET(context) {
     <link href="https://jw1.dev/${datePath}/${postPath}.html"/>
     <published>${new Date(date).toISOString()}</published>
     <content type="html">
-    <![CDATA[${sanitizeHtml(parser.render(post.body))}]]>
+    <![CDATA[${parser.render(post.body)}]]>
     </content>
     ${tags}
 </entry>`
