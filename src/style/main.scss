@@ -47,7 +47,7 @@ img {
 }
 
 video {
-  @apply max-w-full w-full mb-6 block mx-auto rounded;
+  @apply max-w-full w-full mb-6 block mx-auto rounded-xl;
 }
 
 .page-content {
@@ -100,7 +100,15 @@ video {
   }
 
   p {
-    @apply text-base leading-8 mb-6 overflow-auto;
+    @apply text-base leading-8 mb-6;
+
+    img {
+      @apply sm:max-w-full mb-6 block sm:mx-auto sm:rounded-xl ml-[-1rem] w-auto max-w-[calc(100%+2rem)] rounded-none;
+    }
+
+    video {
+      @apply sm:max-w-full mb-6 block sm:mx-auto sm:rounded-xl ml-[-1rem] max-w-[calc(100%+2rem)] w-[calc(100%+2rem)] rounded-none;
+    }
   }
 
   .demo {
@@ -170,7 +178,7 @@ video {
       display: inline;
     }
 
-    @apply bg-transparent mx-0 font-extrabold text-black dark:text-white;
+    @apply bg-transparent mx-0 font-extrabold text-black dark:text-white text-sm break-all;
   }
 
   .astro-code {
@@ -194,7 +202,7 @@ video {
         display: none;
       }
 
-      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0;
+      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0 font-normal break-normal;
     }
   }
 }
