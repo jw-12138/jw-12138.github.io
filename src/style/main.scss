@@ -20,7 +20,7 @@ main {
   @apply w-full max-w-[42rem] px-0 mx-auto lg:pb-[5rem] pb-0;
 }
 
-.figure{
+.figure {
   @apply text-center text-xs opacity-60 mt-[-1rem] pb-2 block;
 }
 
@@ -160,12 +160,12 @@ video {
   }
 
   code {
-    &:before{
+    &:before {
       content: '`';
       display: inline;
     }
 
-    &:after{
+    &:after {
       content: '`';
       display: inline;
     }
@@ -184,6 +184,16 @@ video {
     @apply leading-6 px-0 py-0 mb-6 bg-transparent mx-0;
 
     code {
+      &:before {
+        content: '';
+        display: none;
+      }
+
+      &:after {
+        content: '';
+        display: none;
+      }
+
       @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0;
     }
   }
