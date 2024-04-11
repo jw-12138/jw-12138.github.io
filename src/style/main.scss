@@ -20,6 +20,10 @@ main {
   @apply w-full max-w-[42rem] px-0 mx-auto lg:pb-[5rem] pb-0;
 }
 
+.figure{
+  @apply text-center text-xs opacity-60 mt-[-1rem] pb-2 block;
+}
+
 @keyframes widthExpand {
   from {
     width: 0;
@@ -57,7 +61,7 @@ video {
     @apply border-l-4 dark:border-white/70 border-black/80 pl-4 pt-3 mb-4;
 
     p {
-      @apply pb-4 leading-6 mb-0;
+      @apply pb-3 leading-6 mb-0;
     }
   }
 
