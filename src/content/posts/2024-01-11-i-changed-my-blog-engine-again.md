@@ -26,7 +26,7 @@ tags:
 
 既然是换博客引擎，那一定少不了折腾，之前从 Jekyll 转到 Hexo 其实还算是比较无痛的，但是从 Hexo 转到 Astro 就有点蛋疼了，因为 Astro 的定位并不是一个博客引擎，而是模版引擎，意味着 Astro 在代码层面其实更加靠底层，所以大部分博客的功能需要手动实现，新站点倒还好，老站点如果需要实现向下兼容，还真不是一件容易的事情。
 
-### 实现 Hexo 的链接结构
+## 实现 Hexo 的链接结构
 
 我之前用的链接结构长这样：
 
@@ -92,7 +92,7 @@ const {Content} = await entry.render()
 里面 `.astro` 组件的代码就是这样的，我们这边用到了一个`getCollection`和
 `getEntry`的方法，我们暂时先放一旁，后面会讲到。
 
-### 实现 Hexo 的文章分类
+## 实现 Hexo 的文章分类
 
 在用 Hexo 写博客的时候，我们可以很方面的在 Markdown 里面加上 tags 数组来告诉 Hexo 这篇文章属于哪些分类，或者说拥有哪些标签，这对于 SEO 来说也是非常有帮助的，Astro 默认没有这个功能，但是实现起来不困难，还是动态路由。我们需要在`pages`文件夹下创建一个新的文件夹叫`tags`，然后再在这个文件夹下创建一个`[tag].astro`的文件，这个文件就是我们的分类页面，然后我们需要在`[tag].astro`里面写入下面的代码：
 
@@ -132,7 +132,7 @@ const currentTag = Astro.params.tag
 
 这一步和上一步的代码基本相同，只是这里我们需要先获取所有的 tag，然后再根据当前 tag 来过滤文章，最后渲染出列表。
 
-### Markdown 文件如何安置？
+## Markdown 文件如何安置？
 
 Markdown 文件如果直接放在`src/pages`下面，你的链接结构会变得非常简单，就是`domain.com/:title`，也不会需要动态路由，你的 Markdown 文件名就是你的路由。按照 Astro 官网的描述，任何 `src/pages` 下被支持的文件（`.astro` `.md` `.mdx` `.html` `.js`）都会被编译到路由中去。所以自然而然的，我也把之前的 Markdown 文件全都放到了 pages 里面，但是文章的链接结构会变成这样：
 
@@ -167,7 +167,7 @@ const allPosts = await getCollection('posts')
 const entry = await getEntry('posts', slug)
 ```
 
-### 实现 RSS 订阅
+## 实现 RSS 订阅
 
 前面我们了解到，Astro 支持将 pages 文件夹中的文件转换为路由，其中就包括 js，官方把它叫做 Endpoints，通俗来讲的话，其实就是接口。
 
@@ -222,7 +222,7 @@ export async function GET(context) {
 }
 ```
 
-### 在 MDX 中使用 Vue 组件
+## 在 MDX 中使用 Vue 组件
 
 最激动人心的功能就是这个了，Astro 可以使用 MDX（JSX in Markdown）作为文章入口，而 MDX 中可以混用 7 种前端框架的组件。
 
@@ -250,7 +250,7 @@ import AppAudio from '../../components/app-audio.vue'
 
 需要注意的是，在 MDX 中传入 props 参数的时候，我们需要遵循 JSX 的语法，而不是 Vue 的语法。
 
-### 一些需要注意的地方
+## 一些需要注意的地方
 
 1. 图片懒加载  
    我需要一个能在`img`标签上插入`loading="lazy"`的机制，理想情况下，对于新博客而言，我推荐你们全部使用 MDX 作为默认的书写介质，这样就可以使用 Astro 自带的`<Image/>`组件，这个组件默认就会带上`loading="lazy"`属性，而且你也可以开发和使用自己的组件，一张图能被玩出花儿来，但是对于老博客迁移过来的 `.md` 文件，一个个修改的话多少还是有点不太现实，虽然可以用 remark 插件来做 post editing（[我查到的实现方式](https://cirry.cn/blog/frontend/astro/astro-implements-lazy-loading-of-images/)），但是牺牲了图片的`alt`属性，这并不是我想要的。

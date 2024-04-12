@@ -12,7 +12,7 @@ tags:
 
 即使我不会拿来做坏事，但是万一用户的登录令牌泄漏，风险还是很大的，而且这里存在一个信任问题，用户凭什么会相信你不会做坏事呢？所以我毅然决定迁移到 GitHub App。
 
-### GitHub Oauth App 和 GitHub App 的区别
+## GitHub Oauth App 和 GitHub App 的区别
 
 GitHub OAuth App 是 GitHub 官方提供的一种授权方式，它可以让用户以自己的身份登录到第三方应用并进行相关操作，很多评论系统目前都是基于这种方式实现的。
 
@@ -24,9 +24,9 @@ GitHub App 其实和 OAuth 一样，也是用来给用户授权的，但是中�
 
 还有，相比较 OAuth 的一次性授权，GitHub Apps 其实是两段式授权，第一段是用户授权，这个没有什么区别，第二段是 App 的安装授权，针对评论系统而言，如果我希望 App 能够代表某一个用户对我某一个代码仓库的 Issues 进行操作，那么这个 App 就必须安装我的 GitHub 账号内，安装成功之后的 GitHub App 才有权限操作。而对于整个评论系统来说，我们甚至都不需要用户的 Issues 权限，只需要验证用户来自 GitHub 即可，极大程度上减少了用户的隐私风险。
 
-### 迁移步骤
+## 迁移步骤
 
-#### 1. 创建 GitHub App
+### 1. 创建 GitHub App
 
 进入[创建 App 的页面](https://github.com/settings/apps/new)，和创建 OAuth App 一样，我们需要填写 App 名称、App 主页地址和一个回调地址。不同的是，我们多了一个「Expire user authorization tokens」的选项，如果勾选的话，GitHub 返回给我们的令牌会有一个 8 小时的有效期，如果需要续期则需要用`refresh_token`进行续期，由于我们的评论系统敏感度不高，这里可以不勾选，这样我们的拿到令牌就会一直有效。这一步在 OAuth App 中是没有的，有得选总比没得选好！
 
@@ -36,13 +36,13 @@ GitHub App 其实和 OAuth 一样，也是用来给用户授权的，但是中�
 
 创建完成之后，GitHub 会提示你需要创建一个私钥，这一步其实可以忽略，因为我们的 App 需要以用户身份进行操作，私钥是在以 App 身份进行操作时生成 JWT 用的。
 
-#### 2. 安装 GitHub App
+### 2. 安装 GitHub App
 
 在创建 GitHub App 之后，我们需要将这个 App 安装到我们自己的 GitHub 账号中，这样我们的 GitHub App 才有权限操作我们的仓库。在 App 的设置页面，我们可以看到一个「Install App」的按钮，点击之后，会跳转到一个安装页面，这里会列出所有的仓库，我们可以选择需要安装的仓库，这里我们只需要选择我们的博客仓库即可。
 
 至此，我们的 GitHub App 就配置完成了，接下来我们需要修改评论系统的代码，让它能够对接此 GitHub App 进行操作。
 
-#### 3. 修改授权地址的参数
+### 3. 修改授权地址的参数
 
 在 OAuth 和 GitHub App 中，我们的授权地址都是`https://github.com/login/oauth/authorize`，但是 GitHub App 没有 `scope` 参数，因为我们的权限已经提前定义好了，其他参数可以保持不变，具体的可以参考[官方文档](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-web-application-flow-to-generate-a-user-access-token)。
 

@@ -86,7 +86,7 @@ function scrollToSlug(slug) {
   const dom = document.getElementById(slug)
   if (dom) {
     window.scroll({
-      top: dom.offsetTop + 10,
+      top: dom.offsetTop - 20,
       behavior: 'smooth'
     })
   }

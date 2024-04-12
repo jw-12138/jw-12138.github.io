@@ -143,11 +143,11 @@
           required name="comment" placeholder="提些问题，或者打个招呼吧" v-model="userComment"></textarea>
 
         <div class="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
-          评论系统基于 <a target="_blank" class="text-black dark:text-white" href="https://github.com/features/issues">GitHub
-          Issues</a> 制作，发言请记得遵守 <a target="_blank" class="text-black dark:text-white"
+          评论系统基于 <a target="_blank" class="text-black font-extrabold dark:text-white" href="https://github.com/features/issues">GitHub
+          Issues</a> 制作，发言请记得遵守 <a target="_blank" class="text-black dark:text-white font-extrabold"
                                             href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">GitHub
           社区行为准则</a>。如果您比较好奇本博客是如何处理数据的，可以查看<a href="/privacy"
-                                                                           class="text-black dark:text-white">隐私声明</a>。
+                                                                           class="text-black dark:text-white font-extrabold">隐私声明</a>。
         </div>
 
         <div class="text-center mt-2 flex justify-center">
@@ -221,6 +221,7 @@
                 </a>
                 <span class="comment-actions flex-shrink-0" v-show="isUserLoggedIn && editingCommentId !== item.id">
                   <button
+                    aria-label="更多操作"
                     class="dark:bg-neutral-800 bg-neutral-200 rounded-full w-8 h-8 overflow-hidden flex items-center justify-center"
                     v-show="user.login === item.user.login" @click="toggleCommentActionDropdown(item.id)"
                     @mouseenter="mouseIsInActionWindow = true" @mouseleave="mouseIsInActionWindow = false">
@@ -239,6 +240,7 @@
                       d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
                   </button>
                   <button
+                    aria-label="提及这个用户"
                     class="h-[30px] leading-[28px] px-2 rounded-full bg-neutral-100 hover:bg-neutral-800 hover:text-white dark:bg-neutral-800 dark:text-white dark:hover:text-black dark:hover:bg-neutral-200 text-xs"
                     v-show="user.login !== item.user.login" @click="mention(item.user.login)"
                     role="button"><svg xmlns="http://www.w3.org/2000/svg"

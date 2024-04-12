@@ -124,37 +124,41 @@ video {
   }
 
   h1 {
-    @apply text-3xl leading-9 font-semibold mb-6;
+    @apply text-3xl leading-9 font-extrabold mb-6;
 
     &::before {
-      content: '#';
+      content: 'h1';
+      font-size: 50%;
       @apply opacity-60 inline-block mr-2;
     }
   }
 
   h2 {
-    @apply text-2xl leading-9 font-semibold mb-6 pt-8;
+    @apply text-2xl leading-9 font-semibold mb-4 mt-[3rem];
 
     &::before {
-      content: '#';
+      content: 'h2';
+      font-size: 50%;
       @apply opacity-60 inline-block mr-2;
     }
   }
 
   h3 {
-    @apply text-xl leading-8 font-semibold mb-6 pt-6;
+    @apply text-xl leading-8 font-semibold mb-2 mt-4;
 
     &::before {
-      content: '#';
+      content: 'h3';
+      font-size: 50%;
       @apply opacity-60 inline-block mr-2;
     }
   }
 
   h4 {
-    @apply text-lg leading-7 font-semibold mb-6 pt-4;
+    @apply text-lg leading-7 font-semibold mb-1 mt-2;
 
     &::before {
-      content: '#';
+      content: 'h4';
+      font-size: 50%;
       @apply opacity-60 inline-block mr-2;
     }
   }
