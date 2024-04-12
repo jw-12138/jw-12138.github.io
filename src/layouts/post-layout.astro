@@ -3,6 +3,7 @@ import GlobalStyle from '../components/global-style.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
 import Comments from '../components/comments.vue'
+import FakeComments from '../components/fake-comments.astro'
 import Meta from '../components/meta.astro'
 import Og from "../components/og.astro";
 import Toc from '../components/toc.vue'
@@ -91,12 +92,14 @@ let transitionSlug = `${year}-${month}-${date}-${slug}`
     <div class="page-content">
       <noscript>
         <p class="text-red-500 dark:text-red-400 mb-8">
-          看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过评论功能将不能使用。
+          看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过你无法直接在本站使用评论系统。
         </p>
       </noscript>
       <slot></slot>
     </div>
+
     <Comments client:only="vue" github-issue-id={issue}/>
+    <FakeComments githubIssueId={issue}/>
   </div>
   <Footer/>
 </main>

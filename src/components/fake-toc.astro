@@ -2,33 +2,35 @@
 let {headings} = Astro.props
 ---
 
-<div class="lg:block hidden mt-[4rem] relative left-[-.5rem]" id="fake_toc">
-  <a href="#" aria-label="返回顶部"
-          class="px-2 py-1 rounded-xl hover:bg-black/15 dark:hover:bg-white/15 transition-all w-8 h-8 flex justify-center items-center mb-1 cursor-pointer opacity-70 hover:opacity-100"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-navigation-up" width="24" height="24"
-         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-         stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path
-        d="M16.54 12.843l-4.54 -9.843l-7.97 17.275c-.07 .2 -.017 .424 .135 .572c.15 .148 .374 .193 .57 .116l7.265 -2.463"/>
-      <path d="M19 22v-6"/>
-      <path d="M22 19l-3 -3l-3 3"/>
-    </svg>
-  </a>
+<noscript>
+  <div class="lg:block hidden mt-[4rem] relative left-[-.5rem]" id="fake_toc">
+    <a href="#" aria-label="返回顶部"
+       class="px-2 py-1 rounded-xl hover:bg-black/15 dark:hover:bg-white/15 transition-all w-8 h-8 flex justify-center items-center mb-1 cursor-pointer opacity-70 hover:opacity-100"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-navigation-up" width="24" height="24"
+           viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+           stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path
+          d="M16.54 12.843l-4.54 -9.843l-7.97 17.275c-.07 .2 -.017 .424 .135 .572c.15 .148 .374 .193 .57 .116l7.265 -2.463"/>
+        <path d="M19 22v-6"/>
+        <path d="M22 19l-3 -3l-3 3"/>
+      </svg>
+    </a>
 
-  {headings.map((heading, index) => {
-    return (
-      <>
-        <a
-          href={`#${heading.slug}`}
-          class="text-xs max-w-full cursor-pointer hover:bg-black/15 dark:hover:bg-white/15 px-2 transition-all duration-300 w-full text-left relative border flex border-none items-center opacity-70 hover:rounded-2xl pt-[0] pb-[0]">
+    {headings.map((heading, index) => {
+      return (
+        <>
+          <a
+            href={`#${heading.slug}`}
+            class="text-xs max-w-full cursor-pointer hover:bg-black/15 dark:hover:bg-white/15 px-2 transition-all duration-300 w-full text-left relative border flex border-none items-center opacity-70 hover:rounded-2xl pt-[0] pb-[0]">
           <span class="overflow-hidden py-[.2rem] flex items-center h-7">
             <span class="block text-ellipsis whitespace-nowrap overflow-hidden">
               {heading.text}
             </span>
           </span>
-        </a>
-      </>)
-  })}
-</div>
+          </a>
+        </>)
+    })}
+  </div>
+</noscript>
