@@ -116,7 +116,7 @@ video {
   }
 
   a {
-    @apply dark:text-white text-black font-extrabold hover:underline decoration-wavy;
+    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black;
 
     &[target='_blank'] {
       @apply after:content-['↗'];
