@@ -20,22 +20,23 @@ import '../style/main.scss'
   <Og path={path} title={title}/>
 </head>
 <body>
-  <aside>
-    <slot name="header"/>
-    <Footer aside={true}/>
-  </aside>
-	<main>
-    <div id="app">
-      <div class="py-[3rem] italic">{title}</div>
-      <noscript>
-        <p class="text-red-500 dark:text-red-400 mb-8">
-          看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过你无法直接在本站使用评论系统。
-        </p>
-      </noscript>
-      <slot name="content"/>
-      <Comments client:only="vue" github-issue-id={issue} />
-    </div>
-    <Footer></Footer>
-  </main>
+<a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black" href="#app">跳转至正文区域</a>
+<aside>
+  <slot name="header"/>
+  <Footer aside={true}/>
+</aside>
+<main>
+  <div id="app">
+    <div class="py-[3rem] italic">{title}</div>
+    <noscript>
+      <p class="text-red-500 dark:text-red-400 mb-8">
+        看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过你无法直接在本站使用评论系统。
+      </p>
+    </noscript>
+    <slot name="content"/>
+    <Comments client:only="vue" github-issue-id={issue}/>
+  </div>
+  <Footer></Footer>
+</main>
 </body>
 </html>

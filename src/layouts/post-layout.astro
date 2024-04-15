@@ -47,6 +47,7 @@ let transitionSlug = `${year}-${month}-${date}-${slug}`
   }
 </script>
 <aside>
+  <a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black" href="#app">跳转至正文区域</a>
   <Header/>
   <FakeToc headings={Astro.props.headings}/>
   <Toc data={Astro.props.headings} client:only="vue"/>
