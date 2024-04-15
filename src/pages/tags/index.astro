@@ -1,6 +1,6 @@
 ---
 import IndexLayout from '../../layouts/index-layout.astro'
-import { getCollection } from 'astro:content'
+import {getCollection} from 'astro:content'
 
 const allPosts = await getCollection('posts')
 
@@ -29,24 +29,60 @@ allPosts.forEach((post) => {
     }
   })
 })
+
+let countSortedTags = []
+Object.keys(allTags).map(key => {
+  countSortedTags.push({
+    count: allTags[key].length,
+    label: key
+  })
+})
+
+countSortedTags.sort((a, b) => {
+  return b.count - a.count
+})
 ---
 
 <IndexLayout pageName="tags">
-<div>
-  <div class="py-[3rem] italic">Tags</div>
+  <div>
+    <div class="py-[3rem] italic">Tags</div>
 
-  <div class="flex flex-wrap items-center content-center text-xs">
-    {
-      Object.keys(allTags).map((tag, index) => {
-        return (
-          <>
-            <a
-              transition:name={tag}
-              class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2 mr-2" href={`/tags/${tag}`}>{tag}({allTags[tag].length})</a>
-          </>
-        )
-      })
-    }
+    <div class="">
+      <input type="checkbox" id="showCountSorted" class="peer/showCountSorted leading-6 text-sm inline-block">
+      <label for="showCountSorted" class="text-sm leading-6 inline-block">
+        以数量倒序展示
+      </label>
+
+      <div class="flex mt-4 flex-wrap items-center content-center text-xs peer-checked/showCountSorted:hidden">
+        {
+          Object.keys(allTags).map((tag, index) => {
+            return (
+              <>
+                <a
+                  transition:name={tag}
+                  class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2 mr-2" href={`/tags/${tag}`}>{tag}({allTags[tag].length})</a>
+              </>
+            )
+          })
+        }
+      </div>
+
+      <div class="mt-4 flex-wrap items-center content-center text-xs peer-checked/showCountSorted:flex hidden">
+        {
+          countSortedTags.map(tag => {
+            return (
+              <>
+                <a
+                  transition:name={tag.label}
+                  class="dark:bg-neutral-800 bg-neutral-100 hover:text-white hover:bg-neutral-800 dark:hover:text-black dark:hover:bg-white rounded-3xl px-2 py-1 mb-2 mr-2" href={`/tags/${tag.label}`}>{tag.label}({tag.count})
+                </a>
+              </>
+            )
+          })
+        }
+      </div>
+    </div>
+
+
   </div>
-</div>
 </IndexLayout>
