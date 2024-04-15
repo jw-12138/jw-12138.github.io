@@ -193,7 +193,7 @@ video {
     border: none;
     background-color: transparent !important;
     font-size: 0.875rem;
-    @apply leading-6 px-0 py-0 mb-6 bg-transparent mx-0;
+    @apply leading-6 px-0 py-0 pb-4 bg-transparent mx-0;
 
     code {
       &:before {
