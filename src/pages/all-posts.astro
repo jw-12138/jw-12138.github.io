@@ -1,6 +1,7 @@
 ---
 import IndexLayout from '../layouts/index-layout.astro'
 import { getCollection } from 'astro:content'
+import dayjs from "dayjs";
 
 const allPosts = await getCollection('posts')
 
@@ -65,13 +66,16 @@ let yearKeys = Object.keys(postMap).sort((a, b) => Number(b) - Number(a))
             <li class="group">
               <a href={`/${post.date.split('-').join('/')}/${post.slug.slice(11)}`} class="block mb-6">
                 <div class="text-xs mb-1">
+                  <span class="opacity-80">
+                    {dayjs(post.date).format('MMMM D')}
+                  </span>
                   {deprecated && (
                     <span class="text-red-500 dark:text-red-400 font-black">
                       Deprecated
                     </span>
                   )}
                 </div>
-                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline decoration-wavy" transition:name={post.slug}>
+                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4" transition:name={post.slug}>
                   {post.data.title}
                 </div>
               </a>

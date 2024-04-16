@@ -9,6 +9,7 @@ import Og from "../components/og.astro";
 import Toc from '../components/toc.vue'
 import FakeToc from '../components/fake-toc.astro'
 import '../style/main.scss'
+import dayjs from "dayjs"
 
 let {title, tags, style, deprecated, issue, wordsCount} = Astro.props.frontmatter
 
@@ -23,6 +24,8 @@ let style_str = style ? style : ''
 let path = Astro.url.pathname
 
 let transitionSlug = `${year}-${month}-${date}-${slug}`
+
+let postDate = dayjs(`${year}-${month}-${date}`).format('MMMM D, YYYY')
 ---
 
 <html lang="en">
@@ -57,9 +60,9 @@ let transitionSlug = `${year}-${month}-${date}-${slug}`
   <div id="app">
     <h1 class="text-3xl font-black pt-[3rem]" transition:name={transitionSlug}>{title}</h1>
     <div class="text-xs pt-4">
-      <span class="opacity-80 italic">{wordsCount}字，{Math.ceil(wordsCount / 220)}分钟</span>
+      <span class="opacity-80 italic">{wordsCount} words, {Math.ceil(wordsCount / 220)} minutes to read</span>
       <span class="px-1">/</span>
-      <span class="opacity-80">{`${year}-${month}-${date}`}</span>
+      <span class="opacity-80">{postDate}</span>
       {
         () => {
           if (deprecated) {

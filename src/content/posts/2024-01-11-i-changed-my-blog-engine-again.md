@@ -253,7 +253,7 @@ import AppAudio from '../../components/app-audio.vue'
 ## 一些需要注意的地方
 
 1. 图片懒加载  
-   我需要一个能在`img`标签上插入`loading="lazy"`的机制，理想情况下，对于新博客而言，我推荐你们全部使用 MDX 作为默认的书写介质，这样就可以使用 Astro 自带的`<Image/>`组件，这个组件默认就会带上`loading="lazy"`属性，而且你也可以开发和使用自己的组件，一张图能被玩出花儿来，但是对于老博客迁移过来的 `.md` 文件，一个个修改的话多少还是有点不太现实，虽然可以用 remark 插件来做 post editing（[我查到的实现方式](https://cirry.cn/blog/frontend/astro/astro-implements-lazy-loading-of-images/)），但是牺牲了图片的`alt`属性，这并不是我想要的。
+   我需要一个能在`img`标签上插入`loading="lazy"`的机制，理想情况下，对于新博客而言，我推荐你们全部使用 MDX 作为默认的书写介质，这样就可以使用 Astro 自带的`<Image/>`组件，这个组件默认就会带上`loading="lazy"`属性，而且你也可以开发和使用自己的组件，一张图能被玩出花儿来，但是对于老博客迁移过来的 `.md` 文件，一个个修改的话多少还是有点不太现实，虽然可以用 remark 插件来做 post editing（[我查到的实现方式](https://cirry.cn/blog/astro/astro-implements-lazy-loading-of-images/)），但是牺牲了图片的`alt`属性，这并不是我想要的。
 2. 生成的链接并不包含`.html`后缀  
    如果你之前是用的是 Hexo，那么你的链接结构可能是这样的：`domain.com/:year/:month/:day/:title.html`，但是 Astro 生成的结构其实是这样的：`domain.com/:year/:month/:day/:title/index.html`，要解决这个问题其实也很简单，我们在`src/pages/[year]/[month]/[date]/`中新增一个名为`[slug].html.astro`的文件即可，你可以完全复制`[slug].astro`的逻辑，或者用来重定向，重定向的写法如下：
 

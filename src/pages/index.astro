@@ -46,7 +46,7 @@ let renderCount = 0
               <a href={`/${datePath}/${postPath}`} class="block mb-8">
                 <div class="text-xs mb-2">
                   <span class="opacity-80">
-                    {dayjs(date).format('YYYY-MM-DD')}
+                    {dayjs(date).format('MMMM D, YYYY')}
                   </span>
                   {deprecated && (
                     <span class="ml-2 text-red-500 dark:text-red-400 font-black">
@@ -54,7 +54,7 @@ let renderCount = 0
                     </span>
                   )}
                 </div>
-                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline decoration-wavy" transition:name={post.slug}>
+                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4" transition:name={post.slug}>
                   {post.data.title}
                 </div>
               </a>

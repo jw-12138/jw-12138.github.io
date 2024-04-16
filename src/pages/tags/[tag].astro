@@ -49,10 +49,10 @@ const currentTag = Astro.params.tag
 
           return (
             <li class="group">
-              <a href={`/${datePath}/${postPath}`} class="block mb-8">
+              <a href={`/${datePath}/${postPath}`} class="block mb-8 group">
                 <div class="text-xs mb-2">
                   <span class="opacity-80">
-                    {dayjs(date).format('YYYY-MM-DD')}
+                    {dayjs(date).format('MMMM D, YYYY')}
                   </span>
                   {deprecated && (
                     <span class="ml-2 text-red-500 dark:text-red-400">
@@ -60,7 +60,7 @@ const currentTag = Astro.params.tag
                     </span>
                   )}
                 </div>
-                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
+                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4">
                   {post.data.title}
                 </div>
               </a>
@@ -71,8 +71,8 @@ const currentTag = Astro.params.tag
     </ul>
 
     <div class="text-center pt-8">
-      <a href="/tags" class="dark:bg-neutral-800 bg-neutral-100 rounded-full text-sm px-6 py-2 flex items-center w-[11rem] mx-auto hover:shadow-xl dark:hover:bg-neutral-600 transition-shadow">
-        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+      <a href="/tags" class="dark:bg-neutral-800 bg-neutral-100 rounded-full text-sm px-6 py-2 flex items-center w-[10rem] mx-auto hover:shadow-xl dark:hover:bg-neutral-600 transition-shadow">
+        <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left w-5 h-5"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
         <span class="ml-1">查看所有分类</span>
       </a>
     </div>

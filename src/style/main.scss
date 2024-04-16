@@ -5,7 +5,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   tab-size: 2;
-  @apply bg-white text-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 min-w-[320px];
+  @apply bg-white text-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 min-w-[320px];
 }
 
 aside {
@@ -51,7 +51,7 @@ video {
 }
 
 .page-content {
-  @apply pb-8;
+  @apply pb-8 hyphens-auto;
 
   .table-wrap {
     @apply overflow-auto;
@@ -116,7 +116,7 @@ video {
   }
 
   a {
-    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black;
+    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black dark:text-white text-black rounded-[2px];
 
     &[target='_blank'] {
       @apply after:content-['↗'];
@@ -124,42 +124,42 @@ video {
   }
 
   h1 {
-    @apply text-3xl leading-9 font-extrabold mb-6;
+    @apply text-3xl leading-9 font-extrabold mb-6 relative;
 
     &::before {
       content: 'h1';
       font-size: 50%;
-      @apply opacity-60 inline-block mr-2;
+      @apply opacity-60 inline-block;
     }
   }
 
   h2 {
-    @apply text-2xl leading-9 font-semibold mb-4 mt-[3rem];
+    @apply text-2xl leading-9 font-semibold mb-4 mt-[3rem] relative;
 
     &::before {
       content: 'h2';
       font-size: 50%;
-      @apply opacity-60 inline-block mr-2;
+      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
     }
   }
 
   h3 {
-    @apply text-xl leading-8 font-semibold mb-2 mt-4;
+    @apply text-xl leading-8 font-semibold mb-2 mt-4 relative;
 
     &::before {
       content: 'h3';
       font-size: 50%;
-      @apply opacity-60 inline-block mr-2;
+      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
     }
   }
 
   h4 {
-    @apply text-lg leading-7 font-semibold mb-1 mt-2;
+    @apply text-lg leading-7 font-semibold mb-1 mt-2 relative;
 
     &::before {
       content: 'h4';
       font-size: 50%;
-      @apply opacity-60 inline-block mr-2;
+      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
     }
   }
 
@@ -182,7 +182,7 @@ video {
       display: inline;
     }
 
-    @apply bg-transparent mx-0 font-extrabold text-black dark:text-white text-sm break-all;
+    @apply bg-transparent mx-0 font-extrabold text-black dark:text-white text-sm break-all sm:break-normal sm:whitespace-pre-wrap
   }
 
   .astro-code {

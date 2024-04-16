@@ -207,7 +207,7 @@
         opacity: deletingId === item.id ? '.3' : '1'
       }">
             <div class="datetime text-xs opacity-70">
-              {{ dayjs(item.created_at).format('YYYY-MM-DD HH:mm:ss') }}
+              {{ dayjs(item.created_at).fromNow() }}
             </div>
             <div class="user flex mt-2 w-full relative">
               <span class="outer-box flex justify-between w-full">
@@ -372,9 +372,12 @@
 <script setup>
 import {computed, onMounted, ref, watch} from 'vue'
 import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import MarkdownIt from 'markdown-it'
 import {createStorage} from 'unstorage'
 import indexedDbDriver from 'unstorage/drivers/indexedb'
+
+dayjs.extend(relativeTime)
 
 const storage = createStorage({
   driver: indexedDbDriver({
