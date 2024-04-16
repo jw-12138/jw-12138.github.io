@@ -58,7 +58,7 @@
                   @click.stop="userActionWindow = !userActionWindow" @focus="mouseIsInsideWindow = true"
                   @blur="mouseIsInsideWindow = false">
             <span class="w-[32px] h-[32px] overflow-hidden rounded-full">
-              <img :src="user.avatar_url" alt="user avatar" class="w-full h-full">
+              <img :src="user.avatar_url ? (user.avatar_url + '&s=64') : ''" alt="user avatar" class="w-full h-full">
             </span>
             <span class="text-sm pl-2 pr-2">
               {{ user.login }}
@@ -212,7 +212,7 @@
             <div class="user flex mt-2 w-full relative">
               <span class="outer-box flex justify-between w-full">
                 <a :href="item.user.html_url" target="_blank" class="user-info flex items-center text-sm">
-                  <img :src="item.user.avatar_url" alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2">
+                  <img :src="item.user.avatar_url + '&s=64'" alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2">
                   <span class="flex items-center">
                     {{ item.user.login }}
                     <span class="author-tag px-2 text-xs rounded relative top-[-.5rem] left-[-.3rem] scale-75"

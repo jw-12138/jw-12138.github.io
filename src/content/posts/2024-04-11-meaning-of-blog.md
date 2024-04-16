@@ -68,4 +68,4 @@ tags:
 
 **_I just felt like running._**
 
-![Forrest Gump running scene](https://blog-r2.jw1.dev/HBKzdcX0fUq2iqCc.png)
+![Forrest Gump running scene](https://blog-r2.jw1.dev/z20LcLaZDxWVTRK9.jpg)
