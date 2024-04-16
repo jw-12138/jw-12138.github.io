@@ -89,9 +89,6 @@ export async function GET(context) {
     <id>https://jw1.dev/${datePath}/${postPath}.html</id>
     <link href="https://jw1.dev/${datePath}/${postPath}.html"/>
     <published>${new Date(date).toISOString()}</published>
-    <content type="html">
-    <![CDATA[${parser.render(post.body)}]]>
-    </content>
     ${tags}
 </entry>`
   })
