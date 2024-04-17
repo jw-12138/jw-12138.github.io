@@ -6,7 +6,7 @@ import Comments from '../components/comments.vue'
 import FakeComments from '../components/fake-comments.astro'
 import Meta from '../components/meta.astro'
 import Og from "../components/og.astro";
-import Toc from '../components/toc.vue'
+import Toc from '../components/toc.jsx'
 import FakeToc from '../components/fake-toc.astro'
 import '../style/main.scss'
 import dayjs from "dayjs"
@@ -22,8 +22,6 @@ if (!tags) {
 let style_str = style ? style : ''
 
 let path = Astro.url.pathname
-
-let transitionSlug = `${year}-${month}-${date}-${slug}`
 
 let postDate = dayjs(`${year}-${month}-${date}`).format('MMMM D, YYYY')
 ---
@@ -53,7 +51,7 @@ let postDate = dayjs(`${year}-${month}-${date}`).format('MMMM D, YYYY')
   <a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white" href="#app">跳转至正文区域</a>
   <Header/>
   <FakeToc headings={Astro.props.headings}/>
-  <Toc data={Astro.props.headings} client:only="vue"/>
+  <Toc headings={Astro.props.headings} client:only="solid-js"/>
   <Footer aside={true}/>
 </aside>
 <main>

@@ -1,22 +1,19 @@
-import {defineConfig} from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import mdx from '@astrojs/mdx'
-import vue from '@astrojs/vue'
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import mdx from '@astrojs/mdx';
+import vue from '@astrojs/vue';
+import remarkPluginImage from './src/utils/remark-plugin-image.js';
+import remarkPluginText from './src/utils/remark-plugin-text.js';
+import remarkPluginLink from './src/utils/remark-plugin-link.js';
+import solidJs from "@astrojs/solid-js";
 
-import remarkPluginImage from './src/utils/remark-plugin-image.js'
-import remarkPluginText from './src/utils/remark-plugin-text.js'
-import remarkPluginLink from './src/utils/remark-plugin-link.js'
-
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx(), vue()],
+  integrations: [tailwind(), mdx(), vue(), solidJs()],
   site: 'https://jw1.dev',
   markdown: {
     gfm: false,
-    remarkPlugins: [
-      remarkPluginImage,
-      remarkPluginText,
-      remarkPluginLink
-    ],
+    remarkPlugins: [remarkPluginImage, remarkPluginText, remarkPluginLink],
     shikiConfig: {
       themes: {
         light: 'github-light',
@@ -24,4 +21,4 @@ export default defineConfig({
       }
     }
   }
-})
+});
