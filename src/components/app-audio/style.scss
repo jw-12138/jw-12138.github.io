@@ -1,0 +1,25 @@
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  border-radius: 6px;
+
+  &:hover {
+    @apply bg-black/10
+  }
+
+  &::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+
+    @apply h-[5px] cursor-pointer bg-neutral-200 dark:bg-neutral-700 border-none rounded-[6px];
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+
+    @apply border-none w-[20px] relative top-[-8px] h-[20px] rounded-[20px] dark:bg-white shadow bg-neutral-800;
+  }
+}

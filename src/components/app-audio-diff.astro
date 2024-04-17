@@ -1,7 +1,7 @@
 ---
 let {set} = Astro.props
 
-import AppAudioDiff from './app-audio-diff.vue'
+import AppAudioDiff from './app-audio-diff.jsx'
 ---
 
 <noscript>
@@ -21,4 +21,4 @@ import AppAudioDiff from './app-audio-diff.vue'
   })}
 </noscript>
 
-<AppAudioDiff set={set} client:only="vue"/>
+<AppAudioDiff set={set} client:only="solid-js"/>
