@@ -206,7 +206,7 @@ video {
         display: none;
       }
 
-      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0 font-normal break-normal;
+      @apply text-sm leading-6 px-0 py-0 rounded bg-transparent mx-0 font-normal break-normal sm:whitespace-pre;
     }
   }
 }
