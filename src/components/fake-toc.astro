@@ -1,7 +1,60 @@
 ---
 let {headings} = Astro.props
+
+let maxDepth = 6
+
+function findMaxDepth() {
+  if (headings.length === 0) {
+    return false
+  }
+
+  headings.map(el => {
+    if (el.depth < maxDepth) {
+      maxDepth = el.depth
+    }
+  })
+}
+
+findMaxDepth()
+
+const animations = []
+
+headings.map(heading => {
+  let level = heading.depth - maxDepth
+
+  let animationObject = {
+    level: level
+  }
+
+  if(level === 0){
+    return false
+  }
+
+  if(animations.findIndex(ani => ani.level === level) === -1){
+    animations.push(animationObject)
+  }
+})
+
+let animationText = ''
+
+animations.map(ani => {
+  let _txt = `@keyframes slideLeft_${ani.level} {
+  from {
+    padding-left: 0;
+  }
+  
+  to {
+    padding-left: ${ani.level * 0.5}rem;
+  }
+}
+
+`
+
+  animationText += _txt
+})
 ---
 
+<style set:html={animationText}></style>
 <div class="lg:block hidden mt-[4rem] relative left-[-.5rem]" id="fake_toc">
   <a href="#" aria-label="返回顶部"
      class="px-2 py-1 rounded-xl hover:bg-black/15 dark:hover:bg-white/15 transition-all w-8 h-8 flex justify-center items-center mb-1 cursor-pointer opacity-70 hover:opacity-100"
@@ -23,7 +76,13 @@ let {headings} = Astro.props
         <a
           href={`#${heading.slug}`}
           class="text-xs max-w-full cursor-pointer hover:bg-black/15 dark:hover:bg-white/15 px-2 transition-all duration-300 w-full text-left relative border flex border-none items-center opacity-70 hover:rounded-2xl pt-[0] pb-[0]">
-          <span class="overflow-hidden py-[.2rem] flex items-center h-7">
+          <span
+            class="overflow-hidden py-[.2rem] flex items-center h-7"
+            style={{
+            animation: `slideLeft_${heading.depth - maxDepth} 0.3s ease`,
+            animationFillMode: 'forwards',
+            animationDelay: `150ms`
+          }}>
             <span class="block text-ellipsis whitespace-nowrap overflow-hidden">
               {heading.text}
             </span>
