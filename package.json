@@ -24,12 +24,12 @@
     "vue": "^3.4.7"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.0.3",
-    "@astrojs/rss": "^4.0.1",
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/rss": "^4.0.5",
     "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vue": "^4.0.8",
+    "@astrojs/vue": "^4.1.0",
     "@types/pangu": "^4.0.2",
-    "astro": "^4.5.5",
+    "astro": "^4.6.2",
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
     "markdown-it": "^14.0.0",
