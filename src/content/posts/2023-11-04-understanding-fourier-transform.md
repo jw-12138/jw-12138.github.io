@@ -30,11 +30,11 @@ tags:
 
 而我好奇的是，这两种数据，究竟是如何转换的呢？先来看看它们之间的关联，这是一个 440Hz 的正弦波在时域和频域上的表现：
 
-![](https://blog-r2.jw1.dev/gc8aiHkcszjQEIVn.png)
+![](https://blog-r2.jw1.dev/bNXijTnLdmZlB6IN.webp)
 
 可以看到，时域数据由 440Hz 的正弦波上下振动构成，我们将这个时间段内产生的振动想象成一个矩形。而频域数据则表现为一条有凸起的线，如果这时候我们再去加一个 2000Hz 的正弦波，这时候再去看这两个数据，会是什么样的呢？
 
-![](https://blog-r2.jw1.dev/pLKMREN6KxG83L93.png)
+![](https://blog-r2.jw1.dev/Vks78IgDQriNrZAB.webp)
 
 这时候的时域数据得到了增益，我们可以认为先前想象的矩形的高度变大了，且产生的波形也不再是一个单一频率的正弦波，而是同时包含 2 个频率的波形。这时候再来看右侧频域数据，和我们期望的一样，一条线上有两个峰值，一个在 440Hz，一个在 2000Hz。
 
@@ -59,19 +59,19 @@ tags:
 
 我们可以做一个小工具来验证这个猜想，先在 48KHz 的采样率下生成一段 512 位 440Hz 的正弦波。
 
-![](https://blog-r2.jw1.dev/Z6XGJxtrP4h36M85.png)
+![](https://blog-r2.jw1.dev/ukjwykKyY6Fsi4e3.webp)
 
 先从 1Hz 的频率开始对比，直到 20000Hz，我们来看看记录下的图形：
 
 ![video](https://blog-r2.jw1.dev/GJPt7TrezLFnTvRx.mp4)
 
-![](https://blog-r2.jw1.dev/C-Ld_yBkX6qEeeH6.png)
+![](https://blog-r2.jw1.dev/PXIIt6pBbXTxFRqW.webp)
 
 由此我们得到了一张频谱图，且有一个峰值，这个峰值所在的地方就是 440Hz 在 0 - 20000Hz 所处的位置，为了验证该想法的确实成立，我们试试看在同样的采样率下生成一段包含两个不同频率的正弦波形（1000 + 2000Hz），再放进图表中进行计算看看：
 
-![1000Hz + 2000Hz的正弦波](https://blog-r2.jw1.dev/N5adueSJ7Rxoh74s.png)
+![1000Hz + 2000Hz的正弦波](https://blog-r2.jw1.dev/LGZ_MfrB_zQcZkiO.webp)
 
-![1000Hz + 2000Hz的正弦波频率拆解](https://blog-r2.jw1.dev/VtCfDi9ApekFOZ7e.png)
+![1000Hz + 2000Hz的正弦波频率拆解](https://blog-r2.jw1.dev/MnANIvkwjHSSoEYf.webp)
 
 记录下的数据完美的展示出两个峰值，想法成立！计算峰值频率也很简单，哪个正弦波能触发最高相位，那么波形所在频率就一定是这个正弦波的频率，而且这个方法在理论上的分析精确度可以做到比傅里叶变换要高，但是缺点也是有的：
 
@@ -88,7 +88,7 @@ tags:
 
 在极坐标中，X 轴由线变成了点，Y 轴也失去了负数象限，于是 4 个正弦波在极坐标上均匀的绘制出了 8 个叶片。想象这样一个图形有一定的质量，在我们将数据从尾部一点点提取到头部的时候，图形的质心一定会发生变化。
 
-![](https://blog-r2.jw1.dev/0gzswHqlBfzp_Qx4.png)
+![](https://blog-r2.jw1.dev/QvFzWbiCe1DSh_bJ.webp)
 
 如果我们在移动数据的时候监测质心的变化会发生什么呢？
 
@@ -98,13 +98,13 @@ tags:
 
 如果我们需要计算峰值频率，则需要代入**采样率**和**数据节点长度**以及当前转动的**圈数**，最后我们对 X 轴数据进行重新分布，则会得到以下结果：
 
-![](https://blog-r2.jw1.dev/6q9Eg9tWRvJNl5Sc.png)
+![](https://blog-r2.jw1.dev/lJtotlnJ_8Z2byHP.webp)
 
 ![video](https://blog-r2.jw1.dev/e5hcP5iopg1ozzAf.mp4)
 
 经过计算之后可得，峰值频率为 375Hz，与我们生成的正弦波频率完全一致！这个方法这么精确的吗？再生成一段 15017Hz 的正弦波试试：
 
-![](https://blog-r2.jw1.dev/qVbKa1vSE0l0pDIL.png)
+![](https://blog-r2.jw1.dev/3MAbmx6KZ_nf5Z8v.webp)
 
 计算得出峰值频率为 16000Hz，误差还是有点大的，这是因为在对比中，样本数据的每一次提前操作，对比圈数都是指数递增的，这会导致我们在记录低频时的信息密度比高频的大很多，如果我们像之前正弦波扫描那样提升对比圈数的精度，那么最后我们也可以得到一幅非常精准的频谱图。
 
@@ -167,7 +167,7 @@ Fourier.Transform = function (data) {
 
 第一次循环相当于是在生成整个频谱图上所需要的频率用于对比，第二次循环则是针对原始波形进行解构，只不过这种解构是在复数平面（由实数与虚数构成的坐标体系）完成的，而复数平面可以理解为极坐标与直角坐标的结合体。傅里叶变换还保留了声音信号的相位信息，这对于重构时域信息是非常重要的。我们来看看一个标准的傅里叶变换所产出的 440Hz 频谱图吧！
 
-![](https://blog-r2.jw1.dev/3AIwtfzVpA0SuU5p.png)
+![](https://blog-r2.jw1.dev/YjtSsbHcUEWjeSvw.webp)
 
 可以看到，这张图和我们使用正弦波扫描得到的图几乎一模一样！
 
@@ -184,7 +184,4 @@ Fourier.Transform = function (data) {
 
 好了，关于傅里叶变换就说到这里，再次感叹，学海无涯啊！
 
-最后，感谢 3Blue1Brown 的视频和 Better Explained 的博客：
-
-1. https://www.youtube.com/watch?v=spUNpyF58BY
-2. https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/
+最后，感谢 [3Blue1Brown 的视频](https://www.youtube.com/watch?v=spUNpyF58BY)和 [Better Explained 的博客](https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/)。

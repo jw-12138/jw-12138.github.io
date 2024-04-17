@@ -16,11 +16,11 @@ tags:
 
 GitHub OAuth App 是 GitHub 官方提供的一种授权方式，它可以让用户以自己的身份登录到第三方应用并进行相关操作，很多评论系统目前都是基于这种方式实现的。
 
-![How GitHub OAuth Apps Work](https://blog-r2.jw1.dev/NSWlMoT1kzHNjF9p.png)
+![How GitHub OAuth Apps Work](https://blog-r2.jw1.dev/gEAkbMKhdHcLseJp.webp)
 
 GitHub App 其实和 OAuth 一样，也是用来给用户授权的，但是中间多了一层，也就是 App 本身。针对评论系统而言，用 Bot 来描述 GitHub App 可能会更加准确一些，它像是一个在用户和第三方应用（评论系统）之间传话的人，用户需要做什么事情可以先通过 App 来告诉第三方应用，然后第三方应用再执行对应的操作，并且我们可以选择这个操作，它代表的是用户还是 App 自身（做自动化的时候很有用）。最重要的一点是，GitHub App 可以选择超细粒度的权限，这样无论是对用户还是对第三方应用来说，都是更加安全的交互方式。
 
-![How GitHub Apps Work](https://blog-r2.jw1.dev/tR7FJqN20WFg-fIy.png)
+![How GitHub Apps Work](https://blog-r2.jw1.dev/sJfdROp-faKNpRBE.webp)
 
 还有，相比较 OAuth 的一次性授权，GitHub Apps 其实是两段式授权，第一段是用户授权，这个没有什么区别，第二段是 App 的安装授权，针对评论系统而言，如果我希望 App 能够代表某一个用户对我某一个代码仓库的 Issues 进行操作，那么这个 App 就必须安装我的 GitHub 账号内，安装成功之后的 GitHub App 才有权限操作。而对于整个评论系统来说，我们甚至都不需要用户的 Issues 权限，只需要验证用户来自 GitHub 即可，极大程度上减少了用户的隐私风险。
 

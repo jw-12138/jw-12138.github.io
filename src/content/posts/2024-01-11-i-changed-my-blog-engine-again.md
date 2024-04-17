@@ -228,7 +228,7 @@ export async function GET(context) {
 
 最激动人心的功能就是这个了，Astro 可以使用 MDX（JSX in Markdown）作为文章入口，而 MDX 中可以混用 7 种前端框架的组件。
 
-![Currently supportted js frameworks by Astro](https://blog-r2.jw1.dev/POy-y13PUG5cweNy.png)
+![Currently supportted js frameworks by Astro](https://blog-r2.jw1.dev/KW6VWRLvUHxL7epS.webp)
 
 在使用之前我们需要先安装 Vue 和 MDX 依赖：
 
