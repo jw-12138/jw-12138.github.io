@@ -1,23 +1,9 @@
 import useStore from './Store.jsx'
-import {githubApi, md, owner, renderMarkdown, repo} from './utils.jsx'
-import {createEffect, createSignal, on} from 'solid-js'
+import {githubApi, owner, renderMarkdown, repo} from './utils.jsx'
 
 const [store, setStore] = useStore()
 
 function inputAndPreview() {
-
-  let [showPreview, setShowPreview] = createSignal(false)
-  let [userCommentHTML, setUserCommentHTML] = createSignal('')
-
-  createEffect(on(() => store.userComment, async val => {
-    if (!val) {
-      return
-    }
-
-    let markdown = md.render(val)
-
-    setUserCommentHTML(markdown)
-  }))
 
   async function sendComment() {
     if (store.sending_comment) {
@@ -65,72 +51,16 @@ function inputAndPreview() {
 
       <form action="javascript:"
             onsubmit={sendComment}>
-        <div className="flex mb-2">
 
-          <button type="button"
-                  onclick={() => setShowPreview(false)}
-                  className="rounded-full text-sm px-4 py-2 flex items-center group transition-all"
-                  classList={{
-                    'dark:bg-white dark:text-black bg-neutral-800 text-white': !showPreview(),
-                    'dark:bg-white/10 dark:text-white bg-black/5 text-black': showPreview()
-                  }}>
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 className="icon icon-tabler icon-tabler-markdown w-5 h-5 mr-1 top-0 relative transition-all"
-                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                 stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/>
-              <path d="M7 15v-6l2 2l2 -2v6"/>
-              <path d="M14 13l2 2l2 -2m-2 2v-6"/>
-            </svg>
-            书写
-          </button>
-
-
-          <button
-            type="button"
-            onclick={() => setShowPreview(true)}
-            className="rounded-full text-sm px-4 py-2 ml-2 flex items-center group"
-            classList={{
-              'dark:bg-white dark:text-black bg-neutral-800 text-white': showPreview(),
-              'dark:bg-white/10 dark:text-white bg-black/5 text-black': !showPreview()
-            }}>
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 className="icon icon-tabler icon-tabler-eye-code w-5 h-5 mr-1 top-0 relative transition-all"
-                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                 stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/>
-              <path
-                d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008"/>
-              <path d="M20 21l2 -2l-2 -2"/>
-              <path d="M17 17l-2 2l2 2"/>
-            </svg>
-            预览
-          </button>
-        </div>
-
-        {
-          showPreview() &&
-          <div
-            className="rounded-2xl block px-4 py-4 border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm page-content comment-content"
-            innerHTML={store.userComment ? userCommentHTML() : '先写点什么吧'}
-          >
-
-          </div>
-        }
-
-        {!showPreview() &&
-          <textarea
-            id="comment_textarea"
-            className="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
-            required
-            name="comment"
-            placeholder="提些问题，或者打个招呼吧"
-            value={store.userComment}
-            oninput={(e) => setStore('userComment', e.target.value)}
-          ></textarea>
-        }
+        <textarea
+          id="comment_textarea"
+          className="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
+          required
+          name="comment"
+          placeholder="提些问题，或者打个招呼吧"
+          value={store.userComment}
+          onInput={(e) => setStore('userComment', e.target.value)}
+        ></textarea>
 
         <div className="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
           评论系统基于

@@ -1,13 +1,10 @@
 import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
 import useStore from './Store.jsx'
 import CommentActionPanel from './CommentActionPanel.jsx'
 import CommentEditingArea from './CommentEditingArea.jsx'
 import CommentReactions from './CommentReactions.jsx'
 
 const [store, setStore] = useStore()
-
-dayjs.extend(relativeTime)
 
 function CommentListItem(props) {
   let comment = store.comments[props.index]
@@ -47,7 +44,7 @@ function CommentListItem(props) {
     }}>
       <div className="user flex mt-2 w-full relative">
         <div className="outer-box flex justify-between w-full">
-          <a href={comment.user.html_url} target="_blank" class="user-info flex items-center text-sm">
+          <a href={comment.user.html_url} target="_blank" class="user-info flex items-center content-center text-sm">
             <img src={comment.user.avatar_url + '&s=64'} alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2"/>
             <div>
               <span className="flex items-center">
@@ -59,8 +56,8 @@ function CommentListItem(props) {
                   >作者</span>
                 }
               </span>
-              <div className="datetime text-xs opacity-70">
-                {dayjs(comment.created_at).fromNow()}
+              <div className="datetime text-[10px] opacity-70">
+                {dayjs(comment.created_at).format('YYYY-MM-DD HH:mm')}
               </div>
             </div>
           </a>

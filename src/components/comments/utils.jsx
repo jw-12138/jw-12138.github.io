@@ -1,7 +1,4 @@
 import useStore from './Store.jsx'
-import MarkdownIt from 'markdown-it'
-import {createStorage} from 'unstorage'
-import indexedDbDriver from 'unstorage/drivers/indexedb'
 import dayjs from 'dayjs'
 
 const [store, setStore] = useStore()
@@ -10,40 +7,6 @@ let owner = 'jw-12138'
 let repo = 'jw-12138.github.io'
 let auth_api = 'https://github.com/login/oauth/authorize'
 let client_id = 'Iv1.717c117523f74671'
-
-// indexedDb storage
-const storage = createStorage({
-  driver: indexedDbDriver({
-    base: '',
-    dbName: 'blog_idb',
-    storeName: 'blog_store'
-  })
-})
-
-
-// markdown renderer
-const md = MarkdownIt({
-  linkify: true
-})
-
-/**
- * parse @username to link
- */
-let originalTextParser = md.renderer.rules.text
-md.renderer.rules.text = function (tokens, idx) {
-  let text = tokens[idx].content
-  let mentionRegex = /@([a-zA-Z0-9_-]+)/g
-
-  if (mentionRegex.test(text)) {
-    text = text.replace(mentionRegex, (match, username) => {
-      return `<a href="https://github.com/${username}">@${username}</a>`
-    })
-
-    return text
-  }
-
-  return originalTextParser(tokens, idx)
-}
 
 /**
  * GitHub api helper
@@ -100,48 +63,48 @@ async function renderMarkdown(markdown, id = -1, updated_at = '') {
     let timestamp = dayjs(updated_at).unix()
     let key = `cache:markdown:comment:${id}:${timestamp}`
 
-    let cached = await storage.getItem(key)
+    let cached = sessionStorage.getItem(key)
 
     if (cached) {
       return cached
     }
   }
 
-  if (containsCodeBlocks(markdown)) {
-    try {
-      let resp = await githubApi('/markdown', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          text: markdown,
-          mode: 'gfm'
-        })
+  try {
+    let resp = await fetch('https://blog-md-render.jw1.dev/render', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: markdown
       })
+    })
 
-      let remoteText = await resp.text()
-      if (id && updated_at) {
-        let timestamp = dayjs(updated_at).unix()
-        let key = `cache:markdown:comment:${id}:${timestamp}`
-        let oldCacheKeys = await storage.getKeys(`cache:markdown:comment:${id}`)
-        oldCacheKeys.map(async key => {
-          await storage.removeItem(key)
-        })
-        await storage.setItem(key, remoteText)
-      }
-      return remoteText
-    } catch (e) {
-      return md.render(markdown)
+    let remoteText = await resp.text()
+
+    if (id && updated_at) {
+      let timestamp = dayjs(updated_at).unix()
+      let key = `cache:markdown:comment:${id}:${timestamp}`
+      let oldCacheKeys = sessionStorage.getItem(`cache:markdown:comment:${id}`)
+
+      oldCacheKeys = oldCacheKeys ? JSON.parse(oldCacheKeys) : []
+
+      oldCacheKeys.map(async key => {
+        sessionStorage.removeItem(key)
+      })
+      sessionStorage.setItem(key, remoteText)
     }
+    return remoteText
+  } catch (e) {
+    console.log(e)
+    return '<p>Failed to render markdown</p>'
   }
-  return md.render(markdown)
 }
 
 export {
   githubApi,
   renderMarkdown,
-  md,
   auth_api,
   client_id,
   owner,
