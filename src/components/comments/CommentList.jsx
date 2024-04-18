@@ -7,6 +7,67 @@ const [store, setStore] = useStore()
 
 function CommentList() {
 
+  createEffect(on(() => store.shouldListReactionsForCommentId, async (id) => {
+    if (id) {
+      await listReactionsForComment(id)
+      setStore('shouldListReactionsForCommentId', 0)
+    }
+  }))
+
+  /**
+   * 获取评论点赞
+   * @param comment_id
+   * @param retryLeft
+   * @returns {Promise<boolean>}
+   */
+  async function listReactionsForComment(comment_id, retryLeft = 3) {
+
+    if (retryLeft === 0) {
+      return false
+    }
+
+    let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
+
+    let resp
+
+    try {
+      setStore('listingReactionCommentIds', [...store.listingReactionCommentIds, comment_id])
+      resp = await githubApi(api)
+    } catch (e) {
+      console.log(e)
+      await listReactionsForComment(comment_id, retryLeft - 1)
+      return false
+    } finally {
+      setStore('listingReactionCommentIds', store.listingReactionCommentIds.filter(item => item !== comment_id))
+    }
+
+    if (!resp.ok) {
+      console.log('获取评论点赞失败')
+      await listReactionsForComment(comment_id, retryLeft - 1)
+      return false
+    }
+
+    try {
+      let reactions = await resp.json()
+
+      let contentBasedReactions = {}
+
+      reactions.forEach(item => {
+        if (!contentBasedReactions[item.content]) {
+          contentBasedReactions[item.content] = [item]
+        } else {
+          contentBasedReactions[item.content].push(item)
+        }
+      })
+
+      setStore('commentReactionMap', comment_id, contentBasedReactions)
+    } catch (e) {
+      console.log(e)
+      await listReactionsForComment(comment_id, retryLeft - 1)
+      return false
+    }
+  }
+
   async function getComments(update_id) {
     if (store.gettingUser) {
       return <></>
@@ -43,8 +104,7 @@ function CommentList() {
 
     // get all reactions here
     for (let i = 0; i < store.comments.length; i++) {
-      // don't go with await here
-      // listReactionsForComment(comments.value[i].id)
+      setStore('shouldListReactionsForCommentId', store.comments[i].id)
 
       if (store.comments[i].body) {
         let html = await renderMarkdown(store.comments[i].body, store.comments[i].id, store.comments[i].updated_at)

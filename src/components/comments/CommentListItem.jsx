@@ -45,24 +45,24 @@ function CommentListItem(props) {
     <div className="item pt-8 py-8" id={comment.id} style={{
       opacity: store.deletingId === comment.id ? '.3' : '1'
     }}>
-      <div className="datetime text-xs opacity-70">
-        {dayjs(comment.created_at).fromNow()}
-      </div>
-
-      {/*user avatar and action buttons*/}
       <div className="user flex mt-2 w-full relative">
         <div className="outer-box flex justify-between w-full">
           <a href={comment.user.html_url} target="_blank" class="user-info flex items-center text-sm">
             <img src={comment.user.avatar_url + '&s=64'} alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2"/>
-            <span class="flex items-center">
-              {comment.user.login}
-              {
-                comment.author_association === 'OWNER' &&
-                <span
-                  className="author-tag px-2 text-xs rounded relative top-[-.5rem] left-[-.3rem] scale-75"
-                >Author</span>
-              }
-            </span>
+            <div>
+              <span className="flex items-center">
+                {comment.user.login}
+                {
+                  comment.author_association === 'OWNER' &&
+                  <span
+                    className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-neutral-700 bg-neutral-200 dark:text-neutral-200 text-neutral-800 top-[-.03rem] ml-1"
+                  >作者</span>
+                }
+              </span>
+              <div className="datetime text-xs opacity-70">
+                {dayjs(comment.created_at).fromNow()}
+              </div>
+            </div>
           </a>
 
           {

@@ -13,14 +13,17 @@ const [store, setStore] = createStore({
   isUserLoggedIn: false,
   proxy: 'https://blog-api-cf-worker.jw1.dev/proxy',
   reactingCommentID: [],
-  listingReactionCommentId: null,
+  listingReactionCommentIds: [],
   accessToken: '',
   deletingId: '',
   editingCommentId: '',
   editingCommentContent: '',
   commentActionDropdown: '',
   submittingEditedComment: false,
-  shouldUpdateCommentId: 0
+  shouldUpdateCommentId: 0,
+  commentReactionMap: {},
+  reactingIds: [],
+  shouldListReactionsForCommentId: 0
 })
 
 export default function useStore() {
