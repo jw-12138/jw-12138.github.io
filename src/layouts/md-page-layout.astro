@@ -2,7 +2,7 @@
 import GlobalStyle from "../components/global-style.astro"
 import Header from "../components/header.astro"
 import Nav from "../components/nav.astro"
-import Comments from "../components/comments.vue";
+import Comments from "../components/comments.jsx";
 import Footer from "../components/footer.astro";
 import Meta from "../components/meta.astro";
 import Og from "../components/og.astro";
@@ -39,7 +39,7 @@ import '../style/main.scss'
       </noscript>
       <slot/>
     </div>
-    <Comments client:only="vue" github-issue-id={issue}/>
+    <Comments client:only="solid-js" githubIssueId={issue}/>
   </div>
   <Footer/>
 </main>
