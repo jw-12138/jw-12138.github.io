@@ -2,7 +2,7 @@
 import GlobalStyle from '../components/global-style.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
-import Comments from '../components/comments.vue'
+import Comments from '../components/comments.jsx'
 import FakeComments from '../components/fake-comments.astro'
 import Meta from '../components/meta.astro'
 import Og from "../components/og.astro";
@@ -99,7 +99,7 @@ let postDate = dayjs(`${year}-${month}-${date}`).format('MMMM D, YYYY')
       <slot></slot>
     </div>
 
-    <Comments client:only="vue" github-issue-id={issue}/>
+    <Comments client:only="solid-js" githubIssueId={issue}/>
     <FakeComments githubIssueId={issue}/>
   </div>
   <Footer/>
