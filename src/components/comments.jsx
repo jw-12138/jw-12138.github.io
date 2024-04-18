@@ -1,6 +1,4 @@
-import {createEffect, createSignal, For, on, onMount} from 'solid-js'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import {onMount} from 'solid-js'
 import useStore from './comments/Store.jsx'
 import Loading from './comments/Loading.jsx'
 import LoginPanel from './comments/LoginPanel.jsx'
@@ -8,7 +6,6 @@ import {githubApi} from './comments/utils.jsx'
 import InputAndPreview from './comments/InputAndPreview.jsx'
 import CommentList from './comments/CommentList.jsx'
 
-dayjs.extend(relativeTime)
 const [store, setStore] = useStore()
 
 export default function Comments(props) {
