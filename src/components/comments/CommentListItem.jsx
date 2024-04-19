@@ -47,16 +47,22 @@ function CommentListItem(props) {
     }}>
       <div className="user flex mt-2 w-full relative">
         <div className="outer-box flex justify-between w-full">
-          <a href={comment.user.html_url} target="_blank" class="user-info flex items-center text-sm">
-            <img src={comment.user.avatar_url + '&s=64'} alt="用户头像" class="w-8 h-8 rounded-full mb-0 mr-2"/>
+          <a href={comment.html_url} target="_blank" class="user-info flex items-center text-sm group">
+            <img src={comment.user.avatar_url + '&s=64'} alt="用户头像" class="w-8 h-8 rounded-[10px] mb-0 mr-2 group-hover:shadow transition-shadow"/>
             <div>
               <span className="flex items-center">
                 {comment.user.login}
                 {
                   comment.author_association === 'OWNER' &&
                   <span
-                    className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-neutral-700 bg-neutral-200 dark:text-neutral-200 text-neutral-800 top-[-.03rem] ml-1"
-                  >作者</span>
+                    className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-indigo-700 bg-indigo-200 dark:text-indigo-200 text-indigo-800 top-[-.03rem] ml-1"
+                  >站长</span>
+                }
+                {
+                  (comment.user.login === store.user.login && store.isUserLoggedIn) &&
+                  <span
+                    className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-yellow-300 bg-yellow-500 dark:text-black text-white top-[-.03rem] ml-1"
+                  >我</span>
                 }
               </span>
               <div className="datetime text-[10px] opacity-70">

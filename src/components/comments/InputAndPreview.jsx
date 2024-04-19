@@ -46,52 +46,64 @@ function inputAndPreview() {
     }, 300)
   }
 
+  let textareaPlaceHolder = function () {
+    if (store.gettingUser) {
+      return '正在获取用户信息...'
+    }
+
+    if (!store.isUserLoggedIn) {
+      return '请先登录哦'
+    }
+
+    return "提些问题，或者打个招呼吧"
+  }
+
   return <>
-    {store.isUserLoggedIn && <section data-name="textarea" class="pt-8">
+    <section data-name="textarea" className="pt-8">
 
       <form action="javascript:"
-            onsubmit={sendComment}>
+            onSubmit={sendComment}>
 
         <textarea
+          disabled={store.gettingUser || !store.isUserLoggedIn}
           id="comment_textarea"
           className="rounded-2xl block px-4 py-4 font-mono border-none focus:shadow-2xl dark:bg-neutral-800 bg-zinc-100 w-full resize-y min-h-[6rem] text-sm rounded-br-[6px]"
           required
           name="comment"
-          placeholder="提些问题，或者打个招呼吧"
+          placeholder={textareaPlaceHolder()}
           value={store.userComment}
           onInput={(e) => setStore('userComment', e.target.value)}
         ></textarea>
 
         <div className="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
           评论系统基于 <a
-            target="_blank"
-            className="text-black font-extrabold dark:text-white"
-            href="https://github.com/features/issues">
-            GitHub Issues
-          </a> 制作，发言请记得遵守 <a
-            target="_blank"
-            className="text-black dark:text-white font-extrabold"
-            href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">
-            GitHub 社区行为准则
-          </a>。如果您比较好奇本博客是如何处理数据的，可以查看<a
-            href="/privacy"
-            className="text-black dark:text-white font-extrabold">
-            隐私声明
-          </a>。
+          target="_blank"
+          className="text-black font-extrabold dark:text-white"
+          href="https://github.com/features/issues">
+          GitHub Issues
+        </a> 制作，发言请记得遵守 <a
+          target="_blank"
+          className="text-black dark:text-white font-extrabold"
+          href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">
+          GitHub 社区行为准则
+        </a>。如果您比较好奇本博客是如何处理数据的，可以查看<a
+          href="/privacy"
+          className="text-black dark:text-white font-extrabold">
+          隐私声明
+        </a>。
         </div>
 
         <div className="text-center mt-2 flex justify-center" classList={{
           hidden: store.gettingUser
         }}>
           <button type="submit"
+                  disabled={!store.isUserLoggedIn}
                   classList={{
-                    'hidden': store.sending_comment
+                    'hidden': store.sending_comment,
+                    'opacity-50': !store.isUserLoggedIn
                   }}
                   className="rounded-full px-4 py-2 bg-neutral-800 text-white dark:bg-white dark:text-black text-sm flex items-center group">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 className="icon icon-tabler icon-tabler-send w-4 h-4 mr-2 top-0 relative transition-all"
-                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                 stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-send mr-2 w-4 h-4">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M10 14l11 -11"/>
               <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"/>
@@ -117,7 +129,7 @@ function inputAndPreview() {
 
       </form>
 
-    </section>}
+    </section>
   </>
 }
 
