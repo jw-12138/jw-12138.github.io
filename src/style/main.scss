@@ -60,7 +60,7 @@ video {
 
     &:before {
       content: "";
-      @apply block w-[3px] rounded h-full absolute left-[-3px] top-0 bg-neutral-500;
+      @apply block w-[3px] rounded h-full absolute left-[-3px] top-0 dark:bg-neutral-500 bg-neutral-400;
     }
 
     p {
