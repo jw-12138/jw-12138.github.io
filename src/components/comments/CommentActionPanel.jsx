@@ -25,8 +25,34 @@ async function deleteComment(id) {
     setStore('deletingId', '')
   }
 
-  if (resp.ok) {
-    setStore('comments', store.comments.filter(c => c.id !== id))
+  if (resp.ok || resp.status === 404) {
+
+    let el_height = document.getElementById(id).offsetHeight
+    let animationTag = `<style id="${'del_' + id}">
+@keyframes comment_delete_${id} {
+  from {
+    height: ${el_height}px;
+    padding: 2rem 0;
+    opacity: 0.3;
+  }
+  
+  to {
+    height: 0;
+    padding: 0;
+    opacity: 0.3;
+  }
+}
+</style>`
+
+    document.head.insertAdjacentHTML('beforeend', animationTag)
+
+    let deleteIndex = store.comments.findIndex(c => c.id === id)
+    setStore('comments', deleteIndex, 'aboutToGetDeleted', true)
+
+    setTimeout(function () {
+      setStore('comments', store.comments.filter(c => c.id !== id))
+      document.getElementById('del_' + id).remove()
+    }, 300)
   }
 }
 
@@ -48,6 +74,7 @@ function CommentActionPanel(props) {
             setStore('editingCommentContent', comment.body)
             setStore('commentActionDropdown', '')
           }}
+          disabled={store.deletingId === comment.id}
           class="py-2 px-4 rounded-[.5rem] text-xs flex transition-all dark:hover:bg-white/10 hover:bg-black/10">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle w-4 h-4 mr-1"
                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -63,10 +90,17 @@ function CommentActionPanel(props) {
         <button
           onClick={() => deleteComment(comment.id)}
           disabled={store.deletingId === comment.id}
+          classList={{
+            'bg-red-500 text-white dark:bg-red-500 dark:text-white': store.deletingId === comment.id
+          }}
           class="py-2 px-4 rounded-[.5rem] hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex transition-all">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               class="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
-               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            classList={{
+              'hidden': store.deletingId === comment.id
+            }}
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path
               stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 7l16 0"/>
@@ -76,6 +110,14 @@ function CommentActionPanel(props) {
             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/>
             <path
               d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/>
+          </svg>
+          <svg
+            classList={{
+              'hidden': store.deletingId !== comment.id
+            }}
+            xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-loader-2">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 3a9 9 0 1 0 9 9"/>
           </svg>
           删除
         </button>

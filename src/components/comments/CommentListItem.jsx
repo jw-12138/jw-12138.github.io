@@ -42,8 +42,10 @@ function CommentListItem(props) {
   }
 
   return <>
-    <div className="item pt-8 py-8" id={comment.id} style={{
-      opacity: store.deletingId === comment.id ? '.3' : '1'
+    <div className="item py-8 transition-all relative" id={comment.id} style={{
+      'pointer-events': store.deletingId === comment.id ? 'none' : 'auto',
+      overflow: store.comments[props.index()].aboutToGetDeleted ? 'hidden' : 'visible',
+      animation: 'comment_delete_' + comment.id + ' .3s ease forwards'
     }}>
       <div className="user flex mt-2 w-full relative">
         <div className="outer-box flex justify-between w-full">
