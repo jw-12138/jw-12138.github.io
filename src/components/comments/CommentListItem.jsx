@@ -82,7 +82,10 @@ function CommentListItem(props) {
                 }}
                 aria-label="更多操作"
                 class="dark:bg-neutral-800 bg-neutral-200 rounded-full w-8 h-8 overflow-hidden flex items-center justify-center"
-                onclick={() => toggleCommentActionDropdown(comment.id)}
+                onclick={(e) => {
+                  e.stopPropagation()
+                  toggleCommentActionDropdown(comment.id)
+                }}
                 onmouseenter={() => setStore('mouseIsInActionWindow', true)}
                 onmouseleave={() => setStore('mouseIsInActionWindow', false)}>
                 <svg

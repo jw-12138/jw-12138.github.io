@@ -14,12 +14,20 @@ function LoginPanel() {
     if (store.mouseIsInsideWindow === false) {
       setUserActionWindow(false)
     }
+
+    if (store.commentActionDropdown) {
+      setStore('commentActionDropdown', '')
+    }
   })
 
   window.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       if (userActionWindow()) {
         setUserActionWindow(false)
+      }
+
+      if (store.commentActionDropdown) {
+        setStore('commentActionDropdown', '')
       }
     }
   })
