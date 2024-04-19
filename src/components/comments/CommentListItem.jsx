@@ -10,7 +10,7 @@ const [store, setStore] = useStore()
 dayjs.extend(relativeTime)
 
 function CommentListItem(props) {
-  let comment = store.comments[props.index]
+  let comment = store.comments[props.index()]
 
   function toggleCommentActionDropdown(id) {
     if (store.commentActionDropdown) {
@@ -159,7 +159,7 @@ function CommentListItem(props) {
       </div>
 
       <div className="mt-2 page-content comment-content" style="padding-bottom: 0"
-           innerHTML={comment.bodyHTML ? comment.bodyHTML : ''}
+           innerHTML={comment.bodyHTML ? comment.bodyHTML : `<pre>${comment.body}</pre>`}
            classList={{
              hidden: store.editingCommentId === comment.id || !comment.bodyHTML
            }}>

@@ -1,5 +1,5 @@
 import useStore from './Store.jsx'
-import {createEffect, Index, on, onMount} from 'solid-js'
+import {createEffect, For, on, onMount} from 'solid-js'
 import CommentListItem from './CommentListItem.jsx'
 import {githubApi, owner, renderMarkdown, repo} from './utils.jsx'
 
@@ -70,37 +70,26 @@ function CommentList() {
 
   async function getComments(update_id) {
     if (store.gettingUser) {
-      return <></>
+      return false
+    }
+
+    if(update_id){
+      let theCommentIndex = store.comments.findIndex(c => c.id === update_id)
+
+      if (theCommentIndex !== -1) {
+        let html = await renderMarkdown(store.comments[theCommentIndex].body, store.comments[theCommentIndex].id, store.comments[theCommentIndex].updated_at)
+        setStore('comments', theCommentIndex, 'bodyHTML', html)
+      }
+
+      return false
     }
 
     setStore('gettingComments', true)
 
     let resp = await githubApi(`/repos/${owner}/${repo}/issues/${store.githubIssueId}/comments`)
-
     let remoteComments = await resp.json()
-
     setStore('gettingComments', false)
-
-    if (!update_id) {
-      setStore('comments', remoteComments)
-    } else {
-      // update only one comment
-
-      let theCommentIndex = store.comments.findIndex(c => c.id === update_id)
-
-      console.log(theCommentIndex)
-
-      if (theCommentIndex !== -1) {
-        let html = await renderMarkdown(store.comments[theCommentIndex].body, store.comments[theCommentIndex].id, store.comments[theCommentIndex].updated_at)
-
-        setStore('comments', theCommentIndex, 'bodyHTML', html)
-      }
-
-      // TODO: list reactions
-      // listReactionsForComment(update_id)
-
-      return false
-    }
+    setStore('comments', remoteComments)
 
     // get all reactions here
     for (let i = 0; i < store.comments.length; i++) {
@@ -156,11 +145,10 @@ function CommentList() {
       </div>
 
       {
-        store.comments.length > 0 &&
         <div class="comments-list">
-          <Index each={store.comments}>
-            {(c, index) => <CommentListItem index={index}></CommentListItem>}
-          </Index>
+          <For each={store.comments}>
+            {(c, i) => <CommentListItem index={i}></CommentListItem>}
+          </For>
         </div>
       }
     </section>

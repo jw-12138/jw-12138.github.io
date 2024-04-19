@@ -1,6 +1,7 @@
 import {Show} from 'solid-js'
 import useStore from './Store.jsx'
 import {githubApi, owner, repo} from './utils.jsx'
+import {produce} from 'solid-js/store'
 
 const [store, setStore] = useStore()
 
@@ -56,8 +57,16 @@ async function confirmEditing() {
   }
 
   if (resp.status === 200) {
+    let updatedComment = await resp.json()
+
+    setStore('comments', store.comments.map(item => {
+      if (item.id === id) {
+        item = updatedComment
+      }
+      return item
+    }))
+
     setStore('editingCommentId', '')
-    setStore('editingCommentContent', '')
     setStore('shouldUpdateCommentId', id)
   }
 }
