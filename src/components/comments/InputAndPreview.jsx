@@ -63,22 +63,17 @@ function inputAndPreview() {
         ></textarea>
 
         <div className="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
-          评论系统基于
-          <a
+          评论系统基于 <a
             target="_blank"
             className="text-black font-extrabold dark:text-white"
             href="https://github.com/features/issues">
             GitHub Issues
-          </a>
-          制作，发言请记得遵守
-          <a
+          </a> 制作，发言请记得遵守 <a
             target="_blank"
             className="text-black dark:text-white font-extrabold"
             href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">
             GitHub 社区行为准则
-          </a>
-          。如果您比较好奇本博客是如何处理数据的，可以查看
-          <a
+          </a>。如果您比较好奇本博客是如何处理数据的，可以查看<a
             href="/privacy"
             className="text-black dark:text-white font-extrabold">
             隐私声明
