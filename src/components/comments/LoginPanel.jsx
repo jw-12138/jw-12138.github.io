@@ -15,7 +15,7 @@ function LoginPanel() {
       setUserActionWindow(false)
     }
 
-    if (store.commentActionDropdown) {
+    if (store.commentActionDropdown && !store.deletingId) {
       setStore('commentActionDropdown', '')
     }
   })
@@ -26,7 +26,7 @@ function LoginPanel() {
         setUserActionWindow(false)
       }
 
-      if (store.commentActionDropdown) {
+      if (store.commentActionDropdown && !store.deletingId) {
         setStore('commentActionDropdown', '')
       }
     }
