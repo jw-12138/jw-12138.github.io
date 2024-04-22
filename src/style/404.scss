@@ -1,0 +1,26 @@
+html {
+  @apply bg-[#13110D] text-black
+}
+
+a {
+  @apply underline underline-offset-4
+}
+
+h1 {
+  @apply md:px-0 px-4
+}
+
+p {
+  @apply leading-8 pb-4 md:px-0 px-4
+}
+
+img {
+  max-width: 100%;
+}
+
+.comics-bg {
+  border: 3px solid #000;
+  background: white;
+  padding: 1rem;
+  color: black;
+}
