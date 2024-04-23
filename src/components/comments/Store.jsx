@@ -1,6 +1,15 @@
 import {createStore} from 'solid-js/store'
 
+let apiBase = 'https://blog-api-cf-worker.jw1.dev'
+
+// if(location.hostname === 'localhost'){
+//   apiBase = 'http://localhost:4009'
+// }
+
+let proxy = apiBase + '/proxy'
+
 const [store, setStore] = createStore({
+  apiBase,
   mouseIsInsideWindow: false,
   mouseIsInActionWindow: false,
   sending_comment: false,
@@ -11,7 +20,7 @@ const [store, setStore] = createStore({
   githubIssueId: '',
   comments: [],
   isUserLoggedIn: false,
-  proxy: 'https://blog-api-cf-worker.jw1.dev/proxy',
+  proxy: proxy,
   reactingCommentID: [],
   listingReactionCommentIds: [],
   accessToken: '',

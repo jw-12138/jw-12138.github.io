@@ -119,7 +119,7 @@ function LoginPanel() {
 
                 <span className="w-[32px] h-[32px] overflow-hidden rounded-full">
                   <img
-                    src={store.user.avatar_url ? (store.user.avatar_url + '&s=64') : ''}
+                    src={store.apiBase + '/cache/avatar/' + store.user.id}
                     alt="user avatar"
                     className="w-full h-full"/>
                 </span>
