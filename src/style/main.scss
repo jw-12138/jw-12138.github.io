@@ -255,10 +255,6 @@ video {
   }
 }
 
-footer {
-  @apply text-xs py-[4rem] text-center;
-}
-
 @media (prefers-color-scheme: dark) {
   .astro-code-themes,
   .astro-code-themes span {
