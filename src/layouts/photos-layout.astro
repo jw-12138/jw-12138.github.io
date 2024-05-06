@@ -1,0 +1,41 @@
+---
+import GlobalStyle from "../components/global-style.astro"
+import Footer from "../components/footer.astro"
+import Header from "../components/header.astro"
+import Nav from "../components/nav.astro"
+import Meta from "../components/meta.astro"
+import Og from "../components/og.astro"
+import Comments from '../components/comments.jsx'
+import '../style/main.scss'
+
+let {pageName} = Astro.props
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="generator" content={Astro.generator}/>
+  <title>Photos - 一个球的博客</title>
+  <GlobalStyle/>
+  <Meta/>
+  <Og title="一个球的博客" path="/"/>
+</head>
+<body>
+<div id="linkCover"></div>
+<a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black text-white px-4 py-2 dark:bg-white dark:text-black" href="#photos">跳转至正文区域</a>
+<aside>
+  <Header/>
+  <Nav highlight={pageName ? pageName : ''}/>
+  <Footer aside={true}/>
+</aside>
+<main>
+  <div id="photos" class="mx-auto lg:mx-4 lg:max-w-full max-w-[42rem]">
+    <slot/>
+  </div>
+  <div class="max-w-[42rem] mx-auto w-full pb-[5rem]" id="app">
+    <Comments client:only="solid-js" githubIssueId={105}/>
+  </div>
+  <Footer/>
+</main>
+</body>
+</html>
