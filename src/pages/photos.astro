@@ -1,5 +1,6 @@
 ---
 import Photos from '../layouts/photos-layout.astro'
+import PhotoCommentButton from '../components/photo-comment-button.jsx'
 
 const photoData = [
   {
@@ -257,24 +258,29 @@ const photoData = [
   {
     url: 'https://blog-r2.jw1.dev/gfChwub7pz-wYdFv.jpeg',
     date: '2020-08-01',
-    desc: '飞机'
+    desc: '飞机',
+    fNumber: '5.6',
+    focalLength: '250mm',
+    exposureTime: '1/400',
+    exposureProgram: 'AP',
+    iso: '200'
   }
 ]
 ---
 
 <Photos pageName={"photos"}>
-  <div class="py-[3rem] text-sm max-w-[44rem] w-full mx-auto">
-    一些自认为拍的还不错的照片，请随意下载使用。
+  <div class="py-[3rem] text-sm max-w-[44rem] w-full mx-auto italic">
+    Play with light and shadow.
   </div>
 
   <div>
     {
       photoData.map(photo => {
         return (
-          <div class="mb-[3rem] flex justify-center flex-wrap">
+          <div class="mb-[3rem] flex justify-center flex-wrap group">
             <div class="flex items-center mb-2 flex-wrap w-full justify-center">
 
-              <div class="flex items-center opacity-70 mr-2 mb-2" style={{
+              <div class="flex items-center mr-2 mb-2" style={{
                 display: photo.date ? 'flex' : 'none'
               }}>
                 <div class="text-xs ml-1 font-mono">
@@ -282,7 +288,7 @@ const photoData = [
                 </div>
               </div>
 
-              <div class="flex items-center opacity-70 mr-2 mb-2" style={{
+              <div class="flex items-center mr-2 mb-2" style={{
                 display: photo.desc ? 'flex' : 'none'
               }}>
                 <div class="text-xs ml-1 font-mono">
@@ -325,13 +331,13 @@ const photoData = [
                   <span>ISO {photo?.iso}</span>
                 </div>
               </div>
-
-
             </div>
             <img src={photo.url} alt={photo?.desc} loading="lazy" class="max-h-dvh"/>
+            <PhotoCommentButton url={photo.url} alt={photo.desc ? photo.desc : ''} client:only="solid-js"/>
           </div>
         )
       })
     }
   </div>
 </Photos>
+
