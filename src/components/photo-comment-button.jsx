@@ -7,7 +7,7 @@ export default function PhotoCommentButton(props) {
   return <>
     <div className="flex pb-2 w-full justify-center items-center flex-wrap mt-0 lg:mt-[-6rem]">
       <button
-        className="flex items-center text-sm dark:bg-white bg-black text-white rounded-3xl dark:text-black px-4 py-1 transition-opacity lg:opacity-50 lg:group-hover:opacity-100 opacity-100 backdrop-blur"
+        className="flex items-center text-sm dark:bg-white bg-black text-white rounded-3xl dark:text-black px-4 py-1 transition-opacity lg:opacity-0 lg:group-hover:opacity-100 opacity-100 backdrop-blur"
         data-role="addComment"
         data-url={url}
         data-alt={alt}
@@ -29,7 +29,8 @@ export default function PhotoCommentButton(props) {
 
 function handleCommentButtonClick(url, alt) {
   if (!store.isUserLoggedIn) {
-    alert('请先登录')
+    document.querySelector('#loginWithGitHub').scrollIntoView()
+    alert('请先登录哦')
     return false
   }
 

@@ -163,6 +163,7 @@ function LoginPanel() {
         {!store.isUserLoggedIn &&
           <div className="text-center">
             <button onClick={login}
+                    id={'loginWithGitHub'}
                     className="text-sm px-8 py-2 rounded-full dark:bg-white dark:text-black flex items-center mx-auto bg-neutral-800 text-white shadow-2xl">
               使用
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 16" class="h-4 mx-1" fill="currentColor">
