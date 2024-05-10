@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS version of background-size: cover</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .test {
+        height: 300px;
+        padding: 30px 20px;
+        overflow: hidden;
+        max-width: 1000px;
+        margin: 0 auto;
+        color: #fff;
+        background-color: #333;
+      }
+
+      .test .content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .test._2 {
+        background-size: cover;
+        background-image: url(https://blog-r2.jw1.dev/p_assets/201910/a03_demo/test.jfif);
+        background-position: center center;
+      }
+
+      h4 {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test" id="test">
+      <img src="https://blog-r2.jw1.dev/p_assets/201910/a03_demo/test.jfif" alt="" id="test_img">
+      <div class="content">
+        JavaScript cover
+      </div>
+    </div>
+    <div class="test _2">
+      CSS cover
+    </div>
+    <h1 style="padding: 3rem 0 1rem">
+      JS version of <code>background-size: cover</code>
+    </h1>
+    <p style="padding: 1rem 0;">
+      <code>
+        resize the window and see if the image is resized just like the CSS version.
+      </code>
+    </p>
+    <script type="text/javascript" src="https://blog-r2.jw1.dev/p_assets/201910/a03_demo/kkkover.dev.js"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        kkkover({
+          wrapCell: document.getElementById('test'),
+          img: document.getElementById('test_img')
+        });
+      }
+    </script>
+  </body>
+</html>
