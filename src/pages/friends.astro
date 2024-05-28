@@ -6,7 +6,7 @@ import Nav from '../components/nav.astro'
 import friends from '../data/friends'
 ---
 
-<PageLayout title="My Friends" issue={99}>
+<PageLayout title="My Friends">
   <div slot="header">
     <Header/>
     <Nav highlight="friends"/>
@@ -41,34 +41,6 @@ import friends from '../data/friends'
           )
         })
       }
-    </div>
-    <div class="page-content">
-      <p>
-        互换友链需要您提供：
-      </p>
-      <ul>
-        <li>
-          <strong>网站名称</strong>
-        </li>
-        <li>
-          <strong>网站地址</strong>
-        </li>
-        <li>
-          <strong>网站介绍</strong>，30个字以内最好
-        </li>
-        <li>
-          <strong>网站图标/头像</strong>，分辨率最好在 <code>256x256px</code> 以上
-        </li>
-      </ul>
-      <p>
-        本站信息：
-      </p>
-      <ul>
-        <li>名称：一个球的博客</li>
-        <li>链接：<a href="https://jw1.dev">https://jw1.dev</a></li>
-        <li>描述：Front-end Developer / Music Producer</li>
-        <li>头像：<a href="https://jw1.dev/favicon.ico">https://jw1.dev/favicon.ico</a></li>
-      </ul>
     </div>
   </div>
 </PageLayout>
