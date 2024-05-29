@@ -233,7 +233,7 @@ function drawFreqPath(path, data) {
 > 
 > [MDN](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getByteFrequencyData)
 
-在这个例子中，如果我们打印`analyzer.context.sampleRate`的值，我们会看到控制输出了`48000`，这个数字的意义为：当前音频 1 秒钟的样本中有 48000 个数据点位。而根据 MDN 的介绍我们可以得知，频率样本数量为采样率的 1/2，也就是说最后一个频率样本对应的频率是 24000hz，这个频率人耳是听不到的，所以在现代音乐制作的过程中，20000hz 以上的频率基本都会被裁切掉。
+在这个例子中，如果我们打印`analyzer.context.sampleRate`的值，我们会看到控制台输出了`48000`，这个数字的意义为：当前音频 1 秒钟的样本中有 48000 个数据点位。而根据 MDN 的介绍我们可以得知，频率样本数量为采样率的 1/2，也就是说最后一个频率样本对应的频率是 24000hz，这个频率人耳是听不到的，所以在现代音乐制作的过程中，20000hz 以上的频率基本都会被裁切掉。
 
 现在我们把`analyzer.fftSize`调整到最大以观察最佳效果：
 
