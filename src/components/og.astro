@@ -1,9 +1,6 @@
 ---
-let {path, title, slug} = Astro.props
+let {path, title} = Astro.props
 let image = 'https://jw1.dev/og.jpg'
-if (slug) {
-  image = "https://jw1.dev/og/" + slug + '.jpg'
-}
 ---
 
 <meta property="og:url" content={"https://jw1.dev" + path}>
