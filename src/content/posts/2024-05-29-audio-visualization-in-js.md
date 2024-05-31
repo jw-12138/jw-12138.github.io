@@ -2,11 +2,9 @@
 layout: ../../layouts/post-layout.astro  
 title: 再谈 Web 音频可视化  
 issue: 106
-date: 2024-05-29T07:57:27.687Z  
-tags:
-
-- 音频可视化
-
+date: 2024-05-29T07:57:27.687Z
+tags: 
+  - 音频可视化
 ---
 
 刚开始接触这个主题时基本什么都不懂，甚至天真的 [认为 Analyzer 输出线性分布的频率是个问题](https://jw1.dev/2022/08/19/a01/)，后来又 [深入了解了一下傅立叶变换](https://jw1.dev/2023/11/04/understanding-fourier-transform/)，才觉得 [当时提的 Issue](https://github.com/WebAudio/web-audio-api/issues/2501) 在那些大佬眼里有多可笑。我提这个 Issue 的初心非常简单，纯粹是因为搞不定频率展示时的性能问题（甚至也搞不定对数分布）。

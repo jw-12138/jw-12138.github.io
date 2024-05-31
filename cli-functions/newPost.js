@@ -52,8 +52,6 @@ layout: ../../layouts/post-layout.astro
 title: ${title}${draftFrontMatter}
 issue:
 date: ${new Date().toISOString()}
-tags:
-  - 
 ---
 
 `

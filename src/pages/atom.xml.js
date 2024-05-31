@@ -1,18 +1,6 @@
 import {getCollection} from 'astro:content'
-import MarkdownIt from 'markdown-it'
-import pangu from 'pangu'
-
-const parser = new MarkdownIt()
 
 export async function GET(context) {
-  let text = parser.renderer.rules.text
-
-  parser.renderer.rules.text = function (...args) {
-    let originalText = text(...args)
-
-    return pangu.spacing(originalText)
-  }
-
   let allPosts = await getCollection('posts')
 
   let atom = `<feed xmlns="http://www.w3.org/2005/Atom">
@@ -81,13 +69,18 @@ export async function GET(context) {
 
     let datePath = date.split('-').join('/')
     let postPath = post.slug.slice(11)
+    let url = `https://jw1.dev/${datePath}/${postPath}.html`
+
+    if(new Date(date).getTime() > new Date('2024-05-30').getTime()){
+      url = `https://jw1.dev/${postPath}`
+    }
 
     atom += `
 
   <entry>
     <title>${post.data.title}</title>
-    <id>https://jw1.dev/${datePath}/${postPath}.html</id>
-    <link href="https://jw1.dev/${datePath}/${postPath}.html"/>
+    <id>${url}</id>
+    <link href="${url}"/>
     <published>${new Date(date).toISOString()}</published>
     ${tags}
 </entry>`

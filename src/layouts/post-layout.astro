@@ -11,9 +11,9 @@ import FakeToc from '../components/fake-toc.astro'
 import '../style/main.scss'
 import dayjs from 'dayjs'
 
-let { title, tags, style, deprecated, issue, wordsCount } = Astro.props.frontmatter
+let {title, tags, style, deprecated, issue, wordsCount} = Astro.props.frontmatter
 
-let { year, month, date, slug } = Astro.params
+let {slug} = Astro.params
 
 if (!tags) {
   tags = []
@@ -23,107 +23,107 @@ let style_str = style ? style : ''
 
 let path = Astro.url.pathname
 
-let postDate = dayjs(`${year}-${month}-${date}`).format('MMMM D, YYYY')
+let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title} - 一个球的博客</title>
-    <GlobalStyle />
-    <Meta tags={tags} />
-    <Og title={title} path={path} slug={`${year}-${month}-${date}-${slug}`} />
-  </head>
-  <body>
-    <input type="hidden" value={style_str} id="customStyle" />
-    <script>
-      try {
-        let styleTag = document.createElement('style') as HTMLStyleElement
-        let customStyleInput = document.getElementById('customStyle') as HTMLInputElement
-        styleTag.innerHTML = customStyleInput.value
-        document.head.appendChild(styleTag)
-      } catch (e) {
-        console.log(e)
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta name="generator" content={Astro.generator}/>
+  <title>{title} - 一个球的博客</title>
+  <GlobalStyle/>
+  <Meta tags={tags}/>
+  <Og title={title} path={path}/>
+</head>
+<body>
+<input type="hidden" value={style_str} id="customStyle"/>
+<script>
+  try {
+    let styleTag = document.createElement('style') as HTMLStyleElement
+    let customStyleInput = document.getElementById('customStyle') as HTMLInputElement
+    styleTag.innerHTML = customStyleInput.value
+    document.head.appendChild(styleTag)
+  } catch (e) {
+    console.log(e)
+  }
+</script>
+<aside>
+  <a
+    class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white"
+    href="#app">跳转至正文区域</a
+  >
+  <Header/>
+  <FakeToc headings={Astro.props.headings}/>
+  <Toc headings={Astro.props.headings} client:only="solid-js"/>
+  <Footer aside={true}/>
+</aside>
+<main>
+  <div id="app">
+    <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
+    <div class="text-xs pt-4">
+      <span class="opacity-80">{postDate}</span>
+      {
+        () => {
+          if (deprecated) {
+            return (
+              <>
+                <span class="px-1">/</span>
+                <span class="text-red-500 font-black">Deprecated</span>
+              </>
+            )
+          }
+        }
       }
-    </script>
-    <aside>
-      <a
-        class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white"
-        href="#app">跳转至正文区域</a
-      >
-      <Header />
-      <FakeToc headings={Astro.props.headings} />
-      <Toc headings={Astro.props.headings} client:only="solid-js" />
-      <Footer aside={true} />
-    </aside>
-    <main>
-      <div id="app">
-        <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
-        <div class="text-xs pt-4">
-          <span class="opacity-80">{postDate}</span>
-          {
-            () => {
-              if (deprecated) {
-                return (
-                  <>
-                    <span class="px-1">/</span>
-                    <span class="text-red-500 font-black">Deprecated</span>
-                  </>
-                )
-              }
-            }
-          }
-        </div>
+    </div>
 
-        <div class="page-content mt-[2.5rem]">
-          <noscript>
-            <p class="text-red-500 dark:text-red-400 mb-8">
-              看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过你无法直接在本站使用评论系统。
-            </p>
-          </noscript>
-          <slot />
-        </div>
+    <div class="page-content mt-[2.5rem]">
+      <noscript>
+        <p class="text-red-500 dark:text-red-400 mb-8">
+          看起来你的浏览器禁用了 JavaScript，没关系，你依旧可以正常浏览本博客，不过你无法直接在本站使用评论系统。
+        </p>
+      </noscript>
+      <slot/>
+    </div>
 
-        <Comments client:only="solid-js" githubIssueId={issue} />
-        <FakeComments githubIssueId={issue} />
-      </div>
-      <Footer />
-    </main>
-    <script>
-      let handleVideoAutoPlay = function () {
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        let windowHeight = document.documentElement.clientHeight || document.body.clientHeight
+    <Comments client:only="solid-js" githubIssueId={issue}/>
+    <FakeComments githubIssueId={issue}/>
+  </div>
+  <Footer/>
+</main>
+<script>
+  let handleVideoAutoPlay = function () {
+    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+    let windowHeight = document.documentElement.clientHeight || document.body.clientHeight
 
-        document.querySelectorAll('.page-content video').forEach((el, index) => {
-          let _el = el as HTMLVideoElement
-          let aboutToShow = _el.offsetTop - scrollTop - windowHeight
+    document.querySelectorAll('.page-content video').forEach((el, index) => {
+      let _el = el as HTMLVideoElement
+      let aboutToShow = _el.offsetTop - scrollTop - windowHeight
 
-          if (aboutToShow < -50 && _el.paused && _el.muted) {
-            _el.play()
-          }
-
-          if (aboutToShow < -50 && _el.paused && !_el.muted) {
-            _el.setAttribute('preload', 'auto')
-          }
-        })
+      if (aboutToShow < -50 && _el.paused && _el.muted) {
+        _el.play()
       }
 
-      let handleImgClick = function () {
-        document.querySelectorAll('.page-content img').forEach((el) => {
-          el.addEventListener('click', function () {
-            let _el = el as HTMLImageElement
-            window.open(_el.src)
-          })
-        })
+      if (aboutToShow < -50 && _el.paused && !_el.muted) {
+        _el.setAttribute('preload', 'auto')
       }
+    })
+  }
 
-      window.addEventListener('load', function () {
-        handleVideoAutoPlay()
-        handleImgClick()
-        window.addEventListener('scroll', handleVideoAutoPlay)
+  let handleImgClick = function () {
+    document.querySelectorAll('.page-content img').forEach((el) => {
+      el.addEventListener('click', function () {
+        let _el = el as HTMLImageElement
+        window.open(_el.src)
       })
-    </script>
-  </body>
+    })
+  }
+
+  window.addEventListener('load', function () {
+    handleVideoAutoPlay()
+    handleImgClick()
+    window.addEventListener('scroll', handleVideoAutoPlay)
+  })
+</script>
+</body>
 </html>

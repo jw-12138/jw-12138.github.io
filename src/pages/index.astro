@@ -1,7 +1,6 @@
 ---
 import IndexLayout from '../layouts/index-layout.astro'
-import dayjs from 'dayjs'
-import { getCollection } from 'astro:content'
+import {getCollection} from 'astro:content'
 
 const allPosts = await getCollection('posts')
 
@@ -19,55 +18,56 @@ allPosts.sort((a, b) => {
   return dateB - dateA
 })
 
-let renderCount = 0
+const postsByYears = allPosts.reduce((acc, post) => {
+  let date = extractDateFromSlug(post.slug)
+  let year = date.split('-')[0]
+  if (!acc[year]) {
+    acc[year] = []
+  }
+  acc[year].push(post)
+  return acc
+}, {})
+
+const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
 ---
 
 <IndexLayout pageName="index">
   <div>
     <div class="py-[3rem] italic">Posts</div>
-    <ul class="mb-4">
-      {
-        allPosts.map((post) => {
-          // if(renderCount > 9){
-          //   return
-          // }
+    {years.map(y => {
+      return (
+        <>
+          <div class="mt-4 text-sm opacity-70 mb-4">
+            {y}
+          </div>
+          <ul class="mb-8">
+            {
+              postsByYears[y].map((post) => {
+                let date = extractDateFromSlug(post.slug)
+                let dateTimestamp = new Date(date).getTime()
 
-          let { deprecated } = post.data
+                let datePath = date.split('-').join('/')
+                let postPath = post.slug.slice(11)
 
-          let date = extractDateFromSlug(post.slug)
+                let postUrl = `/${datePath}/${postPath}`
 
-          let datePath = date.split('-').join('/')
-          let postPath = post.slug.slice(11)
+                if(dateTimestamp > new Date('2024-05-30').getTime()){
+                  postUrl = `/${postPath}`
+                }
 
-          renderCount++
-
-          return (
-            <li class="group">
-              <a href={`/${datePath}/${postPath}`} class="block mb-8">
-                <div class="text-xs mb-2">
-                  <span class="opacity-80">
-                    {dayjs(date).format('MMMM D, YYYY')}
-                  </span>
-                  {deprecated && (
-                    <span class="ml-2 text-red-500 dark:text-red-400 font-black">
-                      Deprecated
-                    </span>
-                  )}
-                </div>
-                <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4">
-                  {post.data.title}
-                </div>
-              </a>
-            </li>
-          )
-        })
-      }
-    </ul>
-    <!--<div class="text-center pt-8">-->
-    <!--  <a href="/all-posts" class="dark:bg-neutral-800 bg-neutral-100 rounded-full text-sm px-6 py-2 flex items-center w-[10rem] mx-auto hover:shadow-xl dark:hover:bg-neutral-600 transition-shadow">-->
-    <!--    <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-selector w-5 h-5"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9l4 -4l4 4" /><path d="M16 15l-4 4l-4 -4" /></svg>-->
-    <!--    <span class="ml-1">查看全部文章</span>-->
-    <!--  </a>-->
-    <!--</div>-->
+                return (
+                  <li class="group">
+                    <a href={`${postUrl}`} class="block mb-4">
+                      <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4 mt-[-5px]">
+                        {post.data.title}
+                      </div>
+                    </a>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </>)
+    })}
   </div>
 </IndexLayout>
