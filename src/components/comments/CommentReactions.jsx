@@ -102,7 +102,7 @@ async function undoReactionToComment(comment_id, reaction_id, content) {
 async function makeReactionToComment(reaction, comment_id) {
 
   if (!store.isUserLoggedIn) {
-    alert('请先登录哦')
+    alert('Please log in first')
     return false
   }
 
@@ -129,19 +129,19 @@ async function makeReactionToComment(reaction, comment_id) {
     })
   } catch (e) {
     console.log(e)
-    alert('点赞失败，请稍后再试')
+    alert('failed, please try again later')
     return false
   } finally {
     setStore('reactingCommentID', store.reactingCommentID.filter(item => item !== comment_id))
   }
 
   if (resp.status === 200) {
-    alert('已经点过赞啦，谢谢！')
+    alert('you have already reacted to this comment, thx')
     return false
   }
 
   if (!resp.ok) {
-    alert('点赞失败，请稍后再试')
+    alert('failed, please try again later')
     return false
   }
 

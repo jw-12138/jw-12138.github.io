@@ -4,7 +4,7 @@ import {githubApi, owner, repo} from './utils.jsx'
 const [store, setStore] = useStore()
 
 async function deleteComment(id) {
-  let c = confirm('确定要删除这条评论吗？😯')
+  let c = confirm('Are you sure to delete this comment? 😯')
   if (!c) {
     return
   }
@@ -18,7 +18,7 @@ async function deleteComment(id) {
       method: 'DELETE'
     })
   } catch (e) {
-    alert('删除失败，请稍后再试')
+    alert('failed, please try again later')
     console.log(e)
     return false
   } finally {
@@ -75,7 +75,7 @@ function CommentActionPanel(props) {
             setStore('commentActionDropdown', '')
           }}
           disabled={store.deletingId === comment.id}
-          class="py-2 px-4 rounded-[.5rem] text-xs flex transition-all dark:hover:bg-white/10 hover:bg-black/10">
+          class="py-2 px-4 rounded-[.5rem] w-full text-xs flex transition-all dark:hover:bg-white/10 hover:bg-black/10">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle w-4 h-4 mr-1"
                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                stroke-linejoin="round">
@@ -84,7 +84,7 @@ function CommentActionPanel(props) {
             <path d="M16 5l3 3"/>
             <path d="M9 7.07a7 7 0 0 0 1 13.93a7 7 0 0 0 6.929 -6"/>
           </svg>
-          编辑
+          Edit
         </button>
 
         <button
@@ -93,7 +93,7 @@ function CommentActionPanel(props) {
           classList={{
             'bg-red-500 text-white dark:bg-red-500 dark:text-white': store.deletingId === comment.id
           }}
-          class="py-2 px-4 rounded-[.5rem] hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex transition-all">
+          class="py-2 px-4 rounded-[.5rem] w-full hover:bg-red-500 hover:text-white dark:bg-neutral-800 dark:text-white text-xs flex transition-all">
           <svg
             classList={{
               'hidden': store.deletingId === comment.id
@@ -119,7 +119,7 @@ function CommentActionPanel(props) {
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M12 3a9 9 0 1 0 9 9"/>
           </svg>
-          删除
+          Delete
         </button>
       </div>
     }

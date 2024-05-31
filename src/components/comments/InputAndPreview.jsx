@@ -48,14 +48,14 @@ function inputAndPreview() {
 
   let textareaPlaceHolder = function () {
     if (store.gettingUser) {
-      return '正在获取用户信息...'
+      return 'Loading...'
     }
 
     if (!store.isUserLoggedIn) {
-      return '请先登录哦'
+      return 'Please log in first'
     }
 
-    return "提些问题，或者打个招呼吧"
+    return "Ask a question or leave a comment"
   }
 
   return <>
@@ -76,24 +76,24 @@ function inputAndPreview() {
         ></textarea>
 
         <div className="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
-          评论系统基于 <a
+          The comment system is made with <a
           target="_blank"
           className="text-black font-extrabold dark:text-white"
           href="https://github.com/features/issues">
           GitHub Issues
-        </a> 制作，发言请记得遵守 <a
+        </a>, please follow the <a
           target="_blank"
           className="text-black dark:text-white font-extrabold"
-          href="https://docs.github.com/zh/site-policy/github-terms/github-community-code-of-conduct">
-          GitHub 社区行为准则
-        </a>。如果您比较好奇本博客是如何处理数据的，可以查看<a
+          href="https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct">
+          GitHub Community Code of Conduct
+        </a>. If you are curious about how we process your data, please refer to <a
           href="/privacy"
           className="text-black dark:text-white font-extrabold">
-          隐私声明
-        </a>。
+          privacy policy
+        </a>.
         </div>
 
-        <div className="text-center mt-2 flex justify-center" classList={{
+        <div className="text-center mt-8 flex justify-center" classList={{
           hidden: store.gettingUser
         }}>
           <button type="submit"
@@ -108,7 +108,7 @@ function inputAndPreview() {
               <path d="M10 14l11 -11"/>
               <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"/>
             </svg>
-            发送评论
+            Send
           </button>
           <button disabled
                   classList={{

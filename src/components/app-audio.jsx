@@ -160,7 +160,7 @@ const appAudio = function (props) {
         {
           !soundPlaying() &&
           <button
-            aria-label={"播放"}
+            aria-label={"Play"}
             onClick={play}
             disabled={loadStatus() === 0}
             class="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2">
@@ -176,7 +176,7 @@ const appAudio = function (props) {
         {
           soundPlaying() &&
           <button
-            aria-label={"暂停"}
+            aria-label={"Pause"}
             class="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2"
             onClick={pause}
           >
@@ -191,7 +191,7 @@ const appAudio = function (props) {
         }
 
         <button
-          aria-label={"停止播放"}
+          aria-label={"Stop"}
           onClick={stopPlaying} disabled={loadStatus() === 0}
           class="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-1">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-stop w-5 h-5"

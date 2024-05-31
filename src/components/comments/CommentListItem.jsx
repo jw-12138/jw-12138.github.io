@@ -80,7 +80,7 @@ function CommentListItem(props) {
                 classList={{
                   hidden: store.user.login !== comment.user.login
                 }}
-                aria-label="更多操作"
+                aria-label="More actions"
                 class="dark:bg-neutral-800 bg-neutral-200 rounded-full w-8 h-8 overflow-hidden flex items-center justify-center"
                 onclick={(e) => {
                   e.stopPropagation()
@@ -127,7 +127,7 @@ function CommentListItem(props) {
                 </svg>
               </button>
               <button
-                aria-label={'提及这个用户'}
+                aria-label={'Mention this user'}
                 class="h-[30px] leading-[28px] px-2 rounded-full bg-neutral-100 hover:bg-neutral-800 hover:text-white dark:bg-neutral-800 dark:text-white dark:hover:text-black dark:hover:bg-neutral-200 text-xs"
                 onClick={() => mention(comment.user.login)}
                 classList={{

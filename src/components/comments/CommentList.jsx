@@ -42,7 +42,7 @@ function CommentList() {
     }
 
     if (!resp.ok) {
-      console.log('获取评论点赞失败')
+      console.log('failed to list reactions for comment')
       await listReactionsForComment(comment_id, retryLeft - 1)
       return false
     }
@@ -135,12 +135,12 @@ function CommentList() {
         <span classList={{
           hidden: store.comments.length === 0
         }}>
-          <span>{store.comments.length}</span> 条评论
+          <span>{store.comments.length}</span> Comment{store.comments.length === 1 ? '' : 's'}
         </span>
         <span classList={{
           hidden: store.comments.length !== 0
         }} className="font-normal text-sm opacity-80 not-italic">
-          目前还没有评论～
+          No comments for now
         </span>
       </div>
 

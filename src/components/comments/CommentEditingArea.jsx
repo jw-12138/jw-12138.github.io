@@ -24,7 +24,7 @@ async function confirmEditing() {
   }
 
   if (!content) {
-    alert('评论内容不能为空哦')
+    alert('the content cannot be empty')
     return
   }
 
@@ -46,13 +46,13 @@ async function confirmEditing() {
     })
   } catch (e) {
     console.log(e)
-    alert('编辑失败，再试一次？')
+    alert('failed, please try again later')
   } finally {
     setStore('submittingEditedComment', false)
   }
 
   if (!resp.ok) {
-    alert('编辑失败，再试一次？')
+    alert('failed, please try again later')
     return
   }
 
@@ -103,7 +103,7 @@ async function confirmEditing() {
                 <path d="M18 6l-12 12"/>
                 <path d="M6 6l12 12"/>
               </svg>
-              取消
+              Cancel
             </button>
             <button
               type="submit"
@@ -128,7 +128,7 @@ async function confirmEditing() {
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M5 12l5 5l10 -10"/>
               </svg>
-              确认编辑
+              Confirm
             </button>
           </div>
         </form>

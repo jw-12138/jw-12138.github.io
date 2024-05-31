@@ -243,7 +243,7 @@ export default function appAudioDiff(props) {
       {
         !soundPlaying() &&
         <button
-          aria-label={"播放"}
+          aria-label={"Play"}
           disabled={
             loadStatus_1() === 0 || loadStatus_2() === 0
           }
@@ -261,7 +261,7 @@ export default function appAudioDiff(props) {
       {
         soundPlaying() &&
         <button
-          aria-label={"暂停播放"}
+          aria-label={"Pause"}
           disabled={
             loadStatus_1() === 0 || loadStatus_2() === 0
           }
@@ -280,7 +280,7 @@ export default function appAudioDiff(props) {
       }
 
       <button
-        aria-label={"停止播放"}
+        aria-label={"Stop"}
         disabled={loadStatus_1() === 0 || loadStatus_2() === 0}
         onClick={stopPlaying}
         class={`w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2`}
@@ -294,7 +294,7 @@ export default function appAudioDiff(props) {
       </button>
 
       <button
-        aria-label={"切换声源"}
+        aria-label={"Switch Sound Source"}
         disabled={loadStatus_1() === 0 || loadStatus_2() === 0}
         onClick={switchSoundSource}
         class="w-[2rem] h-[2rem] flex justify-center items-center rounded-full shadow transition-all text-black dark:text-white mr-2"
@@ -313,7 +313,7 @@ export default function appAudioDiff(props) {
       </button>
 
       <button
-        aria-label={"循环播放"}
+        aria-label={"Loop"}
         disabled={
           loadStatus_1() === 0 || loadStatus_2() === 0
         }
