@@ -86,7 +86,7 @@ function inputAndPreview() {
           className="text-black dark:text-white font-extrabold"
           href="https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct">
           GitHub Community Code of Conduct
-        </a>. If you are curious about how we process your data, please refer to <a
+        </a>. If you are curious about how we process your data, please refer to our <a
           href="/privacy"
           className="text-black dark:text-white font-extrabold">
           privacy policy

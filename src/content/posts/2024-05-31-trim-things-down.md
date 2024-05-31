@@ -19,6 +19,7 @@ The first blog engine i ever used is WordPress, so naturally I thought, a blogâ€
 - Search bar
 - Archives
 - Contact info
+- ...
 
 Switching to other blog engines like Jekyll, Hexo, etc., didnâ€™t really stop this stereotype from being in my mind until I started to think, what do i really need?
 

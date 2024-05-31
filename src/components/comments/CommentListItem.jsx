@@ -58,13 +58,13 @@ function CommentListItem(props) {
                   comment.author_association === 'OWNER' &&
                   <span
                     className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-indigo-700 bg-indigo-200 dark:text-indigo-200 text-indigo-800 top-[-.03rem] ml-1"
-                  >站长</span>
+                  >Author</span>
                 }
                 {
                   (comment.user.login === store.user.login && store.isUserLoggedIn) &&
                   <span
                     className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-yellow-300 bg-yellow-500 dark:text-black text-white top-[-.03rem] ml-1"
-                  >我</span>
+                  >Me</span>
                 }
               </span>
               <div className="datetime text-[10px] opacity-70">
