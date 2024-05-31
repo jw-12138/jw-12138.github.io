@@ -53,7 +53,7 @@ Fonts play an important role in the making of clean blogs, English has at most 2
 
 In Chinese, Fonts and Words work a LITTLE bit differently, we also have some certain building blocks but those blocks bundle as one letter, thus we have thousands of “letters” 🤷🏻‍♂️, custom fonts would just become a nightmare, it struggles me a lot when there are some freaking amazingly looked Chinese fonts but you can’t use them because of the loading speed.
 
-So, for a ultimate clean look I’ve decided to write a blog in English, which is the one you’re reading now, please don’t make fun of my grammar, i tried.
+From the perspective of design, Chinese are also kinda hard to compose. So, for an ultimate clean look I’ve decided to write a blog in English, which is the one you’re reading now, please don’t make fun of my grammar, i tried.
 
 And i’m pretty happy with it. 👻
 
