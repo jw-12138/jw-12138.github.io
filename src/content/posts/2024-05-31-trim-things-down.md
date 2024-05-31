@@ -20,11 +20,11 @@ The first blog engine i ever used is WordPress, so naturally I thought, a blog�
 - Archives
 - Contact info
 
-switching to other blog engines like Jekyll, Hexo, etc., didn’t really stop this stereotype from being in my mind until I started to think, what do i really need?
+Switching to other blog engines like Jekyll, Hexo, etc., didn’t really stop this stereotype from being in my mind until I started to think, what do i really need?
 
 ## the purpose of a blog, at least this blog
 
- As I once wrote down these words in one of my blog:
+As I once wrote down these words in one of my blog:
 
 - record the learning progress
 - post some fun stuff
