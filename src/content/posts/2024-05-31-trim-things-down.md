@@ -7,7 +7,7 @@ date: 2024-05-31T06:21:41.629Z
 
 It's been around 5 months since the last time I changed my blog engine, and I kept adding functions, features, and configs to it, and it's making the blog worse.
 
-## stereotype of a blog
+## Stereotype of a blog
 
 The first blog engine i ever used is WordPress, so naturally I thought, a blog’s index page should have a default structure like this:
 
@@ -22,7 +22,7 @@ The first blog engine i ever used is WordPress, so naturally I thought, a blog�
 
 Switching to other blog engines like Jekyll, Hexo, etc., didn’t really stop this stereotype from being in my mind until I started to think, what do i really need?
 
-## the purpose of a blog, at least this blog
+## The purpose of a blog, at least this blog
 
 As I once wrote down these words in one of my blog:
 
@@ -31,7 +31,7 @@ As I once wrote down these words in one of my blog:
 
 And that’s it, I don’t need tags to tell people what i write about, I don’t need a friends page to tell people that i’m cool and has a lot of friends, I don’t need things that people just don’t care about,  how many people would just come to your blog and search for a specific article? The answer is probably *no one*, so why bother 🤷🏻‍♂️?
 
-## goodbye then
+## Goodbye then
 
 - **Date in URL**: Most of my blogs are migrated from Jekyll and Hexo, for SEO purposes i still made the same URL pattern even after I switched to Astro, my new blogs’ url will no longer have this date thing, starting with this one.
 - **Words count and Tags in posts**: People would just stop reading your blog if the content is not that interesting, adding words count and tags does not make your blog cooler.
@@ -42,12 +42,12 @@ And that’s it, I don’t need tags to tell people what i write about, I don’
 - **Vue**: changed to SolidJs, 27kb trimmed.
 - **Open Graph for each post**: again, doesn’t matter and unnecessarily increase maintenance efforts, left only one OG for the whole blog.
 
-## things i couldn’t get rid of, for now
+## Things i couldn’t get rid of, for now
 
 - **Friends page**: guess friends do matter, we have this little tradition in Chinese bloggers circle called “Link Exchange”, works like a traffic attraction mechanism for blogs.
 - **Comments**: I kinda liked to get connected with people, and since the comment section is made with GitHub Issues, I barely get spams, so yeah, this is a keep.
 
-## and dear English bloggers, I envy you
+## And dear English bloggers, I envy you
 
 Fonts play an important role in the making of clean blogs, English has at most 26 letters, and these are the building blocks for the whole English world, meaning you can apply any web fonts without worrying about the size and loading speed.
 
@@ -57,7 +57,7 @@ From the perspective of design, Chinese are also kinda hard to compose. So, for 
 
 And i’m pretty happy with it. 👻
 
-## final thoughts
+## Final thoughts
 
 I don’t wanna say anything like “less is more”, I believe you’ve heard it a million times just like “with great power comes great responsibilities 🕸 ”.
 
