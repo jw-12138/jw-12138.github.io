@@ -33,7 +33,7 @@ And that’s it, I don’t need tags to tell people what i write about, I don’
 
 ## goodbye then
 
-- **Date in URL**: Most of my blogs are migrated from Jekyll and Hexo, for SEO purposes i still made the same URL pattern even after a switched to Astro, my new blogs’ url will no longer have this date thing, starting with this one.
+- **Date in URL**: Most of my blogs are migrated from Jekyll and Hexo, for SEO purposes i still made the same URL pattern even after I switched to Astro, my new blogs’ url will no longer have this date thing, starting with this one.
 - **Words count and Tags in posts**: People would just stop reading your blog if the content is not that interesting, adding words count and tags does not make your blog cooler.
 - **Photos page**: You’re not a professional photographer, adding this page is just pure cringe.
 - **Markdown renderer in comment section**: 54kb trimmed at the client side, big win!
