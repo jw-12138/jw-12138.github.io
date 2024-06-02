@@ -52,7 +52,7 @@ export async function GET(context) {
     let url = `jw1.dev/${datePath}/${postPath}`
 
     if(new Date(date).getTime() > new Date('2024-05-30').getTime()){
-      url = `https://jw1.dev/${postPath}`
+      url = `jw1.dev/${postPath}`
     }
 
     return {
