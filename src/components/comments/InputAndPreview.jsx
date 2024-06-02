@@ -52,7 +52,7 @@ function inputAndPreview() {
     }
 
     if (!store.isUserLoggedIn) {
-      return 'Please log in first'
+      return 'Please login first'
     }
 
     return "Ask a question or leave a comment"
