@@ -267,6 +267,12 @@ video {
     color: var(--shiki-dark) !important;
     background-color: transparent !important;
   }
+
+  .shiki-themes,
+  .shiki-themes span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+  }
 }
 
 @keyframes slideUp_offset {

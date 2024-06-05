@@ -71,14 +71,12 @@ async function renderMarkdown(markdown, id = -1, updated_at = '') {
   }
 
   try {
-    let resp = await fetch('https://blog-md-render.jw1.dev/render', {
+    let resp = await fetch('https://md.jw1.dev', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       },
-      body: JSON.stringify({
-        text: markdown
-      })
+      body: markdown
     })
 
     let remoteText = await resp.text()
