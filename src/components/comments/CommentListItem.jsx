@@ -42,32 +42,32 @@ function CommentListItem(props) {
   }
 
   return <>
-    <div className="item py-8 transition-all relative" id={comment.id} style={{
+    <div class="item py-8 transition-all relative" id={comment.id} style={{
       'pointer-events': store.deletingId === comment.id ? 'none' : 'auto',
       overflow: store.comments[props.index()].aboutToGetDeleted ? 'hidden' : 'visible',
       animation: 'comment_delete_' + comment.id + ' .3s ease forwards'
     }}>
-      <div className="user flex mt-2 w-full relative">
-        <div className="outer-box flex justify-between w-full">
+      <div class="user flex mt-2 w-full relative">
+        <div class="outer-box flex justify-between w-full">
           <a href={comment.html_url} target="_blank" class="user-info flex items-center text-sm group">
             <img src={store.apiBase + '/cache/avatar/' + comment.user.id} alt="用户头像" class="w-8 h-8 rounded-[10px] mb-0 mr-2 group-hover:shadow transition-shadow"/>
             <div>
-              <span className="flex items-center">
+              <span class="flex items-center">
                 {comment.user.login}
                 {
                   comment.author_association === 'OWNER' &&
                   <span
-                    className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-indigo-700 bg-indigo-200 dark:text-indigo-200 text-indigo-800 top-[-.03rem] ml-1"
+                    class="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-indigo-700 bg-indigo-200 dark:text-indigo-200 text-indigo-800 top-[-.03rem] ml-1"
                   >Author</span>
                 }
                 {
                   (comment.user.login === store.user.login && store.isUserLoggedIn) &&
                   <span
-                    className="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-yellow-300 bg-yellow-500 dark:text-black text-white top-[-.03rem] ml-1"
+                    class="author-tag px-2 text-xs rounded-xl relative scale-90 dark:bg-yellow-300 bg-yellow-500 dark:text-black text-white top-[-.03rem] ml-1"
                   >Me</span>
                 }
               </span>
-              <div className="datetime text-[10px] opacity-70">
+              <div class="datetime text-[10px] opacity-70">
                 {dayjs(comment.created_at).fromNow()}
               </div>
             </div>
@@ -75,7 +75,7 @@ function CommentListItem(props) {
 
           {
             (store.isUserLoggedIn && store.editingCommentId !== comment.id) &&
-            <div className="comment-actions flex-shrink-0">
+            <div class="comment-actions flex-shrink-0">
               <button
                 classList={{
                   hidden: store.user.login !== comment.user.login
@@ -90,7 +90,7 @@ function CommentListItem(props) {
                 onmouseleave={() => setStore('mouseIsInActionWindow', false)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-x w-4 h-4"
+                  class="icon icon-tabler icon-tabler-x w-4 h-4"
                   classList={{
                     'hidden': store.commentActionDropdown !== comment.id
                   }}
@@ -107,7 +107,7 @@ function CommentListItem(props) {
                 </svg>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-dots w-4 h-4"
+                  class="icon icon-tabler icon-tabler-dots w-4 h-4"
                   classList={{
                     hidden: store.commentActionDropdown === comment.id
                   }}
@@ -134,7 +134,7 @@ function CommentListItem(props) {
                   hidden: store.user.login === comment.user.login
                 }}>
                 <svg xmlns="http://www.w3.org/2000/svg"
-                     className="icon icon-tabler icon-tabler-at w-4 h-4" viewBox="0 0 24 24"
+                     class="icon icon-tabler icon-tabler-at w-4 h-4" viewBox="0 0 24 24"
                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                      stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -150,10 +150,10 @@ function CommentListItem(props) {
         <CommentActionPanel comment={comment}></CommentActionPanel>
       </div>
 
-      <div className="mt-2 flex items-center pb-8" classList={{
+      <div class="mt-2 flex items-center pb-8" classList={{
         hidden: comment.bodyHTML
       }}>
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-loader-2 animate-spin"
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 animate-spin"
              width="24"
              height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
              stroke-linecap="round"
@@ -163,7 +163,7 @@ function CommentListItem(props) {
         </svg>
       </div>
 
-      <div className="mt-2 page-content comment-content" style="padding-bottom: 0"
+      <div class="mt-2 page-content comment-content" style="padding-bottom: 0"
            innerHTML={comment.bodyHTML ? comment.bodyHTML : `<pre>${comment.body}</pre>`}
            classList={{
              hidden: store.editingCommentId === comment.id || !comment.bodyHTML

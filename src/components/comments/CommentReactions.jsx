@@ -173,7 +173,7 @@ function commentReactions(props) {
               title={button.means}>
 
               <span
-                className="transition-all mr-1 relative top-0"
+                class="transition-all mr-1 relative top-0"
                 classList={{
                   'text-2xl rotate-[-12deg] top-[-.2rem]': userHasReactedToComment(comment.id, button.content)
                 }}
@@ -181,7 +181,7 @@ function commentReactions(props) {
                 {button.label}
               </span>
 
-              <span className="font-mono">{
+              <span class="font-mono">{
                 store.commentReactionMap[comment.id] && store.commentReactionMap[comment.id][button.content] ? store.commentReactionMap[comment.id][button.content].length : 0
               }</span>
 

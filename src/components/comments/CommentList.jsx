@@ -115,10 +115,10 @@ function CommentList() {
   }))
 
   return <>
-    {store.gettingComments && <section data-name="loading screen" className="pt-8">
-      <div className="flex text-sm justify-center items-center">
+    {store.gettingComments && <section data-name="loading screen" class="pt-8">
+      <div class="flex text-sm justify-center items-center">
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-loader-2 animate-spin" width="24"
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 animate-spin" width="24"
                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -129,7 +129,7 @@ function CommentList() {
     </section>}
 
     <section data-name="comments" class="pt-8">
-      <div className="text-center text-base font-black italic" classList={{
+      <div class="text-center text-base font-black italic" classList={{
         hidden: store.gettingComments
       }}>
         <span classList={{
@@ -139,7 +139,7 @@ function CommentList() {
         </span>
         <span classList={{
           hidden: store.comments.length !== 0
-        }} className="font-normal text-sm opacity-80 not-italic">
+        }} class="font-normal text-sm opacity-80 not-italic">
           No comments for now
         </span>
       </div>

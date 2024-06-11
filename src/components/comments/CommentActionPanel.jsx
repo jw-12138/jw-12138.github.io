@@ -63,7 +63,7 @@ function CommentActionPanel(props) {
       store.commentActionDropdown === comment.id &&
       <div
         data-name="more actions"
-        className="absolute z-[500] top-[2.25rem] right-0 rounded-[1rem] dark:bg-neutral-800 px-2 py-2 bg-neutral-100 border-[1px] shadow-xl popup-border"
+        class="absolute z-[500] top-[2.25rem] right-0 rounded-[1rem] dark:bg-neutral-800 px-2 py-2 bg-neutral-100 border-[1px] shadow-xl popup-border"
         style={{
           animation: '0.15s ease 0s 1 normal none running slideUp'
         }}
@@ -99,7 +99,7 @@ function CommentActionPanel(props) {
               'hidden': store.deletingId === comment.id
             }}
             xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
+            class="icon icon-tabler icon-tabler-trash w-4 h-4 mr-1" viewBox="0 0 24 24" stroke-width="2"
             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path
               stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -115,7 +115,7 @@ function CommentActionPanel(props) {
             classList={{
               'hidden': store.deletingId !== comment.id
             }}
-            xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-loader-2">
+            xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 animate-spin icon icon-tabler icons-tabler-outline icon-tabler-loader-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M12 3a9 9 0 1 0 9 9"/>
           </svg>

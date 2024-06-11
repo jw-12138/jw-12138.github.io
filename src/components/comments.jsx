@@ -69,8 +69,8 @@ export default function Comments(props) {
   })
 
   return <>
-    {props.githubIssueId && <div ref={commentDom} data-name="comments" id="comments" className="mb-4">
-      <div className="my-8 h-[1px]">
+    {props.githubIssueId && <div ref={commentDom} data-name="comments" id="comments" class="mb-4">
+      <div class="my-8 h-[1px]">
       </div>
 
       <Loading></Loading>

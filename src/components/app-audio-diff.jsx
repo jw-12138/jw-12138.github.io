@@ -190,9 +190,9 @@ export default function appAudioDiff(props) {
     })
   })
 
-  return <div className="dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 bg-gradient-to-bl from-white to-neutral-100 overflow-hidden rounded-2xl shadow-2xl mb-8 px-4 py-8 dark:bg-neutral-900">
+  return <div class="dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 bg-gradient-to-bl from-white to-neutral-100 overflow-hidden rounded-2xl shadow-2xl mb-8 px-4 py-8 dark:bg-neutral-900">
     {
-      (loadStatus_1() === 0 || loadStatus_2() === 0) && <div className="mb-4">
+      (loadStatus_1() === 0 || loadStatus_2() === 0) && <div class="mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 animate-spin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
           <path d="M12 3a9 9 0 1 0 9 9"/>
@@ -200,7 +200,7 @@ export default function appAudioDiff(props) {
       </div>
     }
 
-    <div className="text-base italic mb-4 font-black items-center flex">
+    <div class="text-base italic mb-4 font-black items-center flex">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones w-5 h-5 mr-1"
            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
            stroke-linejoin="round">
@@ -213,11 +213,11 @@ export default function appAudioDiff(props) {
     </div>
 
     <div>
-      <div className="flex justify-between items-center">
-        <div className="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
+      <div class="flex justify-between items-center">
+        <div class="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
           {sec2time(currentTime() / inputRangeScale)}
         </div>
-        <div className="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
+        <div class="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
           {sec2time(duration() / inputRangeScale)}
         </div>
       </div>
@@ -248,8 +248,8 @@ export default function appAudioDiff(props) {
             loadStatus_1() === 0 || loadStatus_2() === 0
           }
           onClick={play}
-          className="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2">
-          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-player-play w-5 h-5"
+          class="w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play w-5 h-5"
                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -269,7 +269,7 @@ export default function appAudioDiff(props) {
           class={`w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2`}
 
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-player-pause w-5 h-5"
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause w-5 h-5"
                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -285,7 +285,7 @@ export default function appAudioDiff(props) {
         onClick={stopPlaying}
         class={`w-[2rem] h-[2rem] flex justify-center items-center dark:bg-white/10 rounded-full hover:shadow-xl shadow bg-neutral-100 transition-all text-black dark:text-white mr-2`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-player-stop w-5 h-5"
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-stop w-5 h-5"
              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
              stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
