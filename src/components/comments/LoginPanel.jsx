@@ -4,7 +4,7 @@ import {auth_api, client_id} from './utils.jsx'
 
 const [store, setStore] = useStore()
 
-const authUrl = `${auth_api}?client_id=${client_id}&redirect_uri=https://cwgi.jw1.dev/callback?r=${location.href}`
+const authUrl = `${auth_api}?state=${Date.now()}&client_id=${client_id}&redirect_uri=${encodeURIComponent(`https://cwgi.jw1.dev/callback?r=${location.href}`)}`
 
 function LoginPanel() {
   // popup
