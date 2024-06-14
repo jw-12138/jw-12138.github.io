@@ -27,7 +27,7 @@ export default function Comments(props) {
 
     try {
       setStore('gettingUser', true)
-      resp = await githubApi('/user')
+      resp = await githubApi('https://api.github.com/user')
     } catch (e) {
       console.log(e)
     } finally {

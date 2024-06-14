@@ -26,7 +26,7 @@ function CommentList() {
       return false
     }
 
-    let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
+    let api = `https://api.github.com/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
 
     let resp
 
@@ -86,7 +86,7 @@ function CommentList() {
 
     setStore('gettingComments', true)
 
-    let resp = await githubApi(`/repos/${owner}/${repo}/issues/${store.githubIssueId}/comments`)
+    let resp = await githubApi(`https://api.github.com/repos/${owner}/${repo}/issues/${store.githubIssueId}/comments`)
     let remoteComments = await resp.json()
     setStore('gettingComments', false)
     setStore('comments', remoteComments)

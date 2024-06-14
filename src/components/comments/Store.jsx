@@ -1,12 +1,12 @@
 import {createStore} from 'solid-js/store'
 
-let apiBase = 'https://blog-api-cf-worker.jw1.dev'
+let apiBase = 'https://cwgi.jw1.dev'
 
 // if(location.hostname === 'localhost'){
-//   apiBase = 'http://localhost:4009'
+//   apiBase = 'http://localhost:4010'
 // }
 
-let proxy = apiBase + '/proxy'
+let proxy = apiBase + '/proxy/'
 
 const [store, setStore] = createStore({
   apiBase,

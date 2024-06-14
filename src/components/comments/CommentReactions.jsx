@@ -62,7 +62,7 @@ let userHasReactedToComment = function (comment_id, reaction) {
  * @returns {Promise<void>}
  */
 async function undoReactionToComment(comment_id, reaction_id, content) {
-  let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions/${reaction_id}`
+  let api = `https://api.github.com/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions/${reaction_id}`
 
   let resp
   try {
@@ -114,7 +114,7 @@ async function makeReactionToComment(reaction, comment_id) {
     return false
   }
 
-  let api = `/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
+  let api = `https://api.github.com/repos/${owner}/${repo}/issues/comments/${comment_id}/reactions`
 
   let resp
 

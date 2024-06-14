@@ -15,7 +15,7 @@ function inputAndPreview() {
     let resp
 
     try {
-      resp = await githubApi(`/repos/${owner}/${repo}/issues/${store.githubIssueId}/comments`, {
+      resp = await githubApi(`https://api.github.com/repos/${owner}/${repo}/issues/${store.githubIssueId}/comments`, {
         method: 'POST',
         body: JSON.stringify({
           body: store.userComment

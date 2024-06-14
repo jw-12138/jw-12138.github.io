@@ -4,7 +4,7 @@ import {auth_api, client_id} from './utils.jsx'
 
 const [store, setStore] = useStore()
 
-const authUrl = `${auth_api}?client_id=${client_id}&redirect_uri=https://blog-api-cf-worker.jw1.dev/gh/cb?r=${location.href}`
+const authUrl = `${auth_api}?client_id=${client_id}&redirect_uri=https://cwgi.jw1.dev/callback?r=${location.href}`
 
 function LoginPanel() {
   // popup
@@ -119,7 +119,7 @@ function LoginPanel() {
 
                 <span class="w-[32px] h-[32px] overflow-hidden rounded-full">
                   <img
-                    src={store.apiBase + '/cache/avatar/' + store.user.id}
+                    src={store.apiBase + '/proxy/' + store.user.avatar_url + '&s=64'}
                     alt="user avatar"
                     class="w-full h-full"/>
                 </span>

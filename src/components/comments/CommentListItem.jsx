@@ -50,7 +50,7 @@ function CommentListItem(props) {
       <div class="user flex mt-2 w-full relative">
         <div class="outer-box flex justify-between w-full">
           <a href={comment.html_url} target="_blank" class="user-info flex items-center text-sm group">
-            <img src={store.apiBase + '/cache/avatar/' + comment.user.id} alt="用户头像" class="w-8 h-8 rounded-[10px] mb-0 mr-2 group-hover:shadow transition-shadow"/>
+            <img src={store.apiBase + '/proxy/' + store.user.avatar_url + '&s=64'} alt="用户头像" class="w-8 h-8 rounded-[10px] mb-0 mr-2 group-hover:shadow transition-shadow"/>
             <div>
               <span class="flex items-center">
                 {comment.user.login}

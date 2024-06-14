@@ -14,7 +14,7 @@ async function deleteComment(id) {
   let resp
 
   try {
-    resp = await githubApi(`/repos/${owner}/${repo}/issues/comments/${id}`, {
+    resp = await githubApi(`https://api.github.com/repos/${owner}/${repo}/issues/comments/${id}`, {
       method: 'DELETE'
     })
   } catch (e) {
