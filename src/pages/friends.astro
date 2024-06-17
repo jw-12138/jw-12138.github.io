@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/page-layout.astro'
 import Header from '../components/header.astro'
 import Nav from '../components/nav.astro'
+import {Image} from 'astro:assets'
 
 import friends from '../data/friends'
 ---
@@ -26,9 +27,10 @@ import friends from '../data/friends'
             >
               <div class="flex flex-wrap items-center">
                 <div class="w-full sm:w-8 sm:mr-4 sm:mb-0 mb-2 flex items-center justify-start h-8">
-                  <img
+                  <Image
+                    loading="eager"
                     class="w-8 h-8 mx-0 m-0 rounded"
-                    src={`/friends_logo/${friend.name}.png`}
+                    src={import(`../../public/friends_logo/${friend.name}.png`)}
                     alt={friend.name}
                   />
                 </div>
