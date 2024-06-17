@@ -78,17 +78,17 @@ function inputAndPreview() {
         <div class="pt-2 text-xs dark:text-neutral-400 text-neutral-500 leading-5 ">
           The comment system is made with <a
           target="_blank"
-          class="text-black font-extrabold dark:text-white"
+          class="text-black dark:text-white"
           href="https://github.com/features/issues">
           GitHub Issues
         </a>, please follow the <a
           target="_blank"
-          class="text-black dark:text-white font-extrabold"
+          class="text-black dark:text-white"
           href="https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct">
           GitHub Community Code of Conduct
         </a>. If you are curious about how we process your data, please refer to our <a
           href="/privacy"
-          class="text-black dark:text-white font-extrabold">
+          class="text-black dark:text-white">
           privacy policy
         </a>.
         </div>
