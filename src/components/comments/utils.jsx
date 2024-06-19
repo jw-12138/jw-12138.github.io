@@ -59,9 +59,10 @@ function containsCodeBlocks(markdown) {
  * @returns {Promise<string>}
  */
 async function renderMarkdown(markdown, id = -1, updated_at = '') {
+  let key = ''
   if (id && updated_at) {
     let timestamp = dayjs(updated_at).unix()
-    let key = `cache:markdown:comment:${id}:${timestamp}`
+    key = `cache:markdown:comment:${id}:${timestamp}`
 
     let cached = sessionStorage.getItem(key)
 
@@ -71,7 +72,7 @@ async function renderMarkdown(markdown, id = -1, updated_at = '') {
   }
 
   try {
-    let resp = await fetch('https://md.jw1.dev', {
+    let resp = await fetch(`https://md.jw1.dev?key=${key}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'text/plain'
