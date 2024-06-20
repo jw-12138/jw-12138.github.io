@@ -276,3 +276,58 @@ import AppAudio from '../../components/app-audio.vue'
      content={`0; url=/${year}/${month}/${date}/${slug}`}
    >
    ```
+
+---
+
+Update: Jan 19, 2024
+
+Astro 4.2 版本支持了针对 Markdown 中图片的自定义优化，现在可以直接用 remark 插件来实现`lazy loading`的属性插入了。
+
+```js
+// ./src/utils/remark-plugin-image.js
+import {visit} from 'unist-util-visit'
+
+export default function remarkPluginImage() {
+  return (tree) => {
+    visit(tree, 'image', (node) => {
+      if (!node.data) {
+        node.data = {}
+      }
+
+      if (!node.data.hProperties) {
+        node.data.hProperties = {}
+      }
+      
+      node.data.hProperties.loading = "lazy"
+    })
+  }
+}
+```
+
+```diff
+// astro.config.mjs
+import {defineConfig} from 'astro/config'
+import tailwind from '@astrojs/tailwind'
+import mdx from '@astrojs/mdx'
+import vue from '@astrojs/vue'
+
++ import remarkPluginImage from './src/utils/remark-plugin-image.js'
+
+// https://astro.build/config
+export default defineConfig({
+  integrations: [tailwind(), mdx(), vue()],
+  site: 'https://jw1.dev',
+  markdown: {
++    remarkPlugins: [
++      remarkPluginImage
++    ],
+    shikiConfig: {
+      experimentalThemes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      }
+    }
+  }
+})
+
+```
