@@ -3,14 +3,24 @@ import {getCollection, getEntry} from 'astro:content'
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts')
-  return allPosts.map(post => {
+
+  const pages = []
+
+  allPosts.map(post => {
     let date_str = post.slug
     let date_array = date_str.split('-')
     let year = date_array[0]
     let month = date_array[1]
     let day = date_array[2]
     let postPath = post.slug.slice(11)
-    return {
+    let dateStr = post.slug.slice(0, 10)
+    let timestamp = new Date(dateStr).getTime()
+
+    if (timestamp > new Date('2024-05-30').getTime()) {
+      return false
+    }
+
+    pages.push({
       params: {
         slug: postPath,
         year: year,
@@ -20,8 +30,10 @@ export async function getStaticPaths() {
       props: {
         entry: post
       }
-    }
+    })
   })
+
+  return pages
 }
 
 const entry = await getEntry('posts', Astro.props.entry.slug)
