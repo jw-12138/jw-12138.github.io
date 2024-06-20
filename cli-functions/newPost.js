@@ -8,7 +8,7 @@ export default async function (title, options = {}) {
     mdx: '.mdx'
   }
 
-  let fileType = options.type || 'md'
+  let fileType = options.type || 'mdx'
 
   let date = new Date()
   let year = date.getFullYear()
