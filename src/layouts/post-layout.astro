@@ -2,8 +2,8 @@
 import GlobalStyle from '../components/global-style.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
-import Comments from '../components/comments.jsx'
 import FakeComments from '../components/fake-comments.astro'
+import Comments from '../components/comments.astro'
 import Meta from '../components/meta.astro'
 import Og from '../components/og.astro'
 import Toc from '../components/toc.jsx'
@@ -86,7 +86,7 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
       <slot/>
     </div>
 
-    <Comments client:only="solid-js" githubIssueId={issue}/>
+    <Comments issue={issue} />
     <FakeComments githubIssueId={issue}/>
   </div>
   <Footer/>

@@ -1,0 +1,20 @@
+---
+const {issue} = Astro.props
+---
+
+<input type="hidden" value={issue} id="issue_id">
+<link rel="stylesheet" href="https://cwgi-cli.jw1.dev/style.css?v=2">
+
+<div id="cwgi_box" class="pt-8"></div>
+
+<script>
+  import {init} from 'https://cwgi-cli.jw1.dev/cwgi.js?v=2'
+
+  init(Number(document.getElementById('issue_id').value), {
+    owner: 'jw-12138',
+    repo: 'jw-12138.github.io',
+    clientId: 'Iv1.717c117523f74671',
+    proxy: 'https://cwgi.jw1.dev',
+    reactions: true
+  })
+</script>
