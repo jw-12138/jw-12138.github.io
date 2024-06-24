@@ -1,0 +1,114 @@
+---
+layout: ../../layouts/post-layout.astro
+title: 开源了博客的评论系统
+issue: 111
+date: 2024-06-24T05:55:34.046Z
+---
+
+如题，最近也是闲来无事，就开源了自己博客的评论系统，细细想来也是一段冗长的历史。
+
+## 想法之初
+
+刚开始写博客啥也不懂，看别人都用Disqus那咱也上，其实这个平台没有什么特别大的毛病，唯一的痛点就是广告太多加载太慢国内用户访问不了而已。而后的一两年里基本上试遍了各种评论系统，竟然没有一个我喜欢的🫠。
+
+- [Gitalk](https://github.com/gitalk/gitalk)，基于GitHub Issues，很喜欢它的概念，但是不喜欢UI，而且最近似乎也不维护了。
+
+- [Utterances](https://github.com/utterance/utterances)，同样基于GitHub Issues，喜欢它的UI，因为高度无法自适应（iframe的锅）弃用了，Commits也止步于两年前。
+
+- [Cusdis](https://github.com/djyde/cusdis)，说实话，当时用的时候问题还是很多的，不支持自动暗黑模式，iframe的问题同样存在，现在可能已经修复了。另外，当用户新增一个评论时，我需要review该评论，该评论才会展示在评论区，我觉得这对用户（尤其老粉）来讲不是一个好的体验。
+
+  > 这里提醒一下Cusdis作者，官网目前的 Landing page，CSS 是跟随 JS hydration 进来的，这样会导致“FOUC（样式闪现）”问题，控制台禁用JS可以验证该问题。
+
+这么一通折腾下来，我觉得是个人都会累了，算了，自己做一个吧，顶着前端工程师的头衔，不自己做一个简直暴殄天物！
+
+## 选型
+
+### 数据库
+
+数据库不是我的强项，所以我说自己做一个评论系统不是真的从地基开始做，既然已经有多位前辈开路，那就直接选择GitHub Issues：
+
+- 开放API
+- 防XSS攻击
+- 易于管理
+- 简单的通知机制
+- 每个人都很友好
+- 如果他不友好你可以直接屏蔽🤡
+
+### 用户验证
+
+用户验证可以说是最重要的环节，我不想要一个匿名的评论系统，万一遇到机器人是真的很讨厌，完全就是浪费时间。在这个项目里我选择使用GitHub Apps（不是OAuth Apps），这样基本可以保证用户的真实性，而且GitHub的讨论环境相对来说是比较友好的。
+
+至于为什么是GitHub Apps而不是GitHub OAuth Apps，感兴趣的话可以看看我写的[这篇博客](https://jw1.dev/2024/01/18/migrating-oauth-app-to-github-app/)。
+
+### 客户端
+
+我想要的客户端：
+
+- 极简，是 minimalistic，也是 extremely simple
+- 尺寸小，加载快
+- 符合我的审美
+- fuck iframe
+
+经过一番斟酌之后选用Solid.js + TailwindCSS，Solid.js的打包尺寸只有7Kb左右，加上辅助函数和polyfills之后，结果还算是比较惊喜的：
+
+```
+vite v5.3.1 building for production...
+✓ 21 modules transformed.
+dist/style.css     28.14 kB │ gzip:  4.85 kB
+dist/cwgi.iife.js  57.58 kB │ gzip: 19.20 kB │ map: 230.85 kB
+✓ built in 624ms
+```
+
+JS代码19.2 kb，CSS代码4.85 kb，加起来24.05 kb。
+
+### 服务端
+
+服务端则完全部署在Cloudflare Workers上，免费版基本够用，付费版用到死也用不完🤡。
+
+## Introducing CWGI
+
+![](https://blog-r2.jw1.dev/sFDvrY4uU_bmBpX6.webp)
+
+客户端其实并不是一开发好就开源出来给大家用了，早在2022年10月份，我就写了一篇博客关于我[如何基于GitHub Issues做一个评论系统](https://jw1.dev/2022/10/23/a01/)了，如今你们看到的，就是我用了将近两年的评论系统，也算是有了时间的沉淀。
+
+既然要开源了，总得有个名字吧，思考了一天一夜，决定叫CWGI，Comment With GitHub Issues。（起名字是最难的部分🫠）
+
+特点：
+
+- 广告去他妈
+- 小而美（真的）
+
+功能：
+
+- 使用 GitHub 登陆
+- 添加、编辑、删除评论
+- 点赞、点踩、打心（Reactions）
+
+基本上只是维持了一个评论系统应该有的样子，我甚至提供了一个选项用来关闭Reactions，你可以有一个更加干净的UI。
+
+> 关于功能点数量问题我想说说我的看法，功能多，可能是众多开源评论系统停止维护的Break Point，因为维护需要的精力和开发比起来是 `Infinity / 1`。所以，CWGI在之后除了一些正常的bug修复和稳定性提升，大概率不会新增任何功能，我希望能把精力用在正确的地方，细水长流才是正解。
+
+## 已知问题
+
+已知的，也是唯一的问题：我不乐意做公益，也不乐意靠这个赚钱，所以你需要配置自己的服务端。
+
+由于我们需要使用GitHub Issues，不可避免的，我们需要让游客以GitHub登陆来验证身份，这里我们就需要创建一个GitHub App，而在App的创建过程中，我们会需要一个Callback URL，GitHub会在用户授权完成之后跳转到这个Callback URL/API，并且附上一个code参数给你用来交换access token，也就是说，你需要一个自己的后端服务，这一步已经足够劝退大部分非技术博主。于是我在文档里提到，你可以使用我部署的Callback URL，然而这样还不够。
+
+在我提供的后端代码中，还有一个比较重要的代理(`/proxy`)接口，这个接口做的事情，除了代理转发客户端请求之外，还有一个提升客户端请求速率的功能，你可以在请求头上追加一个属于你自己的Access Token，这样，即使用户没有登陆，速率限制也是5000 QPH。
+
+GitHub API规定，在未认证的情况下，所有接口的请求速率为`60个请求/小时`，很明显，这是不够用的。我去看了一下Gitalk的实现，它在客户端放上了自己的Access Token，这对我来说是不能接受的，即使这个Token可能只有public repo访问权限，他还是有可能会被用来做坏事（DDOS / 冒充身份），我觉得这也是为什么它的前辈 Gitment 在用户未登陆的情况下不会加载评论的原因。
+
+所以，CWGI的用户有两个选择：
+
+1. 跟着教程完成服务端的配置
+2. 忍受客户端在非登陆状态下60 QPH的限制
+
+---
+
+好消息是，我非常乐意帮忙，如果在配置过程遇到任何问题，你可以在博客下方的评论区中（已经用上CWGI了）或者以下任意一个repo的issues里提问：
+
+- [jw-12138/cwgi-cli](https://github.com/jw-12138/cwgi-cli)
+- [jw-12138/cwgi-api](https://github.com/jw-12138/cwgi-api)
+- [jw-12138/cwgi-docs](https://github.com/jw-12138/cwgi-docs)
+
+出现频率较高的问题我会在文档里更新，这样也方便后来者阅读。
