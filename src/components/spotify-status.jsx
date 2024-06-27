@@ -74,7 +74,6 @@ export default function SpotifyStatus() {
   }
 
   onMount(async () => {
-    document.getElementById('fake_spotify_status').remove()
     await loadData()
   })
 
@@ -87,7 +86,7 @@ export default function SpotifyStatus() {
 
   return <>
     <div class="mb-4">
-      Right now I'm listening to:
+      My mood now:
     </div>
     <Show when={isLoading()}>
       <div class="flex items-center">
@@ -129,7 +128,7 @@ export default function SpotifyStatus() {
         </div>
         <div class="flex flex-col justify-between ml-4">
           <div class="rounded opacity-70 text-sm">
-            Not playing anything
+            Taking a break...
           </div>
         </div>
       </div>
