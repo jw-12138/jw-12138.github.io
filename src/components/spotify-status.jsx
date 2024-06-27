@@ -1,27 +1,5 @@
 import {createSignal, Show, onMount} from 'solid-js'
-
-let exampleResponse = {
-  'songName': 'Do Ya Thing (feat. Young Dro)',
-  'albumName': '25 To Life (83804/edited version)',
-  'artists': 'P$C/Young Dro',
-  'albumArt': [
-    {
-      'height': 640,
-      'url': 'https://i.scdn.co/image/ab67616d0000b2738bc7980356fd59c34a4fd410',
-      'width': 640
-    },
-    {
-      'height': 300,
-      'url': 'https://i.scdn.co/image/ab67616d00001e028bc7980356fd59c34a4fd410',
-      'width': 300
-    },
-    {
-      'height': 64,
-      'url': 'https://i.scdn.co/image/ab67616d000048518bc7980356fd59c34a4fd410',
-      'width': 64
-    }
-  ]
-}
+import StreamingIcon from '../streaming-icon.jsx'
 
 export default function SpotifyStatus() {
   let [isPlaying, setIsPlaying] = createSignal(false)
@@ -117,7 +95,8 @@ export default function SpotifyStatus() {
           <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-4 h-4"></SpotifyIcon>
         </div>
         <div class="flex flex-col justify-between ml-4">
-          <div class="animate-pulse w-[120px] h-[26px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
+          <div class="animate-pulse w-[24px] h-[16px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
+          <div class="animate-pulse w-[180px] h-[26px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
           <div class="animate-pulse w-[80px] h-[16px] rounded dark:bg-white/10 bg-black/10"></div>
         </div>
       </div>
@@ -130,6 +109,9 @@ export default function SpotifyStatus() {
           <img src={songData().albumArt ? albumSelection(songData().albumArt).url : ''} style="border-radius: 0; margin-left: 0" class="w-full h-full ml-0 mr-0 mb-0" alt={songData().albumName || ''}/>
         </div>
         <div class="flex flex-col justify-between ml-4">
+          <div class="mb-1 pl-[2px]">
+            <StreamingIcon/>
+          </div>
           <div class="mb-2 whitespace-nowrap text-ellipsis overflow-hidden max-w-[calc(100vw-130px)]">
             {songData().songName || ''}
           </div>
