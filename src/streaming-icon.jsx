@@ -39,7 +39,7 @@ export default function StreamingIcon() {
     <div class="w-6 h-4 flex items-center">
       {
         Array(5).fill(0).map((_, i) => {
-          let animation = `streaming-icon-${i} linear ${animationDuration}s infinite`
+          let animation = `streaming-icon-${i} linear ${animationDuration()}s infinite`
           return <div class="w-[2px] bg-black/80 dark:bg-white/80 mr-[1px] rounded min-h-[3px]" style={`animation: ${animation}`}></div>
         })
       }
