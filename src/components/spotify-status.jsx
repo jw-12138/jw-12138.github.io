@@ -74,6 +74,7 @@ export default function SpotifyStatus() {
   }
 
   onMount(async () => {
+    document.getElementById('fake_spotify_status').remove()
     await loadData()
   })
 
