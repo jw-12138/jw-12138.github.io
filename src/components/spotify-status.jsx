@@ -28,13 +28,35 @@ export default function SpotifyStatus() {
   let [isLoading, setIsLoading] = createSignal(true)
   let [songData, setSongData] = createSignal({})
 
+  // spotify may return multiple album arts
+  // we need to select the most suitable one
+  function albumSelection(albums) {
+    if (albums.length === 1) {
+      return albums[0]
+    }
+
+    // sort
+    albums.sort((a, b) => a.width - b.width)
+
+    let selected = albums[0]
+
+    for (let i = 0; i < albums.length; i++) {
+      if (albums[i].width > 160) {
+        selected = albums[i]
+        break
+      }
+    }
+
+    return selected
+  }
+
   async function loadData() {
     let endpoint = 'https://spotify-status.jw1.dev/status?t=' + Date.now()
 
     let resp
     let json
     let start = Date.now()
-    let end = Date.now()
+    let end
 
     try {
       resp = await fetch(endpoint)
@@ -105,13 +127,13 @@ export default function SpotifyStatus() {
       <div class="flex items-center max-w-[260px] group">
         <div class="w-[80px] h-[80px] dark:bg-white/10 bg-black/10 overflow-hidden rounded flex-shrink-0 relative group-hover:shadow-xl transition duration-200">
           <SpotifyIcon class="absolute bottom-1 right-1 w-4 h-4 text-[#65D46E]"></SpotifyIcon>
-          <img src={songData().albumArt ? songData().albumArt[0].url : ''} style="border-radius: 0" alt={songData().albumName || ''}/>
+          <img src={songData().albumArt ? albumSelection(songData().albumArt).url : ''} style="border-radius: 0; margin-left: 0" class="w-full h-full ml-0 mr-0 mb-0" alt={songData().albumName || ''}/>
         </div>
         <div class="flex flex-col justify-between ml-4">
-          <div class="mb-2 whitespace-nowrap text-ellipsis overflow-hidden max-w-full">
+          <div class="mb-2 whitespace-nowrap text-ellipsis overflow-hidden max-w-[calc(100vw-130px)]">
             {songData().songName || ''}
           </div>
-          <div class="text-xs rounded opacity-70 whitespace-nowrap text-ellipsis overflow-hidden max-w-full">
+          <div class="text-xs rounded opacity-70 whitespace-nowrap text-ellipsis overflow-hidden max-w-[calc(100vw-130px)]">
             {songData().artists || ''}
           </div>
         </div>
