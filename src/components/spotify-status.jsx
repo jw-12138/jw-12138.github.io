@@ -78,10 +78,11 @@ export default function SpotifyStatus() {
   })
 
   function SpotifyIcon(props) {
-    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class={props.class || ''}>
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-2.168 11.605c-1.285 -1.927 -4.354 -2.132 -6.387 -.777a1 1 0 0 0 1.11 1.664c1.195 -.797 3.014 -.675 3.613 .223a1 1 0 1 0 1.664 -1.11m1.268 -3.245c-2.469 -1.852 -5.895 -2.187 -8.608 -.589a1 1 0 0 0 1.016 1.724c1.986 -1.171 4.544 -.92 6.392 .465a1 1 0 0 0 1.2 -1.6m1.43 -3.048c-3.677 -2.298 -7.766 -2.152 -10.977 -.546a1 1 0 0 0 .894 1.788c2.635 -1.317 5.997 -1.437 9.023 .454a1 1 0 1 0 1.06 -1.696"/>
-    </svg>
+
+    return <span class={props.class || ''}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd" style={{
+      width: '100%',
+      height: '100%'
+    }}><path d="M19.098 10.638c-3.868-2.297-10.248-2.508-13.941-1.387-.593.18-1.22-.155-1.399-.748-.18-.593.154-1.22.748-1.4 4.239-1.287 11.285-1.038 15.738 1.605.533.317.708 1.005.392 1.538-.316.533-1.005.709-1.538.392zm-.126 3.403c-.272.44-.847.578-1.287.308-3.225-1.982-8.142-2.557-11.958-1.399-.494.15-1.017-.129-1.167-.623-.149-.495.13-1.016.624-1.167 4.358-1.322 9.776-.682 13.48 1.595.44.27.578.847.308 1.286zm-1.469 3.267c-.215.354-.676.465-1.028.249-2.818-1.722-6.365-2.111-10.542-1.157-.402.092-.803-.16-.895-.562-.092-.403.159-.804.562-.896 4.571-1.045 8.492-.595 11.655 1.338.353.215.464.676.248 1.028zm-5.503-17.308c-6.627 0-12 5.373-12 12 0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12z"/></svg></span>
   }
 
   return <>
@@ -91,7 +92,7 @@ export default function SpotifyStatus() {
     <Show when={isLoading()}>
       <div class="flex items-center">
         <div class="w-[80px] h-[80px] bg-gradient-to-br from-neutral-50 to-neutral-300 animate-pulse dark:from-neutral-600 dark:to-neutral-950 rounded flex-shrink-0 relative" data-name={'album placeholder'}>
-          <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-4 h-4"></SpotifyIcon>
+          <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-3 h-3"></SpotifyIcon>
         </div>
         <div class="flex flex-col justify-between ml-4">
           <div class="animate-pulse w-[24px] h-[16px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
@@ -104,7 +105,7 @@ export default function SpotifyStatus() {
     <Show when={!isLoading() && isPlaying()}>
       <div class="flex items-center max-w-[260px] group">
         <div class="w-[80px] h-[80px] dark:bg-white/10 bg-black/10 overflow-hidden rounded flex-shrink-0 relative group-hover:shadow-xl transition duration-200 flex justify-center">
-          <SpotifyIcon class="absolute bottom-1 right-1 w-4 h-4 text-[#65D46E]"></SpotifyIcon>
+          <SpotifyIcon class="absolute bottom-1 right-1 w-3 h-3 text-[#65D46E]"></SpotifyIcon>
           <img src={songData().albumArt ? albumSelection(songData().albumArt).url : ''} style="border-radius: 0; margin: 0" class="w-full h-full ml-0 mr-0 mb-0" alt={songData().albumName || ''}/>
         </div>
         <div class="flex flex-col justify-between ml-4">
@@ -124,7 +125,7 @@ export default function SpotifyStatus() {
     <Show when={!isLoading() && !isPlaying()}>
       <div class="flex items-center">
         <div class="w-[80px] h-[80px] dark:bg-white/10 bg-black/10 overflow-hidden rounded flex-shrink-0 relative">
-          <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-4 h-4"></SpotifyIcon>
+          <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-3 h-3"></SpotifyIcon>
         </div>
         <div class="flex flex-col justify-between ml-4">
           <div class="rounded opacity-70 text-sm">
