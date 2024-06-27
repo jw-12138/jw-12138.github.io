@@ -104,9 +104,9 @@ export default function SpotifyStatus() {
 
     <Show when={!isLoading() && isPlaying()}>
       <div class="flex items-center max-w-[260px] group">
-        <div class="w-[80px] h-[80px] dark:bg-white/10 bg-black/10 overflow-hidden rounded flex-shrink-0 relative group-hover:shadow-xl transition duration-200">
+        <div class="w-[80px] h-[80px] dark:bg-white/10 bg-black/10 overflow-hidden rounded flex-shrink-0 relative group-hover:shadow-xl transition duration-200 flex justify-center">
           <SpotifyIcon class="absolute bottom-1 right-1 w-4 h-4 text-[#65D46E]"></SpotifyIcon>
-          <img src={songData().albumArt ? albumSelection(songData().albumArt).url : ''} style="border-radius: 0; margin-left: 0" class="w-full h-full ml-0 mr-0 mb-0" alt={songData().albumName || ''}/>
+          <img src={songData().albumArt ? albumSelection(songData().albumArt).url : ''} style="border-radius: 0; margin: 0" class="w-full h-full ml-0 mr-0 mb-0" alt={songData().albumName || ''}/>
         </div>
         <div class="flex flex-col justify-between ml-4">
           <div class="mb-1 pl-[2px]">
