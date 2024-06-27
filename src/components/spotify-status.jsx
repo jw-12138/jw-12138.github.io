@@ -1,24 +1,24 @@
 import {createSignal, Show, onMount} from 'solid-js'
 
 let exampleResponse = {
-  "songName": "Do Ya Thing (feat. Young Dro)",
-  "albumName": "25 To Life (83804/edited version)",
-  "artists": "P$C/Young Dro",
-  "albumArt": [
+  'songName': 'Do Ya Thing (feat. Young Dro)',
+  'albumName': '25 To Life (83804/edited version)',
+  'artists': 'P$C/Young Dro',
+  'albumArt': [
     {
-      "height": 640,
-      "url": "https://i.scdn.co/image/ab67616d0000b2738bc7980356fd59c34a4fd410",
-      "width": 640
+      'height': 640,
+      'url': 'https://i.scdn.co/image/ab67616d0000b2738bc7980356fd59c34a4fd410',
+      'width': 640
     },
     {
-      "height": 300,
-      "url": "https://i.scdn.co/image/ab67616d00001e028bc7980356fd59c34a4fd410",
-      "width": 300
+      'height': 300,
+      'url': 'https://i.scdn.co/image/ab67616d00001e028bc7980356fd59c34a4fd410',
+      'width': 300
     },
     {
-      "height": 64,
-      "url": "https://i.scdn.co/image/ab67616d000048518bc7980356fd59c34a4fd410",
-      "width": 64
+      'height': 64,
+      'url': 'https://i.scdn.co/image/ab67616d000048518bc7980356fd59c34a4fd410',
+      'width': 64
     }
   ]
 }
@@ -33,13 +33,26 @@ export default function SpotifyStatus() {
 
     let resp
     let json
+    let start = Date.now()
+    let end = Date.now()
 
     try {
       resp = await fetch(endpoint)
     } catch (e) {
       console.log(e)
     } finally {
-      setIsLoading(false)
+
+      // prevent flickering
+      end = Date.now()
+      let offset = end - start
+
+      if (offset < 500) {
+        setTimeout(function () {
+          setIsLoading(false)
+        }, 500 - offset)
+      } else {
+        setIsLoading(false)
+      }
     }
 
     if (!resp.ok) {
@@ -91,7 +104,7 @@ export default function SpotifyStatus() {
       <div class="flex items-center max-w-[260px] group">
         <div class="w-[80px] h-[80px] dark:bg-white/10 bg-black/10 overflow-hidden rounded flex-shrink-0 relative group-hover:shadow-xl transition duration-200">
           <SpotifyIcon class="absolute bottom-1 right-1 w-4 h-4 text-[#65D46E]"></SpotifyIcon>
-          <img src={songData().albumArt ? songData().albumArt[0].url : ''} style='border-radius: 0' alt={songData().albumName || '' }/>
+          <img src={songData().albumArt ? songData().albumArt[0].url : ''} style="border-radius: 0" alt={songData().albumName || ''}/>
         </div>
         <div class="flex flex-col justify-between ml-4">
           <div class="mb-2 whitespace-nowrap text-ellipsis overflow-hidden max-w-full">
