@@ -30,9 +30,9 @@ export default function StreamingIcon() {
     randomAnimation(`streaming-icon-${i}`)
   }
 
-  // 10 to 14 seconds, keep the decimals
+  // 10 to 14 seconds
   function animationDuration(){
-    return (Math.floor(Math.random() * 5) + 10) + (Math.random() * 4).toFixed(1)
+    return Math.random() * 5 + 10
   }
 
   return <>
