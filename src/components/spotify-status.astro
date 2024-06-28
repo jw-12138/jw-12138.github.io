@@ -1,0 +1,32 @@
+---
+import SpotifyStatus from './spotify-status.jsx'
+import SpotifyIcon from './spotify-icon.jsx'
+---
+
+<div>
+  <SpotifyStatus client:only="solid-js"/>
+</div>
+
+<noscript>
+  <style>
+    #fake_spotify_status {
+      display: none;
+    }
+  </style>
+</noscript>
+
+<div id="fake_spotify_status">
+  <div class="mb-4">
+    My mood now:
+  </div>
+  <div class="flex items-center">
+    <div class="w-[80px] h-[80px] bg-gradient-to-br from-neutral-50 to-neutral-300 animate-pulse dark:from-neutral-600 dark:to-neutral-950 rounded flex-shrink-0 relative" data-name={'album placeholder'}>
+      <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-3 h-3"></SpotifyIcon>
+    </div>
+    <div class="flex flex-col justify-between ml-4">
+      <div class="animate-pulse w-[24px] h-[16px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
+      <div class="animate-pulse w-[180px] h-[26px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
+      <div class="animate-pulse w-[80px] h-[16px] rounded dark:bg-white/10 bg-black/10"></div>
+    </div>
+  </div>
+</div>
