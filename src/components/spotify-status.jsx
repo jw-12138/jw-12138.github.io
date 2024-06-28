@@ -50,9 +50,11 @@ export default function SpotifyStatus() {
       if (offset < 500) {
         setTimeout(function () {
           setIsLoading(false)
+          document.getElementById('fake_spotify_status').style.display = 'none'
         }, 500 - offset)
       } else {
         setIsLoading(false)
+        document.getElementById('fake_spotify_status').style.display = 'none'
       }
     }
 
@@ -75,26 +77,15 @@ export default function SpotifyStatus() {
   }
 
   onMount(async () => {
-    document.getElementById('fake_spotify_status').remove()
     await loadData()
   })
 
   return <>
-    <div class="mb-4">
+    <div class="mb-4" classList={{
+      hidden: isLoading()
+    }}>
       My mood now:
     </div>
-    <Show when={isLoading()}>
-      <div class="flex items-center">
-        <div class="w-[80px] h-[80px] bg-gradient-to-br from-neutral-50 to-neutral-300 animate-pulse dark:from-neutral-600 dark:to-neutral-950 rounded flex-shrink-0 relative" data-name={'album placeholder'}>
-          <SpotifyIcon class="absolute bottom-1 right-1 opacity-70 w-3 h-3"></SpotifyIcon>
-        </div>
-        <div class="flex flex-col justify-between ml-4">
-          <div class="animate-pulse w-[24px] h-[16px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
-          <div class="animate-pulse w-[180px] h-[26px] rounded dark:bg-white/10 bg-black/10 mb-2"></div>
-          <div class="animate-pulse w-[80px] h-[16px] rounded dark:bg-white/10 bg-black/10"></div>
-        </div>
-      </div>
-    </Show>
 
     <Show when={!isLoading() && isPlaying()}>
       <div class="flex items-center max-w-[260px] group">
