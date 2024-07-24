@@ -173,7 +173,7 @@ export default function Wakatime() {
         {
           // dots label
           data().length && data().map((el, index) => {
-            return <text aria-label={parseTime(el.grand_total.total_seconds)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={dotsBottom()[index] - 10}>
+            return <text aria-label={parseTime(el.grand_total.total_seconds)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={dotsBottom()[index] - 15}>
               {parseTime(el.grand_total.total_seconds)}
             </text>
           })
