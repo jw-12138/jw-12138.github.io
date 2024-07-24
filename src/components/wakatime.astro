@@ -23,10 +23,15 @@ const bottom = 670 / 2 - 40
     Coding activity
   </h2>
 
-  <svg class="aspect-[2/1] w-full" viewBox="0 0 670 335">
+  <div class="overflow-x-auto w-full">
+    <svg class="aspect-[2/1] w-full min-w-[600px]" viewBox="0 0 670 335">
       {
         // tick line
-        Array.from({length: 7}).map((_, index) => <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
+
+        Array.from({length: 7}).map((_, index) =>
+          <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
       }
     </svg>
+  </div>
+
 </div>
