@@ -123,7 +123,7 @@ export default function Wakatime() {
       try {
         let nextX = (index + 1) * segmentWidth + segmentWidth / 2 + padding
         let nextY = dotsBottom()[index + 1]
-        let roundX = segmentWidth * (1 - 0.618)
+        let roundX = segmentWidth * .51
         if (nextX && nextY) {
           bez = `C ${x + roundX} ${y}, ${nextX - roundX} ${nextY},`
         }
@@ -169,7 +169,7 @@ export default function Wakatime() {
         {
           // dots label
           data().length && data().map((el, index) => {
-            return <text dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={dotsBottom()[index] - 10}>
+            return <text aria-label={parseTime(el.grand_total.total_seconds)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={dotsBottom()[index] - 10}>
               {parseTime(el.grand_total.total_seconds)}
             </text>
           })
@@ -178,7 +178,7 @@ export default function Wakatime() {
         {
           // label
           data().length && data().map((el, index) => {
-            return <text dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={bottom + 35}>
+            return <text aria-label={parseDate(el.range.date)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={bottom + 35}>
               {parseDate(el.range.date)}
             </text>
           })
