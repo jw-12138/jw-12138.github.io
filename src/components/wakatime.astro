@@ -1,0 +1,24 @@
+---
+import Wakatime from './wakatime.jsx'
+
+const padding = 30
+const segmentWidth = (670 - (padding * 2)) / 7
+const bottom = 670 / 2 - 40
+---
+
+<div>
+  <Wakatime client:only="solid-js"/>
+</div>
+
+<div id="fake_wakatime" class="max-w-[672px] w-full">
+  <h2>
+    Coding activities
+  </h2>
+
+  <svg class="aspect-[2/1] w-full" viewBox="0 0 670 335">
+      {
+        // tick line
+        Array.from({length: 7}).map((_, index) => <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
+      }
+    </svg>
+</div>
