@@ -166,7 +166,7 @@ export default function Wakatime() {
 
         {
           data().length &&
-          <path d={pathGen(data())} stroke="currentColor" stroke-opacity="0.6" stroke-width={1.5} fill="transparent"/>
+          <path d={pathGen(data())} stroke="currentColor" stroke-opacity="0.3" stroke-width={2} fill="transparent"/>
         }
 
 
