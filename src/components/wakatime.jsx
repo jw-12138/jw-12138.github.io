@@ -51,6 +51,7 @@ export default function Wakatime() {
   let bottom = 670 / 2 - 40
 
   let [data, setData] = createSignal([])
+  let [totalSeconds, setTotalSeconds] = createSignal(0)
   let [maxSeconds, setMaxSeconds] = createSignal(0)
   let [dotsBottom, setDotsBottom] = createSignal(new Array(7).fill(bottom))
 
@@ -70,8 +71,10 @@ export default function Wakatime() {
       setData(_data)
     }
 
-    // get max seconds
+    // get max seconds and total seconds
     data().map(el => {
+      setTotalSeconds(totalSeconds() + el.grand_total.total_seconds)
+
       if (el.grand_total.total_seconds > maxSeconds()) {
         setMaxSeconds(el.grand_total.total_seconds)
       }
@@ -123,7 +126,8 @@ export default function Wakatime() {
       try {
         let nextX = (index + 1) * segmentWidth + segmentWidth / 2 + padding
         let nextY = dotsBottom()[index + 1]
-        let roundX = segmentWidth * .51
+        let offsetY = Math.abs(y - nextY)
+        let roundX = 0.35 * segmentWidth + ((.26 * segmentWidth) * (offsetY / bottom))
         if (nextX && nextY) {
           bez = `C ${x + roundX} ${y}, ${nextX - roundX} ${nextY},`
         }
