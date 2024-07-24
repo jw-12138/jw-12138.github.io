@@ -63,15 +63,6 @@ export default function Wakatime() {
     setLoading(false)
 
     try {
-      let scroll_content = document.getElementById('waka_scroll_content')
-      if (scroll_content.scrollWidth > scroll_content.clientWidth) {
-        scroll_content.scrollLeft = scroll_content.scrollWidth - scroll_content.clientWidth
-      }
-    } catch (e) {
-
-    }
-
-    try {
       document.getElementById('fake_wakatime').remove()
     } catch (e) {
     }
@@ -110,6 +101,18 @@ export default function Wakatime() {
     let totalFrames = 60 // one second
 
     await new Promise(r => setTimeout(r, 100))
+
+    try {
+      let scroll_content = document.getElementById('waka_scroll_content')
+      if (scroll_content.scrollWidth > scroll_content.clientWidth) {
+        scroll_content.scroll({
+          left: scroll_content.scrollWidth - scroll_content.clientWidth,
+          behavior: 'smooth'
+        })
+      }
+    } catch (e) {
+
+    }
 
     let _s = setInterval(function () {
       if (frames > totalFrames) {
@@ -163,7 +166,7 @@ export default function Wakatime() {
       </h2>
 
       <div class="w-full overflow-x-auto" id="waka_scroll_content">
-        <svg class="aspect-[2/1] w-full min-w-[600px]" viewBox="0 0 670 335">
+        <svg class="aspect-[2/1] w-full min-w-[650px]" viewBox="0 0 670 335">
           {
             // tick line
             Array.from({length: 7}).map((_, index) => <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
