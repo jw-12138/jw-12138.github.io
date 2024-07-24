@@ -114,7 +114,7 @@ export default function SpotifyStatus() {
         </div>
         <div class="flex flex-col justify-between ml-4">
           <div class="rounded opacity-70 text-sm">
-            Taking a break...
+            Taking a break
           </div>
         </div>
       </div>
