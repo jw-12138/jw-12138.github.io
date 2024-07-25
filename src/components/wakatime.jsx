@@ -38,11 +38,25 @@ function parseTime(seconds) {
     return `${hours}hr`
   }
 
+  if (hours === 0 && remainingMinutes !== 0) {
+    return `${remainingMinutes}min`
+  }
+
   return `${hours}hr ${remainingMinutes}min`
 }
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2
+}
+
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect()
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  )
 }
 
 export default function Wakatime() {
@@ -54,6 +68,7 @@ export default function Wakatime() {
   let [totalSeconds, setTotalSeconds] = createSignal(0)
   let [maxSeconds, setMaxSeconds] = createSignal(0)
   let [dotsBottom, setDotsBottom] = createSignal(new Array(7).fill(bottom))
+  let [animationExecuted, setAnimationExecuted] = createSignal(false)
 
   let [loading, setLoading] = createSignal(false)
 
@@ -100,11 +115,17 @@ export default function Wakatime() {
     let frames = 0
     let totalFrames = 60 // one second
 
-    await new Promise(r => setTimeout(r, 100))
+    while(!animationExecuted() && !isInViewport(document.getElementById('waka_scroll_content'))) {
+      await new Promise(r => setTimeout(r, 100))
+      if(isInViewport(document.getElementById('waka_scroll_content'))){
+        setAnimationExecuted(true)
+      }
+    }
 
     try {
       let scroll_content = document.getElementById('waka_scroll_content')
       if (scroll_content.scrollWidth > scroll_content.clientWidth) {
+        await new Promise(r => setTimeout(r, 300))
         scroll_content.scroll({
           left: scroll_content.scrollWidth - scroll_content.clientWidth,
           behavior: 'smooth'
@@ -113,6 +134,8 @@ export default function Wakatime() {
     } catch (e) {
 
     }
+
+    await new Promise(r => setTimeout(r, 300))
 
     let _s = setInterval(function () {
       if (frames > totalFrames) {

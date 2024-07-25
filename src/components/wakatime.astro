@@ -31,6 +31,8 @@ const bottom = 670 / 2 - 40
         Array.from({length: 7}).map((_, index) =>
           <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
       }
+
+      <text dominant-baseline="middle" text-anchor="middle" x={670 / 2} y="150" font-size="14" font-family="monospace">Loading...</text>
     </svg>
   </div>
 
