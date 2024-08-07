@@ -137,9 +137,9 @@ function TOC(props) {
                       'animation-delay': `${i() * 75}ms`,
                       'border-left-width': '1px',
                       'animation-name': 'widthExpand',
-                      'animation-duration': '.3s',
+                      'animation-duration': 'var(--spring-duration)',
                       'animation-fill-mode': 'forwards',
-                      'animation-timing-function': 'cubic-bezier(.51,.32,.28,1.44)'
+                      'animation-timing-function': 'var(--spring-easing)'
                     }}
                   ></span>
                 }}
