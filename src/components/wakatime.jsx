@@ -106,7 +106,11 @@ export default function Wakatime() {
         _b = _b * percent
         _b = bottom - _b
 
-        _bs.push(_b)
+        if(isNaN(_b)){
+          _bs.push(bottom)
+        } else {
+          _bs.push(_b)
+        }
       })
 
       setDotsBottom(_bs)
@@ -115,9 +119,9 @@ export default function Wakatime() {
     let frames = 0
     let totalFrames = 60 // one second
 
-    while(!animationExecuted() && !isInViewport(document.getElementById('waka_scroll_content'))) {
+    while (!animationExecuted() && !isInViewport(document.getElementById('waka_scroll_content'))) {
       await new Promise(r => setTimeout(r, 100))
-      if(isInViewport(document.getElementById('waka_scroll_content'))){
+      if (isInViewport(document.getElementById('waka_scroll_content'))) {
         setAnimationExecuted(true)
       }
     }
