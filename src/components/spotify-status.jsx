@@ -111,7 +111,7 @@ export default function SpotifyStatus() {
 
       setTimeout(() => {
         setShowDisc(true)
-      }, 100)
+      }, 200)
 
       setTimeout(() => {
         setSmallDisc(false)
@@ -130,7 +130,7 @@ export default function SpotifyStatus() {
         {/*album*/}
         <div class="z-[50] flex w-[150px] h-[145px] left-[25px] transition-all duration-[600ms] absolute cursor-pointer shadow-2xl overflow-hidden"
              style={{
-               top: albumGoDown() ? '23px' : '-250px',
+               top: albumGoDown() ? '23px' : '-255px',
                transform: `rotate(${albumGoDown() ? '5deg' : '-17deg'})`
              }} onclick={switchAlbumAndDisc}
         >
