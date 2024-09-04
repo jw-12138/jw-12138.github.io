@@ -96,7 +96,7 @@ export default function SpotifyStatus() {
           setShowDisc(!showDisc())
         }}>
         </div>
-        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute z-[50] left-[-1px] animate-spin overflow-hidden border border-neutral-300 dark:border-neutral-700" style={{
+        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute z-[50] left-[-1px] animate-spin overflow-hidden border border-neutral-300 dark:border-neutral-700 flex items-center justify-center" style={{
           'animation-duration': '20s',
           top: showDisc() ? '-1px' : '-95px',
           transition: 'top 0.3s ease',
@@ -127,8 +127,8 @@ export default function SpotifyStatus() {
             }}>
             </div>
           </div>
-          <div class="w-[52px] h-[52px] aspect-square border border-neutral-300 dark:border-neutral-800 absolute bg-neutral-100 dark:bg-neutral-700 z-20 left-[70px] top-[70px] flex justify-center items-center rounded-full transition-all">
-            <div class="w-[32px] h-[32px] aspect-square bg-white dark:bg-neutral-800 z-20 left-[80px] top-[80px] rounded-full">
+          <div class="w-[52px] h-[52px] aspect-square border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-700 z-20 flex justify-center items-center rounded-full transition-all">
+            <div class="w-[32px] h-[32px] aspect-square bg-white dark:bg-neutral-800 z-20 rounded-full">
               <div class="w-full aspect-square h-full border-2 rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
 
               </div>
@@ -146,11 +146,11 @@ export default function SpotifyStatus() {
           </div>
 
           <div class="mt-3">
-            <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs opacity-45 text-center" title={songData().artists}>
-              {songData().artists}
-            </div>
             <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs text-center" title={songData().songName}>
               {songData().songName}
+            </div>
+            <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs opacity-45 text-center mt-1" title={songData().artists}>
+              {songData().artists}
             </div>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function SpotifyStatus() {
         {/* disc shadow */}
         <div class="z-20 rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] shadow-xl">
         </div>
-        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] overflow-hidden border border-neutral-300 dark:border-neutral-700">
+        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] overflow-hidden border border-neutral-300 dark:border-neutral-700 flex justify-center items-center">
           {/* glow */}
           <div class="absolute w-full h-full left-0 top-0 z-[1] rounded-full overflow-hidden blur-[36px] rotate-90">
             <div class="w-full h-full absolute left-0 top-0 z-[1]">
@@ -187,7 +187,7 @@ export default function SpotifyStatus() {
             }}>
             </div>
           </div>
-          <div class="w-[52px] h-[52px] aspect-square border border-neutral-300 dark:border-neutral-800 absolute bg-neutral-100 dark:bg-neutral-700 z-20 left-[70px] top-[70px] flex justify-center items-center rounded-full">
+          <div class="w-[52px] h-[52px] aspect-square border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-700 z-20 flex justify-center items-center rounded-full">
             <div class="w-[32px] h-[32px] aspect-square bg-white dark:bg-neutral-800 z-20 left-[80px] top-[80px] rounded-full">
               <div class="w-full aspect-square h-full border-2 rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
 
