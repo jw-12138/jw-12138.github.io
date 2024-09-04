@@ -97,7 +97,7 @@ export default function SpotifyStatus() {
 
       setTimeout(() => {
         setShowDisc(false)
-      }, 100)
+      }, 50)
 
       setTimeout(() => {
         setAlbumGoDown(true)
@@ -128,10 +128,12 @@ export default function SpotifyStatus() {
       <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300">
 
         {/*album*/}
-        <div class="z-[50] flex w-[150px] h-[145px] left-[25px] transition-all duration-500 absolute cursor-pointer shadow-2xl overflow-hidden" style={{
-          top: albumGoDown() ? '23px' : '-250px',
-          transform: `rotate(${albumGoDown() ? '5deg' : '-17deg'})`
-        }} onclick={switchAlbumAndDisc}>
+        <div class="z-[50] flex w-[150px] h-[145px] left-[25px] transition-all duration-[600ms] absolute cursor-pointer shadow-2xl overflow-hidden"
+             style={{
+               top: albumGoDown() ? '23px' : '-250px',
+               transform: `rotate(${albumGoDown() ? '5deg' : '-17deg'})`
+             }} onclick={switchAlbumAndDisc}
+        >
           {/*border*/}
           <div class="w-[5px] border dark:border-neutral-600 border-neutral-200">
 
@@ -145,7 +147,7 @@ export default function SpotifyStatus() {
           </div>
         </div>
 
-        <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-500" style={{
+        <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-[600ms]" style={{
           transform: smallDisc() ? 'scale(.3)' : 'scale(1)',
           top: showDisc() ? '-95px' : '-255px'
         }} onclick={switchAlbumAndDisc}>
@@ -156,13 +158,17 @@ export default function SpotifyStatus() {
           {/*disc*/}
           <div class="rounded-full aspect-square w-[200px] h-[200px] absolute z-[50] left-[-1px] animate-spin overflow-hidden border border-neutral-300 dark:border-neutral-700 flex items-center justify-center" style={{
             'animation-duration': '20s',
-            transition: 'top 0.5s ease',
-            'background-image': `url(${songData().albumArt ? songData().albumArt[0].url : ''})`,
-            'background-size': 'cover',
-            'background-repeat': 'no-repeat'
+            transition: 'top 0.5s ease'
           }}>
+            <div class="z-[1] w-full h-full absolute left-0 top-0" style={{
+              'background-image': `url(${songData().albumArt ? songData().albumArt[0].url : ''})`,
+              'background-size': 'cover',
+              'background-repeat': 'no-repeat'
+            }}>
+
+            </div>
             {/* glow */}
-            <div class="absolute w-full h-full left-0 top-0 z-[1] rounded-full overflow-hidden blur-[36px] rotate-90">
+            <div class="absolute w-full h-full left-0 top-0 z-[2] rounded-full overflow-hidden blur-[36px] rotate-90">
               <div class="w-full h-full absolute left-0 top-0 z-[1]">
                 <div class="h-[100px] flex justify-center">
                   <div class="w-[3px] bg-red-400 h-[100px]">
@@ -184,7 +190,7 @@ export default function SpotifyStatus() {
               }}>
               </div>
             </div>
-            <div class="w-[48px] h-[48px] aspect-square border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-700 z-20 flex justify-center items-center rounded-full transition-all">
+            <div class="w-[48px] h-[48px] aspect-square border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-700 z-10 flex justify-center items-center rounded-full transition-all">
               <div class="w-[26px] h-[26px] aspect-square bg-white/50 dark:bg-neutral-800/50 z-20 rounded-full">
                 <div class="w-full aspect-square h-full border rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
 
