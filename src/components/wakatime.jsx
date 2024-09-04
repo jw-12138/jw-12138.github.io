@@ -119,9 +119,13 @@ export default function Wakatime() {
     let frames = 0
     let totalFrames = 60 // one second
 
+    while (!isInViewport(document.getElementById('waka_scroll_content'))) {
+      await new Promise(r => setTimeout(r, 100))
+    }
+
     await new Promise(r => setTimeout(r, 300))
 
-    let _s = setInterval(function () {
+    let _s = setInterval(async function () {
       if (frames > totalFrames) {
         clearInterval(_s)
         return false
@@ -130,7 +134,7 @@ export default function Wakatime() {
       updateBottoms(frames / totalFrames)
 
       frames++
-    }, 1000 / 60)
+    }, 1000 / 50)
   })
 
   function pathGen(data) {
