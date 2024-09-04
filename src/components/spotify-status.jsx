@@ -1,5 +1,5 @@
 import {createSignal, Show, onMount} from 'solid-js'
-import StreamingIcon from '../streaming-icon.jsx'
+import StreamingIcon from './streaming-icon.jsx'
 import SpotifyIcon from './spotify-icon.jsx'
 
 export default function SpotifyStatus() {
