@@ -1,9 +1,9 @@
 ---
 import Wakatime from './wakatime.jsx'
 
-const padding = 30
-const segmentWidth = (670 - (padding * 2)) / 7
-const bottom = 670 / 2 - 40
+const padding = 20
+const segmentWidth = (200 - (padding * 2)) / 7
+const bottom = 90
 ---
 
 <div>
@@ -19,21 +19,26 @@ const bottom = 670 / 2 - 40
 </noscript>
 
 <div id="fake_wakatime" class="max-w-[672px] w-full">
-  <h2>
-    Coding activity
-  </h2>
-
-  <div class="overflow-x-auto w-full">
-    <svg class="aspect-[2/1] w-full min-w-[650px]" viewBox="0 0 670 335">
-      {
-        // tick line
-
-        Array.from({length: 7}).map((_, index) =>
-          <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
-      }
-
-      <text dominant-baseline="middle" text-anchor="middle" x={670 / 2} y="150" font-size="14" font-family="monospace" fill="currentColor">Loading...</text>
-    </svg>
+  <div class="w-[200px] shadow aspect-square h-[200px] rounded-[36px] bg-white dark:bg-neutral-800 border border-white dark:border-neutral-700 hover:shadow-xl">
+    <div class="w-full overflow-x-auto" id="waka_scroll_content">
+      <div class="h-[60px] p-4">
+        <div class="opacity-50 text-[10px] mb-1">
+              Weekly Coding Time:
+            </div>
+        <div class="text-xs font-black italic">
+          0hr 0min
+        </div>
+      </div>
+      <svg class="w-full" viewBox="0 0 200 140">
+        <path d="M
+31.42857142857143 90 C 42.85714285714286 90, 42.857142857142854 90,
+54.285714285714285 90 C 65.71428571428571 90, 65.71428571428571 90,
+77.14285714285714 90 C 88.57142857142857 90, 88.57142857142857 90,
+100 90 C 111.42857142857143 90, 111.42857142857143 90,
+122.85714285714286 90 C 134.28571428571428 90, 134.2857142857143 90,
+145.71428571428572 90 C 157.14285714285714 90, 157.14285714285714 90,
+168.57142857142856 90 " stroke="currentColor" stroke-opacity="1" stroke-width={2} fill="transparent"/>
+      </svg>
+    </div>
   </div>
-
 </div>

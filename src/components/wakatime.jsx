@@ -13,13 +13,13 @@ async function getData() {
 }
 
 let dayMap = {
-  0: 'Sun',
-  1: 'Mon',
-  2: 'Tue',
-  3: 'Wed',
-  4: 'Thu',
-  5: 'Fri',
-  6: 'Sat'
+  0: 'S',
+  1: 'M',
+  2: 'T',
+  3: 'W',
+  4: 'T',
+  5: 'F',
+  6: 'S'
 }
 
 function parseDate(dateText) {
@@ -60,9 +60,9 @@ function isInViewport(element) {
 }
 
 export default function Wakatime() {
-  let padding = 30
-  let segmentWidth = (670 - (padding * 2)) / 7
-  let bottom = 670 / 2 - 40
+  let padding = 20
+  let segmentWidth = (200 - (padding * 2)) / 7
+  let bottom = 90
 
   let [data, setData] = createSignal([])
   let [totalSeconds, setTotalSeconds] = createSignal(0)
@@ -106,7 +106,7 @@ export default function Wakatime() {
         _b = _b * percent
         _b = bottom - _b
 
-        if(isNaN(_b)){
+        if (isNaN(_b)) {
           _bs.push(bottom)
         } else {
           _bs.push(_b)
@@ -118,26 +118,6 @@ export default function Wakatime() {
 
     let frames = 0
     let totalFrames = 60 // one second
-
-    while (!animationExecuted() && !isInViewport(document.getElementById('waka_scroll_content'))) {
-      await new Promise(r => setTimeout(r, 100))
-      if (isInViewport(document.getElementById('waka_scroll_content'))) {
-        setAnimationExecuted(true)
-      }
-    }
-
-    try {
-      let scroll_content = document.getElementById('waka_scroll_content')
-      if (scroll_content.scrollWidth > scroll_content.clientWidth) {
-        await new Promise(r => setTimeout(r, 300))
-        scroll_content.scroll({
-          left: scroll_content.scrollWidth - scroll_content.clientWidth,
-          behavior: 'smooth'
-        })
-      }
-    } catch (e) {
-
-    }
 
     await new Promise(r => setTimeout(r, 300))
 
@@ -166,7 +146,7 @@ export default function Wakatime() {
         let nextX = (index + 1) * segmentWidth + segmentWidth / 2 + padding
         let nextY = dotsBottom()[index + 1]
         let offsetY = Math.abs(y - nextY)
-        let roundX = 0.35 * segmentWidth + ((.26 * segmentWidth) * (offsetY / bottom))
+        let roundX = 0.5 * segmentWidth + ((.4 * segmentWidth) * (offsetY / bottom))
         if (nextX && nextY) {
           bez = `C ${x + roundX} ${y}, ${nextX - roundX} ${nextY},`
         }
@@ -188,46 +168,32 @@ export default function Wakatime() {
 
   return <>
     <Show when={!loading()}>
-      <h2>
-        Coding activity
-      </h2>
+      <div class="w-[200px] shadow aspect-square h-[200px] rounded-[36px] bg-white dark:bg-neutral-800 border border-white dark:border-neutral-700 hover:shadow-xl">
+        <div class="w-full overflow-x-auto" id="waka_scroll_content">
+          <div class="h-[60px] p-4">
+            <div class="opacity-50 text-[10px] mb-1">
+              Weekly Coding Time:
+            </div>
+            <div class="text-xs font-black italic">
+              {parseTime(totalSeconds())}
+            </div>
+          </div>
+          <svg class="w-full" viewBox="0 0 200 140">
+            {
+              data().length &&
+              <path d={pathGen(data())} stroke="currentColor" stroke-opacity="1" stroke-width={2} fill="transparent"/>
+            }
 
-      <div class="w-full overflow-x-auto" id="waka_scroll_content">
-        <svg class="aspect-[2/1] w-full min-w-[650px]" viewBox="0 0 670 335">
-          {
-            // tick line
-            Array.from({length: 7}).map((_, index) => <line stroke-width={1} x1={index * segmentWidth + segmentWidth / 2 + padding} x2={index * segmentWidth + segmentWidth / 2 + padding} y1={0} y2={bottom} stroke="currentColor" stroke-opacity="0.1"></line>)
-          }
-
-          {
-            // dots
-            Array.from({length: 7}).map((_, index) => <circle cx={index * segmentWidth + segmentWidth / 2 + padding} r={3} cy={dotsBottom()[index]} class="" fill={'currentColor'}></circle>)
-          }
-
-          {
-            data().length &&
-            <path d={pathGen(data())} stroke="currentColor" stroke-opacity="0.3" stroke-width={2} fill="transparent"/>
-          }
-
-
-          {
-            // dots label
-            data().length && data().map((el, index) => {
-              return <text aria-label={parseTime(el.grand_total.total_seconds)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={dotsBottom()[index] - 15}>
-                {parseTime(el.grand_total.total_seconds)}
-              </text>
-            })
-          }
-
-          {
-            // label
-            data().length && data().map((el, index) => {
-              return <text aria-label={parseDate(el.range.date)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={bottom + 35}>
-                {parseDate(el.range.date)}
-              </text>
-            })
-          }
-        </svg>
+            {
+              // label
+              data().length && data().map((el, index) => {
+                return <text aria-label={parseDate(el.range.date)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={bottom + 20}>
+                  {parseDate(el.range.date)}
+                </text>
+              })
+            }
+          </svg>
+        </div>
       </div>
     </Show>
   </>
