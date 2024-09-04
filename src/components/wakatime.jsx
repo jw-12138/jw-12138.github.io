@@ -181,7 +181,7 @@ export default function Wakatime() {
           <svg class="w-full" viewBox="0 0 200 140">
             {
               data().length &&
-              <path d={pathGen(data())} stroke="currentColor" stroke-opacity="1" stroke-width={2} fill="transparent"/>
+              <path d={pathGen(data())} stroke="currentColor" stroke-opacity="1" stroke-width={2} fill="transparent" stroke-linecap="round"/>
             }
 
             {
