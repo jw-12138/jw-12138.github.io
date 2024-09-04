@@ -204,10 +204,10 @@ export default function SpotifyStatus() {
           </div>
 
           <div class="mt-3">
-            <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs text-center" title={songData().songName}>
+            <div class="whitespace-nowrap px-6 overflow-hidden text-ellipsis text-xs text-center" title={songData().songName}>
               {songData().songName}
             </div>
-            <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs opacity-45 text-center mt-1" title={songData().artists}>
+            <div class="whitespace-nowrap px-6 overflow-hidden text-ellipsis text-xs opacity-45 text-center mt-1" title={songData().artists}>
               {songData().artists}
             </div>
           </div>
@@ -263,7 +263,9 @@ export default function SpotifyStatus() {
 
           <div class="mt-6">
             <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs opacity-45 text-center">
-              Not listening now
+              <span style={{
+                animation: 'fadeIn .3s ease forwards'
+              }}>Not listening now</span>
             </div>
           </div>
         </div>
