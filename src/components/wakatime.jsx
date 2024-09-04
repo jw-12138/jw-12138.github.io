@@ -146,7 +146,7 @@ export default function Wakatime() {
         let nextX = (index + 1) * segmentWidth + segmentWidth / 2 + padding
         let nextY = dotsBottom()[index + 1]
         let offsetY = Math.abs(y - nextY)
-        let roundX = 0.5 * segmentWidth + ((.4 * segmentWidth) * (offsetY / bottom))
+        let roundX = 0.5 * segmentWidth + ((.5 * segmentWidth) * (offsetY / bottom))
         if (nextX && nextY) {
           bez = `C ${x + roundX} ${y}, ${nextX - roundX} ${nextY},`
         }
@@ -168,7 +168,7 @@ export default function Wakatime() {
 
   return <>
     <Show when={!loading()}>
-      <div class="w-[200px] shadow aspect-square h-[200px] rounded-[36px] bg-white dark:bg-neutral-800 border border-white dark:border-neutral-700 hover:shadow-xl">
+      <div class="w-[200px] shadow aspect-square h-[200px] rounded-[36px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 border border-white dark:border-neutral-700 hover:shadow-xl">
         <div class="w-full overflow-x-auto" id="waka_scroll_content">
           <div class="h-[60px] p-4">
             <div class="opacity-50 text-[10px] mb-1">
@@ -187,7 +187,12 @@ export default function Wakatime() {
             {
               // label
               data().length && data().map((el, index) => {
-                return <text aria-label={parseDate(el.range.date)} dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={bottom + 20}>
+                const isSunday = new Date(el.range.date).getDay() === 0
+                return <text aria-label={parseDate(el.range.date)} dominant-baseline="middle" text-anchor="middle" font-size="12" font-family="monospace" x={index * segmentWidth + segmentWidth / 2 + padding} y={bottom + 20} fill={
+                  isSunday ? '#ef4444' : 'currentColor'
+                } text-decoration={
+                  isSunday ? 'underline' : 'none'
+                }>
                   {parseDate(el.range.date)}
                 </text>
               })
