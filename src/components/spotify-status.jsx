@@ -90,7 +90,7 @@ export default function SpotifyStatus() {
 
         {/* disc shadow */}
         <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-0 shadow-xl" style={{
-          top: showDisc() ? '0' : '-95px',
+          top: showDisc() ? '-1px' : '-95px',
           transition: 'top 0.3s ease'
         }} onclick={() => {
           setShowDisc(!showDisc())
@@ -127,7 +127,7 @@ export default function SpotifyStatus() {
             }}>
             </div>
           </div>
-          <div class="w-[52px] h-[52px] aspect-square border border-neutral-300 dark:border-neutral-800 absolute bg-neutral-100 dark:bg-neutral-700 z-20 left-[70px] top-[70px] flex justify-center items-center rounded-full">
+          <div class="w-[52px] h-[52px] aspect-square border border-neutral-300 dark:border-neutral-800 absolute bg-neutral-100 dark:bg-neutral-700 z-20 left-[70px] top-[70px] flex justify-center items-center rounded-full transition-all">
             <div class="w-[32px] h-[32px] aspect-square bg-white dark:bg-neutral-800 z-20 left-[80px] top-[80px] rounded-full">
               <div class="w-full aspect-square h-full border-2 rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
 
