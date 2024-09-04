@@ -168,7 +168,7 @@ export default function Wakatime() {
 
   return <>
     <Show when={!loading()}>
-      <div class="w-[200px] shadow aspect-square h-[200px] rounded-[36px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 border border-white dark:border-neutral-700 hover:shadow-xl">
+      <div class="w-[200px] shadow aspect-square h-[200px] rounded-[36px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 border border-white dark:border-neutral-700">
         <div class="w-full overflow-x-auto" id="waka_scroll_content">
           <div class="h-[60px] p-4">
             <div class="opacity-50 text-[10px] mb-1">

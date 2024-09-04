@@ -80,63 +80,121 @@ export default function SpotifyStatus() {
     await loadData()
   })
 
-  const [showDisc, setShowDisc] = createSignal(false)
+  const [showDisc, setShowDisc] = createSignal(true)
+  const [switching, setSwitching] = createSignal(false)
+  const [smallDisc, setSmallDisc] = createSignal(false)
+  const [albumGoDown, setAlbumGoDown] = createSignal(false)
+
+  function switchAlbumAndDisc() {
+    if (switching()) {
+      return false
+    }
+
+    setSwitching(true)
+
+    if (showDisc()) {
+      setSmallDisc(true)
+
+      setTimeout(() => {
+        setShowDisc(false)
+      }, 100)
+
+      setTimeout(() => {
+        setAlbumGoDown(true)
+      }, 300)
+
+      setTimeout(() => {
+        setSwitching(false)
+      }, 650)
+    } else {
+      setAlbumGoDown(false)
+
+      setTimeout(() => {
+        setShowDisc(true)
+      }, 100)
+
+      setTimeout(() => {
+        setSmallDisc(false)
+      }, 250)
+
+      setTimeout(() => {
+        setSwitching(false)
+      }, 650)
+    }
+  }
 
   return <>
     <Show when={!isLoading() && isPlaying()}>
-      <div class="shadow w-[200px] aspect-square h-[200px] bg-white dark:bg-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300" style={{
-        'border-radius': showDisc() ? '100px' : '36px'
-      }}>
+      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300">
 
-        {/* disc shadow */}
-        <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] shadow-xl" style={{
-          top: showDisc() ? '-1px' : '-95px',
-          transition: 'top 0.3s ease'
-        }} onclick={() => {
-          setShowDisc(!showDisc())
-        }}>
-        </div>
-        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute z-[50] left-[-1px] animate-spin overflow-hidden border border-neutral-300 dark:border-neutral-700 flex items-center justify-center" style={{
-          'animation-duration': '20s',
-          top: showDisc() ? '-1px' : '-95px',
-          transition: 'top 0.3s ease',
-          'background-image': `url(${songData().albumArt ? songData().albumArt[0].url : ''})`,
-          'background-size': 'cover',
-          'background-repeat': 'no-repeat'
-        }}>
-          {/* glow */}
-          <div class="absolute w-full h-full left-0 top-0 z-[1] rounded-full overflow-hidden blur-[36px] rotate-90">
-            <div class="w-full h-full absolute left-0 top-0 z-[1]">
-              <div class="h-[100px] flex justify-center">
-                <div class="w-[3px] bg-red-400 h-[100px]">
-                </div>
-                <div class="w-[2px] bg-orange-400 h-[100px]">
-                </div>
-              </div>
-              <div class="h-[100px] flex justify-center">
-                <div class="w-[2px] bg-blue-400 h-[100px]">
-                </div>
-                <div class="w-[3px] bg-purple-400 h-[100px]">
-                </div>
-              </div>
-            </div>
-            <div class="opacity-25 w-full h-full scale-125" style={{
-              border: '100px solid transparent',
-              'border-left': '100px solid #A2A2A2',
-              'border-right': '100px solid #A2A2A2'
-            }}>
-            </div>
+        {/*album*/}
+        <div class="z-[50] flex w-[150px] h-[145px] left-[25px] transition-all duration-500 absolute cursor-pointer shadow-2xl overflow-hidden" style={{
+          top: albumGoDown() ? '23px' : '-250px',
+          transform: `rotate(${albumGoDown() ? '5deg' : '-17deg'})`
+        }} onclick={switchAlbumAndDisc}>
+          {/*border*/}
+          <div class="w-[5px] border dark:border-neutral-600 border-neutral-200">
+
           </div>
-          <div class="w-[48px] h-[48px] aspect-square border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-700 z-20 flex justify-center items-center rounded-full transition-all">
-            <div class="w-[26px] h-[26px] aspect-square bg-white/50 dark:bg-neutral-800/50 z-20 rounded-full">
-              <div class="w-full aspect-square h-full border rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
+          <div class="w-[145px] h-[145px] shrink-0" style={{
+            'background-image': `url(${songData().albumArt ? songData().albumArt[0].url : ''})`,
+            'background-size': 'cover',
+            'background-repeat': 'no-repeat'
+          }}>
 
+          </div>
+        </div>
+
+        <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-500" style={{
+          transform: smallDisc() ? 'scale(.3)' : 'scale(1)',
+          top: showDisc() ? '-95px' : '-255px'
+        }} onclick={switchAlbumAndDisc}>
+          {/* disc shadow */}
+          <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] shadow-xl transition-all duration-500">
+          </div>
+
+          {/*disc*/}
+          <div class="rounded-full aspect-square w-[200px] h-[200px] absolute z-[50] left-[-1px] animate-spin overflow-hidden border border-neutral-300 dark:border-neutral-700 flex items-center justify-center" style={{
+            'animation-duration': '20s',
+            transition: 'top 0.5s ease',
+            'background-image': `url(${songData().albumArt ? songData().albumArt[0].url : ''})`,
+            'background-size': 'cover',
+            'background-repeat': 'no-repeat'
+          }}>
+            {/* glow */}
+            <div class="absolute w-full h-full left-0 top-0 z-[1] rounded-full overflow-hidden blur-[36px] rotate-90">
+              <div class="w-full h-full absolute left-0 top-0 z-[1]">
+                <div class="h-[100px] flex justify-center">
+                  <div class="w-[3px] bg-red-400 h-[100px]">
+                  </div>
+                  <div class="w-[2px] bg-orange-400 h-[100px]">
+                  </div>
+                </div>
+                <div class="h-[100px] flex justify-center">
+                  <div class="w-[2px] bg-blue-400 h-[100px]">
+                  </div>
+                  <div class="w-[3px] bg-purple-400 h-[100px]">
+                  </div>
+                </div>
+              </div>
+              <div class="opacity-25 w-full h-full scale-125" style={{
+                border: '100px solid transparent',
+                'border-left': '100px solid #A2A2A2',
+                'border-right': '100px solid #A2A2A2'
+              }}>
+              </div>
+            </div>
+            <div class="w-[48px] h-[48px] aspect-square border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-700 z-20 flex justify-center items-center rounded-full transition-all">
+              <div class="w-[26px] h-[26px] aspect-square bg-white/50 dark:bg-neutral-800/50 z-20 rounded-full">
+                <div class="w-full aspect-square h-full border rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
+
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="absolute w-full top-[120px] z-[10] transition-all" style={{
-          filter: showDisc() ? 'blur(6px)' : 'blur(0px)'
+          filter: !showDisc() ? 'blur(6px)' : 'blur(0px)'
         }}>
           <div class="flex justify-center items-center">
             <div class="w-4 h-4 text-[#1CD155] mr-1">
