@@ -1,6 +1,7 @@
 import {createSignal, Show, onMount} from 'solid-js'
 import StreamingIcon from './streaming-icon.jsx'
 import SpotifyIcon from './spotify-icon.jsx'
+import {nanoid} from 'nanoid'
 
 function TextSlide(props) {
   if (!props.speed) {
@@ -11,7 +12,7 @@ function TextSlide(props) {
     props.classList = ''
   }
 
-  let id = props.id
+  let id = nanoid()
 
   onMount(() => {
     const element = document.getElementById(id)
@@ -122,18 +123,25 @@ export default function SpotifyStatus() {
   })
 
   const [showDisc, setShowDisc] = createSignal(true)
-  const [switching, setSwitching] = createSignal(false)
-  const [smallDisc, setSmallDisc] = createSignal(false)
   const [albumGoDown, setAlbumGoDown] = createSignal(false)
 
-  function switchAlbumAndDisc() {
+  const [switching, setSwitching] = createSignal(false)
+  const [smallDisc, setSmallDisc] = createSignal(false)
+  const [displaySequence, setDisplaySequence] = createSignal(0)
+
+  function switchDisplay() {
     if (switching()) {
       return false
     }
 
+    if (displaySequence() === 2) {
+      setDisplaySequence(0)
+    }
+
     setSwitching(true)
 
-    if (showDisc()) {
+    // show album
+    if (displaySequence() === 0) {
       setSmallDisc(true)
 
       setTimeout(() => {
@@ -143,11 +151,10 @@ export default function SpotifyStatus() {
       setTimeout(() => {
         setAlbumGoDown(true)
       }, 300)
+    }
 
-      setTimeout(() => {
-        setSwitching(false)
-      }, 650)
-    } else {
+    // reset
+    if (displaySequence() === 1) {
       setAlbumGoDown(false)
 
       setTimeout(() => {
@@ -157,23 +164,25 @@ export default function SpotifyStatus() {
       setTimeout(() => {
         setSmallDisc(false)
       }, 250)
-
-      setTimeout(() => {
-        setSwitching(false)
-      }, 650)
     }
+
+    setTimeout(() => {
+      setSwitching(false)
+    }, 650)
+
+    setDisplaySequence(displaySequence() + 1)
   }
 
   return <>
     <Show when={!isLoading() && isPlaying()}>
-      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300">
+      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300" onclick={switchDisplay}>
 
         {/*album*/}
         <div class="z-[50] flex w-[150px] h-[145px] left-[25px] transition-all duration-[600ms] absolute cursor-pointer shadow-2xl overflow-hidden"
              style={{
                top: albumGoDown() ? '23px' : '-255px',
                transform: `rotate(${albumGoDown() ? '5deg' : '-17deg'})`
-             }} onclick={switchAlbumAndDisc}
+             }}
         >
           {/*border*/}
           <div class="w-[5px] border dark:border-neutral-600 border-neutral-200">
@@ -191,7 +200,7 @@ export default function SpotifyStatus() {
         <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-[600ms] group" style={{
           transform: smallDisc() ? 'scale(.3)' : 'scale(1)',
           top: showDisc() ? '-95px' : '-255px'
-        }} onclick={switchAlbumAndDisc}>
+        }}>
           {/* disc shadow */}
           <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] shadow-xl group-hover:shadow-lg transition-all duration-500">
           </div>
@@ -253,10 +262,10 @@ export default function SpotifyStatus() {
           {songData().songName && songData().artists &&
             <div class="mt-3">
               <div class="whitespace-nowrap px-6 overflow-hidden text-center" title={songData().songName}>
-                <TextSlide text={songData().songName} classList={'text-xs'} id={'spotify-song-name'}/>
+                <TextSlide text={songData().songName} classList={'text-xs font-mono'}/>
               </div>
               <div class="whitespace-nowrap px-6 overflow-hidden text-xs opacity-45 text-center mt-1" title={songData().artists}>
-                <TextSlide text={songData().artists} classList={'text-xs'} speed={0.15} id={'spotify-artists-name'}/>
+                <TextSlide text={songData().artists} classList={'text-xs'} speed={0.15}/>
               </div>
             </div>
           }
