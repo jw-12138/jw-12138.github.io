@@ -175,14 +175,15 @@ export default function SpotifyStatus() {
 
   return <>
     <Show when={!isLoading() && isPlaying()}>
-      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300" onclick={switchDisplay}>
+      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700 hover:shadow-xl transition-all duration-300">
 
         {/*album*/}
         <div class="z-[50] flex w-[150px] h-[145px] left-[25px] transition-all duration-[600ms] absolute cursor-pointer shadow-2xl overflow-hidden"
              style={{
-               top: albumGoDown() ? '23px' : '-255px',
+               bottom: albumGoDown() ? '23px' : '-255px',
                transform: `rotate(${albumGoDown() ? '5deg' : '-17deg'})`
              }}
+             onclick={switchDisplay}
         >
           {/*border*/}
           <div class="w-[5px] border dark:border-neutral-600 border-neutral-200">
@@ -199,10 +200,10 @@ export default function SpotifyStatus() {
 
         <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-[600ms] group" style={{
           transform: smallDisc() ? 'scale(.3)' : 'scale(1)',
-          top: showDisc() ? '-95px' : '-255px'
-        }}>
+          bottom: showDisc() ? '-95px' : '-255px'
+        }} onclick={switchDisplay}>
           {/* disc shadow */}
-          <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] shadow-xl group-hover:shadow-lg transition-all duration-500">
+          <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] rotate-180 shadow-xl group-hover:shadow-lg transition-all duration-500 opacity-60">
           </div>
 
           {/*disc*/}
@@ -249,7 +250,7 @@ export default function SpotifyStatus() {
             </div>
           </div>
         </div>
-        <div class="absolute w-full top-[120px] z-[10] transition-all" style={{
+        <div class="absolute w-full bottom-[120px] z-[10] transition-all" style={{
           filter: albumGoDown() ? 'blur(16px)' : 'blur(0px)'
         }}>
           <div class="flex justify-center items-center">
@@ -277,9 +278,9 @@ export default function SpotifyStatus() {
       <div class="rounded-[36px] shadow w-[200px] aspect-square h-[200px] bg-white dark:bg-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
 
         {/* disc shadow */}
-        <div class="z-20 rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] shadow-xl">
+        <div class="z-20 rounded-full aspect-square w-[200px] h-[200px] absolute bottom-[-95px] left-[-1px] shadow-xl rotate-180 opacity-30">
         </div>
-        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] overflow-hidden border border-neutral-300 dark:border-neutral-700 flex justify-center items-center">
+        <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute bottom-[-95px] left-[-1px] overflow-hidden border border-neutral-300 dark:border-neutral-700 flex justify-center items-center">
           {/* glow */}
           <div class="absolute w-full h-full left-0 top-0 z-[1] rounded-full overflow-hidden blur-[36px] rotate-90">
             <div class="w-full h-full absolute left-0 top-0 z-[1]">
@@ -312,14 +313,14 @@ export default function SpotifyStatus() {
           </div>
         </div>
 
-        <div class="pt-[120px]">
+        <div class="absolute w-full top-[30px] z-[10] transition-all">
           <div class="flex justify-center items-center">
             <div class="w-4 h-4 opacity-50">
               <SpotifyIcon/>
             </div>
           </div>
 
-          <div class="mt-6">
+          <div class="mt-2">
             <div class="whitespace-nowrap px-3 overflow-hidden text-ellipsis text-xs opacity-45 text-center">
               <span style={{
                 animation: 'fadeIn .3s ease forwards'

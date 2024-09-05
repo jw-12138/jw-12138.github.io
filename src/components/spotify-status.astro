@@ -1,6 +1,5 @@
 ---
 import SpotifyStatus from './spotify-status.jsx'
-import SpotifyIcon from './spotify-icon.jsx'
 ---
 
 <div>
@@ -19,9 +18,9 @@ import SpotifyIcon from './spotify-icon.jsx'
   <div class="rounded-[36px] shadow w-[200px] aspect-square h-[200px] bg-white dark:bg-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
 
     {/* disc shadow */}
-    <div class="z-20 rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] shadow-xl">
+    <div class="z-20 rounded-full aspect-square w-[200px] h-[200px] absolute bottom-[-95px] left-[-1px] shadow-xl rotate-180 opacity-30">
     </div>
-    <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute top-[-95px] left-[-1px] overflow-hidden border border-neutral-300 dark:border-neutral-700 flex justify-center items-center">
+    <div data-name={'disc'} class="rounded-full aspect-square w-[200px] h-[200px] absolute bottom-[-95px] left-[-1px] overflow-hidden border border-neutral-300 dark:border-neutral-700 flex justify-center items-center">
       {/* glow */}
       <div class="absolute w-full h-full left-0 top-0 z-[1] rounded-full overflow-hidden blur-[36px] rotate-90">
         <div class="w-full h-full absolute left-0 top-0 z-[1]">
@@ -50,14 +49,6 @@ import SpotifyIcon from './spotify-icon.jsx'
           <div class="w-full aspect-square h-full border-2 rounded-full border-neutral-300 dark:border-neutral-400 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.1)]">
 
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pt-[120px]">
-      <div class="flex justify-center items-center">
-        <div class="w-4 h-4 opacity-30">
-          <SpotifyIcon/>
         </div>
       </div>
     </div>
