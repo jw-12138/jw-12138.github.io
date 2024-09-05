@@ -1,33 +1,76 @@
 import {createSignal, Show, onMount} from 'solid-js'
 import StreamingIcon from './streaming-icon.jsx'
 import SpotifyIcon from './spotify-icon.jsx'
+import {nanoid} from 'nanoid'
+
+function TextSlide(props) {
+  if (!props.speed) {
+    props.speed = 0.2
+  }
+
+  if (!props.classList) {
+    props.classList = ''
+  }
+
+  let [cId] = createSignal(nanoid())
+
+  onMount(() => {
+    const element = document.getElementById(cId())
+    if (!element) return
+
+    const [scrollWidth] = createSignal(element.scrollWidth)
+    const spanElement = element.querySelector('span')
+    const boxWidth = element.clientWidth
+
+    if (scrollWidth() > boxWidth) {
+      let [maxLeft] = createSignal(-(scrollWidth() - boxWidth))
+      let direction = 'left'
+      let freeze = true
+      let [left, setLeft] = createSignal(0)
+
+      setTimeout(() => {
+        freeze = false
+      }, 2000)
+
+      setInterval(() => {
+        if (!freeze) {
+          if (direction === 'left') {
+            setLeft(left() - props.speed)
+          } else {
+            setLeft(left() + props.speed)
+          }
+
+          if (left() <= maxLeft()) {
+            freeze = true
+            setTimeout(() => {
+              freeze = false
+            }, 3000)
+            direction = 'right'
+          } else if (left() >= 0) {
+            freeze = true
+            setTimeout(() => {
+              freeze = false
+            }, 3000)
+            direction = 'left'
+          }
+
+          spanElement.style.transform = `translateX(${left()}px)`
+        }
+      }, 1000 / 60)
+    }
+  })
+
+  return (
+    <div id={cId()} class={'text-center whitespace-nowrap overflow-hidden ' + props.classList}>
+      <span class="block">{props.text}</span>
+    </div>
+  )
+}
 
 export default function SpotifyStatus() {
   let [isPlaying, setIsPlaying] = createSignal(false)
   let [isLoading, setIsLoading] = createSignal(true)
   let [songData, setSongData] = createSignal({})
-
-  // spotify may return multiple album arts
-  // we need to select the most suitable one
-  function albumSelection(albums) {
-    if (albums.length === 1) {
-      return albums[0]
-    }
-
-    // sort
-    albums.sort((a, b) => a.width - b.width)
-
-    let selected = albums[0]
-
-    for (let i = 0; i < albums.length; i++) {
-      if (albums[i].width > 160) {
-        selected = albums[i]
-        break
-      }
-    }
-
-    return selected
-  }
 
   async function loadData() {
     let endpoint = 'https://spotify-status.jw1.dev/status?t=' + Date.now()
@@ -42,7 +85,6 @@ export default function SpotifyStatus() {
     } catch (e) {
       console.log(e)
     } finally {
-
       // prevent flickering
       end = Date.now()
       let offset = end - start
@@ -147,12 +189,12 @@ export default function SpotifyStatus() {
           </div>
         </div>
 
-        <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-[600ms]" style={{
+        <div class="aspect-square w-[200px] h-[200px] absolute transition-all duration-[600ms] group" style={{
           transform: smallDisc() ? 'scale(.3)' : 'scale(1)',
           top: showDisc() ? '-95px' : '-255px'
         }} onclick={switchAlbumAndDisc}>
           {/* disc shadow */}
-          <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] shadow-xl transition-all duration-500">
+          <div class="z-[51] rounded-full aspect-square w-[200px] cursor-pointer h-[200px] absolute left-[-1px] shadow-xl group-hover:shadow-lg transition-all duration-500">
           </div>
 
           {/*disc*/}
@@ -200,7 +242,7 @@ export default function SpotifyStatus() {
           </div>
         </div>
         <div class="absolute w-full top-[120px] z-[10] transition-all" style={{
-          filter: !showDisc() ? 'blur(6px)' : 'blur(0px)'
+          filter: albumGoDown() ? 'blur(16px)' : 'blur(0px)'
         }}>
           <div class="flex justify-center items-center">
             <div class="w-4 h-4 text-[#1CD155] mr-1">
@@ -209,14 +251,16 @@ export default function SpotifyStatus() {
             <StreamingIcon/>
           </div>
 
-          <div class="mt-3">
-            <div class="whitespace-nowrap px-6 overflow-hidden text-ellipsis text-xs text-center" title={songData().songName}>
-              {songData().songName}
+          {songData().songName && songData().artists &&
+            <div class="mt-3">
+              <div class="whitespace-nowrap px-6 overflow-hidden text-center" title={songData().songName}>
+                <TextSlide text={songData().songName} classList={'text-xs'}/>
+              </div>
+              <div class="whitespace-nowrap px-6 overflow-hidden text-xs opacity-45 text-center mt-1" title={songData().artists}>
+                <TextSlide text={songData().artists} classList={'text-xs'} speed={0.15}/>
+              </div>
             </div>
-            <div class="whitespace-nowrap px-6 overflow-hidden text-ellipsis text-xs opacity-45 text-center mt-1" title={songData().artists}>
-              {songData().artists}
-            </div>
-          </div>
+          }
         </div>
       </div>
     </Show>
