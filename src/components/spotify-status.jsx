@@ -1,7 +1,6 @@
 import {createSignal, Show, onMount} from 'solid-js'
 import StreamingIcon from './streaming-icon.jsx'
 import SpotifyIcon from './spotify-icon.jsx'
-import {nanoid} from 'nanoid'
 
 function TextSlide(props) {
   if (!props.speed) {
@@ -12,10 +11,10 @@ function TextSlide(props) {
     props.classList = ''
   }
 
-  let [cId] = createSignal(nanoid())
+  let id = props.id
 
   onMount(() => {
-    const element = document.getElementById(cId())
+    const element = document.getElementById(id)
     if (!element) return
 
     const [scrollWidth] = createSignal(element.scrollWidth)
@@ -61,7 +60,7 @@ function TextSlide(props) {
   })
 
   return (
-    <div id={cId()} class={'text-center whitespace-nowrap overflow-hidden ' + props.classList}>
+    <div id={id} class={'text-center whitespace-nowrap overflow-hidden ' + props.classList}>
       <span class="block">{props.text}</span>
     </div>
   )
@@ -254,10 +253,10 @@ export default function SpotifyStatus() {
           {songData().songName && songData().artists &&
             <div class="mt-3">
               <div class="whitespace-nowrap px-6 overflow-hidden text-center" title={songData().songName}>
-                <TextSlide text={songData().songName} classList={'text-xs'}/>
+                <TextSlide text={songData().songName} classList={'text-xs'} id={'spotify-song-name'}/>
               </div>
               <div class="whitespace-nowrap px-6 overflow-hidden text-xs opacity-45 text-center mt-1" title={songData().artists}>
-                <TextSlide text={songData().artists} classList={'text-xs'} speed={0.15}/>
+                <TextSlide text={songData().artists} classList={'text-xs'} speed={0.15} id={'spotify-artists-name'}/>
               </div>
             </div>
           }
