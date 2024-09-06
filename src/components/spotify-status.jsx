@@ -250,7 +250,7 @@ export default function SpotifyStatus() {
             </div>
           </div>
         </div>
-        <div class="absolute w-full bottom-[120px] z-[10] transition-all" style={{
+        <div class="absolute w-full bottom-[120px] z-[10] transition-all duration-[.8s]" style={{
           filter: albumGoDown() ? 'blur(16px)' : 'blur(0px)'
         }}>
           <div class="flex justify-center items-center">
