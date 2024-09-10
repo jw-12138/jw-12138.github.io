@@ -33,7 +33,7 @@ export default function PSStatus(props) {
 
   return (
     <Show when={!isLoading()}>
-      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
+      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
         <div class="text-xs absolute w-full bottom-0 left-0 z-[20] px-6 pt-2 pb-[1rem] bg-gradient-to-t from-black from-15% to-transparent" style={{
           'mask-image': 'linear-gradient(to top, black 55%, rgba(0,0,0,.5))',
           '-webkit-mask-image': 'linear-gradient(to top, black 55%, rgba(0,0,0,.5))',
