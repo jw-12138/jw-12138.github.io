@@ -40,13 +40,13 @@ export default function PSStatus(props) {
           'backdrop-filter': 'blur(2px)',
           '-webkit-backdrop-filter': 'blur(2px)'
         }}>
-          <div class="w-5 h-5 items-center flex mb-1">
+          <div class="w-5 h-5 items-center flex mb-1 text-white">
             <PSIcon/>
           </div>
-          <div class="opacity-60 mb-1">
+          <div class="opacity-60 mb-1 text-white">
             Recently Playing:
           </div>
-          <div class="whitespace-nowrap text-ellipsis opacity-90">
+          <div class="whitespace-nowrap text-ellipsis opacity-90 text-white">
             {gameData() ? gameData().title : ''}
           </div>
         </div>

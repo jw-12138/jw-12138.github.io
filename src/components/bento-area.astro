@@ -1,4 +1,7 @@
 ---
+import SpotifyStatus from './spotify-status.astro'
+import Wakatime from './wakatime.astro'
+import PSStatus from './ps-status.astro'
 ---
 
 <noscript>
@@ -10,5 +13,17 @@
 </noscript>
 
 <div id="bento_area">
-  <slot></slot>
+  <div class="md:flex justify-center flex-wrap md:mb-8 mb-0">
+    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+      <SpotifyStatus/>
+    </div>
+    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+      <Wakatime/>
+    </div>
+  </div>
+  <div class="md:flex justify-center flex-wrap">
+    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+      <PSStatus/>
+    </div>
+  </div>
 </div>
