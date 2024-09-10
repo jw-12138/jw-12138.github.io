@@ -1,4 +1,5 @@
 import {createSignal, onMount} from 'solid-js'
+import {isInViewport} from './wakatime.jsx'
 
 function easeOutElastic(x) {
   const c4 = (2 * Math.PI) / 3
@@ -172,8 +173,13 @@ export default function Clock(props) {
     animationId = requestAnimationFrame(animate)
   }
 
-  onMount(() => {
+  onMount(async () => {
+    while(!isInViewport(document.getElementById('clock_scroll'))) {
+      await new Promise((resolve) => setTimeout(resolve, 100))
+    }
+
     document.getElementById('fake_clock').remove()
+
     setTimeout(() => {
       showTicks()
       initHands()
@@ -184,7 +190,7 @@ export default function Clock(props) {
     }, 100)
   })
 
-  return <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
+  return <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700" id="clock_scroll">
     <svg viewBox="0 0 200 200" class="w-full aspect-square dark:text-white text-neutral-700">
       {ticks.map((tick) => {
         let isMajor = tick % 5 === 0

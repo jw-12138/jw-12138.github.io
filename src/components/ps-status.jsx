@@ -1,4 +1,17 @@
 import {createSignal, onMount, Show} from 'solid-js'
+import {isInViewport} from './wakatime.jsx'
+
+const style = `
+@keyframes scaleIn {
+  0% {
+    transform: scale(1.1);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+`
 
 export function PSIcon() {
   return (
@@ -18,22 +31,36 @@ export function PSIcon() {
 }
 
 export default function PSStatus(props) {
-
   let baseUrl = 'https://bento-api.jw1.dev/ps-status?v=' + Date.now()
   const [gameData, setGameData] = createSignal(null)
   const [isLoading, setIsLoading] = createSignal(true)
+  const [inView, setIsInViewport] = createSignal(false)
 
   onMount(async () => {
+    // add style to head
+    let styleElement = document.createElement('style')
+    styleElement.innerHTML = style
+    document.head.appendChild(styleElement)
+
+    // fetch data
     let response = await fetch(baseUrl)
     let data = await response.json()
     setGameData(data)
     setIsLoading(false)
+
+    // remove placeholder
     document.getElementById('fake-ps-status').remove()
+
+    while (!isInViewport(document.getElementById('ps_status_scroll_area'))) {
+      await new Promise((resolve) => setTimeout(resolve, 100))
+    }
+
+    setIsInViewport(true)
   })
 
   return (
     <Show when={!isLoading()}>
-      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
+      <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700" id="ps_status_scroll_area">
         <div class="text-xs absolute w-full bottom-0 left-0 z-[20] px-6 pt-2 pb-[1rem] bg-gradient-to-t from-black from-15% to-transparent" style={{
           'mask-image': 'linear-gradient(to top, black 55%, rgba(0,0,0,.5))',
           '-webkit-mask-image': 'linear-gradient(to top, black 55%, rgba(0,0,0,.5))',
@@ -50,9 +77,10 @@ export default function PSStatus(props) {
             {gameData() ? gameData().title : ''}
           </div>
         </div>
-        <div class="absolute w-[200px] h-[200px] left-0 top-0 aspect-square z-10" style={{
+        <div class="absolute w-[200px] h-[200px] left-0 top-0 aspect-square z-10 scale-110" style={{
           'background-image': 'url(' + (gameData() ? gameData().cover : '') + ')',
-          'background-size': 'cover'
+          'background-size': 'cover',
+          'animation': inView() ? 'scaleIn 3s ease forwards' : 'none'
         }}></div>
       </div>
     </Show>
