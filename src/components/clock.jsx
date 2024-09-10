@@ -174,11 +174,11 @@ export default function Clock(props) {
   }
 
   onMount(async () => {
+    document.getElementById('fake_clock').remove()
+
     while(!isInViewport(document.getElementById('clock_scroll'))) {
       await new Promise((resolve) => setTimeout(resolve, 100))
     }
-
-    document.getElementById('fake_clock').remove()
 
     setTimeout(() => {
       showTicks()
