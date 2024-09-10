@@ -181,7 +181,7 @@ export default function Clock(props) {
       setTimeout(() => {
         showHands()
       }, 100)
-    }, 500)
+    }, 100)
   })
 
   return <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-white dark:bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700">
