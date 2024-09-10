@@ -6,6 +6,10 @@ function easeOutElastic(x) {
   return x === 0 ? 0 : x === 1 ? 1 : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1
 }
 
+function easeOutCubic(x) {
+  return 1 - Math.pow(1 - x, 3)
+}
+
 export default function Clock(props) {
   let now = Date.now()
   let ticks = Array.from({length: 60}, (_, i) => i)
@@ -20,8 +24,8 @@ export default function Clock(props) {
   let [secondPosition, setSecondPosition] = createSignal([100, 100 - secondTickLength])
 
   let [hourTailPosition, setHourTailPosition] = createSignal([100, 104])
-  let [minuteTailPosition, setMinuteTailPosition] = createSignal([100, 106])
-  let [secondTailPosition, setSecondTailPosition] = createSignal([100, 108])
+  let [minuteTailPosition, setMinuteTailPosition] = createSignal([100, 104])
+  let [secondTailPosition, setSecondTailPosition] = createSignal([100, 110])
 
   const [handsOpacity, setHandsOpacity] = createSignal(0)
   const [ticksOpacity, setTicksOpacity] = createSignal(Array.from({length: 60}, (_, i) => 0))
@@ -48,7 +52,7 @@ export default function Clock(props) {
 
     setMinutePosition([center[0] + minuteTickLength * Math.cos((minuteAngle - 90) * Math.PI / 180), center[1] + minuteTickLength * Math.sin((minuteAngle - 90) * Math.PI / 180)])
 
-    setMinuteTailPosition([center[0] - 6 * Math.cos((minuteAngle - 90) * Math.PI / 180), center[1] - 6 * Math.sin((minuteAngle - 90) * Math.PI / 180)])
+    setMinuteTailPosition([center[0] - 4 * Math.cos((minuteAngle - 90) * Math.PI / 180), center[1] - 4 * Math.sin((minuteAngle - 90) * Math.PI / 180)])
 
 
     let frames = 0
@@ -65,7 +69,7 @@ export default function Clock(props) {
 
       setSecondPosition([center[0] + secondTickLength * Math.cos((secondAngle + additionalAngle - 90) * Math.PI / 180), center[1] + secondTickLength * Math.sin((secondAngle + additionalAngle - 90) * Math.PI / 180)])
 
-      setSecondTailPosition([center[0] - 8 * Math.cos((secondAngle + additionalAngle - 90) * Math.PI / 180), center[1] - 8 * Math.sin((secondAngle + additionalAngle - 90) * Math.PI / 180)])
+      setSecondTailPosition([center[0] - 10 * Math.cos((secondAngle + additionalAngle - 90) * Math.PI / 180), center[1] - 10 * Math.sin((secondAngle + additionalAngle - 90) * Math.PI / 180)])
 
       frames++
       animationId = requestAnimationFrame(animateSecondHand)
@@ -87,7 +91,7 @@ export default function Clock(props) {
         cancelAnimationFrame(animationId)
         return false
       }
-      let percent = easeOutQuart(frames / totalFrames)
+      let percent = easeOutCubic(frames / totalFrames)
 
       setHourPosition([
         center[0] + hourTickLength * Math.cos((hourAngle - 90) * Math.PI / 180) * percent,
@@ -105,8 +109,8 @@ export default function Clock(props) {
       )
 
       setMinuteTailPosition([
-        center[0] - 6 * Math.cos((minuteAngle - 90) * Math.PI / 180) * percent,
-        center[1] - 6 * Math.sin((minuteAngle - 90) * Math.PI / 180) * percent
+        center[0] - 4 * Math.cos((minuteAngle - 90) * Math.PI / 180) * percent,
+        center[1] - 4 * Math.sin((minuteAngle - 90) * Math.PI / 180) * percent
       ])
 
       setSecondPosition([
@@ -115,8 +119,8 @@ export default function Clock(props) {
       ])
 
       setSecondTailPosition([
-        center[0] - 8 * Math.cos((secondAngle - 90) * Math.PI / 180) * percent,
-        center[1] - 8 * Math.sin((secondAngle - 90) * Math.PI / 180) * percent
+        center[0] - 10 * Math.cos((secondAngle - 90) * Math.PI / 180) * percent,
+        center[1] - 10 * Math.sin((secondAngle - 90) * Math.PI / 180) * percent
       ])
 
       frames++
@@ -137,7 +141,7 @@ export default function Clock(props) {
       }
 
       setTicksOpacity(ticksOpacity().map((opacity, i) => {
-        let percent = easeOutQuart(frames / totalFrames)
+        let percent = easeOutCubic(frames / totalFrames)
         if (i / 60 > percent) {
           return 0
         }
@@ -146,10 +150,6 @@ export default function Clock(props) {
 
       frames++
     }, 1000 / 60)
-  }
-
-  function easeOutQuart(x) {
-    return 1 - Math.pow(1 - x, 4)
   }
 
   function showHands() {
@@ -163,7 +163,7 @@ export default function Clock(props) {
         return false
       }
 
-      setHandsOpacity(easeOutQuart(frames / totalFrames))
+      setHandsOpacity(easeOutCubic(frames / totalFrames))
 
       frames++
       animationId = requestAnimationFrame(animate)
@@ -193,21 +193,21 @@ export default function Clock(props) {
         let y1 = center[1] + (isMajor ? 80 : 82) * Math.sin(angle)
         let x2 = center[0] + 85 * Math.cos(angle)
         let y2 = center[1] + 85 * Math.sin(angle)
-        return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={'currentColor'} stroke-width={isMajor ? 2 : 1} stroke-opacity={.5} stroke-linecap={'round'} style={{
+        return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={'currentColor'} stroke-width={isMajor ? 2 : 1} stroke-opacity={.8} stroke-linecap={'round'} style={{
           opacity: ticksOpacity()[tick]
         }}></line>
       })}
 
-      <line x1={hourTailPosition()[0]} y1={hourTailPosition()[1]} x2={hourPosition()[0]} y2={hourPosition()[1]} stroke={'currentColor'} stroke-width={3} stroke-linecap={'round'} class="z-10" style={{
+      <line x1={hourTailPosition()[0]} y1={hourTailPosition()[1]} x2={hourPosition()[0]} y2={hourPosition()[1]} stroke={'currentColor'} stroke-width={4} stroke-linecap={'round'} class="z-10 drop-shadow" style={{
         opacity: handsOpacity()
       }}></line>
-      <line x1={minuteTailPosition()[0]} y1={minuteTailPosition()[1]} x2={minutePosition()[0]} y2={minutePosition()[1]} stroke={'currentColor'} stroke-width={2.5} stroke-linecap={'round'} class="z-20" style={{
+      <line x1={minuteTailPosition()[0]} y1={minuteTailPosition()[1]} x2={minutePosition()[0]} y2={minutePosition()[1]} stroke={'currentColor'} stroke-width={4} stroke-linecap={'round'} class="z-20 drop-shadow" style={{
         opacity: handsOpacity()
       }}></line>
       <line x1={secondTailPosition()[0]} y1={secondTailPosition()[1]} x2={secondPosition()[0]} y2={secondPosition()[1]} stroke={'currentColor'} stroke-width={2} stroke-linecap={'round'} class="z-30 text-red-500" style={{
         opacity: handsOpacity()
       }}></line>
-      <circle r={4} cx={100} cy={100} stroke={'white'} fill={'currentColor'} class="z-50 text-red-500"></circle>
+      <circle r={4} cx={100} cy={100} stroke={'white'} fill={'currentColor'} class="z-50 text-red-500 drop-shadow"></circle>
     </svg>
   </div>
 }
