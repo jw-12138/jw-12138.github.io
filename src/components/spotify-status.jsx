@@ -263,7 +263,7 @@ export default function SpotifyStatus() {
           {songData().songName && songData().artists &&
             <div class="mt-3">
               <div class="whitespace-nowrap px-6 overflow-hidden text-center" title={songData().songName}>
-                <TextSlide text={songData().songName} classList={'text-xs font-mono'}/>
+                <TextSlide text={songData().songName} classList={'text-xs'}/>
               </div>
               <div class="whitespace-nowrap px-6 overflow-hidden text-xs opacity-45 text-center mt-1" title={songData().artists}>
                 <TextSlide text={songData().artists} classList={'text-xs'} speed={0.15}/>

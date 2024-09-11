@@ -32,9 +32,11 @@ export function PSIcon() {
 
 export default function PSStatus(props) {
   let baseUrl = 'https://bento-api.jw1.dev/ps-status?v=' + Date.now()
-  const [gameData, setGameData] = createSignal(null)
+  const [gameData, setGameData] = createSignal([])
   const [isLoading, setIsLoading] = createSignal(true)
   const [inView, setIsInViewport] = createSignal(false)
+  const [activeIndex, setActiveIndex] = createSignal(0)
+  const [activeProgress, setActiveProgress] = createSignal(0)
 
   onMount(async () => {
     // add style to head
@@ -45,7 +47,7 @@ export default function PSStatus(props) {
     // fetch data
     let response = await fetch(baseUrl)
     let data = await response.json()
-    setGameData(data[0])
+    setGameData(data)
     setIsLoading(false)
 
     // remove placeholder
@@ -55,33 +57,81 @@ export default function PSStatus(props) {
       await new Promise((resolve) => setTimeout(resolve, 100))
     }
 
+    let animationStartedTs = Date.now()
+
+    function loopSlide() {
+      let progress = Date.now() - animationStartedTs
+
+      setActiveProgress(progress / 5000)
+
+      if (progress > 5000) {
+        setActiveIndex((activeIndex() + 1) % gameData().length)
+        animationStartedTs = Date.now()
+      }
+
+      requestAnimationFrame(loopSlide)
+    }
+
+    requestAnimationFrame(loopSlide)
+
     setIsInViewport(true)
   })
 
   return (
     <Show when={!isLoading()}>
       <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700" id="ps_status_scroll_area">
-        <div class="text-xs absolute w-full bottom-0 left-0 z-[20] px-6 pt-2 pb-[1rem] bg-gradient-to-t from-black from-35% to-transparent" style={{
-          'mask-image': 'linear-gradient(to top, black 75%, transparent)',
-          '-webkit-mask-image': 'linear-gradient(to top, black 75%, transparent)',
-          'backdrop-filter': 'blur(2px)',
-          '-webkit-backdrop-filter': 'blur(2px)'
-        }}>
-          <div class="w-5 h-5 items-center flex mb-1 text-white">
-            <PSIcon/>
-          </div>
-          <div class="opacity-60 mb-1 text-white text-[10px]">
-            Recently Playing:
-          </div>
-          <div class="whitespace-nowrap text-ellipsis opacity-90 text-white">
-            {gameData() ? gameData().title : ''}
-          </div>
+        <div class="absolute w-[6px] h-[200px] items-center justify-end flex flex-col left-6 z-[50] pb-5 pointer-events-none">
+          {
+            gameData().map((el, index) => {
+              return <div class="transition-all overflow-hidden bg-white/30 rounded-[4px] w-[4px] my-[1px] duration-500" style={{
+                height: activeIndex() === index ? '16px' : '4px',
+                'backdrop-filter': 'blur(2px)',
+                '-webkit-backdrop-filter': 'blur(2px)',
+              }}>
+                <div class="bg-white w-[4px]" style={{
+                  height: activeProgress() * 100 + '%',
+                  display: activeIndex() === index ? 'block' : 'none'
+                }}></div>
+              </div>
+            })
+          }
         </div>
-        <div class="absolute w-[200px] h-[200px] left-0 top-0 aspect-square z-10 scale-110" style={{
-          'background-image': 'url(' + (gameData() ? gameData().cover : '') + ')',
-          'background-size': 'cover',
-          'animation': inView() ? 'scaleIn 3s ease forwards' : 'none'
-        }}></div>
+
+        {
+          gameData().map((el, index) => {
+            return <div class="text-xs absolute w-full bottom-0 left-0 z-[20] px-6 pl-10 pt-2 pb-[1rem] bg-gradient-to-t from-black from-35% to-transparent transition-all duration-1000" style={{
+              'mask-image': 'linear-gradient(to top, black 75%, transparent)',
+              '-webkit-mask-image': 'linear-gradient(to top, black 75%, transparent)',
+              'backdrop-filter': 'blur(2px)',
+              '-webkit-backdrop-filter': 'blur(2px)',
+              'opacity': activeIndex() === index ? 1 : 0,
+              'pointer-events': activeIndex() === index ? 'auto' : 'none'
+            }}>
+              <div class="w-5 h-5 items-center flex mb-1 text-white">
+                <PSIcon/>
+              </div>
+              <div class="opacity-60 mb-1 text-white text-[10px]">
+                Recently Playing:
+              </div>
+              <div class="whitespace-nowrap text-ellipsis opacity-90 text-white">
+                {el.title}
+              </div>
+            </div>
+          })
+        }
+
+        {
+          gameData().map((el, index) => {
+            return <div class="absolute w-[200px] h-[200px] left-0 top-0 aspect-square z-10 transition-all duration-1000 pointer-events-none" style={{
+              'background-image': 'url(' + el.cover + ')',
+              'background-size': 'cover',
+              opacity: activeIndex() === index ? 1 : 0,
+              transform: activeIndex() === index ? 'scale(1)' : 'scale(1.1)',
+              filter: activeIndex() === index ? 'blur(0)' : 'blur(5px)'
+            }}></div>
+          })
+        }
+
       </div>
     </Show>
   )
