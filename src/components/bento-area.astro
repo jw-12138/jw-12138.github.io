@@ -5,6 +5,25 @@ import PSStatus from './ps-status.astro'
 import Clock from './clock.astro'
 
 import BentoItem from './bento-item.astro'
+
+const bentos = [
+  {
+    name: 'Spotify',
+    Component: SpotifyStatus
+  },
+  {
+    name: 'Weekly Coding time',
+    Component: Wakatime
+  },
+  {
+    name: 'Clock',
+    Component: Clock
+  },
+  {
+    name: 'Recently playing',
+    Component: PSStatus
+  }
+]
 ---
 
 <noscript>
@@ -17,20 +36,11 @@ import BentoItem from './bento-item.astro'
 
 <div id="bento_area">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:w-[calc(400px+2rem)] w-[200px] mx-auto">
-    <BentoItem>
-      <SpotifyStatus/>
-    </BentoItem>
-
-    <BentoItem>
-      <Wakatime/>
-    </BentoItem>
-
-    <BentoItem>
-      <Clock/>
-    </BentoItem>
-
-    <BentoItem>
-      <PSStatus/>
-    </BentoItem>
+    {
+      bentos.map(El =>
+        <BentoItem>
+          <El.Component/>
+        </BentoItem>)
+    }
   </div>
 </div>
