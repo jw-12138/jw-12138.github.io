@@ -66,6 +66,7 @@ export default function PSStatus(props) {
 
       if (progress > 5000) {
         setActiveIndex((activeIndex() + 1) % gameData().length)
+        setActiveProgress(0)
         animationStartedTs = Date.now()
       }
 
