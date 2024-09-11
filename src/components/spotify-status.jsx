@@ -1,6 +1,7 @@
 import {createSignal, Show, onMount} from 'solid-js'
 import StreamingIcon from './streaming-icon.jsx'
 import SpotifyIcon from './spotify-icon.jsx'
+import StreamingWaves from './streaming-waves.jsx'
 import {nanoid} from 'nanoid'
 
 function TextSlide(props) {
@@ -254,10 +255,10 @@ export default function SpotifyStatus() {
           filter: albumGoDown() ? 'blur(16px)' : 'blur(0px)'
         }}>
           <div class="flex justify-center items-center">
-            <div class="w-4 h-4 text-[#1CD155] mr-1">
+            <div class="w-4 h-4 text-[#1CD155]">
               <SpotifyIcon/>
             </div>
-            <StreamingIcon/>
+            {songData().preview_url ? <StreamingWaves url={songData().preview_url}/> : <span class="ml-1"><StreamingIcon/></span>}
           </div>
 
           {songData().songName && songData().artists &&
