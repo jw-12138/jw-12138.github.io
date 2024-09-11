@@ -45,7 +45,7 @@ export default function PSStatus(props) {
     // fetch data
     let response = await fetch(baseUrl)
     let data = await response.json()
-    setGameData(data)
+    setGameData(data[0])
     setIsLoading(false)
 
     // remove placeholder
@@ -62,8 +62,8 @@ export default function PSStatus(props) {
     <Show when={!isLoading()}>
       <div class="shadow rounded-[36px] w-[200px] aspect-square h-[200px] bg-gradient-to-b from-neutral-900 to-neutral-800 mx-auto overflow-hidden relative box-border border border-white dark:border-neutral-700" id="ps_status_scroll_area">
         <div class="text-xs absolute w-full bottom-0 left-0 z-[20] px-6 pt-2 pb-[1rem] bg-gradient-to-t from-black from-15% to-transparent" style={{
-          'mask-image': 'linear-gradient(to top, black 55%, rgba(0,0,0,.5))',
-          '-webkit-mask-image': 'linear-gradient(to top, black 55%, rgba(0,0,0,.5))',
+          'mask-image': 'linear-gradient(to top, black 75%, rgba(0,0,0,.5))',
+          '-webkit-mask-image': 'linear-gradient(to top, black 75%, rgba(0,0,0,.5))',
           'backdrop-filter': 'blur(2px)',
           '-webkit-backdrop-filter': 'blur(2px)'
         }}>
