@@ -89,8 +89,7 @@ export default function PSStatus(props) {
                 '-webkit-backdrop-filter': 'blur(2px)',
               }}>
                 <div class="bg-white w-[4px]" style={{
-                  height: activeProgress() * 100 + '%',
-                  display: activeIndex() === index ? 'block' : 'none'
+                  height: activeIndex() === index ? activeProgress() * 100 + '%' : '0%'
                 }}></div>
               </div>
             })
