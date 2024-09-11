@@ -2,7 +2,8 @@ import { createSignal, onMount } from 'solid-js'
 
 export default function StreamingWaves(props) {
   const { url } = props
-  const svgWidth = 32
+  const svgWidth = 24
+  const svgHeight = 12
 
   if (!url) {
     return <></>
@@ -13,14 +14,14 @@ export default function StreamingWaves(props) {
   const [allTimeData, setAllTimeData] = createSignal([])
 
   function makePath(data) {
-    let path = 'M0 8'
+    let path = 'M0 ' + (svgHeight / 2)
     const step = Math.ceil(data.length / svgWidth)
     for (let i = 0; i < svgWidth; i++) {
       let x = i
-      let y = 8 + data[i * step] * 8 // Scale the data to fit in our SVG
+      let y = (svgHeight / 2) + data[i * step] * (svgHeight / 2) // Scale the data to fit in our SVG
       path += ` L${x} ${y}`
     }
-    path += ` L${svgWidth} 8`
+    path += ` L${svgWidth} ${svgHeight / 2}`
     return path
   }
 
@@ -44,7 +45,7 @@ export default function StreamingWaves(props) {
 
       // Animate the waveform
       let currentIndex = 0
-      const samplesPerFrame = Math.floor(sampleRate / 60) // For 60 fps
+      const samplesPerFrame = sampleRate / 60
       setInterval(() => {
         const start = currentIndex
         const end = start + samplesPerFrame
@@ -58,11 +59,12 @@ export default function StreamingWaves(props) {
   })
 
   return (
-    <div class="h-[16px] overflow-hidden transition-[width,margin] duration-[1200ms]" style={{
+    <div class="overflow-hidden transition-[width,margin] duration-[1200ms]" style={{
+      height: `${svgHeight}px`,
       width: allTimeData().length ? `${svgWidth}px`: 0,
       'margin-left': allTimeData().length ? '.25rem' : 0,
     }}>
-      <svg viewBox={`0 0 ${svgWidth} 16`} style={{
+      <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} style={{
         width: svgWidth + 'px'
       }}>
         <path d={d()} stroke-width={.8} stroke={'currentColor'} stroke-opacity={.8} fill="none" stroke-linejoin="round" stroke-linecap={'round'}></path>
