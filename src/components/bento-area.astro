@@ -3,6 +3,8 @@ import SpotifyStatus from './spotify-status.astro'
 import Wakatime from './wakatime.astro'
 import PSStatus from './ps-status.astro'
 import Clock from './clock.astro'
+
+import BentoItem from './bento-item.astro'
 ---
 
 <noscript>
@@ -14,20 +16,21 @@ import Clock from './clock.astro'
 </noscript>
 
 <div id="bento_area">
-  <div class="md:flex justify-center flex-wrap md:mb-8 mb-0">
-    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-[calc(400px+2rem)] mx-auto">
+    <BentoItem>
       <SpotifyStatus/>
-    </div>
-    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+    </BentoItem>
+
+    <BentoItem>
       <Wakatime/>
-    </div>
-  </div>
-  <div class="md:flex justify-center flex-wrap">
-    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+    </BentoItem>
+
+    <BentoItem>
       <Clock/>
-    </div>
-    <div class="w-[200px] aspect-square shrink-0 md:mb-0 mb-8 md:mx-4 mx-auto">
+    </BentoItem>
+
+    <BentoItem>
       <PSStatus/>
-    </div>
+    </BentoItem>
   </div>
 </div>
