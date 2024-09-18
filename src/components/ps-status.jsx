@@ -113,7 +113,7 @@ export default function PSStatus(props) {
               <div class="opacity-60 mb-1 text-white text-[10px]">
                 Recently Playing:
               </div>
-              <div class="whitespace-nowrap text-ellipsis opacity-90 text-white">
+              <div class="whitespace-nowrap text-ellipsis opacity-90 text-white overflow-hidden">
                 {el.title}
               </div>
             </div>
