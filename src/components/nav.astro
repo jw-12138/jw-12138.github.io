@@ -28,7 +28,11 @@ const navs = [
           return (
             <>
               <div>
-                <a href={el.href} class={highlight === el.highlight ? 'opacity-100' : 'opacity-70'}>{el.name}</a>
+                <a href={el.href} style={{
+                  opacity: highlight === el.highlight ? 1 : 0.7,
+                  textDecoration: highlight === el.highlight ? 'underline' : 'none',
+                  textUnderlineOffset: '4px'
+                }}>{el.name}</a>
               </div>
 
               {

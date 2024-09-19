@@ -61,7 +61,7 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
 <main>
   <div id="app">
     <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
-    <div class="text-xs pt-4">
+    <div class="text-xs pt-4 flex items-center">
       <span class="opacity-80">{postDate}</span>
       {
         () => {

@@ -58,7 +58,10 @@ const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
                 return (
                   <li class="group">
                     <a href={`${postUrl}`} class="block mb-4">
-                      <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4 mt-[-5px]">
+                      <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4 mt-[-5px]" style={{
+                        textDecoration: post.data.deprecated ? 'line-through' : 'none',
+                        opacity: post.data.deprecated ? 0.8 : 1
+                      }}>
                         {post.data.title}
                       </div>
                     </a>
