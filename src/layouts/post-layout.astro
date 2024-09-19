@@ -87,9 +87,9 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
       <slot/>
     </div>
 
-    <div class="flex justify-center py-6">
-      <AnimatedLogo/>
-    </div>
+    <!--<div class="flex justify-center py-6">-->
+    <!--  <AnimatedLogo/>-->
+    <!--</div>-->
     <Comments issue={issue} />
     <FakeComments githubIssueId={issue}/>
   </div>
