@@ -7,7 +7,7 @@ export default {
         'phone': '400px'
       },
       fontFamily: {
-        'title': ["Noto Serif SC", "serif"]
+        'title': ["DM Serif Display", "Noto Serif SC", "serif"]
       }
     }
   },
