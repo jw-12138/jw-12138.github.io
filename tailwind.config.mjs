@@ -5,6 +5,9 @@ export default {
     extend: {
       screens: {
         'phone': '400px'
+      },
+      fontFamily: {
+        'title': ["Noto Serif SC", "serif"]
       }
     }
   },

@@ -97,7 +97,7 @@ function TOC(props) {
   })
 
   return (<>
-      <div class="lg:block hidden mt-[4rem] relative left-[-.5rem]">
+      <div class="lg:block hidden relative left-[-.5rem]">
         <button aria-label="返回顶部"
                 class="px-2 py-1 rounded-xl hover:bg-black/15 dark:hover:bg-white/15 transition-all w-8 h-8 flex justify-center items-center mb-1 cursor-pointer opacity-70 hover:opacity-100"
                 onClick={goBackToTop}
@@ -132,7 +132,7 @@ function TOC(props) {
               })}>
                 {(_, i) => {
                   return <span
-                    class="w-[0rem] h-[2.5rem] flex-shrink-0 block dark:border-l-neutral-600 border-l-neutral-400 transition-all pointer-events-none"
+                    class="w-[0rem] h-[2.5rem] flex-shrink-0 block dark:border-l-white/20 border-l-black/20 transition-all pointer-events-none"
                     style={{
                       'animation-delay': `${i() * 75}ms`,
                       'border-left-width': '1px',
@@ -150,7 +150,7 @@ function TOC(props) {
               </span>
             </span>
 
-              <span class="block absolute right-[-.5rem] w-[2px] dark:bg-white bg-neutral-900 top-[5%] rounded" style={
+              <span class="block absolute left-[-.5rem] w-[2px] dark:bg-white bg-neutral-900 top-[5%] rounded" style={
                 {
                   height: slugPositionMap()[heading.slug]?.progress * 90 + '%',
                   opacity: slugPositionMap()[heading.slug]?.isInView ? 1 : 0.5

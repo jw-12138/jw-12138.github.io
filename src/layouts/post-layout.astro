@@ -11,6 +11,7 @@ import FakeToc from '../components/fake-toc.astro'
 import '../style/main.scss'
 import dayjs from 'dayjs'
 import AnimatedLogo from '../components/animated-logo.astro'
+import Nav from "../components/nav.astro"
 
 let {title, tags, style, deprecated, issue, wordsCount} = Astro.props.frontmatter
 
@@ -55,13 +56,20 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
     href="#app">跳转至正文区域</a
   >
   <Header/>
-  <FakeToc headings={Astro.props.headings}/>
-  <Toc headings={Astro.props.headings} client:only="solid-js"/>
+  <Nav/>
   <Footer aside={true}/>
 </aside>
+<div data-name="fake-main" class="lg:w-[calc(100vw-4rem)] lg:ml-[4rem] lg:px-0 px-4 fixed top-0 w-full z-[100] h-0">
+  <div data-name="fake-app" class="w-full max-w-[42rem] px-0 mx-auto pb-0">
+    <div class="fixed top-[3rem] translate-x-[692px] hidden xl:block z-[100] w-[180px]">
+      <FakeToc headings={Astro.props.headings}/>
+      <Toc headings={Astro.props.headings} client:only="solid-js"/>
+    </div>
+  </div>
+</div>
 <main>
-  <div id="app">
-    <h1 class="text-3xl font-black pt-[3rem]">{title}</h1>
+  <div id="app" class="relative">
+    <h1 class="text-4xl font-black pt-[3rem] font-title">{title}</h1>
     <div class="text-xs pt-4 flex items-center">
       <span class="opacity-80">{postDate}</span>
       {
@@ -90,7 +98,7 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
     <!--<div class="flex justify-center py-6">-->
     <!--  <AnimatedLogo/>-->
     <!--</div>-->
-    <Comments issue={issue} />
+    <Comments issue={issue}/>
     <FakeComments githubIssueId={issue}/>
   </div>
   <Footer/>

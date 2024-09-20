@@ -4,7 +4,7 @@ body {
   Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   tab-size: 2;
   overflow-x: hidden;
-  @apply bg-[#F9F9F9] text-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 min-w-[320px];
+  @apply bg-[#fafaf8] text-[#141413] dark:bg-[#141413] dark:text-[#fafaf8] min-w-[320px];
 }
 
 :root {
@@ -17,7 +17,7 @@ aside {
 }
 
 main {
-  @apply lg:w-[calc(100vw-14rem)] relative lg:ml-[14rem] w-full lg:px-0 px-4;
+  @apply lg:w-[calc(100vw-14rem)] relative lg:ml-[14rem] w-full lg:px-0 px-4 xl:translate-x-[-7rem] translate-x-0;
 }
 
 #app {
@@ -145,15 +145,15 @@ video {
   }
 
   a {
-    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black dark:text-white text-black rounded-[2px];
+    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black dark:text-red-400 text-red-500 rounded-[2px];
 
     &[target='_blank'] {
-      @apply after:content-['↗'];
+      @apply after:content-['↗'] after:text-xs;
     }
   }
 
   h1 {
-    @apply text-3xl leading-9 font-extrabold mb-6 relative;
+    @apply text-3xl leading-9 font-extrabold mb-6 relative font-title;
 
     &::before {
       content: 'h1';
@@ -163,7 +163,7 @@ video {
   }
 
   h2 {
-    @apply text-2xl leading-9 font-semibold mb-4 mt-[3rem] relative;
+    @apply text-2xl leading-9 font-extrabold mb-4 mt-[3rem] relative font-title;
 
     &::before {
       content: 'h2';
@@ -173,7 +173,7 @@ video {
   }
 
   h3 {
-    @apply text-xl leading-8 font-semibold mb-2 mt-4 relative;
+    @apply text-xl leading-8 font-extrabold mb-2 mt-4 relative font-title;
 
     &::before {
       content: 'h3';
@@ -183,7 +183,7 @@ video {
   }
 
   h4 {
-    @apply text-lg leading-7 font-semibold mb-1 mt-2 relative;
+    @apply text-lg leading-7 font-semibold mb-1 mt-2 relative font-title;
 
     &::before {
       content: 'h4';
@@ -193,11 +193,11 @@ video {
   }
 
   h5 {
-    @apply text-base leading-6 font-semibold mb-6;
+    @apply text-base leading-6 font-semibold mb-6 font-title;
   }
 
   h6 {
-    @apply text-base leading-6 font-semibold mb-6;
+    @apply text-base leading-6 font-semibold mb-6 font-title;
   }
 
   code {
