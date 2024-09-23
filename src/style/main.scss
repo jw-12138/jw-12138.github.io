@@ -110,6 +110,10 @@ video {
     li {
       @apply mb-1 leading-7 relative;
 
+      ul, ol {
+        @apply pb-0;
+      }
+
       p {
         @apply mb-2;
       }

@@ -20,6 +20,10 @@ import '../style/main.scss'
   <GlobalStyle/>
   <Meta/>
   <Og title={title} path={path}/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 <a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white" href="#app">跳转至正文区域</a>
@@ -39,7 +43,7 @@ import '../style/main.scss'
       </noscript>
       <slot/>
     </div>
-    <Comments issue={issue} />
+    <Comments issue={issue}/>
   </div>
   <Footer/>
 </main>
