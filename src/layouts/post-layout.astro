@@ -37,6 +37,10 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
   <GlobalStyle/>
   <Meta tags={tags}/>
   <Og title={title} path={path}/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 <input type="hidden" value={style_str} id="customStyle"/>
