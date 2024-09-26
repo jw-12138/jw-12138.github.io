@@ -10,7 +10,6 @@ import Toc from '../components/toc.jsx'
 import FakeToc from '../components/fake-toc.astro'
 import '../style/main.scss'
 import dayjs from 'dayjs'
-import AnimatedLogo from '../components/animated-logo.astro'
 import Nav from "../components/nav.astro"
 
 let {title, tags, style, deprecated, issue, wordsCount} = Astro.props.frontmatter
@@ -99,9 +98,8 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
       <slot/>
     </div>
 
-    <!--<div class="flex justify-center py-6">-->
-    <!--  <AnimatedLogo/>-->
-    <!--</div>-->
+    <div class="flex justify-center py-6">
+    </div>
     <Comments issue={issue}/>
     <FakeComments githubIssueId={issue}/>
   </div>
