@@ -157,7 +157,7 @@ video {
   }
 
   h1 {
-    @apply text-3xl leading-9 font-extrabold mb-6 relative font-title;
+    @apply text-3xl leading-9 font-extrabold mb-6 relative;
 
     &::before {
       content: 'h1';
@@ -167,7 +167,7 @@ video {
   }
 
   h2 {
-    @apply text-2xl leading-9 font-extrabold mb-4 mt-[3rem] relative font-title;
+    @apply text-2xl leading-9 font-extrabold mb-4 mt-[3rem] relative;
 
     &::before {
       content: 'h2';
@@ -177,7 +177,7 @@ video {
   }
 
   h3 {
-    @apply text-xl leading-8 font-extrabold mb-2 mt-4 relative font-title;
+    @apply text-xl leading-8 font-extrabold mb-2 mt-4 relative;
 
     &::before {
       content: 'h3';
@@ -187,7 +187,7 @@ video {
   }
 
   h4 {
-    @apply text-lg leading-7 font-semibold mb-1 mt-2 relative font-title;
+    @apply text-lg leading-7 font-semibold mb-1 mt-2 relative;
 
     &::before {
       content: 'h4';
@@ -197,11 +197,11 @@ video {
   }
 
   h5 {
-    @apply text-base leading-6 font-semibold mb-6 font-title;
+    @apply text-base leading-6 font-semibold mb-6;
   }
 
   h6 {
-    @apply text-base leading-6 font-semibold mb-6 font-title;
+    @apply text-base leading-6 font-semibold mb-6;
   }
 
   code {
