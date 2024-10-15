@@ -1,5 +1,5 @@
 ---
-import IndexLayout from '../layouts/index-layout.astro'
+import BaseLayout from '../layouts/base-layout.astro'
 import {getCollection} from 'astro:content'
 
 const allPosts = await getCollection('posts')
@@ -31,9 +31,9 @@ const postsByYears = allPosts.reduce((acc, post) => {
 const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
 ---
 
-<IndexLayout pageName="index">
+<BaseLayout pageName="posts">
   <div>
-    <div class="py-[3rem] italic">_Posts</div>
+    <div class="py-[3rem]"></div>
     {years.map(y => {
       return (
         <>
@@ -58,7 +58,7 @@ const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
                 return (
                   <li class="group">
                     <a href={`${postUrl}`} class="block mb-4">
-                      <div class="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4 mt-[-5px]" style={{
+                      <div class="text-base font-medium whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline underline-offset-4 mt-[-5px]" style={{
                         textDecoration: post.data.deprecated ? 'line-through' : 'none',
                         opacity: post.data.deprecated ? 0.8 : 1
                       }}>
@@ -73,4 +73,4 @@ const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
         </>)
     })}
   </div>
-</IndexLayout>
+</BaseLayout>

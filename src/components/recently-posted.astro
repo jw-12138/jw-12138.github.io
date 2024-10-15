@@ -1,0 +1,48 @@
+---
+import {getCollection} from 'astro:content'
+
+const allPosts = await getCollection('posts')
+
+const extractDateFromSlug = (slug) => {
+  let date_array = slug.split('-')
+  let year = date_array[0]
+  let month = date_array[1]
+  let day = date_array[2]
+  return `${year}-${month}-${day}`
+}
+
+allPosts.sort((a, b) => {
+  let dateA = new Date(extractDateFromSlug(a.slug)).getTime()
+  let dateB = new Date(extractDateFromSlug(b.slug)).getTime()
+  return dateB - dateA
+})
+---
+
+<div>
+  <ul>
+    {
+      allPosts.slice(0, 5).map((post) => {
+        let date = extractDateFromSlug(post.slug)
+        let dateTimestamp = new Date(date).getTime()
+
+        let datePath = date.split('-').join('/')
+        let postPath = post.slug.slice(11)
+
+        let postUrl = `/${datePath}/${postPath}`
+
+        if (dateTimestamp > new Date('2024-05-30').getTime()) {
+          postUrl = `/${postPath}`
+        }
+
+        return (
+          <li>
+            <a href={`${postUrl}`} class="text-base inline">
+              {post.data.title}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+
+</div>

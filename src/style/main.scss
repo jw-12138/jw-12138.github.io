@@ -133,7 +133,7 @@ video {
   }
 
   p {
-    @apply text-base leading-8 mb-6;
+    @apply text-base leading-[1.7] mb-6;
 
     img {
       @apply sm:max-w-full mb-6 block sm:mx-auto ml-[-1rem] w-auto max-w-[calc(100%+2rem)] rounded-none;
@@ -157,7 +157,7 @@ video {
   }
 
   h1 {
-    @apply text-3xl leading-9 font-extrabold mb-6 relative;
+    @apply text-[20px] leading-9 font-medium mb-6 relative;
 
     &::before {
       content: 'h1';
@@ -167,7 +167,7 @@ video {
   }
 
   h2 {
-    @apply text-2xl leading-9 font-extrabold mb-4 mt-[3rem] relative;
+    @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative;
 
     &::before {
       content: 'h2';
@@ -177,7 +177,7 @@ video {
   }
 
   h3 {
-    @apply text-xl leading-8 font-extrabold mb-2 mt-4 relative;
+    @apply text-[18px] leading-8 font-medium mb-2 mt-4 relative;
 
     &::before {
       content: 'h3';
@@ -187,7 +187,7 @@ video {
   }
 
   h4 {
-    @apply text-lg leading-7 font-semibold mb-1 mt-2 relative;
+    @apply text-[16px] leading-7 font-medium mb-1 mt-2 relative;
 
     &::before {
       content: 'h4';
@@ -197,11 +197,11 @@ video {
   }
 
   h5 {
-    @apply text-base leading-6 font-semibold mb-6;
+    @apply text-[14px] leading-6 font-medium mb-6;
   }
 
   h6 {
-    @apply text-base leading-6 font-semibold mb-6;
+    @apply text-[14px] leading-6 font-medium mb-6;
   }
 
   code {
