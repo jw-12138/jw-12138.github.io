@@ -1,0 +1,51 @@
+.page-content {
+  @apply pb-8 hyphens-auto;
+
+  hr {
+    @apply my-8 w-[10rem] mx-auto dark:bg-neutral-700 bg-neutral-400 border-none h-[1px];
+  }
+
+  p {
+    @apply text-base leading-[1.7] mb-6;
+  }
+
+  code {
+    &:before {
+      content: '`';
+      display: inline;
+    }
+
+    &:after {
+      content: '`';
+      display: inline;
+    }
+
+    @apply bg-transparent mx-0 font-extrabold text-black dark:text-white text-sm break-all sm:break-normal sm:whitespace-pre-wrap
+  }
+
+  a {
+    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black dark:text-red-400 text-red-500 rounded-[2px];
+
+    &[target='_blank'] {
+      @apply after:content-['↗'] after:text-xs;
+    }
+  }
+
+  ul{
+    @apply list-disc list-outside pl-6 pb-6;
+
+    li {
+      @apply mb-1 leading-7 relative;
+    }
+  }
+
+  h2 {
+    @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative;
+
+    &::before {
+      content: 'h2';
+      font-size: 50%;
+      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
+    }
+  }
+}

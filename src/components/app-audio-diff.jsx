@@ -190,7 +190,7 @@ export default function appAudioDiff(props) {
     })
   })
 
-  return <div class="dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 bg-gradient-to-bl from-white to-neutral-100 overflow-hidden rounded-2xl shadow-2xl mb-8 px-4 py-8 dark:bg-neutral-900">
+  return <div class="dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 bg-gradient-to-bl from-white to-neutral-100 overflow-hidden rounded-2xl shadow mb-8 px-4 py-8 dark:bg-neutral-900 max-w-[300px]">
     {
       (loadStatus_1() === 0 || loadStatus_2() === 0) && <div class="mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 animate-spin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

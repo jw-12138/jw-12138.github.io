@@ -58,17 +58,17 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
   <Nav/>
   <Footer aside={true}/>
 </aside>
-<!--<div data-name="fake-main" class="lg:w-[calc(100vw-4rem)] lg:ml-[4rem] lg:px-0 px-4 fixed top-0 w-full z-[100] h-0">-->
-<!--  <div data-name="fake-app" class="w-full max-w-[42rem] px-0 mx-auto pb-0">-->
-<!--    <div class="fixed top-[3rem] translate-x-[692px] hidden xl:block z-[100] w-[180px]">-->
-<!--      <FakeToc headings={Astro.props.headings}/>-->
-<!--      <Toc headings={Astro.props.headings} client:only="solid-js"/>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div data-name="fake-main" class="lg:w-[calc(100vw-4rem)] lg:ml-[4rem] lg:px-0 px-4 fixed top-0 w-full z-[100] h-0">
+  <div data-name="fake-app" class="w-full max-w-[42rem] px-0 mx-auto pb-0">
+    <div class="fixed top-[3rem] translate-x-[692px] hidden xl:block z-[100] w-[180px]">
+      <FakeToc headings={Astro.props.headings}/>
+      <Toc headings={Astro.props.headings} client:only="solid-js"/>
+    </div>
+  </div>
+</div>
 <main>
   <div id="app" class="relative">
-    <h1 class="text-[40px] leading-[46px] font-medium pt-[3rem] tracking-tight">{title}</h1>
+    <h1 class="text-3xl font-medium pt-[6rem] tracking-tight">{title}</h1>
     <div class="text-xs pt-4 flex items-center">
       <span class="opacity-80">{postDate}</span>
       {
@@ -96,8 +96,11 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
 
     <div class="flex justify-center py-6">
     </div>
-    <Comments issue={issue}/>
-    <FakeComments githubIssueId={issue}/>
+
+    {issue &&
+      <Comments issue={issue}/>
+      <FakeComments githubIssueId={issue}/>
+    }
   </div>
   <Footer/>
 </main>

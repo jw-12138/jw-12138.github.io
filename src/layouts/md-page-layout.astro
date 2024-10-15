@@ -39,7 +39,7 @@ import '../style/main.scss'
       </noscript>
       <slot/>
     </div>
-    <Comments issue={issue}/>
+    {issue && <Comments issue={issue}/>}
   </div>
   <Footer/>
 </main>

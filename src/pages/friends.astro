@@ -1,5 +1,5 @@
 ---
-import PageLayout from '../layouts/page-layout.astro'
+import BaseLayout from '../layouts/base-layout.astro'
 import Header from '../components/header.astro'
 import Nav from '../components/nav.astro'
 import {Image} from 'astro:assets'
@@ -7,41 +7,37 @@ import {Image} from 'astro:assets'
 import friends from '../data/friends'
 ---
 
-<PageLayout title="一个球的博客">
-  <div slot="header">
-    <Header/>
-    <Nav highlight="friends"/>
-  </div>
+<BaseLayout highlight="friends">
+  <div class="py-[3rem]">
 
-  <div slot="content">
-    <div class="py-8 pt-0 mt-[-.5rem]">
-      {
-        friends.map((friend) => {
-          return (
-            <a
-              target="_blank"
-              rel="friend colleague noopener"
-              href={friend.url}
-              class="item flex items-center content-center mb-4 py-4 transition-all group rounded opacity-90 hover:opacity-100 group"
-            >
-              <div class="flex flex-wrap items-center">
-                <div class="w-full sm:w-8 sm:mr-4 sm:mb-0 mb-2 flex items-center justify-start h-8">
-                  <Image
-                    loading="eager"
-                    class="w-8 h-8 mx-0 m-0 rounded"
-                    src={import(`../../public/friends_logo/${friend.name}.png`)}
-                    alt={friend.name}
-                  />
-                </div>
-                <div class="flex items-center flex-wrap">
-                  <div class="text-[1rem] group-hover:font-black w-full">{friend.name}</div>
-                  <div class="text-xs mt-2 opacity-80 w-full">{friend.slogan}</div>
-                </div>
-              </div>
-            </a>
-          )
-        })
-      }
-    </div>
   </div>
-</PageLayout>
+  <div class="py-8 pt-0 mt-[-.5rem]">
+    {
+      friends.map((friend) => {
+        return (
+          <a
+            target="_blank"
+            rel="friend colleague noopener"
+            href={friend.url}
+            class="item flex items-center content-center mb-4 py-4 transition-all group rounded opacity-90 hover:opacity-100 group"
+          >
+            <div class="flex flex-wrap items-center">
+              <div class="w-full sm:w-8 sm:mr-4 sm:mb-0 mb-2 flex items-center justify-start h-8">
+                <Image
+                  loading="eager"
+                  class="w-8 h-8 mx-0 m-0 rounded"
+                  src={import(`../../public/friends_logo/${friend.name}.png`)}
+                  alt={friend.name}
+                />
+              </div>
+              <div class="flex items-center flex-wrap">
+                <div class="text-[1rem] group-hover:font-black w-full">{friend.name}</div>
+                <div class="text-xs mt-2 opacity-80 w-full">{friend.slogan}</div>
+              </div>
+            </div>
+          </a>
+        )
+      })
+    }
+  </div>
+</BaseLayout>

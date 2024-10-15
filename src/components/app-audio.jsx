@@ -3,7 +3,7 @@ import {sec2time} from '../utils/audio.js'
 import {createSignal, onMount, createEffect, untrack} from 'solid-js'
 import './app-audio/style.scss'
 
-const appAudio = function (props) {
+export default function AppAudio (props) {
   let [loadStatus, setLoadStatus] = createSignal(0)
   let [duration, setDuration] = createSignal(0)
   let [currentTime, setCurrentTime] = createSignal(0)
@@ -106,7 +106,7 @@ const appAudio = function (props) {
 
   return <>
     <div
-      class="dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 bg-gradient-to-bl from-white to-neutral-100 overflow-hidden rounded-2xl shadow-2xl mb-8 px-4 py-8 dark:bg-neutral-900">
+      class="dark:bg-gradient-to-br dark:from-neutral-800 dark:to-neutral-900 bg-gradient-to-bl from-white to-neutral-100 overflow-hidden rounded-2xl shadow mb-8 px-4 py-8 dark:bg-neutral-900 max-w-[300px]">
       {
         loadStatus() === 0 && <div class="mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2 animate-spin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -205,5 +205,3 @@ const appAudio = function (props) {
     </div>
   </>
 }
-
-export default appAudio

@@ -24,6 +24,7 @@ import Nav from "../components/nav.astro"
 <a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white" href="#app">跳转至正文区域</a>
 <aside>
   <slot name="header"/>
+  <Nav/>
   <Footer aside={true}/>
 </aside>
 <main>
@@ -35,7 +36,7 @@ import Nav from "../components/nav.astro"
       </p>
     </noscript>
     <slot name="content"/>
-    <Comments issue={issue}/>
+    {issue && <Comments issue={issue}/>}
   </div>
   <Footer></Footer>
 </main>

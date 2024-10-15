@@ -6,7 +6,15 @@ import Nav from "../components/nav.astro"
 import Meta from "../components/meta.astro"
 import Og from "../components/og.astro"
 
-let {pageName} = Astro.props
+let {highlight} = Astro.props
+
+if (!highlight) {
+  try {
+    highlight = Astro.props.frontmatter.highlight
+  } catch (e) {
+    highlight = ''
+  }
+}
 ---
 
 <html lang="en">
@@ -45,11 +53,10 @@ let {pageName} = Astro.props
   </style>
 </head>
 <body>
-<div id="linkCover"></div>
 <a class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black text-white px-4 py-2 dark:bg-white dark:text-black" href="#app">跳转至正文区域</a>
 <aside>
   <Header/>
-  <Nav highlight={pageName}/>
+  <Nav highlight={highlight}/>
   <Footer aside={true}/>
 </aside>
 <main>
