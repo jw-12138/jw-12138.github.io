@@ -24,10 +24,10 @@
   }
 
   a {
-    @apply underline underline-offset-4 hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black dark:text-red-400 text-red-500 rounded-[2px];
+    @apply underline underline-offset-4 hover:decoration-blue-500 hover:decoration-wavy decoration-neutral-300 dark:decoration-neutral-600 dark:text-white text-black rounded-[2px];
 
     &[target='_blank'] {
-      @apply after:content-['↗'] after:text-xs;
+      @apply after:content-['_↗'] after:text-xs;
     }
   }
 

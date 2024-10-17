@@ -132,10 +132,35 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
     })
   }
 
+  const handleCodeScroll = function () {
+    document.querySelectorAll('.astro-code').forEach(el => {
+      let _el = el as HTMLElement
+      if (_el.scrollWidth > _el.clientWidth) {
+        let mask = document.createElement('div')
+        mask.className = 'astro-code-mask'
+        _el.appendChild(mask)
+        _el.addEventListener('scroll', e => {
+          const scrollLeft = _el.scrollLeft
+          mask.style.right = `-${scrollLeft}px`
+
+          if (scrollLeft >= _el.scrollWidth - _el.clientWidth - 1) { // -1 for artifact
+            mask.style.opacity = '0'
+          } else {
+            mask.style.opacity = '1'
+          }
+        })
+      }
+    })
+  }
+
   window.addEventListener('load', function () {
     handleVideoAutoPlay()
     handleImgClick()
     window.addEventListener('scroll', handleVideoAutoPlay)
+  })
+
+  document.addEventListener("DOMContentLoaded", (event) => {
+    handleCodeScroll()
   })
 </script>
 </body>
