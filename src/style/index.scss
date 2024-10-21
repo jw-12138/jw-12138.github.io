@@ -27,7 +27,7 @@
     @apply underline underline-offset-4 hover:decoration-blue-500 hover:decoration-wavy decoration-neutral-300 dark:decoration-neutral-600 dark:text-white text-black rounded-[2px];
 
     &[target='_blank'] {
-      @apply after:content-['_↗'] after:text-xs;
+      @apply after:content-['_↗'] after:text-xs after:text-neutral-500 dark:after:text-neutral-400;
     }
   }
 

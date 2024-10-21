@@ -23,10 +23,10 @@
     "tailwindcss": "^3.4.13"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.3.1",
-    "@astrojs/rss": "^4.0.7",
-    "@astrojs/tailwind": "^5.1.1",
-    "astro": "^4.15.9",
+    "@astrojs/mdx": "3.1.8",
+    "@astrojs/rss": "4.0.9",
+    "@astrojs/tailwind": "5.1.2",
+    "astro": "4.16.6",
     "commander": "^11.1.0",
     "dotenv": "^16.4.5",
     "markdown-it": "^14.1.0",

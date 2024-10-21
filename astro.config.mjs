@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), solidJs()],
   site: 'https://jw1.dev',
   markdown: {
-    gfm: false,
+    gfm: true,
     remarkPlugins: [remarkPluginImage, remarkPluginText, remarkPluginLink],
     shikiConfig: {
       themes: {

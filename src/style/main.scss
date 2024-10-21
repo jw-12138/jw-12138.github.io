@@ -7,11 +7,6 @@ body {
   @apply bg-[#fafaf8] text-[#141413] dark:bg-[#141413] dark:text-[#fafaf8] min-w-[320px];
 }
 
-:root {
-  --spring-easing: linear(0, 0.0029 0.55%, 0.0243 1.65%, 0.1153, 0.2469 6.04%, 0.6492 12.09%, 0.8518 15.93%, 0.9178 17.58%, 0.9862, 1.034, 1.0639 24.18%, 1.0732 25.27%, 1.0812, 1.0835, 1.0814 30.22%, 1.0711 32.97%, 1.0319 40.11%, 1.0143 43.95%, 1.001, 0.9946 52.75%, 0.9932 58.79%, 1.0002 79.12%, 1.0001 100%);
-  --spring-duration: 0.6033s;
-}
-
 aside {
   @apply lg:w-[14rem] w-full lg:fixed lg:top-0 lg:left-0 lg:h-[100vh] md:px-6 px-4 overflow-auto lg:pb-[2rem] pb-0;
 }
@@ -136,6 +131,10 @@ video {
     @apply list-decimal;
   }
 
+  img {
+    @apply sm:max-w-full mb-6 block sm:mx-auto mx-auto sm:w-auto max-w-[calc(100%+2rem)] translate-x-[-1rem] sm:translate-x-0 w-[calc(100%+2rem)] rounded-none;
+  }
+
   p {
     @apply text-base leading-[1.7] mb-6;
 
@@ -162,42 +161,18 @@ video {
 
   h1 {
     @apply text-[20px] leading-9 font-medium mb-6 relative;
-
-    &::before {
-      content: 'h1';
-      font-size: 50%;
-      @apply opacity-60 inline-block;
-    }
   }
 
   h2 {
     @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative;
-
-    &::before {
-      content: 'h2';
-      font-size: 50%;
-      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
-    }
   }
 
   h3 {
     @apply text-[18px] leading-8 font-medium mb-2 mt-4 relative;
-
-    &::before {
-      content: 'h3';
-      font-size: 50%;
-      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
-    }
   }
 
   h4 {
     @apply text-[16px] leading-7 font-medium mb-1 mt-2 relative;
-
-    &::before {
-      content: 'h4';
-      font-size: 50%;
-      @apply opacity-60 inline-block mr-2 md:absolute md:left-[-1.5rem] left-0 bottom-0;
-    }
   }
 
   h5 {

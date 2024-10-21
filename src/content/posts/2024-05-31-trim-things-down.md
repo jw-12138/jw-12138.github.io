@@ -43,10 +43,10 @@ And that’s it, I don’t need tags to tell people what I write about, I don’
 - **Vue**: changed to SolidJs, 27kb trimmed.
 - **Open Graph for each post**: again, doesn’t matter and unnecessarily increase maintenance efforts, left only one OG for the whole blog.
 
-## Things I couldn’t get rid of, for now
+## ~~Things I couldn’t get rid of, for now~~
 
-- **Friends page**: guess friends do matter, we have this little tradition in Chinese bloggers circle called “Link Exchange”, works like a traffic attraction mechanism for blogs.
-- **Comments**: I kinda liked to get connected with people, and since the comment section is made with GitHub Issues, I barely get spams, so yeah, this is a keep.
+- **Friends page**: guess friends do matter, ~~we have this little tradition in Chinese bloggers circle called “Link Exchange”, works like a traffic attraction mechanism for blogs.~~
+- **Comments**: ~~I kinda liked to get connected with people, and since the comment section is made with GitHub Issues, I barely get spams, so yeah, this is a keep.~~
 
 ## And dear English bloggers, I envy you
 
