@@ -117,7 +117,7 @@ export default function AppAudio (props) {
       }
 
       {
-        props.label && <div class="text-base italic mb-4 font-black flex items-center">
+        props.label && <div class="text-sm italic mb-4 font-black flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones w-5 h-5 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 13m0 2a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2z"/>
@@ -130,10 +130,10 @@ export default function AppAudio (props) {
 
       <div>
         <div class="flex justify-between items-center">
-          <div class="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
+          <div class="text-xs text-neutral-500 dark:text-neutral-300 font-mono">
             {sec2time(currentTime() / inputRangeScale)}
           </div>
-          <div class="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
+          <div class="text-xs text-neutral-500 dark:text-neutral-300 font-mono">
             {sec2time(duration() / inputRangeScale)}
           </div>
         </div>

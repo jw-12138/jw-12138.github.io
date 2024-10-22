@@ -200,8 +200,8 @@ export default function appAudioDiff(props) {
       </div>
     }
 
-    <div class="text-base italic mb-4 font-black items-center flex">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones w-5 h-5 mr-1"
+    <div class="text-sm italic mb-4 items-center flex space-x-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones w-5 h-5"
            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
            stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -214,10 +214,10 @@ export default function appAudioDiff(props) {
 
     <div>
       <div class="flex justify-between items-center">
-        <div class="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
+        <div class="text-xs text-neutral-500 dark:text-neutral-300 font-mono">
           {sec2time(currentTime() / inputRangeScale)}
         </div>
-        <div class="text-sm text-neutral-500 dark:text-neutral-300 font-mono">
+        <div class="text-xs text-neutral-500 dark:text-neutral-300 font-mono">
           {sec2time(duration() / inputRangeScale)}
         </div>
       </div>
