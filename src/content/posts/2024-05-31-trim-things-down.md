@@ -3,6 +3,7 @@ layout: ../../layouts/post-layout.astro
 title: Trim things down
 issue: 107
 date: 2024-05-31T06:21:41.629Z
+isEn: true
 ---
 
 It's been around 5 months since the last time I changed my blog engine, and I kept adding functions, features, and configs to it, and it's making the blog worse.
