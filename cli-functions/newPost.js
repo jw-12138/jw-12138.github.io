@@ -54,6 +54,8 @@ issue:
 date: ${new Date().toISOString()}
 ---
 
+import {Image} from 'astro:assets'
+
 `
 
   console.log(`applying template to [${establishedFile}]...`)

@@ -32,7 +32,7 @@ const postsByYears = allPosts.reduce((acc, post) => {
 const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
 ---
 
-<BaseLayout highlight="posts">
+<BaseLayout highlight="posts" title="Posts">
   <div>
     <div class="py-[3rem]"></div>
     {years.map(y => {

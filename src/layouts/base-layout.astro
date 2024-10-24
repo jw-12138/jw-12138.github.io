@@ -17,16 +17,21 @@ if (!highlight) {
 }
 
 const {isEn} = Astro.props?.frontmatter || {isEn: false}
+const {title} = Astro.props as {
+  title: string | undefined
+}
 ---
 
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="generator" content={Astro.generator}/>
-  <title>一个球的博客</title>
+  <title set:html={
+    title ? (title + ' · Jacky Wong') : 'Jacky Wong'
+  }></title>
   <GlobalStyle/>
   <Meta/>
-  <Og title="一个球的博客" path="/"/>
+  <Og title="Jacky Wong" path="/"/>
   {
     isEn &&
     <style>

@@ -3,10 +3,13 @@ import {getCollection} from 'astro:content'
 export async function GET(context) {
   let allPosts = await getCollection('posts')
 
-  let atom = `<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>一个球的博客</title>
+  let atom = `<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
+  <title>Jacky Wong</title>
   <link href="https://jw1.dev/atom.xml" rel="self"/>
-  <link href="https://jw1.dev/"/>
+  <link href="https://jw1.dev/" rel="alternate"/>
   <updated>${new Date().toISOString()}</updated>
   <id>https://jw1.dev/</id>
   <author>
@@ -43,7 +46,7 @@ export async function GET(context) {
     return new Date(date_b).getTime() - new Date(date_a).getTime()
   })
 
-  allPosts.map((post, index) => {
+  allPosts.slice(0, 5).map((post, index) => {
     let {date, deprecated, draft} = post.data
     if (deprecated || draft) {
       return false
@@ -57,14 +60,6 @@ export async function GET(context) {
       let day = date_array[2]
 
       date = `${year}-${month}-${day}`
-    }
-
-    let tags = ''
-
-    if (post.data.tags && post.data.tags.length > 0) {
-      tags = post.data.tags.map((tag) => {
-        return `<category term="${tag}"/>`
-      }).join('')
     }
 
     let datePath = date.split('-').join('/')
@@ -82,7 +77,7 @@ export async function GET(context) {
     <id>${url}</id>
     <link href="${url}"/>
     <published>${new Date(date).toISOString()}</published>
-    ${tags}
+    <published_readable>${date}</published_readable>
 </entry>`
   })
 
