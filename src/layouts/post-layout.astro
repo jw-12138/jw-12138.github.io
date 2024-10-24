@@ -1,15 +1,13 @@
 ---
 import GlobalStyle from '../components/global-style.astro'
 import Header from '../components/header.astro'
-import Footer from '../components/footer.astro'
 import Meta from '../components/meta.astro'
 import Og from '../components/og.astro'
-import FakeToc from '../components/fake-toc.astro'
 import '../style/main.scss'
 import dayjs from 'dayjs'
 import Nav from "../components/nav.astro"
 
-let {title, tags, deprecated, isEn} = Astro.props.frontmatter
+let {title, tags, deprecated} = Astro.props.frontmatter
 
 if (!tags) {
   tags = []
@@ -31,22 +29,6 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
   <GlobalStyle/>
   <Meta tags={tags}/>
   <Og title={title} path={path}/>
-  {
-    isEn &&
-    <style>
-      h1 {
-        font-family: "DM Serif Text", serif
-      }
-
-      h2 {
-        font-family: "DM Serif Text", serif
-      }
-
-      h3 {
-        font-family: "DM Serif Text", serif
-      }
-    </style>
-  }
   <script>
     let handleVideoAutoPlay = function () {
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
@@ -120,7 +102,7 @@ let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
       </noscript>
       <slot/>
       <p class="pt-[3rem]">
-        <a href="/posts">🔙 Posts</a>
+        <a href="/posts">← Posts</a>
       </p>
     </div>
   </div>

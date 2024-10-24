@@ -2,7 +2,6 @@
 import GlobalStyle from "../components/global-style.astro"
 const {title, issue} = Astro.props
 let path = Astro.url.pathname
-import Footer from "../components/footer.astro"
 import Meta from "../components/meta.astro";
 import Og from "../components/og.astro";
 import '../style/main.scss'
@@ -24,7 +23,6 @@ import Nav from "../components/nav.astro"
 <aside>
   <slot name="header"/>
   <Nav/>
-  <Footer aside={true}/>
 </aside>
 <main>
   <div id="app">
@@ -36,7 +34,6 @@ import Nav from "../components/nav.astro"
     </noscript>
     <slot name="content"/>
   </div>
-  <Footer></Footer>
 </main>
 </body>
 </html>

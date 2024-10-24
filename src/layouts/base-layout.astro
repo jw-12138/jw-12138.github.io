@@ -1,6 +1,5 @@
 ---
 import GlobalStyle from "../components/global-style.astro"
-import Footer from "../components/footer.astro"
 import Header from "../components/header.astro"
 import Nav from "../components/nav.astro"
 import Meta from "../components/meta.astro"
@@ -57,13 +56,11 @@ const {title} = Astro.props as {
 <aside>
   <Header/>
   <Nav highlight={highlight}/>
-  <Footer aside={true}/>
 </aside>
 <main>
   <div id="app">
     <slot/>
   </div>
-  <Footer/>
 </main>
 </body>
 </html>
