@@ -114,7 +114,7 @@ video {
       }
 
       &::marker {
-        @apply absolute left-0 block;
+        @apply absolute left-0 block text-neutral-400 dark:text-neutral-500;
       }
     }
   }
