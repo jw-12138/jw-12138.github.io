@@ -14,8 +14,6 @@ if (!highlight) {
     highlight = ''
   }
 }
-
-const {isEn} = Astro.props?.frontmatter || {isEn: false}
 const {title} = Astro.props as {
   title: string | undefined
 }
@@ -31,22 +29,6 @@ const {title} = Astro.props as {
   <GlobalStyle/>
   <Meta/>
   <Og title="Jacky Wong" path="/"/>
-  {
-    isEn &&
-    <style>
-      h1 {
-        font-family: "DM Serif Text", serif
-      }
-
-      h2 {
-        font-family: "DM Serif Text", serif
-      }
-
-      h3 {
-        font-family: "DM Serif Text", serif
-      }
-    </style>
-  }
 </head>
 <body>
 <a
