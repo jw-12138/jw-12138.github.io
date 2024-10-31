@@ -152,27 +152,27 @@ video {
   }
 
   h1 {
-    @apply text-[20px] leading-9 font-medium mb-6 relative;
+    @apply text-[20px] leading-9 font-medium mb-6 relative font-title;
   }
 
   h2 {
-    @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative;
+    @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative font-title;
   }
 
   h3 {
-    @apply text-[18px] leading-8 font-medium mb-2 mt-4 relative;
+    @apply text-[18px] leading-8 font-medium mb-2 mt-4 relative font-title;
   }
 
   h4 {
-    @apply text-[16px] leading-7 font-medium mb-1 mt-2 relative;
+    @apply text-[16px] leading-7 font-medium mb-1 mt-2 relative font-title;
   }
 
   h5 {
-    @apply text-[14px] leading-6 font-medium mb-6;
+    @apply text-[14px] leading-6 font-medium mb-6 font-title;
   }
 
   h6 {
-    @apply text-[14px] leading-6 font-medium mb-6;
+    @apply text-[14px] leading-6 font-medium mb-6 font-title;
   }
 
   code {
@@ -190,7 +190,7 @@ video {
   }
 
   .astro-code {
-    @apply border border-neutral-200 dark:border-neutral-700 rounded-xl
+    @apply phone:w-full w-[calc(100%+3rem)] ml-[-1.5rem] phone:ml-0 px-6 phone:px-3
   }
 
   pre {
@@ -256,6 +256,10 @@ video {
   .shiki-themes span {
     color: var(--shiki-dark) !important;
     background-color: transparent !important;
+  }
+
+  .shiki-themes, .astro-code-themes {
+    background-color: rgba(255, 255, 255, .05) !important;
   }
 }
 
