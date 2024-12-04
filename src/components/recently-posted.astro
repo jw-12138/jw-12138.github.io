@@ -3,7 +3,7 @@ import {getCollection} from 'astro:content'
 
 const allPosts = await getCollection('posts')
 
-const extractDateFromSlug = (slug) => {
+const extractDateFromSlug = (slug: string) => {
   let date_array = slug.split('-')
   let year = date_array[0]
   let month = date_array[1]
@@ -12,8 +12,8 @@ const extractDateFromSlug = (slug) => {
 }
 
 allPosts.sort((a, b) => {
-  let dateA = new Date(extractDateFromSlug(a.slug)).getTime()
-  let dateB = new Date(extractDateFromSlug(b.slug)).getTime()
+  let dateA = new Date(extractDateFromSlug(a.id)).getTime()
+  let dateB = new Date(extractDateFromSlug(b.id)).getTime()
   return dateB - dateA
 })
 ---
@@ -22,11 +22,11 @@ allPosts.sort((a, b) => {
   <ul>
     {
       allPosts.slice(0, 5).map((post) => {
-        let date = extractDateFromSlug(post.slug)
+        let date = extractDateFromSlug(post.id)
         let dateTimestamp = new Date(date).getTime()
 
         let datePath = date.split('-').join('/')
-        let postPath = post.slug.slice(11)
+        let postPath = post.id.slice(11)
 
         let postUrl = `/${datePath}/${postPath}`
 

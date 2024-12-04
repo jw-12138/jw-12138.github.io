@@ -1,5 +1,4 @@
 ---  
-layout: ../../layouts/post-layout.astro  
 title: 再谈 Web 音频可视化  
 issue: 106
 date: 2024-05-29T07:57:27.687Z

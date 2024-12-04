@@ -1,6 +1,7 @@
 import {getCollection} from 'astro:content'
+import {buildDateStr} from "../utils"
 
-export async function GET(context) {
+export async function GET() {
   let allPosts = await getCollection('posts')
 
   allPosts.sort((a, b) => {
@@ -8,7 +9,7 @@ export async function GET(context) {
     let {date: date_b} = b.data
 
     if (!date_a) {
-      let date_str = a.slug
+      let date_str = a.id
 
       let date_array = date_str.split('-')
       let year = date_array[0]
@@ -19,7 +20,7 @@ export async function GET(context) {
     }
 
     if (!date_b) {
-      let date_str = b.slug
+      let date_str = b.id
 
       let date_array = date_str.split('-')
       let year = date_array[0]
@@ -36,7 +37,7 @@ export async function GET(context) {
     let {date} = p.data
 
     if (!date) {
-      let date_str = p.slug
+      let date_str = p.id
 
       let date_array = date_str.split('-')
       let year = date_array[0]
@@ -46,8 +47,12 @@ export async function GET(context) {
       date = `${year}-${month}-${day}`
     }
 
+    if(date instanceof Date){
+      date = buildDateStr(date)
+    }
+
     let datePath = date.split('-').join('/')
-    let postPath = p.slug.slice(11)
+    let postPath = p.id.slice(11)
 
     let url = `jw1.dev/${datePath}/${postPath}`
 
@@ -59,7 +64,7 @@ export async function GET(context) {
       url: url,
       title: p.data.title,
       tags: p.data.tags,
-      slug: p.slug,
+      slug: p.id,
       deprecated: p.data.deprecated || false
     }
   })

@@ -14,13 +14,13 @@ const extractDateFromSlug = (slug) => {
 }
 
 allPosts.sort((a, b) => {
-  let dateA = new Date(extractDateFromSlug(a.slug)).getTime()
-  let dateB = new Date(extractDateFromSlug(b.slug)).getTime()
+  let dateA = new Date(extractDateFromSlug(a.id)).getTime()
+  let dateB = new Date(extractDateFromSlug(b.id)).getTime()
   return dateB - dateA
 })
 
 const postsByYears = allPosts.reduce((acc, post) => {
-  let date = extractDateFromSlug(post.slug)
+  let date = extractDateFromSlug(post.id)
   let year = date.split('-')[0]
   if (!acc[year]) {
     acc[year] = []
@@ -44,11 +44,11 @@ const years = Object.keys(postsByYears).sort((a, b) => Number(b) - Number(a))
           <ul class="mb-8">
             {
               postsByYears[y].map((post) => {
-                let date = extractDateFromSlug(post.slug)
+                let date = extractDateFromSlug(post.id)
                 let dateTimestamp = new Date(date).getTime()
 
                 let datePath = date.split('-').join('/')
-                let postPath = post.slug.slice(11)
+                let postPath = post.id.slice(11)
 
                 let postUrl = `/${datePath}/${postPath}`
 

@@ -7,15 +7,18 @@ import '../style/main.scss'
 import dayjs from 'dayjs'
 import Nav from "../components/nav.astro"
 
-let {title, tags, deprecated} = Astro.props.frontmatter
-
-if (!tags) {
-  tags = []
+interface Props {
+  title: string
+  tags: string[]
+  deprecated: boolean
+  date: string
 }
 
-let path = Astro.url.pathname
+const {title, tags, deprecated, date} = Astro.props
 
-let postDate = dayjs(Astro.props.frontmatter.date).format('MMMM D, YYYY')
+const path = Astro.url.pathname
+
+const postDate = dayjs(date).format('MMMM D, YYYY')
 ---
 
 <html lang="en">

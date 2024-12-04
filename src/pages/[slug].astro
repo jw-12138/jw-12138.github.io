@@ -1,13 +1,15 @@
 ---
-import {getCollection, getEntry} from 'astro:content'
+import {getCollection, getEntry, render} from 'astro:content'
+import PostLayout from '../layouts/post-layout.astro'
+import {buildDateStr} from "../utils"
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts')
   const pages = []
 
   allPosts.map(post => {
-    let postPath = post.slug.slice(11)
-    let dateStr = post.slug.slice(0, 10)
+    let postPath = post.id.slice(11)
+    let dateStr = post.id.slice(0, 10)
     let timestamp = new Date(dateStr).getTime()
 
     if(timestamp < new Date('2024-05-30').getTime()){
@@ -27,10 +29,12 @@ export async function getStaticPaths() {
   return pages
 }
 
-const entry = await getEntry('posts', Astro.props.entry.slug)
+const entry = await getEntry('posts', Astro.props.entry.id)
+const {title, tags, deprecated, date} = entry.data
 
-let {body} = entry
-const {Content} = await entry.render()
+const {Content} = await render(entry)
 ---
 
-<Content/>
+<PostLayout title={title} tags={tags || []} deprecated={deprecated} date={(date instanceof Date) ? buildDateStr(date) : date}>
+  <Content/>
+</PostLayout>

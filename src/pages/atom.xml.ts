@@ -1,7 +1,8 @@
 import {getCollection} from 'astro:content'
+import {buildDateStr} from "../utils"
 
-export async function GET(context) {
-  let allPosts = await getCollection('posts')
+export async function GET() {
+  const allPosts = await getCollection('posts')
 
   let atom = `<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
@@ -22,7 +23,7 @@ export async function GET(context) {
     let {date: date_b} = b.data
 
     if (!date_a) {
-      let date_str = a.slug
+      let date_str = a.id
 
       let date_array = date_str.split('-')
       let year = date_array[0]
@@ -33,7 +34,7 @@ export async function GET(context) {
     }
 
     if (!date_b) {
-      let date_str = b.slug
+      let date_str = b.id
 
       let date_array = date_str.split('-')
       let year = date_array[0]
@@ -52,7 +53,7 @@ export async function GET(context) {
       return false
     }
     if (!date) {
-      let date_str = post.slug
+      let date_str = post.id
 
       let date_array = date_str.split('-')
       let year = date_array[0]
@@ -62,8 +63,12 @@ export async function GET(context) {
       date = `${year}-${month}-${day}`
     }
 
+    if(date instanceof Date){
+      date = buildDateStr(date)
+    }
+
     let datePath = date.split('-').join('/')
-    let postPath = post.slug.slice(11)
+    let postPath = post.id.slice(11)
     let url = `https://jw1.dev/${datePath}/${postPath}.html`
 
     if(new Date(date).getTime() > new Date('2024-05-30').getTime()){

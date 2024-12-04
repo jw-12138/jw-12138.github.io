@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/post-layout.astro
 title: 从音乐制作认识傅里叶变换
 issue: 100
 date: 2023-11-04
