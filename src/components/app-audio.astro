@@ -1,6 +1,6 @@
 ---
 let {src, label} = Astro.props
-import AppAudio from "./app-audio"
+import AppAudioComponent from "./app-audio.jsx"
 ---
 
 <noscript>
@@ -10,4 +10,4 @@ import AppAudio from "./app-audio"
   <audio src={src} aria-label={label || 'audio file'} controls preload="auto" class="mb-8"></audio>
 </noscript>
 
-<AppAudio src={src} label={label} client:only="solid-js"/>
+<AppAudioComponent src={src} label={label} client:only="solid-js"/>
