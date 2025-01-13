@@ -75,13 +75,22 @@ const { publication } = json.data;
 const posts = publication.posts.edges.map(({ node }) => node);
 
 let gitignore = ''
+
+// return gmt +8 time
+function parseDateToGMT(date: string){
+  const hour = new Date(date).getHours();
+  return new Date(new Date(date).setHours(hour + 8)).toISOString();
+}
+
 posts.map(async el => {
-  const dateStr = el.publishedAt.split('T')[0];
+  const publishedDate = parseDateToGMT(el.publishedAt);
+  const updatedDate = el.updatedAt ? parseDateToGMT(el.updatedAt) : '';
+  const dateStr = publishedDate.split('T')[0];
   const filename = dateStr + '-' + el.slug + '.mdx';
   gitignore += filename + '\n';
   await Bun.write(__dirname + '/src/content/posts/' + filename, `---
 title: ${el.title}
-date: ${el.publishedAt}${el.updatedAt ? '\nupdated: ' + el.updatedAt : ''}
+date: publishedDate${updatedDate ? '\nupdated: ' + updatedDate : ''}
 tags: ${JSON.stringify(el.tags.map(tag => tag.name))}
 ---
 
