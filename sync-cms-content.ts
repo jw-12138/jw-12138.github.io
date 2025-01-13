@@ -90,7 +90,7 @@ posts.map(async el => {
   gitignore += filename + '\n';
   await Bun.write(__dirname + '/src/content/posts/' + filename, `---
 title: ${el.title}
-date: publishedDate${updatedDate ? '\nupdated: ' + updatedDate : ''}
+date: ${publishedDate}${updatedDate ? '\nupdated: ' + updatedDate : ''}
 tags: ${JSON.stringify(el.tags.map(tag => tag.name))}
 ---
 
