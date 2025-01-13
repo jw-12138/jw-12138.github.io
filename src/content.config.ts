@@ -17,6 +17,10 @@ const posts = defineCollection({
       z.string(),
       z.date()
     ]).optional(),
+    updated: z.union([
+      z.string(),
+      z.date()
+    ]).optional(),
     issue: z.number().optional(),
     desc: z.string().optional()
   })
