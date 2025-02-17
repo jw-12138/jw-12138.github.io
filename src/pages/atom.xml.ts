@@ -7,7 +7,6 @@ export async function GET() {
   let atom = `<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
   <title>Jacky Wong</title>
   <link href="https://jw1.dev/atom.xml" rel="self"/>
   <link href="https://jw1.dev/" rel="alternate"/>

@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "4.0.3",
-    "@astrojs/rss": "4.0.10",
     "@astrojs/tailwind": "5.1.4",
     "@types/bun": "^1.1.16",
     "astro": "5.1.1",

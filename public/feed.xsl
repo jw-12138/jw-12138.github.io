@@ -19,7 +19,7 @@
           strong{font-weight: 500; color: black}
           small{font-size: 12px; line-height: 1.5}
           h2{border:none;padding-bottom:.3em; color: black; font-size: 1.25em; margin-top: 3em; margin-bottom: 1em}
-          .alert{background:#fef9c3;padding:4px 12px;margin:0; border-radius: 12px; font-style: italic}
+          .alert{background:#f1f1f1;padding:4px 12px;margin:0; border-radius: 12px; font-style: italic}
           a{text-decoration:none}.entry h3{margin-bottom:0}.entry p{margin:4px 0}
           a{color: black; text-decoration: underline; text-decoration-color: #aaa; text-underline-offset: 4px}
         </style>
