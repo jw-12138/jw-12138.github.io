@@ -102,7 +102,9 @@ const postDate = dayjs(date).format('MMMM D, YYYY')
             </p>
           </noscript>
           <slot />
-          <div class="flex items-center mt-12">
+        </div>
+        <div>
+          <div class="flex items-center">
             <form action={`https://upvote.jw1.dev/?postId=${path}`} method="POST" class="flex items-cente">
               <button type="submit" class="flex shrink-0 mr-1" title="Upvote this post">
                 <svg
