@@ -105,25 +105,26 @@ const postDate = dayjs(date).format('MMMM D, YYYY')
         </div>
         <div>
           <div class="flex items-center">
-            <form action={`https://upvote.jw1.dev/?postId=${path}`} method="POST" class="flex items-cente">
-              <button type="submit" class="flex shrink-0 mr-1" title="Upvote this post">
+            <form action={`https://upvote.jw1.dev/?postId=${path}`} method="POST" class="flex items-center">
+              <button type="submit" class="flex items-center shrink-0 mr-1 px-3 py-1.5 rounded-full bg-gradient-to-br from-slate-500 via-neutral-900 to-neutral-700 hover:from-slate-600 hover:via-zinc-700 hover:to-neutral-800 dark:from-slate-200 dark:via-white dark:to-zinc-300 dark:hover:from-white dark:hover:via-zinc-50 dark:hover:to-zinc-100 text-white dark:text-zinc-900 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.12)] dark:shadow-[0_2px_8px_-2px_rgba(255,255,255,0.12)] backdrop-blur-[2px] transition-all duration-200 group" title="Upvote this post">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="2.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-chevrons-up size-4"
+                  class="lucide lucide-chevrons-up size-3.5 mr-1 group-hover:scale-110 transition-transform duration-200"
                   ><path d="m17 11-5-5-5 5"></path><path d="m17 18-5-5-5 5"></path></svg
                 >
                 <img
                   src={`https://upvote.jw1.dev/count.svg?postId=${path}`}
                   alt="0"
-                  class="h-4 mb-0 dark:invert"
-                  style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; width: auto; display: inline; transform: none;"
+                  class="h-3.5 mb-0 invert dark:invert-0 group-hover:scale-105 transition-transform duration-200"
+                  style="margin: 0; width: auto; display: inline; transform: none;"
                 />
+                <span class="text-xs ml-2 font-medium">Upvote</span>
               </button>
             </form>
           </div>
