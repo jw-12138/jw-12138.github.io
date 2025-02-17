@@ -5,7 +5,7 @@ import Meta from '../components/meta.astro'
 import Og from '../components/og.astro'
 import '../style/main.scss'
 import dayjs from 'dayjs'
-import Nav from "../components/nav.astro"
+import Nav from '../components/nav.astro'
 
 interface Props {
   title: string
@@ -14,7 +14,7 @@ interface Props {
   date: string
 }
 
-const {title, tags, deprecated, date} = Astro.props
+const { title, tags, deprecated, date } = Astro.props
 
 const path = Astro.url.pathname
 
@@ -22,93 +22,115 @@ const postDate = dayjs(date).format('MMMM D, YYYY')
 ---
 
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width"/>
-  <meta name="generator" content={Astro.generator}/>
-  <title set:text={
-    title ? (title + ' · Jacky Wong') : 'Jacky Wong'
-  }></title>
-  <GlobalStyle/>
-  <Meta tags={tags}/>
-  <Og title={title} path={path}/>
-  <script>
-    let handleVideoAutoPlay = function () {
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      let windowHeight = document.documentElement.clientHeight || document.body.clientHeight
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title set:text={title ? title + ' · Jacky Wong' : 'Jacky Wong'} />
+    <GlobalStyle />
+    <Meta tags={tags} />
+    <Og title={title} path={path} />
+    <script>
+      let handleVideoAutoPlay = function () {
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        let windowHeight = document.documentElement.clientHeight || document.body.clientHeight
 
-      document.querySelectorAll('.page-content video').forEach((el, index) => {
-        let _el = el as HTMLVideoElement
-        let aboutToShow = _el.offsetTop - scrollTop - windowHeight
+        document.querySelectorAll('.page-content video').forEach((el, index) => {
+          let _el = el as HTMLVideoElement
+          let aboutToShow = _el.offsetTop - scrollTop - windowHeight
 
-        if (aboutToShow < -50 && _el.paused && _el.muted) {
-          _el.play()
-        }
-
-        if (aboutToShow < -50 && _el.paused && !_el.muted) {
-          _el.setAttribute('preload', 'auto')
-        }
-      })
-    }
-
-    let handleImgClick = function () {
-      document.querySelectorAll('.page-content img').forEach((el) => {
-        el.addEventListener('click', function () {
-          let _el = el as HTMLImageElement
-          window.open(_el.src)
-        })
-      })
-    }
-
-    window.addEventListener('load', function () {
-      handleVideoAutoPlay()
-      handleImgClick()
-      window.addEventListener('scroll', handleVideoAutoPlay)
-    })
-  </script>
-</head>
-<body>
-<aside>
-  <a
-    class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white"
-    href="#app">Jump to the main content</a
-  >
-  <div class="hidden lg:block">
-    <Header/>
-    <Nav highlight="posts"/>
-  </div>
-</aside>
-<main>
-  <div id="app" class="relative">
-    <h1 class="text-3xl font-medium lg:pt-[6rem] pt-[3rem] tracking-tight font-title">{title}</h1>
-    <div class="text-xs pt-4 flex items-center">
-      <span class="opacity-80">{postDate}</span>
-      {
-        () => {
-          if (deprecated) {
-            return (
-              <>
-                <span class="px-1">/</span>
-                <span class="text-red-500 font-black">Deprecated</span>
-              </>
-            )
+          if (aboutToShow < -50 && _el.paused && _el.muted) {
+            _el.play()
           }
-        }
-      }
-    </div>
 
-    <div class="page-content mt-[2.5rem]">
-      <noscript>
-        <p class="text-red-500 dark:text-red-400 mb-8">
-          Looks like your browser has javascript disabled, it's ok, you can still browse this blog.
-        </p>
-      </noscript>
-      <slot/>
-      <p class="pt-[3rem]">
-        <a href="/posts">← Posts</a>
-      </p>
-    </div>
-  </div>
-</main>
-</body>
+          if (aboutToShow < -50 && _el.paused && !_el.muted) {
+            _el.setAttribute('preload', 'auto')
+          }
+        })
+      }
+
+      let handleImgClick = function () {
+        document.querySelectorAll('.page-content img').forEach((el) => {
+          el.addEventListener('click', function () {
+            let _el = el as HTMLImageElement
+            window.open(_el.src)
+          })
+        })
+      }
+
+      window.addEventListener('load', function () {
+        handleVideoAutoPlay()
+        handleImgClick()
+        window.addEventListener('scroll', handleVideoAutoPlay)
+      })
+    </script>
+  </head>
+  <body>
+    <aside>
+      <a
+        class="absolute left-[-9999px] focus:left-[20px] top-[20px] bg-black px-4 py-2 dark:bg-white dark:text-black text-white"
+        href="#app">Jump to the main content</a
+      >
+      <div class="hidden lg:block">
+        <Header />
+        <Nav highlight="posts" />
+      </div>
+    </aside>
+    <main>
+      <div id="app" class="relative">
+        <h1 class="text-3xl font-medium lg:pt-[6rem] pt-[3rem] tracking-tight font-title">{title}</h1>
+        <div class="text-xs pt-4 flex items-center">
+          <span class="opacity-80">{postDate}</span>
+          {
+            () => {
+              if (deprecated) {
+                return (
+                  <>
+                    <span class="px-1">/</span>
+                    <span class="text-red-500 font-black">Deprecated</span>
+                  </>
+                )
+              }
+            }
+          }
+        </div>
+
+        <div class="page-content mt-[2.5rem]">
+          <noscript>
+            <p class="text-red-500 dark:text-red-400 mb-8">
+              Looks like your browser has javascript disabled, it's ok, you can still browse this blog.
+            </p>
+          </noscript>
+          <slot />
+          <div class="flex items-center mt-12">
+            <form action={`https://upvote.jw1.dev/?postId=${path}`} method="POST" class="flex items-cente">
+              <button type="submit" class="flex shrink-0 mr-1" title="Upvote this post">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chevrons-up size-4"
+                  ><path d="m17 11-5-5-5 5"></path><path d="m17 18-5-5-5 5"></path></svg
+                >
+                <img
+                  src={`https://upvote.jw1.dev/count.svg?postId=${path}`}
+                  alt="0"
+                  class="h-4 mb-0 dark:invert"
+                  style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; width: auto; display: inline; transform: none;"
+                />
+              </button>
+            </form>
+          </div>
+
+          <p class="pt-[3rem]">
+            <a href="/posts">← Posts</a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
