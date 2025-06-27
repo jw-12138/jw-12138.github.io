@@ -7,11 +7,10 @@
     "start": "astro dev",
     "build": "bun run sync:posts && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "sync:posts": "bun run sync-cms-content.ts"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^5.0.6",
+    "@astrojs/solid-js": "5.1.0",
     "animejs": "^3.2.2",
     "dayjs": "^1.11.13",
     "howler": "^2.2.4",
@@ -25,10 +24,10 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@astrojs/mdx": "4.0.3",
-    "@astrojs/tailwind": "5.1.4",
+    "@astrojs/mdx": "4.3.0",
+    "@astrojs/tailwind": "6.0.2",
     "@types/bun": "^1.2.8",
-    "astro": "5.1.1",
+    "astro": "5.10.1",
     "commander": "^11.1.0",
     "dotenv": "^16.4.7",
     "markdown-it": "^14.1.0",

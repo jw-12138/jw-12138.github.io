@@ -1,0 +1,37 @@
+---
+title: Dog-fight With Fake Emails
+date: 2025-02-13T15:32:22.535Z
+tags: ["#cybersecurity"]
+---
+
+import { Image } from 'astro:assets'
+
+Our user base has exploded in recent days. Should be a good thing, right? Well, mostly yes, but we're facing some interesting challenges. The main reason for this growth is that we're offering DeepSeek-R1 completely free. Plus, we started an invitation program, users get free credits for inviting others, and the top 3 inviters each week win real money prizes, straight to their bank accounts.
+
+When it comes to money, some people just don't want to play fair.
+
+At first, we had this really basic admin panel that just tracked email domains and their registration counts. Pretty simple stuff, we'd manually check for suspicious patterns, like when someone registered multiple accounts with similar email addresses. We also maintained a basic domain blacklist. This worked fine when our user numbers were low.
+
+But then our bills started climbing with the user growth (LLMs are fucking expensive), and we noticed something concerning, suspicious domains were popping up faster than we could update our blacklist. We were spending too much time just adding new spam domains to the list. This clearly wasn't sustainable.
+
+We needed a better solution, so we designed a multi-layer verification system:
+
+1. Whitelist Check: Known good domains get an instant pass
+    
+2. Blacklist Check: Known spam domains get blocked immediately
+    
+3. LLM Detection: For unknown domains, we actually use our LLM to analyze if it looks suspicious
+    
+4. Deep Email Validation: Final check using a third-party API to verify:
+    
+    * Valid MX records
+        
+    * No relay servers
+        
+    * Not a disposable email service
+        
+
+Interestingly, we just learned that even Gmail addresses aren't automatically safe. Spammers often use Gmail addresses with lots of dots or "+" signs in the username. That's why we added that final validation layer with the API.
+
+So far, we've banned over 10,000 fake users with this system. We're still monitoring the situation and looking for ways to improve it, but for now, it's working as intended.
+  
