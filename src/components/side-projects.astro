@@ -1,0 +1,54 @@
+---
+const projects = [
+  {
+    name: "R2 Uploader",
+    url: "https://r2.jw1.dev",
+    description: "can manage your files on Cloudflare R2.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hard-drive-upload-icon lucide-hard-drive-upload"><path d="m16 6-4-4-4 4"/><path d="M12 2v8"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 18h.01"/><path d="M10 18h.01"/></svg>`
+  },
+  {
+    name: "CWGI",
+    url: "https://cwgi-docs.jw1.dev",
+    description: "is a blog comment system.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-text-icon lucide-message-square-text"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7"/><path d="M17 12H7"/></svg>`
+  },
+  {
+    name: "vite-plugin-vsharp",
+    url: "https://github.com/jw-12138/vite-plugin-vsharp",
+    description: "can compress your images for each `vite build`.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>`
+  },
+  {
+    name: "只言",
+    url: "https://zhiyan.dev",
+    description: "can chat with AI.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square-icon lucide-bot-message-square"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M20 12h2"/></svg>`
+  },
+  {
+    name: "Should I Work Today",
+    url: "https://github.com/jw-12138/should-i-work-today",
+    description: "is an API for holiday checking in China.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tree-palm-icon lucide-tree-palm"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"/><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"/><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"/></svg>`
+  }
+]
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {
+    projects.map(project => (
+      <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 hover:border-neutral-300 dark:hover:border-neutral-600 hover:shadow-sm transition-all duration-200 bg-white dark:bg-neutral-800">
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+            <div class="w-6 h-6 text-neutral-600 dark:text-neutral-400" set:html={project.icon}></div>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-neutral-900 dark:text-neutral-100 mb-2">
+              <a href={project.url} target="_blank" class="hover:underline">{project.name}</a>
+            </h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed" style="margin-bottom: 0;">{project.description}</p>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
