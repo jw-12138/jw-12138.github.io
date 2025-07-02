@@ -1,5 +1,5 @@
 ---
-let {highlight} = Astro.props
+let { highlight } = Astro.props
 
 const navs = [
   {
@@ -32,13 +32,18 @@ const navs = [
         navs.map((el, index) => {
           return (
             <div>
-              <a href={el.href} 
-                 target={el.href.startsWith('http') ? '_blank' : undefined}
-                 rel={el.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                 style={{
-                   opacity: highlight === el.highlight ? 1 : 0.6
-                 }}>{el.name}</a>
-            </div>)
+              <a
+                href={el.href}
+                target={el.href.startsWith('http') ? '_blank' : undefined}
+                rel={el.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                style={{
+                  opacity: highlight === el.highlight ? 1 : 0.6
+                }}
+              >
+                {el.name}
+              </a>
+            </div>
+          )
         })
       }
     </div>
