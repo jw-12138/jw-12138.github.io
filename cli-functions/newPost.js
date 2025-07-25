@@ -24,10 +24,11 @@ export default async function (title, options = {}) {
   }
 
   // only allow letters, numbers, dashes and underscores
-  title = title.replace(/[^a-zA-Z0-9-_]/g, '-')
+  const originalTitle = title
+  const fileTitle = title.replace(/[^a-zA-Z0-9-_]/g, '-').toLowerCase()
 
   const establishedDir = pwd + `/src/content/posts`
-  const establishedFile = `${year}-${month}-${day}-${title}${typeExtensionMap[fileType]}`
+  const establishedFile = `${year}-${month}-${day}-${fileTitle}${typeExtensionMap[fileType]}`
   const establishedPath = `${establishedDir}/${establishedFile}`
 
   if (!fs.existsSync(establishedDir)) {
@@ -48,12 +49,9 @@ export default async function (title, options = {}) {
   }
 
   const template = `---
-title: ${title}${draftFrontMatter}
-issue:
+title: ${originalTitle}${draftFrontMatter}
 date: ${new Date().toISOString()}
 ---
-
-import {Image} from 'astro:assets'
 
 `
 
