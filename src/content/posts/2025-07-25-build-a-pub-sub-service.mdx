@@ -1,0 +1,63 @@
+---
+title: Build an Edge-friendly Self-hosted Pub/Sub service
+date: 2025-07-25T08:34:19.851Z
+---
+
+Our bills on Cloudflare just exploded last month, up by around 2500%. I mean, our product kinda went viral while launching the new Agent Neo, but the bill shouldn't be like this.
+
+The culprit? **Durable Objects.**
+
+Yes, we were using Cloudflare Durable Objects as a pub/sub backend, which should be a lightweight real-time messaging layer to make our agent Neo work.
+
+Well, it worked at first... until it didn’t.
+
+Turns out that Durable Objects are quite literally the worst possible architecture for a high-frequency, high concurrency pub/sub system.
+
+## The Origin
+
+> Create AI agents, collaborative applications, real-time interactions like chat, and more without needing to coordinate state, have separate storage, or manage infrastructure.
+>
+> -- Cloudflare Durable Objects
+
+Before I joined Flowith, I built a small end-to-end encrypted 1-on-1 chat app, it was fully serverless, and yes, it used Durable Objects for real-time messaging. It was simple, clean, elegant, and most importantly, cheap, but was never battle-tested.
+
+When the plan for Agent Neo came together, our AI agent with real-time interactions, I naturally thought:
+
+> “Why not reuse that little pub/sub module I made?”
+
+Famous last words.
+
+## The Fix
+
+Before jumping straight into rebuilding everything from scratch, we tried to find a managed solution that could just work. We looked into popular real-time platforms like Ably and Pusher, which are services designed for exactly this kind of use case, but they all had limitations.
+
+Ably's maximum message size is 256KB, this might be far enough for chatting apps, but our agent? Sometimes it pushed multi-megabyte messages, especially when the agent starts to make websites, things could blow up quickly.
+
+Pusher was even more constrained, much lower message size limit and no pay-as-you-go plan, that’s a non-starter for an infra component that needs to handle bursty, unpredictable traffic.
+
+And then we found Upstash Redis, actually we were already spending hundreds of dollars per month on Upstash, and we never noticed it had a built-in pub/sub.
+
+> 🤦 The thing we need was sitting in our stack the whole time.
+
+For compatibility concerns, we made a proxy service which runs on a server, and exposed 2 RESTful APIs for simple message publications/subscriptions.
+
+And here is the core of the setup:
+
+```js
+await pubRedis.publish(channel, JSON.stringify(message))
+```
+
+On the receiving end:
+
+```js
+await subRedis.subscribe(requestChannel)
+```
+
+Servers post messages via `POST /channel/:channel/messages` (Ably style), and clients subscribe via `GET /sub?channel=... `, and messages are streamed to clients using Server-Sent Events which can be easily proxied by any edge computing platforms (Vercel Edge Functions, Cloudflare Workers).
+
+This service runs on a lightweight VPS ($40/month), with minimal CPU and memory usage. It’s fully stateless and ready for horizontal scaling.
+
+## The Result
+
+We just reduced the cost of our pub/sub module from $5000/month to $100/month and lower.
+
