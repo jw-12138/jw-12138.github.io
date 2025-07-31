@@ -4,7 +4,7 @@ body {
   Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   tab-size: 2;
   overflow-x: hidden;
-  @apply bg-[#fafaf8] text-[#141413] dark:bg-[#141413] dark:text-[#fafaf8] min-w-[320px] selection:bg-orange-400 dark:selection:bg-orange-500;
+  @apply bg-[#fafaf8] text-[#141413] dark:bg-[#141413] dark:text-[#f1f1f1] min-w-[320px] selection:bg-orange-400 dark:selection:bg-orange-500;
 }
 
 aside {
@@ -147,32 +147,32 @@ video {
     @apply underline underline-offset-4 hover:decoration-orange-500 hover:decoration-wavy decoration-neutral-300 dark:decoration-neutral-600 dark:text-white text-black rounded-[2px];
 
     &[target='_blank'] {
-      @apply after:content-['_↗'] after:text-xs;
+      @apply after:content-['_↗'] after:text-xs after:text-neutral-500 dark:after:text-neutral-400;
     }
   }
 
   h1 {
-    @apply text-[20px] leading-9 font-medium mb-6 relative font-title;
+    @apply text-[20px] leading-9 font-medium mb-6 relative font-title dark:text-white;
   }
 
   h2 {
-    @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative font-title;
+    @apply text-[20px] leading-9 font-medium mb-4 mt-[3rem] relative font-title dark:text-white;
   }
 
   h3 {
-    @apply text-[18px] leading-8 font-medium mb-2 mt-4 relative font-title;
+    @apply text-[18px] leading-8 font-medium mb-2 mt-4 relative font-title dark:text-white;
   }
 
   h4 {
-    @apply text-[16px] leading-7 font-medium mb-1 mt-2 relative font-title;
+    @apply text-[16px] leading-7 font-medium mb-1 mt-2 relative font-title dark:text-white;
   }
 
   h5 {
-    @apply text-[14px] leading-6 font-medium mb-6 font-title;
+    @apply text-[14px] leading-6 font-medium mb-6 font-title dark:text-white;
   }
 
   h6 {
-    @apply text-[14px] leading-6 font-medium mb-6 font-title;
+    @apply text-[14px] leading-6 font-medium mb-6 font-title dark:text-white;
   }
 
   code {
