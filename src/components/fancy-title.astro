@@ -1,0 +1,32 @@
+---
+const { title } = Astro.props
+---
+
+<h1 class="text-3xl text-balance font-medium lg:pt-[6rem] pt-[3rem] tracking-tight font-title title-container">
+  <span
+    class="title-text"
+    data-title={title}
+    >
+      {title.split('').map((char, index) => {
+        return <span class="title-char" data-char={char} data-index={index} style={`
+          animation: fadeInBlur 0.3s ease-out forwards;
+          animation-delay: ${index * 4}ms;
+          opacity: 0;
+        `}>{char}</span>
+      })}
+    </span
+  >
+</h1>
+
+<style>
+  @keyframes fadeInBlur {
+    from {
+      filter: blur(10px);
+      opacity: 0;
+    }
+    to {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+</style>

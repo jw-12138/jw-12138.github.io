@@ -6,6 +6,7 @@ import Og from '../components/og.astro'
 import '../style/main.scss'
 import dayjs from 'dayjs'
 import Nav from '../components/nav.astro'
+import FancyTitle from '../components/fancy-title.astro'
 
 interface Props {
   title: string
@@ -78,12 +79,7 @@ const postDate = dayjs(date).format('MMMM D, YYYY')
     </aside>
     <main>
       <div id="app" class="relative">
-        <h1 class="text-3xl text-balance font-medium lg:pt-[6rem] pt-[3rem] tracking-tight font-title">
-          <span
-            class="bg-gradient-to-r from-[#121212] to-[#666] dark:from-white dark:to-[#aaa] bg-clip-text text-transparent"
-            >{title}</span
-          >
-        </h1>
+        <FancyTitle title={title}/>
         <div class="text-xs pt-4 flex items-center">
           <span class="opacity-80">{postDate}</span>
           {
